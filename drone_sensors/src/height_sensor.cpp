@@ -13,7 +13,7 @@ public:
 	{
 		publisher_ = this->create_publisher<std_msgs::msg::String>("height_sensor", 10);
 		timer_ = this->create_wall_timer(
-			500ms, std::bind(&HeightSensorPublisher::timer_callback, this));
+			50ms, std::bind(&HeightSensorPublisher::timer_callback, this));
 		RCLCPP_INFO(this->get_logger(), "Starting height sensor publisher");
 
 		setup_serial_port();
@@ -34,14 +34,17 @@ private:
 		char *readdata = new char[1];
 		serial_port.read(readdata, 1);
 		auto message = std_msgs::msg::String();
-		message.data = "Height: " + std::to_string((char)readdata[0]);
 
 		if (readdata[0] == 'T')
 		{
 			RCLCPP_INFO(this->get_logger(), "Height sensor start measurement");
+			char *measurement = new char[2];
+			serial_port.read(measurement, 2);
+			message.data = "Height: " + std::to_string(measurement[0]) + std::to_string(measurement[1]);
+			RCLCPP_INFO(this->get_logger(), "Publishing: %s", message.data.c_str());
+			publisher_->publish(message);
+
 		}
-		RCLCPP_INFO(this->get_logger(), "Publishing: %s", message.data.c_str());
-		publisher_->publish(message);
 	}
 
 	/**
