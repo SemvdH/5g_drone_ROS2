@@ -20,10 +20,18 @@ class HeightSensorPublisher : public rclcpp::Node
 
 			}
 	private:
+
+
+		/**
+		 * @brief Timer callback function to publish the height sensor data
+		 * 
+		 */
 		void timer_callback()
 		{
+			char* readdata = new char[1];
+			serial_port.read(readdata, 1);
 			auto message = std_msgs::msg::String();
-			message.data = "Hello heigth sensor!";
+			message.data = "Height: " + std::to_string((int)readdata[0]);
 			RCLCPP_INFO(this->get_logger(), "Publishing: %s", message.data.c_str());
 			publisher_->publish(message);
 		}
@@ -38,6 +46,7 @@ class HeightSensorPublisher : public rclcpp::Node
 			if (!serial_port.is_open())
 			{
 				RCLCPP_ERROR(this->get_logger(), "Could not open serial port");
+				return;
 			}
 			else
 			{
