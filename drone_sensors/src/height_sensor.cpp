@@ -29,7 +29,7 @@ private:
 		char *readdata = new char[1];
 		serial_port.read(readdata, 1);
 		auto message = std_msgs::msg::String();
-		RCLCPP_INFO(this->get_logger(), "data: %s", std::to_string(readdata[0]));
+		RCLCPP_INFO(this->get_logger(), "data: %s", readdata);
 
 		if (readdata[0] == 0x54) // 0x54 = T (from the user manual)
 		{
