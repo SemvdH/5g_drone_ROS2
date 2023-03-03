@@ -76,7 +76,7 @@ int main(int argc, char *argv[])
 
 	while (true)
 	{
-		node->test();
+		node.get()->test();
 	}
 	rclcpp::shutdown();
 
