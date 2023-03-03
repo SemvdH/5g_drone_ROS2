@@ -70,7 +70,8 @@ private:
 			RCLCPP_INFO(this->get_logger(), "Serial port opened on /dev/ttyACM0");
 		}
 
-		serial_port.write({BINARY_MODE});
+		char bmode[] = {BINARY_MODE}
+		serial_port.write(bmode, 4);
 	}
 
 	rclcpp::TimerBase::SharedPtr timer_;
