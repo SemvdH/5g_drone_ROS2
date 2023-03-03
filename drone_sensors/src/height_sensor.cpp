@@ -1,9 +1,10 @@
 #include <chrono> //time measurement
+#include <iostream> // reading from serial port
 
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
 
-using namespace std::chrono_literals;
+using namespace std::chrono_literals; // for time measurements
 
 class HeightSensorPublisher : public rclcpp::Node
 {
@@ -13,6 +14,7 @@ class HeightSensorPublisher : public rclcpp::Node
 				publisher_ = this->create_publisher<std_msgs::msg::String>("height_sensor", 10);
 				timer_ = this->create_wall_timer(
 					500ms, std::bind(&HeightSensorPublisher::timer_callback, this));
+				RCLCPP_INFO(this->get_logger(), "Constructor of height sensor publisher");	
 
 			}
 	private:

@@ -328,3 +328,5 @@ tags
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/ros2,ros,cmake,c++,python,visualstudiocode,vim
+
+.vscode/
