@@ -1,4 +1,4 @@
-#include <chrono> //time measurement
+#include <chrono>  //time measurement
 #include <fstream> // reading from serial port
 
 #include "rclcpp/rclcpp.hpp"
@@ -8,76 +8,77 @@ using namespace std::chrono_literals; // for time measurements
 
 class HeightSensorPublisher : public rclcpp::Node
 {
-	public:
-		HeightSensorPublisher() : Node("height_sensor_publisher")
-			{
-				publisher_ = this->create_publisher<std_msgs::msg::String>("height_sensor", 10);
-				timer_ = this->create_wall_timer(
-					1ms, std::bind(&HeightSensorPublisher::timer_callback, this));
-				RCLCPP_INFO(this->get_logger(), "Constructor of height sensor publisher");	
+public:
+	HeightSensorPublisher() : Node("height_sensor_publisher")
+	{
+		publisher_ = this->create_publisher<std_msgs::msg::String>("height_sensor", 10);
+		timer_ = this->create_wall_timer(
+			500ms, std::bind(&HeightSensorPublisher::timer_callback, this));
+		RCLCPP_INFO(this->get_logger(), "Constructor of height sensor publisher");
 
-				setup_serial_port();
+		setup_serial_port();
+	}
 
-			}
-	private:
+	void test()
+	{
+		RCLCPP_INFO(this->get_logger(), "Je moeder is een plopkoek");
+	}
 
+private:
+	/**
+	 * @brief Timer callback function to publish the height sensor data
+	 *
+	 */
+	void timer_callback()
+	{
+		char *readdata = new char[1];
+		serial_port.read(readdata, 1);
+		auto message = std_msgs::msg::String();
+		message.data = "Height: " + std::to_string((int)readdata[0]);
+		RCLCPP_INFO(this->get_logger(), "Publishing: %s", message.data.c_str());
+		publisher_->publish(message);
+	}
 
-		/**
-		 * @brief Timer callback function to publish the height sensor data
-		 * 
-		 */
-		void timer_callback()
+	/**
+	 * @brief Set the up serial port object to read from the sensor (/dev/ttyACM0)
+	 *
+	 */
+	void setup_serial_port()
+	{
+		serial_port.open("/dev/ttyACM0", std::ios::in);
+		if (!serial_port.is_open())
 		{
-			char* readdata = new char[1];
-			serial_port.read(readdata, 1);
-			auto message = std_msgs::msg::String();
-			message.data = "Height: " + std::to_string((int)readdata[0]);
-			RCLCPP_INFO(this->get_logger(), "Publishing: %s", message.data.c_str());
-			publisher_->publish(message);
+			RCLCPP_ERROR(this->get_logger(), "Could not open serial port");
+			return;
+		}
+		else
+		{
+			RCLCPP_INFO(this->get_logger(), "Serial port opened");
 		}
 
-		/**
-		 * @brief Set the up serial port object to read from the sensor (/dev/ttyACM0)
-		 * 
-		 */
-		void setup_serial_port() 
-		{
-			serial_port.open("/dev/ttyACM0", std::ios::in);
-			if (!serial_port.is_open())
-			{
-				RCLCPP_ERROR(this->get_logger(), "Could not open serial port");
-				return;
-			}
-			else
-			{
-				RCLCPP_INFO(this->get_logger(), "Serial port opened");
-			}
+		serial_port.close();
+	}
 
-			serial_port.close();
-		}
-
-		void test() 
-		{
-			RCLCPP_INFO(this->get_logger(), "Je moeder is een plopkoek");
-		}
-		rclcpp::TimerBase::SharedPtr timer_;
-		rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher_;
-		std::fstream serial_port; // serial port for reading from device
+	rclcpp::TimerBase::SharedPtr timer_;
+	rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher_;
+	std::fstream serial_port; // serial port for reading from device
 };
 
 int main(int argc, char *argv[])
 {
-	rclcpp::init(argc,argv);
+	rclcpp::init(argc, argv);
 
 	rclcpp::executors::SingleThreadedExecutor executor;
-	auto node = std::make_shared<HeightSensorPublisher>();
-	node.get()->setup_serial_port();
+	rclcpp::Node::SharedPtr node = std::make_shared<HeightSensorPublisher>();
 	executor.add_node(node);
 	executor.spin();
 	// rclcpp::spin(std::make_shared<HeightSensorPublisher>());
+
+	while (true)
+	{
+		node->test();
+	}
 	rclcpp::shutdown();
 
 	return 0;
 }
-
-
