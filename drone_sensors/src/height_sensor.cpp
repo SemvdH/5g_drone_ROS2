@@ -19,11 +19,6 @@ public:
 		setup_serial_port();
 	}
 
-	void test()
-	{
-		RCLCPP_INFO(this->get_logger(), "Je moeder is een plopkoek");
-	}
-
 private:
 	/**
 	 * @brief Timer callback function to publish the height sensor data
@@ -34,7 +29,7 @@ private:
 		char *readdata = new char[1];
 		serial_port.read(readdata, 1);
 		auto message = std_msgs::msg::String();
-		RCLCPP_INFO(this->get_logger(), "data: %s", readdata);
+		RCLCPP_INFO(this->get_logger(), "data: %s", std::to_string(readdata[0]));
 
 		if (readdata[0] == 0x54) // 0x54 = T (from the user manual)
 		{
