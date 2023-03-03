@@ -13,7 +13,7 @@ public:
 	{
 		publisher_ = this->create_publisher<std_msgs::msg::String>("height_sensor", 10);
 		timer_ = this->create_wall_timer(
-			50ms, std::bind(&HeightSensorPublisher::timer_callback, this));
+			5ms, std::bind(&HeightSensorPublisher::timer_callback, this));
 		RCLCPP_INFO(this->get_logger(), "Starting height sensor publisher");
 
 		setup_serial_port();
