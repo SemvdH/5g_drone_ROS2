@@ -4,7 +4,17 @@
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
 
+#define TEXT_MODE 0x00, 0x11, 0x01, 0x45
+#define BINARY_MODE 0x00, 0x11, 0x02, 0x4C
+#define SINGLE_PIXEL_MODE 0x00, 0x21, 0x01, 0xBC
+#define TWO_BY_TWO_PIXEL_MODE 0x00, 0x21, 0x02, 0xB5
+#define TWO_PIXEL_MODE 0x00, 0x21, 0x03, 0xB2
+#define SHORT_RANGE_MODE 0x00, 0x61, 0x01, 0xE7
+#define LONG_RANGE_MODE 0x00, 0x61, 0x03, 0xE9
+
 using namespace std::chrono_literals; // for time measurements
+
+	
 
 class HeightSensorPublisher : public rclcpp::Node
 {
@@ -60,7 +70,7 @@ private:
 			RCLCPP_INFO(this->get_logger(), "Serial port opened on /dev/ttyACM0");
 		}
 
-		serial_port.close();
+		serial_port.write({BINARY_MODE});
 	}
 
 	rclcpp::TimerBase::SharedPtr timer_;
@@ -77,6 +87,7 @@ int main(int argc, char *argv[])
 	executor.add_node(node);
 	executor.spin();
 	// rclcpp::spin(std::make_shared<HeightSensorPublisher>());
+
 	rclcpp::shutdown();
 
 	return 0;
