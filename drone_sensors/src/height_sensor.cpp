@@ -35,7 +35,7 @@ private:
 		serial_port.read(readdata, 1);
 		auto message = std_msgs::msg::String();
 
-		if (readdata[0] == 'T')
+		if (readdata[0] == 0x54) // 0x54 = T (from the user manual)
 		{
 			RCLCPP_INFO(this->get_logger(), "Height sensor start measurement");
 			char *measurement = new char[2];
