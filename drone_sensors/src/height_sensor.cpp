@@ -55,6 +55,11 @@ class HeightSensorPublisher : public rclcpp::Node
 
 			serial_port.close();
 		}
+
+		void test() 
+		{
+			RCLCPP_INFO(this->get_logger(), "Je moeder is een plopkoek");
+		}
 		rclcpp::TimerBase::SharedPtr timer_;
 		rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher_;
 		std::fstream serial_port; // serial port for reading from device
@@ -63,7 +68,13 @@ class HeightSensorPublisher : public rclcpp::Node
 int main(int argc, char *argv[])
 {
 	rclcpp::init(argc,argv);
-	rclcpp::spin(std::make_shared<HeightSensorPublisher>());
+
+	rclcpp::executors::SingleThreadedExecutor executor;
+	auto node = std::make_shared<HeightSensorPublisher>();
+	node.get()->setup_serial_port();
+	executor.add_node(node);
+	executor.spin();
+	// rclcpp::spin(std::make_shared<HeightSensorPublisher>());
 	rclcpp::shutdown();
 
 	return 0;
