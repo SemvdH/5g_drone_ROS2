@@ -13,8 +13,8 @@ public:
 	{
 		publisher_ = this->create_publisher<std_msgs::msg::String>("height_sensor", 10);
 		timer_ = this->create_wall_timer(
-			500ms, std::bind(&HeightSensorPublisher::timer_callback, this));
-		RCLCPP_INFO(this->get_logger(), "Constructor of height sensor publisher");
+			20ms, std::bind(&HeightSensorPublisher::timer_callback, this));
+		RCLCPP_INFO(this->get_logger(), "Starting height sensor publisher");
 
 		setup_serial_port();
 	}
@@ -34,7 +34,10 @@ private:
 		char *readdata = new char[1];
 		serial_port.read(readdata, 1);
 		auto message = std_msgs::msg::String();
-		message.data = "Height: " + std::to_string((int)readdata[0]);
+		message.data = "Height: " + (char)readdata[0];
+		if (readdata[0] == 'T') {
+			RCLCPP_INFO(this->get_logger(), "got start of measurement");
+		}
 		RCLCPP_INFO(this->get_logger(), "Publishing: %s", message.data.c_str());
 		publisher_->publish(message);
 	}
@@ -48,7 +51,7 @@ private:
 		serial_port.open("/dev/ttyACM0", std::ios::in);
 		if (!serial_port.is_open())
 		{
-			RCLCPP_ERROR(this->get_logger(), "Could not open serial port");
+			RCLCPP_ERROR(this->get_logger(), "ERROR Could not open serial port");
 			return;
 		}
 		else
@@ -73,11 +76,6 @@ int main(int argc, char *argv[])
 	executor.add_node(node);
 	executor.spin();
 	// rclcpp::spin(std::make_shared<HeightSensorPublisher>());
-
-	while (true)
-	{
-		node.get()->test();
-	}
 	rclcpp::shutdown();
 
 	return 0;
