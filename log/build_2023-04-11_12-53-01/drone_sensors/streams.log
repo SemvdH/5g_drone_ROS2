@@ -1,0 +1,24 @@
+[0.067s] Invoking command in '/home/ubuntu/ros2_ws/build/drone_sensors': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/ubuntu/ros2_ws/build/drone_sensors -- -j4 -l4
+[0.228s] [35m[1mConsolidate compiler generated dependencies of target height_sensor[0m
+[0.320s] [100%] Built target height_sensor
+[0.363s] Invoked command in '/home/ubuntu/ros2_ws/build/drone_sensors' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/ubuntu/ros2_ws/build/drone_sensors -- -j4 -l4
+[0.536s] Invoking command in '/home/ubuntu/ros2_ws/build/drone_sensors': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/ubuntu/ros2_ws/build/drone_sensors
+[0.567s] -- Install configuration: "RELWITHDEBINFO"
+[0.570s] -- Execute custom install script
+[0.572s] -- Up-to-date symlink: /home/ubuntu/ros2_ws/install/drone_sensors/lib/drone_sensors/height_sensor
+[0.574s] -- Up-to-date symlink: /home/ubuntu/ros2_ws/install/drone_sensors/share/ament_index/resource_index/package_run_dependencies/drone_sensors
+[0.575s] -- Up-to-date symlink: /home/ubuntu/ros2_ws/install/drone_sensors/share/ament_index/resource_index/parent_prefix_path/drone_sensors
+[0.577s] -- Up-to-date symlink: /home/ubuntu/ros2_ws/install/drone_sensors/share/drone_sensors/environment/ament_prefix_path.sh
+[0.579s] -- Up-to-date symlink: /home/ubuntu/ros2_ws/install/drone_sensors/share/drone_sensors/environment/ament_prefix_path.dsv
+[0.580s] -- Up-to-date symlink: /home/ubuntu/ros2_ws/install/drone_sensors/share/drone_sensors/environment/path.sh
+[0.581s] -- Up-to-date symlink: /home/ubuntu/ros2_ws/install/drone_sensors/share/drone_sensors/environment/path.dsv
+[0.583s] -- Up-to-date symlink: /home/ubuntu/ros2_ws/install/drone_sensors/share/drone_sensors/local_setup.bash
+[0.584s] -- Up-to-date symlink: /home/ubuntu/ros2_ws/install/drone_sensors/share/drone_sensors/local_setup.sh
+[0.586s] -- Up-to-date symlink: /home/ubuntu/ros2_ws/install/drone_sensors/share/drone_sensors/local_setup.zsh
+[0.588s] -- Up-to-date symlink: /home/ubuntu/ros2_ws/install/drone_sensors/share/drone_sensors/local_setup.dsv
+[0.589s] -- Symlinking: /home/ubuntu/ros2_ws/install/drone_sensors/share/drone_sensors/package.dsv
+[0.625s] -- Up-to-date symlink: /home/ubuntu/ros2_ws/install/drone_sensors/share/ament_index/resource_index/packages/drone_sensors
+[0.627s] -- Up-to-date symlink: /home/ubuntu/ros2_ws/install/drone_sensors/share/drone_sensors/cmake/drone_sensorsConfig.cmake
+[0.629s] -- Up-to-date symlink: /home/ubuntu/ros2_ws/install/drone_sensors/share/drone_sensors/cmake/drone_sensorsConfig-version.cmake
+[0.630s] -- Up-to-date symlink: /home/ubuntu/ros2_ws/install/drone_sensors/share/drone_sensors/package.xml
+[0.640s] Invoked command in '/home/ubuntu/ros2_ws/build/drone_sensors' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/ubuntu/ros2_ws/build/drone_sensors

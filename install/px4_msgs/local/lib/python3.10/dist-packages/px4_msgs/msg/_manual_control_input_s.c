@@ -1,0 +1,1 @@
+/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_generator_py/px4_msgs/msg/_manual_control_input_s.c

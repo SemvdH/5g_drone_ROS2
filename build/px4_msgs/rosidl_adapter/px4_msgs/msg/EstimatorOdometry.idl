@@ -1,0 +1,122 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from px4_msgs/msg/EstimatorOdometry.msg
+// generated code does not contain a copyright notice
+
+
+module px4_msgs {
+  module msg {
+    typedef float float__4[4];
+    typedef float float__21[21];
+    module EstimatorOdometry_Constants {
+      @verbatim (language="comment", text=
+        "Covariance matrix index constants")
+      const uint8 COVARIANCE_MATRIX_X_VARIANCE = 0;
+      const uint8 COVARIANCE_MATRIX_Y_VARIANCE = 6;
+      const uint8 COVARIANCE_MATRIX_Z_VARIANCE = 11;
+      const uint8 COVARIANCE_MATRIX_ROLL_VARIANCE = 15;
+      const uint8 COVARIANCE_MATRIX_PITCH_VARIANCE = 18;
+      const uint8 COVARIANCE_MATRIX_YAW_VARIANCE = 20;
+      const uint8 COVARIANCE_MATRIX_VX_VARIANCE = 0;
+      const uint8 COVARIANCE_MATRIX_VY_VARIANCE = 6;
+      const uint8 COVARIANCE_MATRIX_VZ_VARIANCE = 11;
+      const uint8 COVARIANCE_MATRIX_ROLLRATE_VARIANCE = 15;
+      const uint8 COVARIANCE_MATRIX_PITCHRATE_VARIANCE = 18;
+      const uint8 COVARIANCE_MATRIX_YAWRATE_VARIANCE = 20;
+      @verbatim (language="comment", text=
+        "Position and linear velocity frame of reference constants" "\n"        "NED earth-fixed frame")
+      const uint8 LOCAL_FRAME_NED = 0;
+      @verbatim (language="comment", text=
+        "FRD earth-fixed frame, arbitrary heading reference")
+      const uint8 LOCAL_FRAME_FRD = 1;
+      @verbatim (language="comment", text=
+        "Not aligned with the std frames of reference")
+      const uint8 LOCAL_FRAME_OTHER = 2;
+      @verbatim (language="comment", text=
+        "FRD body-fixed frame")
+      const uint8 BODY_FRAME_FRD = 3;
+    };
+    @verbatim (language="comment", text=
+      "Vehicle odometry data. Fits ROS REP 147 for aerial vehicles")
+    struct EstimatorOdometry {
+      @verbatim (language="comment", text=
+        "time since system start (microseconds)")
+      uint64 timestamp;
+
+      uint64 timestamp_sample;
+
+      @verbatim (language="comment", text=
+        "Position and linear velocity local frame of reference")
+      uint8 local_frame;
+
+      @verbatim (language="comment", text=
+        "Position in meters. Frame of reference defined by local_frame. NaN if invalid/unknown" "\n"
+        "North position")
+      float x;
+
+      @verbatim (language="comment", text=
+        "East position")
+      float y;
+
+      @verbatim (language="comment", text=
+        "Down position")
+      float z;
+
+      @verbatim (language="comment", text=
+        "Orientation quaternion. First value NaN if invalid/unknown" "\n"
+        "Quaternion rotation from FRD body frame to refernce frame")
+      float__4 q;
+
+      @verbatim (language="comment", text=
+        "Quaternion rotation from odometry reference frame to navigation frame")
+      float__4 q_offset;
+
+      @verbatim (language="comment", text=
+        "Row-major representation of 6x6 pose cross-covariance matrix URT." "\n"
+        "NED earth-fixed frame." "\n"
+        "Order: x, y, z, rotation about X axis, rotation about Y axis, rotation about Z axis" "\n"
+        "If position covariance invalid/unknown, first cell is NaN" "\n"
+        "If orientation covariance invalid/unknown, 16th cell is NaN")
+      float__21 pose_covariance;
+
+      @verbatim (language="comment", text=
+        "Reference frame of the velocity data")
+      uint8 velocity_frame;
+
+      @verbatim (language="comment", text=
+        "Velocity in meters/sec. Frame of reference defined by velocity_frame variable. NaN if invalid/unknown" "\n"
+        "North velocity")
+      float vx;
+
+      @verbatim (language="comment", text=
+        "East velocity")
+      float vy;
+
+      @verbatim (language="comment", text=
+        "Down velocity")
+      float vz;
+
+      @verbatim (language="comment", text=
+        "Angular rate in body-fixed frame (rad/s). NaN if invalid/unknown" "\n"
+        "Angular velocity about X body axis")
+      float rollspeed;
+
+      @verbatim (language="comment", text=
+        "Angular velocity about Y body axis")
+      float pitchspeed;
+
+      @verbatim (language="comment", text=
+        "Angular velocity about Z body axis")
+      float yawspeed;
+
+      @verbatim (language="comment", text=
+        "Row-major representation of 6x6 velocity cross-covariance matrix URT." "\n"
+        "Linear velocity in NED earth-fixed frame. Angular velocity in body-fixed frame." "\n"
+        "Order: vx, vy, vz, rotation rate about X axis, rotation rate about Y axis, rotation rate about Z axis" "\n"
+        "If linear velocity covariance invalid/unknown, first cell is NaN" "\n"
+        "If angular velocity covariance invalid/unknown, 16th cell is NaN")
+      float__21 velocity_covariance;
+
+      uint8 reset_counter;
+    };
+  };
+};

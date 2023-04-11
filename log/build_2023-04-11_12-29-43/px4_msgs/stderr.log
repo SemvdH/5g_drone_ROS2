@@ -1,0 +1,12 @@
+In file included from [01m[K/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_generator_c/px4_msgs/msg/detail/gimbal_v1_command__functions.h:19[m[K,
+                 from [01m[K/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_generator_c/px4_msgs/msg/detail/gimbal_v1_command__functions.c:4[m[K:
+[01m[K/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_generator_c/px4_msgs/msg/detail/gimbal_v1_command__struct.h:356:3:[m[K [01;31m[Kerror: [m[Kexpected identifier or ‘[01m[K([m[K’ before ‘[01m[K/[m[K’ token
+  356 |  *[01;31m[K/[m[K
+      |   [01;31m[K^[m[K
+[01m[K/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_generator_c/px4_msgs/msg/detail/gimbal_v1_command__struct.h:365:3:[m[K [01;31m[Kerror: [m[Kexpected identifier or ‘[01m[K([m[K’ before ‘[01m[K/[m[K’ token
+  365 |  *[01;31m[K/[m[K
+      |   [01;31m[K^[m[K
+gmake[2]: *** [CMakeFiles/px4_msgs__rosidl_generator_c.dir/build.make:4551: CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gimbal_v1_command__functions.c.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:213: CMakeFiles/px4_msgs__rosidl_generator_c.dir/all] Error 2
+gmake[1]: *** Waiting for unfinished jobs....
+gmake: *** [Makefile:146: all] Error 2
