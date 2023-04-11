@@ -1,0 +1,1 @@
+/home/ubuntu/ros2_ws/build/drone_sensors/ament_cmake_environment_hooks/local_setup.bash
