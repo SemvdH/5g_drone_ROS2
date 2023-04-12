@@ -1,0 +1,24 @@
+[0.014s] Invoking command in '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/build/drone_sensors': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/build/drone_sensors -- -j12 -l12
+[0.052s] [35m[1mConsolidate compiler generated dependencies of target height_sensor[0m
+[0.074s] [100%] Built target height_sensor
+[0.086s] Invoked command in '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/build/drone_sensors' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/build/drone_sensors -- -j12 -l12
+[0.120s] Invoking command in '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/build/drone_sensors': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/build/drone_sensors
+[0.127s] -- Install configuration: "RELWITHDEBINFO"
+[0.127s] -- Execute custom install script
+[0.128s] -- Up-to-date symlink: /mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors/lib/drone_sensors/height_sensor
+[0.128s] -- Up-to-date symlink: /mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors/share/ament_index/resource_index/package_run_dependencies/drone_sensors
+[0.129s] -- Up-to-date symlink: /mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors/share/ament_index/resource_index/parent_prefix_path/drone_sensors
+[0.129s] -- Up-to-date symlink: /mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors/share/drone_sensors/environment/ament_prefix_path.sh
+[0.129s] -- Up-to-date symlink: /mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors/share/drone_sensors/environment/ament_prefix_path.dsv
+[0.130s] -- Up-to-date symlink: /mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors/share/drone_sensors/environment/path.sh
+[0.130s] -- Up-to-date symlink: /mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors/share/drone_sensors/environment/path.dsv
+[0.130s] -- Up-to-date symlink: /mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors/share/drone_sensors/local_setup.bash
+[0.130s] -- Up-to-date symlink: /mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors/share/drone_sensors/local_setup.sh
+[0.131s] -- Up-to-date symlink: /mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors/share/drone_sensors/local_setup.zsh
+[0.131s] -- Up-to-date symlink: /mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors/share/drone_sensors/local_setup.dsv
+[0.132s] -- Symlinking: /mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors/share/drone_sensors/package.dsv
+[0.140s] -- Up-to-date symlink: /mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors/share/ament_index/resource_index/packages/drone_sensors
+[0.141s] -- Up-to-date symlink: /mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors/share/drone_sensors/cmake/drone_sensorsConfig.cmake
+[0.141s] -- Up-to-date symlink: /mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors/share/drone_sensors/cmake/drone_sensorsConfig-version.cmake
+[0.141s] -- Up-to-date symlink: /mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors/share/drone_sensors/package.xml
+[0.143s] Invoked command in '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/build/drone_sensors' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/build/drone_sensors

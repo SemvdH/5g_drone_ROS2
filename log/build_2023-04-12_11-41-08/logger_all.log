@@ -1,0 +1,214 @@
+[0.307s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build', '--cmake-args', '-DCMAKE_BUILD_TYPE=RELWITHDEBINFO', '--symlink-install', '--packages-skip', 'ros1_bridge', '--event-handlers', 'console_direct+']
+[0.307s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=True, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=12, event_handlers=['console_direct+'], ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=['ros1_bridge'], packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=['-DCMAKE_BUILD_TYPE=RELWITHDEBINFO'], cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x7feb93afab30>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7feb9434bc10>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7feb9434bc10>>)
+[0.335s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.335s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.335s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.335s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.335s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.335s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.335s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2'
+[0.335s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.336s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.336s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.336s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.336s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.336s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.336s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.336s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.336s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.346s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.346s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.347s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.347s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.347s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.347s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.347s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.347s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.347s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.347s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.347s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.347s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.347s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.347s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.347s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.348s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[0.348s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[0.348s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[0.348s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[0.348s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[0.348s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[0.348s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[0.348s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[0.348s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[0.348s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[0.348s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[0.348s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[0.348s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[0.348s] Level 1:colcon.colcon_core.package_identification:_identify(src/drone_sensors) by extensions ['ignore', 'ignore_ament_install']
+[0.348s] Level 1:colcon.colcon_core.package_identification:_identify(src/drone_sensors) by extension 'ignore'
+[0.348s] Level 1:colcon.colcon_core.package_identification:_identify(src/drone_sensors) by extension 'ignore_ament_install'
+[0.348s] Level 1:colcon.colcon_core.package_identification:_identify(src/drone_sensors) by extensions ['colcon_pkg']
+[0.348s] Level 1:colcon.colcon_core.package_identification:_identify(src/drone_sensors) by extension 'colcon_pkg'
+[0.348s] Level 1:colcon.colcon_core.package_identification:_identify(src/drone_sensors) by extensions ['colcon_meta']
+[0.348s] Level 1:colcon.colcon_core.package_identification:_identify(src/drone_sensors) by extension 'colcon_meta'
+[0.348s] Level 1:colcon.colcon_core.package_identification:_identify(src/drone_sensors) by extensions ['ros']
+[0.349s] Level 1:colcon.colcon_core.package_identification:_identify(src/drone_sensors) by extension 'ros'
+[0.351s] DEBUG:colcon.colcon_core.package_identification:Package 'src/drone_sensors' with type 'ros.ament_cmake' and name 'drone_sensors'
+[0.351s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_msgs) by extensions ['ignore', 'ignore_ament_install']
+[0.351s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_msgs) by extension 'ignore'
+[0.351s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_msgs) by extension 'ignore_ament_install'
+[0.351s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_msgs) by extensions ['colcon_pkg']
+[0.351s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_msgs) by extension 'colcon_pkg'
+[0.351s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_msgs) by extensions ['colcon_meta']
+[0.351s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_msgs) by extension 'colcon_meta'
+[0.351s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_msgs) by extensions ['ros']
+[0.351s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_msgs) by extension 'ros'
+[0.352s] DEBUG:colcon.colcon_core.package_identification:Package 'src/px4_msgs' with type 'ros.ament_cmake' and name 'px4_msgs'
+[0.352s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_ros_com) by extensions ['ignore', 'ignore_ament_install']
+[0.352s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_ros_com) by extension 'ignore'
+[0.352s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_ros_com) by extension 'ignore_ament_install'
+[0.352s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_ros_com) by extensions ['colcon_pkg']
+[0.352s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_ros_com) by extension 'colcon_pkg'
+[0.352s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_ros_com) by extensions ['colcon_meta']
+[0.352s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_ros_com) by extension 'colcon_meta'
+[0.352s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_ros_com) by extensions ['ros']
+[0.352s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_ros_com) by extension 'ros'
+[0.353s] DEBUG:colcon.colcon_core.package_identification:Package 'src/px4_ros_com' with type 'ros.ament_cmake' and name 'px4_ros_com'
+[0.353s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.353s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.353s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.353s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.353s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.355s] WARNING:colcon.colcon_core.package_selection:ignoring unknown package 'ros1_bridge' in --packages-skip
+[0.375s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.375s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.377s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 3 installed packages in /mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install
+[0.378s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 270 installed packages in /opt/ros/humble
+[0.379s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.432s] Level 5:colcon.colcon_core.verb:set package 'drone_sensors' build argument 'cmake_args' from command line to '['-DCMAKE_BUILD_TYPE=RELWITHDEBINFO']'
+[0.432s] Level 5:colcon.colcon_core.verb:set package 'drone_sensors' build argument 'cmake_target' from command line to 'None'
+[0.432s] Level 5:colcon.colcon_core.verb:set package 'drone_sensors' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.432s] Level 5:colcon.colcon_core.verb:set package 'drone_sensors' build argument 'cmake_clean_cache' from command line to 'False'
+[0.432s] Level 5:colcon.colcon_core.verb:set package 'drone_sensors' build argument 'cmake_clean_first' from command line to 'False'
+[0.432s] Level 5:colcon.colcon_core.verb:set package 'drone_sensors' build argument 'cmake_force_configure' from command line to 'False'
+[0.432s] Level 5:colcon.colcon_core.verb:set package 'drone_sensors' build argument 'ament_cmake_args' from command line to 'None'
+[0.432s] Level 5:colcon.colcon_core.verb:set package 'drone_sensors' build argument 'catkin_cmake_args' from command line to 'None'
+[0.432s] Level 5:colcon.colcon_core.verb:set package 'drone_sensors' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.432s] DEBUG:colcon.colcon_core.verb:Building package 'drone_sensors' with the following arguments: {'ament_cmake_args': None, 'build_base': '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/build/drone_sensors', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': ['-DCMAKE_BUILD_TYPE=RELWITHDEBINFO'], 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors', 'merge_install': False, 'path': '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/src/drone_sensors', 'symlink_install': True, 'test_result_base': None}
+[0.433s] Level 5:colcon.colcon_core.verb:set package 'px4_msgs' build argument 'cmake_args' from command line to '['-DCMAKE_BUILD_TYPE=RELWITHDEBINFO']'
+[0.433s] Level 5:colcon.colcon_core.verb:set package 'px4_msgs' build argument 'cmake_target' from command line to 'None'
+[0.433s] Level 5:colcon.colcon_core.verb:set package 'px4_msgs' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.433s] Level 5:colcon.colcon_core.verb:set package 'px4_msgs' build argument 'cmake_clean_cache' from command line to 'False'
+[0.433s] Level 5:colcon.colcon_core.verb:set package 'px4_msgs' build argument 'cmake_clean_first' from command line to 'False'
+[0.433s] Level 5:colcon.colcon_core.verb:set package 'px4_msgs' build argument 'cmake_force_configure' from command line to 'False'
+[0.433s] Level 5:colcon.colcon_core.verb:set package 'px4_msgs' build argument 'ament_cmake_args' from command line to 'None'
+[0.433s] Level 5:colcon.colcon_core.verb:set package 'px4_msgs' build argument 'catkin_cmake_args' from command line to 'None'
+[0.433s] Level 5:colcon.colcon_core.verb:set package 'px4_msgs' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.433s] DEBUG:colcon.colcon_core.verb:Building package 'px4_msgs' with the following arguments: {'ament_cmake_args': None, 'build_base': '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/build/px4_msgs', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': ['-DCMAKE_BUILD_TYPE=RELWITHDEBINFO'], 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/px4_msgs', 'merge_install': False, 'path': '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/src/px4_msgs', 'symlink_install': True, 'test_result_base': None}
+[0.434s] Level 5:colcon.colcon_core.verb:set package 'px4_ros_com' build argument 'cmake_args' from command line to '['-DCMAKE_BUILD_TYPE=RELWITHDEBINFO']'
+[0.434s] Level 5:colcon.colcon_core.verb:set package 'px4_ros_com' build argument 'cmake_target' from command line to 'None'
+[0.434s] Level 5:colcon.colcon_core.verb:set package 'px4_ros_com' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.434s] Level 5:colcon.colcon_core.verb:set package 'px4_ros_com' build argument 'cmake_clean_cache' from command line to 'False'
+[0.434s] Level 5:colcon.colcon_core.verb:set package 'px4_ros_com' build argument 'cmake_clean_first' from command line to 'False'
+[0.434s] Level 5:colcon.colcon_core.verb:set package 'px4_ros_com' build argument 'cmake_force_configure' from command line to 'False'
+[0.434s] Level 5:colcon.colcon_core.verb:set package 'px4_ros_com' build argument 'ament_cmake_args' from command line to 'None'
+[0.434s] Level 5:colcon.colcon_core.verb:set package 'px4_ros_com' build argument 'catkin_cmake_args' from command line to 'None'
+[0.434s] Level 5:colcon.colcon_core.verb:set package 'px4_ros_com' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.434s] DEBUG:colcon.colcon_core.verb:Building package 'px4_ros_com' with the following arguments: {'ament_cmake_args': None, 'build_base': '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/build/px4_ros_com', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': ['-DCMAKE_BUILD_TYPE=RELWITHDEBINFO'], 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/px4_ros_com', 'merge_install': False, 'path': '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/src/px4_ros_com', 'symlink_install': True, 'test_result_base': None}
+[0.435s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.438s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.438s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/src/px4_msgs' with build type 'ament_cmake'
+[0.438s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/src/px4_msgs'
+[0.443s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.443s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.444s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.447s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/src/drone_sensors' with build type 'ament_cmake'
+[0.448s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/src/drone_sensors'
+[0.449s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.449s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.458s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/build/px4_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/src/px4_msgs -DCMAKE_BUILD_TYPE=RELWITHDEBINFO -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/px4_msgs
+[0.462s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/build/drone_sensors': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/src/drone_sensors -DCMAKE_BUILD_TYPE=RELWITHDEBINFO -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors
+[2.194s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/build/drone_sensors' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/src/drone_sensors -DCMAKE_BUILD_TYPE=RELWITHDEBINFO -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors
+[2.196s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/build/drone_sensors': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/build/drone_sensors -- -j12 -l12
+[4.837s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/build/px4_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/src/px4_msgs -DCMAKE_BUILD_TYPE=RELWITHDEBINFO -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/px4_msgs
+[4.839s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/build/px4_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/build/px4_msgs -- -j12 -l12
+[9.258s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/build/drone_sensors' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/build/drone_sensors -- -j12 -l12
+[9.299s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/build/drone_sensors': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/build/drone_sensors
+[9.448s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(drone_sensors)
+[9.449s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/build/drone_sensors' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/build/drone_sensors
+[9.453s] Level 1:colcon.colcon_core.environment:checking '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors' for CMake module files
+[9.454s] Level 1:colcon.colcon_core.environment:checking '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors' for CMake config files
+[9.454s] Level 1:colcon.colcon_core.shell:create_environment_hook('drone_sensors', 'cmake_prefix_path')
+[9.455s] INFO:colcon.colcon_core.shell:Creating environment hook '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors/share/drone_sensors/hook/cmake_prefix_path.ps1'
+[9.456s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors/share/drone_sensors/hook/cmake_prefix_path.dsv'
+[9.456s] INFO:colcon.colcon_core.shell:Creating environment hook '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors/share/drone_sensors/hook/cmake_prefix_path.sh'
+[9.457s] Level 1:colcon.colcon_core.environment:checking '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors/lib'
+[9.458s] Level 1:colcon.colcon_core.environment:checking '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors/bin'
+[9.458s] Level 1:colcon.colcon_core.environment:checking '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors/lib/pkgconfig/drone_sensors.pc'
+[9.458s] Level 1:colcon.colcon_core.environment:checking '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors/lib/python3.10/site-packages'
+[9.458s] Level 1:colcon.colcon_core.environment:checking '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors/bin'
+[9.460s] INFO:colcon.colcon_core.shell:Creating package script '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors/share/drone_sensors/package.ps1'
+[9.461s] INFO:colcon.colcon_core.shell:Creating package descriptor '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors/share/drone_sensors/package.dsv'
+[9.461s] INFO:colcon.colcon_core.shell:Creating package script '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors/share/drone_sensors/package.sh'
+[9.462s] INFO:colcon.colcon_core.shell:Creating package script '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors/share/drone_sensors/package.bash'
+[9.463s] INFO:colcon.colcon_core.shell:Creating package script '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors/share/drone_sensors/package.zsh'
+[9.464s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors/share/colcon-core/packages/drone_sensors)
+[9.494s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(drone_sensors)
+[9.496s] Level 1:colcon.colcon_core.environment:checking '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors' for CMake module files
+[9.496s] Level 1:colcon.colcon_core.environment:checking '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors' for CMake config files
+[9.497s] Level 1:colcon.colcon_core.shell:create_environment_hook('drone_sensors', 'cmake_prefix_path')
+[9.498s] INFO:colcon.colcon_core.shell:Creating environment hook '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors/share/drone_sensors/hook/cmake_prefix_path.ps1'
+[9.499s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors/share/drone_sensors/hook/cmake_prefix_path.dsv'
+[9.499s] INFO:colcon.colcon_core.shell:Creating environment hook '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors/share/drone_sensors/hook/cmake_prefix_path.sh'
+[9.500s] Level 1:colcon.colcon_core.environment:checking '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors/lib'
+[9.500s] Level 1:colcon.colcon_core.environment:checking '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors/bin'
+[9.500s] Level 1:colcon.colcon_core.environment:checking '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors/lib/pkgconfig/drone_sensors.pc'
+[9.500s] Level 1:colcon.colcon_core.environment:checking '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors/lib/python3.10/site-packages'
+[9.500s] Level 1:colcon.colcon_core.environment:checking '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors/bin'
+[9.502s] INFO:colcon.colcon_core.shell:Creating package script '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors/share/drone_sensors/package.ps1'
+[9.502s] INFO:colcon.colcon_core.shell:Creating package descriptor '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors/share/drone_sensors/package.dsv'
+[9.503s] INFO:colcon.colcon_core.shell:Creating package script '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors/share/drone_sensors/package.sh'
+[9.503s] INFO:colcon.colcon_core.shell:Creating package script '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors/share/drone_sensors/package.bash'
+[9.503s] INFO:colcon.colcon_core.shell:Creating package script '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors/share/drone_sensors/package.zsh'
+[9.504s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/drone_sensors/share/colcon-core/packages/drone_sensors)
+[47.748s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/build/px4_msgs' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/build/px4_msgs -- -j12 -l12
+[60.391s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(px4_msgs)
+[60.396s] Level 1:colcon.colcon_core.environment:checking '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/px4_msgs' for CMake module files
+[60.398s] Level 1:colcon.colcon_core.environment:checking '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/px4_msgs' for CMake config files
+[60.403s] Level 1:colcon.colcon_core.shell:create_environment_hook('px4_msgs', 'cmake_prefix_path')
+[60.407s] INFO:colcon.colcon_core.shell:Creating environment hook '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/px4_msgs/share/px4_msgs/hook/cmake_prefix_path.ps1'
+[60.408s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/px4_msgs/share/px4_msgs/hook/cmake_prefix_path.dsv'
+[60.409s] INFO:colcon.colcon_core.shell:Creating environment hook '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/px4_msgs/share/px4_msgs/hook/cmake_prefix_path.sh'
+[60.410s] Level 1:colcon.colcon_core.environment:checking '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/px4_msgs/lib'
+[60.410s] Level 1:colcon.colcon_core.shell:create_environment_hook('px4_msgs', 'ld_library_path_lib')
+[60.414s] INFO:colcon.colcon_core.shell:Creating environment hook '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/px4_msgs/share/px4_msgs/hook/ld_library_path_lib.ps1'
+[60.414s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/px4_msgs/share/px4_msgs/hook/ld_library_path_lib.dsv'
+[60.415s] INFO:colcon.colcon_core.shell:Creating environment hook '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/px4_msgs/share/px4_msgs/hook/ld_library_path_lib.sh'
+[60.416s] Level 1:colcon.colcon_core.environment:checking '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/px4_msgs/bin'
+[60.416s] Level 1:colcon.colcon_core.environment:checking '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/px4_msgs/lib/pkgconfig/px4_msgs.pc'
+[60.417s] Level 1:colcon.colcon_core.environment:checking '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/px4_msgs/lib/python3.10/site-packages'
+[60.418s] Level 1:colcon.colcon_core.environment:checking '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/px4_msgs/bin'
+[60.421s] INFO:colcon.colcon_core.shell:Creating package script '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/px4_msgs/share/px4_msgs/package.ps1'
+[60.422s] INFO:colcon.colcon_core.shell:Creating package descriptor '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/px4_msgs/share/px4_msgs/package.dsv'
+[60.424s] INFO:colcon.colcon_core.shell:Creating package script '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/px4_msgs/share/px4_msgs/package.sh'
+[60.425s] INFO:colcon.colcon_core.shell:Creating package script '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/px4_msgs/share/px4_msgs/package.bash'
+[60.426s] INFO:colcon.colcon_core.shell:Creating package script '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/px4_msgs/share/px4_msgs/package.zsh'
+[60.426s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/px4_msgs/share/colcon-core/packages/px4_msgs)
+[60.437s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[60.438s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[60.438s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '2'
+[60.438s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[60.454s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[60.454s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[60.454s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[60.480s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[60.484s] INFO:colcon.colcon_core.shell:Creating prefix script '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/local_setup.ps1'
+[60.486s] INFO:colcon.colcon_core.shell:Creating prefix util module '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/_local_setup_util_ps1.py'
+[60.489s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/setup.ps1'
+[60.492s] INFO:colcon.colcon_core.shell:Creating prefix script '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/local_setup.sh'
+[60.493s] INFO:colcon.colcon_core.shell:Creating prefix util module '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/_local_setup_util_sh.py'
+[60.495s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/setup.sh'
+[60.498s] INFO:colcon.colcon_core.shell:Creating prefix script '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/local_setup.bash'
+[60.499s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/setup.bash'
+[60.502s] INFO:colcon.colcon_core.shell:Creating prefix script '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/local_setup.zsh'
+[60.503s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/install/setup.zsh'

@@ -153,7 +153,7 @@ height_sensor: /opt/ros/humble/lib/librosidl_typesupport_c.so
 height_sensor: /opt/ros/humble/lib/librcpputils.so
 height_sensor: /opt/ros/humble/lib/librosidl_runtime_c.so
 height_sensor: /opt/ros/humble/lib/librcutils.so
-height_sensor: /usr/lib/aarch64-linux-gnu/libpython3.10.so
+height_sensor: /usr/lib/x86_64-linux-gnu/libpython3.10.so
 height_sensor: CMakeFiles/height_sensor.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ubuntu/ros2_ws/build/drone_sensors/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable height_sensor"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/height_sensor.dir/link.txt --verbose=$(VERBOSE)

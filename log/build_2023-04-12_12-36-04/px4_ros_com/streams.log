@@ -1,0 +1,153 @@
+[0.028s] Invoking command in '/home/ubuntu/ros2_ws/build/px4_ros_com': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/ubuntu/ros2_ws/build/px4_ros_com -- -j12 -l12
+[0.137s] [35m[1mConsolidate compiler generated dependencies of target vehicle_gps_position_listener[0m
+[0.138s] [35m[1mConsolidate compiler generated dependencies of target debug_vect_advertiser[0m
+[0.139s] [35m[1mConsolidate compiler generated dependencies of target sensor_combined_listener[0m
+[0.147s] [35m[1mConsolidate compiler generated dependencies of target frame_transforms[0m
+[0.149s] [35m[1mConsolidate compiler generated dependencies of target offboard_control[0m
+[0.153s] [  1%] [34m[1mGenerating micro-RTPS agent code...[0m
+[0.194s] [  2%] [32mBuilding CXX object CMakeFiles/debug_vect_advertiser.dir/src/examples/advertisers/debug_vect_advertiser.cpp.o[0m
+[0.205s] [  3%] [32mBuilding CXX object CMakeFiles/vehicle_gps_position_listener.dir/src/examples/listeners/vehicle_gps_position_listener.cpp.o[0m
+[0.206s] [  5%] [32mBuilding CXX object CMakeFiles/offboard_control.dir/src/examples/offboard/offboard_control.cpp.o[0m
+[0.207s] [  5%] [32mBuilding CXX object CMakeFiles/sensor_combined_listener.dir/src/examples/listeners/sensor_combined_listener.cpp.o[0m
+[0.220s] [  6%] [32m[1mLinking CXX shared library libframe_transforms.so[0m
+[4.555s] [01m[K/home/ubuntu/ros2_ws/src/px4_ros_com/src/examples/advertisers/debug_vect_advertiser.cpp:[m[K In constructor ‘[01m[KDebugVectAdvertiser::DebugVectAdvertiser()[m[K’:
+[4.555s] [01m[K/home/ubuntu/ros2_ws/src/px4_ros_com/src/examples/advertisers/debug_vect_advertiser.cpp:53:78:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KDebugVectAdvertiser::create_publisher<px4_msgs::msg::DebugVect>(const char [18])[m[K’
+[4.556s]    53 |                 publisher_ = [01;31m[Kthis->create_publisher<px4_msgs::msg::DebugVect>("fmu/debug_vect/in")[m[K;
+[4.556s]       |                              [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~[m[K
+[4.557s] In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/single_threaded_executor.hpp:28[m[K,
+[4.557s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:22[m[K,
+[4.558s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+[4.558s]                  from [01m[K/home/ubuntu/ros2_ws/src/px4_ros_com/src/examples/advertisers/debug_vect_advertiser.cpp:41[m[K:
+[4.558s] [01m[K/opt/ros/humble/include/rclcpp/rclcpp/node.hpp:195:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class MessageT, class AllocatorT, class PublisherT> std::shared_ptr<PublisherT> rclcpp::Node::create_publisher(const string&, const rclcpp::QoS&, const rclcpp::PublisherOptionsWithAllocator<AllocatorT>&)[m[K’
+[4.558s]   195 |   [01;36m[Kcreate_publisher[m[K(
+[4.559s]       |   [01;36m[K^~~~~~~~~~~~~~~~[m[K
+[4.559s] [01m[K/opt/ros/humble/include/rclcpp/rclcpp/node.hpp:195:3:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[4.559s] [01m[K/home/ubuntu/ros2_ws/src/px4_ros_com/src/examples/advertisers/debug_vect_advertiser.cpp:53:78:[m[K [01;36m[Knote: [m[K  candidate expects 3 arguments, 1 provided
+[4.559s]    53 |                 publisher_ = [01;36m[Kthis->create_publisher<px4_msgs::msg::DebugVect>("fmu/debug_vect/in")[m[K;
+[4.559s]       |                              [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~[m[K
+[4.560s] In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24[m[K,
+[4.560s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40[m[K,
+[4.560s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24[m[K,
+[4.560s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20[m[K,
+[4.561s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25[m[K,
+[4.561s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18[m[K,
+[4.561s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20[m[K,
+[4.561s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37[m[K,
+[4.562s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+[4.562s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+[4.562s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+[4.562s]                  from [01m[K/home/ubuntu/ros2_ws/src/px4_ros_com/src/examples/advertisers/debug_vect_advertiser.cpp:41[m[K:
+[4.562s] [01m[K/home/ubuntu/ros2_ws/src/px4_ros_com/src/examples/advertisers/debug_vect_advertiser.cpp:[m[K In lambda function:
+[4.563s] [01m[K/home/ubuntu/ros2_ws/src/px4_ros_com/src/examples/advertisers/debug_vect_advertiser.cpp:64:57:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%llu[m[K’ expects argument of type ‘[01m[Klong long unsigned int[m[K’, but argument 5 has type ‘[01m[Kpx4_msgs::msg::DebugVect_<std::allocator<void> >::_timestamp_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat=-Wformat=]8;;[m[K]
+[4.563s]    64 |                         RCLCPP_INFO(this->get_logger(), [01;35m[K"\033[97m Publishing debug_vect: time: %llu x: %f y: %f z: %f \033[0m"[m[K,
+[4.563s]       |                                                         [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[4.564s]    65 |                                 [32m[Kdebug_vect.timestamp[m[K, debug_vect.x, debug_vect.y, debug_vect.z);
+[4.564s]       |                                 [32m[K~~~~~~~~~~~~~~~~~~~~[m[K     
+[4.564s]       |                                            [32m[K|[m[K
+[4.564s]       |                                            [32m[Kpx4_msgs::msg::DebugVect_<std::allocator<void> >::_timestamp_type {aka long unsigned int}[m[K
+[4.565s] [01m[K/home/ubuntu/ros2_ws/src/px4_ros_com/src/examples/advertisers/debug_vect_advertiser.cpp:64:99:[m[K [01;36m[Knote: [m[Kformat string is defined here
+[4.565s]    64 |                         RCLCPP_INFO(this->get_logger(), "\033[97m Publishing debug_vect: time: [01;36m[K%llu[m[K x: %f y: %f z: %f \033[0m",
+[4.565s]       |                                                                                                [01;36m[K~~~^[m[K
+[4.565s]       |                                                                                                   [01;36m[K|[m[K
+[4.565s]       |                                                                                                   [01;36m[Klong long unsigned int[m[K
+[4.566s]       |                                                                                                [32m[K%lu[m[K
+[6.047s] gmake[2]: *** [CMakeFiles/debug_vect_advertiser.dir/build.make:76: CMakeFiles/debug_vect_advertiser.dir/src/examples/advertisers/debug_vect_advertiser.cpp.o] Error 1
+[6.048s] gmake[1]: *** [CMakeFiles/Makefile2:251: CMakeFiles/debug_vect_advertiser.dir/all] Error 2
+[6.049s] gmake[1]: *** Waiting for unfinished jobs....
+[8.516s] [  7%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/microRTPS_agent.cpp.o[0m
+[8.517s] [  8%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/microRTPS_transport.cpp.o[0m
+[8.517s] [  9%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/microRTPS_timesync.cpp.o[0m
+[8.517s] [ 10%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/RtpsTopics.cpp.o[0m
+[8.518s] [ 11%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/DebugArray.cpp.o[0m
+[8.518s] [ 12%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/DebugArrayPubSubTypes.cpp.o[0m
+[8.519s] [ 13%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/DebugKeyValue.cpp.o[0m
+[8.533s] [ 14%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/DebugKeyValuePubSubTypes.cpp.o[0m
+[9.204s] [ 15%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/DebugValue.cpp.o[0m
+[9.801s] [ 16%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/DebugValuePubSubTypes.cpp.o[0m
+[9.943s] [ 17%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/DebugVect.cpp.o[0m
+[10.590s] [ 18%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/DebugVectPubSubTypes.cpp.o[0m
+[11.153s] [ 19%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/OffboardControlMode.cpp.o[0m
+[12.271s] [ 20%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/OffboardControlModePubSubTypes.cpp.o[0m
+[14.534s] [ 21%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/OnboardComputerStatus.cpp.o[0m
+[14.654s] [ 22%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/OnboardComputerStatusPubSubTypes.cpp.o[0m
+[15.694s] [ 23%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/OpticalFlow.cpp.o[0m
+[16.041s] [ 24%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/OpticalFlowPubSubTypes.cpp.o[0m
+[16.415s] [ 25%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/PositionSetpoint.cpp.o[0m
+[16.970s] [ 26%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/PositionSetpointPubSubTypes.cpp.o[0m
+[17.704s] [ 27%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/PositionSetpointTriplet.cpp.o[0m
+[18.082s] [ 28%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/PositionSetpointTripletPubSubTypes.cpp.o[0m
+[18.865s] [ 29%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/TelemetryStatus.cpp.o[0m
+[19.434s] [ 30%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/TelemetryStatusPubSubTypes.cpp.o[0m
+[20.272s] [ 31%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/Timesync.cpp.o[0m
+[20.765s] [ 32%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/TimesyncPubSubTypes.cpp.o[0m
+[21.376s] [ 33%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/TrajectoryBezier.cpp.o[0m
+[21.647s] [ 35%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/TrajectoryBezierPubSubTypes.cpp.o[0m
+[21.649s] [ 35%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/VehicleCommand.cpp.o[0m
+[21.717s] [ 36%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/VehicleCommandPubSubTypes.cpp.o[0m
+[21.762s] [ 37%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/VehicleLocalPositionSetpoint.cpp.o[0m
+[22.456s] [ 38%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/VehicleLocalPositionSetpointPubSubTypes.cpp.o[0m
+[22.886s] [ 39%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/VehicleTrajectoryBezier.cpp.o[0m
+[23.000s] [ 40%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/VehicleTrajectoryBezierPubSubTypes.cpp.o[0m
+[23.149s] [ 41%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/VehicleTrajectoryWaypoint.cpp.o[0m
+[24.075s] [ 42%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/VehicleTrajectoryWaypointPubSubTypes.cpp.o[0m
+[24.185s] [ 43%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/TrajectorySetpoint.cpp.o[0m
+[24.247s] [ 44%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/TrajectorySetpointPubSubTypes.cpp.o[0m
+[25.433s] [ 45%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/VehicleMocapOdometry.cpp.o[0m
+[25.455s] [ 46%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/VehicleMocapOdometryPubSubTypes.cpp.o[0m
+[26.386s] [ 47%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/VehicleVisualOdometry.cpp.o[0m
+[26.642s] [ 48%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/VehicleVisualOdometryPubSubTypes.cpp.o[0m
+[26.664s] [ 50%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/CollisionConstraints.cpp.o[0m
+[27.105s] [ 51%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/CollisionConstraintsPubSubTypes.cpp.o[0m
+[27.651s] [ 52%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/SensorCombined.cpp.o[0m
+[27.727s] [ 53%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/SensorCombinedPubSubTypes.cpp.o[0m
+[27.738s] [ 54%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/TimesyncStatus.cpp.o[0m
+[28.697s] [ 55%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/TimesyncStatusPubSubTypes.cpp.o[0m
+[28.866s] [ 56%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/TrajectoryWaypoint.cpp.o[0m
+[28.880s] [ 57%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/TrajectoryWaypointPubSubTypes.cpp.o[0m
+[29.039s] [ 58%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/VehicleControlMode.cpp.o[0m
+[29.975s] [ 59%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/VehicleControlModePubSubTypes.cpp.o[0m
+[30.009s] [ 60%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/VehicleOdometry.cpp.o[0m
+[30.243s] [ 61%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/VehicleOdometryPubSubTypes.cpp.o[0m
+[30.444s] [ 62%] [32m[1mLinking CXX executable sensor_combined_listener[0m
+[31.119s] [ 63%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/VehicleStatus.cpp.o[0m
+[31.164s] [ 63%] Built target sensor_combined_listener
+[31.182s] [ 64%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/VehicleStatusPubSubTypes.cpp.o[0m
+[31.304s] [ 65%] [32m[1mLinking CXX executable vehicle_gps_position_listener[0m
+[31.349s] [ 66%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/VehicleTrajectoryWaypointDesired.cpp.o[0m
+[31.373s] [ 67%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/VehicleTrajectoryWaypointDesiredPubSubTypes.cpp.o[0m
+[31.895s] [ 67%] Built target vehicle_gps_position_listener
+[31.911s] [ 68%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/CollisionConstraints_Publisher.cpp.o[0m
+[32.167s] [ 69%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/SensorCombined_Publisher.cpp.o[0m
+[32.491s] [ 70%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/Timesync_Publisher.cpp.o[0m
+[32.514s] [ 71%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/TimesyncStatus_Publisher.cpp.o[0m
+[33.396s] [ 72%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/TrajectoryWaypoint_Publisher.cpp.o[0m
+[33.667s] [ 73%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/VehicleControlMode_Publisher.cpp.o[0m
+[34.754s] [ 74%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/VehicleOdometry_Publisher.cpp.o[0m
+[34.970s] [ 75%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/VehicleStatus_Publisher.cpp.o[0m
+[35.466s] [ 76%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/VehicleTrajectoryWaypointDesired_Publisher.cpp.o[0m
+[35.906s] [ 77%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/DebugArray_Subscriber.cpp.o[0m
+[37.681s] [ 78%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/DebugKeyValue_Subscriber.cpp.o[0m
+[37.858s] [ 79%] [32m[1mLinking CXX executable offboard_control[0m
+[37.975s] [ 80%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/DebugValue_Subscriber.cpp.o[0m
+[38.024s] [ 81%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/DebugVect_Subscriber.cpp.o[0m
+[38.070s] [ 82%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/OffboardControlMode_Subscriber.cpp.o[0m
+[38.527s] [ 82%] Built target offboard_control
+[38.542s] [ 83%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/OnboardComputerStatus_Subscriber.cpp.o[0m
+[39.124s] [ 84%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/OpticalFlow_Subscriber.cpp.o[0m
+[39.497s] [ 85%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/PositionSetpoint_Subscriber.cpp.o[0m
+[40.605s] [ 86%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/PositionSetpointTriplet_Subscriber.cpp.o[0m
+[40.752s] [ 87%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/TelemetryStatus_Subscriber.cpp.o[0m
+[40.923s] [ 88%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/Timesync_Subscriber.cpp.o[0m
+[43.665s] [ 89%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/TrajectoryBezier_Subscriber.cpp.o[0m
+[45.239s] [ 90%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/VehicleCommand_Subscriber.cpp.o[0m
+[45.406s] [ 91%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/VehicleLocalPositionSetpoint_Subscriber.cpp.o[0m
+[45.964s] [ 92%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/VehicleTrajectoryBezier_Subscriber.cpp.o[0m
+[45.994s] [ 93%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/VehicleTrajectoryWaypoint_Subscriber.cpp.o[0m
+[46.104s] [ 94%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/TrajectorySetpoint_Subscriber.cpp.o[0m
+[46.765s] [ 95%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/VehicleMocapOdometry_Subscriber.cpp.o[0m
+[47.261s] [ 96%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/VehicleVisualOdometry_Subscriber.cpp.o[0m
+[52.930s] [ 97%] [32m[1mLinking CXX executable micrortps_agent[0m
+[55.353s] [ 97%] Built target micrortps_agent
+[2587.878s] [ 98%] Built target frame_transforms
+[2587.879s] gmake: *** [Makefile:146: all] Error 2
+[2587.881s] Invoked command in '/home/ubuntu/ros2_ws/build/px4_ros_com' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/ubuntu/ros2_ws/build/px4_ros_com -- -j12 -l12

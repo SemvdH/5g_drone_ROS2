@@ -1,0 +1,6 @@
+[0.043s] Invoking command in '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/build/drone_sensors': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/build/drone_sensors -- -j12 -l12
+[0.062s] [0mCMake Error: The current CMakeCache.txt directory /mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/build/drone_sensors/CMakeCache.txt is different than the directory /home/ubuntu/ros2_ws/build/drone_sensors where CMakeCache.txt was created. This may result in binaries being created in the wrong place. If you are not sure, reedit the CMakeCache.txt[0m
+[0.095s] [0mCMake Error: The source directory "/home/ubuntu/ros2_ws/src/drone_sensors" does not exist.
+[0.095s] Specify --help for usage, or press the help button on the CMake GUI.[0m
+[0.098s] gmake: *** [Makefile:267: cmake_check_build_system] Error 1
+[0.104s] Invoked command in '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/build/drone_sensors' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/build/drone_sensors -- -j12 -l12

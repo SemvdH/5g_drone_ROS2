@@ -1,0 +1,55 @@
+[35m[1mConsolidate compiler generated dependencies of target sensor_combined_listener[0m
+[35m[1mConsolidate compiler generated dependencies of target vehicle_gps_position_listener[0m
+[35m[1mConsolidate compiler generated dependencies of target offboard_control[0m
+[35m[1mConsolidate compiler generated dependencies of target debug_vect_advertiser[0m
+[  2%] Built target sensor_combined_listener
+[  3%] [32mBuilding CXX object CMakeFiles/debug_vect_advertiser.dir/src/examples/advertisers/debug_vect_advertiser.cpp.o[0m
+[  5%] Built target vehicle_gps_position_listener
+[  7%] Built target offboard_control
+[  9%] Built target frame_transforms
+[35m[1mConsolidate compiler generated dependencies of target micrortps_agent[0m
+[ 98%] Built target micrortps_agent
+[100%] [32m[1mLinking CXX executable debug_vect_advertiser[0m
+[100%] Built target debug_vect_advertiser
+-- Install configuration: "RELWITHDEBINFO"
+-- Execute custom install script
+-- Symlinking: /home/ubuntu/ros2_ws/install/px4_ros_com/lib/px4_ros_com/sensor_combined_listener
+-- Symlinking: /home/ubuntu/ros2_ws/install/px4_ros_com/lib/px4_ros_com/vehicle_gps_position_listener
+-- Symlinking: /home/ubuntu/ros2_ws/install/px4_ros_com/lib/px4_ros_com/debug_vect_advertiser
+-- Symlinking: /home/ubuntu/ros2_ws/install/px4_ros_com/lib/px4_ros_com/offboard_control
+-- Symlinking: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/environment/library_path.sh
+-- Symlinking: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/environment/library_path.dsv
+-- Symlinking: /home/ubuntu/ros2_ws/install/px4_ros_com/include/px4_ros_com/frame_transforms.h
+-- Symlinking: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/cmake/EnableC++XX.cmake
+-- Symlinking: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/cmake/EnableSanitizers.cmake
+-- Symlinking: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/cmake/GenerateMicroRTPSAgent.cmake
+-- Symlinking: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/launch/sensor_combined_listener.launch.py
+-- Symlinking: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/test/__init__.py
+-- Symlinking: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/test/pipeline_io_test.py
+-- Symlinking: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/test/test_input.py
+-- Symlinking: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/test/test_output.py
+-- Symlinking: /home/ubuntu/ros2_ws/install/px4_ros_com/share/ament_index/resource_index/package_run_dependencies/px4_ros_com
+-- Symlinking: /home/ubuntu/ros2_ws/install/px4_ros_com/share/ament_index/resource_index/parent_prefix_path/px4_ros_com
+-- Symlinking: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/environment/ament_prefix_path.sh
+-- Symlinking: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/environment/ament_prefix_path.dsv
+-- Symlinking: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/environment/path.sh
+-- Symlinking: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/environment/path.dsv
+-- Symlinking: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/local_setup.bash
+-- Symlinking: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/local_setup.sh
+-- Symlinking: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/local_setup.zsh
+-- Symlinking: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/local_setup.dsv
+-- Symlinking: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/package.dsv
+-- Symlinking: /home/ubuntu/ros2_ws/install/px4_ros_com/share/ament_index/resource_index/packages/px4_ros_com
+-- Symlinking: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/cmake/ament_cmake_export_dependencies-extras.cmake
+-- Symlinking: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/cmake/ament_cmake_export_targets-extras.cmake
+-- Symlinking: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/cmake/ament_cmake_export_include_directories-extras.cmake
+-- Symlinking: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/cmake/ament_cmake_export_libraries-extras.cmake
+-- Symlinking: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/cmake/px4_ros_comConfig.cmake
+-- Symlinking: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/cmake/px4_ros_comConfig-version.cmake
+-- Symlinking: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/package.xml
+-- Installing: /home/ubuntu/ros2_ws/install/px4_ros_com/lib/libframe_transforms.so
+-- Set runtime path of "/home/ubuntu/ros2_ws/install/px4_ros_com/lib/libframe_transforms.so" to ""
+-- Installing: /home/ubuntu/ros2_ws/install/px4_ros_com/bin/micrortps_agent
+-- Set runtime path of "/home/ubuntu/ros2_ws/install/px4_ros_com/bin/micrortps_agent" to ""
+-- Installing: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/cmake/export_frame_transformsExport.cmake
+-- Installing: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/cmake/export_frame_transformsExport-relwithdebinfo.cmake

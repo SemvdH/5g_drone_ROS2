@@ -1,0 +1,7 @@
+source /opt/ros/humble/setup.bash && echo "sourced ros humble setup script"
+export ROS_DOMAIN_ID=0 && echo "set ROS_DOMAIN_ID to ${ROS_DOMAIN_ID}"
+source /usr/share/colcon_cd/function/colcon_cd.sh && echo "sourced colcon cd script"
+export _colcon_cd_root=/opt/ros/humble/ && echo "set _colcon_cd_root to ${_colcon_cd_root}"
+source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash && echo "sourced colcon argcomplete script"
+export RMW_IMPLEMENTATION=rmw_fastrtps_cpp && echo "set RMW_IMPLEMENTATION to ${RMW_IMPLEMENTATION}"
+. /home/ubuntu/ros2_ws/install/setup.bash && echo "ran ROS install script from $PWD"

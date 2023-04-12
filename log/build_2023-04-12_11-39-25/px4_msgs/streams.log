@@ -1,0 +1,5 @@
+[0.411s] Invoking command in '/mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/build/px4_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/build/px4_msgs -- -j12 -l12
+[0.435s] [0mCMake Error: The current CMakeCache.txt directory /mnt/Homework/Avans/AFSTUDEERSTAGE/5g_drone_ROS2/build/px4_msgs/CMakeCache.txt is different than the directory /home/ubuntu/ros2_ws/build/px4_msgs where CMakeCache.txt was created. This may result in binaries being created in the wrong place. If you are not sure, reedit the CMakeCache.txt[0m
+[1.172s] [0mCMake Error: The source directory "/home/ubuntu/ros2_ws/src/px4_msgs" does not exist.
+[1.172s] Specify --help for usage, or press the help button on the CMake GUI.[0m
+[1.173s] gmake: *** [Makefile:46755: cmake_check_build_system] Error 1

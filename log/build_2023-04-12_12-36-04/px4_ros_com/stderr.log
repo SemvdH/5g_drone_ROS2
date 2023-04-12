@@ -1,0 +1,45 @@
+[01m[K/home/ubuntu/ros2_ws/src/px4_ros_com/src/examples/advertisers/debug_vect_advertiser.cpp:[m[K In constructor ‘[01m[KDebugVectAdvertiser::DebugVectAdvertiser()[m[K’:
+[01m[K/home/ubuntu/ros2_ws/src/px4_ros_com/src/examples/advertisers/debug_vect_advertiser.cpp:53:78:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KDebugVectAdvertiser::create_publisher<px4_msgs::msg::DebugVect>(const char [18])[m[K’
+   53 |                 publisher_ = [01;31m[Kthis->create_publisher<px4_msgs::msg::DebugVect>("fmu/debug_vect/in")[m[K;
+      |                              [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/single_threaded_executor.hpp:28[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:22[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+                 from [01m[K/home/ubuntu/ros2_ws/src/px4_ros_com/src/examples/advertisers/debug_vect_advertiser.cpp:41[m[K:
+[01m[K/opt/ros/humble/include/rclcpp/rclcpp/node.hpp:195:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class MessageT, class AllocatorT, class PublisherT> std::shared_ptr<PublisherT> rclcpp::Node::create_publisher(const string&, const rclcpp::QoS&, const rclcpp::PublisherOptionsWithAllocator<AllocatorT>&)[m[K’
+  195 |   [01;36m[Kcreate_publisher[m[K(
+      |   [01;36m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/opt/ros/humble/include/rclcpp/rclcpp/node.hpp:195:3:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/ubuntu/ros2_ws/src/px4_ros_com/src/examples/advertisers/debug_vect_advertiser.cpp:53:78:[m[K [01;36m[Knote: [m[K  candidate expects 3 arguments, 1 provided
+   53 |                 publisher_ = [01;36m[Kthis->create_publisher<px4_msgs::msg::DebugVect>("fmu/debug_vect/in")[m[K;
+      |                              [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+                 from [01m[K/home/ubuntu/ros2_ws/src/px4_ros_com/src/examples/advertisers/debug_vect_advertiser.cpp:41[m[K:
+[01m[K/home/ubuntu/ros2_ws/src/px4_ros_com/src/examples/advertisers/debug_vect_advertiser.cpp:[m[K In lambda function:
+[01m[K/home/ubuntu/ros2_ws/src/px4_ros_com/src/examples/advertisers/debug_vect_advertiser.cpp:64:57:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%llu[m[K’ expects argument of type ‘[01m[Klong long unsigned int[m[K’, but argument 5 has type ‘[01m[Kpx4_msgs::msg::DebugVect_<std::allocator<void> >::_timestamp_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat=-Wformat=]8;;[m[K]
+   64 |                         RCLCPP_INFO(this->get_logger(), [01;35m[K"\033[97m Publishing debug_vect: time: %llu x: %f y: %f z: %f \033[0m"[m[K,
+      |                                                         [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+   65 |                                 [32m[Kdebug_vect.timestamp[m[K, debug_vect.x, debug_vect.y, debug_vect.z);
+      |                                 [32m[K~~~~~~~~~~~~~~~~~~~~[m[K     
+      |                                            [32m[K|[m[K
+      |                                            [32m[Kpx4_msgs::msg::DebugVect_<std::allocator<void> >::_timestamp_type {aka long unsigned int}[m[K
+[01m[K/home/ubuntu/ros2_ws/src/px4_ros_com/src/examples/advertisers/debug_vect_advertiser.cpp:64:99:[m[K [01;36m[Knote: [m[Kformat string is defined here
+   64 |                         RCLCPP_INFO(this->get_logger(), "\033[97m Publishing debug_vect: time: [01;36m[K%llu[m[K x: %f y: %f z: %f \033[0m",
+      |                                                                                                [01;36m[K~~~^[m[K
+      |                                                                                                   [01;36m[K|[m[K
+      |                                                                                                   [01;36m[Klong long unsigned int[m[K
+      |                                                                                                [32m[K%lu[m[K
+gmake[2]: *** [CMakeFiles/debug_vect_advertiser.dir/build.make:76: CMakeFiles/debug_vect_advertiser.dir/src/examples/advertisers/debug_vect_advertiser.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:251: CMakeFiles/debug_vect_advertiser.dir/all] Error 2
+gmake[1]: *** Waiting for unfinished jobs....
+gmake: *** [Makefile:146: all] Error 2

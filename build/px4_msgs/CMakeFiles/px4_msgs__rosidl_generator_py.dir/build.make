@@ -3500,11 +3500,11 @@ rosidl_generator_py/px4_msgs/libpx4_msgs__rosidl_generator_py.so: CMakeFiles/px4
 rosidl_generator_py/px4_msgs/libpx4_msgs__rosidl_generator_py.so: CMakeFiles/px4_msgs__rosidl_generator_py.dir/rosidl_generator_py/px4_msgs/msg/_wind_s.c.o
 rosidl_generator_py/px4_msgs/libpx4_msgs__rosidl_generator_py.so: CMakeFiles/px4_msgs__rosidl_generator_py.dir/rosidl_generator_py/px4_msgs/msg/_yaw_estimator_status_s.c.o
 rosidl_generator_py/px4_msgs/libpx4_msgs__rosidl_generator_py.so: CMakeFiles/px4_msgs__rosidl_generator_py.dir/build.make
-rosidl_generator_py/px4_msgs/libpx4_msgs__rosidl_generator_py.so: /usr/lib/aarch64-linux-gnu/libpython3.10.so
+rosidl_generator_py/px4_msgs/libpx4_msgs__rosidl_generator_py.so: /usr/lib/x86_64-linux-gnu/libpython3.10.so
 rosidl_generator_py/px4_msgs/libpx4_msgs__rosidl_generator_py.so: libpx4_msgs__rosidl_typesupport_c.so
 rosidl_generator_py/px4_msgs/libpx4_msgs__rosidl_generator_py.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_generator_py.so
 rosidl_generator_py/px4_msgs/libpx4_msgs__rosidl_generator_py.so: libpx4_msgs__rosidl_generator_c.so
-rosidl_generator_py/px4_msgs/libpx4_msgs__rosidl_generator_py.so: /usr/lib/aarch64-linux-gnu/libpython3.10.so
+rosidl_generator_py/px4_msgs/libpx4_msgs__rosidl_generator_py.so: /usr/lib/x86_64-linux-gnu/libpython3.10.so
 rosidl_generator_py/px4_msgs/libpx4_msgs__rosidl_generator_py.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_typesupport_c.so
 rosidl_generator_py/px4_msgs/libpx4_msgs__rosidl_generator_py.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_generator_c.so
 rosidl_generator_py/px4_msgs/libpx4_msgs__rosidl_generator_py.so: /opt/ros/humble/lib/librosidl_runtime_c.so

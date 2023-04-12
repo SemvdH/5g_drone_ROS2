@@ -153,7 +153,7 @@ debug_vect_advertiser: /opt/ros/humble/lib/librosidl_typesupport_c.so
 debug_vect_advertiser: /opt/ros/humble/lib/librcpputils.so
 debug_vect_advertiser: /opt/ros/humble/lib/librosidl_runtime_c.so
 debug_vect_advertiser: /opt/ros/humble/lib/librcutils.so
-debug_vect_advertiser: /usr/lib/aarch64-linux-gnu/libpython3.10.so
+debug_vect_advertiser: /usr/lib/x86_64-linux-gnu/libpython3.10.so
 debug_vect_advertiser: CMakeFiles/debug_vect_advertiser.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ubuntu/ros2_ws/build/px4_ros_com/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable debug_vect_advertiser"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/debug_vect_advertiser.dir/link.txt --verbose=$(VERBOSE)

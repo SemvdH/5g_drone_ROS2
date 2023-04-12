@@ -90,37 +90,37 @@ px4_msgs__rosidl_typesupport_c__pyext_OBJECTS = \
 # External object files for target px4_msgs__rosidl_typesupport_c__pyext
 px4_msgs__rosidl_typesupport_c__pyext_EXTERNAL_OBJECTS =
 
-rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so: CMakeFiles/px4_msgs__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/px4_msgs/_px4_msgs_s.ep.rosidl_typesupport_c.c.o
-rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so: CMakeFiles/px4_msgs__rosidl_typesupport_c__pyext.dir/build.make
-rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so: rosidl_generator_py/px4_msgs/libpx4_msgs__rosidl_generator_py.so
-rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so: /usr/lib/aarch64-linux-gnu/libpython3.10.so
-rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so: libpx4_msgs__rosidl_typesupport_c.so
-rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_typesupport_fastrtps_c.so
-rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_typesupport_introspection_c.so
-rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_typesupport_fastrtps_cpp.so
-rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_typesupport_introspection_cpp.so
-rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_typesupport_cpp.so
-rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_generator_py.so
-rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so: /opt/ros/humble/lib/librmw.so
-rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so: /usr/lib/aarch64-linux-gnu/libpython3.10.so
-rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_typesupport_c.so
-rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so: libpx4_msgs__rosidl_generator_c.so
-rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so: /opt/ros/humble/lib/librosidl_typesupport_fastrtps_c.so
-rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_generator_c.so
-rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so: /opt/ros/humble/lib/librosidl_typesupport_fastrtps_cpp.so
-rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so: /opt/ros/humble/lib/libfastcdr.so.1.0.24
-rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so: /opt/ros/humble/lib/librmw.so
-rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so: /opt/ros/humble/lib/librosidl_typesupport_introspection_cpp.so
-rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so: /opt/ros/humble/lib/librosidl_typesupport_introspection_c.so
-rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so: /opt/ros/humble/lib/librosidl_typesupport_c.so
-rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so: /opt/ros/humble/lib/librosidl_runtime_c.so
-rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so: /opt/ros/humble/lib/librcutils.so
-rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so: CMakeFiles/px4_msgs__rosidl_typesupport_c__pyext.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ubuntu/ros2_ws/build/px4_msgs/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C shared library rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so"
+rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so: CMakeFiles/px4_msgs__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/px4_msgs/_px4_msgs_s.ep.rosidl_typesupport_c.c.o
+rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so: CMakeFiles/px4_msgs__rosidl_typesupport_c__pyext.dir/build.make
+rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so: rosidl_generator_py/px4_msgs/libpx4_msgs__rosidl_generator_py.so
+rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so: libpx4_msgs__rosidl_typesupport_c.so
+rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_typesupport_fastrtps_c.so
+rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_typesupport_introspection_c.so
+rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_typesupport_fastrtps_cpp.so
+rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_typesupport_introspection_cpp.so
+rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_typesupport_cpp.so
+rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_generator_py.so
+rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so: /opt/ros/humble/lib/librmw.so
+rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_typesupport_c.so
+rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so: libpx4_msgs__rosidl_generator_c.so
+rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so: /opt/ros/humble/lib/librosidl_typesupport_fastrtps_c.so
+rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_generator_c.so
+rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so: /opt/ros/humble/lib/librosidl_typesupport_fastrtps_cpp.so
+rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so: /opt/ros/humble/lib/libfastcdr.so.1.0.24
+rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so: /opt/ros/humble/lib/librmw.so
+rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so: /opt/ros/humble/lib/librosidl_typesupport_introspection_cpp.so
+rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so: /opt/ros/humble/lib/librosidl_typesupport_introspection_c.so
+rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so: /opt/ros/humble/lib/librosidl_typesupport_c.so
+rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so: /opt/ros/humble/lib/librosidl_runtime_c.so
+rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so: /opt/ros/humble/lib/librcutils.so
+rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so: CMakeFiles/px4_msgs__rosidl_typesupport_c__pyext.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ubuntu/ros2_ws/build/px4_msgs/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C shared library rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/px4_msgs__rosidl_typesupport_c__pyext.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-CMakeFiles/px4_msgs__rosidl_typesupport_c__pyext.dir/build: rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so
+CMakeFiles/px4_msgs__rosidl_typesupport_c__pyext.dir/build: rosidl_generator_py/px4_msgs/px4_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
 .PHONY : CMakeFiles/px4_msgs__rosidl_typesupport_c__pyext.dir/build
 
 CMakeFiles/px4_msgs__rosidl_typesupport_c__pyext.dir/clean:

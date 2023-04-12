@@ -153,7 +153,7 @@ sensor_combined_listener: /opt/ros/humble/lib/librosidl_typesupport_c.so
 sensor_combined_listener: /opt/ros/humble/lib/librcpputils.so
 sensor_combined_listener: /opt/ros/humble/lib/librosidl_runtime_c.so
 sensor_combined_listener: /opt/ros/humble/lib/librcutils.so
-sensor_combined_listener: /usr/lib/aarch64-linux-gnu/libpython3.10.so
+sensor_combined_listener: /usr/lib/x86_64-linux-gnu/libpython3.10.so
 sensor_combined_listener: CMakeFiles/sensor_combined_listener.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ubuntu/ros2_ws/build/px4_ros_com/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable sensor_combined_listener"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sensor_combined_listener.dir/link.txt --verbose=$(VERBOSE)
