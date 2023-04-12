@@ -1,6 +1,6 @@
 [submodule "src/px4_msgs"]
 	path = src/px4_msgs
-	url = git@github.com:PX4/px4_msgs.git
+	url = https://www.github.com/PX4/px4_msgs
 [submodule "src/px4_ros_com"]
 	path = src/px4_ros_com
-	url = git@github.com:PX4/px4_ros_com.git
+	url = https://www.github.com/PX4/px4_ros_com
