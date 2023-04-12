@@ -1,0 +1,20 @@
+In file included from [01m[K/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_generator_c/px4_msgs/msg/detail/gimbal_v1_command__functions.h:19[m[K,
+                 from [01m[K/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_generator_c/px4_msgs/msg/detail/gimbal_v1_command__functions.c:4[m[K:
+[01m[K/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_generator_c/px4_msgs/msg/detail/gimbal_v1_command__struct.h:356:3:[m[K [01;31m[Kerror: [m[Kexpected identifier or ‘[01m[K([m[K’ before ‘[01m[K/[m[K’ token
+  356 |  *[01;31m[K/[m[K
+      |   [01;31m[K^[m[K
+[01m[K/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_generator_c/px4_msgs/msg/detail/gimbal_v1_command__struct.h:365:3:[m[K [01;31m[Kerror: [m[Kexpected identifier or ‘[01m[K([m[K’ before ‘[01m[K/[m[K’ token
+  365 |  *[01;31m[K/[m[K
+      |   [01;31m[K^[m[K
+gmake[2]: *** [CMakeFiles/px4_msgs__rosidl_generator_c.dir/build.make:4551: CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gimbal_v1_command__functions.c.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:213: CMakeFiles/px4_msgs__rosidl_generator_c.dir/all] Error 2
+gmake[1]: *** Waiting for unfinished jobs....
+gmake[2]: *** Deleting file 'rosidl_typesupport_fastrtps_cpp/px4_msgs/msg/detail/geofence_result__rosidl_typesupport_fastrtps_cpp.hpp'
+gmake[2]: *** [CMakeFiles/px4_msgs__rosidl_typesupport_introspection_cpp.dir/build.make:1598: CMakeFiles/px4_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/px4_msgs/msg/detail/actuator_armed__type_support.cpp.o] Interrupt
+gmake[2]: *** [CMakeFiles/px4_msgs__rosidl_typesupport_introspection_cpp.dir/build.make:1612: CMakeFiles/px4_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/px4_msgs/msg/detail/actuator_controls__type_support.cpp.o] Interrupt
+gmake[2]: *** [CMakeFiles/px4_msgs__rosidl_typesupport_fastrtps_cpp.dir/build.make:696: rosidl_typesupport_fastrtps_cpp/px4_msgs/msg/detail/geofence_result__rosidl_typesupport_fastrtps_cpp.hpp] Interrupt
+gmake[1]: *** [CMakeFiles/Makefile2:290: CMakeFiles/px4_msgs__rosidl_typesupport_fastrtps_cpp.dir/all] Interrupt
+gmake[1]: *** [CMakeFiles/Makefile2:369: CMakeFiles/px4_msgs__rosidl_typesupport_introspection_cpp.dir/all] Interrupt
+gmake[2]: *** [CMakeFiles/px4_msgs__rosidl_typesupport_cpp.dir/build.make:1331: CMakeFiles/px4_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/px4_msgs/msg/cellular_status__type_support.cpp.o] Interrupt
+gmake[1]: *** [CMakeFiles/Makefile2:395: CMakeFiles/px4_msgs__rosidl_typesupport_cpp.dir/all] Interrupt
+gmake: *** [Makefile:146: all] Interrupt

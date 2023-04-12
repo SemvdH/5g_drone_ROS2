@@ -1,0 +1,79 @@
+[0.060s] Invoking command in '/home/ubuntu/ros2_ws/build/px4_ros_com': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/ubuntu/ros2_ws/build/px4_ros_com -- -j4 -l4
+[0.175s] -- Found ament_cmake: 1.3.3 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.789s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.831s] -- Found builtin_interfaces: 1.2.1 (/opt/ros/humble/share/builtin_interfaces/cmake)
+[0.946s] -- Found rosidl_generator_c: 3.1.4 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.957s] -- Found rosidl_adapter: 3.1.4 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.981s] -- Found rosidl_generator_cpp: 3.1.4 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[1.025s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.087s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.163s] -- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)
+[1.176s] -- Found Eigen3: TRUE (found version "3.4.0") 
+[1.180s] -- Found geometry_msgs: 4.2.3 (/opt/ros/humble/share/geometry_msgs/cmake)
+[1.576s] -- Found px4_msgs: 2.0.1 (/home/ubuntu/ros2_ws/install/px4_msgs/share/px4_msgs/cmake)
+[1.712s] -- Found rclcpp: 16.0.3 (/opt/ros/humble/share/rclcpp/cmake)
+[1.969s] -- Found rmw_implementation_cmake: 6.1.1 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[1.982s] -- Found rmw_fastrtps_cpp: 6.2.2 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[2.634s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[3.205s] -- Found sensor_msgs: 4.2.3 (/opt/ros/humble/share/sensor_msgs/cmake)
+[3.584s] -- Found ament_lint_auto: 0.12.5 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[4.061s] -- Added test 'copyright' to check source files copyright and LICENSE
+[4.088s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[4.090s] -- Configured cppcheck include dirs: /home/ubuntu/ros2_ws/src/px4_ros_com/include;$<BUILD_INTERFACE:/home/ubuntu/ros2_ws/src/px4_ros_com/include/px4_ros_com>
+[4.092s] -- Configured cppcheck exclude dirs and/or files: 
+[4.120s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[4.122s] -- Configured cpplint exclude dirs and/or files: 
+[4.129s] -- Added test 'flake8' to check Python code syntax and style conventions
+[4.139s] -- Added test 'lint_cmake' to check CMake code style
+[4.148s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[4.175s] -- Added test 'uncrustify' to check C / C++ code style
+[4.177s] -- Configured uncrustify additional arguments: 
+[4.183s] -- Added test 'xmllint' to check XML markup files
+[4.205s] -- Configuring done
+[4.373s] -- Generating done
+[4.386s] -- Build files have been written to: /home/ubuntu/ros2_ws/build/px4_ros_com
+[4.547s] [ 10%] [32mBuilding CXX object CMakeFiles/frame_transforms.dir/src/lib/frame_transforms.cpp.o[0m
+[4.552s] [ 20%] [32mBuilding CXX object CMakeFiles/sensor_combined_listener.dir/src/examples/listeners/sensor_combined_listener.cpp.o[0m
+[4.559s] [ 40%] [32mBuilding CXX object CMakeFiles/vehicle_gps_position_listener.dir/src/examples/listeners/vehicle_gps_position_listener.cpp.o[0m
+[4.562s] [ 40%] [32mBuilding CXX object CMakeFiles/debug_vect_advertiser.dir/src/examples/advertisers/debug_vect_advertiser.cpp.o[0m
+[13.547s] In file included from [01m[K/usr/include/eigen3/Eigen/Core:214[m[K,
+[13.563s]                  from [01m[K/usr/include/eigen3/Eigen/Dense:1[m[K,
+[13.567s]                  from [01m[K/usr/include/eigen3/Eigen/Eigen:1[m[K,
+[13.571s]                  from [01m[K/home/ubuntu/ros2_ws/src/px4_ros_com/include/px4_ros_com/frame_transforms.h:45[m[K,
+[13.574s]                  from [01m[K/home/ubuntu/ros2_ws/src/px4_ros_com/src/lib/frame_transforms.cpp:41[m[K:
+[13.578s] [01m[K/usr/include/eigen3/Eigen/src/Core/arch/NEON/PacketMath.h:[m[K In function ‘[01m[KPacket Eigen::internal::pload(const typename Eigen::internal::unpacket_traits<T>::type*) [with Packet = Eigen::internal::eigen_packet_wrapper<int, 2>; typename Eigen::internal::unpacket_traits<T>::type = signed char][m[K’:
+[13.586s] [01m[K/usr/include/eigen3/Eigen/src/Core/arch/NEON/PacketMath.h:1671:9:[m[K [01;35m[Kwarning: [m[K‘[01m[Kvoid* memcpy(void*, const void*, size_t)[m[K’ copying an object of non-trivial type ‘[01m[KEigen::internal::Packet4c[m[K’ {aka ‘[01m[Kstruct Eigen::internal::eigen_packet_wrapper<int, 2>[m[K’} from an array of ‘[01m[Kconst int8_t[m[K’ {aka ‘[01m[Kconst signed char[m[K’} [[01;35m[K-Wclass-memaccess[m[K]
+[13.594s]  1671 |   [01;35m[Kmemcpy(&res, from, sizeof(Packet4c))[m[K;
+[13.598s]       |   [01;35m[K~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[13.602s] In file included from [01m[K/usr/include/eigen3/Eigen/Core:172[m[K,
+[13.605s]                  from [01m[K/usr/include/eigen3/Eigen/Dense:1[m[K,
+[13.609s]                  from [01m[K/usr/include/eigen3/Eigen/Eigen:1[m[K,
+[13.612s]                  from [01m[K/home/ubuntu/ros2_ws/src/px4_ros_com/include/px4_ros_com/frame_transforms.h:45[m[K,
+[13.616s]                  from [01m[K/home/ubuntu/ros2_ws/src/px4_ros_com/src/lib/frame_transforms.cpp:41[m[K:
+[13.620s] [01m[K/usr/include/eigen3/Eigen/src/Core/GenericPacketMath.h:159:8:[m[K [01;36m[Knote: [m[K‘[01m[KEigen::internal::Packet4c[m[K’ {aka ‘[01m[Kstruct Eigen::internal::eigen_packet_wrapper<int, 2>[m[K’} declared here
+[13.624s]   159 | struct [01;36m[Keigen_packet_wrapper[m[K
+[13.628s]       |        [01;36m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[13.632s] In file included from [01m[K/usr/include/eigen3/Eigen/Core:214[m[K,
+[13.635s]                  from [01m[K/usr/include/eigen3/Eigen/Dense:1[m[K,
+[13.639s]                  from [01m[K/usr/include/eigen3/Eigen/Eigen:1[m[K,
+[13.643s]                  from [01m[K/home/ubuntu/ros2_ws/src/px4_ros_com/include/px4_ros_com/frame_transforms.h:45[m[K,
+[13.647s]                  from [01m[K/home/ubuntu/ros2_ws/src/px4_ros_com/src/lib/frame_transforms.cpp:41[m[K:
+[13.651s] [01m[K/usr/include/eigen3/Eigen/src/Core/arch/NEON/PacketMath.h:[m[K In function ‘[01m[KPacket Eigen::internal::ploadu(const typename Eigen::internal::unpacket_traits<T>::type*) [with Packet = Eigen::internal::eigen_packet_wrapper<int, 2>; typename Eigen::internal::unpacket_traits<T>::type = signed char][m[K’:
+[13.658s] [01m[K/usr/include/eigen3/Eigen/src/Core/arch/NEON/PacketMath.h:1716:9:[m[K [01;35m[Kwarning: [m[K‘[01m[Kvoid* memcpy(void*, const void*, size_t)[m[K’ copying an object of non-trivial type ‘[01m[KEigen::internal::Packet4c[m[K’ {aka ‘[01m[Kstruct Eigen::internal::eigen_packet_wrapper<int, 2>[m[K’} from an array of ‘[01m[Kconst int8_t[m[K’ {aka ‘[01m[Kconst signed char[m[K’} [[01;35m[K-Wclass-memaccess[m[K]
+[13.665s]  1716 |   [01;35m[Kmemcpy(&res, from, sizeof(Packet4c))[m[K;
+[13.670s]       |   [01;35m[K~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[13.675s] In file included from [01m[K/usr/include/eigen3/Eigen/Core:172[m[K,
+[13.680s]                  from [01m[K/usr/include/eigen3/Eigen/Dense:1[m[K,
+[13.684s]                  from [01m[K/usr/include/eigen3/Eigen/Eigen:1[m[K,
+[13.688s]                  from [01m[K/home/ubuntu/ros2_ws/src/px4_ros_com/include/px4_ros_com/frame_transforms.h:45[m[K,
+[13.693s]                  from [01m[K/home/ubuntu/ros2_ws/src/px4_ros_com/src/lib/frame_transforms.cpp:41[m[K:
+[13.699s] [01m[K/usr/include/eigen3/Eigen/src/Core/GenericPacketMath.h:159:8:[m[K [01;36m[Knote: [m[K‘[01m[KEigen::internal::Packet4c[m[K’ {aka ‘[01m[Kstruct Eigen::internal::eigen_packet_wrapper<int, 2>[m[K’} declared here
+[13.714s]   159 | struct [01;36m[Keigen_packet_wrapper[m[K
+[13.719s]       |        [01;36m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[557.277s] gmake[2]: *** [CMakeFiles/frame_transforms.dir/build.make:76: CMakeFiles/frame_transforms.dir/src/lib/frame_transforms.cpp.o] Interrupt
+[557.313s] gmake[2]: *** [CMakeFiles/vehicle_gps_position_listener.dir/build.make:76: CMakeFiles/vehicle_gps_position_listener.dir/src/examples/listeners/vehicle_gps_position_listener.cpp.o] Interrupt
+[557.317s] gmake[2]: *** [CMakeFiles/debug_vect_advertiser.dir/build.make:76: CMakeFiles/debug_vect_advertiser.dir/src/examples/advertisers/debug_vect_advertiser.cpp.o] Interrupt
+[557.320s] gmake[2]: *** [CMakeFiles/sensor_combined_listener.dir/build.make:76: CMakeFiles/sensor_combined_listener.dir/src/examples/listeners/sensor_combined_listener.cpp.o] Interrupt
+[557.324s] gmake[1]: *** [CMakeFiles/Makefile2:145: CMakeFiles/frame_transforms.dir/all] Interrupt
+[557.327s] gmake: *** [Makefile:146: all] Interrupt
+[557.353s] Invoked command in '/home/ubuntu/ros2_ws/build/px4_ros_com' returned '-2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/ubuntu/ros2_ws/build/px4_ros_com -- -j4 -l4

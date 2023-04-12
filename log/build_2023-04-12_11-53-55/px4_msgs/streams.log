@@ -1,0 +1,170 @@
+[0.106s] Invoking command in '/home/ubuntu/ros2_ws/build/px4_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/ubuntu/ros2_ws/build/px4_msgs -- -j4 -l4
+[2.474s] -- Using C++17 compiler
+[2.476s] -- Found ament_cmake: 1.3.3 (/opt/ros/humble/share/ament_cmake/cmake)
+[3.181s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[3.260s] -- Found builtin_interfaces: 1.2.1 (/opt/ros/humble/share/builtin_interfaces/cmake)
+[3.425s] -- Found rosidl_generator_c: 3.1.4 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[3.444s] -- Found rosidl_adapter: 3.1.4 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[3.485s] -- Found rosidl_generator_cpp: 3.1.4 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[3.558s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[3.655s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[3.747s] -- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+[12.625s] -- Found ament_cmake_cppcheck: 0.12.5 (/opt/ros/humble/share/ament_cmake_cppcheck/cmake)
+[12.633s] -- Found ament_cmake_cpplint: 0.12.5 (/opt/ros/humble/share/ament_cmake_cpplint/cmake)
+[12.640s] -- Found ament_cmake_uncrustify: 0.12.5 (/opt/ros/humble/share/ament_cmake_uncrustify/cmake)
+[12.649s] -- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)
+[14.605s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[15.345s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[15.471s] -- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)
+[15.589s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[15.592s] -- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10
+[15.594s] -- Using PYTHON_LIBRARIES: /usr/lib/aarch64-linux-gnu/libpython3.10.so
+[15.857s] -- Found ament_cmake_flake8: 0.12.5 (/opt/ros/humble/share/ament_cmake_flake8/cmake)
+[15.862s] -- Found ament_cmake_pep257: 0.12.5 (/opt/ros/humble/share/ament_cmake_pep257/cmake)
+[16.175s] -- Configuring done
+[18.877s] -- Generating done
+[18.899s] -- Build files have been written to: /home/ubuntu/ros2_ws/build/px4_msgs
+[19.101s] [  0%] [34m[1mGenerating C code for ROS interfaces[0m
+[19.129s] [  0%] Built target ament_cmake_python_symlink_px4_msgs
+[19.241s] [  0%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[20.413s] running egg_info
+[20.416s] writing px4_msgs.egg-info/PKG-INFO
+[20.420s] writing dependency_links to px4_msgs.egg-info/dependency_links.txt
+[20.423s] writing top-level names to px4_msgs.egg-info/top_level.txt
+[20.456s] reading manifest file 'px4_msgs.egg-info/SOURCES.txt'
+[20.480s] writing manifest file 'px4_msgs.egg-info/SOURCES.txt'
+[20.628s] [  0%] Built target ament_cmake_python_build_px4_msgs_egg
+[195.488s] [  0%] Built target px4_msgs__cpp
+[195.591s] [  0%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[195.594s] [  0%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[196.014s] [  0%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[216.177s] [35m[1mConsolidate compiler generated dependencies of target px4_msgs__rosidl_generator_c[0m
+[216.633s] [  0%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/action_request__functions.c.o[0m
+[217.832s] [  0%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_armed__functions.c.o[0m
+[218.343s] [  0%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls__functions.c.o[0m
+[218.849s] [  0%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls0__functions.c.o[0m
+[219.394s] [  0%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls1__functions.c.o[0m
+[219.903s] [  0%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls2__functions.c.o[0m
+[220.491s] [  0%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls3__functions.c.o[0m
+[220.996s] [  0%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_status__functions.c.o[0m
+[221.523s] [  0%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_status0__functions.c.o[0m
+[222.026s] [  0%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_status1__functions.c.o[0m
+[222.543s] [  0%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_virtual_fw__functions.c.o[0m
+[223.063s] [  0%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_virtual_mc__functions.c.o[0m
+[223.601s] [  0%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_motors__functions.c.o[0m
+[224.160s] [  0%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_outputs__functions.c.o[0m
+[224.667s] [  1%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_outputs_sim__functions.c.o[0m
+[225.167s] [  1%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_servos__functions.c.o[0m
+[225.684s] [  1%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_servos_trim__functions.c.o[0m
+[226.218s] [  1%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_test__functions.c.o[0m
+[226.766s] [  1%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/adc_report__functions.c.o[0m
+[227.298s] [  1%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/airspeed__functions.c.o[0m
+[227.826s] [  1%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/airspeed_validated__functions.c.o[0m
+[228.327s] [  1%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/airspeed_wind__functions.c.o[0m
+[228.846s] [  1%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/autotune_attitude_control_status__functions.c.o[0m
+[229.393s] [  1%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/battery_status__functions.c.o[0m
+[230.059s] [  1%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/button_event__functions.c.o[0m
+[230.554s] [  1%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/camera_capture__functions.c.o[0m
+[231.103s] [  1%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/camera_status__functions.c.o[0m
+[231.608s] [  1%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/camera_trigger__functions.c.o[0m
+[232.109s] [  1%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/cellular_status__functions.c.o[0m
+[232.616s] [  1%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/collision_constraints__functions.c.o[0m
+[233.163s] [  1%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/collision_report__functions.c.o[0m
+[233.714s] [  2%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/commander_state__functions.c.o[0m
+[234.196s] [  2%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/control_allocator_status__functions.c.o[0m
+[234.777s] [  2%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/cpuload__functions.c.o[0m
+[235.305s] [  2%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/debug_array__functions.c.o[0m
+[235.818s] [  2%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/debug_key_value__functions.c.o[0m
+[236.375s] [  2%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/debug_value__functions.c.o[0m
+[236.916s] [  2%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/debug_vect__functions.c.o[0m
+[237.427s] [  2%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/differential_pressure__functions.c.o[0m
+[237.940s] [  2%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/distance_sensor__functions.c.o[0m
+[238.504s] [  2%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/ekf2_timestamps__functions.c.o[0m
+[239.006s] [  2%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/esc_report__functions.c.o[0m
+[239.590s] [  2%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/esc_status__functions.c.o[0m
+[240.139s] [  2%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_attitude__functions.c.o[0m
+[240.647s] [  2%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_baro_bias__functions.c.o[0m
+[241.154s] [  2%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_event_flags__functions.c.o[0m
+[241.771s] [  2%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_global_position__functions.c.o[0m
+[242.317s] [  2%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_gps_status__functions.c.o[0m
+[242.889s] [  2%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_innovation_test_ratios__functions.c.o[0m
+[243.488s] [  3%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_innovation_variances__functions.c.o[0m
+[244.070s] [  3%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_innovations__functions.c.o[0m
+[244.680s] [  3%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_local_position__functions.c.o[0m
+[245.312s] [  3%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_odometry__functions.c.o[0m
+[245.874s] [  3%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_optical_flow_vel__functions.c.o[0m
+[246.467s] [  3%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_selector_status__functions.c.o[0m
+[247.054s] [  3%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_sensor_bias__functions.c.o[0m
+[247.631s] [  3%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_states__functions.c.o[0m
+[248.202s] [  3%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_status__functions.c.o[0m
+[248.790s] [  3%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_status_flags__functions.c.o[0m
+[249.500s] [  3%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_visual_odometry_aligned__functions.c.o[0m
+[250.099s] [  3%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_wind__functions.c.o[0m
+[250.608s] [  3%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/event__functions.c.o[0m
+[251.121s] [  3%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/failure_detector_status__functions.c.o[0m
+[251.683s] [  3%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/follow_target__functions.c.o[0m
+[252.195s] [  3%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/fw_virtual_attitude_setpoint__functions.c.o[0m
+[252.790s] [  3%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/generator_status__functions.c.o[0m
+[253.308s] [  4%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/geofence_result__functions.c.o[0m
+[253.817s] [  4%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gimbal_device_attitude_status__functions.c.o[0m
+[254.346s] [  4%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gimbal_device_information__functions.c.o[0m
+[254.939s] [  4%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gimbal_device_set_attitude__functions.c.o[0m
+[255.454s] [  4%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gimbal_manager_information__functions.c.o[0m
+[256.001s] [  4%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gimbal_manager_set_attitude__functions.c.o[0m
+[256.535s] [  4%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gimbal_manager_set_manual_control__functions.c.o[0m
+[257.139s] [  4%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gimbal_manager_status__functions.c.o[0m
+[257.635s] [  4%] [32mBuilding C object CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gimbal_v1_command__functions.c.o[0m
+[257.741s] In file included from [01m[K/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_generator_c/px4_msgs/msg/detail/gimbal_v1_command__functions.h:19[m[K,
+[257.743s]                  from [01m[K/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_generator_c/px4_msgs/msg/detail/gimbal_v1_command__functions.c:4[m[K:
+[257.745s] [01m[K/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_generator_c/px4_msgs/msg/detail/gimbal_v1_command__struct.h:356:3:[m[K [01;31m[Kerror: [m[Kexpected identifier or ‘[01m[K([m[K’ before ‘[01m[K/[m[K’ token
+[257.747s]   356 |  *[01;31m[K/[m[K
+[257.749s]       |   [01;31m[K^[m[K
+[257.751s] [01m[K/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_generator_c/px4_msgs/msg/detail/gimbal_v1_command__struct.h:365:3:[m[K [01;31m[Kerror: [m[Kexpected identifier or ‘[01m[K([m[K’ before ‘[01m[K/[m[K’ token
+[257.753s]   365 |  *[01;31m[K/[m[K
+[257.763s]       |   [01;31m[K^[m[K
+[257.803s] gmake[2]: *** [CMakeFiles/px4_msgs__rosidl_generator_c.dir/build.make:4551: CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gimbal_v1_command__functions.c.o] Error 1
+[257.806s] gmake[1]: *** [CMakeFiles/Makefile2:213: CMakeFiles/px4_msgs__rosidl_generator_c.dir/all] Error 2
+[257.807s] gmake[1]: *** Waiting for unfinished jobs....
+[351.958s] [35m[1mConsolidate compiler generated dependencies of target px4_msgs__rosidl_typesupport_cpp[0m
+[352.797s] [  4%] [32mBuilding CXX object CMakeFiles/px4_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/px4_msgs/msg/action_request__type_support.cpp.o[0m
+[352.803s] [  4%] [32mBuilding CXX object CMakeFiles/px4_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/px4_msgs/msg/actuator_armed__type_support.cpp.o[0m
+[355.355s] [  4%] [32mBuilding CXX object CMakeFiles/px4_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/px4_msgs/msg/actuator_controls__type_support.cpp.o[0m
+[355.364s] [  4%] [32mBuilding CXX object CMakeFiles/px4_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/px4_msgs/msg/actuator_controls0__type_support.cpp.o[0m
+[357.175s] [  4%] [32mBuilding CXX object CMakeFiles/px4_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/px4_msgs/msg/actuator_controls1__type_support.cpp.o[0m
+[357.195s] [  4%] [32mBuilding CXX object CMakeFiles/px4_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/px4_msgs/msg/actuator_controls2__type_support.cpp.o[0m
+[358.941s] [  4%] [32mBuilding CXX object CMakeFiles/px4_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/px4_msgs/msg/actuator_controls3__type_support.cpp.o[0m
+[358.966s] [  5%] [32mBuilding CXX object CMakeFiles/px4_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/px4_msgs/msg/actuator_controls_status__type_support.cpp.o[0m
+[360.916s] [  5%] [32mBuilding CXX object CMakeFiles/px4_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/px4_msgs/msg/actuator_controls_status0__type_support.cpp.o[0m
+[360.939s] [  5%] [32mBuilding CXX object CMakeFiles/px4_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/px4_msgs/msg/actuator_controls_status1__type_support.cpp.o[0m
+[362.833s] [  5%] [32mBuilding CXX object CMakeFiles/px4_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/px4_msgs/msg/actuator_controls_virtual_fw__type_support.cpp.o[0m
+[362.946s] [  5%] [32mBuilding CXX object CMakeFiles/px4_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/px4_msgs/msg/actuator_controls_virtual_mc__type_support.cpp.o[0m
+[364.776s] [  5%] [32mBuilding CXX object CMakeFiles/px4_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/px4_msgs/msg/actuator_motors__type_support.cpp.o[0m
+[364.921s] [  5%] [32mBuilding CXX object CMakeFiles/px4_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/px4_msgs/msg/actuator_outputs__type_support.cpp.o[0m
+[366.736s] [  5%] [32mBuilding CXX object CMakeFiles/px4_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/px4_msgs/msg/actuator_outputs_sim__type_support.cpp.o[0m
+[366.877s] [  5%] [32mBuilding CXX object CMakeFiles/px4_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/px4_msgs/msg/actuator_servos__type_support.cpp.o[0m
+[368.704s] [  5%] [32mBuilding CXX object CMakeFiles/px4_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/px4_msgs/msg/actuator_servos_trim__type_support.cpp.o[0m
+[368.872s] [  5%] [32mBuilding CXX object CMakeFiles/px4_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/px4_msgs/msg/actuator_test__type_support.cpp.o[0m
+[370.807s] [  5%] [32mBuilding CXX object CMakeFiles/px4_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/px4_msgs/msg/adc_report__type_support.cpp.o[0m
+[370.940s] [  5%] [32mBuilding CXX object CMakeFiles/px4_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/px4_msgs/msg/airspeed__type_support.cpp.o[0m
+[372.864s] [  5%] [32mBuilding CXX object CMakeFiles/px4_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/px4_msgs/msg/airspeed_validated__type_support.cpp.o[0m
+[373.097s] [  5%] [32mBuilding CXX object CMakeFiles/px4_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/px4_msgs/msg/airspeed_wind__type_support.cpp.o[0m
+[374.937s] [  5%] [32mBuilding CXX object CMakeFiles/px4_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/px4_msgs/msg/autotune_attitude_control_status__type_support.cpp.o[0m
+[375.226s] [  5%] [32mBuilding CXX object CMakeFiles/px4_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/px4_msgs/msg/battery_status__type_support.cpp.o[0m
+[376.997s] [  6%] [32mBuilding CXX object CMakeFiles/px4_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/px4_msgs/msg/button_event__type_support.cpp.o[0m
+[377.271s] [  6%] [32mBuilding CXX object CMakeFiles/px4_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/px4_msgs/msg/camera_capture__type_support.cpp.o[0m
+[377.351s] [35m[1mConsolidate compiler generated dependencies of target px4_msgs__rosidl_typesupport_introspection_cpp[0m
+[378.391s] [  6%] [32mBuilding CXX object CMakeFiles/px4_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/px4_msgs/msg/detail/action_request__type_support.cpp.o[0m
+[378.834s] [  6%] [32mBuilding CXX object CMakeFiles/px4_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/px4_msgs/msg/camera_status__type_support.cpp.o[0m
+[379.424s] [  6%] [32mBuilding CXX object CMakeFiles/px4_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/px4_msgs/msg/camera_trigger__type_support.cpp.o[0m
+[380.840s] [  6%] [32mBuilding CXX object CMakeFiles/px4_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/px4_msgs/msg/detail/actuator_armed__type_support.cpp.o[0m
+[381.236s] [  6%] [32mBuilding CXX object CMakeFiles/px4_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/px4_msgs/msg/detail/actuator_controls__type_support.cpp.o[0m
+[381.433s] gmake[2]: *** Deleting file 'rosidl_typesupport_fastrtps_cpp/px4_msgs/msg/detail/geofence_result__rosidl_typesupport_fastrtps_cpp.hpp'
+[381.437s] gmake[2]: *** [CMakeFiles/px4_msgs__rosidl_typesupport_introspection_cpp.dir/build.make:1598: CMakeFiles/px4_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/px4_msgs/msg/detail/actuator_armed__type_support.cpp.o] Interrupt
+[381.444s] gmake[2]: *** [CMakeFiles/px4_msgs__rosidl_typesupport_introspection_cpp.dir/build.make:1612: CMakeFiles/px4_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/px4_msgs/msg/detail/actuator_controls__type_support.cpp.o] Interrupt
+[381.448s] gmake[2]: *** [CMakeFiles/px4_msgs__rosidl_typesupport_fastrtps_cpp.dir/build.make:696: rosidl_typesupport_fastrtps_cpp/px4_msgs/msg/detail/geofence_result__rosidl_typesupport_fastrtps_cpp.hpp] Interrupt
+[381.450s] gmake[1]: *** [CMakeFiles/Makefile2:290: CMakeFiles/px4_msgs__rosidl_typesupport_fastrtps_cpp.dir/all] Interrupt
+[381.455s] gmake[1]: *** [CMakeFiles/Makefile2:369: CMakeFiles/px4_msgs__rosidl_typesupport_introspection_cpp.dir/all] Interrupt
+[381.457s] gmake[2]: *** [CMakeFiles/px4_msgs__rosidl_typesupport_cpp.dir/build.make:1331: CMakeFiles/px4_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/px4_msgs/msg/cellular_status__type_support.cpp.o] Interrupt
+[381.460s] gmake[1]: *** [CMakeFiles/Makefile2:395: CMakeFiles/px4_msgs__rosidl_typesupport_cpp.dir/all] Interrupt
+[381.462s] gmake: *** [Makefile:146: all] Interrupt
+[381.465s] Invoked command in '/home/ubuntu/ros2_ws/build/px4_msgs' returned '-2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/ubuntu/ros2_ws/build/px4_msgs -- -j4 -l4

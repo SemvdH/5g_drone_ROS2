@@ -48,8 +48,13 @@ px4_msgs/msg/_distance_sensor.py
 px4_msgs/msg/_ekf2_timestamps.py
 px4_msgs/msg/_esc_report.py
 px4_msgs/msg/_esc_status.py
+px4_msgs/msg/_estimator_aid_source1d.py
+px4_msgs/msg/_estimator_aid_source2d.py
+px4_msgs/msg/_estimator_aid_source3d.py
 px4_msgs/msg/_estimator_attitude.py
 px4_msgs/msg/_estimator_baro_bias.py
+px4_msgs/msg/_estimator_bias.py
+px4_msgs/msg/_estimator_bias3d.py
 px4_msgs/msg/_estimator_event_flags.py
 px4_msgs/msg/_estimator_global_position.py
 px4_msgs/msg/_estimator_gps_status.py
@@ -67,11 +72,15 @@ px4_msgs/msg/_estimator_status_flags.py
 px4_msgs/msg/_estimator_visual_odometry_aligned.py
 px4_msgs/msg/_estimator_wind.py
 px4_msgs/msg/_event.py
+px4_msgs/msg/_failsafe_flags.py
 px4_msgs/msg/_failure_detector_status.py
 px4_msgs/msg/_follow_target.py
+px4_msgs/msg/_follow_target_estimator.py
+px4_msgs/msg/_follow_target_status.py
 px4_msgs/msg/_fw_virtual_attitude_setpoint.py
 px4_msgs/msg/_generator_status.py
 px4_msgs/msg/_geofence_result.py
+px4_msgs/msg/_gimbal_controls.py
 px4_msgs/msg/_gimbal_device_attitude_status.py
 px4_msgs/msg/_gimbal_device_information.py
 px4_msgs/msg/_gimbal_device_set_attitude.py
@@ -82,6 +91,8 @@ px4_msgs/msg/_gimbal_manager_status.py
 px4_msgs/msg/_gimbal_v1_command.py
 px4_msgs/msg/_gps_dump.py
 px4_msgs/msg/_gps_inject_data.py
+px4_msgs/msg/_gripper.py
+px4_msgs/msg/_health_report.py
 px4_msgs/msg/_heater_status.py
 px4_msgs/msg/_home_position.py
 px4_msgs/msg/_hover_thrust_estimate.py
@@ -90,8 +101,10 @@ px4_msgs/msg/_internal_combustion_engine_status.py
 px4_msgs/msg/_iridiumsbd_status.py
 px4_msgs/msg/_irlock_report.py
 px4_msgs/msg/_landing_gear.py
+px4_msgs/msg/_landing_gear_wheel.py
 px4_msgs/msg/_landing_target_innovations.py
 px4_msgs/msg/_landing_target_pose.py
+px4_msgs/msg/_launch_detection_status.py
 px4_msgs/msg/_led_control.py
 px4_msgs/msg/_log_message.py
 px4_msgs/msg/_logger_status.py
@@ -105,8 +118,10 @@ px4_msgs/msg/_mavlink_tunnel.py
 px4_msgs/msg/_mc_virtual_attitude_setpoint.py
 px4_msgs/msg/_mission.py
 px4_msgs/msg/_mission_result.py
+px4_msgs/msg/_mode_completed.py
 px4_msgs/msg/_mount_orientation.py
 px4_msgs/msg/_navigator_mission_item.py
+px4_msgs/msg/_normalized_unsigned_setpoint.py
 px4_msgs/msg/_npfg_status.py
 px4_msgs/msg/_obstacle_distance.py
 px4_msgs/msg/_obstacle_distance_fused.py
@@ -133,6 +148,9 @@ px4_msgs/msg/_power_monitor.py
 px4_msgs/msg/_pps_capture.py
 px4_msgs/msg/_pwm_input.py
 px4_msgs/msg/_px4_io_status.py
+px4_msgs/msg/_px4io_status.py
+px4_msgs/msg/_qshell_req.py
+px4_msgs/msg/_qshell_retval.py
 px4_msgs/msg/_radio_status.py
 px4_msgs/msg/_rate_ctrl_status.py
 px4_msgs/msg/_rc_channels.py
@@ -154,6 +172,7 @@ px4_msgs/msg/_sensor_gyro_fft.py
 px4_msgs/msg/_sensor_gyro_fifo.py
 px4_msgs/msg/_sensor_hygrometer.py
 px4_msgs/msg/_sensor_mag.py
+px4_msgs/msg/_sensor_optical_flow.py
 px4_msgs/msg/_sensor_preflight_mag.py
 px4_msgs/msg/_sensor_selection.py
 px4_msgs/msg/_sensors_status.py
@@ -166,6 +185,7 @@ px4_msgs/msg/_task_stack_info.py
 px4_msgs/msg/_tecs_status.py
 px4_msgs/msg/_telemetry_status.py
 px4_msgs/msg/_test_motor.py
+px4_msgs/msg/_tiltrotor_extra_controls.py
 px4_msgs/msg/_timesync.py
 px4_msgs/msg/_timesync_status.py
 px4_msgs/msg/_trajectory_bezier.py
@@ -204,6 +224,8 @@ px4_msgs/msg/_vehicle_local_position_setpoint.py
 px4_msgs/msg/_vehicle_magnetometer.py
 px4_msgs/msg/_vehicle_mocap_odometry.py
 px4_msgs/msg/_vehicle_odometry.py
+px4_msgs/msg/_vehicle_optical_flow.py
+px4_msgs/msg/_vehicle_optical_flow_vel.py
 px4_msgs/msg/_vehicle_rates_setpoint.py
 px4_msgs/msg/_vehicle_roi.py
 px4_msgs/msg/_vehicle_status.py

@@ -1,0 +1,297 @@
+[0.057s] Invoking command in '/home/ubuntu/ros2_ws/build/px4_ros_com': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/ubuntu/ros2_ws/build/px4_ros_com -- -j4 -l4
+[0.218s] -- Using C++17 compiler
+[0.221s] -- Found ament_cmake: 1.3.3 (/opt/ros/humble/share/ament_cmake/cmake)
+[2.293s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[3.908s] -- Found builtin_interfaces: 1.2.1 (/opt/ros/humble/share/builtin_interfaces/cmake)
+[4.023s] -- Found rosidl_generator_c: 3.1.4 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[4.034s] -- Found rosidl_adapter: 3.1.4 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[4.058s] -- Found rosidl_generator_cpp: 3.1.4 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[4.103s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[4.166s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[4.378s] -- Found rclcpp: 16.0.3 (/opt/ros/humble/share/rclcpp/cmake)
+[4.636s] -- Found rmw_implementation_cmake: 6.1.1 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[4.649s] -- Found rmw_fastrtps_cpp: 6.2.2 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[5.264s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[5.967s] -- Found px4_msgs: 2.0.1 (/home/ubuntu/ros2_ws/install/px4_msgs/share/px4_msgs/cmake)
+[6.102s] -- Found sensor_msgs: 4.2.3 (/opt/ros/humble/share/sensor_msgs/cmake)
+[6.706s] -- fastrtpsgen found in /usr/local/bin
+[6.979s] openjdk version "11.0.18" 2023-01-17
+[6.982s] OpenJDK Runtime Environment (build 11.0.18+10-post-Ubuntu-0ubuntu122.04)
+[6.984s] OpenJDK 64-Bit Server VM (build 11.0.18+10-post-Ubuntu-0ubuntu122.04, mixed mode)
+[7.134s] -- fastrtpsgen version 1.0.4
+[7.138s] -- px4_msgs message dir under /home/ubuntu/ros2_ws/install/px4_msgs/share/px4_msgs/msg
+[7.142s] -- IDL definitions under /home/ubuntu/ros2_ws/install/px4_msgs/share/px4_msgs/msg
+[7.146s] -- Retrieving list of msgs to send...
+[7.393s] -- List of msgs to send: DebugArray, DebugKeyValue, DebugValue, DebugVect, OffboardControlMode, OnboardComputerStatus, OpticalFlow, PositionSetpoint, PositionSetpointTriplet, TelemetryStatus, Timesync, TrajectoryBezier, VehicleCommand, VehicleLocalPositionSetpoint, VehicleTrajectoryBezier, VehicleTrajectoryWaypoint, TrajectorySetpoint, VehicleMocapOdometry, VehicleVisualOdometry
+[7.396s] -- Retrieving list of msgs to receive...
+[7.621s] -- List of msgs to receive: CollisionConstraints, SensorCombined, Timesync, TimesyncStatus, TrajectoryWaypoint, VehicleControlMode, VehicleOdometry, VehicleStatus
+[8.001s] -- Configuring done
+[9.054s] -- Generating done
+[9.070s] -- Build files have been written to: /home/ubuntu/ros2_ws/build/px4_ros_com
+[9.206s] [  1%] [34m[1mGenerating micro-RTPS agent code...[0m
+[9.242s] [  2%] [32mBuilding CXX object CMakeFiles/sensor_combined_listener.dir/src/examples/listeners/sensor_combined_listener.cpp.o[0m
+[9.247s] [  3%] [32mBuilding CXX object CMakeFiles/frame_transforms.dir/src/lib/frame_transforms.cpp.o[0m
+[9.278s] [  4%] [32mBuilding CXX object CMakeFiles/vehicle_gps_position_listener.dir/src/examples/listeners/vehicle_gps_position_listener.cpp.o[0m
+[9.342s] In file included from [01m[K/home/ubuntu/ros2_ws/src/px4_ros_com/src/lib/frame_transforms.cpp:41[m[K:
+[9.346s] [01m[K/home/ubuntu/ros2_ws/src/px4_ros_com/include/px4_ros_com/frame_transforms.h:45:10:[m[K [01;31m[Kfatal error: [m[KEigen/Eigen: No such file or directory
+[9.348s]    45 | #include [01;31m[K<Eigen/Eigen>[m[K
+[9.351s]       |          [01;31m[K^~~~~~~~~~~~~[m[K
+[9.357s] compilation terminated.
+[9.359s] gmake[2]: *** [CMakeFiles/frame_transforms.dir/build.make:76: CMakeFiles/frame_transforms.dir/src/lib/frame_transforms.cpp.o] Error 1
+[9.361s] gmake[1]: *** [CMakeFiles/Makefile2:147: CMakeFiles/frame_transforms.dir/all] Error 2
+[9.364s] gmake[1]: *** Waiting for unfinished jobs....
+[32.336s] [01m[K/home/ubuntu/ros2_ws/src/px4_ros_com/src/examples/listeners/vehicle_gps_position_listener.cpp:[m[K In constructor ‘[01m[KVehicleGpsPositionListener::VehicleGpsPositionListener()[m[K’:
+[32.342s] [01m[K/home/ubuntu/ros2_ws/src/px4_ros_com/src/examples/listeners/vehicle_gps_position_listener.cpp:50:93:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KVehicleGpsPositionListener::create_subscription<px4_msgs::msg::VehicleGpsPosition>(const char [29], VehicleGpsPositionListener::VehicleGpsPositionListener()::<lambda(px4_msgs::msg::VehicleGpsPosition_<std::allocator<void> >::UniquePtr)>)[m[K’
+[32.354s]    50 |                 subscription_ = [01;31m[Kthis->create_subscription<px4_msgs::msg::VehicleGpsPosition>([m[K
+[32.358s]       |                                 [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^[m[K
+[32.367s]    51 | [01;31m[K                        "fmu/vehicle_gps_position/out",[m[K
+[32.371s]       |                         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K                                      
+[32.375s]    52 | [01;31m[K#ifdef ROS_DEFAULT_API[m[K
+[32.378s]       | [01;31m[K~~~~~~~~~~~~~~~~~~~~~~[m[K                                                                       
+[32.392s]    53 | [01;31m[K            10,[m[K
+[32.408s]       |             [01;31m[K~~~[m[K                                                                              
+[32.412s]    54 | [01;31m[K#endif[m[K
+[32.417s]       | [01;31m[K~~~~~~[m[K                                                                                       
+[32.441s]    55 | [01;31m[K                        [this](const px4_msgs::msg::VehicleGpsPosition::UniquePtr msg) {[m[K
+[32.447s]       |                         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K     
+[32.464s]    56 | [01;31m[K                        std::cout << "\n\n\n\n\n\n\n\n\n\n";[m[K
+[32.469s]       |                         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K                                 
+[32.486s]    57 | [01;31m[K                        std::cout << "RECEIVED VEHICLE GPS POSITION DATA"   << std::endl;[m[K
+[32.490s]       |                         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K    
+[32.495s]    58 | [01;31m[K                        std::cout << "=================================="   << std::endl;[m[K
+[32.512s]       |                         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K    
+[32.516s]    59 | [01;31m[K                        std::cout << "ts: "      << msg->timestamp    << std::endl;[m[K
+[32.537s]       |                         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K          
+[32.541s]    60 | [01;31m[K                        std::cout << "lat: " << msg->lat  << std::endl;[m[K
+[32.546s]       |                         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K                      
+[32.562s]    61 | [01;31m[K                        std::cout << "lon: " << msg->lon << std::endl;[m[K
+[32.566s]       |                         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K                       
+[32.571s]    62 | [01;31m[K                        std::cout << "alt: " << msg->alt  << std::endl;[m[K
+[32.585s]       |                         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K                      
+[32.589s]    63 | [01;31m[K                        std::cout << "alt_ellipsoid: " << msg->alt_ellipsoid << std::endl;[m[K
+[32.606s]       |                         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K   
+[32.610s]    64 | [01;31m[K                        std::cout << "s_variance_m_s: " << msg->s_variance_m_s << std::endl;[m[K
+[32.614s]       |                         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K 
+[32.623s]    65 | [01;31m[K                        std::cout << "c_variance_rad: " << msg->c_variance_rad << std::endl;[m[K
+[32.627s]       |                         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K 
+[32.631s]    66 | [01;31m[K                        std::cout << "fix_type: " << msg->fix_type << std::endl;[m[K
+[32.648s]       |                         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K             
+[32.652s]    67 | [01;31m[K                        std::cout << "eph: " << msg->eph << std::endl;[m[K
+[32.655s]       |                         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K                       
+[32.671s]    68 | [01;31m[K                        std::cout << "epv: " << msg->epv << std::endl;[m[K
+[32.679s]       |                         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K                       
+[32.697s]    69 | [01;31m[K                        std::cout << "hdop: " << msg->hdop << std::endl;[m[K
+[32.701s]       |                         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K                     
+[32.705s]    70 | [01;31m[K                        std::cout << "vdop: " << msg->vdop << std::endl;[m[K
+[32.721s]       |                         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K                     
+[32.724s]    71 | [01;31m[K                        std::cout << "noise_per_ms: " << msg->noise_per_ms << std::endl;[m[K
+[32.729s]       |                         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K     
+[32.733s]    72 | [01;31m[K                        std::cout << "vel_m_s: " << msg->vel_m_s << std::endl;[m[K
+[32.736s]       |                         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K               
+[32.740s]    73 | [01;31m[K                        std::cout << "vel_n_m_s: " << msg->vel_n_m_s << std::endl;[m[K
+[32.743s]       |                         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K           
+[32.746s]    74 | [01;31m[K                        std::cout << "vel_e_m_s: " << msg->vel_e_m_s << std::endl;[m[K
+[32.750s]       |                         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K           
+[32.754s]    75 | [01;31m[K                        std::cout << "vel_d_m_s: " << msg->vel_d_m_s << std::endl;[m[K
+[32.758s]       |                         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K           
+[32.761s]    76 | [01;31m[K                        std::cout << "cog_rad: " << msg->cog_rad << std::endl;[m[K
+[32.764s]       |                         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K               
+[32.769s]    77 | [01;31m[K                        std::cout << "vel_ned_valid: " << msg->vel_ned_valid << std::endl;[m[K
+[32.773s]       |                         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K   
+[32.776s]    78 | [01;31m[K                        std::cout << "timestamp_time_relative: " << msg->timestamp_time_relative << std::endl;[m[K
+[32.781s]       |                         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[32.784s]    79 | [01;31m[K                        std::cout << "time_utc_usec: " << msg->time_utc_usec << std::endl;[m[K
+[32.788s]       |                         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K   
+[32.792s]    80 | [01;31m[K                        std::cout << "satellites_used: " << msg->satellites_used << std::endl;[m[K
+[32.796s]       |                         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[32.799s]    81 | [01;31m[K                        std::cout << "heading: " << msg->heading << std::endl;[m[K
+[32.803s]       |                         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K               
+[32.806s]    82 | [01;31m[K                        std::cout << "heading_offset: " << msg->heading_offset << std::endl;[m[K
+[32.810s]       |                         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K 
+[32.813s]    83 | [01;31m[K                })[m[K;
+[32.818s]       |                 [01;31m[K~~[m[K                                                                           
+[32.836s] In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/single_threaded_executor.hpp:28[m[K,
+[32.839s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:22[m[K,
+[32.843s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+[32.851s]                  from [01m[K/home/ubuntu/ros2_ws/src/px4_ros_com/src/examples/listeners/vehicle_gps_position_listener.cpp:40[m[K:
+[32.856s] [01m[K/opt/ros/humble/include/rclcpp/rclcpp/node.hpp:219:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class MessageT, class CallbackT, class AllocatorT, class SubscriptionT, class MessageMemoryStrategyT> std::shared_ptr<ROSMessageT> rclcpp::Node::create_subscription(const string&, const rclcpp::QoS&, CallbackT&&, const rclcpp::SubscriptionOptionsWithAllocator<AllocatorT>&, typename MessageMemoryStrategyT::SharedPtr)[m[K’
+[32.862s]   219 |   [01;36m[Kcreate_subscription[m[K(
+[32.866s]       |   [01;36m[K^~~~~~~~~~~~~~~~~~~[m[K
+[32.870s] [01m[K/opt/ros/humble/include/rclcpp/rclcpp/node.hpp:219:3:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[32.874s] [01m[K/home/ubuntu/ros2_ws/src/px4_ros_com/src/examples/listeners/vehicle_gps_position_listener.cpp:50:93:[m[K [01;36m[Knote: [m[K  candidate expects 5 arguments, 2 provided
+[32.878s]    50 |                 subscription_ = [01;36m[Kthis->create_subscription<px4_msgs::msg::VehicleGpsPosition>([m[K
+[32.883s]       |                                 [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^[m[K
+[32.887s]    51 | [01;36m[K                        "fmu/vehicle_gps_position/out",[m[K
+[32.890s]       |                         [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K                                      
+[32.894s]    52 | [01;36m[K#ifdef ROS_DEFAULT_API[m[K
+[32.897s]       | [01;36m[K~~~~~~~~~~~~~~~~~~~~~~[m[K                                                                       
+[32.900s]    53 | [01;36m[K            10,[m[K
+[32.904s]       |             [01;36m[K~~~[m[K                                                                              
+[32.908s]    54 | [01;36m[K#endif[m[K
+[32.912s]       | [01;36m[K~~~~~~[m[K                                                                                       
+[32.916s]    55 | [01;36m[K                        [this](const px4_msgs::msg::VehicleGpsPosition::UniquePtr msg) {[m[K
+[32.919s]       |                         [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K     
+[32.930s]    56 | [01;36m[K                        std::cout << "\n\n\n\n\n\n\n\n\n\n";[m[K
+[32.933s]       |                         [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K                                 
+[32.938s]    57 | [01;36m[K                        std::cout << "RECEIVED VEHICLE GPS POSITION DATA"   << std::endl;[m[K
+[32.942s]       |                         [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K    
+[32.946s]    58 | [01;36m[K                        std::cout << "=================================="   << std::endl;[m[K
+[32.950s]       |                         [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K    
+[32.954s]    59 | [01;36m[K                        std::cout << "ts: "      << msg->timestamp    << std::endl;[m[K
+[32.959s]       |                         [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K          
+[32.963s]    60 | [01;36m[K                        std::cout << "lat: " << msg->lat  << std::endl;[m[K
+[32.966s]       |                         [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K                      
+[32.970s]    61 | [01;36m[K                        std::cout << "lon: " << msg->lon << std::endl;[m[K
+[32.974s]       |                         [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K                       
+[32.977s]    62 | [01;36m[K                        std::cout << "alt: " << msg->alt  << std::endl;[m[K
+[32.980s]       |                         [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K                      
+[32.984s]    63 | [01;36m[K                        std::cout << "alt_ellipsoid: " << msg->alt_ellipsoid << std::endl;[m[K
+[32.989s]       |                         [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K   
+[32.994s]    64 | [01;36m[K                        std::cout << "s_variance_m_s: " << msg->s_variance_m_s << std::endl;[m[K
+[32.998s]       |                         [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K 
+[33.003s]    65 | [01;36m[K                        std::cout << "c_variance_rad: " << msg->c_variance_rad << std::endl;[m[K
+[33.007s]       |                         [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K 
+[33.011s]    66 | [01;36m[K                        std::cout << "fix_type: " << msg->fix_type << std::endl;[m[K
+[33.014s]       |                         [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K             
+[33.018s]    67 | [01;36m[K                        std::cout << "eph: " << msg->eph << std::endl;[m[K
+[33.021s]       |                         [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K                       
+[33.024s]    68 | [01;36m[K                        std::cout << "epv: " << msg->epv << std::endl;[m[K
+[33.028s]       |                         [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K                       
+[33.034s]    69 | [01;36m[K                        std::cout << "hdop: " << msg->hdop << std::endl;[m[K
+[33.037s]       |                         [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K                     
+[33.040s]    70 | [01;36m[K                        std::cout << "vdop: " << msg->vdop << std::endl;[m[K
+[33.044s]       |                         [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K                     
+[33.047s]    71 | [01;36m[K                        std::cout << "noise_per_ms: " << msg->noise_per_ms << std::endl;[m[K
+[33.051s]       |                         [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K     
+[33.054s]    72 | [01;36m[K                        std::cout << "vel_m_s: " << msg->vel_m_s << std::endl;[m[K
+[33.059s]       |                         [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K               
+[33.062s]    73 | [01;36m[K                        std::cout << "vel_n_m_s: " << msg->vel_n_m_s << std::endl;[m[K
+[33.066s]       |                         [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K           
+[33.069s]    74 | [01;36m[K                        std::cout << "vel_e_m_s: " << msg->vel_e_m_s << std::endl;[m[K
+[33.073s]       |                         [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K           
+[33.076s]    75 | [01;36m[K                        std::cout << "vel_d_m_s: " << msg->vel_d_m_s << std::endl;[m[K
+[33.081s]       |                         [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K           
+[33.085s]    76 | [01;36m[K                        std::cout << "cog_rad: " << msg->cog_rad << std::endl;[m[K
+[33.088s]       |                         [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K               
+[33.092s]    77 | [01;36m[K                        std::cout << "vel_ned_valid: " << msg->vel_ned_valid << std::endl;[m[K
+[33.096s]       |                         [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K   
+[33.100s]    78 | [01;36m[K                        std::cout << "timestamp_time_relative: " << msg->timestamp_time_relative << std::endl;[m[K
+[33.104s]       |                         [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[33.107s]    79 | [01;36m[K                        std::cout << "time_utc_usec: " << msg->time_utc_usec << std::endl;[m[K
+[33.111s]       |                         [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K   
+[33.114s]    80 | [01;36m[K                        std::cout << "satellites_used: " << msg->satellites_used << std::endl;[m[K
+[33.119s]       |                         [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[33.123s]    81 | [01;36m[K                        std::cout << "heading: " << msg->heading << std::endl;[m[K
+[33.127s]       |                         [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K               
+[33.131s]    82 | [01;36m[K                        std::cout << "heading_offset: " << msg->heading_offset << std::endl;[m[K
+[33.135s]       |                         [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K 
+[33.138s]    83 | [01;36m[K                })[m[K;
+[33.142s]       |                 [01;36m[K~~[m[K                                                                           
+[33.147s] [01m[K/home/ubuntu/ros2_ws/src/px4_ros_com/src/examples/listeners/sensor_combined_listener.cpp:[m[K In constructor ‘[01m[KSensorCombinedListener::SensorCombinedListener()[m[K’:
+[33.151s] [01m[K/home/ubuntu/ros2_ws/src/px4_ros_com/src/examples/listeners/sensor_combined_listener.cpp:52:89:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KSensorCombinedListener::create_subscription<px4_msgs::msg::SensorCombined>(const char [24], SensorCombinedListener::SensorCombinedListener()::<lambda(px4_msgs::msg::SensorCombined_<std::allocator<void> >::UniquePtr)>)[m[K’
+[33.158s]    52 |                 subscription_ = [01;31m[Kthis->create_subscription<px4_msgs::msg::SensorCombined>([m[K
+[33.163s]       |                                 [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^[m[K
+[33.167s]    53 | [01;31m[K                        "fmu/sensor_combined/out",[m[K
+[33.170s]       |                         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K                                       
+[33.174s]    54 | [01;31m[K#ifdef ROS_DEFAULT_API[m[K
+[33.176s]       | [01;31m[K~~~~~~~~~~~~~~~~~~~~~~[m[K                                                                   
+[33.180s]    55 | [01;31m[K            10,[m[K
+[33.184s]       |             [01;31m[K~~~[m[K                                                                          
+[33.187s]    56 | [01;31m[K#endif[m[K
+[33.191s]       | [01;31m[K~~~~~~[m[K                                                                                   
+[33.196s]    57 | [01;31m[K                        [this](const px4_msgs::msg::SensorCombined::UniquePtr msg) {[m[K
+[33.200s]       |                         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K     
+[33.205s]    58 | [01;31m[K                        std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";[m[K
+[33.209s]       |                         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K 
+[33.213s]    59 | [01;31m[K                        std::cout << "RECEIVED SENSOR COMBINED DATA"   << std::endl;[m[K
+[33.217s]       |                         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K     
+[33.222s]    60 | [01;31m[K                        std::cout << "============================="   << std::endl;[m[K
+[33.226s]       |                         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K     
+[33.231s]    61 | [01;31m[K                        std::cout << "ts: "          << msg->timestamp    << std::endl;[m[K
+[33.236s]       |                         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K  
+[33.241s]    62 | [01;31m[K                        std::cout << "gyro_rad[0]: " << msg->gyro_rad[0]  << std::endl;[m[K
+[33.245s]       |                         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K  
+[33.249s]    63 | [01;31m[K                        std::cout << "gyro_rad[1]: " << msg->gyro_rad[1]  << std::endl;[m[K
+[33.253s]       |                         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K  
+[33.257s]    64 | [01;31m[K                        std::cout << "gyro_rad[2]: " << msg->gyro_rad[2]  << std::endl;[m[K
+[33.261s]       |                         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K  
+[33.266s]    65 | [01;31m[K                        std::cout << "gyro_integral_dt: " << msg->gyro_integral_dt << std::endl;[m[K
+[33.270s]       |                         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[33.274s]    66 | [01;31m[K                        std::cout << "accelerometer_timestamp_relative: " << msg->accelerometer_timestamp_relative << std::endl;[m[K
+[33.278s]       |                         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[33.282s]    67 | [01;31m[K                        std::cout << "accelerometer_m_s2[0]: " << msg->accelerometer_m_s2[0] << std::endl;[m[K
+[33.286s]       |                         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[33.291s]    68 | [01;31m[K                        std::cout << "accelerometer_m_s2[1]: " << msg->accelerometer_m_s2[1] << std::endl;[m[K
+[33.296s]       |                         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[33.300s]    69 | [01;31m[K                        std::cout << "accelerometer_m_s2[2]: " << msg->accelerometer_m_s2[2] << std::endl;[m[K
+[33.304s]       |                         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[33.307s]    70 | [01;31m[K                        std::cout << "accelerometer_integral_dt: " << msg->accelerometer_integral_dt << std::endl;[m[K
+[33.311s]       |                         [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[33.315s]    71 | [01;31m[K                })[m[K;
+[33.319s]       |                 [01;31m[K~~[m[K                                                                       
+[33.322s] In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/single_threaded_executor.hpp:28[m[K,
+[33.328s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:22[m[K,
+[33.332s]                  from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+[33.336s]                  from [01m[K/home/ubuntu/ros2_ws/src/px4_ros_com/src/examples/listeners/sensor_combined_listener.cpp:42[m[K:
+[33.339s] [01m[K/opt/ros/humble/include/rclcpp/rclcpp/node.hpp:219:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class MessageT, class CallbackT, class AllocatorT, class SubscriptionT, class MessageMemoryStrategyT> std::shared_ptr<ROSMessageT> rclcpp::Node::create_subscription(const string&, const rclcpp::QoS&, CallbackT&&, const rclcpp::SubscriptionOptionsWithAllocator<AllocatorT>&, typename MessageMemoryStrategyT::SharedPtr)[m[K’
+[33.349s]   219 |   [01;36m[Kcreate_subscription[m[K(
+[33.356s]       |   [01;36m[K^~~~~~~~~~~~~~~~~~~[m[K
+[33.363s] [01m[K/opt/ros/humble/include/rclcpp/rclcpp/node.hpp:219:3:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[33.370s] [01m[K/home/ubuntu/ros2_ws/src/px4_ros_com/src/examples/listeners/sensor_combined_listener.cpp:52:89:[m[K [01;36m[Knote: [m[K  candidate expects 5 arguments, 2 provided
+[33.376s]    52 |                 subscription_ = [01;36m[Kthis->create_subscription<px4_msgs::msg::SensorCombined>([m[K
+[33.381s]       |                                 [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^[m[K
+[33.385s]    53 | [01;36m[K                        "fmu/sensor_combined/out",[m[K
+[33.388s]       |                         [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K                                       
+[33.392s]    54 | [01;36m[K#ifdef ROS_DEFAULT_API[m[K
+[33.397s]       | [01;36m[K~~~~~~~~~~~~~~~~~~~~~~[m[K                                                                   
+[33.401s]    55 | [01;36m[K            10,[m[K
+[33.405s]       |             [01;36m[K~~~[m[K                                                                          
+[33.409s]    56 | [01;36m[K#endif[m[K
+[33.414s]       | [01;36m[K~~~~~~[m[K                                                                                   
+[33.418s]    57 | [01;36m[K                        [this](const px4_msgs::msg::SensorCombined::UniquePtr msg) {[m[K
+[33.422s]       |                         [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K     
+[33.426s]    58 | [01;36m[K                        std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";[m[K
+[33.431s]       |                         [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K 
+[33.434s]    59 | [01;36m[K                        std::cout << "RECEIVED SENSOR COMBINED DATA"   << std::endl;[m[K
+[33.439s]       |                         [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K     
+[33.445s]    60 | [01;36m[K                        std::cout << "============================="   << std::endl;[m[K
+[33.449s]       |                         [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K     
+[33.453s]    61 | [01;36m[K                        std::cout << "ts: "          << msg->timestamp    << std::endl;[m[K
+[33.457s]       |                         [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K  
+[33.462s]    62 | [01;36m[K                        std::cout << "gyro_rad[0]: " << msg->gyro_rad[0]  << std::endl;[m[K
+[33.466s]       |                         [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K  
+[33.470s]    63 | [01;36m[K                        std::cout << "gyro_rad[1]: " << msg->gyro_rad[1]  << std::endl;[m[K
+[33.473s]       |                         [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K  
+[33.476s]    64 | [01;36m[K                        std::cout << "gyro_rad[2]: " << msg->gyro_rad[2]  << std::endl;[m[K
+[33.480s]       |                         [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K  
+[33.484s]    65 | [01;36m[K                        std::cout << "gyro_integral_dt: " << msg->gyro_integral_dt << std::endl;[m[K
+[33.487s]       |                         [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[33.491s]    66 | [01;36m[K                        std::cout << "accelerometer_timestamp_relative: " << msg->accelerometer_timestamp_relative << std::endl;[m[K
+[33.494s]       |                         [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[33.498s]    67 | [01;36m[K                        std::cout << "accelerometer_m_s2[0]: " << msg->accelerometer_m_s2[0] << std::endl;[m[K
+[33.501s]       |                         [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[33.504s]    68 | [01;36m[K                        std::cout << "accelerometer_m_s2[1]: " << msg->accelerometer_m_s2[1] << std::endl;[m[K
+[33.508s]       |                         [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[33.512s]    69 | [01;36m[K                        std::cout << "accelerometer_m_s2[2]: " << msg->accelerometer_m_s2[2] << std::endl;[m[K
+[33.515s]       |                         [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[33.519s]    70 | [01;36m[K                        std::cout << "accelerometer_integral_dt: " << msg->accelerometer_integral_dt << std::endl;[m[K
+[33.522s]       |                         [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[33.525s]    71 | [01;36m[K                })[m[K;
+[33.529s]       |                 [01;36m[K~~[m[K                                                                       
+[39.524s] gmake[2]: *** [CMakeFiles/vehicle_gps_position_listener.dir/build.make:76: CMakeFiles/vehicle_gps_position_listener.dir/src/examples/listeners/vehicle_gps_position_listener.cpp.o] Error 1
+[39.527s] gmake[1]: *** [CMakeFiles/Makefile2:225: CMakeFiles/vehicle_gps_position_listener.dir/all] Error 2
+[39.730s] gmake[2]: *** [CMakeFiles/sensor_combined_listener.dir/build.make:76: CMakeFiles/sensor_combined_listener.dir/src/examples/listeners/sensor_combined_listener.cpp.o] Error 1
+[39.734s] gmake[1]: *** [CMakeFiles/Makefile2:199: CMakeFiles/sensor_combined_listener.dir/all] Error 2
+[49.608s] [  5%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/microRTPS_agent.cpp.o[0m
+[49.612s] [  6%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/microRTPS_transport.cpp.o[0m
+[49.616s] [  7%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/microRTPS_timesync.cpp.o[0m
+[49.618s] [  8%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/RtpsTopics.cpp.o[0m
+[51.238s] [  9%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/DebugArray.cpp.o[0m
+[54.831s] [ 10%] [32mBuilding CXX object CMakeFiles/micrortps_agent.dir/src/micrortps_agent/DebugArrayPubSubTypes.cpp.o[0m
+[617.686s] gmake[2]: *** [CMakeFiles/micrortps_agent.dir/build.make:538: CMakeFiles/micrortps_agent.dir/src/micrortps_agent/microRTPS_timesync.cpp.o] Interrupt
+[617.696s] gmake[2]: *** [CMakeFiles/micrortps_agent.dir/build.make:552: CMakeFiles/micrortps_agent.dir/src/micrortps_agent/RtpsTopics.cpp.o] Interrupt
+[617.699s] gmake[2]: *** [CMakeFiles/micrortps_agent.dir/build.make:510: CMakeFiles/micrortps_agent.dir/src/micrortps_agent/microRTPS_agent.cpp.o] Interrupt
+[617.702s] gmake[2]: *** [CMakeFiles/micrortps_agent.dir/build.make:580: CMakeFiles/micrortps_agent.dir/src/micrortps_agent/DebugArrayPubSubTypes.cpp.o] Interrupt
+[617.706s] gmake[1]: *** [CMakeFiles/Makefile2:173: CMakeFiles/micrortps_agent.dir/all] Interrupt
+[617.708s] gmake: *** [Makefile:146: all] Interrupt
+[617.713s] Invoked command in '/home/ubuntu/ros2_ws/build/px4_ros_com' returned '-2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/ubuntu/ros2_ws/build/px4_ros_com -- -j4 -l4
