@@ -8,7 +8,6 @@ set(CMAKE_IMPORT_FILE_VERSION 1)
 # Import target "px4_msgs::px4_msgs__rosidl_typesupport_c" for configuration "RELWITHDEBINFO"
 set_property(TARGET px4_msgs::px4_msgs__rosidl_typesupport_c APPEND PROPERTY IMPORTED_CONFIGURATIONS RELWITHDEBINFO)
 set_target_properties(px4_msgs::px4_msgs__rosidl_typesupport_c PROPERTIES
-  IMPORTED_LINK_DEPENDENT_LIBRARIES_RELWITHDEBINFO "rosidl_runtime_c::rosidl_runtime_c;rosidl_typesupport_c::rosidl_typesupport_c"
   IMPORTED_LOCATION_RELWITHDEBINFO "${_IMPORT_PREFIX}/lib/libpx4_msgs__rosidl_typesupport_c.so"
   IMPORTED_SONAME_RELWITHDEBINFO "libpx4_msgs__rosidl_typesupport_c.so"
   )
