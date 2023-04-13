@@ -268,6 +268,9 @@ PYTHON_VERSION:STRING=
 //Name of the computer/site where compile is being run
 SITE:STRING=ubuntu
 
+//The directory containing a CMake configuration file for TerabeeApi.
+TerabeeApi_DIR:PATH=/usr/local/lib/cmake/TerabeeApi
+
 //The directory containing a CMake configuration file for TinyXML2.
 TinyXML2_DIR:PATH=TinyXML2_DIR-NOTFOUND
 
@@ -658,6 +661,8 @@ FIND_PACKAGE_MESSAGE_DETAILS_FastRTPS:INTERNAL=[/opt/ros/foxy/include][/opt/ros/
 FIND_PACKAGE_MESSAGE_DETAILS_OpenSSL:INTERNAL=[/usr/lib/aarch64-linux-gnu/libcrypto.so][/usr/include][c ][v1.1.1f()]
 //Details about finding PythonInterp
 FIND_PACKAGE_MESSAGE_DETAILS_PythonInterp:INTERNAL=[/usr/bin/python3][v3.8.10(3)]
+//Details about finding TerabeeApi
+FIND_PACKAGE_MESSAGE_DETAILS_TerabeeApi:INTERNAL=[/usr/local/lib/libterabeeapi.so][/usr/local/lib/cmake/TerabeeApi/../../../include][v()]
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
 //ADVANCED property for variable: OPENSSL_CRYPTO_LIBRARY

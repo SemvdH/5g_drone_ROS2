@@ -506,6 +506,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/usr/lib/aarch64-linux-gnu/cmake/spdlog/spdlogConfigTargets-none.cmake"
   "/usr/lib/aarch64-linux-gnu/cmake/spdlog/spdlogConfigTargets.cmake"
   "/usr/lib/aarch64-linux-gnu/cmake/spdlog/spdlogConfigVersion.cmake"
+  "/usr/local/lib/cmake/TerabeeApi/TerabeeApiConfig.cmake"
   "/usr/share/cmake-3.16/Modules/CMakeCInformation.cmake"
   "/usr/share/cmake-3.16/Modules/CMakeCXXInformation.cmake"
   "/usr/share/cmake-3.16/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake"

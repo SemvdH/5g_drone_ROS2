@@ -1,0 +1,209 @@
+[0.000000] (-) TimerEvent: {}
+[0.000980] (-) JobUnselected: {'identifier': 'drone_sensors'}
+[0.001271] (-) JobUnselected: {'identifier': 'px4_msgs'}
+[0.001937] (-) JobUnselected: {'identifier': 'px4_ros_com'}
+[0.002456] (beacon_positioning) JobQueued: {'identifier': 'beacon_positioning', 'dependencies': OrderedDict()}
+[0.003446] (beacon_positioning) JobStarted: {'identifier': 'beacon_positioning'}
+[0.099404] (-) TimerEvent: {}
+[0.111745] (beacon_positioning) JobProgress: {'identifier': 'beacon_positioning', 'progress': 'cmake'}
+[0.114571] (beacon_positioning) JobProgress: {'identifier': 'beacon_positioning', 'progress': 'build'}
+[0.117324] (beacon_positioning) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/ubuntu/ros2_ws/build/beacon_positioning', '--', '-j4', '-l4'], 'cwd': '/home/ubuntu/ros2_ws/build/beacon_positioning', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'ubuntu'), ('SSH_CLIENT', '10.1.1.110 56300 22'), ('LC_TIME', 'nl_NL.UTF-8'), ('XDG_SESSION_TYPE', 'tty'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/home/ubuntu/ros2_ws/install/px4_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/ubuntu'), ('OLDPWD', '/home/ubuntu/ros2_ws/src/beacon_positioning'), ('SSH_TTY', '/dev/pts/0'), ('ROS_PYTHON_VERSION', '3'), ('LC_MONETARY', 'nl_NL.UTF-8'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('_colcon_cd_root', '/opt/ros/foxy/'), ('COLCON_PREFIX_PATH', '/home/ubuntu/ros2_ws/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'ubuntu'), ('_', '/home/ubuntu/.local/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '9'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/ubuntu/.local/bin:/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('LC_ADDRESS', 'nl_NL.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('LANG', 'en_US.UTF-8'), ('LC_TELEPHONE', 'nl_NL.UTF-8'), ('RMW_IMPLEMENTATION', 'rmw_fastrtps_cpp'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('ROS_DOMAIN_ID', '0'), ('AMENT_PREFIX_PATH', '/home/ubuntu/ros2_ws/install/beacon_positioning:/home/ubuntu/ros2_ws/install/px4_msgs:/home/ubuntu/ros2_ws/install/drone_sensors:/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('LC_NAME', 'nl_NL.UTF-8'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'nl_NL.UTF-8'), ('LC_IDENTIFICATION', 'nl_NL.UTF-8'), ('PWD', '/home/ubuntu/ros2_ws/build/beacon_positioning'), ('LC_ALL', 'en_US.UTF-8'), ('SSH_CONNECTION', '10.1.1.110 56300 10.1.1.68 22'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/ubuntu/ros2_ws/install/px4_msgs/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('LC_NUMERIC', 'nl_NL.UTF-8'), ('LC_PAPER', 'nl_NL.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/ubuntu/ros2_ws/install/beacon_positioning:/home/ubuntu/ros2_ws/install/px4_msgs:/home/ubuntu/ros2_ws/install/drone_sensors:/opt/ros/foxy')]), 'shell': False}
+[0.199582] (-) TimerEvent: {}
+[0.231654] (beacon_positioning) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.11 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[0.299700] (-) TimerEvent: {}
+[0.327640] (beacon_positioning) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[0.399830] (-) TimerEvent: {}
+[0.500415] (-) TimerEvent: {}
+[0.601053] (-) TimerEvent: {}
+[0.701684] (-) TimerEvent: {}
+[0.802301] (-) TimerEvent: {}
+[0.902947] (-) TimerEvent: {}
+[1.003657] (-) TimerEvent: {}
+[1.012393] (beacon_positioning) StdoutLine: {'line': b'-- Found rclcpp: 2.4.2 (/opt/ros/foxy/share/rclcpp/cmake)\n'}
+[1.103827] (-) TimerEvent: {}
+[1.141111] (beacon_positioning) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[1.153205] (beacon_positioning) StdoutLine: {'line': b'-- Found rosidl_adapter: 1.3.0 (/opt/ros/foxy/share/rosidl_adapter/cmake)\n'}
+[1.203980] (-) TimerEvent: {}
+[1.304647] (-) TimerEvent: {}
+[1.405321] (-) TimerEvent: {}
+[1.506041] (-) TimerEvent: {}
+[1.606737] (-) TimerEvent: {}
+[1.633938] (beacon_positioning) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[1.706897] (-) TimerEvent: {}
+[1.805075] (beacon_positioning) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)\n'}
+[1.807028] (-) TimerEvent: {}
+[1.810547] (beacon_positioning) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[1.907216] (-) TimerEvent: {}
+[2.007912] (-) TimerEvent: {}
+[2.108561] (-) TimerEvent: {}
+[2.209227] (-) TimerEvent: {}
+[2.306493] (beacon_positioning) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)\n'}
+[2.309359] (-) TimerEvent: {}
+[2.409994] (-) TimerEvent: {}
+[2.510673] (-) TimerEvent: {}
+[2.611458] (-) TimerEvent: {}
+[2.632543] (beacon_positioning) StdoutLine: {'line': b"-- Added test 'copyright' to check source files copyright and LICENSE\n"}
+[2.637707] (beacon_positioning) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[2.638407] (beacon_positioning) StdoutLine: {'line': b'-- Configured cppcheck include dirs: $<BUILD_INTERFACE:/home/ubuntu/ros2_ws/src/beacon_positioning/include>\n'}
+[2.638905] (beacon_positioning) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[2.642986] (beacon_positioning) StdoutLine: {'line': b"-- Added test 'cpplint' to check C / C++ code against the Google style\n"}
+[2.643576] (beacon_positioning) StdoutLine: {'line': b'-- Configured cpplint exclude dirs and/or files: \n'}
+[2.645920] (beacon_positioning) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[2.650857] (beacon_positioning) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[2.651446] (beacon_positioning) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[2.652719] (beacon_positioning) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[2.669501] (beacon_positioning) StdoutLine: {'line': b'-- Configuring done\n'}
+[2.711598] (-) TimerEvent: {}
+[2.743227] (beacon_positioning) StdoutLine: {'line': b'-- Generating done\n'}
+[2.760855] (beacon_positioning) StdoutLine: {'line': b'-- Build files have been written to: /home/ubuntu/ros2_ws/build/beacon_positioning\n'}
+[2.811781] (-) TimerEvent: {}
+[2.901971] (beacon_positioning) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target tracker_position\x1b[0m\n'}
+[2.911976] (-) TimerEvent: {}
+[3.012765] (-) TimerEvent: {}
+[3.037718] (beacon_positioning) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/tracker_position.dir/src/tracker_position.cpp.o\x1b[0m\n'}
+[3.112970] (-) TimerEvent: {}
+[3.213683] (-) TimerEvent: {}
+[3.314444] (-) TimerEvent: {}
+[3.415147] (-) TimerEvent: {}
+[3.515891] (-) TimerEvent: {}
+[3.616665] (-) TimerEvent: {}
+[3.717399] (-) TimerEvent: {}
+[3.818204] (-) TimerEvent: {}
+[3.918976] (-) TimerEvent: {}
+[4.019766] (-) TimerEvent: {}
+[4.120522] (-) TimerEvent: {}
+[4.221264] (-) TimerEvent: {}
+[4.322327] (-) TimerEvent: {}
+[4.423094] (-) TimerEvent: {}
+[4.523952] (-) TimerEvent: {}
+[4.624662] (-) TimerEvent: {}
+[4.725405] (-) TimerEvent: {}
+[4.826190] (-) TimerEvent: {}
+[4.926916] (-) TimerEvent: {}
+[5.027766] (-) TimerEvent: {}
+[5.128525] (-) TimerEvent: {}
+[5.229317] (-) TimerEvent: {}
+[5.330116] (-) TimerEvent: {}
+[5.430915] (-) TimerEvent: {}
+[5.531689] (-) TimerEvent: {}
+[5.632476] (-) TimerEvent: {}
+[5.733212] (-) TimerEvent: {}
+[5.834008] (-) TimerEvent: {}
+[5.934785] (-) TimerEvent: {}
+[6.035615] (-) TimerEvent: {}
+[6.136359] (-) TimerEvent: {}
+[6.237097] (-) TimerEvent: {}
+[6.337867] (-) TimerEvent: {}
+[6.438687] (-) TimerEvent: {}
+[6.539467] (-) TimerEvent: {}
+[6.640222] (-) TimerEvent: {}
+[6.740999] (-) TimerEvent: {}
+[6.841752] (-) TimerEvent: {}
+[6.942490] (-) TimerEvent: {}
+[7.043253] (-) TimerEvent: {}
+[7.144051] (-) TimerEvent: {}
+[7.244803] (-) TimerEvent: {}
+[7.345571] (-) TimerEvent: {}
+[7.446341] (-) TimerEvent: {}
+[7.547148] (-) TimerEvent: {}
+[7.647927] (-) TimerEvent: {}
+[7.748690] (-) TimerEvent: {}
+[7.849448] (-) TimerEvent: {}
+[7.950280] (-) TimerEvent: {}
+[8.051035] (-) TimerEvent: {}
+[8.151800] (-) TimerEvent: {}
+[8.252555] (-) TimerEvent: {}
+[8.353324] (-) TimerEvent: {}
+[8.454123] (-) TimerEvent: {}
+[8.554881] (-) TimerEvent: {}
+[8.655655] (-) TimerEvent: {}
+[8.756423] (-) TimerEvent: {}
+[8.857153] (-) TimerEvent: {}
+[8.957922] (-) TimerEvent: {}
+[9.058653] (-) TimerEvent: {}
+[9.159443] (-) TimerEvent: {}
+[9.260196] (-) TimerEvent: {}
+[9.361058] (-) TimerEvent: {}
+[9.461844] (-) TimerEvent: {}
+[9.562601] (-) TimerEvent: {}
+[9.663401] (-) TimerEvent: {}
+[9.764124] (-) TimerEvent: {}
+[9.864921] (-) TimerEvent: {}
+[9.965658] (-) TimerEvent: {}
+[10.066404] (-) TimerEvent: {}
+[10.167171] (-) TimerEvent: {}
+[10.267956] (-) TimerEvent: {}
+[10.368700] (-) TimerEvent: {}
+[10.469451] (-) TimerEvent: {}
+[10.570159] (-) TimerEvent: {}
+[10.670913] (-) TimerEvent: {}
+[10.771788] (-) TimerEvent: {}
+[10.872915] (-) TimerEvent: {}
+[10.973775] (-) TimerEvent: {}
+[11.074950] (-) TimerEvent: {}
+[11.175705] (-) TimerEvent: {}
+[11.276456] (-) TimerEvent: {}
+[11.377221] (-) TimerEvent: {}
+[11.478009] (-) TimerEvent: {}
+[11.578743] (-) TimerEvent: {}
+[11.679497] (-) TimerEvent: {}
+[11.780203] (-) TimerEvent: {}
+[11.880951] (-) TimerEvent: {}
+[11.981734] (-) TimerEvent: {}
+[12.082480] (-) TimerEvent: {}
+[12.183278] (-) TimerEvent: {}
+[12.284063] (-) TimerEvent: {}
+[12.384843] (-) TimerEvent: {}
+[12.485595] (-) TimerEvent: {}
+[12.586327] (-) TimerEvent: {}
+[12.687088] (-) TimerEvent: {}
+[12.787885] (-) TimerEvent: {}
+[12.888582] (-) TimerEvent: {}
+[12.989284] (-) TimerEvent: {}
+[13.090056] (-) TimerEvent: {}
+[13.190825] (-) TimerEvent: {}
+[13.291711] (-) TimerEvent: {}
+[13.392504] (-) TimerEvent: {}
+[13.493262] (-) TimerEvent: {}
+[13.594023] (-) TimerEvent: {}
+[13.694866] (-) TimerEvent: {}
+[13.723753] (beacon_positioning) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable tracker_position\x1b[0m\n'}
+[13.795059] (-) TimerEvent: {}
+[13.895878] (-) TimerEvent: {}
+[13.996806] (-) TimerEvent: {}
+[14.097868] (-) TimerEvent: {}
+[14.199188] (-) TimerEvent: {}
+[14.300116] (-) TimerEvent: {}
+[14.401188] (-) TimerEvent: {}
+[14.502084] (-) TimerEvent: {}
+[14.524697] (beacon_positioning) StdoutLine: {'line': b'[100%] Built target tracker_position\n'}
+[14.563229] (beacon_positioning) CommandEnded: {'returncode': 0}
+[14.602394] (-) TimerEvent: {}
+[14.676707] (beacon_positioning) JobProgress: {'identifier': 'beacon_positioning', 'progress': 'install'}
+[14.702697] (-) TimerEvent: {}
+[14.717686] (beacon_positioning) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/ubuntu/ros2_ws/build/beacon_positioning'], 'cwd': '/home/ubuntu/ros2_ws/build/beacon_positioning', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'ubuntu'), ('SSH_CLIENT', '10.1.1.110 56300 22'), ('LC_TIME', 'nl_NL.UTF-8'), ('XDG_SESSION_TYPE', 'tty'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/home/ubuntu/ros2_ws/install/px4_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/ubuntu'), ('OLDPWD', '/home/ubuntu/ros2_ws/src/beacon_positioning'), ('SSH_TTY', '/dev/pts/0'), ('ROS_PYTHON_VERSION', '3'), ('LC_MONETARY', 'nl_NL.UTF-8'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('_colcon_cd_root', '/opt/ros/foxy/'), ('COLCON_PREFIX_PATH', '/home/ubuntu/ros2_ws/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'ubuntu'), ('_', '/home/ubuntu/.local/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '9'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/ubuntu/.local/bin:/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('LC_ADDRESS', 'nl_NL.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('LANG', 'en_US.UTF-8'), ('LC_TELEPHONE', 'nl_NL.UTF-8'), ('RMW_IMPLEMENTATION', 'rmw_fastrtps_cpp'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('ROS_DOMAIN_ID', '0'), ('AMENT_PREFIX_PATH', '/home/ubuntu/ros2_ws/install/beacon_positioning:/home/ubuntu/ros2_ws/install/px4_msgs:/home/ubuntu/ros2_ws/install/drone_sensors:/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('LC_NAME', 'nl_NL.UTF-8'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'nl_NL.UTF-8'), ('LC_IDENTIFICATION', 'nl_NL.UTF-8'), ('PWD', '/home/ubuntu/ros2_ws/build/beacon_positioning'), ('LC_ALL', 'en_US.UTF-8'), ('SSH_CONNECTION', '10.1.1.110 56300 10.1.1.68 22'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/ubuntu/ros2_ws/install/px4_msgs/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('LC_NUMERIC', 'nl_NL.UTF-8'), ('LC_PAPER', 'nl_NL.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/ubuntu/ros2_ws/install/beacon_positioning:/home/ubuntu/ros2_ws/install/px4_msgs:/home/ubuntu/ros2_ws/install/drone_sensors:/opt/ros/foxy')]), 'shell': False}
+[14.757839] (beacon_positioning) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[14.759050] (beacon_positioning) StdoutLine: {'line': b'-- Installing: /home/ubuntu/ros2_ws/install/beacon_positioning/lib/beacon_positioning/tracker_position\n'}
+[14.765080] (beacon_positioning) StdoutLine: {'line': b'-- Set runtime path of "/home/ubuntu/ros2_ws/install/beacon_positioning/lib/beacon_positioning/tracker_position" to ""\n'}
+[14.765675] (beacon_positioning) StdoutLine: {'line': b'-- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/share/ament_index/resource_index/package_run_dependencies/beacon_positioning\n'}
+[14.766123] (beacon_positioning) StdoutLine: {'line': b'-- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/share/ament_index/resource_index/parent_prefix_path/beacon_positioning\n'}
+[14.766518] (beacon_positioning) StdoutLine: {'line': b'-- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/environment/ament_prefix_path.sh\n'}
+[14.766895] (beacon_positioning) StdoutLine: {'line': b'-- Installing: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/environment/ament_prefix_path.dsv\n'}
+[14.767909] (beacon_positioning) StdoutLine: {'line': b'-- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/environment/path.sh\n'}
+[14.768362] (beacon_positioning) StdoutLine: {'line': b'-- Installing: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/environment/path.dsv\n'}
+[14.769285] (beacon_positioning) StdoutLine: {'line': b'-- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/local_setup.bash\n'}
+[14.769745] (beacon_positioning) StdoutLine: {'line': b'-- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/local_setup.sh\n'}
+[14.770145] (beacon_positioning) StdoutLine: {'line': b'-- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/local_setup.zsh\n'}
+[14.770534] (beacon_positioning) StdoutLine: {'line': b'-- Installing: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/local_setup.dsv\n'}
+[14.771432] (beacon_positioning) StdoutLine: {'line': b'-- Installing: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/package.dsv\n'}
+[14.772548] (beacon_positioning) StdoutLine: {'line': b'-- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/share/ament_index/resource_index/packages/beacon_positioning\n'}
+[14.773001] (beacon_positioning) StdoutLine: {'line': b'-- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/cmake/beacon_positioningConfig.cmake\n'}
+[14.773449] (beacon_positioning) StdoutLine: {'line': b'-- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/cmake/beacon_positioningConfig-version.cmake\n'}
+[14.773798] (beacon_positioning) StdoutLine: {'line': b'-- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/package.xml\n'}
+[14.778650] (beacon_positioning) CommandEnded: {'returncode': 0}
+[14.802841] (-) TimerEvent: {}
+[14.903618] (-) TimerEvent: {}
+[15.010593] (-) TimerEvent: {}
+[15.126963] (-) TimerEvent: {}
+[15.131111] (beacon_positioning) JobEnded: {'identifier': 'beacon_positioning', 'rc': 0}
+[15.133892] (-) EventReactorShutdown: {}

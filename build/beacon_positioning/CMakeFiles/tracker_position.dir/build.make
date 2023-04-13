@@ -80,6 +80,8 @@ tracker_position_EXTERNAL_OBJECTS =
 tracker_position: CMakeFiles/tracker_position.dir/src/tracker_position.cpp.o
 tracker_position: CMakeFiles/tracker_position.dir/build.make
 tracker_position: /opt/ros/foxy/lib/librclcpp.so
+tracker_position: /usr/local/lib/libterabeeapi.so
+tracker_position: /usr/local/lib/libterabeeapi.so
 tracker_position: /opt/ros/foxy/lib/liblibstatistics_collector.so
 tracker_position: /opt/ros/foxy/lib/liblibstatistics_collector_test_msgs__rosidl_typesupport_introspection_c.so
 tracker_position: /opt/ros/foxy/lib/liblibstatistics_collector_test_msgs__rosidl_generator_c.so
