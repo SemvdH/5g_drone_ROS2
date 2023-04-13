@@ -1,0 +1,74 @@
+[0.129s] Invoking command in '/home/ubuntu/ros2_ws/build/drone_sensors': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake /home/ubuntu/ros2_ws/src/drone_sensors -DCMAKE_BUILD_TYPE=RELWITHDEBINFO -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/ubuntu/ros2_ws/install/drone_sensors
+[1.385s] -- The C compiler identification is GNU 9.4.0
+[2.193s] -- The CXX compiler identification is GNU 9.4.0
+[2.228s] -- Check for working C compiler: /usr/bin/cc
+[2.596s] -- Check for working C compiler: /usr/bin/cc -- works
+[2.608s] -- Detecting C compiler ABI info
+[2.931s] -- Detecting C compiler ABI info - done
+[2.970s] -- Detecting C compile features
+[2.975s] -- Detecting C compile features - done
+[2.987s] -- Check for working CXX compiler: /usr/bin/c++
+[3.330s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[3.337s] -- Detecting CXX compiler ABI info
+[3.690s] -- Detecting CXX compiler ABI info - done
+[3.729s] -- Detecting CXX compile features
+[3.732s] -- Detecting CXX compile features - done
+[3.749s] -- Found ament_cmake: 0.9.11 (/opt/ros/foxy/share/ament_cmake/cmake)
+[3.908s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[3.910s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[4.836s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[5.082s] -- Found rclcpp: 2.4.2 (/opt/ros/foxy/share/rclcpp/cmake)
+[5.414s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[5.473s] -- Found rosidl_adapter: 1.3.0 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[5.821s] -- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "1.1.1f")  
+[5.937s] -- Found FastRTPS: /opt/ros/foxy/include  
+[6.308s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[6.658s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[6.666s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[6.673s] -- Looking for pthread.h
+[6.991s] -- Looking for pthread.h - found
+[6.993s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[7.287s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+[7.289s] -- Looking for pthread_create in pthreads
+[7.531s] -- Looking for pthread_create in pthreads - not found
+[7.533s] -- Looking for pthread_create in pthread
+[7.833s] -- Looking for pthread_create in pthread - found
+[7.838s] -- Found Threads: TRUE  
+[8.555s] -- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+[9.023s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[9.025s] -- Configured cppcheck include dirs: 
+[9.027s] -- Configured cppcheck exclude dirs and/or files: 
+[9.029s] -- Added test 'lint_cmake' to check CMake code style
+[9.036s] -- Added test 'uncrustify' to check C / C++ code style
+[9.038s] -- Configured uncrustify additional arguments: 
+[9.040s] -- Added test 'xmllint' to check XML markup files
+[9.065s] -- Configuring done
+[9.095s] -- Generating done
+[9.101s] -- Build files have been written to: /home/ubuntu/ros2_ws/build/drone_sensors
+[9.120s] Invoked command in '/home/ubuntu/ros2_ws/build/drone_sensors' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake /home/ubuntu/ros2_ws/src/drone_sensors -DCMAKE_BUILD_TYPE=RELWITHDEBINFO -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/ubuntu/ros2_ws/install/drone_sensors
+[9.131s] Invoking command in '/home/ubuntu/ros2_ws/build/drone_sensors': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/ubuntu/ros2_ws/build/drone_sensors -- -j4 -l4
+[9.301s] [35m[1mScanning dependencies of target height_sensor[0m
+[9.686s] [ 50%] [32mBuilding CXX object CMakeFiles/height_sensor.dir/src/height_sensor.cpp.o[0m
+[37.320s] [100%] [32m[1mLinking CXX executable height_sensor[0m
+[38.133s] [100%] Built target height_sensor
+[38.179s] Invoked command in '/home/ubuntu/ros2_ws/build/drone_sensors' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/ubuntu/ros2_ws/build/drone_sensors -- -j4 -l4
+[38.336s] Invoking command in '/home/ubuntu/ros2_ws/build/drone_sensors': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /home/ubuntu/ros2_ws/build/drone_sensors
+[38.375s] -- Install configuration: "RELWITHDEBINFO"
+[38.378s] -- Execute custom install script
+[38.381s] -- Symlinking: /home/ubuntu/ros2_ws/install/drone_sensors/lib/drone_sensors/height_sensor
+[38.420s] -- Symlinking: /home/ubuntu/ros2_ws/install/drone_sensors/share/ament_index/resource_index/package_run_dependencies/drone_sensors
+[38.455s] -- Symlinking: /home/ubuntu/ros2_ws/install/drone_sensors/share/ament_index/resource_index/parent_prefix_path/drone_sensors
+[38.493s] -- Symlinking: /home/ubuntu/ros2_ws/install/drone_sensors/share/drone_sensors/environment/ament_prefix_path.sh
+[38.529s] -- Symlinking: /home/ubuntu/ros2_ws/install/drone_sensors/share/drone_sensors/environment/ament_prefix_path.dsv
+[38.565s] -- Symlinking: /home/ubuntu/ros2_ws/install/drone_sensors/share/drone_sensors/environment/path.sh
+[38.600s] -- Symlinking: /home/ubuntu/ros2_ws/install/drone_sensors/share/drone_sensors/environment/path.dsv
+[38.634s] -- Symlinking: /home/ubuntu/ros2_ws/install/drone_sensors/share/drone_sensors/local_setup.bash
+[38.670s] -- Symlinking: /home/ubuntu/ros2_ws/install/drone_sensors/share/drone_sensors/local_setup.sh
+[38.706s] -- Symlinking: /home/ubuntu/ros2_ws/install/drone_sensors/share/drone_sensors/local_setup.zsh
+[38.742s] -- Symlinking: /home/ubuntu/ros2_ws/install/drone_sensors/share/drone_sensors/local_setup.dsv
+[38.777s] -- Symlinking: /home/ubuntu/ros2_ws/install/drone_sensors/share/drone_sensors/package.dsv
+[38.813s] -- Symlinking: /home/ubuntu/ros2_ws/install/drone_sensors/share/ament_index/resource_index/packages/drone_sensors
+[38.849s] -- Symlinking: /home/ubuntu/ros2_ws/install/drone_sensors/share/drone_sensors/cmake/drone_sensorsConfig.cmake
+[38.882s] -- Symlinking: /home/ubuntu/ros2_ws/install/drone_sensors/share/drone_sensors/cmake/drone_sensorsConfig-version.cmake
+[38.916s] -- Symlinking: /home/ubuntu/ros2_ws/install/drone_sensors/share/drone_sensors/package.xml
+[38.959s] Invoked command in '/home/ubuntu/ros2_ws/build/drone_sensors' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /home/ubuntu/ros2_ws/build/drone_sensors
