@@ -4,6 +4,8 @@
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
 
+#include "rtls_driver/rtls_driver.hpp"
+
 using namespace std::chrono_literals;
 
 class BeaconPositioningPublisher : public rclcpp::Node
