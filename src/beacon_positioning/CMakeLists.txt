@@ -22,9 +22,15 @@ find_package(ament_cmake REQUIRED)
 # find_package(<dependency> REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(positioning_systems_api REQUIRED)
 
 add_executable(tracker_position src/tracker_position.cpp)
 ament_target_dependencies(tracker_position rclcpp std_msgs)
+
+target_link_libraries(tracker_position
+  positioning_systems_api::follow_me_driver
+  positioning_systems_api::serial_communication
+)
 
 target_include_directories(tracker_position PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
