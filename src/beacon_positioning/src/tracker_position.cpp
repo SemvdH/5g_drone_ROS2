@@ -10,7 +10,6 @@ class BeaconPositioningPublisher : public rclcpp::Node
 {
   public:
     BeaconPositioningPublisher() : Node("beacon_positioning_publisher") {
-      printf("Constructor of beacon positioning publisher\n");
       publisher_ = this->create_publisher<std_msgs::msg::String>("beacon_positioning", 10);
       timer_ = this->create_wall_timer(
         500ms, std::bind(&BeaconPositioningPublisher::timer_callback, this));
@@ -21,7 +20,6 @@ class BeaconPositioningPublisher : public rclcpp::Node
       message.data = "Hello beacons!";
       RCLCPP_INFO(this->get_logger(), "Publishing: '%s'", message.data.c_str());
       publisher_->publish(message);
-      printf("published message yeet");
     }
     rclcpp::TimerBase::SharedPtr timer_; // timer to trigger the 
     rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher_; // pointer to publisher object
@@ -36,8 +34,6 @@ int main(int argc, char ** argv)
 
   rclcpp::init(argc, argv);
   rclcpp::spin(std::make_shared<BeaconPositioningPublisher>());
-  printf("spun node");
   rclcpp::shutdown();
-  printf("shut down rclcpp");
   return 0;
 }
