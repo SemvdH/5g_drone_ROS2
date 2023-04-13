@@ -22,12 +22,9 @@ find_package(ament_cmake REQUIRED)
 # find_package(<dependency> REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
-find_package(TerabeeApi REQUIRED)
 
 add_executable(tracker_position src/tracker_position.cpp)
-ament_target_dependencies(tracker_position rclcpp std_msgs TerabeeApi)
-target_link_libraries(tracker_position ${TerabeeApi_LIBRARIES})
-target_include_directories(tracker_position PUBLIC ${TerabeeApi_INCLUDE_DIRS})
+ament_target_dependencies(tracker_position rclcpp std_msgs)
 
 target_include_directories(tracker_position PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
