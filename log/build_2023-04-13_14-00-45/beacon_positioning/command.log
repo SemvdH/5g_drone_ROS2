@@ -1,0 +1,2 @@
+Invoking command in '/home/ubuntu/ros2_ws/build/beacon_positioning': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /home/ubuntu/ros2_ws/src/beacon_positioning -DCMAKE_INSTALL_PREFIX=/home/ubuntu/ros2_ws/install/beacon_positioning
+Invoked command in '/home/ubuntu/ros2_ws/build/beacon_positioning' returned '1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /home/ubuntu/ros2_ws/src/beacon_positioning -DCMAKE_INSTALL_PREFIX=/home/ubuntu/ros2_ws/install/beacon_positioning

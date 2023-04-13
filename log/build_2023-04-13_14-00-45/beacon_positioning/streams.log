@@ -1,0 +1,45 @@
+[0.145s] Invoking command in '/home/ubuntu/ros2_ws/build/beacon_positioning': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /home/ubuntu/ros2_ws/src/beacon_positioning -DCMAKE_INSTALL_PREFIX=/home/ubuntu/ros2_ws/install/beacon_positioning
+[1.106s] -- The C compiler identification is GNU 9.4.0
+[1.426s] -- The CXX compiler identification is GNU 9.4.0
+[1.461s] -- Check for working C compiler: /usr/bin/cc
+[1.771s] -- Check for working C compiler: /usr/bin/cc -- works
+[1.781s] -- Detecting C compiler ABI info
+[2.073s] -- Detecting C compiler ABI info - done
+[2.114s] -- Detecting C compile features
+[2.116s] -- Detecting C compile features - done
+[2.129s] -- Check for working CXX compiler: /usr/bin/c++
+[2.441s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[2.446s] -- Detecting CXX compiler ABI info
+[2.772s] -- Detecting CXX compiler ABI info - done
+[2.809s] -- Detecting CXX compile features
+[2.811s] -- Detecting CXX compile features - done
+[2.857s] -- Found ament_cmake: 0.9.11 (/opt/ros/foxy/share/ament_cmake/cmake)
+[3.001s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[3.001s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[3.951s] -- Found rclcpp: 2.4.2 (/opt/ros/foxy/share/rclcpp/cmake)
+[4.355s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[4.420s] -- Found rosidl_adapter: 1.3.0 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[4.853s] -- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "1.1.1f")  
+[4.979s] -- Found FastRTPS: /opt/ros/foxy/include  
+[5.395s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[5.748s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[5.759s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[5.767s] -- Looking for pthread.h
+[6.102s] -- Looking for pthread.h - found
+[6.103s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[6.408s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+[6.409s] -- Looking for pthread_create in pthreads
+[6.667s] -- Looking for pthread_create in pthreads - not found
+[6.668s] -- Looking for pthread_create in pthread
+[6.962s] -- Looking for pthread_create in pthread - found
+[6.966s] -- Found Threads: TRUE  
+[7.669s] CMake Error at /opt/ros/foxy/share/ament_cmake_target_dependencies/cmake/ament_target_dependencies.cmake:42 (message):
+[7.669s]   ament_target_dependencies() the first argument must be a valid target name
+[7.670s] Call Stack (most recent call first):
+[7.670s]   CMakeLists.txt:24 (ament_target_dependencies)
+[7.670s] 
+[7.670s] 
+[7.683s] -- Configuring incomplete, errors occurred!
+[7.683s] See also "/home/ubuntu/ros2_ws/build/beacon_positioning/CMakeFiles/CMakeOutput.log".
+[7.683s] See also "/home/ubuntu/ros2_ws/build/beacon_positioning/CMakeFiles/CMakeError.log".
+[7.706s] Invoked command in '/home/ubuntu/ros2_ws/build/beacon_positioning' returned '1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /home/ubuntu/ros2_ws/src/beacon_positioning -DCMAKE_INSTALL_PREFIX=/home/ubuntu/ros2_ws/install/beacon_positioning
