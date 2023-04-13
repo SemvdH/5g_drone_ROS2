@@ -21,9 +21,10 @@ find_package(ament_cmake REQUIRED)
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 find_package(rclcpp REQUIRED)
+find_package(std_msgs REQUIRED)
 
 add_executable(tracker_position src/tracker_position.cpp)
-ament_target_dependencies(tracker_position rclcpp)
+ament_target_dependencies(tracker_position rclcpp std_msgs)
 
 target_include_directories(tracker_position PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
