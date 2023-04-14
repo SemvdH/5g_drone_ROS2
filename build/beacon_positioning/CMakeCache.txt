@@ -403,6 +403,9 @@ pkgcfg_lib__OPENSSL_crypto:FILEPATH=/usr/lib/aarch64-linux-gnu/libcrypto.so
 //Path to a library.
 pkgcfg_lib__OPENSSL_ssl:FILEPATH=/usr/lib/aarch64-linux-gnu/libssl.so
 
+//The directory containing a CMake configuration file for positioning_systems_api.
+positioning_systems_api_DIR:PATH=/usr/local/lib/cmake/positioning_systems_api
+
 //The directory containing a CMake configuration file for rcl.
 rcl_DIR:PATH=/opt/ros/foxy/share/rcl/cmake
 
