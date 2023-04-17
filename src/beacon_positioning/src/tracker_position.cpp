@@ -40,44 +40,52 @@ public:
     publisher_ = this->create_publisher<std_msgs::msg::String>("beacon_positioning", 10);
     timer_ = this->create_wall_timer(
         500ms, std::bind(&BeaconPositioningPublisher::timer_callback, this));
-
   }
-  
-  std::shared_ptr<terabee::serial_communication::ISerial> serial_port get_serial_port() {
+
+  void setup_rtlsdevice(std::shared_ptr<terabee::RtlsDevice> rtls_device, int priority, int label, int update_time, int network_id, bool long_message)
+  {
+    rtls_device->disableTrackerStream();
+    serial_port->flushInput();
+    rtls_device->setDevice(terabee::RtlsDevice::device_type::tracker, priority);
+    rtls_device->setLabel(label);
+    rtls_device->setUpdateTime(update_time);
+    rtls_device->setNetworkId(network_id);
+    if (long_message)
+    {
+      rtls_device->setTrackerMessageLong();
+    }
+    else
+    {
+      rtls_device->setTrackerMessageShort();
+    }
+    rtls_device->enableLED();
+    rtls_device->requestConfig();
+    device_configuration = rtls_device->getConfig();
+
+    rtls_device->enableTrackerStream();
+
+    RCLCPP_INFO(this->get_logger(), "Tracker configured");
+  }
+
+  std::shared_ptr<terabee::serial_communication::ISerial> get_serial_port()
+  {
     return serial_port;
   }
 
+  void publish()
+  {
+    publisher_->publish(msg);
+  }
+
 private:
-  void timer_callback()
+  void timer_callback(std_msgs::msg msg)
+
   {
     auto message = std_msgs::msg::String();
     message.data = "Hello beacons!";
     RCLCPP_INFO(this->get_logger(), "Publishing: '%s'", message.data.c_str());
     publisher_->publish(message);
   }
-
-  // void setup_rtlsdevice(int priority, int label, int update_time, int network_id, bool long_message)
-  // {
-  //   rtls_device.disableTrackerStream();
-  //   serial_port->flushInput();
-  //   rtls_device.setDevice(terabee::RtlsDevice::device_type::tracker, priority);
-  //   rtls_device.setLabel(label);
-  //   rtls_device.setUpdateTime(update_time);
-  //   rtls_device.setNetworkId(network_id);
-  //   if (long_message)
-  //   {
-  //     rtls_device.setTrackerMessageLong();
-  //   }
-  //   else
-  //   {
-  //     rtls_device.setTrackerMessageShort();
-  //   }
-  //   rtls_device.enableLED();
-  //   rtls_device.requestConfig();
-  //   device_configuration = rtls_device.getConfig();
-
-  //   rtls_device.enableTrackerStream();
-  // }
 
   rclcpp::TimerBase::SharedPtr timer_;                            // timer to trigger the
   rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher_; // pointer to publisher object
@@ -94,10 +102,33 @@ int main(int argc, char **argv)
   (void)argv;
 
   printf("starting tracker node of beacon_positioning package\n");
+
+  rclcpp::executors::SingleThreadedExecutor executor;
   rclcpp::init(argc, argv);
   std::shared_ptr<BeaconPositioningPublisher> node = std::make_shared<BeaconPositioningPublisher>();
-  node->get_serial_port();
-  rclcpp::spin(node);
+  executor.add_node(node);
+  terabee::RtlsDevice rtls_device(node->get_serial_port());
+  node->setup_rtlsdevice(std::make_shared<terabee::RtlsDevice>(rtls_device), 1, 0x1ABE, 1, 0xC0FE, true);
+
+  rtls_device.registerOnDistanceDataCaptureCallback([&node](const terabee::RtlsDevice::tracker_msg_t &tracker_msg)
+                                                    {
+    if (tracker_msg.is_valid_position) 
+    {
+      RCLCPP_INFO(node->get_logger(), "Tracker %d: x = %f, y = %f, z = %f", tracker_msg.label, tracker_msg.x, tracker_msg.y, tracker_msg.z);
+      auto message = std_msgs::msg::String();
+      message.data = "Hello from tracker callback!";
+      node->publish(message);
+    }
+    else
+    {
+      RCLCPP_ERROR(node->get_logger(), "invalid tracker position");
+    } });
+    
+  executor.spin();
+  rtls_device.startReadingStream();
   rclcpp::shutdown();
-  return 0;
+
+  rtls_device.stopReadingStream();
+
+  return node->get_serial_port()->close() ? 0 : -1;
 }
