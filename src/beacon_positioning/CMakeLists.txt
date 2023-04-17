@@ -28,8 +28,8 @@ add_executable(tracker_position src/tracker_position.cpp)
 ament_target_dependencies(tracker_position rclcpp std_msgs)
 
 target_link_libraries(tracker_position
-  positioning_systems_api::follow_me_driver
-  positioning_systems_api::serial_communication
+positioning_systems_api::serial_communication
+  positioning_systems_api::rtls_driver
 )
 
 target_include_directories(tracker_position PUBLIC
