@@ -37,12 +37,14 @@ public:
       return;
     }
 
-    terabee::RtlsDevice rtls_device(serial_port);
-
     publisher_ = this->create_publisher<std_msgs::msg::String>("beacon_positioning", 10);
     timer_ = this->create_wall_timer(
         500ms, std::bind(&BeaconPositioningPublisher::timer_callback, this));
 
+  }
+  
+  std::shared_ptr<terabee::serial_communication::ISerial> serial_port get_serial_port() {
+    return serial_port;
   }
 
 private:
@@ -92,9 +94,10 @@ int main(int argc, char **argv)
   (void)argv;
 
   printf("starting tracker node of beacon_positioning package\n");
-
   rclcpp::init(argc, argv);
-  rclcpp::spin(std::make_shared<BeaconPositioningPublisher>());
+  std::shared_ptr<BeaconPositioningPublisher> node = std::make_shared<BeaconPositioningPublisher>();
+  node->get_serial_port();
+  rclcpp::spin(node);
   rclcpp::shutdown();
   return 0;
 }
