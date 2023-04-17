@@ -59,22 +59,49 @@ bool px4_msgs__msg__vtol_vehicle_status__convert_from_py(PyObject * _pymsg, void
     ros_message->timestamp = PyLong_AsUnsignedLongLong(field);
     Py_DECREF(field);
   }
-  {  // vehicle_vtol_state
-    PyObject * field = PyObject_GetAttrString(_pymsg, "vehicle_vtol_state");
-    if (!field) {
-      return false;
-    }
-    assert(PyLong_Check(field));
-    ros_message->vehicle_vtol_state = (uint8_t)PyLong_AsUnsignedLong(field);
-    Py_DECREF(field);
-  }
-  {  // fixed_wing_system_failure
-    PyObject * field = PyObject_GetAttrString(_pymsg, "fixed_wing_system_failure");
+  {  // vtol_in_rw_mode
+    PyObject * field = PyObject_GetAttrString(_pymsg, "vtol_in_rw_mode");
     if (!field) {
       return false;
     }
     assert(PyBool_Check(field));
-    ros_message->fixed_wing_system_failure = (Py_True == field);
+    ros_message->vtol_in_rw_mode = (Py_True == field);
+    Py_DECREF(field);
+  }
+  {  // vtol_in_trans_mode
+    PyObject * field = PyObject_GetAttrString(_pymsg, "vtol_in_trans_mode");
+    if (!field) {
+      return false;
+    }
+    assert(PyBool_Check(field));
+    ros_message->vtol_in_trans_mode = (Py_True == field);
+    Py_DECREF(field);
+  }
+  {  // in_transition_to_fw
+    PyObject * field = PyObject_GetAttrString(_pymsg, "in_transition_to_fw");
+    if (!field) {
+      return false;
+    }
+    assert(PyBool_Check(field));
+    ros_message->in_transition_to_fw = (Py_True == field);
+    Py_DECREF(field);
+  }
+  {  // vtol_transition_failsafe
+    PyObject * field = PyObject_GetAttrString(_pymsg, "vtol_transition_failsafe");
+    if (!field) {
+      return false;
+    }
+    assert(PyBool_Check(field));
+    ros_message->vtol_transition_failsafe = (Py_True == field);
+    Py_DECREF(field);
+  }
+  {  // fw_permanent_stab
+    PyObject * field = PyObject_GetAttrString(_pymsg, "fw_permanent_stab");
+    if (!field) {
+      return false;
+    }
+    assert(PyBool_Check(field));
+    ros_message->fw_permanent_stab = (Py_True == field);
     Py_DECREF(field);
   }
 
@@ -110,22 +137,55 @@ PyObject * px4_msgs__msg__vtol_vehicle_status__convert_to_py(void * raw_ros_mess
       }
     }
   }
-  {  // vehicle_vtol_state
+  {  // vtol_in_rw_mode
     PyObject * field = NULL;
-    field = PyLong_FromUnsignedLong(ros_message->vehicle_vtol_state);
+    field = PyBool_FromLong(ros_message->vtol_in_rw_mode ? 1 : 0);
     {
-      int rc = PyObject_SetAttrString(_pymessage, "vehicle_vtol_state", field);
+      int rc = PyObject_SetAttrString(_pymessage, "vtol_in_rw_mode", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;
       }
     }
   }
-  {  // fixed_wing_system_failure
+  {  // vtol_in_trans_mode
     PyObject * field = NULL;
-    field = PyBool_FromLong(ros_message->fixed_wing_system_failure ? 1 : 0);
+    field = PyBool_FromLong(ros_message->vtol_in_trans_mode ? 1 : 0);
     {
-      int rc = PyObject_SetAttrString(_pymessage, "fixed_wing_system_failure", field);
+      int rc = PyObject_SetAttrString(_pymessage, "vtol_in_trans_mode", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // in_transition_to_fw
+    PyObject * field = NULL;
+    field = PyBool_FromLong(ros_message->in_transition_to_fw ? 1 : 0);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "in_transition_to_fw", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // vtol_transition_failsafe
+    PyObject * field = NULL;
+    field = PyBool_FromLong(ros_message->vtol_transition_failsafe ? 1 : 0);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "vtol_transition_failsafe", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // fw_permanent_stab
+    PyObject * field = NULL;
+    field = PyBool_FromLong(ros_message->fw_permanent_stab ? 1 : 0);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "fw_permanent_stab", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;

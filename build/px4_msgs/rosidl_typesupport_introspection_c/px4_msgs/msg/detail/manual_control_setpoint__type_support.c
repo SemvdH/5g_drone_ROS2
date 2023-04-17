@@ -93,14 +93,14 @@ static rosidl_typesupport_introspection_c__MessageMember ManualControlSetpoint__
     NULL  // resize(index) function pointer
   },
   {
-    "roll",  // name
+    "x",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
     0,  // upper bound of string
     NULL,  // members of sub message
     false,  // is array
     0,  // array size
     false,  // is upper bound
-    offsetof(px4_msgs__msg__ManualControlSetpoint, roll),  // bytes offset in struct
+    offsetof(px4_msgs__msg__ManualControlSetpoint, x),  // bytes offset in struct
     NULL,  // default value
     NULL,  // size() function pointer
     NULL,  // get_const(index) function pointer
@@ -108,14 +108,14 @@ static rosidl_typesupport_introspection_c__MessageMember ManualControlSetpoint__
     NULL  // resize(index) function pointer
   },
   {
-    "pitch",  // name
+    "y",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
     0,  // upper bound of string
     NULL,  // members of sub message
     false,  // is array
     0,  // array size
     false,  // is upper bound
-    offsetof(px4_msgs__msg__ManualControlSetpoint, pitch),  // bytes offset in struct
+    offsetof(px4_msgs__msg__ManualControlSetpoint, y),  // bytes offset in struct
     NULL,  // default value
     NULL,  // size() function pointer
     NULL,  // get_const(index) function pointer
@@ -123,14 +123,14 @@ static rosidl_typesupport_introspection_c__MessageMember ManualControlSetpoint__
     NULL  // resize(index) function pointer
   },
   {
-    "yaw",  // name
+    "z",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
     0,  // upper bound of string
     NULL,  // members of sub message
     false,  // is array
     0,  // array size
     false,  // is upper bound
-    offsetof(px4_msgs__msg__ManualControlSetpoint, yaw),  // bytes offset in struct
+    offsetof(px4_msgs__msg__ManualControlSetpoint, z),  // bytes offset in struct
     NULL,  // default value
     NULL,  // size() function pointer
     NULL,  // get_const(index) function pointer
@@ -138,14 +138,14 @@ static rosidl_typesupport_introspection_c__MessageMember ManualControlSetpoint__
     NULL  // resize(index) function pointer
   },
   {
-    "throttle",  // name
+    "r",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
     0,  // upper bound of string
     NULL,  // members of sub message
     false,  // is array
     0,  // array size
     false,  // is upper bound
-    offsetof(px4_msgs__msg__ManualControlSetpoint, throttle),  // bytes offset in struct
+    offsetof(px4_msgs__msg__ManualControlSetpoint, r),  // bytes offset in struct
     NULL,  // default value
     NULL,  // size() function pointer
     NULL,  // get_const(index) function pointer

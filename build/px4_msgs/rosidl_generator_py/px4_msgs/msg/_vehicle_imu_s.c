@@ -155,15 +155,6 @@ bool px4_msgs__msg__vehicle_imu__convert_from_py(PyObject * _pymsg, void * _ros_
     ros_message->delta_velocity_dt = (uint16_t)PyLong_AsUnsignedLong(field);
     Py_DECREF(field);
   }
-  {  // delta_angle_clipping
-    PyObject * field = PyObject_GetAttrString(_pymsg, "delta_angle_clipping");
-    if (!field) {
-      return false;
-    }
-    assert(PyLong_Check(field));
-    ros_message->delta_angle_clipping = (uint8_t)PyLong_AsUnsignedLong(field);
-    Py_DECREF(field);
-  }
   {  // delta_velocity_clipping
     PyObject * field = PyObject_GetAttrString(_pymsg, "delta_velocity_clipping");
     if (!field) {
@@ -309,17 +300,6 @@ PyObject * px4_msgs__msg__vehicle_imu__convert_to_py(void * raw_ros_message)
     field = PyLong_FromUnsignedLong(ros_message->delta_velocity_dt);
     {
       int rc = PyObject_SetAttrString(_pymessage, "delta_velocity_dt", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
-  {  // delta_angle_clipping
-    PyObject * field = NULL;
-    field = PyLong_FromUnsignedLong(ros_message->delta_angle_clipping);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "delta_angle_clipping", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;

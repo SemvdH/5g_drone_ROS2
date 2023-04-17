@@ -5,7 +5,9 @@
 
 # Import statements for member types
 
+# Member 'allocated_torque'
 # Member 'unallocated_torque'
+# Member 'allocated_thrust'
 # Member 'unallocated_thrust'
 # Member 'actuator_saturation'
 import numpy  # noqa: E402, I100
@@ -104,31 +106,34 @@ class ControlAllocatorStatus(metaclass=Metaclass_ControlAllocatorStatus):
     __slots__ = [
         '_timestamp',
         '_torque_setpoint_achieved',
+        '_allocated_torque',
         '_unallocated_torque',
         '_thrust_setpoint_achieved',
+        '_allocated_thrust',
         '_unallocated_thrust',
         '_actuator_saturation',
-        '_handled_motor_failure_mask',
     ]
 
     _fields_and_field_types = {
         'timestamp': 'uint64',
         'torque_setpoint_achieved': 'boolean',
+        'allocated_torque': 'float[3]',
         'unallocated_torque': 'float[3]',
         'thrust_setpoint_achieved': 'boolean',
+        'allocated_thrust': 'float[3]',
         'unallocated_thrust': 'float[3]',
         'actuator_saturation': 'int8[16]',
-        'handled_motor_failure_mask': 'uint16',
     }
 
     SLOT_TYPES = (
         rosidl_parser.definition.BasicType('uint64'),  # noqa: E501
         rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
         rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 3),  # noqa: E501
+        rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 3),  # noqa: E501
         rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
         rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 3),  # noqa: E501
+        rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 3),  # noqa: E501
         rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('int8'), 16),  # noqa: E501
-        rosidl_parser.definition.BasicType('uint16'),  # noqa: E501
     )
 
     def __init__(self, **kwargs):
@@ -137,12 +142,22 @@ class ControlAllocatorStatus(metaclass=Metaclass_ControlAllocatorStatus):
             ', '.join(sorted(k for k in kwargs.keys() if '_' + k not in self.__slots__))
         self.timestamp = kwargs.get('timestamp', int())
         self.torque_setpoint_achieved = kwargs.get('torque_setpoint_achieved', bool())
+        if 'allocated_torque' not in kwargs:
+            self.allocated_torque = numpy.zeros(3, dtype=numpy.float32)
+        else:
+            self.allocated_torque = numpy.array(kwargs.get('allocated_torque'), dtype=numpy.float32)
+            assert self.allocated_torque.shape == (3, )
         if 'unallocated_torque' not in kwargs:
             self.unallocated_torque = numpy.zeros(3, dtype=numpy.float32)
         else:
             self.unallocated_torque = numpy.array(kwargs.get('unallocated_torque'), dtype=numpy.float32)
             assert self.unallocated_torque.shape == (3, )
         self.thrust_setpoint_achieved = kwargs.get('thrust_setpoint_achieved', bool())
+        if 'allocated_thrust' not in kwargs:
+            self.allocated_thrust = numpy.zeros(3, dtype=numpy.float32)
+        else:
+            self.allocated_thrust = numpy.array(kwargs.get('allocated_thrust'), dtype=numpy.float32)
+            assert self.allocated_thrust.shape == (3, )
         if 'unallocated_thrust' not in kwargs:
             self.unallocated_thrust = numpy.zeros(3, dtype=numpy.float32)
         else:
@@ -153,7 +168,6 @@ class ControlAllocatorStatus(metaclass=Metaclass_ControlAllocatorStatus):
         else:
             self.actuator_saturation = numpy.array(kwargs.get('actuator_saturation'), dtype=numpy.int8)
             assert self.actuator_saturation.shape == (16, )
-        self.handled_motor_failure_mask = kwargs.get('handled_motor_failure_mask', int())
 
     def __repr__(self):
         typename = self.__class__.__module__.split('.')
@@ -188,15 +202,17 @@ class ControlAllocatorStatus(metaclass=Metaclass_ControlAllocatorStatus):
             return False
         if self.torque_setpoint_achieved != other.torque_setpoint_achieved:
             return False
+        if all(self.allocated_torque != other.allocated_torque):
+            return False
         if all(self.unallocated_torque != other.unallocated_torque):
             return False
         if self.thrust_setpoint_achieved != other.thrust_setpoint_achieved:
             return False
+        if all(self.allocated_thrust != other.allocated_thrust):
+            return False
         if all(self.unallocated_thrust != other.unallocated_thrust):
             return False
         if all(self.actuator_saturation != other.actuator_saturation):
-            return False
-        if self.handled_motor_failure_mask != other.handled_motor_failure_mask:
             return False
         return True
 
@@ -232,6 +248,37 @@ class ControlAllocatorStatus(metaclass=Metaclass_ControlAllocatorStatus):
                 isinstance(value, bool), \
                 "The 'torque_setpoint_achieved' field must be of type 'bool'"
         self._torque_setpoint_achieved = value
+
+    @property
+    def allocated_torque(self):
+        """Message field 'allocated_torque'."""
+        return self._allocated_torque
+
+    @allocated_torque.setter
+    def allocated_torque(self, value):
+        if isinstance(value, numpy.ndarray):
+            assert value.dtype == numpy.float32, \
+                "The 'allocated_torque' numpy.ndarray() must have the dtype of 'numpy.float32'"
+            assert value.size == 3, \
+                "The 'allocated_torque' numpy.ndarray() must have a size of 3"
+            self._allocated_torque = value
+            return
+        if __debug__:
+            from collections.abc import Sequence
+            from collections.abc import Set
+            from collections import UserList
+            from collections import UserString
+            assert \
+                ((isinstance(value, Sequence) or
+                  isinstance(value, Set) or
+                  isinstance(value, UserList)) and
+                 not isinstance(value, str) and
+                 not isinstance(value, UserString) and
+                 len(value) == 3 and
+                 all(isinstance(v, float) for v in value) and
+                 True), \
+                "The 'allocated_torque' field must be a set or sequence with length 3 and each value of type 'float'"
+        self._allocated_torque = numpy.array(value, dtype=numpy.float32)
 
     @property
     def unallocated_torque(self):
@@ -276,6 +323,37 @@ class ControlAllocatorStatus(metaclass=Metaclass_ControlAllocatorStatus):
                 isinstance(value, bool), \
                 "The 'thrust_setpoint_achieved' field must be of type 'bool'"
         self._thrust_setpoint_achieved = value
+
+    @property
+    def allocated_thrust(self):
+        """Message field 'allocated_thrust'."""
+        return self._allocated_thrust
+
+    @allocated_thrust.setter
+    def allocated_thrust(self, value):
+        if isinstance(value, numpy.ndarray):
+            assert value.dtype == numpy.float32, \
+                "The 'allocated_thrust' numpy.ndarray() must have the dtype of 'numpy.float32'"
+            assert value.size == 3, \
+                "The 'allocated_thrust' numpy.ndarray() must have a size of 3"
+            self._allocated_thrust = value
+            return
+        if __debug__:
+            from collections.abc import Sequence
+            from collections.abc import Set
+            from collections import UserList
+            from collections import UserString
+            assert \
+                ((isinstance(value, Sequence) or
+                  isinstance(value, Set) or
+                  isinstance(value, UserList)) and
+                 not isinstance(value, str) and
+                 not isinstance(value, UserString) and
+                 len(value) == 3 and
+                 all(isinstance(v, float) for v in value) and
+                 True), \
+                "The 'allocated_thrust' field must be a set or sequence with length 3 and each value of type 'float'"
+        self._allocated_thrust = numpy.array(value, dtype=numpy.float32)
 
     @property
     def unallocated_thrust(self):
@@ -338,18 +416,3 @@ class ControlAllocatorStatus(metaclass=Metaclass_ControlAllocatorStatus):
                  all(val >= -128 and val < 128 for val in value)), \
                 "The 'actuator_saturation' field must be a set or sequence with length 16 and each value of type 'int' and each integer in [-128, 127]"
         self._actuator_saturation = numpy.array(value, dtype=numpy.int8)
-
-    @property
-    def handled_motor_failure_mask(self):
-        """Message field 'handled_motor_failure_mask'."""
-        return self._handled_motor_failure_mask
-
-    @handled_motor_failure_mask.setter
-    def handled_motor_failure_mask(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, int), \
-                "The 'handled_motor_failure_mask' field must be of type 'int'"
-            assert value >= 0 and value < 65536, \
-                "The 'handled_motor_failure_mask' field must be an unsigned integer in [0, 65535]"
-        self._handled_motor_failure_mask = value

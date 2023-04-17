@@ -50,10 +50,16 @@ cdr_serialize(
   {
     cdr << ros_message.thrust_body;
   }
-  // Member: reset_integral
-  cdr << (ros_message.reset_integral ? true : false);
-  // Member: fw_control_yaw_wheel
-  cdr << (ros_message.fw_control_yaw_wheel ? true : false);
+  // Member: roll_reset_integral
+  cdr << (ros_message.roll_reset_integral ? true : false);
+  // Member: pitch_reset_integral
+  cdr << (ros_message.pitch_reset_integral ? true : false);
+  // Member: yaw_reset_integral
+  cdr << (ros_message.yaw_reset_integral ? true : false);
+  // Member: fw_control_yaw
+  cdr << (ros_message.fw_control_yaw ? true : false);
+  // Member: apply_flaps
+  cdr << ros_message.apply_flaps;
   return true;
 }
 
@@ -88,19 +94,36 @@ cdr_deserialize(
     cdr >> ros_message.thrust_body;
   }
 
-  // Member: reset_integral
+  // Member: roll_reset_integral
   {
     uint8_t tmp;
     cdr >> tmp;
-    ros_message.reset_integral = tmp ? true : false;
+    ros_message.roll_reset_integral = tmp ? true : false;
   }
 
-  // Member: fw_control_yaw_wheel
+  // Member: pitch_reset_integral
   {
     uint8_t tmp;
     cdr >> tmp;
-    ros_message.fw_control_yaw_wheel = tmp ? true : false;
+    ros_message.pitch_reset_integral = tmp ? true : false;
   }
+
+  // Member: yaw_reset_integral
+  {
+    uint8_t tmp;
+    cdr >> tmp;
+    ros_message.yaw_reset_integral = tmp ? true : false;
+  }
+
+  // Member: fw_control_yaw
+  {
+    uint8_t tmp;
+    cdr >> tmp;
+    ros_message.fw_control_yaw = tmp ? true : false;
+  }
+
+  // Member: apply_flaps
+  cdr >> ros_message.apply_flaps;
 
   return true;
 }
@@ -162,15 +185,33 @@ get_serialized_size(
     current_alignment += array_size * item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // Member: reset_integral
+  // Member: roll_reset_integral
   {
-    size_t item_size = sizeof(ros_message.reset_integral);
+    size_t item_size = sizeof(ros_message.roll_reset_integral);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // Member: fw_control_yaw_wheel
+  // Member: pitch_reset_integral
   {
-    size_t item_size = sizeof(ros_message.fw_control_yaw_wheel);
+    size_t item_size = sizeof(ros_message.pitch_reset_integral);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // Member: yaw_reset_integral
+  {
+    size_t item_size = sizeof(ros_message.yaw_reset_integral);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // Member: fw_control_yaw
+  {
+    size_t item_size = sizeof(ros_message.fw_control_yaw);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // Member: apply_flaps
+  {
+    size_t item_size = sizeof(ros_message.apply_flaps);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -249,14 +290,35 @@ max_serialized_size_VehicleAttitudeSetpoint(
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
 
-  // Member: reset_integral
+  // Member: roll_reset_integral
   {
     size_t array_size = 1;
 
     current_alignment += array_size * sizeof(uint8_t);
   }
 
-  // Member: fw_control_yaw_wheel
+  // Member: pitch_reset_integral
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
+  }
+
+  // Member: yaw_reset_integral
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
+  }
+
+  // Member: fw_control_yaw
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
+  }
+
+  // Member: apply_flaps
   {
     size_t array_size = 1;
 

@@ -65,7 +65,6 @@ struct TelemetryStatus_
       this->heartbeat_type_adsb = false;
       this->heartbeat_type_camera = false;
       this->heartbeat_type_parachute = false;
-      this->heartbeat_type_open_drone_id = false;
       this->heartbeat_component_telemetry_radio = false;
       this->heartbeat_component_log = false;
       this->heartbeat_component_osd = false;
@@ -75,7 +74,6 @@ struct TelemetryStatus_
       this->heartbeat_component_udp_bridge = false;
       this->heartbeat_component_uart_bridge = false;
       this->avoidance_system_healthy = false;
-      this->open_drone_id_system_healthy = false;
       this->parachute_system_healthy = false;
     }
   }
@@ -114,7 +112,6 @@ struct TelemetryStatus_
       this->heartbeat_type_adsb = false;
       this->heartbeat_type_camera = false;
       this->heartbeat_type_parachute = false;
-      this->heartbeat_type_open_drone_id = false;
       this->heartbeat_component_telemetry_radio = false;
       this->heartbeat_component_log = false;
       this->heartbeat_component_osd = false;
@@ -124,7 +121,6 @@ struct TelemetryStatus_
       this->heartbeat_component_udp_bridge = false;
       this->heartbeat_component_uart_bridge = false;
       this->avoidance_system_healthy = false;
-      this->open_drone_id_system_healthy = false;
       this->parachute_system_healthy = false;
     }
   }
@@ -214,9 +210,6 @@ struct TelemetryStatus_
   using _heartbeat_type_parachute_type =
     bool;
   _heartbeat_type_parachute_type heartbeat_type_parachute;
-  using _heartbeat_type_open_drone_id_type =
-    bool;
-  _heartbeat_type_open_drone_id_type heartbeat_type_open_drone_id;
   using _heartbeat_component_telemetry_radio_type =
     bool;
   _heartbeat_component_telemetry_radio_type heartbeat_component_telemetry_radio;
@@ -244,9 +237,6 @@ struct TelemetryStatus_
   using _avoidance_system_healthy_type =
     bool;
   _avoidance_system_healthy_type avoidance_system_healthy;
-  using _open_drone_id_system_healthy_type =
-    bool;
-  _open_drone_id_system_healthy_type open_drone_id_system_healthy;
   using _parachute_system_healthy_type =
     bool;
   _parachute_system_healthy_type parachute_system_healthy;
@@ -420,12 +410,6 @@ struct TelemetryStatus_
     this->heartbeat_type_parachute = _arg;
     return *this;
   }
-  Type & set__heartbeat_type_open_drone_id(
-    const bool & _arg)
-  {
-    this->heartbeat_type_open_drone_id = _arg;
-    return *this;
-  }
   Type & set__heartbeat_component_telemetry_radio(
     const bool & _arg)
   {
@@ -478,12 +462,6 @@ struct TelemetryStatus_
     const bool & _arg)
   {
     this->avoidance_system_healthy = _arg;
-    return *this;
-  }
-  Type & set__open_drone_id_system_healthy(
-    const bool & _arg)
-  {
-    this->open_drone_id_system_healthy = _arg;
     return *this;
   }
   Type & set__parachute_system_healthy(
@@ -631,9 +609,6 @@ struct TelemetryStatus_
     if (this->heartbeat_type_parachute != other.heartbeat_type_parachute) {
       return false;
     }
-    if (this->heartbeat_type_open_drone_id != other.heartbeat_type_open_drone_id) {
-      return false;
-    }
     if (this->heartbeat_component_telemetry_radio != other.heartbeat_component_telemetry_radio) {
       return false;
     }
@@ -659,9 +634,6 @@ struct TelemetryStatus_
       return false;
     }
     if (this->avoidance_system_healthy != other.avoidance_system_healthy) {
-      return false;
-    }
-    if (this->open_drone_id_system_healthy != other.open_drone_id_system_healthy) {
       return false;
     }
     if (this->parachute_system_healthy != other.parachute_system_healthy) {

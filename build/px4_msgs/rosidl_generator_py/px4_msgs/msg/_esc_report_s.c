@@ -113,15 +113,6 @@ bool px4_msgs__msg__esc_report__convert_from_py(PyObject * _pymsg, void * _ros_m
     ros_message->esc_address = (uint8_t)PyLong_AsUnsignedLong(field);
     Py_DECREF(field);
   }
-  {  // esc_cmdcount
-    PyObject * field = PyObject_GetAttrString(_pymsg, "esc_cmdcount");
-    if (!field) {
-      return false;
-    }
-    assert(PyLong_Check(field));
-    ros_message->esc_cmdcount = (uint8_t)PyLong_AsUnsignedLong(field);
-    Py_DECREF(field);
-  }
   {  // esc_state
     PyObject * field = PyObject_GetAttrString(_pymsg, "esc_state");
     if (!field) {
@@ -131,15 +122,6 @@ bool px4_msgs__msg__esc_report__convert_from_py(PyObject * _pymsg, void * _ros_m
     ros_message->esc_state = (uint8_t)PyLong_AsUnsignedLong(field);
     Py_DECREF(field);
   }
-  {  // actuator_function
-    PyObject * field = PyObject_GetAttrString(_pymsg, "actuator_function");
-    if (!field) {
-      return false;
-    }
-    assert(PyLong_Check(field));
-    ros_message->actuator_function = (uint8_t)PyLong_AsUnsignedLong(field);
-    Py_DECREF(field);
-  }
   {  // failures
     PyObject * field = PyObject_GetAttrString(_pymsg, "failures");
     if (!field) {
@@ -147,15 +129,6 @@ bool px4_msgs__msg__esc_report__convert_from_py(PyObject * _pymsg, void * _ros_m
     }
     assert(PyLong_Check(field));
     ros_message->failures = (uint16_t)PyLong_AsUnsignedLong(field);
-    Py_DECREF(field);
-  }
-  {  // esc_power
-    PyObject * field = PyObject_GetAttrString(_pymsg, "esc_power");
-    if (!field) {
-      return false;
-    }
-    assert(PyLong_Check(field));
-    ros_message->esc_power = (int8_t)PyLong_AsLong(field);
     Py_DECREF(field);
   }
 
@@ -257,17 +230,6 @@ PyObject * px4_msgs__msg__esc_report__convert_to_py(void * raw_ros_message)
       }
     }
   }
-  {  // esc_cmdcount
-    PyObject * field = NULL;
-    field = PyLong_FromUnsignedLong(ros_message->esc_cmdcount);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "esc_cmdcount", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
   {  // esc_state
     PyObject * field = NULL;
     field = PyLong_FromUnsignedLong(ros_message->esc_state);
@@ -279,33 +241,11 @@ PyObject * px4_msgs__msg__esc_report__convert_to_py(void * raw_ros_message)
       }
     }
   }
-  {  // actuator_function
-    PyObject * field = NULL;
-    field = PyLong_FromUnsignedLong(ros_message->actuator_function);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "actuator_function", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
   {  // failures
     PyObject * field = NULL;
     field = PyLong_FromUnsignedLong(ros_message->failures);
     {
       int rc = PyObject_SetAttrString(_pymessage, "failures", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
-  {  // esc_power
-    PyObject * field = NULL;
-    field = PyLong_FromLong(ros_message->esc_power);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "esc_power", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;

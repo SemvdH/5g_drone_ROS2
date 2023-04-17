@@ -163,12 +163,8 @@ module px4_msgs {
       float evh;
 
       @verbatim (language="comment", text=
-        " Standard deviation of vertical velocity error, (metres/sec)")
+        " Standard deviation of horizontal velocity error, (metres/sec)")
       float evv;
-
-      @verbatim (language="comment", text=
-        " True if this position is estimated through dead-reckoning")
-      boolean dead_reckoning;
 
       @verbatim (language="comment", text=
         " estimator specified vehicle limits" "\n"

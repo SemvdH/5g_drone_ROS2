@@ -146,15 +146,6 @@ bool px4_msgs__msg__sensor_combined__convert_from_py(PyObject * _pymsg, void * _
     ros_message->accelerometer_clipping = (uint8_t)PyLong_AsUnsignedLong(field);
     Py_DECREF(field);
   }
-  {  // gyro_clipping
-    PyObject * field = PyObject_GetAttrString(_pymsg, "gyro_clipping");
-    if (!field) {
-      return false;
-    }
-    assert(PyLong_Check(field));
-    ros_message->gyro_clipping = (uint8_t)PyLong_AsUnsignedLong(field);
-    Py_DECREF(field);
-  }
   {  // accel_calibration_count
     PyObject * field = PyObject_GetAttrString(_pymsg, "accel_calibration_count");
     if (!field) {
@@ -280,17 +271,6 @@ PyObject * px4_msgs__msg__sensor_combined__convert_to_py(void * raw_ros_message)
     field = PyLong_FromUnsignedLong(ros_message->accelerometer_clipping);
     {
       int rc = PyObject_SetAttrString(_pymessage, "accelerometer_clipping", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
-  {  // gyro_clipping
-    PyObject * field = NULL;
-    field = PyLong_FromUnsignedLong(ros_message->gyro_clipping);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "gyro_clipping", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;

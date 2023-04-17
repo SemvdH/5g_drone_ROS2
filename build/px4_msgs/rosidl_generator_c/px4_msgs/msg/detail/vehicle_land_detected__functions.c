@@ -27,7 +27,6 @@ px4_msgs__msg__VehicleLandDetected__init(px4_msgs__msg__VehicleLandDetected * ms
   // has_low_throttle
   // vertical_movement
   // horizontal_movement
-  // rotational_movement
   // close_to_ground_or_skipped_check
   // at_rest
   return true;
@@ -49,7 +48,6 @@ px4_msgs__msg__VehicleLandDetected__fini(px4_msgs__msg__VehicleLandDetected * ms
   // has_low_throttle
   // vertical_movement
   // horizontal_movement
-  // rotational_movement
   // close_to_ground_or_skipped_check
   // at_rest
 }
@@ -100,10 +98,6 @@ px4_msgs__msg__VehicleLandDetected__are_equal(const px4_msgs__msg__VehicleLandDe
   if (lhs->horizontal_movement != rhs->horizontal_movement) {
     return false;
   }
-  // rotational_movement
-  if (lhs->rotational_movement != rhs->rotational_movement) {
-    return false;
-  }
   // close_to_ground_or_skipped_check
   if (lhs->close_to_ground_or_skipped_check != rhs->close_to_ground_or_skipped_check) {
     return false;
@@ -143,8 +137,6 @@ px4_msgs__msg__VehicleLandDetected__copy(
   output->vertical_movement = input->vertical_movement;
   // horizontal_movement
   output->horizontal_movement = input->horizontal_movement;
-  // rotational_movement
-  output->rotational_movement = input->rotational_movement;
   // close_to_ground_or_skipped_check
   output->close_to_ground_or_skipped_check = input->close_to_ground_or_skipped_check;
   // at_rest

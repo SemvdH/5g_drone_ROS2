@@ -25,6 +25,7 @@ px4_msgs__msg__ActuatorArmed__init(px4_msgs__msg__ActuatorArmed * msg)
   // manual_lockdown
   // force_failsafe
   // in_esc_calibration_mode
+  // soft_stop
   return true;
 }
 
@@ -42,6 +43,7 @@ px4_msgs__msg__ActuatorArmed__fini(px4_msgs__msg__ActuatorArmed * msg)
   // manual_lockdown
   // force_failsafe
   // in_esc_calibration_mode
+  // soft_stop
 }
 
 bool
@@ -82,6 +84,10 @@ px4_msgs__msg__ActuatorArmed__are_equal(const px4_msgs__msg__ActuatorArmed * lhs
   if (lhs->in_esc_calibration_mode != rhs->in_esc_calibration_mode) {
     return false;
   }
+  // soft_stop
+  if (lhs->soft_stop != rhs->soft_stop) {
+    return false;
+  }
   return true;
 }
 
@@ -109,6 +115,8 @@ px4_msgs__msg__ActuatorArmed__copy(
   output->force_failsafe = input->force_failsafe;
   // in_esc_calibration_mode
   output->in_esc_calibration_mode = input->in_esc_calibration_mode;
+  // soft_stop
+  output->soft_stop = input->soft_stop;
   return true;
 }
 

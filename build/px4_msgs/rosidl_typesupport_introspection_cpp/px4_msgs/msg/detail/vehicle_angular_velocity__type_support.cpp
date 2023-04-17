@@ -57,27 +57,7 @@ void * get_function__VehicleAngularVelocity__xyz(void * untyped_member, size_t i
   return &member[index];
 }
 
-size_t size_function__VehicleAngularVelocity__xyz_derivative(const void * untyped_member)
-{
-  (void)untyped_member;
-  return 3;
-}
-
-const void * get_const_function__VehicleAngularVelocity__xyz_derivative(const void * untyped_member, size_t index)
-{
-  const auto & member =
-    *reinterpret_cast<const std::array<float, 3> *>(untyped_member);
-  return &member[index];
-}
-
-void * get_function__VehicleAngularVelocity__xyz_derivative(void * untyped_member, size_t index)
-{
-  auto & member =
-    *reinterpret_cast<std::array<float, 3> *>(untyped_member);
-  return &member[index];
-}
-
-static const ::rosidl_typesupport_introspection_cpp::MessageMember VehicleAngularVelocity_message_member_array[4] = {
+static const ::rosidl_typesupport_introspection_cpp::MessageMember VehicleAngularVelocity_message_member_array[3] = {
   {
     "timestamp",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_UINT64,  // type
@@ -122,28 +102,13 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember VehicleAngula
     get_const_function__VehicleAngularVelocity__xyz,  // get_const(index) function pointer
     get_function__VehicleAngularVelocity__xyz,  // get(index) function pointer
     nullptr  // resize(index) function pointer
-  },
-  {
-    "xyz_derivative",  // name
-    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
-    0,  // upper bound of string
-    nullptr,  // members of sub message
-    true,  // is array
-    3,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs::msg::VehicleAngularVelocity, xyz_derivative),  // bytes offset in struct
-    nullptr,  // default value
-    size_function__VehicleAngularVelocity__xyz_derivative,  // size() function pointer
-    get_const_function__VehicleAngularVelocity__xyz_derivative,  // get_const(index) function pointer
-    get_function__VehicleAngularVelocity__xyz_derivative,  // get(index) function pointer
-    nullptr  // resize(index) function pointer
   }
 };
 
 static const ::rosidl_typesupport_introspection_cpp::MessageMembers VehicleAngularVelocity_message_members = {
   "px4_msgs::msg",  // message namespace
   "VehicleAngularVelocity",  // message name
-  4,  // number of fields
+  3,  // number of fields
   sizeof(px4_msgs::msg::VehicleAngularVelocity),
   VehicleAngularVelocity_message_member_array,  // message members
   VehicleAngularVelocity_init_function,  // function to initialize message memory (memory has to be allocated)

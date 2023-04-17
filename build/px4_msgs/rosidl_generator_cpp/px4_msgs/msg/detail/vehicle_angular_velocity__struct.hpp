@@ -40,13 +40,11 @@ struct VehicleAngularVelocity_
       this->timestamp = 0ull;
       this->timestamp_sample = 0ull;
       std::fill<typename std::array<float, 3>::iterator, float>(this->xyz.begin(), this->xyz.end(), 0.0f);
-      std::fill<typename std::array<float, 3>::iterator, float>(this->xyz_derivative.begin(), this->xyz_derivative.end(), 0.0f);
     }
   }
 
   explicit VehicleAngularVelocity_(const ContainerAllocator & _alloc, rosidl_runtime_cpp::MessageInitialization _init = rosidl_runtime_cpp::MessageInitialization::ALL)
-  : xyz(_alloc),
-    xyz_derivative(_alloc)
+  : xyz(_alloc)
   {
     if (rosidl_runtime_cpp::MessageInitialization::ALL == _init ||
       rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
@@ -54,7 +52,6 @@ struct VehicleAngularVelocity_
       this->timestamp = 0ull;
       this->timestamp_sample = 0ull;
       std::fill<typename std::array<float, 3>::iterator, float>(this->xyz.begin(), this->xyz.end(), 0.0f);
-      std::fill<typename std::array<float, 3>::iterator, float>(this->xyz_derivative.begin(), this->xyz_derivative.end(), 0.0f);
     }
   }
 
@@ -68,9 +65,6 @@ struct VehicleAngularVelocity_
   using _xyz_type =
     std::array<float, 3>;
   _xyz_type xyz;
-  using _xyz_derivative_type =
-    std::array<float, 3>;
-  _xyz_derivative_type xyz_derivative;
 
   // setters for named parameter idiom
   Type & set__timestamp(
@@ -89,12 +83,6 @@ struct VehicleAngularVelocity_
     const std::array<float, 3> & _arg)
   {
     this->xyz = _arg;
-    return *this;
-  }
-  Type & set__xyz_derivative(
-    const std::array<float, 3> & _arg)
-  {
-    this->xyz_derivative = _arg;
     return *this;
   }
 
@@ -147,9 +135,6 @@ struct VehicleAngularVelocity_
       return false;
     }
     if (this->xyz != other.xyz) {
-      return false;
-    }
-    if (this->xyz_derivative != other.xyz_derivative) {
       return false;
     }
     return true;

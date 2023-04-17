@@ -1,0 +1,51 @@
+[0.243s] Invoking command in '/home/ubuntu/ros2_ws/build/beacon_positioning': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /home/ubuntu/ros2_ws/src/beacon_positioning -DCMAKE_BUILD_TYPE=RELWITHDEBINFO -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/ubuntu/ros2_ws/install/beacon_positioning
+[0.504s] -- Found ament_cmake: 0.9.11 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.702s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[1.955s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[2.043s] -- Found rclcpp: 2.4.2 (/opt/ros/foxy/share/rclcpp/cmake)
+[2.281s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[2.308s] -- Found rosidl_adapter: 1.3.0 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[3.004s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[3.377s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[3.403s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[4.163s] -- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+[4.569s] -- Added test 'copyright' to check source files copyright and LICENSE
+[4.575s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[4.576s] -- Configured cppcheck include dirs: $<BUILD_INTERFACE:/home/ubuntu/ros2_ws/src/beacon_positioning/include>
+[4.577s] -- Configured cppcheck exclude dirs and/or files: 
+[4.581s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[4.582s] -- Configured cpplint exclude dirs and/or files: 
+[4.586s] -- Added test 'lint_cmake' to check CMake code style
+[4.593s] -- Added test 'uncrustify' to check C / C++ code style
+[4.594s] -- Configured uncrustify additional arguments: 
+[4.596s] -- Added test 'xmllint' to check XML markup files
+[4.615s] -- Configuring done
+[4.661s] -- Generating done
+[4.668s] -- Build files have been written to: /home/ubuntu/ros2_ws/build/beacon_positioning
+[4.689s] Invoked command in '/home/ubuntu/ros2_ws/build/beacon_positioning' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /home/ubuntu/ros2_ws/src/beacon_positioning -DCMAKE_BUILD_TYPE=RELWITHDEBINFO -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/ubuntu/ros2_ws/install/beacon_positioning
+[4.697s] Invoking command in '/home/ubuntu/ros2_ws/build/beacon_positioning': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/ubuntu/ros2_ws/build/beacon_positioning -- -j4 -l4
+[4.908s] [35m[1mScanning dependencies of target tracker_position[0m
+[5.125s] [ 50%] [32mBuilding CXX object CMakeFiles/tracker_position.dir/src/tracker_position.cpp.o[0m
+[32.957s] [100%] [32m[1mLinking CXX executable tracker_position[0m
+[33.799s] [100%] Built target tracker_position
+[33.839s] Invoked command in '/home/ubuntu/ros2_ws/build/beacon_positioning' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/ubuntu/ros2_ws/build/beacon_positioning -- -j4 -l4
+[33.956s] Invoking command in '/home/ubuntu/ros2_ws/build/beacon_positioning': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /home/ubuntu/ros2_ws/build/beacon_positioning
+[33.990s] -- Install configuration: "RELWITHDEBINFO"
+[33.991s] -- Execute custom install script
+[33.994s] -- Symlinking: /home/ubuntu/ros2_ws/install/beacon_positioning/lib/beacon_positioning/tracker_position
+[34.027s] -- Symlinking: /home/ubuntu/ros2_ws/install/beacon_positioning/share/ament_index/resource_index/package_run_dependencies/beacon_positioning
+[34.063s] -- Symlinking: /home/ubuntu/ros2_ws/install/beacon_positioning/share/ament_index/resource_index/parent_prefix_path/beacon_positioning
+[34.097s] -- Symlinking: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/environment/ament_prefix_path.sh
+[34.131s] -- Symlinking: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/environment/ament_prefix_path.dsv
+[34.165s] -- Symlinking: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/environment/path.sh
+[34.200s] -- Symlinking: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/environment/path.dsv
+[34.235s] -- Symlinking: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/local_setup.bash
+[34.269s] -- Symlinking: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/local_setup.sh
+[34.303s] -- Symlinking: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/local_setup.zsh
+[34.338s] -- Symlinking: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/local_setup.dsv
+[34.373s] -- Symlinking: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/package.dsv
+[34.407s] -- Symlinking: /home/ubuntu/ros2_ws/install/beacon_positioning/share/ament_index/resource_index/packages/beacon_positioning
+[34.440s] -- Symlinking: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/cmake/beacon_positioningConfig.cmake
+[34.474s] -- Symlinking: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/cmake/beacon_positioningConfig-version.cmake
+[34.509s] -- Symlinking: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/package.xml
+[34.558s] Invoked command in '/home/ubuntu/ros2_ws/build/beacon_positioning' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /home/ubuntu/ros2_ws/build/beacon_positioning

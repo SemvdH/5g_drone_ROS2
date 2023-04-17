@@ -44,7 +44,6 @@ struct SensorCombined_
       std::fill<typename std::array<float, 3>::iterator, float>(this->accelerometer_m_s2.begin(), this->accelerometer_m_s2.end(), 0.0f);
       this->accelerometer_integral_dt = 0ul;
       this->accelerometer_clipping = 0;
-      this->gyro_clipping = 0;
       this->accel_calibration_count = 0;
       this->gyro_calibration_count = 0;
     }
@@ -64,7 +63,6 @@ struct SensorCombined_
       std::fill<typename std::array<float, 3>::iterator, float>(this->accelerometer_m_s2.begin(), this->accelerometer_m_s2.end(), 0.0f);
       this->accelerometer_integral_dt = 0ul;
       this->accelerometer_clipping = 0;
-      this->gyro_clipping = 0;
       this->accel_calibration_count = 0;
       this->gyro_calibration_count = 0;
     }
@@ -92,9 +90,6 @@ struct SensorCombined_
   using _accelerometer_clipping_type =
     uint8_t;
   _accelerometer_clipping_type accelerometer_clipping;
-  using _gyro_clipping_type =
-    uint8_t;
-  _gyro_clipping_type gyro_clipping;
   using _accel_calibration_count_type =
     uint8_t;
   _accel_calibration_count_type accel_calibration_count;
@@ -143,12 +138,6 @@ struct SensorCombined_
     const uint8_t & _arg)
   {
     this->accelerometer_clipping = _arg;
-    return *this;
-  }
-  Type & set__gyro_clipping(
-    const uint8_t & _arg)
-  {
-    this->gyro_clipping = _arg;
     return *this;
   }
   Type & set__accel_calibration_count(
@@ -233,9 +222,6 @@ struct SensorCombined_
       return false;
     }
     if (this->accelerometer_clipping != other.accelerometer_clipping) {
-      return false;
-    }
-    if (this->gyro_clipping != other.gyro_clipping) {
       return false;
     }
     if (this->accel_calibration_count != other.accel_calibration_count) {

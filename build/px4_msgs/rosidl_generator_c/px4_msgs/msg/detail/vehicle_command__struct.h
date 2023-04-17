@@ -215,6 +215,12 @@ enum
   px4_msgs__msg__VehicleCommand__VEHICLE_CMD_DO_REPEAT_RELAY = 182
 };
 
+/// Constant 'VEHICLE_CMD_DO_SET_SERVO'.
+enum
+{
+  px4_msgs__msg__VehicleCommand__VEHICLE_CMD_DO_SET_SERVO = 183
+};
+
 /// Constant 'VEHICLE_CMD_DO_REPEAT_SERVO'.
 enum
 {
@@ -225,12 +231,6 @@ enum
 enum
 {
   px4_msgs__msg__VehicleCommand__VEHICLE_CMD_DO_FLIGHTTERMINATION = 185
-};
-
-/// Constant 'VEHICLE_CMD_DO_CHANGE_ALTITUDE'.
-enum
-{
-  px4_msgs__msg__VehicleCommand__VEHICLE_CMD_DO_CHANGE_ALTITUDE = 186
 };
 
 /// Constant 'VEHICLE_CMD_DO_SET_ACTUATOR'.
@@ -341,12 +341,6 @@ enum
   px4_msgs__msg__VehicleCommand__VEHICLE_CMD_DO_INVERTED_FLIGHT = 210
 };
 
-/// Constant 'VEHICLE_CMD_DO_GRIPPER'.
-enum
-{
-  px4_msgs__msg__VehicleCommand__VEHICLE_CMD_DO_GRIPPER = 211
-};
-
 /// Constant 'VEHICLE_CMD_DO_SET_CAM_TRIGG_INTERVAL'.
 enum
 {
@@ -447,12 +441,6 @@ enum
 enum
 {
   px4_msgs__msg__VehicleCommand__VEHICLE_CMD_COMPONENT_ARM_DISARM = 400
-};
-
-/// Constant 'VEHICLE_CMD_RUN_PREARM_CHECKS'.
-enum
-{
-  px4_msgs__msg__VehicleCommand__VEHICLE_CMD_RUN_PREARM_CHECKS = 401
 };
 
 /// Constant 'VEHICLE_CMD_INJECT_FAILURE'.
@@ -575,12 +563,6 @@ enum
   px4_msgs__msg__VehicleCommand__VEHICLE_CMD_FIXED_MAG_CAL_YAW = 42006
 };
 
-/// Constant 'VEHICLE_CMD_DO_WINCH'.
-enum
-{
-  px4_msgs__msg__VehicleCommand__VEHICLE_CMD_DO_WINCH = 42600
-};
-
 /// Constant 'VEHICLE_CMD_PX4_INTERNAL_START'.
 enum
 {
@@ -591,6 +573,48 @@ enum
 enum
 {
   px4_msgs__msg__VehicleCommand__VEHICLE_CMD_SET_GPS_GLOBAL_ORIGIN = 100000ul
+};
+
+/// Constant 'VEHICLE_CMD_RESULT_ACCEPTED'.
+enum
+{
+  px4_msgs__msg__VehicleCommand__VEHICLE_CMD_RESULT_ACCEPTED = 0
+};
+
+/// Constant 'VEHICLE_CMD_RESULT_TEMPORARILY_REJECTED'.
+enum
+{
+  px4_msgs__msg__VehicleCommand__VEHICLE_CMD_RESULT_TEMPORARILY_REJECTED = 1
+};
+
+/// Constant 'VEHICLE_CMD_RESULT_DENIED'.
+enum
+{
+  px4_msgs__msg__VehicleCommand__VEHICLE_CMD_RESULT_DENIED = 2
+};
+
+/// Constant 'VEHICLE_CMD_RESULT_UNSUPPORTED'.
+enum
+{
+  px4_msgs__msg__VehicleCommand__VEHICLE_CMD_RESULT_UNSUPPORTED = 3
+};
+
+/// Constant 'VEHICLE_CMD_RESULT_FAILED'.
+enum
+{
+  px4_msgs__msg__VehicleCommand__VEHICLE_CMD_RESULT_FAILED = 4
+};
+
+/// Constant 'VEHICLE_CMD_RESULT_IN_PROGRESS'.
+enum
+{
+  px4_msgs__msg__VehicleCommand__VEHICLE_CMD_RESULT_IN_PROGRESS = 5
+};
+
+/// Constant 'VEHICLE_CMD_RESULT_ENUM_END'.
+enum
+{
+  px4_msgs__msg__VehicleCommand__VEHICLE_CMD_RESULT_ENUM_END = 6
 };
 
 /// Constant 'VEHICLE_MOUNT_MODE_RETRACT'.
@@ -663,6 +687,30 @@ enum
 enum
 {
   px4_msgs__msg__VehicleCommand__VEHICLE_ROI_ENUM_END = 5
+};
+
+/// Constant 'VEHICLE_CAMERA_ZOOM_TYPE_STEP'.
+enum
+{
+  px4_msgs__msg__VehicleCommand__VEHICLE_CAMERA_ZOOM_TYPE_STEP = 0
+};
+
+/// Constant 'VEHICLE_CAMERA_ZOOM_TYPE_CONTINUOUS'.
+enum
+{
+  px4_msgs__msg__VehicleCommand__VEHICLE_CAMERA_ZOOM_TYPE_CONTINUOUS = 1
+};
+
+/// Constant 'VEHICLE_CAMERA_ZOOM_TYPE_RANGE'.
+enum
+{
+  px4_msgs__msg__VehicleCommand__VEHICLE_CAMERA_ZOOM_TYPE_RANGE = 2
+};
+
+/// Constant 'VEHICLE_CAMERA_ZOOM_TYPE_FOCAL_LENGTH'.
+enum
+{
+  px4_msgs__msg__VehicleCommand__VEHICLE_CAMERA_ZOOM_TYPE_FOCAL_LENGTH = 3
 };
 
 /// Constant 'PARACHUTE_ACTION_DISABLE'.
@@ -855,18 +903,6 @@ enum
 enum
 {
   px4_msgs__msg__VehicleCommand__ARMING_ACTION_ARM = 1
-};
-
-/// Constant 'GRIPPER_ACTION_RELEASE'.
-enum
-{
-  px4_msgs__msg__VehicleCommand__GRIPPER_ACTION_RELEASE = 0
-};
-
-/// Constant 'GRIPPER_ACTION_GRAB'.
-enum
-{
-  px4_msgs__msg__VehicleCommand__GRIPPER_ACTION_GRAB = 1
 };
 
 /// Constant 'ORB_QUEUE_LENGTH'.

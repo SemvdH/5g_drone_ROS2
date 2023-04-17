@@ -18,14 +18,6 @@ class Metaclass_SensorGps(type):
     _TYPE_SUPPORT = None
 
     __constants = {
-        'JAMMING_STATE_UNKNOWN': 0,
-        'JAMMING_STATE_OK': 1,
-        'JAMMING_STATE_WARNING': 2,
-        'JAMMING_STATE_CRITICAL': 3,
-        'SPOOFING_STATE_UNKNOWN': 0,
-        'SPOOFING_STATE_NONE': 1,
-        'SPOOFING_STATE_INDICATED': 2,
-        'SPOOFING_STATE_MULTIPLE': 3,
     }
 
     @classmethod
@@ -54,75 +46,14 @@ class Metaclass_SensorGps(type):
         # the message class under "Data and other attributes defined here:"
         # as well as populate each message instance
         return {
-            'JAMMING_STATE_UNKNOWN': cls.__constants['JAMMING_STATE_UNKNOWN'],
-            'JAMMING_STATE_OK': cls.__constants['JAMMING_STATE_OK'],
-            'JAMMING_STATE_WARNING': cls.__constants['JAMMING_STATE_WARNING'],
-            'JAMMING_STATE_CRITICAL': cls.__constants['JAMMING_STATE_CRITICAL'],
-            'SPOOFING_STATE_UNKNOWN': cls.__constants['SPOOFING_STATE_UNKNOWN'],
-            'SPOOFING_STATE_NONE': cls.__constants['SPOOFING_STATE_NONE'],
-            'SPOOFING_STATE_INDICATED': cls.__constants['SPOOFING_STATE_INDICATED'],
-            'SPOOFING_STATE_MULTIPLE': cls.__constants['SPOOFING_STATE_MULTIPLE'],
         }
-
-    @property
-    def JAMMING_STATE_UNKNOWN(self):
-        """Message constant 'JAMMING_STATE_UNKNOWN'."""
-        return Metaclass_SensorGps.__constants['JAMMING_STATE_UNKNOWN']
-
-    @property
-    def JAMMING_STATE_OK(self):
-        """Message constant 'JAMMING_STATE_OK'."""
-        return Metaclass_SensorGps.__constants['JAMMING_STATE_OK']
-
-    @property
-    def JAMMING_STATE_WARNING(self):
-        """Message constant 'JAMMING_STATE_WARNING'."""
-        return Metaclass_SensorGps.__constants['JAMMING_STATE_WARNING']
-
-    @property
-    def JAMMING_STATE_CRITICAL(self):
-        """Message constant 'JAMMING_STATE_CRITICAL'."""
-        return Metaclass_SensorGps.__constants['JAMMING_STATE_CRITICAL']
-
-    @property
-    def SPOOFING_STATE_UNKNOWN(self):
-        """Message constant 'SPOOFING_STATE_UNKNOWN'."""
-        return Metaclass_SensorGps.__constants['SPOOFING_STATE_UNKNOWN']
-
-    @property
-    def SPOOFING_STATE_NONE(self):
-        """Message constant 'SPOOFING_STATE_NONE'."""
-        return Metaclass_SensorGps.__constants['SPOOFING_STATE_NONE']
-
-    @property
-    def SPOOFING_STATE_INDICATED(self):
-        """Message constant 'SPOOFING_STATE_INDICATED'."""
-        return Metaclass_SensorGps.__constants['SPOOFING_STATE_INDICATED']
-
-    @property
-    def SPOOFING_STATE_MULTIPLE(self):
-        """Message constant 'SPOOFING_STATE_MULTIPLE'."""
-        return Metaclass_SensorGps.__constants['SPOOFING_STATE_MULTIPLE']
 
 
 class SensorGps(metaclass=Metaclass_SensorGps):
-    """
-    Message class 'SensorGps'.
-
-    Constants:
-      JAMMING_STATE_UNKNOWN
-      JAMMING_STATE_OK
-      JAMMING_STATE_WARNING
-      JAMMING_STATE_CRITICAL
-      SPOOFING_STATE_UNKNOWN
-      SPOOFING_STATE_NONE
-      SPOOFING_STATE_INDICATED
-      SPOOFING_STATE_MULTIPLE
-    """
+    """Message class 'SensorGps'."""
 
     __slots__ = [
         '_timestamp',
-        '_timestamp_sample',
         '_device_id',
         '_lat',
         '_lon',
@@ -137,9 +68,8 @@ class SensorGps(metaclass=Metaclass_SensorGps):
         '_vdop',
         '_noise_per_ms',
         '_automatic_gain_control',
-        '_jamming_state',
         '_jamming_indicator',
-        '_spoofing_state',
+        '_jamming_state',
         '_vel_m_s',
         '_vel_n_m_s',
         '_vel_e_m_s',
@@ -152,13 +82,10 @@ class SensorGps(metaclass=Metaclass_SensorGps):
         '_heading',
         '_heading_offset',
         '_heading_accuracy',
-        '_rtcm_injection_rate',
-        '_selected_rtcm_instance',
     ]
 
     _fields_and_field_types = {
         'timestamp': 'uint64',
-        'timestamp_sample': 'uint64',
         'device_id': 'uint32',
         'lat': 'int32',
         'lon': 'int32',
@@ -173,9 +100,8 @@ class SensorGps(metaclass=Metaclass_SensorGps):
         'vdop': 'float',
         'noise_per_ms': 'int32',
         'automatic_gain_control': 'uint16',
-        'jamming_state': 'uint8',
         'jamming_indicator': 'int32',
-        'spoofing_state': 'uint8',
+        'jamming_state': 'uint8',
         'vel_m_s': 'float',
         'vel_n_m_s': 'float',
         'vel_e_m_s': 'float',
@@ -188,12 +114,9 @@ class SensorGps(metaclass=Metaclass_SensorGps):
         'heading': 'float',
         'heading_offset': 'float',
         'heading_accuracy': 'float',
-        'rtcm_injection_rate': 'float',
-        'selected_rtcm_instance': 'uint8',
     }
 
     SLOT_TYPES = (
-        rosidl_parser.definition.BasicType('uint64'),  # noqa: E501
         rosidl_parser.definition.BasicType('uint64'),  # noqa: E501
         rosidl_parser.definition.BasicType('uint32'),  # noqa: E501
         rosidl_parser.definition.BasicType('int32'),  # noqa: E501
@@ -209,7 +132,6 @@ class SensorGps(metaclass=Metaclass_SensorGps):
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
         rosidl_parser.definition.BasicType('int32'),  # noqa: E501
         rosidl_parser.definition.BasicType('uint16'),  # noqa: E501
-        rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
         rosidl_parser.definition.BasicType('int32'),  # noqa: E501
         rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
@@ -224,8 +146,6 @@ class SensorGps(metaclass=Metaclass_SensorGps):
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
-        rosidl_parser.definition.BasicType('float'),  # noqa: E501
-        rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
     )
 
     def __init__(self, **kwargs):
@@ -233,7 +153,6 @@ class SensorGps(metaclass=Metaclass_SensorGps):
             'Invalid arguments passed to constructor: %s' % \
             ', '.join(sorted(k for k in kwargs.keys() if '_' + k not in self.__slots__))
         self.timestamp = kwargs.get('timestamp', int())
-        self.timestamp_sample = kwargs.get('timestamp_sample', int())
         self.device_id = kwargs.get('device_id', int())
         self.lat = kwargs.get('lat', int())
         self.lon = kwargs.get('lon', int())
@@ -248,9 +167,8 @@ class SensorGps(metaclass=Metaclass_SensorGps):
         self.vdop = kwargs.get('vdop', float())
         self.noise_per_ms = kwargs.get('noise_per_ms', int())
         self.automatic_gain_control = kwargs.get('automatic_gain_control', int())
-        self.jamming_state = kwargs.get('jamming_state', int())
         self.jamming_indicator = kwargs.get('jamming_indicator', int())
-        self.spoofing_state = kwargs.get('spoofing_state', int())
+        self.jamming_state = kwargs.get('jamming_state', int())
         self.vel_m_s = kwargs.get('vel_m_s', float())
         self.vel_n_m_s = kwargs.get('vel_n_m_s', float())
         self.vel_e_m_s = kwargs.get('vel_e_m_s', float())
@@ -263,8 +181,6 @@ class SensorGps(metaclass=Metaclass_SensorGps):
         self.heading = kwargs.get('heading', float())
         self.heading_offset = kwargs.get('heading_offset', float())
         self.heading_accuracy = kwargs.get('heading_accuracy', float())
-        self.rtcm_injection_rate = kwargs.get('rtcm_injection_rate', float())
-        self.selected_rtcm_instance = kwargs.get('selected_rtcm_instance', int())
 
     def __repr__(self):
         typename = self.__class__.__module__.split('.')
@@ -297,8 +213,6 @@ class SensorGps(metaclass=Metaclass_SensorGps):
             return False
         if self.timestamp != other.timestamp:
             return False
-        if self.timestamp_sample != other.timestamp_sample:
-            return False
         if self.device_id != other.device_id:
             return False
         if self.lat != other.lat:
@@ -327,11 +241,9 @@ class SensorGps(metaclass=Metaclass_SensorGps):
             return False
         if self.automatic_gain_control != other.automatic_gain_control:
             return False
-        if self.jamming_state != other.jamming_state:
-            return False
         if self.jamming_indicator != other.jamming_indicator:
             return False
-        if self.spoofing_state != other.spoofing_state:
+        if self.jamming_state != other.jamming_state:
             return False
         if self.vel_m_s != other.vel_m_s:
             return False
@@ -357,10 +269,6 @@ class SensorGps(metaclass=Metaclass_SensorGps):
             return False
         if self.heading_accuracy != other.heading_accuracy:
             return False
-        if self.rtcm_injection_rate != other.rtcm_injection_rate:
-            return False
-        if self.selected_rtcm_instance != other.selected_rtcm_instance:
-            return False
         return True
 
     @classmethod
@@ -382,21 +290,6 @@ class SensorGps(metaclass=Metaclass_SensorGps):
             assert value >= 0 and value < 18446744073709551616, \
                 "The 'timestamp' field must be an unsigned integer in [0, 18446744073709551615]"
         self._timestamp = value
-
-    @property
-    def timestamp_sample(self):
-        """Message field 'timestamp_sample'."""
-        return self._timestamp_sample
-
-    @timestamp_sample.setter
-    def timestamp_sample(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, int), \
-                "The 'timestamp_sample' field must be of type 'int'"
-            assert value >= 0 and value < 18446744073709551616, \
-                "The 'timestamp_sample' field must be an unsigned integer in [0, 18446744073709551615]"
-        self._timestamp_sample = value
 
     @property
     def device_id(self):
@@ -597,21 +490,6 @@ class SensorGps(metaclass=Metaclass_SensorGps):
         self._automatic_gain_control = value
 
     @property
-    def jamming_state(self):
-        """Message field 'jamming_state'."""
-        return self._jamming_state
-
-    @jamming_state.setter
-    def jamming_state(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, int), \
-                "The 'jamming_state' field must be of type 'int'"
-            assert value >= 0 and value < 256, \
-                "The 'jamming_state' field must be an unsigned integer in [0, 255]"
-        self._jamming_state = value
-
-    @property
     def jamming_indicator(self):
         """Message field 'jamming_indicator'."""
         return self._jamming_indicator
@@ -627,19 +505,19 @@ class SensorGps(metaclass=Metaclass_SensorGps):
         self._jamming_indicator = value
 
     @property
-    def spoofing_state(self):
-        """Message field 'spoofing_state'."""
-        return self._spoofing_state
+    def jamming_state(self):
+        """Message field 'jamming_state'."""
+        return self._jamming_state
 
-    @spoofing_state.setter
-    def spoofing_state(self, value):
+    @jamming_state.setter
+    def jamming_state(self, value):
         if __debug__:
             assert \
                 isinstance(value, int), \
-                "The 'spoofing_state' field must be of type 'int'"
+                "The 'jamming_state' field must be of type 'int'"
             assert value >= 0 and value < 256, \
-                "The 'spoofing_state' field must be an unsigned integer in [0, 255]"
-        self._spoofing_state = value
+                "The 'jamming_state' field must be an unsigned integer in [0, 255]"
+        self._jamming_state = value
 
     @property
     def vel_m_s(self):
@@ -802,31 +680,3 @@ class SensorGps(metaclass=Metaclass_SensorGps):
                 isinstance(value, float), \
                 "The 'heading_accuracy' field must be of type 'float'"
         self._heading_accuracy = value
-
-    @property
-    def rtcm_injection_rate(self):
-        """Message field 'rtcm_injection_rate'."""
-        return self._rtcm_injection_rate
-
-    @rtcm_injection_rate.setter
-    def rtcm_injection_rate(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, float), \
-                "The 'rtcm_injection_rate' field must be of type 'float'"
-        self._rtcm_injection_rate = value
-
-    @property
-    def selected_rtcm_instance(self):
-        """Message field 'selected_rtcm_instance'."""
-        return self._selected_rtcm_instance
-
-    @selected_rtcm_instance.setter
-    def selected_rtcm_instance(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, int), \
-                "The 'selected_rtcm_instance' field must be of type 'int'"
-            assert value >= 0 and value < 256, \
-                "The 'selected_rtcm_instance' field must be an unsigned integer in [0, 255]"
-        self._selected_rtcm_instance = value

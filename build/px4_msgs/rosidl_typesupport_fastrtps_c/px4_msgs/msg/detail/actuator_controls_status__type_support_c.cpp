@@ -56,7 +56,7 @@ static bool _ActuatorControlsStatus__cdr_serialize(
 
   // Field name: control_power
   {
-    size_t size = 3;
+    size_t size = 4;
     auto array_ptr = ros_message->control_power;
     cdr.serializeArray(array_ptr, size);
   }
@@ -80,7 +80,7 @@ static bool _ActuatorControlsStatus__cdr_deserialize(
 
   // Field name: control_power
   {
-    size_t size = 3;
+    size_t size = 4;
     auto array_ptr = ros_message->control_power;
     cdr.deserializeArray(array_ptr, size);
   }
@@ -110,7 +110,7 @@ size_t get_serialized_size_px4_msgs__msg__ActuatorControlsStatus(
   }
   // field.name control_power
   {
-    size_t array_size = 3;
+    size_t array_size = 4;
     auto array_ptr = ros_message->control_power;
     (void)array_ptr;
     size_t item_size = sizeof(array_ptr[0]);
@@ -150,7 +150,7 @@ size_t max_serialized_size_px4_msgs__msg__ActuatorControlsStatus(
   }
   // member: control_power
   {
-    size_t array_size = 3;
+    size_t array_size = 4;
 
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));

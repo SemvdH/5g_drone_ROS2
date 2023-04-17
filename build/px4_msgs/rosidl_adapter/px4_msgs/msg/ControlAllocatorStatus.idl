@@ -24,6 +24,10 @@ module px4_msgs {
       boolean torque_setpoint_achieved;
 
       @verbatim (language="comment", text=
+        " Torque allocated to actuators. Equal to `vehicle_torque_setpoint_s::xyz` if the setpoint was achieved.")
+      float__3 allocated_torque;
+
+      @verbatim (language="comment", text=
         " Unallocated torque. Equal to 0 if the setpoint was achieved." "\n"
         " Computed as: unallocated_torque = torque_setpoint - allocated_torque")
       float__3 unallocated_torque;
@@ -31,6 +35,10 @@ module px4_msgs {
       @verbatim (language="comment", text=
         " Boolean indicating whether the 3D thrust setpoint was correctly allocated to actuators. 0 if not achieved, 1 if achieved.")
       boolean thrust_setpoint_achieved;
+
+      @verbatim (language="comment", text=
+        " Thrust allocated to actuators. Equal to `vehicle_thrust_setpoint_s::xyz` if the setpoint was achieved.")
+      float__3 allocated_thrust;
 
       @verbatim (language="comment", text=
         " Unallocated thrust. Equal to 0 if the setpoint was achieved." "\n"
@@ -42,10 +50,6 @@ module px4_msgs {
         " Note 1: actuator saturation does not necessarily imply that the thrust setpoint or the torque setpoint were not achieved." "\n"
         " Note 2: an actuator with limited dynamics can be indicated as upper-saturated even if it as not reached its maximum value.")
       int8__16 actuator_saturation;
-
-      @verbatim (language="comment", text=
-        " Bitmask of failed motors that were removed from the allocation / effectiveness matrix. Not necessarily identical to the report from FailureDetector")
-      uint16 handled_motor_failure_mask;
     };
   };
 };

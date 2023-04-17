@@ -45,7 +45,6 @@ px4_msgs__msg__TelemetryStatus__init(px4_msgs__msg__TelemetryStatus * msg)
   // heartbeat_type_adsb
   // heartbeat_type_camera
   // heartbeat_type_parachute
-  // heartbeat_type_open_drone_id
   // heartbeat_component_telemetry_radio
   // heartbeat_component_log
   // heartbeat_component_osd
@@ -55,7 +54,6 @@ px4_msgs__msg__TelemetryStatus__init(px4_msgs__msg__TelemetryStatus * msg)
   // heartbeat_component_udp_bridge
   // heartbeat_component_uart_bridge
   // avoidance_system_healthy
-  // open_drone_id_system_healthy
   // parachute_system_healthy
   return true;
 }
@@ -94,7 +92,6 @@ px4_msgs__msg__TelemetryStatus__fini(px4_msgs__msg__TelemetryStatus * msg)
   // heartbeat_type_adsb
   // heartbeat_type_camera
   // heartbeat_type_parachute
-  // heartbeat_type_open_drone_id
   // heartbeat_component_telemetry_radio
   // heartbeat_component_log
   // heartbeat_component_osd
@@ -104,7 +101,6 @@ px4_msgs__msg__TelemetryStatus__fini(px4_msgs__msg__TelemetryStatus * msg)
   // heartbeat_component_udp_bridge
   // heartbeat_component_uart_bridge
   // avoidance_system_healthy
-  // open_drone_id_system_healthy
   // parachute_system_healthy
 }
 
@@ -226,10 +222,6 @@ px4_msgs__msg__TelemetryStatus__are_equal(const px4_msgs__msg__TelemetryStatus *
   if (lhs->heartbeat_type_parachute != rhs->heartbeat_type_parachute) {
     return false;
   }
-  // heartbeat_type_open_drone_id
-  if (lhs->heartbeat_type_open_drone_id != rhs->heartbeat_type_open_drone_id) {
-    return false;
-  }
   // heartbeat_component_telemetry_radio
   if (lhs->heartbeat_component_telemetry_radio != rhs->heartbeat_component_telemetry_radio) {
     return false;
@@ -264,10 +256,6 @@ px4_msgs__msg__TelemetryStatus__are_equal(const px4_msgs__msg__TelemetryStatus *
   }
   // avoidance_system_healthy
   if (lhs->avoidance_system_healthy != rhs->avoidance_system_healthy) {
-    return false;
-  }
-  // open_drone_id_system_healthy
-  if (lhs->open_drone_id_system_healthy != rhs->open_drone_id_system_healthy) {
     return false;
   }
   // parachute_system_healthy
@@ -341,8 +329,6 @@ px4_msgs__msg__TelemetryStatus__copy(
   output->heartbeat_type_camera = input->heartbeat_type_camera;
   // heartbeat_type_parachute
   output->heartbeat_type_parachute = input->heartbeat_type_parachute;
-  // heartbeat_type_open_drone_id
-  output->heartbeat_type_open_drone_id = input->heartbeat_type_open_drone_id;
   // heartbeat_component_telemetry_radio
   output->heartbeat_component_telemetry_radio = input->heartbeat_component_telemetry_radio;
   // heartbeat_component_log
@@ -361,8 +347,6 @@ px4_msgs__msg__TelemetryStatus__copy(
   output->heartbeat_component_uart_bridge = input->heartbeat_component_uart_bridge;
   // avoidance_system_healthy
   output->avoidance_system_healthy = input->avoidance_system_healthy;
-  // open_drone_id_system_healthy
-  output->open_drone_id_system_healthy = input->open_drone_id_system_healthy;
   // parachute_system_healthy
   output->parachute_system_healthy = input->parachute_system_healthy;
   return true;

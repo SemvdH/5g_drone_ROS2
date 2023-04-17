@@ -157,26 +157,6 @@ void * get_function__EstimatorInnovations__flow(void * untyped_member, size_t in
   return &member[index];
 }
 
-size_t size_function__EstimatorInnovations__terr_flow(const void * untyped_member)
-{
-  (void)untyped_member;
-  return 2;
-}
-
-const void * get_const_function__EstimatorInnovations__terr_flow(const void * untyped_member, size_t index)
-{
-  const auto & member =
-    *reinterpret_cast<const std::array<float, 2> *>(untyped_member);
-  return &member[index];
-}
-
-void * get_function__EstimatorInnovations__terr_flow(void * untyped_member, size_t index)
-{
-  auto & member =
-    *reinterpret_cast<std::array<float, 2> *>(untyped_member);
-  return &member[index];
-}
-
 size_t size_function__EstimatorInnovations__mag_field(const void * untyped_member)
 {
   (void)untyped_member;
@@ -191,26 +171,6 @@ const void * get_const_function__EstimatorInnovations__mag_field(const void * un
 }
 
 void * get_function__EstimatorInnovations__mag_field(void * untyped_member, size_t index)
-{
-  auto & member =
-    *reinterpret_cast<std::array<float, 3> *>(untyped_member);
-  return &member[index];
-}
-
-size_t size_function__EstimatorInnovations__gravity(const void * untyped_member)
-{
-  (void)untyped_member;
-  return 3;
-}
-
-const void * get_const_function__EstimatorInnovations__gravity(const void * untyped_member, size_t index)
-{
-  const auto & member =
-    *reinterpret_cast<const std::array<float, 3> *>(untyped_member);
-  return &member[index];
-}
-
-void * get_function__EstimatorInnovations__gravity(void * untyped_member, size_t index)
 {
   auto & member =
     *reinterpret_cast<std::array<float, 3> *>(untyped_member);
@@ -237,7 +197,7 @@ void * get_function__EstimatorInnovations__drag(void * untyped_member, size_t in
   return &member[index];
 }
 
-static const ::rosidl_typesupport_introspection_cpp::MessageMember EstimatorInnovations_message_member_array[24] = {
+static const ::rosidl_typesupport_introspection_cpp::MessageMember EstimatorInnovations_message_member_array[22] = {
   {
     "timestamp",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_UINT64,  // type
@@ -464,21 +424,6 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember EstimatorInno
     nullptr  // resize(index) function pointer
   },
   {
-    "terr_flow",  // name
-    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
-    0,  // upper bound of string
-    nullptr,  // members of sub message
-    true,  // is array
-    2,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs::msg::EstimatorInnovations, terr_flow),  // bytes offset in struct
-    nullptr,  // default value
-    size_function__EstimatorInnovations__terr_flow,  // size() function pointer
-    get_const_function__EstimatorInnovations__terr_flow,  // get_const(index) function pointer
-    get_function__EstimatorInnovations__terr_flow,  // get(index) function pointer
-    nullptr  // resize(index) function pointer
-  },
-  {
     "heading",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
     0,  // upper bound of string
@@ -506,21 +451,6 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember EstimatorInno
     size_function__EstimatorInnovations__mag_field,  // size() function pointer
     get_const_function__EstimatorInnovations__mag_field,  // get_const(index) function pointer
     get_function__EstimatorInnovations__mag_field,  // get(index) function pointer
-    nullptr  // resize(index) function pointer
-  },
-  {
-    "gravity",  // name
-    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
-    0,  // upper bound of string
-    nullptr,  // members of sub message
-    true,  // is array
-    3,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs::msg::EstimatorInnovations, gravity),  // bytes offset in struct
-    nullptr,  // default value
-    size_function__EstimatorInnovations__gravity,  // size() function pointer
-    get_const_function__EstimatorInnovations__gravity,  // get_const(index) function pointer
-    get_function__EstimatorInnovations__gravity,  // get(index) function pointer
     nullptr  // resize(index) function pointer
   },
   {
@@ -603,7 +533,7 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember EstimatorInno
 static const ::rosidl_typesupport_introspection_cpp::MessageMembers EstimatorInnovations_message_members = {
   "px4_msgs::msg",  // message namespace
   "EstimatorInnovations",  // message name
-  24,  // number of fields
+  22,  // number of fields
   sizeof(px4_msgs::msg::EstimatorInnovations),
   EstimatorInnovations_message_member_array,  // message members
   EstimatorInnovations_init_function,  // function to initialize message memory (memory has to be allocated)

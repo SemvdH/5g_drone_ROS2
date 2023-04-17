@@ -13,10 +13,6 @@ module px4_msgs {
       @verbatim (language="comment", text=
         " Corrected GPS UTC timestamp at PPS capture event")
       uint64 rtc_timestamp;
-
-      @verbatim (language="comment", text=
-        " Increments when PPS dt < 50ms")
-      uint8 pps_rate_exceeded_counter;
     };
   };
 };

@@ -24,7 +24,6 @@ px4_msgs__msg__SensorCombined__init(px4_msgs__msg__SensorCombined * msg)
   // accelerometer_m_s2
   // accelerometer_integral_dt
   // accelerometer_clipping
-  // gyro_clipping
   // accel_calibration_count
   // gyro_calibration_count
   return true;
@@ -43,7 +42,6 @@ px4_msgs__msg__SensorCombined__fini(px4_msgs__msg__SensorCombined * msg)
   // accelerometer_m_s2
   // accelerometer_integral_dt
   // accelerometer_clipping
-  // gyro_clipping
   // accel_calibration_count
   // gyro_calibration_count
 }
@@ -86,10 +84,6 @@ px4_msgs__msg__SensorCombined__are_equal(const px4_msgs__msg__SensorCombined * l
   if (lhs->accelerometer_clipping != rhs->accelerometer_clipping) {
     return false;
   }
-  // gyro_clipping
-  if (lhs->gyro_clipping != rhs->gyro_clipping) {
-    return false;
-  }
   // accel_calibration_count
   if (lhs->accel_calibration_count != rhs->accel_calibration_count) {
     return false;
@@ -127,8 +121,6 @@ px4_msgs__msg__SensorCombined__copy(
   output->accelerometer_integral_dt = input->accelerometer_integral_dt;
   // accelerometer_clipping
   output->accelerometer_clipping = input->accelerometer_clipping;
-  // gyro_clipping
-  output->gyro_clipping = input->gyro_clipping;
   // accel_calibration_count
   output->accel_calibration_count = input->accel_calibration_count;
   // gyro_calibration_count

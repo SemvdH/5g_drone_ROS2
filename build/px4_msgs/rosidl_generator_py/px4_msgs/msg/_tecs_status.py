@@ -20,6 +20,11 @@ class Metaclass_TecsStatus(type):
     __constants = {
         'TECS_MODE_NORMAL': 0,
         'TECS_MODE_UNDERSPEED': 1,
+        'TECS_MODE_TAKEOFF': 2,
+        'TECS_MODE_LAND': 3,
+        'TECS_MODE_LAND_THROTTLELIM': 4,
+        'TECS_MODE_BAD_DESCENT': 5,
+        'TECS_MODE_CLIMBOUT': 6,
     }
 
     @classmethod
@@ -50,6 +55,11 @@ class Metaclass_TecsStatus(type):
         return {
             'TECS_MODE_NORMAL': cls.__constants['TECS_MODE_NORMAL'],
             'TECS_MODE_UNDERSPEED': cls.__constants['TECS_MODE_UNDERSPEED'],
+            'TECS_MODE_TAKEOFF': cls.__constants['TECS_MODE_TAKEOFF'],
+            'TECS_MODE_LAND': cls.__constants['TECS_MODE_LAND'],
+            'TECS_MODE_LAND_THROTTLELIM': cls.__constants['TECS_MODE_LAND_THROTTLELIM'],
+            'TECS_MODE_BAD_DESCENT': cls.__constants['TECS_MODE_BAD_DESCENT'],
+            'TECS_MODE_CLIMBOUT': cls.__constants['TECS_MODE_CLIMBOUT'],
         }
 
     @property
@@ -62,6 +72,31 @@ class Metaclass_TecsStatus(type):
         """Message constant 'TECS_MODE_UNDERSPEED'."""
         return Metaclass_TecsStatus.__constants['TECS_MODE_UNDERSPEED']
 
+    @property
+    def TECS_MODE_TAKEOFF(self):
+        """Message constant 'TECS_MODE_TAKEOFF'."""
+        return Metaclass_TecsStatus.__constants['TECS_MODE_TAKEOFF']
+
+    @property
+    def TECS_MODE_LAND(self):
+        """Message constant 'TECS_MODE_LAND'."""
+        return Metaclass_TecsStatus.__constants['TECS_MODE_LAND']
+
+    @property
+    def TECS_MODE_LAND_THROTTLELIM(self):
+        """Message constant 'TECS_MODE_LAND_THROTTLELIM'."""
+        return Metaclass_TecsStatus.__constants['TECS_MODE_LAND_THROTTLELIM']
+
+    @property
+    def TECS_MODE_BAD_DESCENT(self):
+        """Message constant 'TECS_MODE_BAD_DESCENT'."""
+        return Metaclass_TecsStatus.__constants['TECS_MODE_BAD_DESCENT']
+
+    @property
+    def TECS_MODE_CLIMBOUT(self):
+        """Message constant 'TECS_MODE_CLIMBOUT'."""
+        return Metaclass_TecsStatus.__constants['TECS_MODE_CLIMBOUT']
+
 
 class TecsStatus(metaclass=Metaclass_TecsStatus):
     """
@@ -70,14 +105,17 @@ class TecsStatus(metaclass=Metaclass_TecsStatus):
     Constants:
       TECS_MODE_NORMAL
       TECS_MODE_UNDERSPEED
+      TECS_MODE_TAKEOFF
+      TECS_MODE_LAND
+      TECS_MODE_LAND_THROTTLELIM
+      TECS_MODE_BAD_DESCENT
+      TECS_MODE_CLIMBOUT
     """
 
     __slots__ = [
         '_timestamp',
         '_altitude_sp',
-        '_altitude_reference',
-        '_height_rate_reference',
-        '_height_rate_direct',
+        '_altitude_filtered',
         '_height_rate_setpoint',
         '_height_rate',
         '_equivalent_airspeed_sp',
@@ -86,24 +124,30 @@ class TecsStatus(metaclass=Metaclass_TecsStatus):
         '_true_airspeed_derivative_sp',
         '_true_airspeed_derivative',
         '_true_airspeed_derivative_raw',
-        '_total_energy_rate_sp',
+        '_true_airspeed_innovation',
+        '_total_energy_error',
+        '_energy_distribution_error',
+        '_total_energy_rate_error',
+        '_energy_distribution_rate_error',
+        '_total_energy',
         '_total_energy_rate',
-        '_total_energy_balance_rate_sp',
+        '_total_energy_balance',
         '_total_energy_balance_rate',
+        '_total_energy_sp',
+        '_total_energy_rate_sp',
+        '_total_energy_balance_sp',
+        '_total_energy_balance_rate_sp',
         '_throttle_integ',
         '_pitch_integ',
         '_throttle_sp',
         '_pitch_sp_rad',
-        '_throttle_trim',
         '_mode',
     ]
 
     _fields_and_field_types = {
         'timestamp': 'uint64',
         'altitude_sp': 'float',
-        'altitude_reference': 'float',
-        'height_rate_reference': 'float',
-        'height_rate_direct': 'float',
+        'altitude_filtered': 'float',
         'height_rate_setpoint': 'float',
         'height_rate': 'float',
         'equivalent_airspeed_sp': 'float',
@@ -112,20 +156,34 @@ class TecsStatus(metaclass=Metaclass_TecsStatus):
         'true_airspeed_derivative_sp': 'float',
         'true_airspeed_derivative': 'float',
         'true_airspeed_derivative_raw': 'float',
-        'total_energy_rate_sp': 'float',
+        'true_airspeed_innovation': 'float',
+        'total_energy_error': 'float',
+        'energy_distribution_error': 'float',
+        'total_energy_rate_error': 'float',
+        'energy_distribution_rate_error': 'float',
+        'total_energy': 'float',
         'total_energy_rate': 'float',
-        'total_energy_balance_rate_sp': 'float',
+        'total_energy_balance': 'float',
         'total_energy_balance_rate': 'float',
+        'total_energy_sp': 'float',
+        'total_energy_rate_sp': 'float',
+        'total_energy_balance_sp': 'float',
+        'total_energy_balance_rate_sp': 'float',
         'throttle_integ': 'float',
         'pitch_integ': 'float',
         'throttle_sp': 'float',
         'pitch_sp_rad': 'float',
-        'throttle_trim': 'float',
         'mode': 'uint8',
     }
 
     SLOT_TYPES = (
         rosidl_parser.definition.BasicType('uint64'),  # noqa: E501
+        rosidl_parser.definition.BasicType('float'),  # noqa: E501
+        rosidl_parser.definition.BasicType('float'),  # noqa: E501
+        rosidl_parser.definition.BasicType('float'),  # noqa: E501
+        rosidl_parser.definition.BasicType('float'),  # noqa: E501
+        rosidl_parser.definition.BasicType('float'),  # noqa: E501
+        rosidl_parser.definition.BasicType('float'),  # noqa: E501
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
@@ -156,9 +214,7 @@ class TecsStatus(metaclass=Metaclass_TecsStatus):
             ', '.join(sorted(k for k in kwargs.keys() if '_' + k not in self.__slots__))
         self.timestamp = kwargs.get('timestamp', int())
         self.altitude_sp = kwargs.get('altitude_sp', float())
-        self.altitude_reference = kwargs.get('altitude_reference', float())
-        self.height_rate_reference = kwargs.get('height_rate_reference', float())
-        self.height_rate_direct = kwargs.get('height_rate_direct', float())
+        self.altitude_filtered = kwargs.get('altitude_filtered', float())
         self.height_rate_setpoint = kwargs.get('height_rate_setpoint', float())
         self.height_rate = kwargs.get('height_rate', float())
         self.equivalent_airspeed_sp = kwargs.get('equivalent_airspeed_sp', float())
@@ -167,15 +223,23 @@ class TecsStatus(metaclass=Metaclass_TecsStatus):
         self.true_airspeed_derivative_sp = kwargs.get('true_airspeed_derivative_sp', float())
         self.true_airspeed_derivative = kwargs.get('true_airspeed_derivative', float())
         self.true_airspeed_derivative_raw = kwargs.get('true_airspeed_derivative_raw', float())
-        self.total_energy_rate_sp = kwargs.get('total_energy_rate_sp', float())
+        self.true_airspeed_innovation = kwargs.get('true_airspeed_innovation', float())
+        self.total_energy_error = kwargs.get('total_energy_error', float())
+        self.energy_distribution_error = kwargs.get('energy_distribution_error', float())
+        self.total_energy_rate_error = kwargs.get('total_energy_rate_error', float())
+        self.energy_distribution_rate_error = kwargs.get('energy_distribution_rate_error', float())
+        self.total_energy = kwargs.get('total_energy', float())
         self.total_energy_rate = kwargs.get('total_energy_rate', float())
-        self.total_energy_balance_rate_sp = kwargs.get('total_energy_balance_rate_sp', float())
+        self.total_energy_balance = kwargs.get('total_energy_balance', float())
         self.total_energy_balance_rate = kwargs.get('total_energy_balance_rate', float())
+        self.total_energy_sp = kwargs.get('total_energy_sp', float())
+        self.total_energy_rate_sp = kwargs.get('total_energy_rate_sp', float())
+        self.total_energy_balance_sp = kwargs.get('total_energy_balance_sp', float())
+        self.total_energy_balance_rate_sp = kwargs.get('total_energy_balance_rate_sp', float())
         self.throttle_integ = kwargs.get('throttle_integ', float())
         self.pitch_integ = kwargs.get('pitch_integ', float())
         self.throttle_sp = kwargs.get('throttle_sp', float())
         self.pitch_sp_rad = kwargs.get('pitch_sp_rad', float())
-        self.throttle_trim = kwargs.get('throttle_trim', float())
         self.mode = kwargs.get('mode', int())
 
     def __repr__(self):
@@ -211,11 +275,7 @@ class TecsStatus(metaclass=Metaclass_TecsStatus):
             return False
         if self.altitude_sp != other.altitude_sp:
             return False
-        if self.altitude_reference != other.altitude_reference:
-            return False
-        if self.height_rate_reference != other.height_rate_reference:
-            return False
-        if self.height_rate_direct != other.height_rate_direct:
+        if self.altitude_filtered != other.altitude_filtered:
             return False
         if self.height_rate_setpoint != other.height_rate_setpoint:
             return False
@@ -233,13 +293,31 @@ class TecsStatus(metaclass=Metaclass_TecsStatus):
             return False
         if self.true_airspeed_derivative_raw != other.true_airspeed_derivative_raw:
             return False
-        if self.total_energy_rate_sp != other.total_energy_rate_sp:
+        if self.true_airspeed_innovation != other.true_airspeed_innovation:
+            return False
+        if self.total_energy_error != other.total_energy_error:
+            return False
+        if self.energy_distribution_error != other.energy_distribution_error:
+            return False
+        if self.total_energy_rate_error != other.total_energy_rate_error:
+            return False
+        if self.energy_distribution_rate_error != other.energy_distribution_rate_error:
+            return False
+        if self.total_energy != other.total_energy:
             return False
         if self.total_energy_rate != other.total_energy_rate:
             return False
-        if self.total_energy_balance_rate_sp != other.total_energy_balance_rate_sp:
+        if self.total_energy_balance != other.total_energy_balance:
             return False
         if self.total_energy_balance_rate != other.total_energy_balance_rate:
+            return False
+        if self.total_energy_sp != other.total_energy_sp:
+            return False
+        if self.total_energy_rate_sp != other.total_energy_rate_sp:
+            return False
+        if self.total_energy_balance_sp != other.total_energy_balance_sp:
+            return False
+        if self.total_energy_balance_rate_sp != other.total_energy_balance_rate_sp:
             return False
         if self.throttle_integ != other.throttle_integ:
             return False
@@ -248,8 +326,6 @@ class TecsStatus(metaclass=Metaclass_TecsStatus):
         if self.throttle_sp != other.throttle_sp:
             return False
         if self.pitch_sp_rad != other.pitch_sp_rad:
-            return False
-        if self.throttle_trim != other.throttle_trim:
             return False
         if self.mode != other.mode:
             return False
@@ -289,43 +365,17 @@ class TecsStatus(metaclass=Metaclass_TecsStatus):
         self._altitude_sp = value
 
     @property
-    def altitude_reference(self):
-        """Message field 'altitude_reference'."""
-        return self._altitude_reference
+    def altitude_filtered(self):
+        """Message field 'altitude_filtered'."""
+        return self._altitude_filtered
 
-    @altitude_reference.setter
-    def altitude_reference(self, value):
+    @altitude_filtered.setter
+    def altitude_filtered(self, value):
         if __debug__:
             assert \
                 isinstance(value, float), \
-                "The 'altitude_reference' field must be of type 'float'"
-        self._altitude_reference = value
-
-    @property
-    def height_rate_reference(self):
-        """Message field 'height_rate_reference'."""
-        return self._height_rate_reference
-
-    @height_rate_reference.setter
-    def height_rate_reference(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, float), \
-                "The 'height_rate_reference' field must be of type 'float'"
-        self._height_rate_reference = value
-
-    @property
-    def height_rate_direct(self):
-        """Message field 'height_rate_direct'."""
-        return self._height_rate_direct
-
-    @height_rate_direct.setter
-    def height_rate_direct(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, float), \
-                "The 'height_rate_direct' field must be of type 'float'"
-        self._height_rate_direct = value
+                "The 'altitude_filtered' field must be of type 'float'"
+        self._altitude_filtered = value
 
     @property
     def height_rate_setpoint(self):
@@ -432,17 +482,82 @@ class TecsStatus(metaclass=Metaclass_TecsStatus):
         self._true_airspeed_derivative_raw = value
 
     @property
-    def total_energy_rate_sp(self):
-        """Message field 'total_energy_rate_sp'."""
-        return self._total_energy_rate_sp
+    def true_airspeed_innovation(self):
+        """Message field 'true_airspeed_innovation'."""
+        return self._true_airspeed_innovation
 
-    @total_energy_rate_sp.setter
-    def total_energy_rate_sp(self, value):
+    @true_airspeed_innovation.setter
+    def true_airspeed_innovation(self, value):
         if __debug__:
             assert \
                 isinstance(value, float), \
-                "The 'total_energy_rate_sp' field must be of type 'float'"
-        self._total_energy_rate_sp = value
+                "The 'true_airspeed_innovation' field must be of type 'float'"
+        self._true_airspeed_innovation = value
+
+    @property
+    def total_energy_error(self):
+        """Message field 'total_energy_error'."""
+        return self._total_energy_error
+
+    @total_energy_error.setter
+    def total_energy_error(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, float), \
+                "The 'total_energy_error' field must be of type 'float'"
+        self._total_energy_error = value
+
+    @property
+    def energy_distribution_error(self):
+        """Message field 'energy_distribution_error'."""
+        return self._energy_distribution_error
+
+    @energy_distribution_error.setter
+    def energy_distribution_error(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, float), \
+                "The 'energy_distribution_error' field must be of type 'float'"
+        self._energy_distribution_error = value
+
+    @property
+    def total_energy_rate_error(self):
+        """Message field 'total_energy_rate_error'."""
+        return self._total_energy_rate_error
+
+    @total_energy_rate_error.setter
+    def total_energy_rate_error(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, float), \
+                "The 'total_energy_rate_error' field must be of type 'float'"
+        self._total_energy_rate_error = value
+
+    @property
+    def energy_distribution_rate_error(self):
+        """Message field 'energy_distribution_rate_error'."""
+        return self._energy_distribution_rate_error
+
+    @energy_distribution_rate_error.setter
+    def energy_distribution_rate_error(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, float), \
+                "The 'energy_distribution_rate_error' field must be of type 'float'"
+        self._energy_distribution_rate_error = value
+
+    @property
+    def total_energy(self):
+        """Message field 'total_energy'."""
+        return self._total_energy
+
+    @total_energy.setter
+    def total_energy(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, float), \
+                "The 'total_energy' field must be of type 'float'"
+        self._total_energy = value
 
     @property
     def total_energy_rate(self):
@@ -458,17 +573,17 @@ class TecsStatus(metaclass=Metaclass_TecsStatus):
         self._total_energy_rate = value
 
     @property
-    def total_energy_balance_rate_sp(self):
-        """Message field 'total_energy_balance_rate_sp'."""
-        return self._total_energy_balance_rate_sp
+    def total_energy_balance(self):
+        """Message field 'total_energy_balance'."""
+        return self._total_energy_balance
 
-    @total_energy_balance_rate_sp.setter
-    def total_energy_balance_rate_sp(self, value):
+    @total_energy_balance.setter
+    def total_energy_balance(self, value):
         if __debug__:
             assert \
                 isinstance(value, float), \
-                "The 'total_energy_balance_rate_sp' field must be of type 'float'"
-        self._total_energy_balance_rate_sp = value
+                "The 'total_energy_balance' field must be of type 'float'"
+        self._total_energy_balance = value
 
     @property
     def total_energy_balance_rate(self):
@@ -482,6 +597,58 @@ class TecsStatus(metaclass=Metaclass_TecsStatus):
                 isinstance(value, float), \
                 "The 'total_energy_balance_rate' field must be of type 'float'"
         self._total_energy_balance_rate = value
+
+    @property
+    def total_energy_sp(self):
+        """Message field 'total_energy_sp'."""
+        return self._total_energy_sp
+
+    @total_energy_sp.setter
+    def total_energy_sp(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, float), \
+                "The 'total_energy_sp' field must be of type 'float'"
+        self._total_energy_sp = value
+
+    @property
+    def total_energy_rate_sp(self):
+        """Message field 'total_energy_rate_sp'."""
+        return self._total_energy_rate_sp
+
+    @total_energy_rate_sp.setter
+    def total_energy_rate_sp(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, float), \
+                "The 'total_energy_rate_sp' field must be of type 'float'"
+        self._total_energy_rate_sp = value
+
+    @property
+    def total_energy_balance_sp(self):
+        """Message field 'total_energy_balance_sp'."""
+        return self._total_energy_balance_sp
+
+    @total_energy_balance_sp.setter
+    def total_energy_balance_sp(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, float), \
+                "The 'total_energy_balance_sp' field must be of type 'float'"
+        self._total_energy_balance_sp = value
+
+    @property
+    def total_energy_balance_rate_sp(self):
+        """Message field 'total_energy_balance_rate_sp'."""
+        return self._total_energy_balance_rate_sp
+
+    @total_energy_balance_rate_sp.setter
+    def total_energy_balance_rate_sp(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, float), \
+                "The 'total_energy_balance_rate_sp' field must be of type 'float'"
+        self._total_energy_balance_rate_sp = value
 
     @property
     def throttle_integ(self):
@@ -534,19 +701,6 @@ class TecsStatus(metaclass=Metaclass_TecsStatus):
                 isinstance(value, float), \
                 "The 'pitch_sp_rad' field must be of type 'float'"
         self._pitch_sp_rad = value
-
-    @property
-    def throttle_trim(self):
-        """Message field 'throttle_trim'."""
-        return self._throttle_trim
-
-    @throttle_trim.setter
-    def throttle_trim(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, float), \
-                "The 'throttle_trim' field must be of type 'float'"
-        self._throttle_trim = value
 
     @property
     def mode(self):

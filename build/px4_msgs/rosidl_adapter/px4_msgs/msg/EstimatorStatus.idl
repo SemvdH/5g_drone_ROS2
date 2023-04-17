@@ -66,7 +66,7 @@ module px4_msgs {
 
       @verbatim (language="comment", text=
         " Bitmask to indicate EKF logic state")
-      uint64 control_mode_flags;
+      uint32 control_mode_flags;
 
       @verbatim (language="comment", text=
         " Bitmask to indicate EKF internal faults")

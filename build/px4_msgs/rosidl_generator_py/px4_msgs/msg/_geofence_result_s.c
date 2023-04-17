@@ -59,31 +59,22 @@ bool px4_msgs__msg__geofence_result__convert_from_py(PyObject * _pymsg, void * _
     ros_message->timestamp = PyLong_AsUnsignedLongLong(field);
     Py_DECREF(field);
   }
-  {  // geofence_violation_reason
-    PyObject * field = PyObject_GetAttrString(_pymsg, "geofence_violation_reason");
-    if (!field) {
-      return false;
-    }
-    assert(PyLong_Check(field));
-    ros_message->geofence_violation_reason = (uint8_t)PyLong_AsUnsignedLong(field);
-    Py_DECREF(field);
-  }
-  {  // primary_geofence_breached
-    PyObject * field = PyObject_GetAttrString(_pymsg, "primary_geofence_breached");
+  {  // geofence_violated
+    PyObject * field = PyObject_GetAttrString(_pymsg, "geofence_violated");
     if (!field) {
       return false;
     }
     assert(PyBool_Check(field));
-    ros_message->primary_geofence_breached = (Py_True == field);
+    ros_message->geofence_violated = (Py_True == field);
     Py_DECREF(field);
   }
-  {  // primary_geofence_action
-    PyObject * field = PyObject_GetAttrString(_pymsg, "primary_geofence_action");
+  {  // geofence_action
+    PyObject * field = PyObject_GetAttrString(_pymsg, "geofence_action");
     if (!field) {
       return false;
     }
     assert(PyLong_Check(field));
-    ros_message->primary_geofence_action = (uint8_t)PyLong_AsUnsignedLong(field);
+    ros_message->geofence_action = (uint8_t)PyLong_AsUnsignedLong(field);
     Py_DECREF(field);
   }
   {  // home_required
@@ -128,33 +119,22 @@ PyObject * px4_msgs__msg__geofence_result__convert_to_py(void * raw_ros_message)
       }
     }
   }
-  {  // geofence_violation_reason
+  {  // geofence_violated
     PyObject * field = NULL;
-    field = PyLong_FromUnsignedLong(ros_message->geofence_violation_reason);
+    field = PyBool_FromLong(ros_message->geofence_violated ? 1 : 0);
     {
-      int rc = PyObject_SetAttrString(_pymessage, "geofence_violation_reason", field);
+      int rc = PyObject_SetAttrString(_pymessage, "geofence_violated", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;
       }
     }
   }
-  {  // primary_geofence_breached
+  {  // geofence_action
     PyObject * field = NULL;
-    field = PyBool_FromLong(ros_message->primary_geofence_breached ? 1 : 0);
+    field = PyLong_FromUnsignedLong(ros_message->geofence_action);
     {
-      int rc = PyObject_SetAttrString(_pymessage, "primary_geofence_breached", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
-  {  // primary_geofence_action
-    PyObject * field = NULL;
-    field = PyLong_FromUnsignedLong(ros_message->primary_geofence_action);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "primary_geofence_action", field);
+      int rc = PyObject_SetAttrString(_pymessage, "geofence_action", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;

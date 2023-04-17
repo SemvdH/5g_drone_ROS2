@@ -73,7 +73,7 @@ static bool _RcChannels__cdr_serialize(
 
   // Field name: function
   {
-    size_t size = 28;
+    size_t size = 27;
     auto array_ptr = ros_message->function;
     cdr.serializeArray(array_ptr, size);
   }
@@ -129,7 +129,7 @@ static bool _RcChannels__cdr_deserialize(
 
   // Field name: function
   {
-    size_t size = 28;
+    size_t size = 27;
     auto array_ptr = ros_message->function;
     cdr.deserializeArray(array_ptr, size);
   }
@@ -197,7 +197,7 @@ size_t get_serialized_size_px4_msgs__msg__RcChannels(
   }
   // field.name function
   {
-    size_t array_size = 28;
+    size_t array_size = 27;
     auto array_ptr = ros_message->function;
     (void)array_ptr;
     size_t item_size = sizeof(array_ptr[0]);
@@ -275,7 +275,7 @@ size_t max_serialized_size_px4_msgs__msg__RcChannels(
   }
   // member: function
   {
-    size_t array_size = 28;
+    size_t array_size = 27;
 
     current_alignment += array_size * sizeof(uint8_t);
   }

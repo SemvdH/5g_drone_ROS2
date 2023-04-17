@@ -37,7 +37,7 @@ void PpsCapture_fini_function(void * message_memory)
   typed_message->~PpsCapture();
 }
 
-static const ::rosidl_typesupport_introspection_cpp::MessageMember PpsCapture_message_member_array[3] = {
+static const ::rosidl_typesupport_introspection_cpp::MessageMember PpsCapture_message_member_array[2] = {
   {
     "timestamp",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_UINT64,  // type
@@ -67,28 +67,13 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember PpsCapture_me
     nullptr,  // get_const(index) function pointer
     nullptr,  // get(index) function pointer
     nullptr  // resize(index) function pointer
-  },
-  {
-    "pps_rate_exceeded_counter",  // name
-    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_UINT8,  // type
-    0,  // upper bound of string
-    nullptr,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs::msg::PpsCapture, pps_rate_exceeded_counter),  // bytes offset in struct
-    nullptr,  // default value
-    nullptr,  // size() function pointer
-    nullptr,  // get_const(index) function pointer
-    nullptr,  // get(index) function pointer
-    nullptr  // resize(index) function pointer
   }
 };
 
 static const ::rosidl_typesupport_introspection_cpp::MessageMembers PpsCapture_message_members = {
   "px4_msgs::msg",  // message namespace
   "PpsCapture",  // message name
-  3,  // number of fields
+  2,  // number of fields
   sizeof(px4_msgs::msg::PpsCapture),
   PpsCapture_message_member_array,  // message members
   PpsCapture_init_function,  // function to initialize message memory (memory has to be allocated)

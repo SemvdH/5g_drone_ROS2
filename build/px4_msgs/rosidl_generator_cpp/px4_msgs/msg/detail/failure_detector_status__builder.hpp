@@ -20,48 +20,16 @@ namespace msg
 namespace builder
 {
 
-class Init_FailureDetectorStatus_motor_failure_mask
-{
-public:
-  explicit Init_FailureDetectorStatus_motor_failure_mask(::px4_msgs::msg::FailureDetectorStatus & msg)
-  : msg_(msg)
-  {}
-  ::px4_msgs::msg::FailureDetectorStatus motor_failure_mask(::px4_msgs::msg::FailureDetectorStatus::_motor_failure_mask_type arg)
-  {
-    msg_.motor_failure_mask = std::move(arg);
-    return std::move(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::FailureDetectorStatus msg_;
-};
-
 class Init_FailureDetectorStatus_imbalanced_prop_metric
 {
 public:
   explicit Init_FailureDetectorStatus_imbalanced_prop_metric(::px4_msgs::msg::FailureDetectorStatus & msg)
   : msg_(msg)
   {}
-  Init_FailureDetectorStatus_motor_failure_mask imbalanced_prop_metric(::px4_msgs::msg::FailureDetectorStatus::_imbalanced_prop_metric_type arg)
+  ::px4_msgs::msg::FailureDetectorStatus imbalanced_prop_metric(::px4_msgs::msg::FailureDetectorStatus::_imbalanced_prop_metric_type arg)
   {
     msg_.imbalanced_prop_metric = std::move(arg);
-    return Init_FailureDetectorStatus_motor_failure_mask(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::FailureDetectorStatus msg_;
-};
-
-class Init_FailureDetectorStatus_fd_motor
-{
-public:
-  explicit Init_FailureDetectorStatus_fd_motor(::px4_msgs::msg::FailureDetectorStatus & msg)
-  : msg_(msg)
-  {}
-  Init_FailureDetectorStatus_imbalanced_prop_metric fd_motor(::px4_msgs::msg::FailureDetectorStatus::_fd_motor_type arg)
-  {
-    msg_.fd_motor = std::move(arg);
-    return Init_FailureDetectorStatus_imbalanced_prop_metric(msg_);
+    return std::move(msg_);
   }
 
 private:
@@ -74,10 +42,10 @@ public:
   explicit Init_FailureDetectorStatus_fd_imbalanced_prop(::px4_msgs::msg::FailureDetectorStatus & msg)
   : msg_(msg)
   {}
-  Init_FailureDetectorStatus_fd_motor fd_imbalanced_prop(::px4_msgs::msg::FailureDetectorStatus::_fd_imbalanced_prop_type arg)
+  Init_FailureDetectorStatus_imbalanced_prop_metric fd_imbalanced_prop(::px4_msgs::msg::FailureDetectorStatus::_fd_imbalanced_prop_type arg)
   {
     msg_.fd_imbalanced_prop = std::move(arg);
-    return Init_FailureDetectorStatus_fd_motor(msg_);
+    return Init_FailureDetectorStatus_imbalanced_prop_metric(msg_);
   }
 
 private:
@@ -100,16 +68,32 @@ private:
   ::px4_msgs::msg::FailureDetectorStatus msg_;
 };
 
+class Init_FailureDetectorStatus_fd_high_wind
+{
+public:
+  explicit Init_FailureDetectorStatus_fd_high_wind(::px4_msgs::msg::FailureDetectorStatus & msg)
+  : msg_(msg)
+  {}
+  Init_FailureDetectorStatus_fd_battery fd_high_wind(::px4_msgs::msg::FailureDetectorStatus::_fd_high_wind_type arg)
+  {
+    msg_.fd_high_wind = std::move(arg);
+    return Init_FailureDetectorStatus_fd_battery(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::FailureDetectorStatus msg_;
+};
+
 class Init_FailureDetectorStatus_fd_arm_escs
 {
 public:
   explicit Init_FailureDetectorStatus_fd_arm_escs(::px4_msgs::msg::FailureDetectorStatus & msg)
   : msg_(msg)
   {}
-  Init_FailureDetectorStatus_fd_battery fd_arm_escs(::px4_msgs::msg::FailureDetectorStatus::_fd_arm_escs_type arg)
+  Init_FailureDetectorStatus_fd_high_wind fd_arm_escs(::px4_msgs::msg::FailureDetectorStatus::_fd_arm_escs_type arg)
   {
     msg_.fd_arm_escs = std::move(arg);
-    return Init_FailureDetectorStatus_fd_battery(msg_);
+    return Init_FailureDetectorStatus_fd_high_wind(msg_);
   }
 
 private:

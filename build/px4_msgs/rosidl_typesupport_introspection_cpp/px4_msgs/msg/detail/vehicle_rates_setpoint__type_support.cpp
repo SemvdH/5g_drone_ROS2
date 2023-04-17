@@ -57,7 +57,7 @@ void * get_function__VehicleRatesSetpoint__thrust_body(void * untyped_member, si
   return &member[index];
 }
 
-static const ::rosidl_typesupport_introspection_cpp::MessageMember VehicleRatesSetpoint_message_member_array[6] = {
+static const ::rosidl_typesupport_introspection_cpp::MessageMember VehicleRatesSetpoint_message_member_array[5] = {
   {
     "timestamp",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_UINT64,  // type
@@ -132,28 +132,13 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember VehicleRatesS
     get_const_function__VehicleRatesSetpoint__thrust_body,  // get_const(index) function pointer
     get_function__VehicleRatesSetpoint__thrust_body,  // get(index) function pointer
     nullptr  // resize(index) function pointer
-  },
-  {
-    "reset_integral",  // name
-    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_BOOLEAN,  // type
-    0,  // upper bound of string
-    nullptr,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs::msg::VehicleRatesSetpoint, reset_integral),  // bytes offset in struct
-    nullptr,  // default value
-    nullptr,  // size() function pointer
-    nullptr,  // get_const(index) function pointer
-    nullptr,  // get(index) function pointer
-    nullptr  // resize(index) function pointer
   }
 };
 
 static const ::rosidl_typesupport_introspection_cpp::MessageMembers VehicleRatesSetpoint_message_members = {
   "px4_msgs::msg",  // message namespace
   "VehicleRatesSetpoint",  // message name
-  6,  // number of fields
+  5,  // number of fields
   sizeof(px4_msgs::msg::VehicleRatesSetpoint),
   VehicleRatesSetpoint_message_member_array,  // message members
   VehicleRatesSetpoint_init_function,  // function to initialize message memory (memory has to be allocated)

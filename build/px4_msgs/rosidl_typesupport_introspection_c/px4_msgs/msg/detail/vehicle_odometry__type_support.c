@@ -31,7 +31,7 @@ void VehicleOdometry__rosidl_typesupport_introspection_c__VehicleOdometry_fini_f
   px4_msgs__msg__VehicleOdometry__fini(message_memory);
 }
 
-static rosidl_typesupport_introspection_c__MessageMember VehicleOdometry__rosidl_typesupport_introspection_c__VehicleOdometry_message_member_array[13] = {
+static rosidl_typesupport_introspection_c__MessageMember VehicleOdometry__rosidl_typesupport_introspection_c__VehicleOdometry_message_member_array[18] = {
   {
     "timestamp",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_UINT64,  // type
@@ -63,14 +63,14 @@ static rosidl_typesupport_introspection_c__MessageMember VehicleOdometry__rosidl
     NULL  // resize(index) function pointer
   },
   {
-    "pose_frame",  // name
+    "local_frame",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_UINT8,  // type
     0,  // upper bound of string
     NULL,  // members of sub message
     false,  // is array
     0,  // array size
     false,  // is upper bound
-    offsetof(px4_msgs__msg__VehicleOdometry, pose_frame),  // bytes offset in struct
+    offsetof(px4_msgs__msg__VehicleOdometry, local_frame),  // bytes offset in struct
     NULL,  // default value
     NULL,  // size() function pointer
     NULL,  // get_const(index) function pointer
@@ -78,14 +78,44 @@ static rosidl_typesupport_introspection_c__MessageMember VehicleOdometry__rosidl
     NULL  // resize(index) function pointer
   },
   {
-    "position",  // name
+    "x",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
     0,  // upper bound of string
     NULL,  // members of sub message
-    true,  // is array
-    3,  // array size
+    false,  // is array
+    0,  // array size
     false,  // is upper bound
-    offsetof(px4_msgs__msg__VehicleOdometry, position),  // bytes offset in struct
+    offsetof(px4_msgs__msg__VehicleOdometry, x),  // bytes offset in struct
+    NULL,  // default value
+    NULL,  // size() function pointer
+    NULL,  // get_const(index) function pointer
+    NULL,  // get(index) function pointer
+    NULL  // resize(index) function pointer
+  },
+  {
+    "y",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
+    0,  // upper bound of string
+    NULL,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs__msg__VehicleOdometry, y),  // bytes offset in struct
+    NULL,  // default value
+    NULL,  // size() function pointer
+    NULL,  // get_const(index) function pointer
+    NULL,  // get(index) function pointer
+    NULL  // resize(index) function pointer
+  },
+  {
+    "z",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
+    0,  // upper bound of string
+    NULL,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs__msg__VehicleOdometry, z),  // bytes offset in struct
     NULL,  // default value
     NULL,  // size() function pointer
     NULL,  // get_const(index) function pointer
@@ -108,6 +138,36 @@ static rosidl_typesupport_introspection_c__MessageMember VehicleOdometry__rosidl
     NULL  // resize(index) function pointer
   },
   {
+    "q_offset",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
+    0,  // upper bound of string
+    NULL,  // members of sub message
+    true,  // is array
+    4,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs__msg__VehicleOdometry, q_offset),  // bytes offset in struct
+    NULL,  // default value
+    NULL,  // size() function pointer
+    NULL,  // get_const(index) function pointer
+    NULL,  // get(index) function pointer
+    NULL  // resize(index) function pointer
+  },
+  {
+    "pose_covariance",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
+    0,  // upper bound of string
+    NULL,  // members of sub message
+    true,  // is array
+    21,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs__msg__VehicleOdometry, pose_covariance),  // bytes offset in struct
+    NULL,  // default value
+    NULL,  // size() function pointer
+    NULL,  // get_const(index) function pointer
+    NULL,  // get(index) function pointer
+    NULL  // resize(index) function pointer
+  },
+  {
     "velocity_frame",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_UINT8,  // type
     0,  // upper bound of string
@@ -123,14 +183,14 @@ static rosidl_typesupport_introspection_c__MessageMember VehicleOdometry__rosidl
     NULL  // resize(index) function pointer
   },
   {
-    "velocity",  // name
+    "vx",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
     0,  // upper bound of string
     NULL,  // members of sub message
-    true,  // is array
-    3,  // array size
+    false,  // is array
+    0,  // array size
     false,  // is upper bound
-    offsetof(px4_msgs__msg__VehicleOdometry, velocity),  // bytes offset in struct
+    offsetof(px4_msgs__msg__VehicleOdometry, vx),  // bytes offset in struct
     NULL,  // default value
     NULL,  // size() function pointer
     NULL,  // get_const(index) function pointer
@@ -138,14 +198,14 @@ static rosidl_typesupport_introspection_c__MessageMember VehicleOdometry__rosidl
     NULL  // resize(index) function pointer
   },
   {
-    "angular_velocity",  // name
+    "vy",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
     0,  // upper bound of string
     NULL,  // members of sub message
-    true,  // is array
-    3,  // array size
+    false,  // is array
+    0,  // array size
     false,  // is upper bound
-    offsetof(px4_msgs__msg__VehicleOdometry, angular_velocity),  // bytes offset in struct
+    offsetof(px4_msgs__msg__VehicleOdometry, vy),  // bytes offset in struct
     NULL,  // default value
     NULL,  // size() function pointer
     NULL,  // get_const(index) function pointer
@@ -153,14 +213,14 @@ static rosidl_typesupport_introspection_c__MessageMember VehicleOdometry__rosidl
     NULL  // resize(index) function pointer
   },
   {
-    "position_variance",  // name
+    "vz",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
     0,  // upper bound of string
     NULL,  // members of sub message
-    true,  // is array
-    3,  // array size
+    false,  // is array
+    0,  // array size
     false,  // is upper bound
-    offsetof(px4_msgs__msg__VehicleOdometry, position_variance),  // bytes offset in struct
+    offsetof(px4_msgs__msg__VehicleOdometry, vz),  // bytes offset in struct
     NULL,  // default value
     NULL,  // size() function pointer
     NULL,  // get_const(index) function pointer
@@ -168,14 +228,14 @@ static rosidl_typesupport_introspection_c__MessageMember VehicleOdometry__rosidl
     NULL  // resize(index) function pointer
   },
   {
-    "orientation_variance",  // name
+    "rollspeed",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
     0,  // upper bound of string
     NULL,  // members of sub message
-    true,  // is array
-    3,  // array size
+    false,  // is array
+    0,  // array size
     false,  // is upper bound
-    offsetof(px4_msgs__msg__VehicleOdometry, orientation_variance),  // bytes offset in struct
+    offsetof(px4_msgs__msg__VehicleOdometry, rollspeed),  // bytes offset in struct
     NULL,  // default value
     NULL,  // size() function pointer
     NULL,  // get_const(index) function pointer
@@ -183,14 +243,44 @@ static rosidl_typesupport_introspection_c__MessageMember VehicleOdometry__rosidl
     NULL  // resize(index) function pointer
   },
   {
-    "velocity_variance",  // name
+    "pitchspeed",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
+    0,  // upper bound of string
+    NULL,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs__msg__VehicleOdometry, pitchspeed),  // bytes offset in struct
+    NULL,  // default value
+    NULL,  // size() function pointer
+    NULL,  // get_const(index) function pointer
+    NULL,  // get(index) function pointer
+    NULL  // resize(index) function pointer
+  },
+  {
+    "yawspeed",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
+    0,  // upper bound of string
+    NULL,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs__msg__VehicleOdometry, yawspeed),  // bytes offset in struct
+    NULL,  // default value
+    NULL,  // size() function pointer
+    NULL,  // get_const(index) function pointer
+    NULL,  // get(index) function pointer
+    NULL  // resize(index) function pointer
+  },
+  {
+    "velocity_covariance",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
     0,  // upper bound of string
     NULL,  // members of sub message
     true,  // is array
-    3,  // array size
+    21,  // array size
     false,  // is upper bound
-    offsetof(px4_msgs__msg__VehicleOdometry, velocity_variance),  // bytes offset in struct
+    offsetof(px4_msgs__msg__VehicleOdometry, velocity_covariance),  // bytes offset in struct
     NULL,  // default value
     NULL,  // size() function pointer
     NULL,  // get_const(index) function pointer
@@ -211,28 +301,13 @@ static rosidl_typesupport_introspection_c__MessageMember VehicleOdometry__rosidl
     NULL,  // get_const(index) function pointer
     NULL,  // get(index) function pointer
     NULL  // resize(index) function pointer
-  },
-  {
-    "quality",  // name
-    rosidl_typesupport_introspection_c__ROS_TYPE_INT8,  // type
-    0,  // upper bound of string
-    NULL,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs__msg__VehicleOdometry, quality),  // bytes offset in struct
-    NULL,  // default value
-    NULL,  // size() function pointer
-    NULL,  // get_const(index) function pointer
-    NULL,  // get(index) function pointer
-    NULL  // resize(index) function pointer
   }
 };
 
 static const rosidl_typesupport_introspection_c__MessageMembers VehicleOdometry__rosidl_typesupport_introspection_c__VehicleOdometry_message_members = {
   "px4_msgs__msg",  // message namespace
   "VehicleOdometry",  // message name
-  13,  // number of fields
+  18,  // number of fields
   sizeof(px4_msgs__msg__VehicleOdometry),
   VehicleOdometry__rosidl_typesupport_introspection_c__VehicleOdometry_message_member_array,  // message members
   VehicleOdometry__rosidl_typesupport_introspection_c__VehicleOdometry_init_function,  // function to initialize message memory (memory has to be allocated)

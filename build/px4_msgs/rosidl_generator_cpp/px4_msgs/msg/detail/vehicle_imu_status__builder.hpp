@@ -260,32 +260,16 @@ private:
   ::px4_msgs::msg::VehicleImuStatus msg_;
 };
 
-class Init_VehicleImuStatus_gyro_clipping
-{
-public:
-  explicit Init_VehicleImuStatus_gyro_clipping(::px4_msgs::msg::VehicleImuStatus & msg)
-  : msg_(msg)
-  {}
-  Init_VehicleImuStatus_accel_error_count gyro_clipping(::px4_msgs::msg::VehicleImuStatus::_gyro_clipping_type arg)
-  {
-    msg_.gyro_clipping = std::move(arg);
-    return Init_VehicleImuStatus_accel_error_count(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::VehicleImuStatus msg_;
-};
-
 class Init_VehicleImuStatus_accel_clipping
 {
 public:
   explicit Init_VehicleImuStatus_accel_clipping(::px4_msgs::msg::VehicleImuStatus & msg)
   : msg_(msg)
   {}
-  Init_VehicleImuStatus_gyro_clipping accel_clipping(::px4_msgs::msg::VehicleImuStatus::_accel_clipping_type arg)
+  Init_VehicleImuStatus_accel_error_count accel_clipping(::px4_msgs::msg::VehicleImuStatus::_accel_clipping_type arg)
   {
     msg_.accel_clipping = std::move(arg);
-    return Init_VehicleImuStatus_gyro_clipping(msg_);
+    return Init_VehicleImuStatus_accel_error_count(msg_);
   }
 
 private:

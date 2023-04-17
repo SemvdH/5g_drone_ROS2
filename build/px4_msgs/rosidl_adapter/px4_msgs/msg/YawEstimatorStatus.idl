@@ -23,8 +23,6 @@ module px4_msgs {
         " composite yaw variance from GSF (rad^2)")
       float yaw_variance;
 
-      boolean yaw_composite_valid;
-
       @verbatim (language="comment", text=
         " yaw estimate for each model in the filter bank (rad)")
       float__5 yaw;

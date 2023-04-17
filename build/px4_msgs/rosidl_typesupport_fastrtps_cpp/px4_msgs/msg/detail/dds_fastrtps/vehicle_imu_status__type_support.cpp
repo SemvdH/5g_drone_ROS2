@@ -42,10 +42,6 @@ cdr_serialize(
   {
     cdr << ros_message.accel_clipping;
   }
-  // Member: gyro_clipping
-  {
-    cdr << ros_message.gyro_clipping;
-  }
   // Member: accel_error_count
   cdr << ros_message.accel_error_count;
   // Member: gyro_error_count
@@ -105,11 +101,6 @@ cdr_deserialize(
   // Member: accel_clipping
   {
     cdr >> ros_message.accel_clipping;
-  }
-
-  // Member: gyro_clipping
-  {
-    cdr >> ros_message.gyro_clipping;
   }
 
   // Member: accel_error_count
@@ -203,13 +194,6 @@ get_serialized_size(
   {
     size_t array_size = 3;
     size_t item_size = sizeof(ros_message.accel_clipping[0]);
-    current_alignment += array_size * item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // Member: gyro_clipping
-  {
-    size_t array_size = 3;
-    size_t item_size = sizeof(ros_message.gyro_clipping[0]);
     current_alignment += array_size * item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -351,14 +335,6 @@ max_serialized_size_VehicleImuStatus(
   }
 
   // Member: accel_clipping
-  {
-    size_t array_size = 3;
-
-    current_alignment += array_size * sizeof(uint32_t) +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
-  }
-
-  // Member: gyro_clipping
   {
     size_t array_size = 3;
 

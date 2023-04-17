@@ -99,14 +99,14 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember ManualControl
     nullptr  // resize(index) function pointer
   },
   {
-    "roll",  // name
+    "x",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
     0,  // upper bound of string
     nullptr,  // members of sub message
     false,  // is array
     0,  // array size
     false,  // is upper bound
-    offsetof(px4_msgs::msg::ManualControlSetpoint, roll),  // bytes offset in struct
+    offsetof(px4_msgs::msg::ManualControlSetpoint, x),  // bytes offset in struct
     nullptr,  // default value
     nullptr,  // size() function pointer
     nullptr,  // get_const(index) function pointer
@@ -114,14 +114,14 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember ManualControl
     nullptr  // resize(index) function pointer
   },
   {
-    "pitch",  // name
+    "y",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
     0,  // upper bound of string
     nullptr,  // members of sub message
     false,  // is array
     0,  // array size
     false,  // is upper bound
-    offsetof(px4_msgs::msg::ManualControlSetpoint, pitch),  // bytes offset in struct
+    offsetof(px4_msgs::msg::ManualControlSetpoint, y),  // bytes offset in struct
     nullptr,  // default value
     nullptr,  // size() function pointer
     nullptr,  // get_const(index) function pointer
@@ -129,14 +129,14 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember ManualControl
     nullptr  // resize(index) function pointer
   },
   {
-    "yaw",  // name
+    "z",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
     0,  // upper bound of string
     nullptr,  // members of sub message
     false,  // is array
     0,  // array size
     false,  // is upper bound
-    offsetof(px4_msgs::msg::ManualControlSetpoint, yaw),  // bytes offset in struct
+    offsetof(px4_msgs::msg::ManualControlSetpoint, z),  // bytes offset in struct
     nullptr,  // default value
     nullptr,  // size() function pointer
     nullptr,  // get_const(index) function pointer
@@ -144,14 +144,14 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember ManualControl
     nullptr  // resize(index) function pointer
   },
   {
-    "throttle",  // name
+    "r",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
     0,  // upper bound of string
     nullptr,  // members of sub message
     false,  // is array
     0,  // array size
     false,  // is upper bound
-    offsetof(px4_msgs::msg::ManualControlSetpoint, throttle),  // bytes offset in struct
+    offsetof(px4_msgs::msg::ManualControlSetpoint, r),  // bytes offset in struct
     nullptr,  // default value
     nullptr,  // size() function pointer
     nullptr,  // get_const(index) function pointer

@@ -79,6 +79,21 @@ static bool _PositionSetpoint__cdr_serialize(
     cdr << ros_message->vz;
   }
 
+  // Field name: velocity_valid
+  {
+    cdr << (ros_message->velocity_valid ? true : false);
+  }
+
+  // Field name: velocity_frame
+  {
+    cdr << ros_message->velocity_frame;
+  }
+
+  // Field name: alt_valid
+  {
+    cdr << (ros_message->alt_valid ? true : false);
+  }
+
   // Field name: lat
   {
     cdr << ros_message->lat;
@@ -114,14 +129,19 @@ static bool _PositionSetpoint__cdr_serialize(
     cdr << (ros_message->yawspeed_valid ? true : false);
   }
 
+  // Field name: landing_gear
+  {
+    cdr << ros_message->landing_gear;
+  }
+
   // Field name: loiter_radius
   {
     cdr << ros_message->loiter_radius;
   }
 
-  // Field name: loiter_direction_counter_clockwise
+  // Field name: loiter_direction
   {
-    cdr << (ros_message->loiter_direction_counter_clockwise ? true : false);
+    cdr << ros_message->loiter_direction;
   }
 
   // Field name: acceptance_radius
@@ -132,11 +152,6 @@ static bool _PositionSetpoint__cdr_serialize(
   // Field name: cruising_speed
   {
     cdr << ros_message->cruising_speed;
-  }
-
-  // Field name: gliding_enabled
-  {
-    cdr << (ros_message->gliding_enabled ? true : false);
   }
 
   // Field name: cruising_throttle
@@ -193,6 +208,25 @@ static bool _PositionSetpoint__cdr_deserialize(
     cdr >> ros_message->vz;
   }
 
+  // Field name: velocity_valid
+  {
+    uint8_t tmp;
+    cdr >> tmp;
+    ros_message->velocity_valid = tmp ? true : false;
+  }
+
+  // Field name: velocity_frame
+  {
+    cdr >> ros_message->velocity_frame;
+  }
+
+  // Field name: alt_valid
+  {
+    uint8_t tmp;
+    cdr >> tmp;
+    ros_message->alt_valid = tmp ? true : false;
+  }
+
   // Field name: lat
   {
     cdr >> ros_message->lat;
@@ -232,16 +266,19 @@ static bool _PositionSetpoint__cdr_deserialize(
     ros_message->yawspeed_valid = tmp ? true : false;
   }
 
+  // Field name: landing_gear
+  {
+    cdr >> ros_message->landing_gear;
+  }
+
   // Field name: loiter_radius
   {
     cdr >> ros_message->loiter_radius;
   }
 
-  // Field name: loiter_direction_counter_clockwise
+  // Field name: loiter_direction
   {
-    uint8_t tmp;
-    cdr >> tmp;
-    ros_message->loiter_direction_counter_clockwise = tmp ? true : false;
+    cdr >> ros_message->loiter_direction;
   }
 
   // Field name: acceptance_radius
@@ -252,13 +289,6 @@ static bool _PositionSetpoint__cdr_deserialize(
   // Field name: cruising_speed
   {
     cdr >> ros_message->cruising_speed;
-  }
-
-  // Field name: gliding_enabled
-  {
-    uint8_t tmp;
-    cdr >> tmp;
-    ros_message->gliding_enabled = tmp ? true : false;
   }
 
   // Field name: cruising_throttle
@@ -326,6 +356,24 @@ size_t get_serialized_size_px4_msgs__msg__PositionSetpoint(
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
+  // field.name velocity_valid
+  {
+    size_t item_size = sizeof(ros_message->velocity_valid);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // field.name velocity_frame
+  {
+    size_t item_size = sizeof(ros_message->velocity_frame);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // field.name alt_valid
+  {
+    size_t item_size = sizeof(ros_message->alt_valid);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
   // field.name lat
   {
     size_t item_size = sizeof(ros_message->lat);
@@ -368,15 +416,21 @@ size_t get_serialized_size_px4_msgs__msg__PositionSetpoint(
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
+  // field.name landing_gear
+  {
+    size_t item_size = sizeof(ros_message->landing_gear);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
   // field.name loiter_radius
   {
     size_t item_size = sizeof(ros_message->loiter_radius);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // field.name loiter_direction_counter_clockwise
+  // field.name loiter_direction
   {
-    size_t item_size = sizeof(ros_message->loiter_direction_counter_clockwise);
+    size_t item_size = sizeof(ros_message->loiter_direction);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -389,12 +443,6 @@ size_t get_serialized_size_px4_msgs__msg__PositionSetpoint(
   // field.name cruising_speed
   {
     size_t item_size = sizeof(ros_message->cruising_speed);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // field.name gliding_enabled
-  {
-    size_t item_size = sizeof(ros_message->gliding_enabled);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -474,6 +522,24 @@ size_t max_serialized_size_px4_msgs__msg__PositionSetpoint(
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
+  // member: velocity_valid
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
+  }
+  // member: velocity_frame
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
+  }
+  // member: alt_valid
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
+  }
   // member: lat
   {
     size_t array_size = 1;
@@ -521,6 +587,12 @@ size_t max_serialized_size_px4_msgs__msg__PositionSetpoint(
 
     current_alignment += array_size * sizeof(uint8_t);
   }
+  // member: landing_gear
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
+  }
   // member: loiter_radius
   {
     size_t array_size = 1;
@@ -528,7 +600,7 @@ size_t max_serialized_size_px4_msgs__msg__PositionSetpoint(
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
-  // member: loiter_direction_counter_clockwise
+  // member: loiter_direction
   {
     size_t array_size = 1;
 
@@ -547,12 +619,6 @@ size_t max_serialized_size_px4_msgs__msg__PositionSetpoint(
 
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
-  }
-  // member: gliding_enabled
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint8_t);
   }
   // member: cruising_throttle
   {

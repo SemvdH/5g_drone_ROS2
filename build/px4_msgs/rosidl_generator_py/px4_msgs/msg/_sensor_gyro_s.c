@@ -16,9 +16,6 @@
 #include "px4_msgs/msg/detail/sensor_gyro__struct.h"
 #include "px4_msgs/msg/detail/sensor_gyro__functions.h"
 
-#include "rosidl_runtime_c/primitives_sequence.h"
-#include "rosidl_runtime_c/primitives_sequence_functions.h"
-
 
 ROSIDL_GENERATOR_C_EXPORT
 bool px4_msgs__msg__sensor_gyro__convert_from_py(PyObject * _pymsg, void * _ros_message)
@@ -123,30 +120,6 @@ bool px4_msgs__msg__sensor_gyro__convert_from_py(PyObject * _pymsg, void * _ros_
     }
     assert(PyLong_Check(field));
     ros_message->error_count = PyLong_AsUnsignedLong(field);
-    Py_DECREF(field);
-  }
-  {  // clip_counter
-    PyObject * field = PyObject_GetAttrString(_pymsg, "clip_counter");
-    if (!field) {
-      return false;
-    }
-    {
-      // TODO(dirk-thomas) use a better way to check the type before casting
-      assert(field->ob_type != NULL);
-      assert(field->ob_type->tp_name != NULL);
-      assert(strcmp(field->ob_type->tp_name, "numpy.ndarray") == 0);
-      PyArrayObject * seq_field = (PyArrayObject *)field;
-      Py_INCREF(seq_field);
-      assert(PyArray_NDIM(seq_field) == 1);
-      assert(PyArray_TYPE(seq_field) == NPY_UINT8);
-      Py_ssize_t size = 3;
-      uint8_t * dest = ros_message->clip_counter;
-      for (Py_ssize_t i = 0; i < size; ++i) {
-        uint8_t tmp = *(npy_uint8 *)PyArray_GETPTR1(seq_field, i);
-        memcpy(&dest[i], &tmp, sizeof(uint8_t));
-      }
-      Py_DECREF(seq_field);
-    }
     Py_DECREF(field);
   }
   {  // samples
@@ -267,24 +240,6 @@ PyObject * px4_msgs__msg__sensor_gyro__convert_to_py(void * raw_ros_message)
         return NULL;
       }
     }
-  }
-  {  // clip_counter
-    PyObject * field = NULL;
-    field = PyObject_GetAttrString(_pymessage, "clip_counter");
-    if (!field) {
-      return NULL;
-    }
-    assert(field->ob_type != NULL);
-    assert(field->ob_type->tp_name != NULL);
-    assert(strcmp(field->ob_type->tp_name, "numpy.ndarray") == 0);
-    PyArrayObject * seq_field = (PyArrayObject *)field;
-    assert(PyArray_NDIM(seq_field) == 1);
-    assert(PyArray_TYPE(seq_field) == NPY_UINT8);
-    assert(sizeof(npy_uint8) == sizeof(uint8_t));
-    npy_uint8 * dst = (npy_uint8 *)PyArray_GETPTR1(seq_field, 0);
-    uint8_t * src = &(ros_message->clip_counter[0]);
-    memcpy(dst, src, 3 * sizeof(uint8_t));
-    Py_DECREF(field);
   }
   {  // samples
     PyObject * field = NULL;

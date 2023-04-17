@@ -51,7 +51,6 @@ typedef struct px4_msgs__msg__SensorCombined
   float accelerometer_m_s2[3];
   uint32_t accelerometer_integral_dt;
   uint8_t accelerometer_clipping;
-  uint8_t gyro_clipping;
   uint8_t accel_calibration_count;
   uint8_t gyro_calibration_count;
 } px4_msgs__msg__SensorCombined;

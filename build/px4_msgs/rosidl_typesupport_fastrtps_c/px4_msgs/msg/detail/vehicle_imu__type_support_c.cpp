@@ -93,11 +93,6 @@ static bool _VehicleImu__cdr_serialize(
     cdr << ros_message->delta_velocity_dt;
   }
 
-  // Field name: delta_angle_clipping
-  {
-    cdr << ros_message->delta_angle_clipping;
-  }
-
   // Field name: delta_velocity_clipping
   {
     cdr << ros_message->delta_velocity_clipping;
@@ -167,11 +162,6 @@ static bool _VehicleImu__cdr_deserialize(
   // Field name: delta_velocity_dt
   {
     cdr >> ros_message->delta_velocity_dt;
-  }
-
-  // Field name: delta_angle_clipping
-  {
-    cdr >> ros_message->delta_angle_clipping;
   }
 
   // Field name: delta_velocity_clipping
@@ -257,12 +247,6 @@ size_t get_serialized_size_px4_msgs__msg__VehicleImu(
   // field.name delta_velocity_dt
   {
     size_t item_size = sizeof(ros_message->delta_velocity_dt);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // field.name delta_angle_clipping
-  {
-    size_t item_size = sizeof(ros_message->delta_angle_clipping);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -363,12 +347,6 @@ size_t max_serialized_size_px4_msgs__msg__VehicleImu(
 
     current_alignment += array_size * sizeof(uint16_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint16_t));
-  }
-  // member: delta_angle_clipping
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint8_t);
   }
   // member: delta_velocity_clipping
   {

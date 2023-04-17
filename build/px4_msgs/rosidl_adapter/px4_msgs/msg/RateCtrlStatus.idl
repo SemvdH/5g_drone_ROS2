@@ -19,8 +19,8 @@ module px4_msgs {
       float yawspeed_integ;
 
       @verbatim (language="comment", text=
-        " FW only and optional")
-      float wheel_rate_integ;
+        " FW: wheel rate integrator (optional)")
+      float additional_integ1;
     };
   };
 };

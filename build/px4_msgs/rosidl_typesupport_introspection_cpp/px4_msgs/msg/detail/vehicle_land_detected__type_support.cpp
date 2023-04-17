@@ -37,7 +37,7 @@ void VehicleLandDetected_fini_function(void * message_memory)
   typed_message->~VehicleLandDetected();
 }
 
-static const ::rosidl_typesupport_introspection_cpp::MessageMember VehicleLandDetected_message_member_array[13] = {
+static const ::rosidl_typesupport_introspection_cpp::MessageMember VehicleLandDetected_message_member_array[12] = {
   {
     "timestamp",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_UINT64,  // type
@@ -189,21 +189,6 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember VehicleLandDe
     nullptr  // resize(index) function pointer
   },
   {
-    "rotational_movement",  // name
-    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_BOOLEAN,  // type
-    0,  // upper bound of string
-    nullptr,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs::msg::VehicleLandDetected, rotational_movement),  // bytes offset in struct
-    nullptr,  // default value
-    nullptr,  // size() function pointer
-    nullptr,  // get_const(index) function pointer
-    nullptr,  // get(index) function pointer
-    nullptr  // resize(index) function pointer
-  },
-  {
     "close_to_ground_or_skipped_check",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_BOOLEAN,  // type
     0,  // upper bound of string
@@ -238,7 +223,7 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember VehicleLandDe
 static const ::rosidl_typesupport_introspection_cpp::MessageMembers VehicleLandDetected_message_members = {
   "px4_msgs::msg",  // message namespace
   "VehicleLandDetected",  // message name
-  13,  // number of fields
+  12,  // number of fields
   sizeof(px4_msgs::msg::VehicleLandDetected),
   VehicleLandDetected_message_member_array,  // message members
   VehicleLandDetected_init_function,  // function to initialize message memory (memory has to be allocated)

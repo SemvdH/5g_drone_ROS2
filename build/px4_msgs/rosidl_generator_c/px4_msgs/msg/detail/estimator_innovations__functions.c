@@ -32,10 +32,8 @@ px4_msgs__msg__EstimatorInnovations__init(px4_msgs__msg__EstimatorInnovations * 
   // aux_hvel
   // aux_vvel
   // flow
-  // terr_flow
   // heading
   // mag_field
-  // gravity
   // drag
   // airspeed
   // beta
@@ -65,10 +63,8 @@ px4_msgs__msg__EstimatorInnovations__fini(px4_msgs__msg__EstimatorInnovations * 
   // aux_hvel
   // aux_vvel
   // flow
-  // terr_flow
   // heading
   // mag_field
-  // gravity
   // drag
   // airspeed
   // beta
@@ -154,12 +150,6 @@ px4_msgs__msg__EstimatorInnovations__are_equal(const px4_msgs__msg__EstimatorInn
       return false;
     }
   }
-  // terr_flow
-  for (size_t i = 0; i < 2; ++i) {
-    if (lhs->terr_flow[i] != rhs->terr_flow[i]) {
-      return false;
-    }
-  }
   // heading
   if (lhs->heading != rhs->heading) {
     return false;
@@ -167,12 +157,6 @@ px4_msgs__msg__EstimatorInnovations__are_equal(const px4_msgs__msg__EstimatorInn
   // mag_field
   for (size_t i = 0; i < 3; ++i) {
     if (lhs->mag_field[i] != rhs->mag_field[i]) {
-      return false;
-    }
-  }
-  // gravity
-  for (size_t i = 0; i < 3; ++i) {
-    if (lhs->gravity[i] != rhs->gravity[i]) {
       return false;
     }
   }
@@ -251,19 +235,11 @@ px4_msgs__msg__EstimatorInnovations__copy(
   for (size_t i = 0; i < 2; ++i) {
     output->flow[i] = input->flow[i];
   }
-  // terr_flow
-  for (size_t i = 0; i < 2; ++i) {
-    output->terr_flow[i] = input->terr_flow[i];
-  }
   // heading
   output->heading = input->heading;
   // mag_field
   for (size_t i = 0; i < 3; ++i) {
     output->mag_field[i] = input->mag_field[i];
-  }
-  // gravity
-  for (size_t i = 0; i < 3; ++i) {
-    output->gravity[i] = input->gravity[i];
   }
   // drag
   for (size_t i = 0; i < 2; ++i) {

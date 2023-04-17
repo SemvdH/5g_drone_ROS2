@@ -122,6 +122,15 @@ bool px4_msgs__msg__actuator_armed__convert_from_py(PyObject * _pymsg, void * _r
     ros_message->in_esc_calibration_mode = (Py_True == field);
     Py_DECREF(field);
   }
+  {  // soft_stop
+    PyObject * field = PyObject_GetAttrString(_pymsg, "soft_stop");
+    if (!field) {
+      return false;
+    }
+    assert(PyBool_Check(field));
+    ros_message->soft_stop = (Py_True == field);
+    Py_DECREF(field);
+  }
 
   return true;
 }
@@ -226,6 +235,17 @@ PyObject * px4_msgs__msg__actuator_armed__convert_to_py(void * raw_ros_message)
     field = PyBool_FromLong(ros_message->in_esc_calibration_mode ? 1 : 0);
     {
       int rc = PyObject_SetAttrString(_pymessage, "in_esc_calibration_mode", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // soft_stop
+    PyObject * field = NULL;
+    field = PyBool_FromLong(ros_message->soft_stop ? 1 : 0);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "soft_stop", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;

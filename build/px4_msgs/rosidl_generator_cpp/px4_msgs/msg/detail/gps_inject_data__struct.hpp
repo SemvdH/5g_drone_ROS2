@@ -111,8 +111,6 @@ struct GpsInjectData_
   // constant declarations
   static constexpr uint8_t ORB_QUEUE_LENGTH =
     8u;
-  static constexpr uint8_t MAX_INSTANCES =
-    2u;
 
   // pointer types
   using RawPtr =
@@ -184,8 +182,6 @@ using GpsInjectData =
 // constant definitions
 template<typename ContainerAllocator>
 constexpr uint8_t GpsInjectData_<ContainerAllocator>::ORB_QUEUE_LENGTH;
-template<typename ContainerAllocator>
-constexpr uint8_t GpsInjectData_<ContainerAllocator>::MAX_INSTANCES;
 
 }  // namespace msg
 

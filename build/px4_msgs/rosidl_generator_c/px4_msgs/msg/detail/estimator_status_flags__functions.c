@@ -52,9 +52,6 @@ px4_msgs__msg__EstimatorStatusFlags__init(px4_msgs__msg__EstimatorStatusFlags * 
   // cs_inertial_dead_reckoning
   // cs_wind_dead_reckoning
   // cs_rng_kin_consistent
-  // cs_fake_pos
-  // cs_fake_hgt
-  // cs_gravity_vector
   // fault_status_changes
   // fs_bad_mag_x
   // fs_bad_mag_y
@@ -79,6 +76,9 @@ px4_msgs__msg__EstimatorStatusFlags__init(px4_msgs__msg__EstimatorStatusFlags * 
   // reject_ver_vel
   // reject_hor_pos
   // reject_ver_pos
+  // reject_mag_x
+  // reject_mag_y
+  // reject_mag_z
   // reject_yaw
   // reject_airspeed
   // reject_sideslip
@@ -129,9 +129,6 @@ px4_msgs__msg__EstimatorStatusFlags__fini(px4_msgs__msg__EstimatorStatusFlags * 
   // cs_inertial_dead_reckoning
   // cs_wind_dead_reckoning
   // cs_rng_kin_consistent
-  // cs_fake_pos
-  // cs_fake_hgt
-  // cs_gravity_vector
   // fault_status_changes
   // fs_bad_mag_x
   // fs_bad_mag_y
@@ -156,6 +153,9 @@ px4_msgs__msg__EstimatorStatusFlags__fini(px4_msgs__msg__EstimatorStatusFlags * 
   // reject_ver_vel
   // reject_hor_pos
   // reject_ver_pos
+  // reject_mag_x
+  // reject_mag_y
+  // reject_mag_z
   // reject_yaw
   // reject_airspeed
   // reject_sideslip
@@ -310,18 +310,6 @@ px4_msgs__msg__EstimatorStatusFlags__are_equal(const px4_msgs__msg__EstimatorSta
   if (lhs->cs_rng_kin_consistent != rhs->cs_rng_kin_consistent) {
     return false;
   }
-  // cs_fake_pos
-  if (lhs->cs_fake_pos != rhs->cs_fake_pos) {
-    return false;
-  }
-  // cs_fake_hgt
-  if (lhs->cs_fake_hgt != rhs->cs_fake_hgt) {
-    return false;
-  }
-  // cs_gravity_vector
-  if (lhs->cs_gravity_vector != rhs->cs_gravity_vector) {
-    return false;
-  }
   // fault_status_changes
   if (lhs->fault_status_changes != rhs->fault_status_changes) {
     return false;
@@ -416,6 +404,18 @@ px4_msgs__msg__EstimatorStatusFlags__are_equal(const px4_msgs__msg__EstimatorSta
   }
   // reject_ver_pos
   if (lhs->reject_ver_pos != rhs->reject_ver_pos) {
+    return false;
+  }
+  // reject_mag_x
+  if (lhs->reject_mag_x != rhs->reject_mag_x) {
+    return false;
+  }
+  // reject_mag_y
+  if (lhs->reject_mag_y != rhs->reject_mag_y) {
+    return false;
+  }
+  // reject_mag_z
+  if (lhs->reject_mag_z != rhs->reject_mag_z) {
     return false;
   }
   // reject_yaw
@@ -523,12 +523,6 @@ px4_msgs__msg__EstimatorStatusFlags__copy(
   output->cs_wind_dead_reckoning = input->cs_wind_dead_reckoning;
   // cs_rng_kin_consistent
   output->cs_rng_kin_consistent = input->cs_rng_kin_consistent;
-  // cs_fake_pos
-  output->cs_fake_pos = input->cs_fake_pos;
-  // cs_fake_hgt
-  output->cs_fake_hgt = input->cs_fake_hgt;
-  // cs_gravity_vector
-  output->cs_gravity_vector = input->cs_gravity_vector;
   // fault_status_changes
   output->fault_status_changes = input->fault_status_changes;
   // fs_bad_mag_x
@@ -577,6 +571,12 @@ px4_msgs__msg__EstimatorStatusFlags__copy(
   output->reject_hor_pos = input->reject_hor_pos;
   // reject_ver_pos
   output->reject_ver_pos = input->reject_ver_pos;
+  // reject_mag_x
+  output->reject_mag_x = input->reject_mag_x;
+  // reject_mag_y
+  output->reject_mag_y = input->reject_mag_y;
+  // reject_mag_z
+  output->reject_mag_z = input->reject_mag_z;
   // reject_yaw
   output->reject_yaw = input->reject_yaw;
   // reject_airspeed

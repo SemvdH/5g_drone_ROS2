@@ -17,16 +17,10 @@ extern "C"
 
 // Constants defined in the message
 
-/// Constant 'ACTUATOR_FUNCTION_MOTOR1'.
-enum
-{
-  px4_msgs__msg__ActuatorMotors__ACTUATOR_FUNCTION_MOTOR1 = 101
-};
-
 /// Constant 'NUM_CONTROLS'.
 enum
 {
-  px4_msgs__msg__ActuatorMotors__NUM_CONTROLS = 12
+  px4_msgs__msg__ActuatorMotors__NUM_CONTROLS = 8
 };
 
 // Struct defined in msg/ActuatorMotors in the package px4_msgs.
@@ -35,7 +29,7 @@ typedef struct px4_msgs__msg__ActuatorMotors
   uint64_t timestamp;
   uint64_t timestamp_sample;
   uint16_t reversible_flags;
-  float control[12];
+  float control[8];
 } px4_msgs__msg__ActuatorMotors;
 
 // Struct for a sequence of px4_msgs__msg__ActuatorMotors.

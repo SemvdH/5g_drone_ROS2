@@ -37,7 +37,7 @@ void GeofenceResult_fini_function(void * message_memory)
   typed_message->~GeofenceResult();
 }
 
-static const ::rosidl_typesupport_introspection_cpp::MessageMember GeofenceResult_message_member_array[5] = {
+static const ::rosidl_typesupport_introspection_cpp::MessageMember GeofenceResult_message_member_array[4] = {
   {
     "timestamp",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_UINT64,  // type
@@ -54,29 +54,14 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember GeofenceResul
     nullptr  // resize(index) function pointer
   },
   {
-    "geofence_violation_reason",  // name
-    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_UINT8,  // type
-    0,  // upper bound of string
-    nullptr,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs::msg::GeofenceResult, geofence_violation_reason),  // bytes offset in struct
-    nullptr,  // default value
-    nullptr,  // size() function pointer
-    nullptr,  // get_const(index) function pointer
-    nullptr,  // get(index) function pointer
-    nullptr  // resize(index) function pointer
-  },
-  {
-    "primary_geofence_breached",  // name
+    "geofence_violated",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_BOOLEAN,  // type
     0,  // upper bound of string
     nullptr,  // members of sub message
     false,  // is array
     0,  // array size
     false,  // is upper bound
-    offsetof(px4_msgs::msg::GeofenceResult, primary_geofence_breached),  // bytes offset in struct
+    offsetof(px4_msgs::msg::GeofenceResult, geofence_violated),  // bytes offset in struct
     nullptr,  // default value
     nullptr,  // size() function pointer
     nullptr,  // get_const(index) function pointer
@@ -84,14 +69,14 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember GeofenceResul
     nullptr  // resize(index) function pointer
   },
   {
-    "primary_geofence_action",  // name
+    "geofence_action",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_UINT8,  // type
     0,  // upper bound of string
     nullptr,  // members of sub message
     false,  // is array
     0,  // array size
     false,  // is upper bound
-    offsetof(px4_msgs::msg::GeofenceResult, primary_geofence_action),  // bytes offset in struct
+    offsetof(px4_msgs::msg::GeofenceResult, geofence_action),  // bytes offset in struct
     nullptr,  // default value
     nullptr,  // size() function pointer
     nullptr,  // get_const(index) function pointer
@@ -118,7 +103,7 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember GeofenceResul
 static const ::rosidl_typesupport_introspection_cpp::MessageMembers GeofenceResult_message_members = {
   "px4_msgs::msg",  // message namespace
   "GeofenceResult",  // message name
-  5,  // number of fields
+  4,  // number of fields
   sizeof(px4_msgs::msg::GeofenceResult),
   GeofenceResult_message_member_array,  // message members
   GeofenceResult_init_function,  // function to initialize message memory (memory has to be allocated)

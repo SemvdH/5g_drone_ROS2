@@ -36,32 +36,16 @@ private:
   ::px4_msgs::msg::SensorGyro msg_;
 };
 
-class Init_SensorGyro_clip_counter
-{
-public:
-  explicit Init_SensorGyro_clip_counter(::px4_msgs::msg::SensorGyro & msg)
-  : msg_(msg)
-  {}
-  Init_SensorGyro_samples clip_counter(::px4_msgs::msg::SensorGyro::_clip_counter_type arg)
-  {
-    msg_.clip_counter = std::move(arg);
-    return Init_SensorGyro_samples(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::SensorGyro msg_;
-};
-
 class Init_SensorGyro_error_count
 {
 public:
   explicit Init_SensorGyro_error_count(::px4_msgs::msg::SensorGyro & msg)
   : msg_(msg)
   {}
-  Init_SensorGyro_clip_counter error_count(::px4_msgs::msg::SensorGyro::_error_count_type arg)
+  Init_SensorGyro_samples error_count(::px4_msgs::msg::SensorGyro::_error_count_type arg)
   {
     msg_.error_count = std::move(arg);
-    return Init_SensorGyro_clip_counter(msg_);
+    return Init_SensorGyro_samples(msg_);
   }
 
 private:

@@ -18,9 +18,10 @@ px4_msgs__msg__PositionControllerLandingStatus__init(px4_msgs__msg__PositionCont
     return false;
   }
   // timestamp
-  // lateral_touchdown_offset
-  // flaring
-  // abort_status
+  // horizontal_slope_displacement
+  // slope_angle_rad
+  // flare_length
+  // abort_landing
   return true;
 }
 
@@ -31,9 +32,10 @@ px4_msgs__msg__PositionControllerLandingStatus__fini(px4_msgs__msg__PositionCont
     return;
   }
   // timestamp
-  // lateral_touchdown_offset
-  // flaring
-  // abort_status
+  // horizontal_slope_displacement
+  // slope_angle_rad
+  // flare_length
+  // abort_landing
 }
 
 bool
@@ -46,16 +48,20 @@ px4_msgs__msg__PositionControllerLandingStatus__are_equal(const px4_msgs__msg__P
   if (lhs->timestamp != rhs->timestamp) {
     return false;
   }
-  // lateral_touchdown_offset
-  if (lhs->lateral_touchdown_offset != rhs->lateral_touchdown_offset) {
+  // horizontal_slope_displacement
+  if (lhs->horizontal_slope_displacement != rhs->horizontal_slope_displacement) {
     return false;
   }
-  // flaring
-  if (lhs->flaring != rhs->flaring) {
+  // slope_angle_rad
+  if (lhs->slope_angle_rad != rhs->slope_angle_rad) {
     return false;
   }
-  // abort_status
-  if (lhs->abort_status != rhs->abort_status) {
+  // flare_length
+  if (lhs->flare_length != rhs->flare_length) {
+    return false;
+  }
+  // abort_landing
+  if (lhs->abort_landing != rhs->abort_landing) {
     return false;
   }
   return true;
@@ -71,12 +77,14 @@ px4_msgs__msg__PositionControllerLandingStatus__copy(
   }
   // timestamp
   output->timestamp = input->timestamp;
-  // lateral_touchdown_offset
-  output->lateral_touchdown_offset = input->lateral_touchdown_offset;
-  // flaring
-  output->flaring = input->flaring;
-  // abort_status
-  output->abort_status = input->abort_status;
+  // horizontal_slope_displacement
+  output->horizontal_slope_displacement = input->horizontal_slope_displacement;
+  // slope_angle_rad
+  output->slope_angle_rad = input->slope_angle_rad;
+  // flare_length
+  output->flare_length = input->flare_length;
+  // abort_landing
+  output->abort_landing = input->abort_landing;
   return true;
 }
 

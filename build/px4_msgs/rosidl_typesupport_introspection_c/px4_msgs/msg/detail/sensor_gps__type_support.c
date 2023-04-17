@@ -31,7 +31,7 @@ void SensorGps__rosidl_typesupport_introspection_c__SensorGps_fini_function(void
   px4_msgs__msg__SensorGps__fini(message_memory);
 }
 
-static rosidl_typesupport_introspection_c__MessageMember SensorGps__rosidl_typesupport_introspection_c__SensorGps_message_member_array[33] = {
+static rosidl_typesupport_introspection_c__MessageMember SensorGps__rosidl_typesupport_introspection_c__SensorGps_message_member_array[29] = {
   {
     "timestamp",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_UINT64,  // type
@@ -41,21 +41,6 @@ static rosidl_typesupport_introspection_c__MessageMember SensorGps__rosidl_types
     0,  // array size
     false,  // is upper bound
     offsetof(px4_msgs__msg__SensorGps, timestamp),  // bytes offset in struct
-    NULL,  // default value
-    NULL,  // size() function pointer
-    NULL,  // get_const(index) function pointer
-    NULL,  // get(index) function pointer
-    NULL  // resize(index) function pointer
-  },
-  {
-    "timestamp_sample",  // name
-    rosidl_typesupport_introspection_c__ROS_TYPE_UINT64,  // type
-    0,  // upper bound of string
-    NULL,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs__msg__SensorGps, timestamp_sample),  // bytes offset in struct
     NULL,  // default value
     NULL,  // size() function pointer
     NULL,  // get_const(index) function pointer
@@ -273,21 +258,6 @@ static rosidl_typesupport_introspection_c__MessageMember SensorGps__rosidl_types
     NULL  // resize(index) function pointer
   },
   {
-    "jamming_state",  // name
-    rosidl_typesupport_introspection_c__ROS_TYPE_UINT8,  // type
-    0,  // upper bound of string
-    NULL,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs__msg__SensorGps, jamming_state),  // bytes offset in struct
-    NULL,  // default value
-    NULL,  // size() function pointer
-    NULL,  // get_const(index) function pointer
-    NULL,  // get(index) function pointer
-    NULL  // resize(index) function pointer
-  },
-  {
     "jamming_indicator",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_INT32,  // type
     0,  // upper bound of string
@@ -303,14 +273,14 @@ static rosidl_typesupport_introspection_c__MessageMember SensorGps__rosidl_types
     NULL  // resize(index) function pointer
   },
   {
-    "spoofing_state",  // name
+    "jamming_state",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_UINT8,  // type
     0,  // upper bound of string
     NULL,  // members of sub message
     false,  // is array
     0,  // array size
     false,  // is upper bound
-    offsetof(px4_msgs__msg__SensorGps, spoofing_state),  // bytes offset in struct
+    offsetof(px4_msgs__msg__SensorGps, jamming_state),  // bytes offset in struct
     NULL,  // default value
     NULL,  // size() function pointer
     NULL,  // get_const(index) function pointer
@@ -496,43 +466,13 @@ static rosidl_typesupport_introspection_c__MessageMember SensorGps__rosidl_types
     NULL,  // get_const(index) function pointer
     NULL,  // get(index) function pointer
     NULL  // resize(index) function pointer
-  },
-  {
-    "rtcm_injection_rate",  // name
-    rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
-    0,  // upper bound of string
-    NULL,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs__msg__SensorGps, rtcm_injection_rate),  // bytes offset in struct
-    NULL,  // default value
-    NULL,  // size() function pointer
-    NULL,  // get_const(index) function pointer
-    NULL,  // get(index) function pointer
-    NULL  // resize(index) function pointer
-  },
-  {
-    "selected_rtcm_instance",  // name
-    rosidl_typesupport_introspection_c__ROS_TYPE_UINT8,  // type
-    0,  // upper bound of string
-    NULL,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs__msg__SensorGps, selected_rtcm_instance),  // bytes offset in struct
-    NULL,  // default value
-    NULL,  // size() function pointer
-    NULL,  // get_const(index) function pointer
-    NULL,  // get(index) function pointer
-    NULL  // resize(index) function pointer
   }
 };
 
 static const rosidl_typesupport_introspection_c__MessageMembers SensorGps__rosidl_typesupport_introspection_c__SensorGps_message_members = {
   "px4_msgs__msg",  // message namespace
   "SensorGps",  // message name
-  33,  // number of fields
+  29,  // number of fields
   sizeof(px4_msgs__msg__SensorGps),
   SensorGps__rosidl_typesupport_introspection_c__SensorGps_message_member_array,  // message members
   SensorGps__rosidl_typesupport_introspection_c__SensorGps_init_function,  // function to initialize message memory (memory has to be allocated)

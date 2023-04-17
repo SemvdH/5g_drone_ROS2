@@ -37,7 +37,7 @@ void EstimatorEventFlags_fini_function(void * message_memory)
   typed_message->~EstimatorEventFlags();
 }
 
-static const ::rosidl_typesupport_introspection_cpp::MessageMember EstimatorEventFlags_message_member_array[33] = {
+static const ::rosidl_typesupport_introspection_cpp::MessageMember EstimatorEventFlags_message_member_array[29] = {
   {
     "timestamp",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_UINT64,  // type
@@ -279,66 +279,6 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember EstimatorEven
     nullptr  // resize(index) function pointer
   },
   {
-    "reset_hgt_to_baro",  // name
-    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_BOOLEAN,  // type
-    0,  // upper bound of string
-    nullptr,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs::msg::EstimatorEventFlags, reset_hgt_to_baro),  // bytes offset in struct
-    nullptr,  // default value
-    nullptr,  // size() function pointer
-    nullptr,  // get_const(index) function pointer
-    nullptr,  // get(index) function pointer
-    nullptr  // resize(index) function pointer
-  },
-  {
-    "reset_hgt_to_gps",  // name
-    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_BOOLEAN,  // type
-    0,  // upper bound of string
-    nullptr,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs::msg::EstimatorEventFlags, reset_hgt_to_gps),  // bytes offset in struct
-    nullptr,  // default value
-    nullptr,  // size() function pointer
-    nullptr,  // get_const(index) function pointer
-    nullptr,  // get(index) function pointer
-    nullptr  // resize(index) function pointer
-  },
-  {
-    "reset_hgt_to_rng",  // name
-    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_BOOLEAN,  // type
-    0,  // upper bound of string
-    nullptr,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs::msg::EstimatorEventFlags, reset_hgt_to_rng),  // bytes offset in struct
-    nullptr,  // default value
-    nullptr,  // size() function pointer
-    nullptr,  // get_const(index) function pointer
-    nullptr,  // get(index) function pointer
-    nullptr  // resize(index) function pointer
-  },
-  {
-    "reset_hgt_to_ev",  // name
-    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_BOOLEAN,  // type
-    0,  // upper bound of string
-    nullptr,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs::msg::EstimatorEventFlags, reset_hgt_to_ev),  // bytes offset in struct
-    nullptr,  // default value
-    nullptr,  // size() function pointer
-    nullptr,  // get_const(index) function pointer
-    nullptr,  // get(index) function pointer
-    nullptr  // resize(index) function pointer
-  },
-  {
     "warning_event_changes",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_UINT32,  // type
     0,  // upper bound of string
@@ -538,7 +478,7 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember EstimatorEven
 static const ::rosidl_typesupport_introspection_cpp::MessageMembers EstimatorEventFlags_message_members = {
   "px4_msgs::msg",  // message namespace
   "EstimatorEventFlags",  // message name
-  33,  // number of fields
+  29,  // number of fields
   sizeof(px4_msgs::msg::EstimatorEventFlags),
   EstimatorEventFlags_message_member_array,  // message members
   EstimatorEventFlags_init_function,  // function to initialize message memory (memory has to be allocated)

@@ -38,7 +38,6 @@ struct SensorGps_
       rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
     {
       this->timestamp = 0ull;
-      this->timestamp_sample = 0ull;
       this->device_id = 0ul;
       this->lat = 0l;
       this->lon = 0l;
@@ -53,9 +52,8 @@ struct SensorGps_
       this->vdop = 0.0f;
       this->noise_per_ms = 0l;
       this->automatic_gain_control = 0;
-      this->jamming_state = 0;
       this->jamming_indicator = 0l;
-      this->spoofing_state = 0;
+      this->jamming_state = 0;
       this->vel_m_s = 0.0f;
       this->vel_n_m_s = 0.0f;
       this->vel_e_m_s = 0.0f;
@@ -68,8 +66,6 @@ struct SensorGps_
       this->heading = 0.0f;
       this->heading_offset = 0.0f;
       this->heading_accuracy = 0.0f;
-      this->rtcm_injection_rate = 0.0f;
-      this->selected_rtcm_instance = 0;
     }
   }
 
@@ -80,7 +76,6 @@ struct SensorGps_
       rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
     {
       this->timestamp = 0ull;
-      this->timestamp_sample = 0ull;
       this->device_id = 0ul;
       this->lat = 0l;
       this->lon = 0l;
@@ -95,9 +90,8 @@ struct SensorGps_
       this->vdop = 0.0f;
       this->noise_per_ms = 0l;
       this->automatic_gain_control = 0;
-      this->jamming_state = 0;
       this->jamming_indicator = 0l;
-      this->spoofing_state = 0;
+      this->jamming_state = 0;
       this->vel_m_s = 0.0f;
       this->vel_n_m_s = 0.0f;
       this->vel_e_m_s = 0.0f;
@@ -110,8 +104,6 @@ struct SensorGps_
       this->heading = 0.0f;
       this->heading_offset = 0.0f;
       this->heading_accuracy = 0.0f;
-      this->rtcm_injection_rate = 0.0f;
-      this->selected_rtcm_instance = 0;
     }
   }
 
@@ -119,9 +111,6 @@ struct SensorGps_
   using _timestamp_type =
     uint64_t;
   _timestamp_type timestamp;
-  using _timestamp_sample_type =
-    uint64_t;
-  _timestamp_sample_type timestamp_sample;
   using _device_id_type =
     uint32_t;
   _device_id_type device_id;
@@ -164,15 +153,12 @@ struct SensorGps_
   using _automatic_gain_control_type =
     uint16_t;
   _automatic_gain_control_type automatic_gain_control;
-  using _jamming_state_type =
-    uint8_t;
-  _jamming_state_type jamming_state;
   using _jamming_indicator_type =
     int32_t;
   _jamming_indicator_type jamming_indicator;
-  using _spoofing_state_type =
+  using _jamming_state_type =
     uint8_t;
-  _spoofing_state_type spoofing_state;
+  _jamming_state_type jamming_state;
   using _vel_m_s_type =
     float;
   _vel_m_s_type vel_m_s;
@@ -209,24 +195,12 @@ struct SensorGps_
   using _heading_accuracy_type =
     float;
   _heading_accuracy_type heading_accuracy;
-  using _rtcm_injection_rate_type =
-    float;
-  _rtcm_injection_rate_type rtcm_injection_rate;
-  using _selected_rtcm_instance_type =
-    uint8_t;
-  _selected_rtcm_instance_type selected_rtcm_instance;
 
   // setters for named parameter idiom
   Type & set__timestamp(
     const uint64_t & _arg)
   {
     this->timestamp = _arg;
-    return *this;
-  }
-  Type & set__timestamp_sample(
-    const uint64_t & _arg)
-  {
-    this->timestamp_sample = _arg;
     return *this;
   }
   Type & set__device_id(
@@ -313,22 +287,16 @@ struct SensorGps_
     this->automatic_gain_control = _arg;
     return *this;
   }
-  Type & set__jamming_state(
-    const uint8_t & _arg)
-  {
-    this->jamming_state = _arg;
-    return *this;
-  }
   Type & set__jamming_indicator(
     const int32_t & _arg)
   {
     this->jamming_indicator = _arg;
     return *this;
   }
-  Type & set__spoofing_state(
+  Type & set__jamming_state(
     const uint8_t & _arg)
   {
-    this->spoofing_state = _arg;
+    this->jamming_state = _arg;
     return *this;
   }
   Type & set__vel_m_s(
@@ -403,36 +371,8 @@ struct SensorGps_
     this->heading_accuracy = _arg;
     return *this;
   }
-  Type & set__rtcm_injection_rate(
-    const float & _arg)
-  {
-    this->rtcm_injection_rate = _arg;
-    return *this;
-  }
-  Type & set__selected_rtcm_instance(
-    const uint8_t & _arg)
-  {
-    this->selected_rtcm_instance = _arg;
-    return *this;
-  }
 
   // constant declarations
-  static constexpr uint8_t JAMMING_STATE_UNKNOWN =
-    0u;
-  static constexpr uint8_t JAMMING_STATE_OK =
-    1u;
-  static constexpr uint8_t JAMMING_STATE_WARNING =
-    2u;
-  static constexpr uint8_t JAMMING_STATE_CRITICAL =
-    3u;
-  static constexpr uint8_t SPOOFING_STATE_UNKNOWN =
-    0u;
-  static constexpr uint8_t SPOOFING_STATE_NONE =
-    1u;
-  static constexpr uint8_t SPOOFING_STATE_INDICATED =
-    2u;
-  static constexpr uint8_t SPOOFING_STATE_MULTIPLE =
-    3u;
 
   // pointer types
   using RawPtr =
@@ -477,9 +417,6 @@ struct SensorGps_
     if (this->timestamp != other.timestamp) {
       return false;
     }
-    if (this->timestamp_sample != other.timestamp_sample) {
-      return false;
-    }
     if (this->device_id != other.device_id) {
       return false;
     }
@@ -522,13 +459,10 @@ struct SensorGps_
     if (this->automatic_gain_control != other.automatic_gain_control) {
       return false;
     }
-    if (this->jamming_state != other.jamming_state) {
-      return false;
-    }
     if (this->jamming_indicator != other.jamming_indicator) {
       return false;
     }
-    if (this->spoofing_state != other.spoofing_state) {
+    if (this->jamming_state != other.jamming_state) {
       return false;
     }
     if (this->vel_m_s != other.vel_m_s) {
@@ -567,12 +501,6 @@ struct SensorGps_
     if (this->heading_accuracy != other.heading_accuracy) {
       return false;
     }
-    if (this->rtcm_injection_rate != other.rtcm_injection_rate) {
-      return false;
-    }
-    if (this->selected_rtcm_instance != other.selected_rtcm_instance) {
-      return false;
-    }
     return true;
   }
   bool operator!=(const SensorGps_ & other) const
@@ -586,22 +514,6 @@ using SensorGps =
   px4_msgs::msg::SensorGps_<std::allocator<void>>;
 
 // constant definitions
-template<typename ContainerAllocator>
-constexpr uint8_t SensorGps_<ContainerAllocator>::JAMMING_STATE_UNKNOWN;
-template<typename ContainerAllocator>
-constexpr uint8_t SensorGps_<ContainerAllocator>::JAMMING_STATE_OK;
-template<typename ContainerAllocator>
-constexpr uint8_t SensorGps_<ContainerAllocator>::JAMMING_STATE_WARNING;
-template<typename ContainerAllocator>
-constexpr uint8_t SensorGps_<ContainerAllocator>::JAMMING_STATE_CRITICAL;
-template<typename ContainerAllocator>
-constexpr uint8_t SensorGps_<ContainerAllocator>::SPOOFING_STATE_UNKNOWN;
-template<typename ContainerAllocator>
-constexpr uint8_t SensorGps_<ContainerAllocator>::SPOOFING_STATE_NONE;
-template<typename ContainerAllocator>
-constexpr uint8_t SensorGps_<ContainerAllocator>::SPOOFING_STATE_INDICATED;
-template<typename ContainerAllocator>
-constexpr uint8_t SensorGps_<ContainerAllocator>::SPOOFING_STATE_MULTIPLE;
 
 }  // namespace msg
 

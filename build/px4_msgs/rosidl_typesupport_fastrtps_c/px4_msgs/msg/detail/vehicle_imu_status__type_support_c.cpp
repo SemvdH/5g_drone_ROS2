@@ -71,13 +71,6 @@ static bool _VehicleImuStatus__cdr_serialize(
     cdr.serializeArray(array_ptr, size);
   }
 
-  // Field name: gyro_clipping
-  {
-    size_t size = 3;
-    auto array_ptr = ros_message->gyro_clipping;
-    cdr.serializeArray(array_ptr, size);
-  }
-
   // Field name: accel_error_count
   {
     cdr << ros_message->accel_error_count;
@@ -192,13 +185,6 @@ static bool _VehicleImuStatus__cdr_deserialize(
   {
     size_t size = 3;
     auto array_ptr = ros_message->accel_clipping;
-    cdr.deserializeArray(array_ptr, size);
-  }
-
-  // Field name: gyro_clipping
-  {
-    size_t size = 3;
-    auto array_ptr = ros_message->gyro_clipping;
     cdr.deserializeArray(array_ptr, size);
   }
 
@@ -324,15 +310,6 @@ size_t get_serialized_size_px4_msgs__msg__VehicleImuStatus(
   {
     size_t array_size = 3;
     auto array_ptr = ros_message->accel_clipping;
-    (void)array_ptr;
-    size_t item_size = sizeof(array_ptr[0]);
-    current_alignment += array_size * item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // field.name gyro_clipping
-  {
-    size_t array_size = 3;
-    auto array_ptr = ros_message->gyro_clipping;
     (void)array_ptr;
     size_t item_size = sizeof(array_ptr[0]);
     current_alignment += array_size * item_size +
@@ -486,13 +463,6 @@ size_t max_serialized_size_px4_msgs__msg__VehicleImuStatus(
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
   // member: accel_clipping
-  {
-    size_t array_size = 3;
-
-    current_alignment += array_size * sizeof(uint32_t) +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
-  }
-  // member: gyro_clipping
   {
     size_t array_size = 3;
 

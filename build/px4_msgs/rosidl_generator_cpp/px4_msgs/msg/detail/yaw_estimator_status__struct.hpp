@@ -41,7 +41,6 @@ struct YawEstimatorStatus_
       this->timestamp_sample = 0ull;
       this->yaw_composite = 0.0f;
       this->yaw_variance = 0.0f;
-      this->yaw_composite_valid = false;
       std::fill<typename std::array<float, 5>::iterator, float>(this->yaw.begin(), this->yaw.end(), 0.0f);
       std::fill<typename std::array<float, 5>::iterator, float>(this->innov_vn.begin(), this->innov_vn.end(), 0.0f);
       std::fill<typename std::array<float, 5>::iterator, float>(this->innov_ve.begin(), this->innov_ve.end(), 0.0f);
@@ -62,7 +61,6 @@ struct YawEstimatorStatus_
       this->timestamp_sample = 0ull;
       this->yaw_composite = 0.0f;
       this->yaw_variance = 0.0f;
-      this->yaw_composite_valid = false;
       std::fill<typename std::array<float, 5>::iterator, float>(this->yaw.begin(), this->yaw.end(), 0.0f);
       std::fill<typename std::array<float, 5>::iterator, float>(this->innov_vn.begin(), this->innov_vn.end(), 0.0f);
       std::fill<typename std::array<float, 5>::iterator, float>(this->innov_ve.begin(), this->innov_ve.end(), 0.0f);
@@ -83,9 +81,6 @@ struct YawEstimatorStatus_
   using _yaw_variance_type =
     float;
   _yaw_variance_type yaw_variance;
-  using _yaw_composite_valid_type =
-    bool;
-  _yaw_composite_valid_type yaw_composite_valid;
   using _yaw_type =
     std::array<float, 5>;
   _yaw_type yaw;
@@ -122,12 +117,6 @@ struct YawEstimatorStatus_
     const float & _arg)
   {
     this->yaw_variance = _arg;
-    return *this;
-  }
-  Type & set__yaw_composite_valid(
-    const bool & _arg)
-  {
-    this->yaw_composite_valid = _arg;
     return *this;
   }
   Type & set__yaw(
@@ -207,9 +196,6 @@ struct YawEstimatorStatus_
       return false;
     }
     if (this->yaw_variance != other.yaw_variance) {
-      return false;
-    }
-    if (this->yaw_composite_valid != other.yaw_composite_valid) {
       return false;
     }
     if (this->yaw != other.yaw) {

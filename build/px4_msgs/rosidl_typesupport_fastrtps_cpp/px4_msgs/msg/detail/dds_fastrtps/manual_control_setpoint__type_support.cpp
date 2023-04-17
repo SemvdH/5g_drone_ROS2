@@ -40,14 +40,14 @@ cdr_serialize(
   cdr << (ros_message.valid ? true : false);
   // Member: data_source
   cdr << ros_message.data_source;
-  // Member: roll
-  cdr << ros_message.roll;
-  // Member: pitch
-  cdr << ros_message.pitch;
-  // Member: yaw
-  cdr << ros_message.yaw;
-  // Member: throttle
-  cdr << ros_message.throttle;
+  // Member: x
+  cdr << ros_message.x;
+  // Member: y
+  cdr << ros_message.y;
+  // Member: z
+  cdr << ros_message.z;
+  // Member: r
+  cdr << ros_message.r;
   // Member: flaps
   cdr << ros_message.flaps;
   // Member: aux1
@@ -89,17 +89,17 @@ cdr_deserialize(
   // Member: data_source
   cdr >> ros_message.data_source;
 
-  // Member: roll
-  cdr >> ros_message.roll;
+  // Member: x
+  cdr >> ros_message.x;
 
-  // Member: pitch
-  cdr >> ros_message.pitch;
+  // Member: y
+  cdr >> ros_message.y;
 
-  // Member: yaw
-  cdr >> ros_message.yaw;
+  // Member: z
+  cdr >> ros_message.z;
 
-  // Member: throttle
-  cdr >> ros_message.throttle;
+  // Member: r
+  cdr >> ros_message.r;
 
   // Member: flaps
   cdr >> ros_message.flaps;
@@ -169,27 +169,27 @@ get_serialized_size(
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // Member: roll
+  // Member: x
   {
-    size_t item_size = sizeof(ros_message.roll);
+    size_t item_size = sizeof(ros_message.x);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // Member: pitch
+  // Member: y
   {
-    size_t item_size = sizeof(ros_message.pitch);
+    size_t item_size = sizeof(ros_message.y);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // Member: yaw
+  // Member: z
   {
-    size_t item_size = sizeof(ros_message.yaw);
+    size_t item_size = sizeof(ros_message.z);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // Member: throttle
+  // Member: r
   {
-    size_t item_size = sizeof(ros_message.throttle);
+    size_t item_size = sizeof(ros_message.r);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -290,7 +290,7 @@ max_serialized_size_ManualControlSetpoint(
     current_alignment += array_size * sizeof(uint8_t);
   }
 
-  // Member: roll
+  // Member: x
   {
     size_t array_size = 1;
 
@@ -298,7 +298,7 @@ max_serialized_size_ManualControlSetpoint(
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
 
-  // Member: pitch
+  // Member: y
   {
     size_t array_size = 1;
 
@@ -306,7 +306,7 @@ max_serialized_size_ManualControlSetpoint(
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
 
-  // Member: yaw
+  // Member: z
   {
     size_t array_size = 1;
 
@@ -314,7 +314,7 @@ max_serialized_size_ManualControlSetpoint(
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
 
-  // Member: throttle
+  // Member: r
   {
     size_t array_size = 1;
 

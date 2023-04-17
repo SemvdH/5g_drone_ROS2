@@ -88,14 +88,29 @@ static bool _VehicleAttitudeSetpoint__cdr_serialize(
     cdr.serializeArray(array_ptr, size);
   }
 
-  // Field name: reset_integral
+  // Field name: roll_reset_integral
   {
-    cdr << (ros_message->reset_integral ? true : false);
+    cdr << (ros_message->roll_reset_integral ? true : false);
   }
 
-  // Field name: fw_control_yaw_wheel
+  // Field name: pitch_reset_integral
   {
-    cdr << (ros_message->fw_control_yaw_wheel ? true : false);
+    cdr << (ros_message->pitch_reset_integral ? true : false);
+  }
+
+  // Field name: yaw_reset_integral
+  {
+    cdr << (ros_message->yaw_reset_integral ? true : false);
+  }
+
+  // Field name: fw_control_yaw
+  {
+    cdr << (ros_message->fw_control_yaw ? true : false);
+  }
+
+  // Field name: apply_flaps
+  {
+    cdr << ros_message->apply_flaps;
   }
 
   return true;
@@ -149,18 +164,37 @@ static bool _VehicleAttitudeSetpoint__cdr_deserialize(
     cdr.deserializeArray(array_ptr, size);
   }
 
-  // Field name: reset_integral
+  // Field name: roll_reset_integral
   {
     uint8_t tmp;
     cdr >> tmp;
-    ros_message->reset_integral = tmp ? true : false;
+    ros_message->roll_reset_integral = tmp ? true : false;
   }
 
-  // Field name: fw_control_yaw_wheel
+  // Field name: pitch_reset_integral
   {
     uint8_t tmp;
     cdr >> tmp;
-    ros_message->fw_control_yaw_wheel = tmp ? true : false;
+    ros_message->pitch_reset_integral = tmp ? true : false;
+  }
+
+  // Field name: yaw_reset_integral
+  {
+    uint8_t tmp;
+    cdr >> tmp;
+    ros_message->yaw_reset_integral = tmp ? true : false;
+  }
+
+  // Field name: fw_control_yaw
+  {
+    uint8_t tmp;
+    cdr >> tmp;
+    ros_message->fw_control_yaw = tmp ? true : false;
+  }
+
+  // Field name: apply_flaps
+  {
+    cdr >> ros_message->apply_flaps;
   }
 
   return true;
@@ -228,15 +262,33 @@ size_t get_serialized_size_px4_msgs__msg__VehicleAttitudeSetpoint(
     current_alignment += array_size * item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // field.name reset_integral
+  // field.name roll_reset_integral
   {
-    size_t item_size = sizeof(ros_message->reset_integral);
+    size_t item_size = sizeof(ros_message->roll_reset_integral);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // field.name fw_control_yaw_wheel
+  // field.name pitch_reset_integral
   {
-    size_t item_size = sizeof(ros_message->fw_control_yaw_wheel);
+    size_t item_size = sizeof(ros_message->pitch_reset_integral);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // field.name yaw_reset_integral
+  {
+    size_t item_size = sizeof(ros_message->yaw_reset_integral);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // field.name fw_control_yaw
+  {
+    size_t item_size = sizeof(ros_message->fw_control_yaw);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // field.name apply_flaps
+  {
+    size_t item_size = sizeof(ros_message->apply_flaps);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -313,13 +365,31 @@ size_t max_serialized_size_px4_msgs__msg__VehicleAttitudeSetpoint(
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
-  // member: reset_integral
+  // member: roll_reset_integral
   {
     size_t array_size = 1;
 
     current_alignment += array_size * sizeof(uint8_t);
   }
-  // member: fw_control_yaw_wheel
+  // member: pitch_reset_integral
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
+  }
+  // member: yaw_reset_integral
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
+  }
+  // member: fw_control_yaw
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
+  }
+  // member: apply_flaps
   {
     size_t array_size = 1;
 

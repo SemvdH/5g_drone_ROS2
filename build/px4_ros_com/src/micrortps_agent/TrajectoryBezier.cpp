@@ -35,13 +35,13 @@ using namespace eprosima::fastcdr::exception;
 
 px4_msgs::msg::TrajectoryBezier::TrajectoryBezier()
 {
-    // m_timestamp com.eprosima.idl.parser.typecode.PrimitiveTypeCode@79207381
+    // m_timestamp com.eprosima.idl.parser.typecode.PrimitiveTypeCode@50378a4
     m_timestamp = 0;
-    // m_position com.eprosima.idl.parser.typecode.AliasTypeCode@491b9b8
+    // m_position com.eprosima.idl.parser.typecode.AliasTypeCode@60f00693
     memset(&m_position, 0, (3) * 4);
-    // m_yaw com.eprosima.idl.parser.typecode.PrimitiveTypeCode@1a4927d6
+    // m_yaw com.eprosima.idl.parser.typecode.PrimitiveTypeCode@79207381
     m_yaw = 0.0;
-    // m_delta com.eprosima.idl.parser.typecode.PrimitiveTypeCode@7a6d7e92
+    // m_delta com.eprosima.idl.parser.typecode.PrimitiveTypeCode@491b9b8
     m_delta = 0.0;
 
 }

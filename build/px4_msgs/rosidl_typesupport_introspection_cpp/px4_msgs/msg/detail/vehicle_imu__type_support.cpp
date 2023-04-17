@@ -77,7 +77,7 @@ void * get_function__VehicleImu__delta_velocity(void * untyped_member, size_t in
   return &member[index];
 }
 
-static const ::rosidl_typesupport_introspection_cpp::MessageMember VehicleImu_message_member_array[12] = {
+static const ::rosidl_typesupport_introspection_cpp::MessageMember VehicleImu_message_member_array[11] = {
   {
     "timestamp",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_UINT64,  // type
@@ -199,21 +199,6 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember VehicleImu_me
     nullptr  // resize(index) function pointer
   },
   {
-    "delta_angle_clipping",  // name
-    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_UINT8,  // type
-    0,  // upper bound of string
-    nullptr,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs::msg::VehicleImu, delta_angle_clipping),  // bytes offset in struct
-    nullptr,  // default value
-    nullptr,  // size() function pointer
-    nullptr,  // get_const(index) function pointer
-    nullptr,  // get(index) function pointer
-    nullptr  // resize(index) function pointer
-  },
-  {
     "delta_velocity_clipping",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_UINT8,  // type
     0,  // upper bound of string
@@ -263,7 +248,7 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember VehicleImu_me
 static const ::rosidl_typesupport_introspection_cpp::MessageMembers VehicleImu_message_members = {
   "px4_msgs::msg",  // message namespace
   "VehicleImu",  // message name
-  12,  // number of fields
+  11,  // number of fields
   sizeof(px4_msgs::msg::VehicleImu),
   VehicleImu_message_member_array,  // message members
   VehicleImu_init_function,  // function to initialize message memory (memory has to be allocated)

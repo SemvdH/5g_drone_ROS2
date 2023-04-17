@@ -19,9 +19,7 @@ px4_msgs__msg__TecsStatus__init(px4_msgs__msg__TecsStatus * msg)
   }
   // timestamp
   // altitude_sp
-  // altitude_reference
-  // height_rate_reference
-  // height_rate_direct
+  // altitude_filtered
   // height_rate_setpoint
   // height_rate
   // equivalent_airspeed_sp
@@ -30,15 +28,23 @@ px4_msgs__msg__TecsStatus__init(px4_msgs__msg__TecsStatus * msg)
   // true_airspeed_derivative_sp
   // true_airspeed_derivative
   // true_airspeed_derivative_raw
-  // total_energy_rate_sp
+  // true_airspeed_innovation
+  // total_energy_error
+  // energy_distribution_error
+  // total_energy_rate_error
+  // energy_distribution_rate_error
+  // total_energy
   // total_energy_rate
-  // total_energy_balance_rate_sp
+  // total_energy_balance
   // total_energy_balance_rate
+  // total_energy_sp
+  // total_energy_rate_sp
+  // total_energy_balance_sp
+  // total_energy_balance_rate_sp
   // throttle_integ
   // pitch_integ
   // throttle_sp
   // pitch_sp_rad
-  // throttle_trim
   // mode
   return true;
 }
@@ -51,9 +57,7 @@ px4_msgs__msg__TecsStatus__fini(px4_msgs__msg__TecsStatus * msg)
   }
   // timestamp
   // altitude_sp
-  // altitude_reference
-  // height_rate_reference
-  // height_rate_direct
+  // altitude_filtered
   // height_rate_setpoint
   // height_rate
   // equivalent_airspeed_sp
@@ -62,15 +66,23 @@ px4_msgs__msg__TecsStatus__fini(px4_msgs__msg__TecsStatus * msg)
   // true_airspeed_derivative_sp
   // true_airspeed_derivative
   // true_airspeed_derivative_raw
-  // total_energy_rate_sp
+  // true_airspeed_innovation
+  // total_energy_error
+  // energy_distribution_error
+  // total_energy_rate_error
+  // energy_distribution_rate_error
+  // total_energy
   // total_energy_rate
-  // total_energy_balance_rate_sp
+  // total_energy_balance
   // total_energy_balance_rate
+  // total_energy_sp
+  // total_energy_rate_sp
+  // total_energy_balance_sp
+  // total_energy_balance_rate_sp
   // throttle_integ
   // pitch_integ
   // throttle_sp
   // pitch_sp_rad
-  // throttle_trim
   // mode
 }
 
@@ -88,16 +100,8 @@ px4_msgs__msg__TecsStatus__are_equal(const px4_msgs__msg__TecsStatus * lhs, cons
   if (lhs->altitude_sp != rhs->altitude_sp) {
     return false;
   }
-  // altitude_reference
-  if (lhs->altitude_reference != rhs->altitude_reference) {
-    return false;
-  }
-  // height_rate_reference
-  if (lhs->height_rate_reference != rhs->height_rate_reference) {
-    return false;
-  }
-  // height_rate_direct
-  if (lhs->height_rate_direct != rhs->height_rate_direct) {
+  // altitude_filtered
+  if (lhs->altitude_filtered != rhs->altitude_filtered) {
     return false;
   }
   // height_rate_setpoint
@@ -132,20 +136,56 @@ px4_msgs__msg__TecsStatus__are_equal(const px4_msgs__msg__TecsStatus * lhs, cons
   if (lhs->true_airspeed_derivative_raw != rhs->true_airspeed_derivative_raw) {
     return false;
   }
-  // total_energy_rate_sp
-  if (lhs->total_energy_rate_sp != rhs->total_energy_rate_sp) {
+  // true_airspeed_innovation
+  if (lhs->true_airspeed_innovation != rhs->true_airspeed_innovation) {
+    return false;
+  }
+  // total_energy_error
+  if (lhs->total_energy_error != rhs->total_energy_error) {
+    return false;
+  }
+  // energy_distribution_error
+  if (lhs->energy_distribution_error != rhs->energy_distribution_error) {
+    return false;
+  }
+  // total_energy_rate_error
+  if (lhs->total_energy_rate_error != rhs->total_energy_rate_error) {
+    return false;
+  }
+  // energy_distribution_rate_error
+  if (lhs->energy_distribution_rate_error != rhs->energy_distribution_rate_error) {
+    return false;
+  }
+  // total_energy
+  if (lhs->total_energy != rhs->total_energy) {
     return false;
   }
   // total_energy_rate
   if (lhs->total_energy_rate != rhs->total_energy_rate) {
     return false;
   }
-  // total_energy_balance_rate_sp
-  if (lhs->total_energy_balance_rate_sp != rhs->total_energy_balance_rate_sp) {
+  // total_energy_balance
+  if (lhs->total_energy_balance != rhs->total_energy_balance) {
     return false;
   }
   // total_energy_balance_rate
   if (lhs->total_energy_balance_rate != rhs->total_energy_balance_rate) {
+    return false;
+  }
+  // total_energy_sp
+  if (lhs->total_energy_sp != rhs->total_energy_sp) {
+    return false;
+  }
+  // total_energy_rate_sp
+  if (lhs->total_energy_rate_sp != rhs->total_energy_rate_sp) {
+    return false;
+  }
+  // total_energy_balance_sp
+  if (lhs->total_energy_balance_sp != rhs->total_energy_balance_sp) {
+    return false;
+  }
+  // total_energy_balance_rate_sp
+  if (lhs->total_energy_balance_rate_sp != rhs->total_energy_balance_rate_sp) {
     return false;
   }
   // throttle_integ
@@ -162,10 +202,6 @@ px4_msgs__msg__TecsStatus__are_equal(const px4_msgs__msg__TecsStatus * lhs, cons
   }
   // pitch_sp_rad
   if (lhs->pitch_sp_rad != rhs->pitch_sp_rad) {
-    return false;
-  }
-  // throttle_trim
-  if (lhs->throttle_trim != rhs->throttle_trim) {
     return false;
   }
   // mode
@@ -187,12 +223,8 @@ px4_msgs__msg__TecsStatus__copy(
   output->timestamp = input->timestamp;
   // altitude_sp
   output->altitude_sp = input->altitude_sp;
-  // altitude_reference
-  output->altitude_reference = input->altitude_reference;
-  // height_rate_reference
-  output->height_rate_reference = input->height_rate_reference;
-  // height_rate_direct
-  output->height_rate_direct = input->height_rate_direct;
+  // altitude_filtered
+  output->altitude_filtered = input->altitude_filtered;
   // height_rate_setpoint
   output->height_rate_setpoint = input->height_rate_setpoint;
   // height_rate
@@ -209,14 +241,32 @@ px4_msgs__msg__TecsStatus__copy(
   output->true_airspeed_derivative = input->true_airspeed_derivative;
   // true_airspeed_derivative_raw
   output->true_airspeed_derivative_raw = input->true_airspeed_derivative_raw;
-  // total_energy_rate_sp
-  output->total_energy_rate_sp = input->total_energy_rate_sp;
+  // true_airspeed_innovation
+  output->true_airspeed_innovation = input->true_airspeed_innovation;
+  // total_energy_error
+  output->total_energy_error = input->total_energy_error;
+  // energy_distribution_error
+  output->energy_distribution_error = input->energy_distribution_error;
+  // total_energy_rate_error
+  output->total_energy_rate_error = input->total_energy_rate_error;
+  // energy_distribution_rate_error
+  output->energy_distribution_rate_error = input->energy_distribution_rate_error;
+  // total_energy
+  output->total_energy = input->total_energy;
   // total_energy_rate
   output->total_energy_rate = input->total_energy_rate;
-  // total_energy_balance_rate_sp
-  output->total_energy_balance_rate_sp = input->total_energy_balance_rate_sp;
+  // total_energy_balance
+  output->total_energy_balance = input->total_energy_balance;
   // total_energy_balance_rate
   output->total_energy_balance_rate = input->total_energy_balance_rate;
+  // total_energy_sp
+  output->total_energy_sp = input->total_energy_sp;
+  // total_energy_rate_sp
+  output->total_energy_rate_sp = input->total_energy_rate_sp;
+  // total_energy_balance_sp
+  output->total_energy_balance_sp = input->total_energy_balance_sp;
+  // total_energy_balance_rate_sp
+  output->total_energy_balance_rate_sp = input->total_energy_balance_rate_sp;
   // throttle_integ
   output->throttle_integ = input->throttle_integ;
   // pitch_integ
@@ -225,8 +275,6 @@ px4_msgs__msg__TecsStatus__copy(
   output->throttle_sp = input->throttle_sp;
   // pitch_sp_rad
   output->pitch_sp_rad = input->pitch_sp_rad;
-  // throttle_trim
-  output->throttle_trim = input->throttle_trim;
   // mode
   output->mode = input->mode;
   return true;

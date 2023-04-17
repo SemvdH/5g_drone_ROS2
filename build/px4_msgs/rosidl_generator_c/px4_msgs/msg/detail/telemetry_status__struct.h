@@ -84,7 +84,6 @@ typedef struct px4_msgs__msg__TelemetryStatus
   bool heartbeat_type_adsb;
   bool heartbeat_type_camera;
   bool heartbeat_type_parachute;
-  bool heartbeat_type_open_drone_id;
   bool heartbeat_component_telemetry_radio;
   bool heartbeat_component_log;
   bool heartbeat_component_osd;
@@ -94,7 +93,6 @@ typedef struct px4_msgs__msg__TelemetryStatus
   bool heartbeat_component_udp_bridge;
   bool heartbeat_component_uart_bridge;
   bool avoidance_system_healthy;
-  bool open_drone_id_system_healthy;
   bool parachute_system_healthy;
 } px4_msgs__msg__TelemetryStatus;
 

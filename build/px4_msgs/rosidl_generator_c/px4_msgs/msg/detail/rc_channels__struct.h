@@ -179,12 +179,6 @@ enum
   px4_msgs__msg__RcChannels__FUNCTION_FLTBTN_SLOT_6 = 26
 };
 
-/// Constant 'FUNCTION_ENGAGE_MAIN_MOTOR'.
-enum
-{
-  px4_msgs__msg__RcChannels__FUNCTION_ENGAGE_MAIN_MOTOR = 27
-};
-
 /// Constant 'FUNCTION_FLTBTN_SLOT_COUNT'.
 enum
 {
@@ -198,7 +192,7 @@ typedef struct px4_msgs__msg__RcChannels
   uint64_t timestamp_last_valid;
   float channels[18];
   uint8_t channel_count;
-  int8_t function[28];
+  int8_t function[27];
   uint8_t rssi;
   bool signal_lost;
   uint32_t frame_drop_count;

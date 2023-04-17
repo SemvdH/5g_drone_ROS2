@@ -37,7 +37,7 @@ void FailureDetectorStatus_fini_function(void * message_memory)
   typed_message->~FailureDetectorStatus();
 }
 
-static const ::rosidl_typesupport_introspection_cpp::MessageMember FailureDetectorStatus_message_member_array[11] = {
+static const ::rosidl_typesupport_introspection_cpp::MessageMember FailureDetectorStatus_message_member_array[10] = {
   {
     "timestamp",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_UINT64,  // type
@@ -129,6 +129,21 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember FailureDetect
     nullptr  // resize(index) function pointer
   },
   {
+    "fd_high_wind",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_BOOLEAN,  // type
+    0,  // upper bound of string
+    nullptr,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs::msg::FailureDetectorStatus, fd_high_wind),  // bytes offset in struct
+    nullptr,  // default value
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
+    nullptr  // resize(index) function pointer
+  },
+  {
     "fd_battery",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_BOOLEAN,  // type
     0,  // upper bound of string
@@ -159,21 +174,6 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember FailureDetect
     nullptr  // resize(index) function pointer
   },
   {
-    "fd_motor",  // name
-    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_BOOLEAN,  // type
-    0,  // upper bound of string
-    nullptr,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs::msg::FailureDetectorStatus, fd_motor),  // bytes offset in struct
-    nullptr,  // default value
-    nullptr,  // size() function pointer
-    nullptr,  // get_const(index) function pointer
-    nullptr,  // get(index) function pointer
-    nullptr  // resize(index) function pointer
-  },
-  {
     "imbalanced_prop_metric",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
     0,  // upper bound of string
@@ -187,28 +187,13 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember FailureDetect
     nullptr,  // get_const(index) function pointer
     nullptr,  // get(index) function pointer
     nullptr  // resize(index) function pointer
-  },
-  {
-    "motor_failure_mask",  // name
-    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_UINT16,  // type
-    0,  // upper bound of string
-    nullptr,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs::msg::FailureDetectorStatus, motor_failure_mask),  // bytes offset in struct
-    nullptr,  // default value
-    nullptr,  // size() function pointer
-    nullptr,  // get_const(index) function pointer
-    nullptr,  // get(index) function pointer
-    nullptr  // resize(index) function pointer
   }
 };
 
 static const ::rosidl_typesupport_introspection_cpp::MessageMembers FailureDetectorStatus_message_members = {
   "px4_msgs::msg",  // message namespace
   "FailureDetectorStatus",  // message name
-  11,  // number of fields
+  10,  // number of fields
   sizeof(px4_msgs::msg::FailureDetectorStatus),
   FailureDetectorStatus_message_member_array,  // message members
   FailureDetectorStatus_init_function,  // function to initialize message memory (memory has to be allocated)

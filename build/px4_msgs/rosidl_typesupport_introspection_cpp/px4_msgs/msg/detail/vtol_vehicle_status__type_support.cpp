@@ -37,7 +37,7 @@ void VtolVehicleStatus_fini_function(void * message_memory)
   typed_message->~VtolVehicleStatus();
 }
 
-static const ::rosidl_typesupport_introspection_cpp::MessageMember VtolVehicleStatus_message_member_array[3] = {
+static const ::rosidl_typesupport_introspection_cpp::MessageMember VtolVehicleStatus_message_member_array[6] = {
   {
     "timestamp",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_UINT64,  // type
@@ -54,14 +54,14 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember VtolVehicleSt
     nullptr  // resize(index) function pointer
   },
   {
-    "vehicle_vtol_state",  // name
-    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_UINT8,  // type
+    "vtol_in_rw_mode",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_BOOLEAN,  // type
     0,  // upper bound of string
     nullptr,  // members of sub message
     false,  // is array
     0,  // array size
     false,  // is upper bound
-    offsetof(px4_msgs::msg::VtolVehicleStatus, vehicle_vtol_state),  // bytes offset in struct
+    offsetof(px4_msgs::msg::VtolVehicleStatus, vtol_in_rw_mode),  // bytes offset in struct
     nullptr,  // default value
     nullptr,  // size() function pointer
     nullptr,  // get_const(index) function pointer
@@ -69,14 +69,59 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember VtolVehicleSt
     nullptr  // resize(index) function pointer
   },
   {
-    "fixed_wing_system_failure",  // name
+    "vtol_in_trans_mode",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_BOOLEAN,  // type
     0,  // upper bound of string
     nullptr,  // members of sub message
     false,  // is array
     0,  // array size
     false,  // is upper bound
-    offsetof(px4_msgs::msg::VtolVehicleStatus, fixed_wing_system_failure),  // bytes offset in struct
+    offsetof(px4_msgs::msg::VtolVehicleStatus, vtol_in_trans_mode),  // bytes offset in struct
+    nullptr,  // default value
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
+    nullptr  // resize(index) function pointer
+  },
+  {
+    "in_transition_to_fw",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_BOOLEAN,  // type
+    0,  // upper bound of string
+    nullptr,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs::msg::VtolVehicleStatus, in_transition_to_fw),  // bytes offset in struct
+    nullptr,  // default value
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
+    nullptr  // resize(index) function pointer
+  },
+  {
+    "vtol_transition_failsafe",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_BOOLEAN,  // type
+    0,  // upper bound of string
+    nullptr,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs::msg::VtolVehicleStatus, vtol_transition_failsafe),  // bytes offset in struct
+    nullptr,  // default value
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
+    nullptr  // resize(index) function pointer
+  },
+  {
+    "fw_permanent_stab",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_BOOLEAN,  // type
+    0,  // upper bound of string
+    nullptr,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs::msg::VtolVehicleStatus, fw_permanent_stab),  // bytes offset in struct
     nullptr,  // default value
     nullptr,  // size() function pointer
     nullptr,  // get_const(index) function pointer
@@ -88,7 +133,7 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember VtolVehicleSt
 static const ::rosidl_typesupport_introspection_cpp::MessageMembers VtolVehicleStatus_message_members = {
   "px4_msgs::msg",  // message namespace
   "VtolVehicleStatus",  // message name
-  3,  // number of fields
+  6,  // number of fields
   sizeof(px4_msgs::msg::VtolVehicleStatus),
   VtolVehicleStatus_message_member_array,  // message members
   VtolVehicleStatus_init_function,  // function to initialize message memory (memory has to be allocated)

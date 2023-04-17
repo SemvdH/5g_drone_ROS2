@@ -88,11 +88,6 @@ static bool _SensorCombined__cdr_serialize(
     cdr << ros_message->accelerometer_clipping;
   }
 
-  // Field name: gyro_clipping
-  {
-    cdr << ros_message->gyro_clipping;
-  }
-
   // Field name: accel_calibration_count
   {
     cdr << ros_message->accel_calibration_count;
@@ -152,11 +147,6 @@ static bool _SensorCombined__cdr_deserialize(
   // Field name: accelerometer_clipping
   {
     cdr >> ros_message->accelerometer_clipping;
-  }
-
-  // Field name: gyro_clipping
-  {
-    cdr >> ros_message->gyro_clipping;
   }
 
   // Field name: accel_calibration_count
@@ -231,12 +221,6 @@ size_t get_serialized_size_px4_msgs__msg__SensorCombined(
   // field.name accelerometer_clipping
   {
     size_t item_size = sizeof(ros_message->accelerometer_clipping);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // field.name gyro_clipping
-  {
-    size_t item_size = sizeof(ros_message->gyro_clipping);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -319,12 +303,6 @@ size_t max_serialized_size_px4_msgs__msg__SensorCombined(
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
   // member: accelerometer_clipping
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint8_t);
-  }
-  // member: gyro_clipping
   {
     size_t array_size = 1;
 

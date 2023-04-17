@@ -99,11 +99,6 @@ static bool _VehicleLandDetected__cdr_serialize(
     cdr << (ros_message->horizontal_movement ? true : false);
   }
 
-  // Field name: rotational_movement
-  {
-    cdr << (ros_message->rotational_movement ? true : false);
-  }
-
   // Field name: close_to_ground_or_skipped_check
   {
     cdr << (ros_message->close_to_ground_or_skipped_check ? true : false);
@@ -194,13 +189,6 @@ static bool _VehicleLandDetected__cdr_deserialize(
     ros_message->horizontal_movement = tmp ? true : false;
   }
 
-  // Field name: rotational_movement
-  {
-    uint8_t tmp;
-    cdr >> tmp;
-    ros_message->rotational_movement = tmp ? true : false;
-  }
-
   // Field name: close_to_ground_or_skipped_check
   {
     uint8_t tmp;
@@ -289,12 +277,6 @@ size_t get_serialized_size_px4_msgs__msg__VehicleLandDetected(
   // field.name horizontal_movement
   {
     size_t item_size = sizeof(ros_message->horizontal_movement);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // field.name rotational_movement
-  {
-    size_t item_size = sizeof(ros_message->rotational_movement);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -390,12 +372,6 @@ size_t max_serialized_size_px4_msgs__msg__VehicleLandDetected(
     current_alignment += array_size * sizeof(uint8_t);
   }
   // member: horizontal_movement
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint8_t);
-  }
-  // member: rotational_movement
   {
     size_t array_size = 1;
 

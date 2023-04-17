@@ -94,7 +94,7 @@ static rosidl_typesupport_introspection_c__MessageMember EstimatorStatus__rosidl
   },
   {
     "control_mode_flags",  // name
-    rosidl_typesupport_introspection_c__ROS_TYPE_UINT64,  // type
+    rosidl_typesupport_introspection_c__ROS_TYPE_UINT32,  // type
     0,  // upper bound of string
     NULL,  // members of sub message
     false,  // is array

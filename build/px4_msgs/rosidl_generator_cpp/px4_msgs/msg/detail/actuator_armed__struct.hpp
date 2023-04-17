@@ -45,6 +45,7 @@ struct ActuatorArmed_
       this->manual_lockdown = false;
       this->force_failsafe = false;
       this->in_esc_calibration_mode = false;
+      this->soft_stop = false;
     }
   }
 
@@ -62,6 +63,7 @@ struct ActuatorArmed_
       this->manual_lockdown = false;
       this->force_failsafe = false;
       this->in_esc_calibration_mode = false;
+      this->soft_stop = false;
     }
   }
 
@@ -90,6 +92,9 @@ struct ActuatorArmed_
   using _in_esc_calibration_mode_type =
     bool;
   _in_esc_calibration_mode_type in_esc_calibration_mode;
+  using _soft_stop_type =
+    bool;
+  _soft_stop_type soft_stop;
 
   // setters for named parameter idiom
   Type & set__timestamp(
@@ -138,6 +143,12 @@ struct ActuatorArmed_
     const bool & _arg)
   {
     this->in_esc_calibration_mode = _arg;
+    return *this;
+  }
+  Type & set__soft_stop(
+    const bool & _arg)
+  {
+    this->soft_stop = _arg;
     return *this;
   }
 
@@ -205,6 +216,9 @@ struct ActuatorArmed_
       return false;
     }
     if (this->in_esc_calibration_mode != other.in_esc_calibration_mode) {
+      return false;
+    }
+    if (this->soft_stop != other.soft_stop) {
       return false;
     }
     return true;

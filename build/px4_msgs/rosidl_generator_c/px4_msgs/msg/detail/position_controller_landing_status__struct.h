@@ -17,43 +17,14 @@ extern "C"
 
 // Constants defined in the message
 
-/// Constant 'NOT_ABORTED'.
-enum
-{
-  px4_msgs__msg__PositionControllerLandingStatus__NOT_ABORTED = 0
-};
-
-/// Constant 'ABORTED_BY_OPERATOR'.
-enum
-{
-  px4_msgs__msg__PositionControllerLandingStatus__ABORTED_BY_OPERATOR = 1
-};
-
-/// Constant 'TERRAIN_NOT_FOUND'.
-enum
-{
-  px4_msgs__msg__PositionControllerLandingStatus__TERRAIN_NOT_FOUND = 2
-};
-
-/// Constant 'TERRAIN_TIMEOUT'.
-enum
-{
-  px4_msgs__msg__PositionControllerLandingStatus__TERRAIN_TIMEOUT = 3
-};
-
-/// Constant 'UNKNOWN_ABORT_CRITERION'.
-enum
-{
-  px4_msgs__msg__PositionControllerLandingStatus__UNKNOWN_ABORT_CRITERION = 4
-};
-
 // Struct defined in msg/PositionControllerLandingStatus in the package px4_msgs.
 typedef struct px4_msgs__msg__PositionControllerLandingStatus
 {
   uint64_t timestamp;
-  float lateral_touchdown_offset;
-  bool flaring;
-  uint8_t abort_status;
+  float horizontal_slope_displacement;
+  float slope_angle_rad;
+  float flare_length;
+  bool abort_landing;
 } px4_msgs__msg__PositionControllerLandingStatus;
 
 // Struct for a sequence of px4_msgs__msg__PositionControllerLandingStatus.

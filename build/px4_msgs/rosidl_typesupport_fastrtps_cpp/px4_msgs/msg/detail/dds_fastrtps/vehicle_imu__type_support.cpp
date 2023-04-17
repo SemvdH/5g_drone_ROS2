@@ -52,8 +52,6 @@ cdr_serialize(
   cdr << ros_message.delta_angle_dt;
   // Member: delta_velocity_dt
   cdr << ros_message.delta_velocity_dt;
-  // Member: delta_angle_clipping
-  cdr << ros_message.delta_angle_clipping;
   // Member: delta_velocity_clipping
   cdr << ros_message.delta_velocity_clipping;
   // Member: accel_calibration_count
@@ -96,9 +94,6 @@ cdr_deserialize(
 
   // Member: delta_velocity_dt
   cdr >> ros_message.delta_velocity_dt;
-
-  // Member: delta_angle_clipping
-  cdr >> ros_message.delta_angle_clipping;
 
   // Member: delta_velocity_clipping
   cdr >> ros_message.delta_velocity_clipping;
@@ -172,12 +167,6 @@ get_serialized_size(
   // Member: delta_velocity_dt
   {
     size_t item_size = sizeof(ros_message.delta_velocity_dt);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // Member: delta_angle_clipping
-  {
-    size_t item_size = sizeof(ros_message.delta_angle_clipping);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -280,13 +269,6 @@ max_serialized_size_VehicleImu(
 
     current_alignment += array_size * sizeof(uint16_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint16_t));
-  }
-
-  // Member: delta_angle_clipping
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint8_t);
   }
 
   // Member: delta_velocity_clipping

@@ -18,42 +18,36 @@ px4_msgs__msg__VehicleStatus__init(px4_msgs__msg__VehicleStatus * msg)
     return false;
   }
   // timestamp
-  // armed_time
-  // takeoff_time
-  // arming_state
-  // latest_arming_reason
-  // latest_disarming_reason
-  // nav_state_timestamp
-  // nav_state_user_intention
   // nav_state
-  // failure_detector_status
+  // nav_state_timestamp
+  // arming_state
   // hil_state
-  // vehicle_type
   // failsafe
-  // failsafe_and_user_took_over
-  // gcs_connection_lost
-  // gcs_connection_lost_counter
-  // high_latency_data_link_lost
-  // is_vtol
-  // is_vtol_tailsitter
-  // in_transition_mode
-  // in_transition_to_fw
+  // failsafe_timestamp
   // system_type
   // system_id
   // component_id
-  // safety_button_available
-  // safety_off
-  // power_input_valid
-  // usb_connected
-  // open_drone_id_system_present
-  // open_drone_id_system_healthy
-  // parachute_system_present
-  // parachute_system_healthy
-  // avoidance_system_required
-  // avoidance_system_valid
-  // rc_calibration_in_progress
-  // calibration_enabled
-  // pre_flight_checks_pass
+  // vehicle_type
+  // is_vtol
+  // is_vtol_tailsitter
+  // vtol_fw_permanent_stab
+  // in_transition_mode
+  // in_transition_to_fw
+  // rc_signal_lost
+  // data_link_lost
+  // data_link_lost_counter
+  // high_latency_data_link_lost
+  // engine_failure
+  // mission_failure
+  // geofence_violated
+  // failure_detector_status
+  // onboard_control_sensors_present
+  // onboard_control_sensors_enabled
+  // onboard_control_sensors_health
+  // latest_arming_reason
+  // latest_disarming_reason
+  // armed_time
+  // takeoff_time
   return true;
 }
 
@@ -64,42 +58,36 @@ px4_msgs__msg__VehicleStatus__fini(px4_msgs__msg__VehicleStatus * msg)
     return;
   }
   // timestamp
-  // armed_time
-  // takeoff_time
-  // arming_state
-  // latest_arming_reason
-  // latest_disarming_reason
-  // nav_state_timestamp
-  // nav_state_user_intention
   // nav_state
-  // failure_detector_status
+  // nav_state_timestamp
+  // arming_state
   // hil_state
-  // vehicle_type
   // failsafe
-  // failsafe_and_user_took_over
-  // gcs_connection_lost
-  // gcs_connection_lost_counter
-  // high_latency_data_link_lost
-  // is_vtol
-  // is_vtol_tailsitter
-  // in_transition_mode
-  // in_transition_to_fw
+  // failsafe_timestamp
   // system_type
   // system_id
   // component_id
-  // safety_button_available
-  // safety_off
-  // power_input_valid
-  // usb_connected
-  // open_drone_id_system_present
-  // open_drone_id_system_healthy
-  // parachute_system_present
-  // parachute_system_healthy
-  // avoidance_system_required
-  // avoidance_system_valid
-  // rc_calibration_in_progress
-  // calibration_enabled
-  // pre_flight_checks_pass
+  // vehicle_type
+  // is_vtol
+  // is_vtol_tailsitter
+  // vtol_fw_permanent_stab
+  // in_transition_mode
+  // in_transition_to_fw
+  // rc_signal_lost
+  // data_link_lost
+  // data_link_lost_counter
+  // high_latency_data_link_lost
+  // engine_failure
+  // mission_failure
+  // geofence_violated
+  // failure_detector_status
+  // onboard_control_sensors_present
+  // onboard_control_sensors_enabled
+  // onboard_control_sensors_health
+  // latest_arming_reason
+  // latest_disarming_reason
+  // armed_time
+  // takeoff_time
 }
 
 bool
@@ -112,84 +100,28 @@ px4_msgs__msg__VehicleStatus__are_equal(const px4_msgs__msg__VehicleStatus * lhs
   if (lhs->timestamp != rhs->timestamp) {
     return false;
   }
-  // armed_time
-  if (lhs->armed_time != rhs->armed_time) {
-    return false;
-  }
-  // takeoff_time
-  if (lhs->takeoff_time != rhs->takeoff_time) {
-    return false;
-  }
-  // arming_state
-  if (lhs->arming_state != rhs->arming_state) {
-    return false;
-  }
-  // latest_arming_reason
-  if (lhs->latest_arming_reason != rhs->latest_arming_reason) {
-    return false;
-  }
-  // latest_disarming_reason
-  if (lhs->latest_disarming_reason != rhs->latest_disarming_reason) {
+  // nav_state
+  if (lhs->nav_state != rhs->nav_state) {
     return false;
   }
   // nav_state_timestamp
   if (lhs->nav_state_timestamp != rhs->nav_state_timestamp) {
     return false;
   }
-  // nav_state_user_intention
-  if (lhs->nav_state_user_intention != rhs->nav_state_user_intention) {
-    return false;
-  }
-  // nav_state
-  if (lhs->nav_state != rhs->nav_state) {
-    return false;
-  }
-  // failure_detector_status
-  if (lhs->failure_detector_status != rhs->failure_detector_status) {
+  // arming_state
+  if (lhs->arming_state != rhs->arming_state) {
     return false;
   }
   // hil_state
   if (lhs->hil_state != rhs->hil_state) {
     return false;
   }
-  // vehicle_type
-  if (lhs->vehicle_type != rhs->vehicle_type) {
-    return false;
-  }
   // failsafe
   if (lhs->failsafe != rhs->failsafe) {
     return false;
   }
-  // failsafe_and_user_took_over
-  if (lhs->failsafe_and_user_took_over != rhs->failsafe_and_user_took_over) {
-    return false;
-  }
-  // gcs_connection_lost
-  if (lhs->gcs_connection_lost != rhs->gcs_connection_lost) {
-    return false;
-  }
-  // gcs_connection_lost_counter
-  if (lhs->gcs_connection_lost_counter != rhs->gcs_connection_lost_counter) {
-    return false;
-  }
-  // high_latency_data_link_lost
-  if (lhs->high_latency_data_link_lost != rhs->high_latency_data_link_lost) {
-    return false;
-  }
-  // is_vtol
-  if (lhs->is_vtol != rhs->is_vtol) {
-    return false;
-  }
-  // is_vtol_tailsitter
-  if (lhs->is_vtol_tailsitter != rhs->is_vtol_tailsitter) {
-    return false;
-  }
-  // in_transition_mode
-  if (lhs->in_transition_mode != rhs->in_transition_mode) {
-    return false;
-  }
-  // in_transition_to_fw
-  if (lhs->in_transition_to_fw != rhs->in_transition_to_fw) {
+  // failsafe_timestamp
+  if (lhs->failsafe_timestamp != rhs->failsafe_timestamp) {
     return false;
   }
   // system_type
@@ -204,56 +136,88 @@ px4_msgs__msg__VehicleStatus__are_equal(const px4_msgs__msg__VehicleStatus * lhs
   if (lhs->component_id != rhs->component_id) {
     return false;
   }
-  // safety_button_available
-  if (lhs->safety_button_available != rhs->safety_button_available) {
+  // vehicle_type
+  if (lhs->vehicle_type != rhs->vehicle_type) {
     return false;
   }
-  // safety_off
-  if (lhs->safety_off != rhs->safety_off) {
+  // is_vtol
+  if (lhs->is_vtol != rhs->is_vtol) {
     return false;
   }
-  // power_input_valid
-  if (lhs->power_input_valid != rhs->power_input_valid) {
+  // is_vtol_tailsitter
+  if (lhs->is_vtol_tailsitter != rhs->is_vtol_tailsitter) {
     return false;
   }
-  // usb_connected
-  if (lhs->usb_connected != rhs->usb_connected) {
+  // vtol_fw_permanent_stab
+  if (lhs->vtol_fw_permanent_stab != rhs->vtol_fw_permanent_stab) {
     return false;
   }
-  // open_drone_id_system_present
-  if (lhs->open_drone_id_system_present != rhs->open_drone_id_system_present) {
+  // in_transition_mode
+  if (lhs->in_transition_mode != rhs->in_transition_mode) {
     return false;
   }
-  // open_drone_id_system_healthy
-  if (lhs->open_drone_id_system_healthy != rhs->open_drone_id_system_healthy) {
+  // in_transition_to_fw
+  if (lhs->in_transition_to_fw != rhs->in_transition_to_fw) {
     return false;
   }
-  // parachute_system_present
-  if (lhs->parachute_system_present != rhs->parachute_system_present) {
+  // rc_signal_lost
+  if (lhs->rc_signal_lost != rhs->rc_signal_lost) {
     return false;
   }
-  // parachute_system_healthy
-  if (lhs->parachute_system_healthy != rhs->parachute_system_healthy) {
+  // data_link_lost
+  if (lhs->data_link_lost != rhs->data_link_lost) {
     return false;
   }
-  // avoidance_system_required
-  if (lhs->avoidance_system_required != rhs->avoidance_system_required) {
+  // data_link_lost_counter
+  if (lhs->data_link_lost_counter != rhs->data_link_lost_counter) {
     return false;
   }
-  // avoidance_system_valid
-  if (lhs->avoidance_system_valid != rhs->avoidance_system_valid) {
+  // high_latency_data_link_lost
+  if (lhs->high_latency_data_link_lost != rhs->high_latency_data_link_lost) {
     return false;
   }
-  // rc_calibration_in_progress
-  if (lhs->rc_calibration_in_progress != rhs->rc_calibration_in_progress) {
+  // engine_failure
+  if (lhs->engine_failure != rhs->engine_failure) {
     return false;
   }
-  // calibration_enabled
-  if (lhs->calibration_enabled != rhs->calibration_enabled) {
+  // mission_failure
+  if (lhs->mission_failure != rhs->mission_failure) {
     return false;
   }
-  // pre_flight_checks_pass
-  if (lhs->pre_flight_checks_pass != rhs->pre_flight_checks_pass) {
+  // geofence_violated
+  if (lhs->geofence_violated != rhs->geofence_violated) {
+    return false;
+  }
+  // failure_detector_status
+  if (lhs->failure_detector_status != rhs->failure_detector_status) {
+    return false;
+  }
+  // onboard_control_sensors_present
+  if (lhs->onboard_control_sensors_present != rhs->onboard_control_sensors_present) {
+    return false;
+  }
+  // onboard_control_sensors_enabled
+  if (lhs->onboard_control_sensors_enabled != rhs->onboard_control_sensors_enabled) {
+    return false;
+  }
+  // onboard_control_sensors_health
+  if (lhs->onboard_control_sensors_health != rhs->onboard_control_sensors_health) {
+    return false;
+  }
+  // latest_arming_reason
+  if (lhs->latest_arming_reason != rhs->latest_arming_reason) {
+    return false;
+  }
+  // latest_disarming_reason
+  if (lhs->latest_disarming_reason != rhs->latest_disarming_reason) {
+    return false;
+  }
+  // armed_time
+  if (lhs->armed_time != rhs->armed_time) {
+    return false;
+  }
+  // takeoff_time
+  if (lhs->takeoff_time != rhs->takeoff_time) {
     return false;
   }
   return true;
@@ -269,78 +233,66 @@ px4_msgs__msg__VehicleStatus__copy(
   }
   // timestamp
   output->timestamp = input->timestamp;
-  // armed_time
-  output->armed_time = input->armed_time;
-  // takeoff_time
-  output->takeoff_time = input->takeoff_time;
-  // arming_state
-  output->arming_state = input->arming_state;
-  // latest_arming_reason
-  output->latest_arming_reason = input->latest_arming_reason;
-  // latest_disarming_reason
-  output->latest_disarming_reason = input->latest_disarming_reason;
-  // nav_state_timestamp
-  output->nav_state_timestamp = input->nav_state_timestamp;
-  // nav_state_user_intention
-  output->nav_state_user_intention = input->nav_state_user_intention;
   // nav_state
   output->nav_state = input->nav_state;
-  // failure_detector_status
-  output->failure_detector_status = input->failure_detector_status;
+  // nav_state_timestamp
+  output->nav_state_timestamp = input->nav_state_timestamp;
+  // arming_state
+  output->arming_state = input->arming_state;
   // hil_state
   output->hil_state = input->hil_state;
-  // vehicle_type
-  output->vehicle_type = input->vehicle_type;
   // failsafe
   output->failsafe = input->failsafe;
-  // failsafe_and_user_took_over
-  output->failsafe_and_user_took_over = input->failsafe_and_user_took_over;
-  // gcs_connection_lost
-  output->gcs_connection_lost = input->gcs_connection_lost;
-  // gcs_connection_lost_counter
-  output->gcs_connection_lost_counter = input->gcs_connection_lost_counter;
-  // high_latency_data_link_lost
-  output->high_latency_data_link_lost = input->high_latency_data_link_lost;
-  // is_vtol
-  output->is_vtol = input->is_vtol;
-  // is_vtol_tailsitter
-  output->is_vtol_tailsitter = input->is_vtol_tailsitter;
-  // in_transition_mode
-  output->in_transition_mode = input->in_transition_mode;
-  // in_transition_to_fw
-  output->in_transition_to_fw = input->in_transition_to_fw;
+  // failsafe_timestamp
+  output->failsafe_timestamp = input->failsafe_timestamp;
   // system_type
   output->system_type = input->system_type;
   // system_id
   output->system_id = input->system_id;
   // component_id
   output->component_id = input->component_id;
-  // safety_button_available
-  output->safety_button_available = input->safety_button_available;
-  // safety_off
-  output->safety_off = input->safety_off;
-  // power_input_valid
-  output->power_input_valid = input->power_input_valid;
-  // usb_connected
-  output->usb_connected = input->usb_connected;
-  // open_drone_id_system_present
-  output->open_drone_id_system_present = input->open_drone_id_system_present;
-  // open_drone_id_system_healthy
-  output->open_drone_id_system_healthy = input->open_drone_id_system_healthy;
-  // parachute_system_present
-  output->parachute_system_present = input->parachute_system_present;
-  // parachute_system_healthy
-  output->parachute_system_healthy = input->parachute_system_healthy;
-  // avoidance_system_required
-  output->avoidance_system_required = input->avoidance_system_required;
-  // avoidance_system_valid
-  output->avoidance_system_valid = input->avoidance_system_valid;
-  // rc_calibration_in_progress
-  output->rc_calibration_in_progress = input->rc_calibration_in_progress;
-  // calibration_enabled
-  output->calibration_enabled = input->calibration_enabled;
-  // pre_flight_checks_pass
-  output->pre_flight_checks_pass = input->pre_flight_checks_pass;
+  // vehicle_type
+  output->vehicle_type = input->vehicle_type;
+  // is_vtol
+  output->is_vtol = input->is_vtol;
+  // is_vtol_tailsitter
+  output->is_vtol_tailsitter = input->is_vtol_tailsitter;
+  // vtol_fw_permanent_stab
+  output->vtol_fw_permanent_stab = input->vtol_fw_permanent_stab;
+  // in_transition_mode
+  output->in_transition_mode = input->in_transition_mode;
+  // in_transition_to_fw
+  output->in_transition_to_fw = input->in_transition_to_fw;
+  // rc_signal_lost
+  output->rc_signal_lost = input->rc_signal_lost;
+  // data_link_lost
+  output->data_link_lost = input->data_link_lost;
+  // data_link_lost_counter
+  output->data_link_lost_counter = input->data_link_lost_counter;
+  // high_latency_data_link_lost
+  output->high_latency_data_link_lost = input->high_latency_data_link_lost;
+  // engine_failure
+  output->engine_failure = input->engine_failure;
+  // mission_failure
+  output->mission_failure = input->mission_failure;
+  // geofence_violated
+  output->geofence_violated = input->geofence_violated;
+  // failure_detector_status
+  output->failure_detector_status = input->failure_detector_status;
+  // onboard_control_sensors_present
+  output->onboard_control_sensors_present = input->onboard_control_sensors_present;
+  // onboard_control_sensors_enabled
+  output->onboard_control_sensors_enabled = input->onboard_control_sensors_enabled;
+  // onboard_control_sensors_health
+  output->onboard_control_sensors_health = input->onboard_control_sensors_health;
+  // latest_arming_reason
+  output->latest_arming_reason = input->latest_arming_reason;
+  // latest_disarming_reason
+  output->latest_disarming_reason = input->latest_disarming_reason;
+  // armed_time
+  output->armed_time = input->armed_time;
+  // takeoff_time
+  output->takeoff_time = input->takeoff_time;
   return true;
 }
 

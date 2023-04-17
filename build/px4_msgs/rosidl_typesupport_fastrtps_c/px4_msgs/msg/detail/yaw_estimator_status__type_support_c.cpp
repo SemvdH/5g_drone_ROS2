@@ -69,11 +69,6 @@ static bool _YawEstimatorStatus__cdr_serialize(
     cdr << ros_message->yaw_variance;
   }
 
-  // Field name: yaw_composite_valid
-  {
-    cdr << (ros_message->yaw_composite_valid ? true : false);
-  }
-
   // Field name: yaw
   {
     size_t size = 5;
@@ -132,13 +127,6 @@ static bool _YawEstimatorStatus__cdr_deserialize(
   // Field name: yaw_variance
   {
     cdr >> ros_message->yaw_variance;
-  }
-
-  // Field name: yaw_composite_valid
-  {
-    uint8_t tmp;
-    cdr >> tmp;
-    ros_message->yaw_composite_valid = tmp ? true : false;
   }
 
   // Field name: yaw
@@ -207,12 +195,6 @@ size_t get_serialized_size_px4_msgs__msg__YawEstimatorStatus(
   // field.name yaw_variance
   {
     size_t item_size = sizeof(ros_message->yaw_variance);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // field.name yaw_composite_valid
-  {
-    size_t item_size = sizeof(ros_message->yaw_composite_valid);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -303,12 +285,6 @@ size_t max_serialized_size_px4_msgs__msg__YawEstimatorStatus(
 
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
-  }
-  // member: yaw_composite_valid
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint8_t);
   }
   // member: yaw
   {

@@ -30,7 +30,6 @@ typedef struct px4_msgs__msg__VehicleLandDetected
   bool has_low_throttle;
   bool vertical_movement;
   bool horizontal_movement;
-  bool rotational_movement;
   bool close_to_ground_or_skipped_check;
   bool at_rest;
 } px4_msgs__msg__VehicleLandDetected;

@@ -31,7 +31,7 @@ void MissionResult__rosidl_typesupport_introspection_c__MissionResult_fini_funct
   px4_msgs__msg__MissionResult__fini(message_memory);
 }
 
-static rosidl_typesupport_introspection_c__MessageMember MissionResult__rosidl_typesupport_introspection_c__MissionResult_message_member_array[13] = {
+static rosidl_typesupport_introspection_c__MessageMember MissionResult__rosidl_typesupport_introspection_c__MissionResult_message_member_array[15] = {
   {
     "timestamp",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_UINT64,  // type
@@ -168,6 +168,36 @@ static rosidl_typesupport_introspection_c__MessageMember MissionResult__rosidl_t
     NULL  // resize(index) function pointer
   },
   {
+    "stay_in_failsafe",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_BOOLEAN,  // type
+    0,  // upper bound of string
+    NULL,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs__msg__MissionResult, stay_in_failsafe),  // bytes offset in struct
+    NULL,  // default value
+    NULL,  // size() function pointer
+    NULL,  // get_const(index) function pointer
+    NULL,  // get(index) function pointer
+    NULL  // resize(index) function pointer
+  },
+  {
+    "flight_termination",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_BOOLEAN,  // type
+    0,  // upper bound of string
+    NULL,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs__msg__MissionResult, flight_termination),  // bytes offset in struct
+    NULL,  // default value
+    NULL,  // size() function pointer
+    NULL,  // get_const(index) function pointer
+    NULL,  // get(index) function pointer
+    NULL  // resize(index) function pointer
+  },
+  {
     "item_do_jump_changed",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_BOOLEAN,  // type
     0,  // upper bound of string
@@ -232,7 +262,7 @@ static rosidl_typesupport_introspection_c__MessageMember MissionResult__rosidl_t
 static const rosidl_typesupport_introspection_c__MessageMembers MissionResult__rosidl_typesupport_introspection_c__MissionResult_message_members = {
   "px4_msgs__msg",  // message namespace
   "MissionResult",  // message name
-  13,  // number of fields
+  15,  // number of fields
   sizeof(px4_msgs__msg__MissionResult),
   MissionResult__rosidl_typesupport_introspection_c__MissionResult_message_member_array,  // message members
   MissionResult__rosidl_typesupport_introspection_c__MissionResult_init_function,  // function to initialize message memory (memory has to be allocated)

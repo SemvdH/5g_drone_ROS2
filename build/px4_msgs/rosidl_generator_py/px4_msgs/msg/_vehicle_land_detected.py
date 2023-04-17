@@ -63,7 +63,6 @@ class VehicleLandDetected(metaclass=Metaclass_VehicleLandDetected):
         '_has_low_throttle',
         '_vertical_movement',
         '_horizontal_movement',
-        '_rotational_movement',
         '_close_to_ground_or_skipped_check',
         '_at_rest',
     ]
@@ -79,14 +78,12 @@ class VehicleLandDetected(metaclass=Metaclass_VehicleLandDetected):
         'has_low_throttle': 'boolean',
         'vertical_movement': 'boolean',
         'horizontal_movement': 'boolean',
-        'rotational_movement': 'boolean',
         'close_to_ground_or_skipped_check': 'boolean',
         'at_rest': 'boolean',
     }
 
     SLOT_TYPES = (
         rosidl_parser.definition.BasicType('uint64'),  # noqa: E501
-        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
         rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
         rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
         rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
@@ -114,7 +111,6 @@ class VehicleLandDetected(metaclass=Metaclass_VehicleLandDetected):
         self.has_low_throttle = kwargs.get('has_low_throttle', bool())
         self.vertical_movement = kwargs.get('vertical_movement', bool())
         self.horizontal_movement = kwargs.get('horizontal_movement', bool())
-        self.rotational_movement = kwargs.get('rotational_movement', bool())
         self.close_to_ground_or_skipped_check = kwargs.get('close_to_ground_or_skipped_check', bool())
         self.at_rest = kwargs.get('at_rest', bool())
 
@@ -166,8 +162,6 @@ class VehicleLandDetected(metaclass=Metaclass_VehicleLandDetected):
         if self.vertical_movement != other.vertical_movement:
             return False
         if self.horizontal_movement != other.horizontal_movement:
-            return False
-        if self.rotational_movement != other.rotational_movement:
             return False
         if self.close_to_ground_or_skipped_check != other.close_to_ground_or_skipped_check:
             return False
@@ -311,19 +305,6 @@ class VehicleLandDetected(metaclass=Metaclass_VehicleLandDetected):
                 isinstance(value, bool), \
                 "The 'horizontal_movement' field must be of type 'bool'"
         self._horizontal_movement = value
-
-    @property
-    def rotational_movement(self):
-        """Message field 'rotational_movement'."""
-        return self._rotational_movement
-
-    @rotational_movement.setter
-    def rotational_movement(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, bool), \
-                "The 'rotational_movement' field must be of type 'bool'"
-        self._rotational_movement = value
 
     @property
     def close_to_ground_or_skipped_check(self):

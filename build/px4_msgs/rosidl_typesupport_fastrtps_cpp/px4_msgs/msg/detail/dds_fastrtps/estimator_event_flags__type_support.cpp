@@ -64,14 +64,6 @@ cdr_serialize(
   cdr << (ros_message.starting_vision_yaw_fusion ? true : false);
   // Member: yaw_aligned_to_imu_gps
   cdr << (ros_message.yaw_aligned_to_imu_gps ? true : false);
-  // Member: reset_hgt_to_baro
-  cdr << (ros_message.reset_hgt_to_baro ? true : false);
-  // Member: reset_hgt_to_gps
-  cdr << (ros_message.reset_hgt_to_gps ? true : false);
-  // Member: reset_hgt_to_rng
-  cdr << (ros_message.reset_hgt_to_rng ? true : false);
-  // Member: reset_hgt_to_ev
-  cdr << (ros_message.reset_hgt_to_ev ? true : false);
   // Member: warning_event_changes
   cdr << ros_message.warning_event_changes;
   // Member: gps_quality_poor
@@ -205,34 +197,6 @@ cdr_deserialize(
     uint8_t tmp;
     cdr >> tmp;
     ros_message.yaw_aligned_to_imu_gps = tmp ? true : false;
-  }
-
-  // Member: reset_hgt_to_baro
-  {
-    uint8_t tmp;
-    cdr >> tmp;
-    ros_message.reset_hgt_to_baro = tmp ? true : false;
-  }
-
-  // Member: reset_hgt_to_gps
-  {
-    uint8_t tmp;
-    cdr >> tmp;
-    ros_message.reset_hgt_to_gps = tmp ? true : false;
-  }
-
-  // Member: reset_hgt_to_rng
-  {
-    uint8_t tmp;
-    cdr >> tmp;
-    ros_message.reset_hgt_to_rng = tmp ? true : false;
-  }
-
-  // Member: reset_hgt_to_ev
-  {
-    uint8_t tmp;
-    cdr >> tmp;
-    ros_message.reset_hgt_to_ev = tmp ? true : false;
   }
 
   // Member: warning_event_changes
@@ -431,30 +395,6 @@ get_serialized_size(
   // Member: yaw_aligned_to_imu_gps
   {
     size_t item_size = sizeof(ros_message.yaw_aligned_to_imu_gps);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // Member: reset_hgt_to_baro
-  {
-    size_t item_size = sizeof(ros_message.reset_hgt_to_baro);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // Member: reset_hgt_to_gps
-  {
-    size_t item_size = sizeof(ros_message.reset_hgt_to_gps);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // Member: reset_hgt_to_rng
-  {
-    size_t item_size = sizeof(ros_message.reset_hgt_to_rng);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // Member: reset_hgt_to_ev
-  {
-    size_t item_size = sizeof(ros_message.reset_hgt_to_ev);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -664,34 +604,6 @@ max_serialized_size_EstimatorEventFlags(
   }
 
   // Member: yaw_aligned_to_imu_gps
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint8_t);
-  }
-
-  // Member: reset_hgt_to_baro
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint8_t);
-  }
-
-  // Member: reset_hgt_to_gps
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint8_t);
-  }
-
-  // Member: reset_hgt_to_rng
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint8_t);
-  }
-
-  // Member: reset_hgt_to_ev
   {
     size_t array_size = 1;
 

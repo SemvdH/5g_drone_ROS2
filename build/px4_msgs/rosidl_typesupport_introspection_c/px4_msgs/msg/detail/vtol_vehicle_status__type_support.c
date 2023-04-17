@@ -31,7 +31,7 @@ void VtolVehicleStatus__rosidl_typesupport_introspection_c__VtolVehicleStatus_fi
   px4_msgs__msg__VtolVehicleStatus__fini(message_memory);
 }
 
-static rosidl_typesupport_introspection_c__MessageMember VtolVehicleStatus__rosidl_typesupport_introspection_c__VtolVehicleStatus_message_member_array[3] = {
+static rosidl_typesupport_introspection_c__MessageMember VtolVehicleStatus__rosidl_typesupport_introspection_c__VtolVehicleStatus_message_member_array[6] = {
   {
     "timestamp",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_UINT64,  // type
@@ -48,14 +48,14 @@ static rosidl_typesupport_introspection_c__MessageMember VtolVehicleStatus__rosi
     NULL  // resize(index) function pointer
   },
   {
-    "vehicle_vtol_state",  // name
-    rosidl_typesupport_introspection_c__ROS_TYPE_UINT8,  // type
+    "vtol_in_rw_mode",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_BOOLEAN,  // type
     0,  // upper bound of string
     NULL,  // members of sub message
     false,  // is array
     0,  // array size
     false,  // is upper bound
-    offsetof(px4_msgs__msg__VtolVehicleStatus, vehicle_vtol_state),  // bytes offset in struct
+    offsetof(px4_msgs__msg__VtolVehicleStatus, vtol_in_rw_mode),  // bytes offset in struct
     NULL,  // default value
     NULL,  // size() function pointer
     NULL,  // get_const(index) function pointer
@@ -63,14 +63,59 @@ static rosidl_typesupport_introspection_c__MessageMember VtolVehicleStatus__rosi
     NULL  // resize(index) function pointer
   },
   {
-    "fixed_wing_system_failure",  // name
+    "vtol_in_trans_mode",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_BOOLEAN,  // type
     0,  // upper bound of string
     NULL,  // members of sub message
     false,  // is array
     0,  // array size
     false,  // is upper bound
-    offsetof(px4_msgs__msg__VtolVehicleStatus, fixed_wing_system_failure),  // bytes offset in struct
+    offsetof(px4_msgs__msg__VtolVehicleStatus, vtol_in_trans_mode),  // bytes offset in struct
+    NULL,  // default value
+    NULL,  // size() function pointer
+    NULL,  // get_const(index) function pointer
+    NULL,  // get(index) function pointer
+    NULL  // resize(index) function pointer
+  },
+  {
+    "in_transition_to_fw",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_BOOLEAN,  // type
+    0,  // upper bound of string
+    NULL,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs__msg__VtolVehicleStatus, in_transition_to_fw),  // bytes offset in struct
+    NULL,  // default value
+    NULL,  // size() function pointer
+    NULL,  // get_const(index) function pointer
+    NULL,  // get(index) function pointer
+    NULL  // resize(index) function pointer
+  },
+  {
+    "vtol_transition_failsafe",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_BOOLEAN,  // type
+    0,  // upper bound of string
+    NULL,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs__msg__VtolVehicleStatus, vtol_transition_failsafe),  // bytes offset in struct
+    NULL,  // default value
+    NULL,  // size() function pointer
+    NULL,  // get_const(index) function pointer
+    NULL,  // get(index) function pointer
+    NULL  // resize(index) function pointer
+  },
+  {
+    "fw_permanent_stab",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_BOOLEAN,  // type
+    0,  // upper bound of string
+    NULL,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs__msg__VtolVehicleStatus, fw_permanent_stab),  // bytes offset in struct
     NULL,  // default value
     NULL,  // size() function pointer
     NULL,  // get_const(index) function pointer
@@ -82,7 +127,7 @@ static rosidl_typesupport_introspection_c__MessageMember VtolVehicleStatus__rosi
 static const rosidl_typesupport_introspection_c__MessageMembers VtolVehicleStatus__rosidl_typesupport_introspection_c__VtolVehicleStatus_message_members = {
   "px4_msgs__msg",  // message namespace
   "VtolVehicleStatus",  // message name
-  3,  // number of fields
+  6,  // number of fields
   sizeof(px4_msgs__msg__VtolVehicleStatus),
   VtolVehicleStatus__rosidl_typesupport_introspection_c__VtolVehicleStatus_message_member_array,  // message members
   VtolVehicleStatus__rosidl_typesupport_introspection_c__VtolVehicleStatus_init_function,  // function to initialize message memory (memory has to be allocated)

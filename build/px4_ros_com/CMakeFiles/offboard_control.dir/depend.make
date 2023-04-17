@@ -4,6 +4,9 @@
 CMakeFiles/offboard_control.dir/src/examples/offboard/offboard_control.cpp.o: /home/ubuntu/ros2_ws/install/px4_msgs/include/px4_msgs/msg/detail/offboard_control_mode__builder.hpp
 CMakeFiles/offboard_control.dir/src/examples/offboard/offboard_control.cpp.o: /home/ubuntu/ros2_ws/install/px4_msgs/include/px4_msgs/msg/detail/offboard_control_mode__struct.hpp
 CMakeFiles/offboard_control.dir/src/examples/offboard/offboard_control.cpp.o: /home/ubuntu/ros2_ws/install/px4_msgs/include/px4_msgs/msg/detail/offboard_control_mode__traits.hpp
+CMakeFiles/offboard_control.dir/src/examples/offboard/offboard_control.cpp.o: /home/ubuntu/ros2_ws/install/px4_msgs/include/px4_msgs/msg/detail/timesync__builder.hpp
+CMakeFiles/offboard_control.dir/src/examples/offboard/offboard_control.cpp.o: /home/ubuntu/ros2_ws/install/px4_msgs/include/px4_msgs/msg/detail/timesync__struct.hpp
+CMakeFiles/offboard_control.dir/src/examples/offboard/offboard_control.cpp.o: /home/ubuntu/ros2_ws/install/px4_msgs/include/px4_msgs/msg/detail/timesync__traits.hpp
 CMakeFiles/offboard_control.dir/src/examples/offboard/offboard_control.cpp.o: /home/ubuntu/ros2_ws/install/px4_msgs/include/px4_msgs/msg/detail/trajectory_setpoint__builder.hpp
 CMakeFiles/offboard_control.dir/src/examples/offboard/offboard_control.cpp.o: /home/ubuntu/ros2_ws/install/px4_msgs/include/px4_msgs/msg/detail/trajectory_setpoint__struct.hpp
 CMakeFiles/offboard_control.dir/src/examples/offboard/offboard_control.cpp.o: /home/ubuntu/ros2_ws/install/px4_msgs/include/px4_msgs/msg/detail/trajectory_setpoint__traits.hpp
@@ -14,6 +17,7 @@ CMakeFiles/offboard_control.dir/src/examples/offboard/offboard_control.cpp.o: /h
 CMakeFiles/offboard_control.dir/src/examples/offboard/offboard_control.cpp.o: /home/ubuntu/ros2_ws/install/px4_msgs/include/px4_msgs/msg/detail/vehicle_control_mode__struct.hpp
 CMakeFiles/offboard_control.dir/src/examples/offboard/offboard_control.cpp.o: /home/ubuntu/ros2_ws/install/px4_msgs/include/px4_msgs/msg/detail/vehicle_control_mode__traits.hpp
 CMakeFiles/offboard_control.dir/src/examples/offboard/offboard_control.cpp.o: /home/ubuntu/ros2_ws/install/px4_msgs/include/px4_msgs/msg/offboard_control_mode.hpp
+CMakeFiles/offboard_control.dir/src/examples/offboard/offboard_control.cpp.o: /home/ubuntu/ros2_ws/install/px4_msgs/include/px4_msgs/msg/timesync.hpp
 CMakeFiles/offboard_control.dir/src/examples/offboard/offboard_control.cpp.o: /home/ubuntu/ros2_ws/install/px4_msgs/include/px4_msgs/msg/trajectory_setpoint.hpp
 CMakeFiles/offboard_control.dir/src/examples/offboard/offboard_control.cpp.o: /home/ubuntu/ros2_ws/install/px4_msgs/include/px4_msgs/msg/vehicle_command.hpp
 CMakeFiles/offboard_control.dir/src/examples/offboard/offboard_control.cpp.o: /home/ubuntu/ros2_ws/install/px4_msgs/include/px4_msgs/msg/vehicle_control_mode.hpp

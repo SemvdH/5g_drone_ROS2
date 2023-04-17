@@ -58,7 +58,6 @@ px4_msgs__msg__VehicleLocalPosition__init(px4_msgs__msg__VehicleLocalPosition * 
   // epv
   // evh
   // evv
-  // dead_reckoning
   // vxy_max
   // vz_max
   // hagl_min
@@ -113,7 +112,6 @@ px4_msgs__msg__VehicleLocalPosition__fini(px4_msgs__msg__VehicleLocalPosition * 
   // epv
   // evh
   // evv
-  // dead_reckoning
   // vxy_max
   // vz_max
   // hagl_min
@@ -294,10 +292,6 @@ px4_msgs__msg__VehicleLocalPosition__are_equal(const px4_msgs__msg__VehicleLocal
   if (lhs->evv != rhs->evv) {
     return false;
   }
-  // dead_reckoning
-  if (lhs->dead_reckoning != rhs->dead_reckoning) {
-    return false;
-  }
   // vxy_max
   if (lhs->vxy_max != rhs->vxy_max) {
     return false;
@@ -411,8 +405,6 @@ px4_msgs__msg__VehicleLocalPosition__copy(
   output->evh = input->evh;
   // evv
   output->evv = input->evv;
-  // dead_reckoning
-  output->dead_reckoning = input->dead_reckoning;
   // vxy_max
   output->vxy_max = input->vxy_max;
   // vz_max

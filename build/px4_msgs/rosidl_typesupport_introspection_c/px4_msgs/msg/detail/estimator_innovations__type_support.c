@@ -31,7 +31,7 @@ void EstimatorInnovations__rosidl_typesupport_introspection_c__EstimatorInnovati
   px4_msgs__msg__EstimatorInnovations__fini(message_memory);
 }
 
-static rosidl_typesupport_introspection_c__MessageMember EstimatorInnovations__rosidl_typesupport_introspection_c__EstimatorInnovations_message_member_array[24] = {
+static rosidl_typesupport_introspection_c__MessageMember EstimatorInnovations__rosidl_typesupport_introspection_c__EstimatorInnovations_message_member_array[22] = {
   {
     "timestamp",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_UINT64,  // type
@@ -258,21 +258,6 @@ static rosidl_typesupport_introspection_c__MessageMember EstimatorInnovations__r
     NULL  // resize(index) function pointer
   },
   {
-    "terr_flow",  // name
-    rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
-    0,  // upper bound of string
-    NULL,  // members of sub message
-    true,  // is array
-    2,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs__msg__EstimatorInnovations, terr_flow),  // bytes offset in struct
-    NULL,  // default value
-    NULL,  // size() function pointer
-    NULL,  // get_const(index) function pointer
-    NULL,  // get(index) function pointer
-    NULL  // resize(index) function pointer
-  },
-  {
     "heading",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
     0,  // upper bound of string
@@ -296,21 +281,6 @@ static rosidl_typesupport_introspection_c__MessageMember EstimatorInnovations__r
     3,  // array size
     false,  // is upper bound
     offsetof(px4_msgs__msg__EstimatorInnovations, mag_field),  // bytes offset in struct
-    NULL,  // default value
-    NULL,  // size() function pointer
-    NULL,  // get_const(index) function pointer
-    NULL,  // get(index) function pointer
-    NULL  // resize(index) function pointer
-  },
-  {
-    "gravity",  // name
-    rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
-    0,  // upper bound of string
-    NULL,  // members of sub message
-    true,  // is array
-    3,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs__msg__EstimatorInnovations, gravity),  // bytes offset in struct
     NULL,  // default value
     NULL,  // size() function pointer
     NULL,  // get_const(index) function pointer
@@ -397,7 +367,7 @@ static rosidl_typesupport_introspection_c__MessageMember EstimatorInnovations__r
 static const rosidl_typesupport_introspection_c__MessageMembers EstimatorInnovations__rosidl_typesupport_introspection_c__EstimatorInnovations_message_members = {
   "px4_msgs__msg",  // message namespace
   "EstimatorInnovations",  // message name
-  24,  // number of fields
+  22,  // number of fields
   sizeof(px4_msgs__msg__EstimatorInnovations),
   EstimatorInnovations__rosidl_typesupport_introspection_c__EstimatorInnovations_message_member_array,  // message members
   EstimatorInnovations__rosidl_typesupport_introspection_c__EstimatorInnovations_init_function,  // function to initialize message memory (memory has to be allocated)

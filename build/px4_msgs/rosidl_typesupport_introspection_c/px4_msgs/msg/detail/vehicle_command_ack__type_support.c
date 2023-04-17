@@ -78,6 +78,21 @@ static rosidl_typesupport_introspection_c__MessageMember VehicleCommandAck__rosi
     NULL  // resize(index) function pointer
   },
   {
+    "from_external",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_BOOLEAN,  // type
+    0,  // upper bound of string
+    NULL,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs__msg__VehicleCommandAck, from_external),  // bytes offset in struct
+    NULL,  // default value
+    NULL,  // size() function pointer
+    NULL,  // get_const(index) function pointer
+    NULL,  // get(index) function pointer
+    NULL  // resize(index) function pointer
+  },
+  {
     "result_param1",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_UINT8,  // type
     0,  // upper bound of string
@@ -131,21 +146,6 @@ static rosidl_typesupport_introspection_c__MessageMember VehicleCommandAck__rosi
     0,  // array size
     false,  // is upper bound
     offsetof(px4_msgs__msg__VehicleCommandAck, target_component),  // bytes offset in struct
-    NULL,  // default value
-    NULL,  // size() function pointer
-    NULL,  // get_const(index) function pointer
-    NULL,  // get(index) function pointer
-    NULL  // resize(index) function pointer
-  },
-  {
-    "from_external",  // name
-    rosidl_typesupport_introspection_c__ROS_TYPE_BOOLEAN,  // type
-    0,  // upper bound of string
-    NULL,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs__msg__VehicleCommandAck, from_external),  // bytes offset in struct
     NULL,  // default value
     NULL,  // size() function pointer
     NULL,  // get_const(index) function pointer

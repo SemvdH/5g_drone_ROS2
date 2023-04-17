@@ -31,7 +31,7 @@ void EscReport__rosidl_typesupport_introspection_c__EscReport_fini_function(void
   px4_msgs__msg__EscReport__fini(message_memory);
 }
 
-static rosidl_typesupport_introspection_c__MessageMember EscReport__rosidl_typesupport_introspection_c__EscReport_message_member_array[12] = {
+static rosidl_typesupport_introspection_c__MessageMember EscReport__rosidl_typesupport_introspection_c__EscReport_message_member_array[9] = {
   {
     "timestamp",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_UINT64,  // type
@@ -138,21 +138,6 @@ static rosidl_typesupport_introspection_c__MessageMember EscReport__rosidl_types
     NULL  // resize(index) function pointer
   },
   {
-    "esc_cmdcount",  // name
-    rosidl_typesupport_introspection_c__ROS_TYPE_UINT8,  // type
-    0,  // upper bound of string
-    NULL,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs__msg__EscReport, esc_cmdcount),  // bytes offset in struct
-    NULL,  // default value
-    NULL,  // size() function pointer
-    NULL,  // get_const(index) function pointer
-    NULL,  // get(index) function pointer
-    NULL  // resize(index) function pointer
-  },
-  {
     "esc_state",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_UINT8,  // type
     0,  // upper bound of string
@@ -161,21 +146,6 @@ static rosidl_typesupport_introspection_c__MessageMember EscReport__rosidl_types
     0,  // array size
     false,  // is upper bound
     offsetof(px4_msgs__msg__EscReport, esc_state),  // bytes offset in struct
-    NULL,  // default value
-    NULL,  // size() function pointer
-    NULL,  // get_const(index) function pointer
-    NULL,  // get(index) function pointer
-    NULL  // resize(index) function pointer
-  },
-  {
-    "actuator_function",  // name
-    rosidl_typesupport_introspection_c__ROS_TYPE_UINT8,  // type
-    0,  // upper bound of string
-    NULL,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs__msg__EscReport, actuator_function),  // bytes offset in struct
     NULL,  // default value
     NULL,  // size() function pointer
     NULL,  // get_const(index) function pointer
@@ -196,28 +166,13 @@ static rosidl_typesupport_introspection_c__MessageMember EscReport__rosidl_types
     NULL,  // get_const(index) function pointer
     NULL,  // get(index) function pointer
     NULL  // resize(index) function pointer
-  },
-  {
-    "esc_power",  // name
-    rosidl_typesupport_introspection_c__ROS_TYPE_INT8,  // type
-    0,  // upper bound of string
-    NULL,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs__msg__EscReport, esc_power),  // bytes offset in struct
-    NULL,  // default value
-    NULL,  // size() function pointer
-    NULL,  // get_const(index) function pointer
-    NULL,  // get(index) function pointer
-    NULL  // resize(index) function pointer
   }
 };
 
 static const rosidl_typesupport_introspection_c__MessageMembers EscReport__rosidl_typesupport_introspection_c__EscReport_message_members = {
   "px4_msgs__msg",  // message namespace
   "EscReport",  // message name
-  12,  // number of fields
+  9,  // number of fields
   sizeof(px4_msgs__msg__EscReport),
   EscReport__rosidl_typesupport_introspection_c__EscReport_message_member_array,  // message members
   EscReport__rosidl_typesupport_introspection_c__EscReport_init_function,  // function to initialize message memory (memory has to be allocated)

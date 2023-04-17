@@ -37,7 +37,7 @@ void MissionResult_fini_function(void * message_memory)
   typed_message->~MissionResult();
 }
 
-static const ::rosidl_typesupport_introspection_cpp::MessageMember MissionResult_message_member_array[13] = {
+static const ::rosidl_typesupport_introspection_cpp::MessageMember MissionResult_message_member_array[15] = {
   {
     "timestamp",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_UINT64,  // type
@@ -174,6 +174,36 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember MissionResult
     nullptr  // resize(index) function pointer
   },
   {
+    "stay_in_failsafe",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_BOOLEAN,  // type
+    0,  // upper bound of string
+    nullptr,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs::msg::MissionResult, stay_in_failsafe),  // bytes offset in struct
+    nullptr,  // default value
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
+    nullptr  // resize(index) function pointer
+  },
+  {
+    "flight_termination",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_BOOLEAN,  // type
+    0,  // upper bound of string
+    nullptr,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs::msg::MissionResult, flight_termination),  // bytes offset in struct
+    nullptr,  // default value
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
+    nullptr  // resize(index) function pointer
+  },
+  {
     "item_do_jump_changed",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_BOOLEAN,  // type
     0,  // upper bound of string
@@ -238,7 +268,7 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember MissionResult
 static const ::rosidl_typesupport_introspection_cpp::MessageMembers MissionResult_message_members = {
   "px4_msgs::msg",  // message namespace
   "MissionResult",  // message name
-  13,  // number of fields
+  15,  // number of fields
   sizeof(px4_msgs::msg::MissionResult),
   MissionResult_message_member_array,  // message members
   MissionResult_init_function,  // function to initialize message memory (memory has to be allocated)

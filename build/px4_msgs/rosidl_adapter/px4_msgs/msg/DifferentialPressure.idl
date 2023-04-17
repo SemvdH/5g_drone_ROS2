@@ -21,7 +21,7 @@ module px4_msgs {
       float differential_pressure_pa;
 
       @verbatim (language="comment", text=
-        " Temperature provided by sensor in degrees Celsius, NAN if unknown")
+        " Temperature provided by sensor in celcius, NAN if unknown")
       float temperature;
 
       @verbatim (language="comment", text=

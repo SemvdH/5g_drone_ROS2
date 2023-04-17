@@ -20,7 +20,6 @@ px4_msgs__msg__VehicleAngularVelocity__init(px4_msgs__msg__VehicleAngularVelocit
   // timestamp
   // timestamp_sample
   // xyz
-  // xyz_derivative
   return true;
 }
 
@@ -33,7 +32,6 @@ px4_msgs__msg__VehicleAngularVelocity__fini(px4_msgs__msg__VehicleAngularVelocit
   // timestamp
   // timestamp_sample
   // xyz
-  // xyz_derivative
 }
 
 bool
@@ -56,12 +54,6 @@ px4_msgs__msg__VehicleAngularVelocity__are_equal(const px4_msgs__msg__VehicleAng
       return false;
     }
   }
-  // xyz_derivative
-  for (size_t i = 0; i < 3; ++i) {
-    if (lhs->xyz_derivative[i] != rhs->xyz_derivative[i]) {
-      return false;
-    }
-  }
   return true;
 }
 
@@ -80,10 +72,6 @@ px4_msgs__msg__VehicleAngularVelocity__copy(
   // xyz
   for (size_t i = 0; i < 3; ++i) {
     output->xyz[i] = input->xyz[i];
-  }
-  // xyz_derivative
-  for (size_t i = 0; i < 3; ++i) {
-    output->xyz_derivative[i] = input->xyz_derivative[i];
   }
   return true;
 }

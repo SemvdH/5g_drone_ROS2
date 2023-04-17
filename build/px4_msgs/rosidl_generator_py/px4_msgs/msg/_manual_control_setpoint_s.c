@@ -86,40 +86,40 @@ bool px4_msgs__msg__manual_control_setpoint__convert_from_py(PyObject * _pymsg, 
     ros_message->data_source = (uint8_t)PyLong_AsUnsignedLong(field);
     Py_DECREF(field);
   }
-  {  // roll
-    PyObject * field = PyObject_GetAttrString(_pymsg, "roll");
+  {  // x
+    PyObject * field = PyObject_GetAttrString(_pymsg, "x");
     if (!field) {
       return false;
     }
     assert(PyFloat_Check(field));
-    ros_message->roll = (float)PyFloat_AS_DOUBLE(field);
+    ros_message->x = (float)PyFloat_AS_DOUBLE(field);
     Py_DECREF(field);
   }
-  {  // pitch
-    PyObject * field = PyObject_GetAttrString(_pymsg, "pitch");
+  {  // y
+    PyObject * field = PyObject_GetAttrString(_pymsg, "y");
     if (!field) {
       return false;
     }
     assert(PyFloat_Check(field));
-    ros_message->pitch = (float)PyFloat_AS_DOUBLE(field);
+    ros_message->y = (float)PyFloat_AS_DOUBLE(field);
     Py_DECREF(field);
   }
-  {  // yaw
-    PyObject * field = PyObject_GetAttrString(_pymsg, "yaw");
+  {  // z
+    PyObject * field = PyObject_GetAttrString(_pymsg, "z");
     if (!field) {
       return false;
     }
     assert(PyFloat_Check(field));
-    ros_message->yaw = (float)PyFloat_AS_DOUBLE(field);
+    ros_message->z = (float)PyFloat_AS_DOUBLE(field);
     Py_DECREF(field);
   }
-  {  // throttle
-    PyObject * field = PyObject_GetAttrString(_pymsg, "throttle");
+  {  // r
+    PyObject * field = PyObject_GetAttrString(_pymsg, "r");
     if (!field) {
       return false;
     }
     assert(PyFloat_Check(field));
-    ros_message->throttle = (float)PyFloat_AS_DOUBLE(field);
+    ros_message->r = (float)PyFloat_AS_DOUBLE(field);
     Py_DECREF(field);
   }
   {  // flaps
@@ -260,44 +260,44 @@ PyObject * px4_msgs__msg__manual_control_setpoint__convert_to_py(void * raw_ros_
       }
     }
   }
-  {  // roll
+  {  // x
     PyObject * field = NULL;
-    field = PyFloat_FromDouble(ros_message->roll);
+    field = PyFloat_FromDouble(ros_message->x);
     {
-      int rc = PyObject_SetAttrString(_pymessage, "roll", field);
+      int rc = PyObject_SetAttrString(_pymessage, "x", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;
       }
     }
   }
-  {  // pitch
+  {  // y
     PyObject * field = NULL;
-    field = PyFloat_FromDouble(ros_message->pitch);
+    field = PyFloat_FromDouble(ros_message->y);
     {
-      int rc = PyObject_SetAttrString(_pymessage, "pitch", field);
+      int rc = PyObject_SetAttrString(_pymessage, "y", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;
       }
     }
   }
-  {  // yaw
+  {  // z
     PyObject * field = NULL;
-    field = PyFloat_FromDouble(ros_message->yaw);
+    field = PyFloat_FromDouble(ros_message->z);
     {
-      int rc = PyObject_SetAttrString(_pymessage, "yaw", field);
+      int rc = PyObject_SetAttrString(_pymessage, "z", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;
       }
     }
   }
-  {  // throttle
+  {  // r
     PyObject * field = NULL;
-    field = PyFloat_FromDouble(ros_message->throttle);
+    field = PyFloat_FromDouble(ros_message->r);
     {
-      int rc = PyObject_SetAttrString(_pymessage, "throttle", field);
+      int rc = PyObject_SetAttrString(_pymessage, "r", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;

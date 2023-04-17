@@ -42,7 +42,6 @@ struct VehicleRatesSetpoint_
       this->pitch = 0.0f;
       this->yaw = 0.0f;
       std::fill<typename std::array<float, 3>::iterator, float>(this->thrust_body.begin(), this->thrust_body.end(), 0.0f);
-      this->reset_integral = false;
     }
   }
 
@@ -57,7 +56,6 @@ struct VehicleRatesSetpoint_
       this->pitch = 0.0f;
       this->yaw = 0.0f;
       std::fill<typename std::array<float, 3>::iterator, float>(this->thrust_body.begin(), this->thrust_body.end(), 0.0f);
-      this->reset_integral = false;
     }
   }
 
@@ -77,9 +75,6 @@ struct VehicleRatesSetpoint_
   using _thrust_body_type =
     std::array<float, 3>;
   _thrust_body_type thrust_body;
-  using _reset_integral_type =
-    bool;
-  _reset_integral_type reset_integral;
 
   // setters for named parameter idiom
   Type & set__timestamp(
@@ -110,12 +105,6 @@ struct VehicleRatesSetpoint_
     const std::array<float, 3> & _arg)
   {
     this->thrust_body = _arg;
-    return *this;
-  }
-  Type & set__reset_integral(
-    const bool & _arg)
-  {
-    this->reset_integral = _arg;
     return *this;
   }
 
@@ -174,9 +163,6 @@ struct VehicleRatesSetpoint_
       return false;
     }
     if (this->thrust_body != other.thrust_body) {
-      return false;
-    }
-    if (this->reset_integral != other.reset_integral) {
       return false;
     }
     return true;

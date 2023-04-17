@@ -5,13 +5,10 @@
 
 # Import statements for member types
 
-# Member 'position'
 # Member 'q'
-# Member 'velocity'
-# Member 'angular_velocity'
-# Member 'position_variance'
-# Member 'orientation_variance'
-# Member 'velocity_variance'
+# Member 'q_offset'
+# Member 'pose_covariance'
+# Member 'velocity_covariance'
 import numpy  # noqa: E402, I100
 
 import rosidl_parser.definition  # noqa: E402, I100
@@ -27,13 +24,22 @@ class Metaclass_VehicleOdometry(type):
     _TYPE_SUPPORT = None
 
     __constants = {
-        'POSE_FRAME_UNKNOWN': 0,
-        'POSE_FRAME_NED': 1,
-        'POSE_FRAME_FRD': 2,
-        'VELOCITY_FRAME_UNKNOWN': 0,
-        'VELOCITY_FRAME_NED': 1,
-        'VELOCITY_FRAME_FRD': 2,
-        'VELOCITY_FRAME_BODY_FRD': 3,
+        'COVARIANCE_MATRIX_X_VARIANCE': 0,
+        'COVARIANCE_MATRIX_Y_VARIANCE': 6,
+        'COVARIANCE_MATRIX_Z_VARIANCE': 11,
+        'COVARIANCE_MATRIX_ROLL_VARIANCE': 15,
+        'COVARIANCE_MATRIX_PITCH_VARIANCE': 18,
+        'COVARIANCE_MATRIX_YAW_VARIANCE': 20,
+        'COVARIANCE_MATRIX_VX_VARIANCE': 0,
+        'COVARIANCE_MATRIX_VY_VARIANCE': 6,
+        'COVARIANCE_MATRIX_VZ_VARIANCE': 11,
+        'COVARIANCE_MATRIX_ROLLRATE_VARIANCE': 15,
+        'COVARIANCE_MATRIX_PITCHRATE_VARIANCE': 18,
+        'COVARIANCE_MATRIX_YAWRATE_VARIANCE': 20,
+        'LOCAL_FRAME_NED': 0,
+        'LOCAL_FRAME_FRD': 1,
+        'LOCAL_FRAME_OTHER': 2,
+        'BODY_FRAME_FRD': 3,
     }
 
     @classmethod
@@ -62,49 +68,103 @@ class Metaclass_VehicleOdometry(type):
         # the message class under "Data and other attributes defined here:"
         # as well as populate each message instance
         return {
-            'POSE_FRAME_UNKNOWN': cls.__constants['POSE_FRAME_UNKNOWN'],
-            'POSE_FRAME_NED': cls.__constants['POSE_FRAME_NED'],
-            'POSE_FRAME_FRD': cls.__constants['POSE_FRAME_FRD'],
-            'VELOCITY_FRAME_UNKNOWN': cls.__constants['VELOCITY_FRAME_UNKNOWN'],
-            'VELOCITY_FRAME_NED': cls.__constants['VELOCITY_FRAME_NED'],
-            'VELOCITY_FRAME_FRD': cls.__constants['VELOCITY_FRAME_FRD'],
-            'VELOCITY_FRAME_BODY_FRD': cls.__constants['VELOCITY_FRAME_BODY_FRD'],
+            'COVARIANCE_MATRIX_X_VARIANCE': cls.__constants['COVARIANCE_MATRIX_X_VARIANCE'],
+            'COVARIANCE_MATRIX_Y_VARIANCE': cls.__constants['COVARIANCE_MATRIX_Y_VARIANCE'],
+            'COVARIANCE_MATRIX_Z_VARIANCE': cls.__constants['COVARIANCE_MATRIX_Z_VARIANCE'],
+            'COVARIANCE_MATRIX_ROLL_VARIANCE': cls.__constants['COVARIANCE_MATRIX_ROLL_VARIANCE'],
+            'COVARIANCE_MATRIX_PITCH_VARIANCE': cls.__constants['COVARIANCE_MATRIX_PITCH_VARIANCE'],
+            'COVARIANCE_MATRIX_YAW_VARIANCE': cls.__constants['COVARIANCE_MATRIX_YAW_VARIANCE'],
+            'COVARIANCE_MATRIX_VX_VARIANCE': cls.__constants['COVARIANCE_MATRIX_VX_VARIANCE'],
+            'COVARIANCE_MATRIX_VY_VARIANCE': cls.__constants['COVARIANCE_MATRIX_VY_VARIANCE'],
+            'COVARIANCE_MATRIX_VZ_VARIANCE': cls.__constants['COVARIANCE_MATRIX_VZ_VARIANCE'],
+            'COVARIANCE_MATRIX_ROLLRATE_VARIANCE': cls.__constants['COVARIANCE_MATRIX_ROLLRATE_VARIANCE'],
+            'COVARIANCE_MATRIX_PITCHRATE_VARIANCE': cls.__constants['COVARIANCE_MATRIX_PITCHRATE_VARIANCE'],
+            'COVARIANCE_MATRIX_YAWRATE_VARIANCE': cls.__constants['COVARIANCE_MATRIX_YAWRATE_VARIANCE'],
+            'LOCAL_FRAME_NED': cls.__constants['LOCAL_FRAME_NED'],
+            'LOCAL_FRAME_FRD': cls.__constants['LOCAL_FRAME_FRD'],
+            'LOCAL_FRAME_OTHER': cls.__constants['LOCAL_FRAME_OTHER'],
+            'BODY_FRAME_FRD': cls.__constants['BODY_FRAME_FRD'],
         }
 
     @property
-    def POSE_FRAME_UNKNOWN(self):
-        """Message constant 'POSE_FRAME_UNKNOWN'."""
-        return Metaclass_VehicleOdometry.__constants['POSE_FRAME_UNKNOWN']
+    def COVARIANCE_MATRIX_X_VARIANCE(self):
+        """Message constant 'COVARIANCE_MATRIX_X_VARIANCE'."""
+        return Metaclass_VehicleOdometry.__constants['COVARIANCE_MATRIX_X_VARIANCE']
 
     @property
-    def POSE_FRAME_NED(self):
-        """Message constant 'POSE_FRAME_NED'."""
-        return Metaclass_VehicleOdometry.__constants['POSE_FRAME_NED']
+    def COVARIANCE_MATRIX_Y_VARIANCE(self):
+        """Message constant 'COVARIANCE_MATRIX_Y_VARIANCE'."""
+        return Metaclass_VehicleOdometry.__constants['COVARIANCE_MATRIX_Y_VARIANCE']
 
     @property
-    def POSE_FRAME_FRD(self):
-        """Message constant 'POSE_FRAME_FRD'."""
-        return Metaclass_VehicleOdometry.__constants['POSE_FRAME_FRD']
+    def COVARIANCE_MATRIX_Z_VARIANCE(self):
+        """Message constant 'COVARIANCE_MATRIX_Z_VARIANCE'."""
+        return Metaclass_VehicleOdometry.__constants['COVARIANCE_MATRIX_Z_VARIANCE']
 
     @property
-    def VELOCITY_FRAME_UNKNOWN(self):
-        """Message constant 'VELOCITY_FRAME_UNKNOWN'."""
-        return Metaclass_VehicleOdometry.__constants['VELOCITY_FRAME_UNKNOWN']
+    def COVARIANCE_MATRIX_ROLL_VARIANCE(self):
+        """Message constant 'COVARIANCE_MATRIX_ROLL_VARIANCE'."""
+        return Metaclass_VehicleOdometry.__constants['COVARIANCE_MATRIX_ROLL_VARIANCE']
 
     @property
-    def VELOCITY_FRAME_NED(self):
-        """Message constant 'VELOCITY_FRAME_NED'."""
-        return Metaclass_VehicleOdometry.__constants['VELOCITY_FRAME_NED']
+    def COVARIANCE_MATRIX_PITCH_VARIANCE(self):
+        """Message constant 'COVARIANCE_MATRIX_PITCH_VARIANCE'."""
+        return Metaclass_VehicleOdometry.__constants['COVARIANCE_MATRIX_PITCH_VARIANCE']
 
     @property
-    def VELOCITY_FRAME_FRD(self):
-        """Message constant 'VELOCITY_FRAME_FRD'."""
-        return Metaclass_VehicleOdometry.__constants['VELOCITY_FRAME_FRD']
+    def COVARIANCE_MATRIX_YAW_VARIANCE(self):
+        """Message constant 'COVARIANCE_MATRIX_YAW_VARIANCE'."""
+        return Metaclass_VehicleOdometry.__constants['COVARIANCE_MATRIX_YAW_VARIANCE']
 
     @property
-    def VELOCITY_FRAME_BODY_FRD(self):
-        """Message constant 'VELOCITY_FRAME_BODY_FRD'."""
-        return Metaclass_VehicleOdometry.__constants['VELOCITY_FRAME_BODY_FRD']
+    def COVARIANCE_MATRIX_VX_VARIANCE(self):
+        """Message constant 'COVARIANCE_MATRIX_VX_VARIANCE'."""
+        return Metaclass_VehicleOdometry.__constants['COVARIANCE_MATRIX_VX_VARIANCE']
+
+    @property
+    def COVARIANCE_MATRIX_VY_VARIANCE(self):
+        """Message constant 'COVARIANCE_MATRIX_VY_VARIANCE'."""
+        return Metaclass_VehicleOdometry.__constants['COVARIANCE_MATRIX_VY_VARIANCE']
+
+    @property
+    def COVARIANCE_MATRIX_VZ_VARIANCE(self):
+        """Message constant 'COVARIANCE_MATRIX_VZ_VARIANCE'."""
+        return Metaclass_VehicleOdometry.__constants['COVARIANCE_MATRIX_VZ_VARIANCE']
+
+    @property
+    def COVARIANCE_MATRIX_ROLLRATE_VARIANCE(self):
+        """Message constant 'COVARIANCE_MATRIX_ROLLRATE_VARIANCE'."""
+        return Metaclass_VehicleOdometry.__constants['COVARIANCE_MATRIX_ROLLRATE_VARIANCE']
+
+    @property
+    def COVARIANCE_MATRIX_PITCHRATE_VARIANCE(self):
+        """Message constant 'COVARIANCE_MATRIX_PITCHRATE_VARIANCE'."""
+        return Metaclass_VehicleOdometry.__constants['COVARIANCE_MATRIX_PITCHRATE_VARIANCE']
+
+    @property
+    def COVARIANCE_MATRIX_YAWRATE_VARIANCE(self):
+        """Message constant 'COVARIANCE_MATRIX_YAWRATE_VARIANCE'."""
+        return Metaclass_VehicleOdometry.__constants['COVARIANCE_MATRIX_YAWRATE_VARIANCE']
+
+    @property
+    def LOCAL_FRAME_NED(self):
+        """Message constant 'LOCAL_FRAME_NED'."""
+        return Metaclass_VehicleOdometry.__constants['LOCAL_FRAME_NED']
+
+    @property
+    def LOCAL_FRAME_FRD(self):
+        """Message constant 'LOCAL_FRAME_FRD'."""
+        return Metaclass_VehicleOdometry.__constants['LOCAL_FRAME_FRD']
+
+    @property
+    def LOCAL_FRAME_OTHER(self):
+        """Message constant 'LOCAL_FRAME_OTHER'."""
+        return Metaclass_VehicleOdometry.__constants['LOCAL_FRAME_OTHER']
+
+    @property
+    def BODY_FRAME_FRD(self):
+        """Message constant 'BODY_FRAME_FRD'."""
+        return Metaclass_VehicleOdometry.__constants['BODY_FRAME_FRD']
 
 
 class VehicleOdometry(metaclass=Metaclass_VehicleOdometry):
@@ -112,61 +172,85 @@ class VehicleOdometry(metaclass=Metaclass_VehicleOdometry):
     Message class 'VehicleOdometry'.
 
     Constants:
-      POSE_FRAME_UNKNOWN
-      POSE_FRAME_NED
-      POSE_FRAME_FRD
-      VELOCITY_FRAME_UNKNOWN
-      VELOCITY_FRAME_NED
-      VELOCITY_FRAME_FRD
-      VELOCITY_FRAME_BODY_FRD
+      COVARIANCE_MATRIX_X_VARIANCE
+      COVARIANCE_MATRIX_Y_VARIANCE
+      COVARIANCE_MATRIX_Z_VARIANCE
+      COVARIANCE_MATRIX_ROLL_VARIANCE
+      COVARIANCE_MATRIX_PITCH_VARIANCE
+      COVARIANCE_MATRIX_YAW_VARIANCE
+      COVARIANCE_MATRIX_VX_VARIANCE
+      COVARIANCE_MATRIX_VY_VARIANCE
+      COVARIANCE_MATRIX_VZ_VARIANCE
+      COVARIANCE_MATRIX_ROLLRATE_VARIANCE
+      COVARIANCE_MATRIX_PITCHRATE_VARIANCE
+      COVARIANCE_MATRIX_YAWRATE_VARIANCE
+      LOCAL_FRAME_NED
+      LOCAL_FRAME_FRD
+      LOCAL_FRAME_OTHER
+      BODY_FRAME_FRD
     """
 
     __slots__ = [
         '_timestamp',
         '_timestamp_sample',
-        '_pose_frame',
-        '_position',
+        '_local_frame',
+        '_x',
+        '_y',
+        '_z',
         '_q',
+        '_q_offset',
+        '_pose_covariance',
         '_velocity_frame',
-        '_velocity',
-        '_angular_velocity',
-        '_position_variance',
-        '_orientation_variance',
-        '_velocity_variance',
+        '_vx',
+        '_vy',
+        '_vz',
+        '_rollspeed',
+        '_pitchspeed',
+        '_yawspeed',
+        '_velocity_covariance',
         '_reset_counter',
-        '_quality',
     ]
 
     _fields_and_field_types = {
         'timestamp': 'uint64',
         'timestamp_sample': 'uint64',
-        'pose_frame': 'uint8',
-        'position': 'float[3]',
+        'local_frame': 'uint8',
+        'x': 'float',
+        'y': 'float',
+        'z': 'float',
         'q': 'float[4]',
+        'q_offset': 'float[4]',
+        'pose_covariance': 'float[21]',
         'velocity_frame': 'uint8',
-        'velocity': 'float[3]',
-        'angular_velocity': 'float[3]',
-        'position_variance': 'float[3]',
-        'orientation_variance': 'float[3]',
-        'velocity_variance': 'float[3]',
+        'vx': 'float',
+        'vy': 'float',
+        'vz': 'float',
+        'rollspeed': 'float',
+        'pitchspeed': 'float',
+        'yawspeed': 'float',
+        'velocity_covariance': 'float[21]',
         'reset_counter': 'uint8',
-        'quality': 'int8',
     }
 
     SLOT_TYPES = (
         rosidl_parser.definition.BasicType('uint64'),  # noqa: E501
         rosidl_parser.definition.BasicType('uint64'),  # noqa: E501
         rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
-        rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 3),  # noqa: E501
+        rosidl_parser.definition.BasicType('float'),  # noqa: E501
+        rosidl_parser.definition.BasicType('float'),  # noqa: E501
+        rosidl_parser.definition.BasicType('float'),  # noqa: E501
         rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 4),  # noqa: E501
+        rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 4),  # noqa: E501
+        rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 21),  # noqa: E501
         rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
-        rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 3),  # noqa: E501
-        rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 3),  # noqa: E501
-        rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 3),  # noqa: E501
-        rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 3),  # noqa: E501
-        rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 3),  # noqa: E501
+        rosidl_parser.definition.BasicType('float'),  # noqa: E501
+        rosidl_parser.definition.BasicType('float'),  # noqa: E501
+        rosidl_parser.definition.BasicType('float'),  # noqa: E501
+        rosidl_parser.definition.BasicType('float'),  # noqa: E501
+        rosidl_parser.definition.BasicType('float'),  # noqa: E501
+        rosidl_parser.definition.BasicType('float'),  # noqa: E501
+        rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 21),  # noqa: E501
         rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
-        rosidl_parser.definition.BasicType('int8'),  # noqa: E501
     )
 
     def __init__(self, **kwargs):
@@ -175,45 +259,38 @@ class VehicleOdometry(metaclass=Metaclass_VehicleOdometry):
             ', '.join(sorted(k for k in kwargs.keys() if '_' + k not in self.__slots__))
         self.timestamp = kwargs.get('timestamp', int())
         self.timestamp_sample = kwargs.get('timestamp_sample', int())
-        self.pose_frame = kwargs.get('pose_frame', int())
-        if 'position' not in kwargs:
-            self.position = numpy.zeros(3, dtype=numpy.float32)
-        else:
-            self.position = numpy.array(kwargs.get('position'), dtype=numpy.float32)
-            assert self.position.shape == (3, )
+        self.local_frame = kwargs.get('local_frame', int())
+        self.x = kwargs.get('x', float())
+        self.y = kwargs.get('y', float())
+        self.z = kwargs.get('z', float())
         if 'q' not in kwargs:
             self.q = numpy.zeros(4, dtype=numpy.float32)
         else:
             self.q = numpy.array(kwargs.get('q'), dtype=numpy.float32)
             assert self.q.shape == (4, )
+        if 'q_offset' not in kwargs:
+            self.q_offset = numpy.zeros(4, dtype=numpy.float32)
+        else:
+            self.q_offset = numpy.array(kwargs.get('q_offset'), dtype=numpy.float32)
+            assert self.q_offset.shape == (4, )
+        if 'pose_covariance' not in kwargs:
+            self.pose_covariance = numpy.zeros(21, dtype=numpy.float32)
+        else:
+            self.pose_covariance = numpy.array(kwargs.get('pose_covariance'), dtype=numpy.float32)
+            assert self.pose_covariance.shape == (21, )
         self.velocity_frame = kwargs.get('velocity_frame', int())
-        if 'velocity' not in kwargs:
-            self.velocity = numpy.zeros(3, dtype=numpy.float32)
+        self.vx = kwargs.get('vx', float())
+        self.vy = kwargs.get('vy', float())
+        self.vz = kwargs.get('vz', float())
+        self.rollspeed = kwargs.get('rollspeed', float())
+        self.pitchspeed = kwargs.get('pitchspeed', float())
+        self.yawspeed = kwargs.get('yawspeed', float())
+        if 'velocity_covariance' not in kwargs:
+            self.velocity_covariance = numpy.zeros(21, dtype=numpy.float32)
         else:
-            self.velocity = numpy.array(kwargs.get('velocity'), dtype=numpy.float32)
-            assert self.velocity.shape == (3, )
-        if 'angular_velocity' not in kwargs:
-            self.angular_velocity = numpy.zeros(3, dtype=numpy.float32)
-        else:
-            self.angular_velocity = numpy.array(kwargs.get('angular_velocity'), dtype=numpy.float32)
-            assert self.angular_velocity.shape == (3, )
-        if 'position_variance' not in kwargs:
-            self.position_variance = numpy.zeros(3, dtype=numpy.float32)
-        else:
-            self.position_variance = numpy.array(kwargs.get('position_variance'), dtype=numpy.float32)
-            assert self.position_variance.shape == (3, )
-        if 'orientation_variance' not in kwargs:
-            self.orientation_variance = numpy.zeros(3, dtype=numpy.float32)
-        else:
-            self.orientation_variance = numpy.array(kwargs.get('orientation_variance'), dtype=numpy.float32)
-            assert self.orientation_variance.shape == (3, )
-        if 'velocity_variance' not in kwargs:
-            self.velocity_variance = numpy.zeros(3, dtype=numpy.float32)
-        else:
-            self.velocity_variance = numpy.array(kwargs.get('velocity_variance'), dtype=numpy.float32)
-            assert self.velocity_variance.shape == (3, )
+            self.velocity_covariance = numpy.array(kwargs.get('velocity_covariance'), dtype=numpy.float32)
+            assert self.velocity_covariance.shape == (21, )
         self.reset_counter = kwargs.get('reset_counter', int())
-        self.quality = kwargs.get('quality', int())
 
     def __repr__(self):
         typename = self.__class__.__module__.split('.')
@@ -248,27 +325,37 @@ class VehicleOdometry(metaclass=Metaclass_VehicleOdometry):
             return False
         if self.timestamp_sample != other.timestamp_sample:
             return False
-        if self.pose_frame != other.pose_frame:
+        if self.local_frame != other.local_frame:
             return False
-        if all(self.position != other.position):
+        if self.x != other.x:
+            return False
+        if self.y != other.y:
+            return False
+        if self.z != other.z:
             return False
         if all(self.q != other.q):
             return False
+        if all(self.q_offset != other.q_offset):
+            return False
+        if all(self.pose_covariance != other.pose_covariance):
+            return False
         if self.velocity_frame != other.velocity_frame:
             return False
-        if all(self.velocity != other.velocity):
+        if self.vx != other.vx:
             return False
-        if all(self.angular_velocity != other.angular_velocity):
+        if self.vy != other.vy:
             return False
-        if all(self.position_variance != other.position_variance):
+        if self.vz != other.vz:
             return False
-        if all(self.orientation_variance != other.orientation_variance):
+        if self.rollspeed != other.rollspeed:
             return False
-        if all(self.velocity_variance != other.velocity_variance):
+        if self.pitchspeed != other.pitchspeed:
+            return False
+        if self.yawspeed != other.yawspeed:
+            return False
+        if all(self.velocity_covariance != other.velocity_covariance):
             return False
         if self.reset_counter != other.reset_counter:
-            return False
-        if self.quality != other.quality:
             return False
         return True
 
@@ -308,50 +395,58 @@ class VehicleOdometry(metaclass=Metaclass_VehicleOdometry):
         self._timestamp_sample = value
 
     @property
-    def pose_frame(self):
-        """Message field 'pose_frame'."""
-        return self._pose_frame
+    def local_frame(self):
+        """Message field 'local_frame'."""
+        return self._local_frame
 
-    @pose_frame.setter
-    def pose_frame(self, value):
+    @local_frame.setter
+    def local_frame(self, value):
         if __debug__:
             assert \
                 isinstance(value, int), \
-                "The 'pose_frame' field must be of type 'int'"
+                "The 'local_frame' field must be of type 'int'"
             assert value >= 0 and value < 256, \
-                "The 'pose_frame' field must be an unsigned integer in [0, 255]"
-        self._pose_frame = value
+                "The 'local_frame' field must be an unsigned integer in [0, 255]"
+        self._local_frame = value
 
     @property
-    def position(self):
-        """Message field 'position'."""
-        return self._position
+    def x(self):
+        """Message field 'x'."""
+        return self._x
 
-    @position.setter
-    def position(self, value):
-        if isinstance(value, numpy.ndarray):
-            assert value.dtype == numpy.float32, \
-                "The 'position' numpy.ndarray() must have the dtype of 'numpy.float32'"
-            assert value.size == 3, \
-                "The 'position' numpy.ndarray() must have a size of 3"
-            self._position = value
-            return
+    @x.setter
+    def x(self, value):
         if __debug__:
-            from collections.abc import Sequence
-            from collections.abc import Set
-            from collections import UserList
-            from collections import UserString
             assert \
-                ((isinstance(value, Sequence) or
-                  isinstance(value, Set) or
-                  isinstance(value, UserList)) and
-                 not isinstance(value, str) and
-                 not isinstance(value, UserString) and
-                 len(value) == 3 and
-                 all(isinstance(v, float) for v in value) and
-                 True), \
-                "The 'position' field must be a set or sequence with length 3 and each value of type 'float'"
-        self._position = numpy.array(value, dtype=numpy.float32)
+                isinstance(value, float), \
+                "The 'x' field must be of type 'float'"
+        self._x = value
+
+    @property
+    def y(self):
+        """Message field 'y'."""
+        return self._y
+
+    @y.setter
+    def y(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, float), \
+                "The 'y' field must be of type 'float'"
+        self._y = value
+
+    @property
+    def z(self):
+        """Message field 'z'."""
+        return self._z
+
+    @z.setter
+    def z(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, float), \
+                "The 'z' field must be of type 'float'"
+        self._z = value
 
     @property
     def q(self):
@@ -385,6 +480,68 @@ class VehicleOdometry(metaclass=Metaclass_VehicleOdometry):
         self._q = numpy.array(value, dtype=numpy.float32)
 
     @property
+    def q_offset(self):
+        """Message field 'q_offset'."""
+        return self._q_offset
+
+    @q_offset.setter
+    def q_offset(self, value):
+        if isinstance(value, numpy.ndarray):
+            assert value.dtype == numpy.float32, \
+                "The 'q_offset' numpy.ndarray() must have the dtype of 'numpy.float32'"
+            assert value.size == 4, \
+                "The 'q_offset' numpy.ndarray() must have a size of 4"
+            self._q_offset = value
+            return
+        if __debug__:
+            from collections.abc import Sequence
+            from collections.abc import Set
+            from collections import UserList
+            from collections import UserString
+            assert \
+                ((isinstance(value, Sequence) or
+                  isinstance(value, Set) or
+                  isinstance(value, UserList)) and
+                 not isinstance(value, str) and
+                 not isinstance(value, UserString) and
+                 len(value) == 4 and
+                 all(isinstance(v, float) for v in value) and
+                 True), \
+                "The 'q_offset' field must be a set or sequence with length 4 and each value of type 'float'"
+        self._q_offset = numpy.array(value, dtype=numpy.float32)
+
+    @property
+    def pose_covariance(self):
+        """Message field 'pose_covariance'."""
+        return self._pose_covariance
+
+    @pose_covariance.setter
+    def pose_covariance(self, value):
+        if isinstance(value, numpy.ndarray):
+            assert value.dtype == numpy.float32, \
+                "The 'pose_covariance' numpy.ndarray() must have the dtype of 'numpy.float32'"
+            assert value.size == 21, \
+                "The 'pose_covariance' numpy.ndarray() must have a size of 21"
+            self._pose_covariance = value
+            return
+        if __debug__:
+            from collections.abc import Sequence
+            from collections.abc import Set
+            from collections import UserList
+            from collections import UserString
+            assert \
+                ((isinstance(value, Sequence) or
+                  isinstance(value, Set) or
+                  isinstance(value, UserList)) and
+                 not isinstance(value, str) and
+                 not isinstance(value, UserString) and
+                 len(value) == 21 and
+                 all(isinstance(v, float) for v in value) and
+                 True), \
+                "The 'pose_covariance' field must be a set or sequence with length 21 and each value of type 'float'"
+        self._pose_covariance = numpy.array(value, dtype=numpy.float32)
+
+    @property
     def velocity_frame(self):
         """Message field 'velocity_frame'."""
         return self._velocity_frame
@@ -400,142 +557,96 @@ class VehicleOdometry(metaclass=Metaclass_VehicleOdometry):
         self._velocity_frame = value
 
     @property
-    def velocity(self):
-        """Message field 'velocity'."""
-        return self._velocity
+    def vx(self):
+        """Message field 'vx'."""
+        return self._vx
 
-    @velocity.setter
-    def velocity(self, value):
-        if isinstance(value, numpy.ndarray):
-            assert value.dtype == numpy.float32, \
-                "The 'velocity' numpy.ndarray() must have the dtype of 'numpy.float32'"
-            assert value.size == 3, \
-                "The 'velocity' numpy.ndarray() must have a size of 3"
-            self._velocity = value
-            return
+    @vx.setter
+    def vx(self, value):
         if __debug__:
-            from collections.abc import Sequence
-            from collections.abc import Set
-            from collections import UserList
-            from collections import UserString
             assert \
-                ((isinstance(value, Sequence) or
-                  isinstance(value, Set) or
-                  isinstance(value, UserList)) and
-                 not isinstance(value, str) and
-                 not isinstance(value, UserString) and
-                 len(value) == 3 and
-                 all(isinstance(v, float) for v in value) and
-                 True), \
-                "The 'velocity' field must be a set or sequence with length 3 and each value of type 'float'"
-        self._velocity = numpy.array(value, dtype=numpy.float32)
+                isinstance(value, float), \
+                "The 'vx' field must be of type 'float'"
+        self._vx = value
 
     @property
-    def angular_velocity(self):
-        """Message field 'angular_velocity'."""
-        return self._angular_velocity
+    def vy(self):
+        """Message field 'vy'."""
+        return self._vy
 
-    @angular_velocity.setter
-    def angular_velocity(self, value):
-        if isinstance(value, numpy.ndarray):
-            assert value.dtype == numpy.float32, \
-                "The 'angular_velocity' numpy.ndarray() must have the dtype of 'numpy.float32'"
-            assert value.size == 3, \
-                "The 'angular_velocity' numpy.ndarray() must have a size of 3"
-            self._angular_velocity = value
-            return
+    @vy.setter
+    def vy(self, value):
         if __debug__:
-            from collections.abc import Sequence
-            from collections.abc import Set
-            from collections import UserList
-            from collections import UserString
             assert \
-                ((isinstance(value, Sequence) or
-                  isinstance(value, Set) or
-                  isinstance(value, UserList)) and
-                 not isinstance(value, str) and
-                 not isinstance(value, UserString) and
-                 len(value) == 3 and
-                 all(isinstance(v, float) for v in value) and
-                 True), \
-                "The 'angular_velocity' field must be a set or sequence with length 3 and each value of type 'float'"
-        self._angular_velocity = numpy.array(value, dtype=numpy.float32)
+                isinstance(value, float), \
+                "The 'vy' field must be of type 'float'"
+        self._vy = value
 
     @property
-    def position_variance(self):
-        """Message field 'position_variance'."""
-        return self._position_variance
+    def vz(self):
+        """Message field 'vz'."""
+        return self._vz
 
-    @position_variance.setter
-    def position_variance(self, value):
-        if isinstance(value, numpy.ndarray):
-            assert value.dtype == numpy.float32, \
-                "The 'position_variance' numpy.ndarray() must have the dtype of 'numpy.float32'"
-            assert value.size == 3, \
-                "The 'position_variance' numpy.ndarray() must have a size of 3"
-            self._position_variance = value
-            return
+    @vz.setter
+    def vz(self, value):
         if __debug__:
-            from collections.abc import Sequence
-            from collections.abc import Set
-            from collections import UserList
-            from collections import UserString
             assert \
-                ((isinstance(value, Sequence) or
-                  isinstance(value, Set) or
-                  isinstance(value, UserList)) and
-                 not isinstance(value, str) and
-                 not isinstance(value, UserString) and
-                 len(value) == 3 and
-                 all(isinstance(v, float) for v in value) and
-                 True), \
-                "The 'position_variance' field must be a set or sequence with length 3 and each value of type 'float'"
-        self._position_variance = numpy.array(value, dtype=numpy.float32)
+                isinstance(value, float), \
+                "The 'vz' field must be of type 'float'"
+        self._vz = value
 
     @property
-    def orientation_variance(self):
-        """Message field 'orientation_variance'."""
-        return self._orientation_variance
+    def rollspeed(self):
+        """Message field 'rollspeed'."""
+        return self._rollspeed
 
-    @orientation_variance.setter
-    def orientation_variance(self, value):
-        if isinstance(value, numpy.ndarray):
-            assert value.dtype == numpy.float32, \
-                "The 'orientation_variance' numpy.ndarray() must have the dtype of 'numpy.float32'"
-            assert value.size == 3, \
-                "The 'orientation_variance' numpy.ndarray() must have a size of 3"
-            self._orientation_variance = value
-            return
+    @rollspeed.setter
+    def rollspeed(self, value):
         if __debug__:
-            from collections.abc import Sequence
-            from collections.abc import Set
-            from collections import UserList
-            from collections import UserString
             assert \
-                ((isinstance(value, Sequence) or
-                  isinstance(value, Set) or
-                  isinstance(value, UserList)) and
-                 not isinstance(value, str) and
-                 not isinstance(value, UserString) and
-                 len(value) == 3 and
-                 all(isinstance(v, float) for v in value) and
-                 True), \
-                "The 'orientation_variance' field must be a set or sequence with length 3 and each value of type 'float'"
-        self._orientation_variance = numpy.array(value, dtype=numpy.float32)
+                isinstance(value, float), \
+                "The 'rollspeed' field must be of type 'float'"
+        self._rollspeed = value
 
     @property
-    def velocity_variance(self):
-        """Message field 'velocity_variance'."""
-        return self._velocity_variance
+    def pitchspeed(self):
+        """Message field 'pitchspeed'."""
+        return self._pitchspeed
 
-    @velocity_variance.setter
-    def velocity_variance(self, value):
+    @pitchspeed.setter
+    def pitchspeed(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, float), \
+                "The 'pitchspeed' field must be of type 'float'"
+        self._pitchspeed = value
+
+    @property
+    def yawspeed(self):
+        """Message field 'yawspeed'."""
+        return self._yawspeed
+
+    @yawspeed.setter
+    def yawspeed(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, float), \
+                "The 'yawspeed' field must be of type 'float'"
+        self._yawspeed = value
+
+    @property
+    def velocity_covariance(self):
+        """Message field 'velocity_covariance'."""
+        return self._velocity_covariance
+
+    @velocity_covariance.setter
+    def velocity_covariance(self, value):
         if isinstance(value, numpy.ndarray):
             assert value.dtype == numpy.float32, \
-                "The 'velocity_variance' numpy.ndarray() must have the dtype of 'numpy.float32'"
-            assert value.size == 3, \
-                "The 'velocity_variance' numpy.ndarray() must have a size of 3"
-            self._velocity_variance = value
+                "The 'velocity_covariance' numpy.ndarray() must have the dtype of 'numpy.float32'"
+            assert value.size == 21, \
+                "The 'velocity_covariance' numpy.ndarray() must have a size of 21"
+            self._velocity_covariance = value
             return
         if __debug__:
             from collections.abc import Sequence
@@ -548,11 +659,11 @@ class VehicleOdometry(metaclass=Metaclass_VehicleOdometry):
                   isinstance(value, UserList)) and
                  not isinstance(value, str) and
                  not isinstance(value, UserString) and
-                 len(value) == 3 and
+                 len(value) == 21 and
                  all(isinstance(v, float) for v in value) and
                  True), \
-                "The 'velocity_variance' field must be a set or sequence with length 3 and each value of type 'float'"
-        self._velocity_variance = numpy.array(value, dtype=numpy.float32)
+                "The 'velocity_covariance' field must be a set or sequence with length 21 and each value of type 'float'"
+        self._velocity_covariance = numpy.array(value, dtype=numpy.float32)
 
     @property
     def reset_counter(self):
@@ -568,18 +679,3 @@ class VehicleOdometry(metaclass=Metaclass_VehicleOdometry):
             assert value >= 0 and value < 256, \
                 "The 'reset_counter' field must be an unsigned integer in [0, 255]"
         self._reset_counter = value
-
-    @property
-    def quality(self):
-        """Message field 'quality'."""
-        return self._quality
-
-    @quality.setter
-    def quality(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, int), \
-                "The 'quality' field must be of type 'int'"
-            assert value >= -128 and value < 128, \
-                "The 'quality' field must be an integer in [-128, 127]"
-        self._quality = value

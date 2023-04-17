@@ -25,7 +25,6 @@ px4_msgs__msg__VehicleImu__init(px4_msgs__msg__VehicleImu * msg)
   // delta_velocity
   // delta_angle_dt
   // delta_velocity_dt
-  // delta_angle_clipping
   // delta_velocity_clipping
   // accel_calibration_count
   // gyro_calibration_count
@@ -46,7 +45,6 @@ px4_msgs__msg__VehicleImu__fini(px4_msgs__msg__VehicleImu * msg)
   // delta_velocity
   // delta_angle_dt
   // delta_velocity_dt
-  // delta_angle_clipping
   // delta_velocity_clipping
   // accel_calibration_count
   // gyro_calibration_count
@@ -94,10 +92,6 @@ px4_msgs__msg__VehicleImu__are_equal(const px4_msgs__msg__VehicleImu * lhs, cons
   if (lhs->delta_velocity_dt != rhs->delta_velocity_dt) {
     return false;
   }
-  // delta_angle_clipping
-  if (lhs->delta_angle_clipping != rhs->delta_angle_clipping) {
-    return false;
-  }
   // delta_velocity_clipping
   if (lhs->delta_velocity_clipping != rhs->delta_velocity_clipping) {
     return false;
@@ -141,8 +135,6 @@ px4_msgs__msg__VehicleImu__copy(
   output->delta_angle_dt = input->delta_angle_dt;
   // delta_velocity_dt
   output->delta_velocity_dt = input->delta_velocity_dt;
-  // delta_angle_clipping
-  output->delta_angle_clipping = input->delta_angle_clipping;
   // delta_velocity_clipping
   output->delta_velocity_clipping = input->delta_velocity_clipping;
   // accel_calibration_count

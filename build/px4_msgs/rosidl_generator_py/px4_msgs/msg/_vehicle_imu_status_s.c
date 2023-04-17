@@ -104,30 +104,6 @@ bool px4_msgs__msg__vehicle_imu_status__convert_from_py(PyObject * _pymsg, void 
     }
     Py_DECREF(field);
   }
-  {  // gyro_clipping
-    PyObject * field = PyObject_GetAttrString(_pymsg, "gyro_clipping");
-    if (!field) {
-      return false;
-    }
-    {
-      // TODO(dirk-thomas) use a better way to check the type before casting
-      assert(field->ob_type != NULL);
-      assert(field->ob_type->tp_name != NULL);
-      assert(strcmp(field->ob_type->tp_name, "numpy.ndarray") == 0);
-      PyArrayObject * seq_field = (PyArrayObject *)field;
-      Py_INCREF(seq_field);
-      assert(PyArray_NDIM(seq_field) == 1);
-      assert(PyArray_TYPE(seq_field) == NPY_UINT32);
-      Py_ssize_t size = 3;
-      uint32_t * dest = ros_message->gyro_clipping;
-      for (Py_ssize_t i = 0; i < size; ++i) {
-        uint32_t tmp = *(npy_uint32 *)PyArray_GETPTR1(seq_field, i);
-        memcpy(&dest[i], &tmp, sizeof(uint32_t));
-      }
-      Py_DECREF(seq_field);
-    }
-    Py_DECREF(field);
-  }
   {  // accel_error_count
     PyObject * field = PyObject_GetAttrString(_pymsg, "accel_error_count");
     if (!field) {
@@ -393,24 +369,6 @@ PyObject * px4_msgs__msg__vehicle_imu_status__convert_to_py(void * raw_ros_messa
     assert(sizeof(npy_uint32) == sizeof(uint32_t));
     npy_uint32 * dst = (npy_uint32 *)PyArray_GETPTR1(seq_field, 0);
     uint32_t * src = &(ros_message->accel_clipping[0]);
-    memcpy(dst, src, 3 * sizeof(uint32_t));
-    Py_DECREF(field);
-  }
-  {  // gyro_clipping
-    PyObject * field = NULL;
-    field = PyObject_GetAttrString(_pymessage, "gyro_clipping");
-    if (!field) {
-      return NULL;
-    }
-    assert(field->ob_type != NULL);
-    assert(field->ob_type->tp_name != NULL);
-    assert(strcmp(field->ob_type->tp_name, "numpy.ndarray") == 0);
-    PyArrayObject * seq_field = (PyArrayObject *)field;
-    assert(PyArray_NDIM(seq_field) == 1);
-    assert(PyArray_TYPE(seq_field) == NPY_UINT32);
-    assert(sizeof(npy_uint32) == sizeof(uint32_t));
-    npy_uint32 * dst = (npy_uint32 *)PyArray_GETPTR1(seq_field, 0);
-    uint32_t * src = &(ros_message->gyro_clipping[0]);
     memcpy(dst, src, 3 * sizeof(uint32_t));
     Py_DECREF(field);
   }

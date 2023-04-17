@@ -148,15 +148,15 @@ private:
   ::px4_msgs::msg::ManualControlSetpoint msg_;
 };
 
-class Init_ManualControlSetpoint_throttle
+class Init_ManualControlSetpoint_r
 {
 public:
-  explicit Init_ManualControlSetpoint_throttle(::px4_msgs::msg::ManualControlSetpoint & msg)
+  explicit Init_ManualControlSetpoint_r(::px4_msgs::msg::ManualControlSetpoint & msg)
   : msg_(msg)
   {}
-  Init_ManualControlSetpoint_flaps throttle(::px4_msgs::msg::ManualControlSetpoint::_throttle_type arg)
+  Init_ManualControlSetpoint_flaps r(::px4_msgs::msg::ManualControlSetpoint::_r_type arg)
   {
-    msg_.throttle = std::move(arg);
+    msg_.r = std::move(arg);
     return Init_ManualControlSetpoint_flaps(msg_);
   }
 
@@ -164,48 +164,48 @@ private:
   ::px4_msgs::msg::ManualControlSetpoint msg_;
 };
 
-class Init_ManualControlSetpoint_yaw
+class Init_ManualControlSetpoint_z
 {
 public:
-  explicit Init_ManualControlSetpoint_yaw(::px4_msgs::msg::ManualControlSetpoint & msg)
+  explicit Init_ManualControlSetpoint_z(::px4_msgs::msg::ManualControlSetpoint & msg)
   : msg_(msg)
   {}
-  Init_ManualControlSetpoint_throttle yaw(::px4_msgs::msg::ManualControlSetpoint::_yaw_type arg)
+  Init_ManualControlSetpoint_r z(::px4_msgs::msg::ManualControlSetpoint::_z_type arg)
   {
-    msg_.yaw = std::move(arg);
-    return Init_ManualControlSetpoint_throttle(msg_);
+    msg_.z = std::move(arg);
+    return Init_ManualControlSetpoint_r(msg_);
   }
 
 private:
   ::px4_msgs::msg::ManualControlSetpoint msg_;
 };
 
-class Init_ManualControlSetpoint_pitch
+class Init_ManualControlSetpoint_y
 {
 public:
-  explicit Init_ManualControlSetpoint_pitch(::px4_msgs::msg::ManualControlSetpoint & msg)
+  explicit Init_ManualControlSetpoint_y(::px4_msgs::msg::ManualControlSetpoint & msg)
   : msg_(msg)
   {}
-  Init_ManualControlSetpoint_yaw pitch(::px4_msgs::msg::ManualControlSetpoint::_pitch_type arg)
+  Init_ManualControlSetpoint_z y(::px4_msgs::msg::ManualControlSetpoint::_y_type arg)
   {
-    msg_.pitch = std::move(arg);
-    return Init_ManualControlSetpoint_yaw(msg_);
+    msg_.y = std::move(arg);
+    return Init_ManualControlSetpoint_z(msg_);
   }
 
 private:
   ::px4_msgs::msg::ManualControlSetpoint msg_;
 };
 
-class Init_ManualControlSetpoint_roll
+class Init_ManualControlSetpoint_x
 {
 public:
-  explicit Init_ManualControlSetpoint_roll(::px4_msgs::msg::ManualControlSetpoint & msg)
+  explicit Init_ManualControlSetpoint_x(::px4_msgs::msg::ManualControlSetpoint & msg)
   : msg_(msg)
   {}
-  Init_ManualControlSetpoint_pitch roll(::px4_msgs::msg::ManualControlSetpoint::_roll_type arg)
+  Init_ManualControlSetpoint_y x(::px4_msgs::msg::ManualControlSetpoint::_x_type arg)
   {
-    msg_.roll = std::move(arg);
-    return Init_ManualControlSetpoint_pitch(msg_);
+    msg_.x = std::move(arg);
+    return Init_ManualControlSetpoint_y(msg_);
   }
 
 private:
@@ -218,10 +218,10 @@ public:
   explicit Init_ManualControlSetpoint_data_source(::px4_msgs::msg::ManualControlSetpoint & msg)
   : msg_(msg)
   {}
-  Init_ManualControlSetpoint_roll data_source(::px4_msgs::msg::ManualControlSetpoint::_data_source_type arg)
+  Init_ManualControlSetpoint_x data_source(::px4_msgs::msg::ManualControlSetpoint::_data_source_type arg)
   {
     msg_.data_source = std::move(arg);
-    return Init_ManualControlSetpoint_roll(msg_);
+    return Init_ManualControlSetpoint_x(msg_);
   }
 
 private:

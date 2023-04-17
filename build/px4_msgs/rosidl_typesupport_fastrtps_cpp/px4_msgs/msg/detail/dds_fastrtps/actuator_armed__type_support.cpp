@@ -48,6 +48,8 @@ cdr_serialize(
   cdr << (ros_message.force_failsafe ? true : false);
   // Member: in_esc_calibration_mode
   cdr << (ros_message.in_esc_calibration_mode ? true : false);
+  // Member: soft_stop
+  cdr << (ros_message.soft_stop ? true : false);
   return true;
 }
 
@@ -107,6 +109,13 @@ cdr_deserialize(
     uint8_t tmp;
     cdr >> tmp;
     ros_message.in_esc_calibration_mode = tmp ? true : false;
+  }
+
+  // Member: soft_stop
+  {
+    uint8_t tmp;
+    cdr >> tmp;
+    ros_message.soft_stop = tmp ? true : false;
   }
 
   return true;
@@ -170,6 +179,12 @@ get_serialized_size(
   // Member: in_esc_calibration_mode
   {
     size_t item_size = sizeof(ros_message.in_esc_calibration_mode);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // Member: soft_stop
+  {
+    size_t item_size = sizeof(ros_message.soft_stop);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -243,6 +258,13 @@ max_serialized_size_ActuatorArmed(
   }
 
   // Member: in_esc_calibration_mode
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
+  }
+
+  // Member: soft_stop
   {
     size_t array_size = 1;
 

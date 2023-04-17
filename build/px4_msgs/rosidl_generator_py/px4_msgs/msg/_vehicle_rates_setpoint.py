@@ -61,7 +61,6 @@ class VehicleRatesSetpoint(metaclass=Metaclass_VehicleRatesSetpoint):
         '_pitch',
         '_yaw',
         '_thrust_body',
-        '_reset_integral',
     ]
 
     _fields_and_field_types = {
@@ -70,7 +69,6 @@ class VehicleRatesSetpoint(metaclass=Metaclass_VehicleRatesSetpoint):
         'pitch': 'float',
         'yaw': 'float',
         'thrust_body': 'float[3]',
-        'reset_integral': 'boolean',
     }
 
     SLOT_TYPES = (
@@ -79,7 +77,6 @@ class VehicleRatesSetpoint(metaclass=Metaclass_VehicleRatesSetpoint):
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
         rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 3),  # noqa: E501
-        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
     )
 
     def __init__(self, **kwargs):
@@ -95,7 +92,6 @@ class VehicleRatesSetpoint(metaclass=Metaclass_VehicleRatesSetpoint):
         else:
             self.thrust_body = numpy.array(kwargs.get('thrust_body'), dtype=numpy.float32)
             assert self.thrust_body.shape == (3, )
-        self.reset_integral = kwargs.get('reset_integral', bool())
 
     def __repr__(self):
         typename = self.__class__.__module__.split('.')
@@ -135,8 +131,6 @@ class VehicleRatesSetpoint(metaclass=Metaclass_VehicleRatesSetpoint):
         if self.yaw != other.yaw:
             return False
         if all(self.thrust_body != other.thrust_body):
-            return False
-        if self.reset_integral != other.reset_integral:
             return False
         return True
 
@@ -229,16 +223,3 @@ class VehicleRatesSetpoint(metaclass=Metaclass_VehicleRatesSetpoint):
                  True), \
                 "The 'thrust_body' field must be a set or sequence with length 3 and each value of type 'float'"
         self._thrust_body = numpy.array(value, dtype=numpy.float32)
-
-    @property
-    def reset_integral(self):
-        """Message field 'reset_integral'."""
-        return self._reset_integral
-
-    @reset_integral.setter
-    def reset_integral(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, bool), \
-                "The 'reset_integral' field must be of type 'bool'"
-        self._reset_integral = value

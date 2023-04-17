@@ -69,10 +69,6 @@ class EstimatorEventFlags(metaclass=Metaclass_EstimatorEventFlags):
         '_starting_vision_vel_fusion',
         '_starting_vision_yaw_fusion',
         '_yaw_aligned_to_imu_gps',
-        '_reset_hgt_to_baro',
-        '_reset_hgt_to_gps',
-        '_reset_hgt_to_rng',
-        '_reset_hgt_to_ev',
         '_warning_event_changes',
         '_gps_quality_poor',
         '_gps_fusion_timout',
@@ -105,10 +101,6 @@ class EstimatorEventFlags(metaclass=Metaclass_EstimatorEventFlags):
         'starting_vision_vel_fusion': 'boolean',
         'starting_vision_yaw_fusion': 'boolean',
         'yaw_aligned_to_imu_gps': 'boolean',
-        'reset_hgt_to_baro': 'boolean',
-        'reset_hgt_to_gps': 'boolean',
-        'reset_hgt_to_rng': 'boolean',
-        'reset_hgt_to_ev': 'boolean',
         'warning_event_changes': 'uint32',
         'gps_quality_poor': 'boolean',
         'gps_fusion_timout': 'boolean',
@@ -128,10 +120,6 @@ class EstimatorEventFlags(metaclass=Metaclass_EstimatorEventFlags):
         rosidl_parser.definition.BasicType('uint64'),  # noqa: E501
         rosidl_parser.definition.BasicType('uint64'),  # noqa: E501
         rosidl_parser.definition.BasicType('uint32'),  # noqa: E501
-        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
-        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
-        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
-        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
         rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
         rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
         rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
@@ -180,10 +168,6 @@ class EstimatorEventFlags(metaclass=Metaclass_EstimatorEventFlags):
         self.starting_vision_vel_fusion = kwargs.get('starting_vision_vel_fusion', bool())
         self.starting_vision_yaw_fusion = kwargs.get('starting_vision_yaw_fusion', bool())
         self.yaw_aligned_to_imu_gps = kwargs.get('yaw_aligned_to_imu_gps', bool())
-        self.reset_hgt_to_baro = kwargs.get('reset_hgt_to_baro', bool())
-        self.reset_hgt_to_gps = kwargs.get('reset_hgt_to_gps', bool())
-        self.reset_hgt_to_rng = kwargs.get('reset_hgt_to_rng', bool())
-        self.reset_hgt_to_ev = kwargs.get('reset_hgt_to_ev', bool())
         self.warning_event_changes = kwargs.get('warning_event_changes', int())
         self.gps_quality_poor = kwargs.get('gps_quality_poor', bool())
         self.gps_fusion_timout = kwargs.get('gps_fusion_timout', bool())
@@ -258,14 +242,6 @@ class EstimatorEventFlags(metaclass=Metaclass_EstimatorEventFlags):
         if self.starting_vision_yaw_fusion != other.starting_vision_yaw_fusion:
             return False
         if self.yaw_aligned_to_imu_gps != other.yaw_aligned_to_imu_gps:
-            return False
-        if self.reset_hgt_to_baro != other.reset_hgt_to_baro:
-            return False
-        if self.reset_hgt_to_gps != other.reset_hgt_to_gps:
-            return False
-        if self.reset_hgt_to_rng != other.reset_hgt_to_rng:
-            return False
-        if self.reset_hgt_to_ev != other.reset_hgt_to_ev:
             return False
         if self.warning_event_changes != other.warning_event_changes:
             return False
@@ -513,58 +489,6 @@ class EstimatorEventFlags(metaclass=Metaclass_EstimatorEventFlags):
                 isinstance(value, bool), \
                 "The 'yaw_aligned_to_imu_gps' field must be of type 'bool'"
         self._yaw_aligned_to_imu_gps = value
-
-    @property
-    def reset_hgt_to_baro(self):
-        """Message field 'reset_hgt_to_baro'."""
-        return self._reset_hgt_to_baro
-
-    @reset_hgt_to_baro.setter
-    def reset_hgt_to_baro(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, bool), \
-                "The 'reset_hgt_to_baro' field must be of type 'bool'"
-        self._reset_hgt_to_baro = value
-
-    @property
-    def reset_hgt_to_gps(self):
-        """Message field 'reset_hgt_to_gps'."""
-        return self._reset_hgt_to_gps
-
-    @reset_hgt_to_gps.setter
-    def reset_hgt_to_gps(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, bool), \
-                "The 'reset_hgt_to_gps' field must be of type 'bool'"
-        self._reset_hgt_to_gps = value
-
-    @property
-    def reset_hgt_to_rng(self):
-        """Message field 'reset_hgt_to_rng'."""
-        return self._reset_hgt_to_rng
-
-    @reset_hgt_to_rng.setter
-    def reset_hgt_to_rng(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, bool), \
-                "The 'reset_hgt_to_rng' field must be of type 'bool'"
-        self._reset_hgt_to_rng = value
-
-    @property
-    def reset_hgt_to_ev(self):
-        """Message field 'reset_hgt_to_ev'."""
-        return self._reset_hgt_to_ev
-
-    @reset_hgt_to_ev.setter
-    def reset_hgt_to_ev(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, bool), \
-                "The 'reset_hgt_to_ev' field must be of type 'bool'"
-        self._reset_hgt_to_ev = value
 
     @property
     def warning_event_changes(self):

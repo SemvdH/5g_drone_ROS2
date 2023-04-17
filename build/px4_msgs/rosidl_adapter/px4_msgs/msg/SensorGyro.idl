@@ -5,7 +5,6 @@
 
 module px4_msgs {
   module msg {
-    typedef uint8 uint8__3[3];
     module SensorGyro_Constants {
       const uint8 ORB_QUEUE_LENGTH = 8;
     };
@@ -37,10 +36,6 @@ module px4_msgs {
       float temperature;
 
       uint32 error_count;
-
-      @verbatim (language="comment", text=
-        " clip count per axis in the sample period")
-      uint8__3 clip_counter;
 
       @verbatim (language="comment", text=
         " number of raw samples that went into this message")

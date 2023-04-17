@@ -69,9 +69,9 @@ static bool _RateCtrlStatus__cdr_serialize(
     cdr << ros_message->yawspeed_integ;
   }
 
-  // Field name: wheel_rate_integ
+  // Field name: additional_integ1
   {
-    cdr << ros_message->wheel_rate_integ;
+    cdr << ros_message->additional_integ1;
   }
 
   return true;
@@ -106,9 +106,9 @@ static bool _RateCtrlStatus__cdr_deserialize(
     cdr >> ros_message->yawspeed_integ;
   }
 
-  // Field name: wheel_rate_integ
+  // Field name: additional_integ1
   {
-    cdr >> ros_message->wheel_rate_integ;
+    cdr >> ros_message->additional_integ1;
   }
 
   return true;
@@ -152,9 +152,9 @@ size_t get_serialized_size_px4_msgs__msg__RateCtrlStatus(
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // field.name wheel_rate_integ
+  // field.name additional_integ1
   {
-    size_t item_size = sizeof(ros_message->wheel_rate_integ);
+    size_t item_size = sizeof(ros_message->additional_integ1);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -210,7 +210,7 @@ size_t max_serialized_size_px4_msgs__msg__RateCtrlStatus(
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
-  // member: wheel_rate_integ
+  // member: additional_integ1
   {
     size_t array_size = 1;
 

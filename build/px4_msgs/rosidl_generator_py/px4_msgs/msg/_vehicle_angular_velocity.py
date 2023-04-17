@@ -6,7 +6,6 @@
 # Import statements for member types
 
 # Member 'xyz'
-# Member 'xyz_derivative'
 import numpy  # noqa: E402, I100
 
 import rosidl_parser.definition  # noqa: E402, I100
@@ -60,20 +59,17 @@ class VehicleAngularVelocity(metaclass=Metaclass_VehicleAngularVelocity):
         '_timestamp',
         '_timestamp_sample',
         '_xyz',
-        '_xyz_derivative',
     ]
 
     _fields_and_field_types = {
         'timestamp': 'uint64',
         'timestamp_sample': 'uint64',
         'xyz': 'float[3]',
-        'xyz_derivative': 'float[3]',
     }
 
     SLOT_TYPES = (
         rosidl_parser.definition.BasicType('uint64'),  # noqa: E501
         rosidl_parser.definition.BasicType('uint64'),  # noqa: E501
-        rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 3),  # noqa: E501
         rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 3),  # noqa: E501
     )
 
@@ -88,11 +84,6 @@ class VehicleAngularVelocity(metaclass=Metaclass_VehicleAngularVelocity):
         else:
             self.xyz = numpy.array(kwargs.get('xyz'), dtype=numpy.float32)
             assert self.xyz.shape == (3, )
-        if 'xyz_derivative' not in kwargs:
-            self.xyz_derivative = numpy.zeros(3, dtype=numpy.float32)
-        else:
-            self.xyz_derivative = numpy.array(kwargs.get('xyz_derivative'), dtype=numpy.float32)
-            assert self.xyz_derivative.shape == (3, )
 
     def __repr__(self):
         typename = self.__class__.__module__.split('.')
@@ -128,8 +119,6 @@ class VehicleAngularVelocity(metaclass=Metaclass_VehicleAngularVelocity):
         if self.timestamp_sample != other.timestamp_sample:
             return False
         if all(self.xyz != other.xyz):
-            return False
-        if all(self.xyz_derivative != other.xyz_derivative):
             return False
         return True
 
@@ -198,34 +187,3 @@ class VehicleAngularVelocity(metaclass=Metaclass_VehicleAngularVelocity):
                  True), \
                 "The 'xyz' field must be a set or sequence with length 3 and each value of type 'float'"
         self._xyz = numpy.array(value, dtype=numpy.float32)
-
-    @property
-    def xyz_derivative(self):
-        """Message field 'xyz_derivative'."""
-        return self._xyz_derivative
-
-    @xyz_derivative.setter
-    def xyz_derivative(self, value):
-        if isinstance(value, numpy.ndarray):
-            assert value.dtype == numpy.float32, \
-                "The 'xyz_derivative' numpy.ndarray() must have the dtype of 'numpy.float32'"
-            assert value.size == 3, \
-                "The 'xyz_derivative' numpy.ndarray() must have a size of 3"
-            self._xyz_derivative = value
-            return
-        if __debug__:
-            from collections.abc import Sequence
-            from collections.abc import Set
-            from collections import UserList
-            from collections import UserString
-            assert \
-                ((isinstance(value, Sequence) or
-                  isinstance(value, Set) or
-                  isinstance(value, UserList)) and
-                 not isinstance(value, str) and
-                 not isinstance(value, UserString) and
-                 len(value) == 3 and
-                 all(isinstance(v, float) for v in value) and
-                 True), \
-                "The 'xyz_derivative' field must be a set or sequence with length 3 and each value of type 'float'"
-        self._xyz_derivative = numpy.array(value, dtype=numpy.float32)

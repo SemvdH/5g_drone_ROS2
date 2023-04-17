@@ -37,7 +37,7 @@ void PositionSetpoint_fini_function(void * message_memory)
   typed_message->~PositionSetpoint();
 }
 
-static const ::rosidl_typesupport_introspection_cpp::MessageMember PositionSetpoint_message_member_array[20] = {
+static const ::rosidl_typesupport_introspection_cpp::MessageMember PositionSetpoint_message_member_array[23] = {
   {
     "timestamp",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_UINT64,  // type
@@ -122,6 +122,51 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember PositionSetpo
     0,  // array size
     false,  // is upper bound
     offsetof(px4_msgs::msg::PositionSetpoint, vz),  // bytes offset in struct
+    nullptr,  // default value
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
+    nullptr  // resize(index) function pointer
+  },
+  {
+    "velocity_valid",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_BOOLEAN,  // type
+    0,  // upper bound of string
+    nullptr,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs::msg::PositionSetpoint, velocity_valid),  // bytes offset in struct
+    nullptr,  // default value
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
+    nullptr  // resize(index) function pointer
+  },
+  {
+    "velocity_frame",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_UINT8,  // type
+    0,  // upper bound of string
+    nullptr,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs::msg::PositionSetpoint, velocity_frame),  // bytes offset in struct
+    nullptr,  // default value
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
+    nullptr  // resize(index) function pointer
+  },
+  {
+    "alt_valid",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_BOOLEAN,  // type
+    0,  // upper bound of string
+    nullptr,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs::msg::PositionSetpoint, alt_valid),  // bytes offset in struct
     nullptr,  // default value
     nullptr,  // size() function pointer
     nullptr,  // get_const(index) function pointer
@@ -234,6 +279,21 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember PositionSetpo
     nullptr  // resize(index) function pointer
   },
   {
+    "landing_gear",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_INT8,  // type
+    0,  // upper bound of string
+    nullptr,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs::msg::PositionSetpoint, landing_gear),  // bytes offset in struct
+    nullptr,  // default value
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
+    nullptr  // resize(index) function pointer
+  },
+  {
     "loiter_radius",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
     0,  // upper bound of string
@@ -249,14 +309,14 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember PositionSetpo
     nullptr  // resize(index) function pointer
   },
   {
-    "loiter_direction_counter_clockwise",  // name
-    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_BOOLEAN,  // type
+    "loiter_direction",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_INT8,  // type
     0,  // upper bound of string
     nullptr,  // members of sub message
     false,  // is array
     0,  // array size
     false,  // is upper bound
-    offsetof(px4_msgs::msg::PositionSetpoint, loiter_direction_counter_clockwise),  // bytes offset in struct
+    offsetof(px4_msgs::msg::PositionSetpoint, loiter_direction),  // bytes offset in struct
     nullptr,  // default value
     nullptr,  // size() function pointer
     nullptr,  // get_const(index) function pointer
@@ -287,21 +347,6 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember PositionSetpo
     0,  // array size
     false,  // is upper bound
     offsetof(px4_msgs::msg::PositionSetpoint, cruising_speed),  // bytes offset in struct
-    nullptr,  // default value
-    nullptr,  // size() function pointer
-    nullptr,  // get_const(index) function pointer
-    nullptr,  // get(index) function pointer
-    nullptr  // resize(index) function pointer
-  },
-  {
-    "gliding_enabled",  // name
-    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_BOOLEAN,  // type
-    0,  // upper bound of string
-    nullptr,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs::msg::PositionSetpoint, gliding_enabled),  // bytes offset in struct
     nullptr,  // default value
     nullptr,  // size() function pointer
     nullptr,  // get_const(index) function pointer
@@ -343,7 +388,7 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember PositionSetpo
 static const ::rosidl_typesupport_introspection_cpp::MessageMembers PositionSetpoint_message_members = {
   "px4_msgs::msg",  // message namespace
   "PositionSetpoint",  // message name
-  20,  // number of fields
+  23,  // number of fields
   sizeof(px4_msgs::msg::PositionSetpoint),
   PositionSetpoint_message_member_array,  // message members
   PositionSetpoint_init_function,  // function to initialize message memory (memory has to be allocated)

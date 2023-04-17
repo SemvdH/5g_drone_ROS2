@@ -38,7 +38,7 @@ struct ActuatorControlsStatus_
       rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
     {
       this->timestamp = 0ull;
-      std::fill<typename std::array<float, 3>::iterator, float>(this->control_power.begin(), this->control_power.end(), 0.0f);
+      std::fill<typename std::array<float, 4>::iterator, float>(this->control_power.begin(), this->control_power.end(), 0.0f);
     }
   }
 
@@ -49,7 +49,7 @@ struct ActuatorControlsStatus_
       rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
     {
       this->timestamp = 0ull;
-      std::fill<typename std::array<float, 3>::iterator, float>(this->control_power.begin(), this->control_power.end(), 0.0f);
+      std::fill<typename std::array<float, 4>::iterator, float>(this->control_power.begin(), this->control_power.end(), 0.0f);
     }
   }
 
@@ -58,7 +58,7 @@ struct ActuatorControlsStatus_
     uint64_t;
   _timestamp_type timestamp;
   using _control_power_type =
-    std::array<float, 3>;
+    std::array<float, 4>;
   _control_power_type control_power;
 
   // setters for named parameter idiom
@@ -69,13 +69,21 @@ struct ActuatorControlsStatus_
     return *this;
   }
   Type & set__control_power(
-    const std::array<float, 3> & _arg)
+    const std::array<float, 4> & _arg)
   {
     this->control_power = _arg;
     return *this;
   }
 
   // constant declarations
+  static constexpr uint8_t INDEX_ROLL =
+    0u;
+  static constexpr uint8_t INDEX_PITCH =
+    1u;
+  static constexpr uint8_t INDEX_YAW =
+    2u;
+  static constexpr uint8_t INDEX_THROTTLE =
+    3u;
 
   // pointer types
   using RawPtr =
@@ -136,6 +144,14 @@ using ActuatorControlsStatus =
   px4_msgs::msg::ActuatorControlsStatus_<std::allocator<void>>;
 
 // constant definitions
+template<typename ContainerAllocator>
+constexpr uint8_t ActuatorControlsStatus_<ContainerAllocator>::INDEX_ROLL;
+template<typename ContainerAllocator>
+constexpr uint8_t ActuatorControlsStatus_<ContainerAllocator>::INDEX_PITCH;
+template<typename ContainerAllocator>
+constexpr uint8_t ActuatorControlsStatus_<ContainerAllocator>::INDEX_YAW;
+template<typename ContainerAllocator>
+constexpr uint8_t ActuatorControlsStatus_<ContainerAllocator>::INDEX_THROTTLE;
 
 }  // namespace msg
 

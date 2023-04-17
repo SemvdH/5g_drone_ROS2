@@ -64,6 +64,11 @@ static bool _VehicleCommandAck__cdr_serialize(
     cdr << ros_message->result;
   }
 
+  // Field name: from_external
+  {
+    cdr << (ros_message->from_external ? true : false);
+  }
+
   // Field name: result_param1
   {
     cdr << ros_message->result_param1;
@@ -82,11 +87,6 @@ static bool _VehicleCommandAck__cdr_serialize(
   // Field name: target_component
   {
     cdr << ros_message->target_component;
-  }
-
-  // Field name: from_external
-  {
-    cdr << (ros_message->from_external ? true : false);
   }
 
   return true;
@@ -116,6 +116,13 @@ static bool _VehicleCommandAck__cdr_deserialize(
     cdr >> ros_message->result;
   }
 
+  // Field name: from_external
+  {
+    uint8_t tmp;
+    cdr >> tmp;
+    ros_message->from_external = tmp ? true : false;
+  }
+
   // Field name: result_param1
   {
     cdr >> ros_message->result_param1;
@@ -134,13 +141,6 @@ static bool _VehicleCommandAck__cdr_deserialize(
   // Field name: target_component
   {
     cdr >> ros_message->target_component;
-  }
-
-  // Field name: from_external
-  {
-    uint8_t tmp;
-    cdr >> tmp;
-    ros_message->from_external = tmp ? true : false;
   }
 
   return true;
@@ -178,6 +178,12 @@ size_t get_serialized_size_px4_msgs__msg__VehicleCommandAck(
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
+  // field.name from_external
+  {
+    size_t item_size = sizeof(ros_message->from_external);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
   // field.name result_param1
   {
     size_t item_size = sizeof(ros_message->result_param1);
@@ -199,12 +205,6 @@ size_t get_serialized_size_px4_msgs__msg__VehicleCommandAck(
   // field.name target_component
   {
     size_t item_size = sizeof(ros_message->target_component);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // field.name from_external
-  {
-    size_t item_size = sizeof(ros_message->from_external);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -252,6 +252,12 @@ size_t max_serialized_size_px4_msgs__msg__VehicleCommandAck(
 
     current_alignment += array_size * sizeof(uint8_t);
   }
+  // member: from_external
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
+  }
   // member: result_param1
   {
     size_t array_size = 1;
@@ -272,12 +278,6 @@ size_t max_serialized_size_px4_msgs__msg__VehicleCommandAck(
     current_alignment += array_size * sizeof(uint8_t);
   }
   // member: target_component
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint8_t);
-  }
-  // member: from_external
   {
     size_t array_size = 1;
 

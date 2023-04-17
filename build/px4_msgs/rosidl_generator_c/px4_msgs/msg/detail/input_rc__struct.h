@@ -139,8 +139,6 @@ typedef struct px4_msgs__msg__InputRc
   uint16_t rc_ppm_frame_length;
   uint8_t input_source;
   uint16_t values[18];
-  int8_t link_quality;
-  float rssi_dbm;
 } px4_msgs__msg__InputRc;
 
 // Struct for a sequence of px4_msgs__msg__InputRc.

@@ -110,10 +110,6 @@ module px4_msgs {
       boolean heartbeat_type_parachute;
 
       @verbatim (language="comment", text=
-        " MAV_TYPE_ODID")
-      boolean heartbeat_type_open_drone_id;
-
-      @verbatim (language="comment", text=
         " Heartbeats per component" "\n"
         " MAV_COMP_ID_TELEMETRY_RADIO")
       boolean heartbeat_component_telemetry_radio;
@@ -149,8 +145,6 @@ module px4_msgs {
       @verbatim (language="comment", text=
         " Misc component health")
       boolean avoidance_system_healthy;
-
-      boolean open_drone_id_system_healthy;
 
       boolean parachute_system_healthy;
     };

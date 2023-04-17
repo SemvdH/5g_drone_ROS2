@@ -79,6 +79,11 @@ static bool _FailureDetectorStatus__cdr_serialize(
     cdr << (ros_message->fd_arm_escs ? true : false);
   }
 
+  // Field name: fd_high_wind
+  {
+    cdr << (ros_message->fd_high_wind ? true : false);
+  }
+
   // Field name: fd_battery
   {
     cdr << (ros_message->fd_battery ? true : false);
@@ -89,19 +94,9 @@ static bool _FailureDetectorStatus__cdr_serialize(
     cdr << (ros_message->fd_imbalanced_prop ? true : false);
   }
 
-  // Field name: fd_motor
-  {
-    cdr << (ros_message->fd_motor ? true : false);
-  }
-
   // Field name: imbalanced_prop_metric
   {
     cdr << ros_message->imbalanced_prop_metric;
-  }
-
-  // Field name: motor_failure_mask
-  {
-    cdr << ros_message->motor_failure_mask;
   }
 
   return true;
@@ -156,6 +151,13 @@ static bool _FailureDetectorStatus__cdr_deserialize(
     ros_message->fd_arm_escs = tmp ? true : false;
   }
 
+  // Field name: fd_high_wind
+  {
+    uint8_t tmp;
+    cdr >> tmp;
+    ros_message->fd_high_wind = tmp ? true : false;
+  }
+
   // Field name: fd_battery
   {
     uint8_t tmp;
@@ -170,21 +172,9 @@ static bool _FailureDetectorStatus__cdr_deserialize(
     ros_message->fd_imbalanced_prop = tmp ? true : false;
   }
 
-  // Field name: fd_motor
-  {
-    uint8_t tmp;
-    cdr >> tmp;
-    ros_message->fd_motor = tmp ? true : false;
-  }
-
   // Field name: imbalanced_prop_metric
   {
     cdr >> ros_message->imbalanced_prop_metric;
-  }
-
-  // Field name: motor_failure_mask
-  {
-    cdr >> ros_message->motor_failure_mask;
   }
 
   return true;
@@ -240,6 +230,12 @@ size_t get_serialized_size_px4_msgs__msg__FailureDetectorStatus(
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
+  // field.name fd_high_wind
+  {
+    size_t item_size = sizeof(ros_message->fd_high_wind);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
   // field.name fd_battery
   {
     size_t item_size = sizeof(ros_message->fd_battery);
@@ -252,21 +248,9 @@ size_t get_serialized_size_px4_msgs__msg__FailureDetectorStatus(
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // field.name fd_motor
-  {
-    size_t item_size = sizeof(ros_message->fd_motor);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
   // field.name imbalanced_prop_metric
   {
     size_t item_size = sizeof(ros_message->imbalanced_prop_metric);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // field.name motor_failure_mask
-  {
-    size_t item_size = sizeof(ros_message->motor_failure_mask);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -331,6 +315,12 @@ size_t max_serialized_size_px4_msgs__msg__FailureDetectorStatus(
 
     current_alignment += array_size * sizeof(uint8_t);
   }
+  // member: fd_high_wind
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
+  }
   // member: fd_battery
   {
     size_t array_size = 1;
@@ -343,25 +333,12 @@ size_t max_serialized_size_px4_msgs__msg__FailureDetectorStatus(
 
     current_alignment += array_size * sizeof(uint8_t);
   }
-  // member: fd_motor
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint8_t);
-  }
   // member: imbalanced_prop_metric
   {
     size_t array_size = 1;
 
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
-  }
-  // member: motor_failure_mask
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint16_t) +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint16_t));
   }
 
   return current_alignment - initial_alignment;

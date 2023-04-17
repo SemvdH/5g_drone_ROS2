@@ -194,42 +194,6 @@ bool px4_msgs__msg__estimator_event_flags__convert_from_py(PyObject * _pymsg, vo
     ros_message->yaw_aligned_to_imu_gps = (Py_True == field);
     Py_DECREF(field);
   }
-  {  // reset_hgt_to_baro
-    PyObject * field = PyObject_GetAttrString(_pymsg, "reset_hgt_to_baro");
-    if (!field) {
-      return false;
-    }
-    assert(PyBool_Check(field));
-    ros_message->reset_hgt_to_baro = (Py_True == field);
-    Py_DECREF(field);
-  }
-  {  // reset_hgt_to_gps
-    PyObject * field = PyObject_GetAttrString(_pymsg, "reset_hgt_to_gps");
-    if (!field) {
-      return false;
-    }
-    assert(PyBool_Check(field));
-    ros_message->reset_hgt_to_gps = (Py_True == field);
-    Py_DECREF(field);
-  }
-  {  // reset_hgt_to_rng
-    PyObject * field = PyObject_GetAttrString(_pymsg, "reset_hgt_to_rng");
-    if (!field) {
-      return false;
-    }
-    assert(PyBool_Check(field));
-    ros_message->reset_hgt_to_rng = (Py_True == field);
-    Py_DECREF(field);
-  }
-  {  // reset_hgt_to_ev
-    PyObject * field = PyObject_GetAttrString(_pymsg, "reset_hgt_to_ev");
-    if (!field) {
-      return false;
-    }
-    assert(PyBool_Check(field));
-    ros_message->reset_hgt_to_ev = (Py_True == field);
-    Py_DECREF(field);
-  }
   {  // warning_event_changes
     PyObject * field = PyObject_GetAttrString(_pymsg, "warning_event_changes");
     if (!field) {
@@ -539,50 +503,6 @@ PyObject * px4_msgs__msg__estimator_event_flags__convert_to_py(void * raw_ros_me
     field = PyBool_FromLong(ros_message->yaw_aligned_to_imu_gps ? 1 : 0);
     {
       int rc = PyObject_SetAttrString(_pymessage, "yaw_aligned_to_imu_gps", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
-  {  // reset_hgt_to_baro
-    PyObject * field = NULL;
-    field = PyBool_FromLong(ros_message->reset_hgt_to_baro ? 1 : 0);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "reset_hgt_to_baro", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
-  {  // reset_hgt_to_gps
-    PyObject * field = NULL;
-    field = PyBool_FromLong(ros_message->reset_hgt_to_gps ? 1 : 0);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "reset_hgt_to_gps", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
-  {  // reset_hgt_to_rng
-    PyObject * field = NULL;
-    field = PyBool_FromLong(ros_message->reset_hgt_to_rng ? 1 : 0);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "reset_hgt_to_rng", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
-  {  // reset_hgt_to_ev
-    PyObject * field = NULL;
-    field = PyBool_FromLong(ros_message->reset_hgt_to_ev ? 1 : 0);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "reset_hgt_to_ev", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;

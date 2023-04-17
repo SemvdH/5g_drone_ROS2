@@ -89,6 +89,24 @@ bool px4_msgs__msg__vehicle_local_position_setpoint__convert_from_py(PyObject * 
     ros_message->z = (float)PyFloat_AS_DOUBLE(field);
     Py_DECREF(field);
   }
+  {  // yaw
+    PyObject * field = PyObject_GetAttrString(_pymsg, "yaw");
+    if (!field) {
+      return false;
+    }
+    assert(PyFloat_Check(field));
+    ros_message->yaw = (float)PyFloat_AS_DOUBLE(field);
+    Py_DECREF(field);
+  }
+  {  // yawspeed
+    PyObject * field = PyObject_GetAttrString(_pymsg, "yawspeed");
+    if (!field) {
+      return false;
+    }
+    assert(PyFloat_Check(field));
+    ros_message->yawspeed = (float)PyFloat_AS_DOUBLE(field);
+    Py_DECREF(field);
+  }
   {  // vx
     PyObject * field = PyObject_GetAttrString(_pymsg, "vx");
     if (!field) {
@@ -140,6 +158,30 @@ bool px4_msgs__msg__vehicle_local_position_setpoint__convert_from_py(PyObject * 
     }
     Py_DECREF(field);
   }
+  {  // jerk
+    PyObject * field = PyObject_GetAttrString(_pymsg, "jerk");
+    if (!field) {
+      return false;
+    }
+    {
+      // TODO(dirk-thomas) use a better way to check the type before casting
+      assert(field->ob_type != NULL);
+      assert(field->ob_type->tp_name != NULL);
+      assert(strcmp(field->ob_type->tp_name, "numpy.ndarray") == 0);
+      PyArrayObject * seq_field = (PyArrayObject *)field;
+      Py_INCREF(seq_field);
+      assert(PyArray_NDIM(seq_field) == 1);
+      assert(PyArray_TYPE(seq_field) == NPY_FLOAT32);
+      Py_ssize_t size = 3;
+      float * dest = ros_message->jerk;
+      for (Py_ssize_t i = 0; i < size; ++i) {
+        float tmp = *(npy_float32 *)PyArray_GETPTR1(seq_field, i);
+        memcpy(&dest[i], &tmp, sizeof(float));
+      }
+      Py_DECREF(seq_field);
+    }
+    Py_DECREF(field);
+  }
   {  // thrust
     PyObject * field = PyObject_GetAttrString(_pymsg, "thrust");
     if (!field) {
@@ -162,24 +204,6 @@ bool px4_msgs__msg__vehicle_local_position_setpoint__convert_from_py(PyObject * 
       }
       Py_DECREF(seq_field);
     }
-    Py_DECREF(field);
-  }
-  {  // yaw
-    PyObject * field = PyObject_GetAttrString(_pymsg, "yaw");
-    if (!field) {
-      return false;
-    }
-    assert(PyFloat_Check(field));
-    ros_message->yaw = (float)PyFloat_AS_DOUBLE(field);
-    Py_DECREF(field);
-  }
-  {  // yawspeed
-    PyObject * field = PyObject_GetAttrString(_pymsg, "yawspeed");
-    if (!field) {
-      return false;
-    }
-    assert(PyFloat_Check(field));
-    ros_message->yawspeed = (float)PyFloat_AS_DOUBLE(field);
     Py_DECREF(field);
   }
 
@@ -248,6 +272,28 @@ PyObject * px4_msgs__msg__vehicle_local_position_setpoint__convert_to_py(void * 
       }
     }
   }
+  {  // yaw
+    PyObject * field = NULL;
+    field = PyFloat_FromDouble(ros_message->yaw);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "yaw", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // yawspeed
+    PyObject * field = NULL;
+    field = PyFloat_FromDouble(ros_message->yawspeed);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "yawspeed", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
   {  // vx
     PyObject * field = NULL;
     field = PyFloat_FromDouble(ros_message->vx);
@@ -299,6 +345,24 @@ PyObject * px4_msgs__msg__vehicle_local_position_setpoint__convert_to_py(void * 
     memcpy(dst, src, 3 * sizeof(float));
     Py_DECREF(field);
   }
+  {  // jerk
+    PyObject * field = NULL;
+    field = PyObject_GetAttrString(_pymessage, "jerk");
+    if (!field) {
+      return NULL;
+    }
+    assert(field->ob_type != NULL);
+    assert(field->ob_type->tp_name != NULL);
+    assert(strcmp(field->ob_type->tp_name, "numpy.ndarray") == 0);
+    PyArrayObject * seq_field = (PyArrayObject *)field;
+    assert(PyArray_NDIM(seq_field) == 1);
+    assert(PyArray_TYPE(seq_field) == NPY_FLOAT32);
+    assert(sizeof(npy_float32) == sizeof(float));
+    npy_float32 * dst = (npy_float32 *)PyArray_GETPTR1(seq_field, 0);
+    float * src = &(ros_message->jerk[0]);
+    memcpy(dst, src, 3 * sizeof(float));
+    Py_DECREF(field);
+  }
   {  // thrust
     PyObject * field = NULL;
     field = PyObject_GetAttrString(_pymessage, "thrust");
@@ -316,28 +380,6 @@ PyObject * px4_msgs__msg__vehicle_local_position_setpoint__convert_to_py(void * 
     float * src = &(ros_message->thrust[0]);
     memcpy(dst, src, 3 * sizeof(float));
     Py_DECREF(field);
-  }
-  {  // yaw
-    PyObject * field = NULL;
-    field = PyFloat_FromDouble(ros_message->yaw);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "yaw", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
-  {  // yawspeed
-    PyObject * field = NULL;
-    field = PyFloat_FromDouble(ros_message->yawspeed);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "yawspeed", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
   }
 
   // ownership of _pymessage is transferred to the caller

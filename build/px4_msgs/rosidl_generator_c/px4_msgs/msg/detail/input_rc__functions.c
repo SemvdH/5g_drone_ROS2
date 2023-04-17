@@ -28,8 +28,6 @@ px4_msgs__msg__InputRc__init(px4_msgs__msg__InputRc * msg)
   // rc_ppm_frame_length
   // input_source
   // values
-  // link_quality
-  // rssi_dbm
   return true;
 }
 
@@ -50,8 +48,6 @@ px4_msgs__msg__InputRc__fini(px4_msgs__msg__InputRc * msg)
   // rc_ppm_frame_length
   // input_source
   // values
-  // link_quality
-  // rssi_dbm
 }
 
 bool
@@ -106,14 +102,6 @@ px4_msgs__msg__InputRc__are_equal(const px4_msgs__msg__InputRc * lhs, const px4_
       return false;
     }
   }
-  // link_quality
-  if (lhs->link_quality != rhs->link_quality) {
-    return false;
-  }
-  // rssi_dbm
-  if (lhs->rssi_dbm != rhs->rssi_dbm) {
-    return false;
-  }
   return true;
 }
 
@@ -149,10 +137,6 @@ px4_msgs__msg__InputRc__copy(
   for (size_t i = 0; i < 18; ++i) {
     output->values[i] = input->values[i];
   }
-  // link_quality
-  output->link_quality = input->link_quality;
-  // rssi_dbm
-  output->rssi_dbm = input->rssi_dbm;
   return true;
 }
 

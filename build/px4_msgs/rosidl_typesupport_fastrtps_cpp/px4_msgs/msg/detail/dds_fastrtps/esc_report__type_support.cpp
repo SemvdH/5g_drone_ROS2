@@ -46,16 +46,10 @@ cdr_serialize(
   cdr << ros_message.esc_temperature;
   // Member: esc_address
   cdr << ros_message.esc_address;
-  // Member: esc_cmdcount
-  cdr << ros_message.esc_cmdcount;
   // Member: esc_state
   cdr << ros_message.esc_state;
-  // Member: actuator_function
-  cdr << ros_message.actuator_function;
   // Member: failures
   cdr << ros_message.failures;
-  // Member: esc_power
-  cdr << ros_message.esc_power;
   return true;
 }
 
@@ -86,20 +80,11 @@ cdr_deserialize(
   // Member: esc_address
   cdr >> ros_message.esc_address;
 
-  // Member: esc_cmdcount
-  cdr >> ros_message.esc_cmdcount;
-
   // Member: esc_state
   cdr >> ros_message.esc_state;
 
-  // Member: actuator_function
-  cdr >> ros_message.actuator_function;
-
   // Member: failures
   cdr >> ros_message.failures;
-
-  // Member: esc_power
-  cdr >> ros_message.esc_power;
 
   return true;
 }
@@ -159,33 +144,15 @@ get_serialized_size(
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // Member: esc_cmdcount
-  {
-    size_t item_size = sizeof(ros_message.esc_cmdcount);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
   // Member: esc_state
   {
     size_t item_size = sizeof(ros_message.esc_state);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // Member: actuator_function
-  {
-    size_t item_size = sizeof(ros_message.actuator_function);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
   // Member: failures
   {
     size_t item_size = sizeof(ros_message.failures);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // Member: esc_power
-  {
-    size_t item_size = sizeof(ros_message.esc_power);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -263,21 +230,7 @@ max_serialized_size_EscReport(
     current_alignment += array_size * sizeof(uint8_t);
   }
 
-  // Member: esc_cmdcount
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint8_t);
-  }
-
   // Member: esc_state
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint8_t);
-  }
-
-  // Member: actuator_function
   {
     size_t array_size = 1;
 
@@ -290,13 +243,6 @@ max_serialized_size_EscReport(
 
     current_alignment += array_size * sizeof(uint16_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint16_t));
-  }
-
-  // Member: esc_power
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint8_t);
   }
 
   return current_alignment - initial_alignment;

@@ -31,7 +31,7 @@ void VehicleImu__rosidl_typesupport_introspection_c__VehicleImu_fini_function(vo
   px4_msgs__msg__VehicleImu__fini(message_memory);
 }
 
-static rosidl_typesupport_introspection_c__MessageMember VehicleImu__rosidl_typesupport_introspection_c__VehicleImu_message_member_array[12] = {
+static rosidl_typesupport_introspection_c__MessageMember VehicleImu__rosidl_typesupport_introspection_c__VehicleImu_message_member_array[11] = {
   {
     "timestamp",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_UINT64,  // type
@@ -153,21 +153,6 @@ static rosidl_typesupport_introspection_c__MessageMember VehicleImu__rosidl_type
     NULL  // resize(index) function pointer
   },
   {
-    "delta_angle_clipping",  // name
-    rosidl_typesupport_introspection_c__ROS_TYPE_UINT8,  // type
-    0,  // upper bound of string
-    NULL,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs__msg__VehicleImu, delta_angle_clipping),  // bytes offset in struct
-    NULL,  // default value
-    NULL,  // size() function pointer
-    NULL,  // get_const(index) function pointer
-    NULL,  // get(index) function pointer
-    NULL  // resize(index) function pointer
-  },
-  {
     "delta_velocity_clipping",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_UINT8,  // type
     0,  // upper bound of string
@@ -217,7 +202,7 @@ static rosidl_typesupport_introspection_c__MessageMember VehicleImu__rosidl_type
 static const rosidl_typesupport_introspection_c__MessageMembers VehicleImu__rosidl_typesupport_introspection_c__VehicleImu_message_members = {
   "px4_msgs__msg",  // message namespace
   "VehicleImu",  // message name
-  12,  // number of fields
+  11,  // number of fields
   sizeof(px4_msgs__msg__VehicleImu),
   VehicleImu__rosidl_typesupport_introspection_c__VehicleImu_message_member_array,  // message members
   VehicleImu__rosidl_typesupport_introspection_c__VehicleImu_init_function,  // function to initialize message memory (memory has to be allocated)

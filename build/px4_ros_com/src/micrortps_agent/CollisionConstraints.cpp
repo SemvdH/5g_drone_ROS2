@@ -35,11 +35,11 @@ using namespace eprosima::fastcdr::exception;
 
 px4_msgs::msg::CollisionConstraints::CollisionConstraints()
 {
-    // m_timestamp com.eprosima.idl.parser.typecode.PrimitiveTypeCode@38145825
+    // m_timestamp com.eprosima.idl.parser.typecode.PrimitiveTypeCode@12591ac8
     m_timestamp = 0;
-    // m_original_setpoint com.eprosima.idl.parser.typecode.AliasTypeCode@41330d4f
+    // m_original_setpoint com.eprosima.idl.parser.typecode.AliasTypeCode@5a7fe64f
     memset(&m_original_setpoint, 0, (2) * 4);
-    // m_adapted_setpoint com.eprosima.idl.parser.typecode.AliasTypeCode@41330d4f
+    // m_adapted_setpoint com.eprosima.idl.parser.typecode.AliasTypeCode@5a7fe64f
     memset(&m_adapted_setpoint, 0, (2) * 4);
 
 }

@@ -31,7 +31,7 @@ void VehicleLandDetected__rosidl_typesupport_introspection_c__VehicleLandDetecte
   px4_msgs__msg__VehicleLandDetected__fini(message_memory);
 }
 
-static rosidl_typesupport_introspection_c__MessageMember VehicleLandDetected__rosidl_typesupport_introspection_c__VehicleLandDetected_message_member_array[13] = {
+static rosidl_typesupport_introspection_c__MessageMember VehicleLandDetected__rosidl_typesupport_introspection_c__VehicleLandDetected_message_member_array[12] = {
   {
     "timestamp",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_UINT64,  // type
@@ -183,21 +183,6 @@ static rosidl_typesupport_introspection_c__MessageMember VehicleLandDetected__ro
     NULL  // resize(index) function pointer
   },
   {
-    "rotational_movement",  // name
-    rosidl_typesupport_introspection_c__ROS_TYPE_BOOLEAN,  // type
-    0,  // upper bound of string
-    NULL,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs__msg__VehicleLandDetected, rotational_movement),  // bytes offset in struct
-    NULL,  // default value
-    NULL,  // size() function pointer
-    NULL,  // get_const(index) function pointer
-    NULL,  // get(index) function pointer
-    NULL  // resize(index) function pointer
-  },
-  {
     "close_to_ground_or_skipped_check",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_BOOLEAN,  // type
     0,  // upper bound of string
@@ -232,7 +217,7 @@ static rosidl_typesupport_introspection_c__MessageMember VehicleLandDetected__ro
 static const rosidl_typesupport_introspection_c__MessageMembers VehicleLandDetected__rosidl_typesupport_introspection_c__VehicleLandDetected_message_members = {
   "px4_msgs__msg",  // message namespace
   "VehicleLandDetected",  // message name
-  13,  // number of fields
+  12,  // number of fields
   sizeof(px4_msgs__msg__VehicleLandDetected),
   VehicleLandDetected__rosidl_typesupport_introspection_c__VehicleLandDetected_message_member_array,  // message members
   VehicleLandDetected__rosidl_typesupport_introspection_c__VehicleLandDetected_init_function,  // function to initialize message memory (memory has to be allocated)

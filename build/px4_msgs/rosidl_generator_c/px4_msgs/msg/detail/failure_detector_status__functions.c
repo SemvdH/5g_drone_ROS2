@@ -23,11 +23,10 @@ px4_msgs__msg__FailureDetectorStatus__init(px4_msgs__msg__FailureDetectorStatus 
   // fd_alt
   // fd_ext
   // fd_arm_escs
+  // fd_high_wind
   // fd_battery
   // fd_imbalanced_prop
-  // fd_motor
   // imbalanced_prop_metric
-  // motor_failure_mask
   return true;
 }
 
@@ -43,11 +42,10 @@ px4_msgs__msg__FailureDetectorStatus__fini(px4_msgs__msg__FailureDetectorStatus 
   // fd_alt
   // fd_ext
   // fd_arm_escs
+  // fd_high_wind
   // fd_battery
   // fd_imbalanced_prop
-  // fd_motor
   // imbalanced_prop_metric
-  // motor_failure_mask
 }
 
 bool
@@ -80,6 +78,10 @@ px4_msgs__msg__FailureDetectorStatus__are_equal(const px4_msgs__msg__FailureDete
   if (lhs->fd_arm_escs != rhs->fd_arm_escs) {
     return false;
   }
+  // fd_high_wind
+  if (lhs->fd_high_wind != rhs->fd_high_wind) {
+    return false;
+  }
   // fd_battery
   if (lhs->fd_battery != rhs->fd_battery) {
     return false;
@@ -88,16 +90,8 @@ px4_msgs__msg__FailureDetectorStatus__are_equal(const px4_msgs__msg__FailureDete
   if (lhs->fd_imbalanced_prop != rhs->fd_imbalanced_prop) {
     return false;
   }
-  // fd_motor
-  if (lhs->fd_motor != rhs->fd_motor) {
-    return false;
-  }
   // imbalanced_prop_metric
   if (lhs->imbalanced_prop_metric != rhs->imbalanced_prop_metric) {
-    return false;
-  }
-  // motor_failure_mask
-  if (lhs->motor_failure_mask != rhs->motor_failure_mask) {
     return false;
   }
   return true;
@@ -123,16 +117,14 @@ px4_msgs__msg__FailureDetectorStatus__copy(
   output->fd_ext = input->fd_ext;
   // fd_arm_escs
   output->fd_arm_escs = input->fd_arm_escs;
+  // fd_high_wind
+  output->fd_high_wind = input->fd_high_wind;
   // fd_battery
   output->fd_battery = input->fd_battery;
   // fd_imbalanced_prop
   output->fd_imbalanced_prop = input->fd_imbalanced_prop;
-  // fd_motor
-  output->fd_motor = input->fd_motor;
   // imbalanced_prop_metric
   output->imbalanced_prop_metric = input->imbalanced_prop_metric;
-  // motor_failure_mask
-  output->motor_failure_mask = input->motor_failure_mask;
   return true;
 }
 

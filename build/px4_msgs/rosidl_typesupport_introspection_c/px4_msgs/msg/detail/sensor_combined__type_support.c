@@ -31,7 +31,7 @@ void SensorCombined__rosidl_typesupport_introspection_c__SensorCombined_fini_fun
   px4_msgs__msg__SensorCombined__fini(message_memory);
 }
 
-static rosidl_typesupport_introspection_c__MessageMember SensorCombined__rosidl_typesupport_introspection_c__SensorCombined_message_member_array[10] = {
+static rosidl_typesupport_introspection_c__MessageMember SensorCombined__rosidl_typesupport_introspection_c__SensorCombined_message_member_array[9] = {
   {
     "timestamp",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_UINT64,  // type
@@ -138,21 +138,6 @@ static rosidl_typesupport_introspection_c__MessageMember SensorCombined__rosidl_
     NULL  // resize(index) function pointer
   },
   {
-    "gyro_clipping",  // name
-    rosidl_typesupport_introspection_c__ROS_TYPE_UINT8,  // type
-    0,  // upper bound of string
-    NULL,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs__msg__SensorCombined, gyro_clipping),  // bytes offset in struct
-    NULL,  // default value
-    NULL,  // size() function pointer
-    NULL,  // get_const(index) function pointer
-    NULL,  // get(index) function pointer
-    NULL  // resize(index) function pointer
-  },
-  {
     "accel_calibration_count",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_UINT8,  // type
     0,  // upper bound of string
@@ -187,7 +172,7 @@ static rosidl_typesupport_introspection_c__MessageMember SensorCombined__rosidl_
 static const rosidl_typesupport_introspection_c__MessageMembers SensorCombined__rosidl_typesupport_introspection_c__SensorCombined_message_members = {
   "px4_msgs__msg",  // message namespace
   "SensorCombined",  // message name
-  10,  // number of fields
+  9,  // number of fields
   sizeof(px4_msgs__msg__SensorCombined),
   SensorCombined__rosidl_typesupport_introspection_c__SensorCombined_message_member_array,  // message members
   SensorCombined__rosidl_typesupport_introspection_c__SensorCombined_init_function,  // function to initialize message memory (memory has to be allocated)

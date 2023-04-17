@@ -113,7 +113,7 @@ module px4_msgs {
       uint16 serial_number;
 
       @verbatim (language="comment", text=
-        " manufacture date, part of serial number of the battery pack. Formatted as: Day + Month×32 + (Year–1980)×512")
+        " manufacture date, part of serial number of the battery pack. formated as: Day + Month×32 + (Year–1980)×512")
       uint16 manufacture_date;
 
       @verbatim (language="comment", text=

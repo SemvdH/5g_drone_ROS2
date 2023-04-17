@@ -116,13 +116,13 @@ struct ActuatorTest_
   static constexpr uint8_t FUNCTION_MOTOR1 =
     101u;
   static constexpr uint8_t MAX_NUM_MOTORS =
-    12u;
+    8u;
   static constexpr uint8_t FUNCTION_SERVO1 =
     201u;
   static constexpr uint8_t MAX_NUM_SERVOS =
     8u;
   static constexpr uint8_t ORB_QUEUE_LENGTH =
-    12u;
+    8u;
 
   // pointer types
   using RawPtr =

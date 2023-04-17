@@ -31,7 +31,7 @@ void TecsStatus__rosidl_typesupport_introspection_c__TecsStatus_fini_function(vo
   px4_msgs__msg__TecsStatus__fini(message_memory);
 }
 
-static rosidl_typesupport_introspection_c__MessageMember TecsStatus__rosidl_typesupport_introspection_c__TecsStatus_message_member_array[23] = {
+static rosidl_typesupport_introspection_c__MessageMember TecsStatus__rosidl_typesupport_introspection_c__TecsStatus_message_member_array[29] = {
   {
     "timestamp",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_UINT64,  // type
@@ -63,44 +63,14 @@ static rosidl_typesupport_introspection_c__MessageMember TecsStatus__rosidl_type
     NULL  // resize(index) function pointer
   },
   {
-    "altitude_reference",  // name
+    "altitude_filtered",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
     0,  // upper bound of string
     NULL,  // members of sub message
     false,  // is array
     0,  // array size
     false,  // is upper bound
-    offsetof(px4_msgs__msg__TecsStatus, altitude_reference),  // bytes offset in struct
-    NULL,  // default value
-    NULL,  // size() function pointer
-    NULL,  // get_const(index) function pointer
-    NULL,  // get(index) function pointer
-    NULL  // resize(index) function pointer
-  },
-  {
-    "height_rate_reference",  // name
-    rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
-    0,  // upper bound of string
-    NULL,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs__msg__TecsStatus, height_rate_reference),  // bytes offset in struct
-    NULL,  // default value
-    NULL,  // size() function pointer
-    NULL,  // get_const(index) function pointer
-    NULL,  // get(index) function pointer
-    NULL  // resize(index) function pointer
-  },
-  {
-    "height_rate_direct",  // name
-    rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
-    0,  // upper bound of string
-    NULL,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs__msg__TecsStatus, height_rate_direct),  // bytes offset in struct
+    offsetof(px4_msgs__msg__TecsStatus, altitude_filtered),  // bytes offset in struct
     NULL,  // default value
     NULL,  // size() function pointer
     NULL,  // get_const(index) function pointer
@@ -228,14 +198,89 @@ static rosidl_typesupport_introspection_c__MessageMember TecsStatus__rosidl_type
     NULL  // resize(index) function pointer
   },
   {
-    "total_energy_rate_sp",  // name
+    "true_airspeed_innovation",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
     0,  // upper bound of string
     NULL,  // members of sub message
     false,  // is array
     0,  // array size
     false,  // is upper bound
-    offsetof(px4_msgs__msg__TecsStatus, total_energy_rate_sp),  // bytes offset in struct
+    offsetof(px4_msgs__msg__TecsStatus, true_airspeed_innovation),  // bytes offset in struct
+    NULL,  // default value
+    NULL,  // size() function pointer
+    NULL,  // get_const(index) function pointer
+    NULL,  // get(index) function pointer
+    NULL  // resize(index) function pointer
+  },
+  {
+    "total_energy_error",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
+    0,  // upper bound of string
+    NULL,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs__msg__TecsStatus, total_energy_error),  // bytes offset in struct
+    NULL,  // default value
+    NULL,  // size() function pointer
+    NULL,  // get_const(index) function pointer
+    NULL,  // get(index) function pointer
+    NULL  // resize(index) function pointer
+  },
+  {
+    "energy_distribution_error",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
+    0,  // upper bound of string
+    NULL,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs__msg__TecsStatus, energy_distribution_error),  // bytes offset in struct
+    NULL,  // default value
+    NULL,  // size() function pointer
+    NULL,  // get_const(index) function pointer
+    NULL,  // get(index) function pointer
+    NULL  // resize(index) function pointer
+  },
+  {
+    "total_energy_rate_error",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
+    0,  // upper bound of string
+    NULL,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs__msg__TecsStatus, total_energy_rate_error),  // bytes offset in struct
+    NULL,  // default value
+    NULL,  // size() function pointer
+    NULL,  // get_const(index) function pointer
+    NULL,  // get(index) function pointer
+    NULL  // resize(index) function pointer
+  },
+  {
+    "energy_distribution_rate_error",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
+    0,  // upper bound of string
+    NULL,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs__msg__TecsStatus, energy_distribution_rate_error),  // bytes offset in struct
+    NULL,  // default value
+    NULL,  // size() function pointer
+    NULL,  // get_const(index) function pointer
+    NULL,  // get(index) function pointer
+    NULL  // resize(index) function pointer
+  },
+  {
+    "total_energy",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
+    0,  // upper bound of string
+    NULL,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs__msg__TecsStatus, total_energy),  // bytes offset in struct
     NULL,  // default value
     NULL,  // size() function pointer
     NULL,  // get_const(index) function pointer
@@ -258,14 +303,14 @@ static rosidl_typesupport_introspection_c__MessageMember TecsStatus__rosidl_type
     NULL  // resize(index) function pointer
   },
   {
-    "total_energy_balance_rate_sp",  // name
+    "total_energy_balance",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
     0,  // upper bound of string
     NULL,  // members of sub message
     false,  // is array
     0,  // array size
     false,  // is upper bound
-    offsetof(px4_msgs__msg__TecsStatus, total_energy_balance_rate_sp),  // bytes offset in struct
+    offsetof(px4_msgs__msg__TecsStatus, total_energy_balance),  // bytes offset in struct
     NULL,  // default value
     NULL,  // size() function pointer
     NULL,  // get_const(index) function pointer
@@ -281,6 +326,66 @@ static rosidl_typesupport_introspection_c__MessageMember TecsStatus__rosidl_type
     0,  // array size
     false,  // is upper bound
     offsetof(px4_msgs__msg__TecsStatus, total_energy_balance_rate),  // bytes offset in struct
+    NULL,  // default value
+    NULL,  // size() function pointer
+    NULL,  // get_const(index) function pointer
+    NULL,  // get(index) function pointer
+    NULL  // resize(index) function pointer
+  },
+  {
+    "total_energy_sp",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
+    0,  // upper bound of string
+    NULL,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs__msg__TecsStatus, total_energy_sp),  // bytes offset in struct
+    NULL,  // default value
+    NULL,  // size() function pointer
+    NULL,  // get_const(index) function pointer
+    NULL,  // get(index) function pointer
+    NULL  // resize(index) function pointer
+  },
+  {
+    "total_energy_rate_sp",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
+    0,  // upper bound of string
+    NULL,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs__msg__TecsStatus, total_energy_rate_sp),  // bytes offset in struct
+    NULL,  // default value
+    NULL,  // size() function pointer
+    NULL,  // get_const(index) function pointer
+    NULL,  // get(index) function pointer
+    NULL  // resize(index) function pointer
+  },
+  {
+    "total_energy_balance_sp",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
+    0,  // upper bound of string
+    NULL,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs__msg__TecsStatus, total_energy_balance_sp),  // bytes offset in struct
+    NULL,  // default value
+    NULL,  // size() function pointer
+    NULL,  // get_const(index) function pointer
+    NULL,  // get(index) function pointer
+    NULL  // resize(index) function pointer
+  },
+  {
+    "total_energy_balance_rate_sp",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
+    0,  // upper bound of string
+    NULL,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs__msg__TecsStatus, total_energy_balance_rate_sp),  // bytes offset in struct
     NULL,  // default value
     NULL,  // size() function pointer
     NULL,  // get_const(index) function pointer
@@ -348,21 +453,6 @@ static rosidl_typesupport_introspection_c__MessageMember TecsStatus__rosidl_type
     NULL  // resize(index) function pointer
   },
   {
-    "throttle_trim",  // name
-    rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
-    0,  // upper bound of string
-    NULL,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs__msg__TecsStatus, throttle_trim),  // bytes offset in struct
-    NULL,  // default value
-    NULL,  // size() function pointer
-    NULL,  // get_const(index) function pointer
-    NULL,  // get(index) function pointer
-    NULL  // resize(index) function pointer
-  },
-  {
     "mode",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_UINT8,  // type
     0,  // upper bound of string
@@ -382,7 +472,7 @@ static rosidl_typesupport_introspection_c__MessageMember TecsStatus__rosidl_type
 static const rosidl_typesupport_introspection_c__MessageMembers TecsStatus__rosidl_typesupport_introspection_c__TecsStatus_message_members = {
   "px4_msgs__msg",  // message namespace
   "TecsStatus",  // message name
-  23,  // number of fields
+  29,  // number of fields
   sizeof(px4_msgs__msg__TecsStatus),
   TecsStatus__rosidl_typesupport_introspection_c__TecsStatus_message_member_array,  // message members
   TecsStatus__rosidl_typesupport_introspection_c__TecsStatus_init_function,  // function to initialize message memory (memory has to be allocated)

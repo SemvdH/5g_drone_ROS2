@@ -21,7 +21,7 @@ module px4_msgs {
       float true_airspeed_m_s;
 
       @verbatim (language="comment", text=
-        " air temperature in degrees Celsius, -1000 if unknown")
+        " air temperature in degrees celsius, -1000 if unknown")
       float air_temperature_celsius;
 
       @verbatim (language="comment", text=

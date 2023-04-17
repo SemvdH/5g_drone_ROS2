@@ -365,33 +365,6 @@ bool px4_msgs__msg__estimator_status_flags__convert_from_py(PyObject * _pymsg, v
     ros_message->cs_rng_kin_consistent = (Py_True == field);
     Py_DECREF(field);
   }
-  {  // cs_fake_pos
-    PyObject * field = PyObject_GetAttrString(_pymsg, "cs_fake_pos");
-    if (!field) {
-      return false;
-    }
-    assert(PyBool_Check(field));
-    ros_message->cs_fake_pos = (Py_True == field);
-    Py_DECREF(field);
-  }
-  {  // cs_fake_hgt
-    PyObject * field = PyObject_GetAttrString(_pymsg, "cs_fake_hgt");
-    if (!field) {
-      return false;
-    }
-    assert(PyBool_Check(field));
-    ros_message->cs_fake_hgt = (Py_True == field);
-    Py_DECREF(field);
-  }
-  {  // cs_gravity_vector
-    PyObject * field = PyObject_GetAttrString(_pymsg, "cs_gravity_vector");
-    if (!field) {
-      return false;
-    }
-    assert(PyBool_Check(field));
-    ros_message->cs_gravity_vector = (Py_True == field);
-    Py_DECREF(field);
-  }
   {  // fault_status_changes
     PyObject * field = PyObject_GetAttrString(_pymsg, "fault_status_changes");
     if (!field) {
@@ -606,6 +579,33 @@ bool px4_msgs__msg__estimator_status_flags__convert_from_py(PyObject * _pymsg, v
     }
     assert(PyBool_Check(field));
     ros_message->reject_ver_pos = (Py_True == field);
+    Py_DECREF(field);
+  }
+  {  // reject_mag_x
+    PyObject * field = PyObject_GetAttrString(_pymsg, "reject_mag_x");
+    if (!field) {
+      return false;
+    }
+    assert(PyBool_Check(field));
+    ros_message->reject_mag_x = (Py_True == field);
+    Py_DECREF(field);
+  }
+  {  // reject_mag_y
+    PyObject * field = PyObject_GetAttrString(_pymsg, "reject_mag_y");
+    if (!field) {
+      return false;
+    }
+    assert(PyBool_Check(field));
+    ros_message->reject_mag_y = (Py_True == field);
+    Py_DECREF(field);
+  }
+  {  // reject_mag_z
+    PyObject * field = PyObject_GetAttrString(_pymsg, "reject_mag_z");
+    if (!field) {
+      return false;
+    }
+    assert(PyBool_Check(field));
+    ros_message->reject_mag_z = (Py_True == field);
     Py_DECREF(field);
   }
   {  // reject_yaw
@@ -1069,39 +1069,6 @@ PyObject * px4_msgs__msg__estimator_status_flags__convert_to_py(void * raw_ros_m
       }
     }
   }
-  {  // cs_fake_pos
-    PyObject * field = NULL;
-    field = PyBool_FromLong(ros_message->cs_fake_pos ? 1 : 0);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "cs_fake_pos", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
-  {  // cs_fake_hgt
-    PyObject * field = NULL;
-    field = PyBool_FromLong(ros_message->cs_fake_hgt ? 1 : 0);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "cs_fake_hgt", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
-  {  // cs_gravity_vector
-    PyObject * field = NULL;
-    field = PyBool_FromLong(ros_message->cs_gravity_vector ? 1 : 0);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "cs_gravity_vector", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
   {  // fault_status_changes
     PyObject * field = NULL;
     field = PyLong_FromUnsignedLong(ros_message->fault_status_changes);
@@ -1360,6 +1327,39 @@ PyObject * px4_msgs__msg__estimator_status_flags__convert_to_py(void * raw_ros_m
     field = PyBool_FromLong(ros_message->reject_ver_pos ? 1 : 0);
     {
       int rc = PyObject_SetAttrString(_pymessage, "reject_ver_pos", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // reject_mag_x
+    PyObject * field = NULL;
+    field = PyBool_FromLong(ros_message->reject_mag_x ? 1 : 0);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "reject_mag_x", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // reject_mag_y
+    PyObject * field = NULL;
+    field = PyBool_FromLong(ros_message->reject_mag_y ? 1 : 0);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "reject_mag_y", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // reject_mag_z
+    PyObject * field = NULL;
+    field = PyBool_FromLong(ros_message->reject_mag_z ? 1 : 0);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "reject_mag_z", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;

@@ -34,7 +34,6 @@ typedef struct px4_msgs__msg__SensorGyro
   float z;
   float temperature;
   uint32_t error_count;
-  uint8_t clip_counter[3];
   uint8_t samples;
 } px4_msgs__msg__SensorGyro;
 

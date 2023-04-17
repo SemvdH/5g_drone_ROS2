@@ -18,7 +18,7 @@ module px4_msgs {
       uint64 timestamp;
 
       @verbatim (language="comment", text=
-        " Instance of GNSS receiver")
+        " Instance of GNSS reciever")
       uint8 instance;
 
       @verbatim (language="comment", text=

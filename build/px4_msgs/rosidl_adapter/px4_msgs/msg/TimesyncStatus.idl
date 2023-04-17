@@ -6,9 +6,8 @@
 module px4_msgs {
   module msg {
     module TimesyncStatus_Constants {
-      const uint8 SOURCE_PROTOCOL_UNKNOWN = 0;
-      const uint8 SOURCE_PROTOCOL_MAVLINK = 1;
-      const uint8 SOURCE_PROTOCOL_DDS = 2;
+      const uint8 SOURCE_PROTOCOL_MAVLINK = 0;
+      const uint8 SOURCE_PROTOCOL_RTPS = 1;
     };
     struct TimesyncStatus {
       @verbatim (language="comment", text=
@@ -16,7 +15,7 @@ module px4_msgs {
       uint64 timestamp;
 
       @verbatim (language="comment", text=
-        " timesync source")
+        " timesync source. Source can be MAVLink or the microRTPS bridge")
       uint8 source_protocol;
 
       @verbatim (language="comment", text=

@@ -5,10 +5,9 @@
 
 # Import statements for member types
 
-# Member 'position'
-# Member 'velocity'
 # Member 'acceleration'
 # Member 'jerk'
+# Member 'thrust'
 import numpy  # noqa: E402, I100
 
 import rosidl_parser.definition  # noqa: E402, I100
@@ -60,32 +59,47 @@ class TrajectorySetpoint(metaclass=Metaclass_TrajectorySetpoint):
 
     __slots__ = [
         '_timestamp',
-        '_position',
-        '_velocity',
-        '_acceleration',
-        '_jerk',
+        '_x',
+        '_y',
+        '_z',
         '_yaw',
         '_yawspeed',
+        '_vx',
+        '_vy',
+        '_vz',
+        '_acceleration',
+        '_jerk',
+        '_thrust',
     ]
 
     _fields_and_field_types = {
         'timestamp': 'uint64',
-        'position': 'float[3]',
-        'velocity': 'float[3]',
-        'acceleration': 'float[3]',
-        'jerk': 'float[3]',
+        'x': 'float',
+        'y': 'float',
+        'z': 'float',
         'yaw': 'float',
         'yawspeed': 'float',
+        'vx': 'float',
+        'vy': 'float',
+        'vz': 'float',
+        'acceleration': 'float[3]',
+        'jerk': 'float[3]',
+        'thrust': 'float[3]',
     }
 
     SLOT_TYPES = (
         rosidl_parser.definition.BasicType('uint64'),  # noqa: E501
-        rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 3),  # noqa: E501
-        rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 3),  # noqa: E501
-        rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 3),  # noqa: E501
-        rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 3),  # noqa: E501
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
+        rosidl_parser.definition.BasicType('float'),  # noqa: E501
+        rosidl_parser.definition.BasicType('float'),  # noqa: E501
+        rosidl_parser.definition.BasicType('float'),  # noqa: E501
+        rosidl_parser.definition.BasicType('float'),  # noqa: E501
+        rosidl_parser.definition.BasicType('float'),  # noqa: E501
+        rosidl_parser.definition.BasicType('float'),  # noqa: E501
+        rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 3),  # noqa: E501
+        rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 3),  # noqa: E501
+        rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 3),  # noqa: E501
     )
 
     def __init__(self, **kwargs):
@@ -93,16 +107,14 @@ class TrajectorySetpoint(metaclass=Metaclass_TrajectorySetpoint):
             'Invalid arguments passed to constructor: %s' % \
             ', '.join(sorted(k for k in kwargs.keys() if '_' + k not in self.__slots__))
         self.timestamp = kwargs.get('timestamp', int())
-        if 'position' not in kwargs:
-            self.position = numpy.zeros(3, dtype=numpy.float32)
-        else:
-            self.position = numpy.array(kwargs.get('position'), dtype=numpy.float32)
-            assert self.position.shape == (3, )
-        if 'velocity' not in kwargs:
-            self.velocity = numpy.zeros(3, dtype=numpy.float32)
-        else:
-            self.velocity = numpy.array(kwargs.get('velocity'), dtype=numpy.float32)
-            assert self.velocity.shape == (3, )
+        self.x = kwargs.get('x', float())
+        self.y = kwargs.get('y', float())
+        self.z = kwargs.get('z', float())
+        self.yaw = kwargs.get('yaw', float())
+        self.yawspeed = kwargs.get('yawspeed', float())
+        self.vx = kwargs.get('vx', float())
+        self.vy = kwargs.get('vy', float())
+        self.vz = kwargs.get('vz', float())
         if 'acceleration' not in kwargs:
             self.acceleration = numpy.zeros(3, dtype=numpy.float32)
         else:
@@ -113,8 +125,11 @@ class TrajectorySetpoint(metaclass=Metaclass_TrajectorySetpoint):
         else:
             self.jerk = numpy.array(kwargs.get('jerk'), dtype=numpy.float32)
             assert self.jerk.shape == (3, )
-        self.yaw = kwargs.get('yaw', float())
-        self.yawspeed = kwargs.get('yawspeed', float())
+        if 'thrust' not in kwargs:
+            self.thrust = numpy.zeros(3, dtype=numpy.float32)
+        else:
+            self.thrust = numpy.array(kwargs.get('thrust'), dtype=numpy.float32)
+            assert self.thrust.shape == (3, )
 
     def __repr__(self):
         typename = self.__class__.__module__.split('.')
@@ -147,17 +162,27 @@ class TrajectorySetpoint(metaclass=Metaclass_TrajectorySetpoint):
             return False
         if self.timestamp != other.timestamp:
             return False
-        if all(self.position != other.position):
+        if self.x != other.x:
             return False
-        if all(self.velocity != other.velocity):
+        if self.y != other.y:
+            return False
+        if self.z != other.z:
+            return False
+        if self.yaw != other.yaw:
+            return False
+        if self.yawspeed != other.yawspeed:
+            return False
+        if self.vx != other.vx:
+            return False
+        if self.vy != other.vy:
+            return False
+        if self.vz != other.vz:
             return False
         if all(self.acceleration != other.acceleration):
             return False
         if all(self.jerk != other.jerk):
             return False
-        if self.yaw != other.yaw:
-            return False
-        if self.yawspeed != other.yawspeed:
+        if all(self.thrust != other.thrust):
             return False
         return True
 
@@ -182,66 +207,108 @@ class TrajectorySetpoint(metaclass=Metaclass_TrajectorySetpoint):
         self._timestamp = value
 
     @property
-    def position(self):
-        """Message field 'position'."""
-        return self._position
+    def x(self):
+        """Message field 'x'."""
+        return self._x
 
-    @position.setter
-    def position(self, value):
-        if isinstance(value, numpy.ndarray):
-            assert value.dtype == numpy.float32, \
-                "The 'position' numpy.ndarray() must have the dtype of 'numpy.float32'"
-            assert value.size == 3, \
-                "The 'position' numpy.ndarray() must have a size of 3"
-            self._position = value
-            return
+    @x.setter
+    def x(self, value):
         if __debug__:
-            from collections.abc import Sequence
-            from collections.abc import Set
-            from collections import UserList
-            from collections import UserString
             assert \
-                ((isinstance(value, Sequence) or
-                  isinstance(value, Set) or
-                  isinstance(value, UserList)) and
-                 not isinstance(value, str) and
-                 not isinstance(value, UserString) and
-                 len(value) == 3 and
-                 all(isinstance(v, float) for v in value) and
-                 True), \
-                "The 'position' field must be a set or sequence with length 3 and each value of type 'float'"
-        self._position = numpy.array(value, dtype=numpy.float32)
+                isinstance(value, float), \
+                "The 'x' field must be of type 'float'"
+        self._x = value
 
     @property
-    def velocity(self):
-        """Message field 'velocity'."""
-        return self._velocity
+    def y(self):
+        """Message field 'y'."""
+        return self._y
 
-    @velocity.setter
-    def velocity(self, value):
-        if isinstance(value, numpy.ndarray):
-            assert value.dtype == numpy.float32, \
-                "The 'velocity' numpy.ndarray() must have the dtype of 'numpy.float32'"
-            assert value.size == 3, \
-                "The 'velocity' numpy.ndarray() must have a size of 3"
-            self._velocity = value
-            return
+    @y.setter
+    def y(self, value):
         if __debug__:
-            from collections.abc import Sequence
-            from collections.abc import Set
-            from collections import UserList
-            from collections import UserString
             assert \
-                ((isinstance(value, Sequence) or
-                  isinstance(value, Set) or
-                  isinstance(value, UserList)) and
-                 not isinstance(value, str) and
-                 not isinstance(value, UserString) and
-                 len(value) == 3 and
-                 all(isinstance(v, float) for v in value) and
-                 True), \
-                "The 'velocity' field must be a set or sequence with length 3 and each value of type 'float'"
-        self._velocity = numpy.array(value, dtype=numpy.float32)
+                isinstance(value, float), \
+                "The 'y' field must be of type 'float'"
+        self._y = value
+
+    @property
+    def z(self):
+        """Message field 'z'."""
+        return self._z
+
+    @z.setter
+    def z(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, float), \
+                "The 'z' field must be of type 'float'"
+        self._z = value
+
+    @property
+    def yaw(self):
+        """Message field 'yaw'."""
+        return self._yaw
+
+    @yaw.setter
+    def yaw(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, float), \
+                "The 'yaw' field must be of type 'float'"
+        self._yaw = value
+
+    @property
+    def yawspeed(self):
+        """Message field 'yawspeed'."""
+        return self._yawspeed
+
+    @yawspeed.setter
+    def yawspeed(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, float), \
+                "The 'yawspeed' field must be of type 'float'"
+        self._yawspeed = value
+
+    @property
+    def vx(self):
+        """Message field 'vx'."""
+        return self._vx
+
+    @vx.setter
+    def vx(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, float), \
+                "The 'vx' field must be of type 'float'"
+        self._vx = value
+
+    @property
+    def vy(self):
+        """Message field 'vy'."""
+        return self._vy
+
+    @vy.setter
+    def vy(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, float), \
+                "The 'vy' field must be of type 'float'"
+        self._vy = value
+
+    @property
+    def vz(self):
+        """Message field 'vz'."""
+        return self._vz
+
+    @vz.setter
+    def vz(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, float), \
+                "The 'vz' field must be of type 'float'"
+        self._vz = value
 
     @property
     def acceleration(self):
@@ -306,27 +373,32 @@ class TrajectorySetpoint(metaclass=Metaclass_TrajectorySetpoint):
         self._jerk = numpy.array(value, dtype=numpy.float32)
 
     @property
-    def yaw(self):
-        """Message field 'yaw'."""
-        return self._yaw
+    def thrust(self):
+        """Message field 'thrust'."""
+        return self._thrust
 
-    @yaw.setter
-    def yaw(self, value):
+    @thrust.setter
+    def thrust(self, value):
+        if isinstance(value, numpy.ndarray):
+            assert value.dtype == numpy.float32, \
+                "The 'thrust' numpy.ndarray() must have the dtype of 'numpy.float32'"
+            assert value.size == 3, \
+                "The 'thrust' numpy.ndarray() must have a size of 3"
+            self._thrust = value
+            return
         if __debug__:
+            from collections.abc import Sequence
+            from collections.abc import Set
+            from collections import UserList
+            from collections import UserString
             assert \
-                isinstance(value, float), \
-                "The 'yaw' field must be of type 'float'"
-        self._yaw = value
-
-    @property
-    def yawspeed(self):
-        """Message field 'yawspeed'."""
-        return self._yawspeed
-
-    @yawspeed.setter
-    def yawspeed(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, float), \
-                "The 'yawspeed' field must be of type 'float'"
-        self._yawspeed = value
+                ((isinstance(value, Sequence) or
+                  isinstance(value, Set) or
+                  isinstance(value, UserList)) and
+                 not isinstance(value, str) and
+                 not isinstance(value, UserString) and
+                 len(value) == 3 and
+                 all(isinstance(v, float) for v in value) and
+                 True), \
+                "The 'thrust' field must be a set or sequence with length 3 and each value of type 'float'"
+        self._thrust = numpy.array(value, dtype=numpy.float32)

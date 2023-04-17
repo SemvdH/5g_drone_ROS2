@@ -21,7 +21,6 @@ px4_msgs__msg__VehicleImuStatus__init(px4_msgs__msg__VehicleImuStatus * msg)
   // accel_device_id
   // gyro_device_id
   // accel_clipping
-  // gyro_clipping
   // accel_error_count
   // gyro_error_count
   // accel_rate_hz
@@ -50,7 +49,6 @@ px4_msgs__msg__VehicleImuStatus__fini(px4_msgs__msg__VehicleImuStatus * msg)
   // accel_device_id
   // gyro_device_id
   // accel_clipping
-  // gyro_clipping
   // accel_error_count
   // gyro_error_count
   // accel_rate_hz
@@ -89,12 +87,6 @@ px4_msgs__msg__VehicleImuStatus__are_equal(const px4_msgs__msg__VehicleImuStatus
   // accel_clipping
   for (size_t i = 0; i < 3; ++i) {
     if (lhs->accel_clipping[i] != rhs->accel_clipping[i]) {
-      return false;
-    }
-  }
-  // gyro_clipping
-  for (size_t i = 0; i < 3; ++i) {
-    if (lhs->gyro_clipping[i] != rhs->gyro_clipping[i]) {
       return false;
     }
   }
@@ -186,10 +178,6 @@ px4_msgs__msg__VehicleImuStatus__copy(
   // accel_clipping
   for (size_t i = 0; i < 3; ++i) {
     output->accel_clipping[i] = input->accel_clipping[i];
-  }
-  // gyro_clipping
-  for (size_t i = 0; i < 3; ++i) {
-    output->gyro_clipping[i] = input->gyro_clipping[i];
   }
   // accel_error_count
   output->accel_error_count = input->accel_error_count;

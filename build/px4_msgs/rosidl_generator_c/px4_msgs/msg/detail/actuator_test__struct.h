@@ -38,7 +38,7 @@ enum
 /// Constant 'MAX_NUM_MOTORS'.
 enum
 {
-  px4_msgs__msg__ActuatorTest__MAX_NUM_MOTORS = 12
+  px4_msgs__msg__ActuatorTest__MAX_NUM_MOTORS = 8
 };
 
 /// Constant 'FUNCTION_SERVO1'.
@@ -56,7 +56,7 @@ enum
 /// Constant 'ORB_QUEUE_LENGTH'.
 enum
 {
-  px4_msgs__msg__ActuatorTest__ORB_QUEUE_LENGTH = 12
+  px4_msgs__msg__ActuatorTest__ORB_QUEUE_LENGTH = 8
 };
 
 // Struct defined in msg/ActuatorTest in the package px4_msgs.

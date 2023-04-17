@@ -20,15 +20,15 @@ namespace msg
 namespace builder
 {
 
-class Init_VehicleStatus_pre_flight_checks_pass
+class Init_VehicleStatus_takeoff_time
 {
 public:
-  explicit Init_VehicleStatus_pre_flight_checks_pass(::px4_msgs::msg::VehicleStatus & msg)
+  explicit Init_VehicleStatus_takeoff_time(::px4_msgs::msg::VehicleStatus & msg)
   : msg_(msg)
   {}
-  ::px4_msgs::msg::VehicleStatus pre_flight_checks_pass(::px4_msgs::msg::VehicleStatus::_pre_flight_checks_pass_type arg)
+  ::px4_msgs::msg::VehicleStatus takeoff_time(::px4_msgs::msg::VehicleStatus::_takeoff_time_type arg)
   {
-    msg_.pre_flight_checks_pass = std::move(arg);
+    msg_.takeoff_time = std::move(arg);
     return std::move(msg_);
   }
 
@@ -36,192 +36,320 @@ private:
   ::px4_msgs::msg::VehicleStatus msg_;
 };
 
-class Init_VehicleStatus_calibration_enabled
+class Init_VehicleStatus_armed_time
 {
 public:
-  explicit Init_VehicleStatus_calibration_enabled(::px4_msgs::msg::VehicleStatus & msg)
+  explicit Init_VehicleStatus_armed_time(::px4_msgs::msg::VehicleStatus & msg)
   : msg_(msg)
   {}
-  Init_VehicleStatus_pre_flight_checks_pass calibration_enabled(::px4_msgs::msg::VehicleStatus::_calibration_enabled_type arg)
+  Init_VehicleStatus_takeoff_time armed_time(::px4_msgs::msg::VehicleStatus::_armed_time_type arg)
   {
-    msg_.calibration_enabled = std::move(arg);
-    return Init_VehicleStatus_pre_flight_checks_pass(msg_);
+    msg_.armed_time = std::move(arg);
+    return Init_VehicleStatus_takeoff_time(msg_);
   }
 
 private:
   ::px4_msgs::msg::VehicleStatus msg_;
 };
 
-class Init_VehicleStatus_rc_calibration_in_progress
+class Init_VehicleStatus_latest_disarming_reason
 {
 public:
-  explicit Init_VehicleStatus_rc_calibration_in_progress(::px4_msgs::msg::VehicleStatus & msg)
+  explicit Init_VehicleStatus_latest_disarming_reason(::px4_msgs::msg::VehicleStatus & msg)
   : msg_(msg)
   {}
-  Init_VehicleStatus_calibration_enabled rc_calibration_in_progress(::px4_msgs::msg::VehicleStatus::_rc_calibration_in_progress_type arg)
+  Init_VehicleStatus_armed_time latest_disarming_reason(::px4_msgs::msg::VehicleStatus::_latest_disarming_reason_type arg)
   {
-    msg_.rc_calibration_in_progress = std::move(arg);
-    return Init_VehicleStatus_calibration_enabled(msg_);
+    msg_.latest_disarming_reason = std::move(arg);
+    return Init_VehicleStatus_armed_time(msg_);
   }
 
 private:
   ::px4_msgs::msg::VehicleStatus msg_;
 };
 
-class Init_VehicleStatus_avoidance_system_valid
+class Init_VehicleStatus_latest_arming_reason
 {
 public:
-  explicit Init_VehicleStatus_avoidance_system_valid(::px4_msgs::msg::VehicleStatus & msg)
+  explicit Init_VehicleStatus_latest_arming_reason(::px4_msgs::msg::VehicleStatus & msg)
   : msg_(msg)
   {}
-  Init_VehicleStatus_rc_calibration_in_progress avoidance_system_valid(::px4_msgs::msg::VehicleStatus::_avoidance_system_valid_type arg)
+  Init_VehicleStatus_latest_disarming_reason latest_arming_reason(::px4_msgs::msg::VehicleStatus::_latest_arming_reason_type arg)
   {
-    msg_.avoidance_system_valid = std::move(arg);
-    return Init_VehicleStatus_rc_calibration_in_progress(msg_);
+    msg_.latest_arming_reason = std::move(arg);
+    return Init_VehicleStatus_latest_disarming_reason(msg_);
   }
 
 private:
   ::px4_msgs::msg::VehicleStatus msg_;
 };
 
-class Init_VehicleStatus_avoidance_system_required
+class Init_VehicleStatus_onboard_control_sensors_health
 {
 public:
-  explicit Init_VehicleStatus_avoidance_system_required(::px4_msgs::msg::VehicleStatus & msg)
+  explicit Init_VehicleStatus_onboard_control_sensors_health(::px4_msgs::msg::VehicleStatus & msg)
   : msg_(msg)
   {}
-  Init_VehicleStatus_avoidance_system_valid avoidance_system_required(::px4_msgs::msg::VehicleStatus::_avoidance_system_required_type arg)
+  Init_VehicleStatus_latest_arming_reason onboard_control_sensors_health(::px4_msgs::msg::VehicleStatus::_onboard_control_sensors_health_type arg)
   {
-    msg_.avoidance_system_required = std::move(arg);
-    return Init_VehicleStatus_avoidance_system_valid(msg_);
+    msg_.onboard_control_sensors_health = std::move(arg);
+    return Init_VehicleStatus_latest_arming_reason(msg_);
   }
 
 private:
   ::px4_msgs::msg::VehicleStatus msg_;
 };
 
-class Init_VehicleStatus_parachute_system_healthy
+class Init_VehicleStatus_onboard_control_sensors_enabled
 {
 public:
-  explicit Init_VehicleStatus_parachute_system_healthy(::px4_msgs::msg::VehicleStatus & msg)
+  explicit Init_VehicleStatus_onboard_control_sensors_enabled(::px4_msgs::msg::VehicleStatus & msg)
   : msg_(msg)
   {}
-  Init_VehicleStatus_avoidance_system_required parachute_system_healthy(::px4_msgs::msg::VehicleStatus::_parachute_system_healthy_type arg)
+  Init_VehicleStatus_onboard_control_sensors_health onboard_control_sensors_enabled(::px4_msgs::msg::VehicleStatus::_onboard_control_sensors_enabled_type arg)
   {
-    msg_.parachute_system_healthy = std::move(arg);
-    return Init_VehicleStatus_avoidance_system_required(msg_);
+    msg_.onboard_control_sensors_enabled = std::move(arg);
+    return Init_VehicleStatus_onboard_control_sensors_health(msg_);
   }
 
 private:
   ::px4_msgs::msg::VehicleStatus msg_;
 };
 
-class Init_VehicleStatus_parachute_system_present
+class Init_VehicleStatus_onboard_control_sensors_present
 {
 public:
-  explicit Init_VehicleStatus_parachute_system_present(::px4_msgs::msg::VehicleStatus & msg)
+  explicit Init_VehicleStatus_onboard_control_sensors_present(::px4_msgs::msg::VehicleStatus & msg)
   : msg_(msg)
   {}
-  Init_VehicleStatus_parachute_system_healthy parachute_system_present(::px4_msgs::msg::VehicleStatus::_parachute_system_present_type arg)
+  Init_VehicleStatus_onboard_control_sensors_enabled onboard_control_sensors_present(::px4_msgs::msg::VehicleStatus::_onboard_control_sensors_present_type arg)
   {
-    msg_.parachute_system_present = std::move(arg);
-    return Init_VehicleStatus_parachute_system_healthy(msg_);
+    msg_.onboard_control_sensors_present = std::move(arg);
+    return Init_VehicleStatus_onboard_control_sensors_enabled(msg_);
   }
 
 private:
   ::px4_msgs::msg::VehicleStatus msg_;
 };
 
-class Init_VehicleStatus_open_drone_id_system_healthy
+class Init_VehicleStatus_failure_detector_status
 {
 public:
-  explicit Init_VehicleStatus_open_drone_id_system_healthy(::px4_msgs::msg::VehicleStatus & msg)
+  explicit Init_VehicleStatus_failure_detector_status(::px4_msgs::msg::VehicleStatus & msg)
   : msg_(msg)
   {}
-  Init_VehicleStatus_parachute_system_present open_drone_id_system_healthy(::px4_msgs::msg::VehicleStatus::_open_drone_id_system_healthy_type arg)
+  Init_VehicleStatus_onboard_control_sensors_present failure_detector_status(::px4_msgs::msg::VehicleStatus::_failure_detector_status_type arg)
   {
-    msg_.open_drone_id_system_healthy = std::move(arg);
-    return Init_VehicleStatus_parachute_system_present(msg_);
+    msg_.failure_detector_status = std::move(arg);
+    return Init_VehicleStatus_onboard_control_sensors_present(msg_);
   }
 
 private:
   ::px4_msgs::msg::VehicleStatus msg_;
 };
 
-class Init_VehicleStatus_open_drone_id_system_present
+class Init_VehicleStatus_geofence_violated
 {
 public:
-  explicit Init_VehicleStatus_open_drone_id_system_present(::px4_msgs::msg::VehicleStatus & msg)
+  explicit Init_VehicleStatus_geofence_violated(::px4_msgs::msg::VehicleStatus & msg)
   : msg_(msg)
   {}
-  Init_VehicleStatus_open_drone_id_system_healthy open_drone_id_system_present(::px4_msgs::msg::VehicleStatus::_open_drone_id_system_present_type arg)
+  Init_VehicleStatus_failure_detector_status geofence_violated(::px4_msgs::msg::VehicleStatus::_geofence_violated_type arg)
   {
-    msg_.open_drone_id_system_present = std::move(arg);
-    return Init_VehicleStatus_open_drone_id_system_healthy(msg_);
+    msg_.geofence_violated = std::move(arg);
+    return Init_VehicleStatus_failure_detector_status(msg_);
   }
 
 private:
   ::px4_msgs::msg::VehicleStatus msg_;
 };
 
-class Init_VehicleStatus_usb_connected
+class Init_VehicleStatus_mission_failure
 {
 public:
-  explicit Init_VehicleStatus_usb_connected(::px4_msgs::msg::VehicleStatus & msg)
+  explicit Init_VehicleStatus_mission_failure(::px4_msgs::msg::VehicleStatus & msg)
   : msg_(msg)
   {}
-  Init_VehicleStatus_open_drone_id_system_present usb_connected(::px4_msgs::msg::VehicleStatus::_usb_connected_type arg)
+  Init_VehicleStatus_geofence_violated mission_failure(::px4_msgs::msg::VehicleStatus::_mission_failure_type arg)
   {
-    msg_.usb_connected = std::move(arg);
-    return Init_VehicleStatus_open_drone_id_system_present(msg_);
+    msg_.mission_failure = std::move(arg);
+    return Init_VehicleStatus_geofence_violated(msg_);
   }
 
 private:
   ::px4_msgs::msg::VehicleStatus msg_;
 };
 
-class Init_VehicleStatus_power_input_valid
+class Init_VehicleStatus_engine_failure
 {
 public:
-  explicit Init_VehicleStatus_power_input_valid(::px4_msgs::msg::VehicleStatus & msg)
+  explicit Init_VehicleStatus_engine_failure(::px4_msgs::msg::VehicleStatus & msg)
   : msg_(msg)
   {}
-  Init_VehicleStatus_usb_connected power_input_valid(::px4_msgs::msg::VehicleStatus::_power_input_valid_type arg)
+  Init_VehicleStatus_mission_failure engine_failure(::px4_msgs::msg::VehicleStatus::_engine_failure_type arg)
   {
-    msg_.power_input_valid = std::move(arg);
-    return Init_VehicleStatus_usb_connected(msg_);
+    msg_.engine_failure = std::move(arg);
+    return Init_VehicleStatus_mission_failure(msg_);
   }
 
 private:
   ::px4_msgs::msg::VehicleStatus msg_;
 };
 
-class Init_VehicleStatus_safety_off
+class Init_VehicleStatus_high_latency_data_link_lost
 {
 public:
-  explicit Init_VehicleStatus_safety_off(::px4_msgs::msg::VehicleStatus & msg)
+  explicit Init_VehicleStatus_high_latency_data_link_lost(::px4_msgs::msg::VehicleStatus & msg)
   : msg_(msg)
   {}
-  Init_VehicleStatus_power_input_valid safety_off(::px4_msgs::msg::VehicleStatus::_safety_off_type arg)
+  Init_VehicleStatus_engine_failure high_latency_data_link_lost(::px4_msgs::msg::VehicleStatus::_high_latency_data_link_lost_type arg)
   {
-    msg_.safety_off = std::move(arg);
-    return Init_VehicleStatus_power_input_valid(msg_);
+    msg_.high_latency_data_link_lost = std::move(arg);
+    return Init_VehicleStatus_engine_failure(msg_);
   }
 
 private:
   ::px4_msgs::msg::VehicleStatus msg_;
 };
 
-class Init_VehicleStatus_safety_button_available
+class Init_VehicleStatus_data_link_lost_counter
 {
 public:
-  explicit Init_VehicleStatus_safety_button_available(::px4_msgs::msg::VehicleStatus & msg)
+  explicit Init_VehicleStatus_data_link_lost_counter(::px4_msgs::msg::VehicleStatus & msg)
   : msg_(msg)
   {}
-  Init_VehicleStatus_safety_off safety_button_available(::px4_msgs::msg::VehicleStatus::_safety_button_available_type arg)
+  Init_VehicleStatus_high_latency_data_link_lost data_link_lost_counter(::px4_msgs::msg::VehicleStatus::_data_link_lost_counter_type arg)
   {
-    msg_.safety_button_available = std::move(arg);
-    return Init_VehicleStatus_safety_off(msg_);
+    msg_.data_link_lost_counter = std::move(arg);
+    return Init_VehicleStatus_high_latency_data_link_lost(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::VehicleStatus msg_;
+};
+
+class Init_VehicleStatus_data_link_lost
+{
+public:
+  explicit Init_VehicleStatus_data_link_lost(::px4_msgs::msg::VehicleStatus & msg)
+  : msg_(msg)
+  {}
+  Init_VehicleStatus_data_link_lost_counter data_link_lost(::px4_msgs::msg::VehicleStatus::_data_link_lost_type arg)
+  {
+    msg_.data_link_lost = std::move(arg);
+    return Init_VehicleStatus_data_link_lost_counter(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::VehicleStatus msg_;
+};
+
+class Init_VehicleStatus_rc_signal_lost
+{
+public:
+  explicit Init_VehicleStatus_rc_signal_lost(::px4_msgs::msg::VehicleStatus & msg)
+  : msg_(msg)
+  {}
+  Init_VehicleStatus_data_link_lost rc_signal_lost(::px4_msgs::msg::VehicleStatus::_rc_signal_lost_type arg)
+  {
+    msg_.rc_signal_lost = std::move(arg);
+    return Init_VehicleStatus_data_link_lost(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::VehicleStatus msg_;
+};
+
+class Init_VehicleStatus_in_transition_to_fw
+{
+public:
+  explicit Init_VehicleStatus_in_transition_to_fw(::px4_msgs::msg::VehicleStatus & msg)
+  : msg_(msg)
+  {}
+  Init_VehicleStatus_rc_signal_lost in_transition_to_fw(::px4_msgs::msg::VehicleStatus::_in_transition_to_fw_type arg)
+  {
+    msg_.in_transition_to_fw = std::move(arg);
+    return Init_VehicleStatus_rc_signal_lost(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::VehicleStatus msg_;
+};
+
+class Init_VehicleStatus_in_transition_mode
+{
+public:
+  explicit Init_VehicleStatus_in_transition_mode(::px4_msgs::msg::VehicleStatus & msg)
+  : msg_(msg)
+  {}
+  Init_VehicleStatus_in_transition_to_fw in_transition_mode(::px4_msgs::msg::VehicleStatus::_in_transition_mode_type arg)
+  {
+    msg_.in_transition_mode = std::move(arg);
+    return Init_VehicleStatus_in_transition_to_fw(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::VehicleStatus msg_;
+};
+
+class Init_VehicleStatus_vtol_fw_permanent_stab
+{
+public:
+  explicit Init_VehicleStatus_vtol_fw_permanent_stab(::px4_msgs::msg::VehicleStatus & msg)
+  : msg_(msg)
+  {}
+  Init_VehicleStatus_in_transition_mode vtol_fw_permanent_stab(::px4_msgs::msg::VehicleStatus::_vtol_fw_permanent_stab_type arg)
+  {
+    msg_.vtol_fw_permanent_stab = std::move(arg);
+    return Init_VehicleStatus_in_transition_mode(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::VehicleStatus msg_;
+};
+
+class Init_VehicleStatus_is_vtol_tailsitter
+{
+public:
+  explicit Init_VehicleStatus_is_vtol_tailsitter(::px4_msgs::msg::VehicleStatus & msg)
+  : msg_(msg)
+  {}
+  Init_VehicleStatus_vtol_fw_permanent_stab is_vtol_tailsitter(::px4_msgs::msg::VehicleStatus::_is_vtol_tailsitter_type arg)
+  {
+    msg_.is_vtol_tailsitter = std::move(arg);
+    return Init_VehicleStatus_vtol_fw_permanent_stab(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::VehicleStatus msg_;
+};
+
+class Init_VehicleStatus_is_vtol
+{
+public:
+  explicit Init_VehicleStatus_is_vtol(::px4_msgs::msg::VehicleStatus & msg)
+  : msg_(msg)
+  {}
+  Init_VehicleStatus_is_vtol_tailsitter is_vtol(::px4_msgs::msg::VehicleStatus::_is_vtol_type arg)
+  {
+    msg_.is_vtol = std::move(arg);
+    return Init_VehicleStatus_is_vtol_tailsitter(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::VehicleStatus msg_;
+};
+
+class Init_VehicleStatus_vehicle_type
+{
+public:
+  explicit Init_VehicleStatus_vehicle_type(::px4_msgs::msg::VehicleStatus & msg)
+  : msg_(msg)
+  {}
+  Init_VehicleStatus_is_vtol vehicle_type(::px4_msgs::msg::VehicleStatus::_vehicle_type_type arg)
+  {
+    msg_.vehicle_type = std::move(arg);
+    return Init_VehicleStatus_is_vtol(msg_);
   }
 
 private:
@@ -234,10 +362,10 @@ public:
   explicit Init_VehicleStatus_component_id(::px4_msgs::msg::VehicleStatus & msg)
   : msg_(msg)
   {}
-  Init_VehicleStatus_safety_button_available component_id(::px4_msgs::msg::VehicleStatus::_component_id_type arg)
+  Init_VehicleStatus_vehicle_type component_id(::px4_msgs::msg::VehicleStatus::_component_id_type arg)
   {
     msg_.component_id = std::move(arg);
-    return Init_VehicleStatus_safety_button_available(msg_);
+    return Init_VehicleStatus_vehicle_type(msg_);
   }
 
 private:
@@ -276,128 +404,16 @@ private:
   ::px4_msgs::msg::VehicleStatus msg_;
 };
 
-class Init_VehicleStatus_in_transition_to_fw
+class Init_VehicleStatus_failsafe_timestamp
 {
 public:
-  explicit Init_VehicleStatus_in_transition_to_fw(::px4_msgs::msg::VehicleStatus & msg)
+  explicit Init_VehicleStatus_failsafe_timestamp(::px4_msgs::msg::VehicleStatus & msg)
   : msg_(msg)
   {}
-  Init_VehicleStatus_system_type in_transition_to_fw(::px4_msgs::msg::VehicleStatus::_in_transition_to_fw_type arg)
+  Init_VehicleStatus_system_type failsafe_timestamp(::px4_msgs::msg::VehicleStatus::_failsafe_timestamp_type arg)
   {
-    msg_.in_transition_to_fw = std::move(arg);
+    msg_.failsafe_timestamp = std::move(arg);
     return Init_VehicleStatus_system_type(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::VehicleStatus msg_;
-};
-
-class Init_VehicleStatus_in_transition_mode
-{
-public:
-  explicit Init_VehicleStatus_in_transition_mode(::px4_msgs::msg::VehicleStatus & msg)
-  : msg_(msg)
-  {}
-  Init_VehicleStatus_in_transition_to_fw in_transition_mode(::px4_msgs::msg::VehicleStatus::_in_transition_mode_type arg)
-  {
-    msg_.in_transition_mode = std::move(arg);
-    return Init_VehicleStatus_in_transition_to_fw(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::VehicleStatus msg_;
-};
-
-class Init_VehicleStatus_is_vtol_tailsitter
-{
-public:
-  explicit Init_VehicleStatus_is_vtol_tailsitter(::px4_msgs::msg::VehicleStatus & msg)
-  : msg_(msg)
-  {}
-  Init_VehicleStatus_in_transition_mode is_vtol_tailsitter(::px4_msgs::msg::VehicleStatus::_is_vtol_tailsitter_type arg)
-  {
-    msg_.is_vtol_tailsitter = std::move(arg);
-    return Init_VehicleStatus_in_transition_mode(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::VehicleStatus msg_;
-};
-
-class Init_VehicleStatus_is_vtol
-{
-public:
-  explicit Init_VehicleStatus_is_vtol(::px4_msgs::msg::VehicleStatus & msg)
-  : msg_(msg)
-  {}
-  Init_VehicleStatus_is_vtol_tailsitter is_vtol(::px4_msgs::msg::VehicleStatus::_is_vtol_type arg)
-  {
-    msg_.is_vtol = std::move(arg);
-    return Init_VehicleStatus_is_vtol_tailsitter(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::VehicleStatus msg_;
-};
-
-class Init_VehicleStatus_high_latency_data_link_lost
-{
-public:
-  explicit Init_VehicleStatus_high_latency_data_link_lost(::px4_msgs::msg::VehicleStatus & msg)
-  : msg_(msg)
-  {}
-  Init_VehicleStatus_is_vtol high_latency_data_link_lost(::px4_msgs::msg::VehicleStatus::_high_latency_data_link_lost_type arg)
-  {
-    msg_.high_latency_data_link_lost = std::move(arg);
-    return Init_VehicleStatus_is_vtol(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::VehicleStatus msg_;
-};
-
-class Init_VehicleStatus_gcs_connection_lost_counter
-{
-public:
-  explicit Init_VehicleStatus_gcs_connection_lost_counter(::px4_msgs::msg::VehicleStatus & msg)
-  : msg_(msg)
-  {}
-  Init_VehicleStatus_high_latency_data_link_lost gcs_connection_lost_counter(::px4_msgs::msg::VehicleStatus::_gcs_connection_lost_counter_type arg)
-  {
-    msg_.gcs_connection_lost_counter = std::move(arg);
-    return Init_VehicleStatus_high_latency_data_link_lost(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::VehicleStatus msg_;
-};
-
-class Init_VehicleStatus_gcs_connection_lost
-{
-public:
-  explicit Init_VehicleStatus_gcs_connection_lost(::px4_msgs::msg::VehicleStatus & msg)
-  : msg_(msg)
-  {}
-  Init_VehicleStatus_gcs_connection_lost_counter gcs_connection_lost(::px4_msgs::msg::VehicleStatus::_gcs_connection_lost_type arg)
-  {
-    msg_.gcs_connection_lost = std::move(arg);
-    return Init_VehicleStatus_gcs_connection_lost_counter(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::VehicleStatus msg_;
-};
-
-class Init_VehicleStatus_failsafe_and_user_took_over
-{
-public:
-  explicit Init_VehicleStatus_failsafe_and_user_took_over(::px4_msgs::msg::VehicleStatus & msg)
-  : msg_(msg)
-  {}
-  Init_VehicleStatus_gcs_connection_lost failsafe_and_user_took_over(::px4_msgs::msg::VehicleStatus::_failsafe_and_user_took_over_type arg)
-  {
-    msg_.failsafe_and_user_took_over = std::move(arg);
-    return Init_VehicleStatus_gcs_connection_lost(msg_);
   }
 
 private:
@@ -410,26 +426,10 @@ public:
   explicit Init_VehicleStatus_failsafe(::px4_msgs::msg::VehicleStatus & msg)
   : msg_(msg)
   {}
-  Init_VehicleStatus_failsafe_and_user_took_over failsafe(::px4_msgs::msg::VehicleStatus::_failsafe_type arg)
+  Init_VehicleStatus_failsafe_timestamp failsafe(::px4_msgs::msg::VehicleStatus::_failsafe_type arg)
   {
     msg_.failsafe = std::move(arg);
-    return Init_VehicleStatus_failsafe_and_user_took_over(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::VehicleStatus msg_;
-};
-
-class Init_VehicleStatus_vehicle_type
-{
-public:
-  explicit Init_VehicleStatus_vehicle_type(::px4_msgs::msg::VehicleStatus & msg)
-  : msg_(msg)
-  {}
-  Init_VehicleStatus_failsafe vehicle_type(::px4_msgs::msg::VehicleStatus::_vehicle_type_type arg)
-  {
-    msg_.vehicle_type = std::move(arg);
-    return Init_VehicleStatus_failsafe(msg_);
+    return Init_VehicleStatus_failsafe_timestamp(msg_);
   }
 
 private:
@@ -442,106 +442,10 @@ public:
   explicit Init_VehicleStatus_hil_state(::px4_msgs::msg::VehicleStatus & msg)
   : msg_(msg)
   {}
-  Init_VehicleStatus_vehicle_type hil_state(::px4_msgs::msg::VehicleStatus::_hil_state_type arg)
+  Init_VehicleStatus_failsafe hil_state(::px4_msgs::msg::VehicleStatus::_hil_state_type arg)
   {
     msg_.hil_state = std::move(arg);
-    return Init_VehicleStatus_vehicle_type(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::VehicleStatus msg_;
-};
-
-class Init_VehicleStatus_failure_detector_status
-{
-public:
-  explicit Init_VehicleStatus_failure_detector_status(::px4_msgs::msg::VehicleStatus & msg)
-  : msg_(msg)
-  {}
-  Init_VehicleStatus_hil_state failure_detector_status(::px4_msgs::msg::VehicleStatus::_failure_detector_status_type arg)
-  {
-    msg_.failure_detector_status = std::move(arg);
-    return Init_VehicleStatus_hil_state(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::VehicleStatus msg_;
-};
-
-class Init_VehicleStatus_nav_state
-{
-public:
-  explicit Init_VehicleStatus_nav_state(::px4_msgs::msg::VehicleStatus & msg)
-  : msg_(msg)
-  {}
-  Init_VehicleStatus_failure_detector_status nav_state(::px4_msgs::msg::VehicleStatus::_nav_state_type arg)
-  {
-    msg_.nav_state = std::move(arg);
-    return Init_VehicleStatus_failure_detector_status(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::VehicleStatus msg_;
-};
-
-class Init_VehicleStatus_nav_state_user_intention
-{
-public:
-  explicit Init_VehicleStatus_nav_state_user_intention(::px4_msgs::msg::VehicleStatus & msg)
-  : msg_(msg)
-  {}
-  Init_VehicleStatus_nav_state nav_state_user_intention(::px4_msgs::msg::VehicleStatus::_nav_state_user_intention_type arg)
-  {
-    msg_.nav_state_user_intention = std::move(arg);
-    return Init_VehicleStatus_nav_state(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::VehicleStatus msg_;
-};
-
-class Init_VehicleStatus_nav_state_timestamp
-{
-public:
-  explicit Init_VehicleStatus_nav_state_timestamp(::px4_msgs::msg::VehicleStatus & msg)
-  : msg_(msg)
-  {}
-  Init_VehicleStatus_nav_state_user_intention nav_state_timestamp(::px4_msgs::msg::VehicleStatus::_nav_state_timestamp_type arg)
-  {
-    msg_.nav_state_timestamp = std::move(arg);
-    return Init_VehicleStatus_nav_state_user_intention(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::VehicleStatus msg_;
-};
-
-class Init_VehicleStatus_latest_disarming_reason
-{
-public:
-  explicit Init_VehicleStatus_latest_disarming_reason(::px4_msgs::msg::VehicleStatus & msg)
-  : msg_(msg)
-  {}
-  Init_VehicleStatus_nav_state_timestamp latest_disarming_reason(::px4_msgs::msg::VehicleStatus::_latest_disarming_reason_type arg)
-  {
-    msg_.latest_disarming_reason = std::move(arg);
-    return Init_VehicleStatus_nav_state_timestamp(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::VehicleStatus msg_;
-};
-
-class Init_VehicleStatus_latest_arming_reason
-{
-public:
-  explicit Init_VehicleStatus_latest_arming_reason(::px4_msgs::msg::VehicleStatus & msg)
-  : msg_(msg)
-  {}
-  Init_VehicleStatus_latest_disarming_reason latest_arming_reason(::px4_msgs::msg::VehicleStatus::_latest_arming_reason_type arg)
-  {
-    msg_.latest_arming_reason = std::move(arg);
-    return Init_VehicleStatus_latest_disarming_reason(msg_);
+    return Init_VehicleStatus_failsafe(msg_);
   }
 
 private:
@@ -554,25 +458,25 @@ public:
   explicit Init_VehicleStatus_arming_state(::px4_msgs::msg::VehicleStatus & msg)
   : msg_(msg)
   {}
-  Init_VehicleStatus_latest_arming_reason arming_state(::px4_msgs::msg::VehicleStatus::_arming_state_type arg)
+  Init_VehicleStatus_hil_state arming_state(::px4_msgs::msg::VehicleStatus::_arming_state_type arg)
   {
     msg_.arming_state = std::move(arg);
-    return Init_VehicleStatus_latest_arming_reason(msg_);
+    return Init_VehicleStatus_hil_state(msg_);
   }
 
 private:
   ::px4_msgs::msg::VehicleStatus msg_;
 };
 
-class Init_VehicleStatus_takeoff_time
+class Init_VehicleStatus_nav_state_timestamp
 {
 public:
-  explicit Init_VehicleStatus_takeoff_time(::px4_msgs::msg::VehicleStatus & msg)
+  explicit Init_VehicleStatus_nav_state_timestamp(::px4_msgs::msg::VehicleStatus & msg)
   : msg_(msg)
   {}
-  Init_VehicleStatus_arming_state takeoff_time(::px4_msgs::msg::VehicleStatus::_takeoff_time_type arg)
+  Init_VehicleStatus_arming_state nav_state_timestamp(::px4_msgs::msg::VehicleStatus::_nav_state_timestamp_type arg)
   {
-    msg_.takeoff_time = std::move(arg);
+    msg_.nav_state_timestamp = std::move(arg);
     return Init_VehicleStatus_arming_state(msg_);
   }
 
@@ -580,16 +484,16 @@ private:
   ::px4_msgs::msg::VehicleStatus msg_;
 };
 
-class Init_VehicleStatus_armed_time
+class Init_VehicleStatus_nav_state
 {
 public:
-  explicit Init_VehicleStatus_armed_time(::px4_msgs::msg::VehicleStatus & msg)
+  explicit Init_VehicleStatus_nav_state(::px4_msgs::msg::VehicleStatus & msg)
   : msg_(msg)
   {}
-  Init_VehicleStatus_takeoff_time armed_time(::px4_msgs::msg::VehicleStatus::_armed_time_type arg)
+  Init_VehicleStatus_nav_state_timestamp nav_state(::px4_msgs::msg::VehicleStatus::_nav_state_type arg)
   {
-    msg_.armed_time = std::move(arg);
-    return Init_VehicleStatus_takeoff_time(msg_);
+    msg_.nav_state = std::move(arg);
+    return Init_VehicleStatus_nav_state_timestamp(msg_);
   }
 
 private:
@@ -602,10 +506,10 @@ public:
   Init_VehicleStatus_timestamp()
   : msg_(::rosidl_runtime_cpp::MessageInitialization::SKIP)
   {}
-  Init_VehicleStatus_armed_time timestamp(::px4_msgs::msg::VehicleStatus::_timestamp_type arg)
+  Init_VehicleStatus_nav_state timestamp(::px4_msgs::msg::VehicleStatus::_timestamp_type arg)
   {
     msg_.timestamp = std::move(arg);
-    return Init_VehicleStatus_armed_time(msg_);
+    return Init_VehicleStatus_nav_state(msg_);
   }
 
 private:

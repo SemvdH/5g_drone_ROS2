@@ -11,9 +11,7 @@
 # Member 'ev_hpos'
 # Member 'aux_hvel'
 # Member 'flow'
-# Member 'terr_flow'
 # Member 'mag_field'
-# Member 'gravity'
 # Member 'drag'
 import numpy  # noqa: E402, I100
 
@@ -80,10 +78,8 @@ class EstimatorInnovations(metaclass=Metaclass_EstimatorInnovations):
         '_aux_hvel',
         '_aux_vvel',
         '_flow',
-        '_terr_flow',
         '_heading',
         '_mag_field',
-        '_gravity',
         '_drag',
         '_airspeed',
         '_beta',
@@ -107,10 +103,8 @@ class EstimatorInnovations(metaclass=Metaclass_EstimatorInnovations):
         'aux_hvel': 'float[2]',
         'aux_vvel': 'float',
         'flow': 'float[2]',
-        'terr_flow': 'float[2]',
         'heading': 'float',
         'mag_field': 'float[3]',
-        'gravity': 'float[3]',
         'drag': 'float[2]',
         'airspeed': 'float',
         'beta': 'float',
@@ -134,9 +128,7 @@ class EstimatorInnovations(metaclass=Metaclass_EstimatorInnovations):
         rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 2),  # noqa: E501
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
         rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 2),  # noqa: E501
-        rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 2),  # noqa: E501
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
-        rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 3),  # noqa: E501
         rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 3),  # noqa: E501
         rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 2),  # noqa: E501
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
@@ -188,22 +180,12 @@ class EstimatorInnovations(metaclass=Metaclass_EstimatorInnovations):
         else:
             self.flow = numpy.array(kwargs.get('flow'), dtype=numpy.float32)
             assert self.flow.shape == (2, )
-        if 'terr_flow' not in kwargs:
-            self.terr_flow = numpy.zeros(2, dtype=numpy.float32)
-        else:
-            self.terr_flow = numpy.array(kwargs.get('terr_flow'), dtype=numpy.float32)
-            assert self.terr_flow.shape == (2, )
         self.heading = kwargs.get('heading', float())
         if 'mag_field' not in kwargs:
             self.mag_field = numpy.zeros(3, dtype=numpy.float32)
         else:
             self.mag_field = numpy.array(kwargs.get('mag_field'), dtype=numpy.float32)
             assert self.mag_field.shape == (3, )
-        if 'gravity' not in kwargs:
-            self.gravity = numpy.zeros(3, dtype=numpy.float32)
-        else:
-            self.gravity = numpy.array(kwargs.get('gravity'), dtype=numpy.float32)
-            assert self.gravity.shape == (3, )
         if 'drag' not in kwargs:
             self.drag = numpy.zeros(2, dtype=numpy.float32)
         else:
@@ -273,13 +255,9 @@ class EstimatorInnovations(metaclass=Metaclass_EstimatorInnovations):
             return False
         if all(self.flow != other.flow):
             return False
-        if all(self.terr_flow != other.terr_flow):
-            return False
         if self.heading != other.heading:
             return False
         if all(self.mag_field != other.mag_field):
-            return False
-        if all(self.gravity != other.gravity):
             return False
         if all(self.drag != other.drag):
             return False
@@ -606,37 +584,6 @@ class EstimatorInnovations(metaclass=Metaclass_EstimatorInnovations):
         self._flow = numpy.array(value, dtype=numpy.float32)
 
     @property
-    def terr_flow(self):
-        """Message field 'terr_flow'."""
-        return self._terr_flow
-
-    @terr_flow.setter
-    def terr_flow(self, value):
-        if isinstance(value, numpy.ndarray):
-            assert value.dtype == numpy.float32, \
-                "The 'terr_flow' numpy.ndarray() must have the dtype of 'numpy.float32'"
-            assert value.size == 2, \
-                "The 'terr_flow' numpy.ndarray() must have a size of 2"
-            self._terr_flow = value
-            return
-        if __debug__:
-            from collections.abc import Sequence
-            from collections.abc import Set
-            from collections import UserList
-            from collections import UserString
-            assert \
-                ((isinstance(value, Sequence) or
-                  isinstance(value, Set) or
-                  isinstance(value, UserList)) and
-                 not isinstance(value, str) and
-                 not isinstance(value, UserString) and
-                 len(value) == 2 and
-                 all(isinstance(v, float) for v in value) and
-                 True), \
-                "The 'terr_flow' field must be a set or sequence with length 2 and each value of type 'float'"
-        self._terr_flow = numpy.array(value, dtype=numpy.float32)
-
-    @property
     def heading(self):
         """Message field 'heading'."""
         return self._heading
@@ -679,37 +626,6 @@ class EstimatorInnovations(metaclass=Metaclass_EstimatorInnovations):
                  True), \
                 "The 'mag_field' field must be a set or sequence with length 3 and each value of type 'float'"
         self._mag_field = numpy.array(value, dtype=numpy.float32)
-
-    @property
-    def gravity(self):
-        """Message field 'gravity'."""
-        return self._gravity
-
-    @gravity.setter
-    def gravity(self, value):
-        if isinstance(value, numpy.ndarray):
-            assert value.dtype == numpy.float32, \
-                "The 'gravity' numpy.ndarray() must have the dtype of 'numpy.float32'"
-            assert value.size == 3, \
-                "The 'gravity' numpy.ndarray() must have a size of 3"
-            self._gravity = value
-            return
-        if __debug__:
-            from collections.abc import Sequence
-            from collections.abc import Set
-            from collections import UserList
-            from collections import UserString
-            assert \
-                ((isinstance(value, Sequence) or
-                  isinstance(value, Set) or
-                  isinstance(value, UserList)) and
-                 not isinstance(value, str) and
-                 not isinstance(value, UserString) and
-                 len(value) == 3 and
-                 all(isinstance(v, float) for v in value) and
-                 True), \
-                "The 'gravity' field must be a set or sequence with length 3 and each value of type 'float'"
-        self._gravity = numpy.array(value, dtype=numpy.float32)
 
     @property
     def drag(self):

@@ -31,7 +31,7 @@ void VehicleLocalPositionSetpoint__rosidl_typesupport_introspection_c__VehicleLo
   px4_msgs__msg__VehicleLocalPositionSetpoint__fini(message_memory);
 }
 
-static rosidl_typesupport_introspection_c__MessageMember VehicleLocalPositionSetpoint__rosidl_typesupport_introspection_c__VehicleLocalPositionSetpoint_message_member_array[11] = {
+static rosidl_typesupport_introspection_c__MessageMember VehicleLocalPositionSetpoint__rosidl_typesupport_introspection_c__VehicleLocalPositionSetpoint_message_member_array[12] = {
   {
     "timestamp",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_UINT64,  // type
@@ -86,6 +86,36 @@ static rosidl_typesupport_introspection_c__MessageMember VehicleLocalPositionSet
     0,  // array size
     false,  // is upper bound
     offsetof(px4_msgs__msg__VehicleLocalPositionSetpoint, z),  // bytes offset in struct
+    NULL,  // default value
+    NULL,  // size() function pointer
+    NULL,  // get_const(index) function pointer
+    NULL,  // get(index) function pointer
+    NULL  // resize(index) function pointer
+  },
+  {
+    "yaw",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
+    0,  // upper bound of string
+    NULL,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs__msg__VehicleLocalPositionSetpoint, yaw),  // bytes offset in struct
+    NULL,  // default value
+    NULL,  // size() function pointer
+    NULL,  // get_const(index) function pointer
+    NULL,  // get(index) function pointer
+    NULL  // resize(index) function pointer
+  },
+  {
+    "yawspeed",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
+    0,  // upper bound of string
+    NULL,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs__msg__VehicleLocalPositionSetpoint, yawspeed),  // bytes offset in struct
     NULL,  // default value
     NULL,  // size() function pointer
     NULL,  // get_const(index) function pointer
@@ -153,6 +183,21 @@ static rosidl_typesupport_introspection_c__MessageMember VehicleLocalPositionSet
     NULL  // resize(index) function pointer
   },
   {
+    "jerk",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
+    0,  // upper bound of string
+    NULL,  // members of sub message
+    true,  // is array
+    3,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs__msg__VehicleLocalPositionSetpoint, jerk),  // bytes offset in struct
+    NULL,  // default value
+    NULL,  // size() function pointer
+    NULL,  // get_const(index) function pointer
+    NULL,  // get(index) function pointer
+    NULL  // resize(index) function pointer
+  },
+  {
     "thrust",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
     0,  // upper bound of string
@@ -166,43 +211,13 @@ static rosidl_typesupport_introspection_c__MessageMember VehicleLocalPositionSet
     NULL,  // get_const(index) function pointer
     NULL,  // get(index) function pointer
     NULL  // resize(index) function pointer
-  },
-  {
-    "yaw",  // name
-    rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
-    0,  // upper bound of string
-    NULL,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs__msg__VehicleLocalPositionSetpoint, yaw),  // bytes offset in struct
-    NULL,  // default value
-    NULL,  // size() function pointer
-    NULL,  // get_const(index) function pointer
-    NULL,  // get(index) function pointer
-    NULL  // resize(index) function pointer
-  },
-  {
-    "yawspeed",  // name
-    rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
-    0,  // upper bound of string
-    NULL,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs__msg__VehicleLocalPositionSetpoint, yawspeed),  // bytes offset in struct
-    NULL,  // default value
-    NULL,  // size() function pointer
-    NULL,  // get_const(index) function pointer
-    NULL,  // get(index) function pointer
-    NULL  // resize(index) function pointer
   }
 };
 
 static const rosidl_typesupport_introspection_c__MessageMembers VehicleLocalPositionSetpoint__rosidl_typesupport_introspection_c__VehicleLocalPositionSetpoint_message_members = {
   "px4_msgs__msg",  // message namespace
   "VehicleLocalPositionSetpoint",  // message name
-  11,  // number of fields
+  12,  // number of fields
   sizeof(px4_msgs__msg__VehicleLocalPositionSetpoint),
   VehicleLocalPositionSetpoint__rosidl_typesupport_introspection_c__VehicleLocalPositionSetpoint_message_member_array,  // message members
   VehicleLocalPositionSetpoint__rosidl_typesupport_introspection_c__VehicleLocalPositionSetpoint_init_function,  // function to initialize message memory (memory has to be allocated)

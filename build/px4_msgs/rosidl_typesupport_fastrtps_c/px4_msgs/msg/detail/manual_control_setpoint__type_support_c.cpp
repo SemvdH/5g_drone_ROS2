@@ -69,24 +69,24 @@ static bool _ManualControlSetpoint__cdr_serialize(
     cdr << ros_message->data_source;
   }
 
-  // Field name: roll
+  // Field name: x
   {
-    cdr << ros_message->roll;
+    cdr << ros_message->x;
   }
 
-  // Field name: pitch
+  // Field name: y
   {
-    cdr << ros_message->pitch;
+    cdr << ros_message->y;
   }
 
-  // Field name: yaw
+  // Field name: z
   {
-    cdr << ros_message->yaw;
+    cdr << ros_message->z;
   }
 
-  // Field name: throttle
+  // Field name: r
   {
-    cdr << ros_message->throttle;
+    cdr << ros_message->r;
   }
 
   // Field name: flaps
@@ -163,24 +163,24 @@ static bool _ManualControlSetpoint__cdr_deserialize(
     cdr >> ros_message->data_source;
   }
 
-  // Field name: roll
+  // Field name: x
   {
-    cdr >> ros_message->roll;
+    cdr >> ros_message->x;
   }
 
-  // Field name: pitch
+  // Field name: y
   {
-    cdr >> ros_message->pitch;
+    cdr >> ros_message->y;
   }
 
-  // Field name: yaw
+  // Field name: z
   {
-    cdr >> ros_message->yaw;
+    cdr >> ros_message->z;
   }
 
-  // Field name: throttle
+  // Field name: r
   {
-    cdr >> ros_message->throttle;
+    cdr >> ros_message->r;
   }
 
   // Field name: flaps
@@ -266,27 +266,27 @@ size_t get_serialized_size_px4_msgs__msg__ManualControlSetpoint(
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // field.name roll
+  // field.name x
   {
-    size_t item_size = sizeof(ros_message->roll);
+    size_t item_size = sizeof(ros_message->x);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // field.name pitch
+  // field.name y
   {
-    size_t item_size = sizeof(ros_message->pitch);
+    size_t item_size = sizeof(ros_message->y);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // field.name yaw
+  // field.name z
   {
-    size_t item_size = sizeof(ros_message->yaw);
+    size_t item_size = sizeof(ros_message->z);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // field.name throttle
+  // field.name r
   {
-    size_t item_size = sizeof(ros_message->throttle);
+    size_t item_size = sizeof(ros_message->r);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -388,28 +388,28 @@ size_t max_serialized_size_px4_msgs__msg__ManualControlSetpoint(
 
     current_alignment += array_size * sizeof(uint8_t);
   }
-  // member: roll
+  // member: x
   {
     size_t array_size = 1;
 
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
-  // member: pitch
+  // member: y
   {
     size_t array_size = 1;
 
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
-  // member: yaw
+  // member: z
   {
     size_t array_size = 1;
 
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
-  // member: throttle
+  // member: r
   {
     size_t array_size = 1;
 

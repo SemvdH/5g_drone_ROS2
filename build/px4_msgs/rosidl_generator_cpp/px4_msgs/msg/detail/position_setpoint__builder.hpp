@@ -52,32 +52,16 @@ private:
   ::px4_msgs::msg::PositionSetpoint msg_;
 };
 
-class Init_PositionSetpoint_gliding_enabled
-{
-public:
-  explicit Init_PositionSetpoint_gliding_enabled(::px4_msgs::msg::PositionSetpoint & msg)
-  : msg_(msg)
-  {}
-  Init_PositionSetpoint_cruising_throttle gliding_enabled(::px4_msgs::msg::PositionSetpoint::_gliding_enabled_type arg)
-  {
-    msg_.gliding_enabled = std::move(arg);
-    return Init_PositionSetpoint_cruising_throttle(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::PositionSetpoint msg_;
-};
-
 class Init_PositionSetpoint_cruising_speed
 {
 public:
   explicit Init_PositionSetpoint_cruising_speed(::px4_msgs::msg::PositionSetpoint & msg)
   : msg_(msg)
   {}
-  Init_PositionSetpoint_gliding_enabled cruising_speed(::px4_msgs::msg::PositionSetpoint::_cruising_speed_type arg)
+  Init_PositionSetpoint_cruising_throttle cruising_speed(::px4_msgs::msg::PositionSetpoint::_cruising_speed_type arg)
   {
     msg_.cruising_speed = std::move(arg);
-    return Init_PositionSetpoint_gliding_enabled(msg_);
+    return Init_PositionSetpoint_cruising_throttle(msg_);
   }
 
 private:
@@ -100,15 +84,15 @@ private:
   ::px4_msgs::msg::PositionSetpoint msg_;
 };
 
-class Init_PositionSetpoint_loiter_direction_counter_clockwise
+class Init_PositionSetpoint_loiter_direction
 {
 public:
-  explicit Init_PositionSetpoint_loiter_direction_counter_clockwise(::px4_msgs::msg::PositionSetpoint & msg)
+  explicit Init_PositionSetpoint_loiter_direction(::px4_msgs::msg::PositionSetpoint & msg)
   : msg_(msg)
   {}
-  Init_PositionSetpoint_acceptance_radius loiter_direction_counter_clockwise(::px4_msgs::msg::PositionSetpoint::_loiter_direction_counter_clockwise_type arg)
+  Init_PositionSetpoint_acceptance_radius loiter_direction(::px4_msgs::msg::PositionSetpoint::_loiter_direction_type arg)
   {
-    msg_.loiter_direction_counter_clockwise = std::move(arg);
+    msg_.loiter_direction = std::move(arg);
     return Init_PositionSetpoint_acceptance_radius(msg_);
   }
 
@@ -122,10 +106,26 @@ public:
   explicit Init_PositionSetpoint_loiter_radius(::px4_msgs::msg::PositionSetpoint & msg)
   : msg_(msg)
   {}
-  Init_PositionSetpoint_loiter_direction_counter_clockwise loiter_radius(::px4_msgs::msg::PositionSetpoint::_loiter_radius_type arg)
+  Init_PositionSetpoint_loiter_direction loiter_radius(::px4_msgs::msg::PositionSetpoint::_loiter_radius_type arg)
   {
     msg_.loiter_radius = std::move(arg);
-    return Init_PositionSetpoint_loiter_direction_counter_clockwise(msg_);
+    return Init_PositionSetpoint_loiter_direction(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::PositionSetpoint msg_;
+};
+
+class Init_PositionSetpoint_landing_gear
+{
+public:
+  explicit Init_PositionSetpoint_landing_gear(::px4_msgs::msg::PositionSetpoint & msg)
+  : msg_(msg)
+  {}
+  Init_PositionSetpoint_loiter_radius landing_gear(::px4_msgs::msg::PositionSetpoint::_landing_gear_type arg)
+  {
+    msg_.landing_gear = std::move(arg);
+    return Init_PositionSetpoint_loiter_radius(msg_);
   }
 
 private:
@@ -138,10 +138,10 @@ public:
   explicit Init_PositionSetpoint_yawspeed_valid(::px4_msgs::msg::PositionSetpoint & msg)
   : msg_(msg)
   {}
-  Init_PositionSetpoint_loiter_radius yawspeed_valid(::px4_msgs::msg::PositionSetpoint::_yawspeed_valid_type arg)
+  Init_PositionSetpoint_landing_gear yawspeed_valid(::px4_msgs::msg::PositionSetpoint::_yawspeed_valid_type arg)
   {
     msg_.yawspeed_valid = std::move(arg);
-    return Init_PositionSetpoint_loiter_radius(msg_);
+    return Init_PositionSetpoint_landing_gear(msg_);
   }
 
 private:
@@ -244,16 +244,64 @@ private:
   ::px4_msgs::msg::PositionSetpoint msg_;
 };
 
+class Init_PositionSetpoint_alt_valid
+{
+public:
+  explicit Init_PositionSetpoint_alt_valid(::px4_msgs::msg::PositionSetpoint & msg)
+  : msg_(msg)
+  {}
+  Init_PositionSetpoint_lat alt_valid(::px4_msgs::msg::PositionSetpoint::_alt_valid_type arg)
+  {
+    msg_.alt_valid = std::move(arg);
+    return Init_PositionSetpoint_lat(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::PositionSetpoint msg_;
+};
+
+class Init_PositionSetpoint_velocity_frame
+{
+public:
+  explicit Init_PositionSetpoint_velocity_frame(::px4_msgs::msg::PositionSetpoint & msg)
+  : msg_(msg)
+  {}
+  Init_PositionSetpoint_alt_valid velocity_frame(::px4_msgs::msg::PositionSetpoint::_velocity_frame_type arg)
+  {
+    msg_.velocity_frame = std::move(arg);
+    return Init_PositionSetpoint_alt_valid(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::PositionSetpoint msg_;
+};
+
+class Init_PositionSetpoint_velocity_valid
+{
+public:
+  explicit Init_PositionSetpoint_velocity_valid(::px4_msgs::msg::PositionSetpoint & msg)
+  : msg_(msg)
+  {}
+  Init_PositionSetpoint_velocity_frame velocity_valid(::px4_msgs::msg::PositionSetpoint::_velocity_valid_type arg)
+  {
+    msg_.velocity_valid = std::move(arg);
+    return Init_PositionSetpoint_velocity_frame(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::PositionSetpoint msg_;
+};
+
 class Init_PositionSetpoint_vz
 {
 public:
   explicit Init_PositionSetpoint_vz(::px4_msgs::msg::PositionSetpoint & msg)
   : msg_(msg)
   {}
-  Init_PositionSetpoint_lat vz(::px4_msgs::msg::PositionSetpoint::_vz_type arg)
+  Init_PositionSetpoint_velocity_valid vz(::px4_msgs::msg::PositionSetpoint::_vz_type arg)
   {
     msg_.vz = std::move(arg);
-    return Init_PositionSetpoint_lat(msg_);
+    return Init_PositionSetpoint_velocity_valid(msg_);
   }
 
 private:

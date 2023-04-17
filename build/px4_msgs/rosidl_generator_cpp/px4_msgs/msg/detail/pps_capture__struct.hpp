@@ -39,7 +39,6 @@ struct PpsCapture_
     {
       this->timestamp = 0ull;
       this->rtc_timestamp = 0ull;
-      this->pps_rate_exceeded_counter = 0;
     }
   }
 
@@ -51,7 +50,6 @@ struct PpsCapture_
     {
       this->timestamp = 0ull;
       this->rtc_timestamp = 0ull;
-      this->pps_rate_exceeded_counter = 0;
     }
   }
 
@@ -62,9 +60,6 @@ struct PpsCapture_
   using _rtc_timestamp_type =
     uint64_t;
   _rtc_timestamp_type rtc_timestamp;
-  using _pps_rate_exceeded_counter_type =
-    uint8_t;
-  _pps_rate_exceeded_counter_type pps_rate_exceeded_counter;
 
   // setters for named parameter idiom
   Type & set__timestamp(
@@ -77,12 +72,6 @@ struct PpsCapture_
     const uint64_t & _arg)
   {
     this->rtc_timestamp = _arg;
-    return *this;
-  }
-  Type & set__pps_rate_exceeded_counter(
-    const uint8_t & _arg)
-  {
-    this->pps_rate_exceeded_counter = _arg;
     return *this;
   }
 
@@ -132,9 +121,6 @@ struct PpsCapture_
       return false;
     }
     if (this->rtc_timestamp != other.rtc_timestamp) {
-      return false;
-    }
-    if (this->pps_rate_exceeded_counter != other.pps_rate_exceeded_counter) {
       return false;
     }
     return true;

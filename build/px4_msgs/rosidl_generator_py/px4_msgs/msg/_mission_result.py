@@ -90,6 +90,8 @@ class MissionResult(metaclass=Metaclass_MissionResult):
         '_warning',
         '_finished',
         '_failure',
+        '_stay_in_failsafe',
+        '_flight_termination',
         '_item_do_jump_changed',
         '_item_changed_index',
         '_item_do_jump_remaining',
@@ -106,6 +108,8 @@ class MissionResult(metaclass=Metaclass_MissionResult):
         'warning': 'boolean',
         'finished': 'boolean',
         'failure': 'boolean',
+        'stay_in_failsafe': 'boolean',
+        'flight_termination': 'boolean',
         'item_do_jump_changed': 'boolean',
         'item_changed_index': 'uint16',
         'item_do_jump_remaining': 'uint16',
@@ -118,6 +122,8 @@ class MissionResult(metaclass=Metaclass_MissionResult):
         rosidl_parser.definition.BasicType('int32'),  # noqa: E501
         rosidl_parser.definition.BasicType('uint16'),  # noqa: E501
         rosidl_parser.definition.BasicType('uint16'),  # noqa: E501
+        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
+        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
         rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
         rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
         rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
@@ -141,6 +147,8 @@ class MissionResult(metaclass=Metaclass_MissionResult):
         self.warning = kwargs.get('warning', bool())
         self.finished = kwargs.get('finished', bool())
         self.failure = kwargs.get('failure', bool())
+        self.stay_in_failsafe = kwargs.get('stay_in_failsafe', bool())
+        self.flight_termination = kwargs.get('flight_termination', bool())
         self.item_do_jump_changed = kwargs.get('item_do_jump_changed', bool())
         self.item_changed_index = kwargs.get('item_changed_index', int())
         self.item_do_jump_remaining = kwargs.get('item_do_jump_remaining', int())
@@ -192,6 +200,10 @@ class MissionResult(metaclass=Metaclass_MissionResult):
         if self.finished != other.finished:
             return False
         if self.failure != other.failure:
+            return False
+        if self.stay_in_failsafe != other.stay_in_failsafe:
+            return False
+        if self.flight_termination != other.flight_termination:
             return False
         if self.item_do_jump_changed != other.item_do_jump_changed:
             return False
@@ -334,6 +346,32 @@ class MissionResult(metaclass=Metaclass_MissionResult):
                 isinstance(value, bool), \
                 "The 'failure' field must be of type 'bool'"
         self._failure = value
+
+    @property
+    def stay_in_failsafe(self):
+        """Message field 'stay_in_failsafe'."""
+        return self._stay_in_failsafe
+
+    @stay_in_failsafe.setter
+    def stay_in_failsafe(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, bool), \
+                "The 'stay_in_failsafe' field must be of type 'bool'"
+        self._stay_in_failsafe = value
+
+    @property
+    def flight_termination(self):
+        """Message field 'flight_termination'."""
+        return self._flight_termination
+
+    @flight_termination.setter
+    def flight_termination(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, bool), \
+                "The 'flight_termination' field must be of type 'bool'"
+        self._flight_termination = value
 
     @property
     def item_do_jump_changed(self):

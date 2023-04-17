@@ -37,6 +37,26 @@ void ControlAllocatorStatus_fini_function(void * message_memory)
   typed_message->~ControlAllocatorStatus();
 }
 
+size_t size_function__ControlAllocatorStatus__allocated_torque(const void * untyped_member)
+{
+  (void)untyped_member;
+  return 3;
+}
+
+const void * get_const_function__ControlAllocatorStatus__allocated_torque(const void * untyped_member, size_t index)
+{
+  const auto & member =
+    *reinterpret_cast<const std::array<float, 3> *>(untyped_member);
+  return &member[index];
+}
+
+void * get_function__ControlAllocatorStatus__allocated_torque(void * untyped_member, size_t index)
+{
+  auto & member =
+    *reinterpret_cast<std::array<float, 3> *>(untyped_member);
+  return &member[index];
+}
+
 size_t size_function__ControlAllocatorStatus__unallocated_torque(const void * untyped_member)
 {
   (void)untyped_member;
@@ -51,6 +71,26 @@ const void * get_const_function__ControlAllocatorStatus__unallocated_torque(cons
 }
 
 void * get_function__ControlAllocatorStatus__unallocated_torque(void * untyped_member, size_t index)
+{
+  auto & member =
+    *reinterpret_cast<std::array<float, 3> *>(untyped_member);
+  return &member[index];
+}
+
+size_t size_function__ControlAllocatorStatus__allocated_thrust(const void * untyped_member)
+{
+  (void)untyped_member;
+  return 3;
+}
+
+const void * get_const_function__ControlAllocatorStatus__allocated_thrust(const void * untyped_member, size_t index)
+{
+  const auto & member =
+    *reinterpret_cast<const std::array<float, 3> *>(untyped_member);
+  return &member[index];
+}
+
+void * get_function__ControlAllocatorStatus__allocated_thrust(void * untyped_member, size_t index)
 {
   auto & member =
     *reinterpret_cast<std::array<float, 3> *>(untyped_member);
@@ -97,7 +137,7 @@ void * get_function__ControlAllocatorStatus__actuator_saturation(void * untyped_
   return &member[index];
 }
 
-static const ::rosidl_typesupport_introspection_cpp::MessageMember ControlAllocatorStatus_message_member_array[7] = {
+static const ::rosidl_typesupport_introspection_cpp::MessageMember ControlAllocatorStatus_message_member_array[8] = {
   {
     "timestamp",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_UINT64,  // type
@@ -126,6 +166,21 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember ControlAlloca
     nullptr,  // size() function pointer
     nullptr,  // get_const(index) function pointer
     nullptr,  // get(index) function pointer
+    nullptr  // resize(index) function pointer
+  },
+  {
+    "allocated_torque",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
+    0,  // upper bound of string
+    nullptr,  // members of sub message
+    true,  // is array
+    3,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs::msg::ControlAllocatorStatus, allocated_torque),  // bytes offset in struct
+    nullptr,  // default value
+    size_function__ControlAllocatorStatus__allocated_torque,  // size() function pointer
+    get_const_function__ControlAllocatorStatus__allocated_torque,  // get_const(index) function pointer
+    get_function__ControlAllocatorStatus__allocated_torque,  // get(index) function pointer
     nullptr  // resize(index) function pointer
   },
   {
@@ -159,6 +214,21 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember ControlAlloca
     nullptr  // resize(index) function pointer
   },
   {
+    "allocated_thrust",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
+    0,  // upper bound of string
+    nullptr,  // members of sub message
+    true,  // is array
+    3,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs::msg::ControlAllocatorStatus, allocated_thrust),  // bytes offset in struct
+    nullptr,  // default value
+    size_function__ControlAllocatorStatus__allocated_thrust,  // size() function pointer
+    get_const_function__ControlAllocatorStatus__allocated_thrust,  // get_const(index) function pointer
+    get_function__ControlAllocatorStatus__allocated_thrust,  // get(index) function pointer
+    nullptr  // resize(index) function pointer
+  },
+  {
     "unallocated_thrust",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
     0,  // upper bound of string
@@ -187,28 +257,13 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember ControlAlloca
     get_const_function__ControlAllocatorStatus__actuator_saturation,  // get_const(index) function pointer
     get_function__ControlAllocatorStatus__actuator_saturation,  // get(index) function pointer
     nullptr  // resize(index) function pointer
-  },
-  {
-    "handled_motor_failure_mask",  // name
-    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_UINT16,  // type
-    0,  // upper bound of string
-    nullptr,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs::msg::ControlAllocatorStatus, handled_motor_failure_mask),  // bytes offset in struct
-    nullptr,  // default value
-    nullptr,  // size() function pointer
-    nullptr,  // get_const(index) function pointer
-    nullptr,  // get(index) function pointer
-    nullptr  // resize(index) function pointer
   }
 };
 
 static const ::rosidl_typesupport_introspection_cpp::MessageMembers ControlAllocatorStatus_message_members = {
   "px4_msgs::msg",  // message namespace
   "ControlAllocatorStatus",  // message name
-  7,  // number of fields
+  8,  // number of fields
   sizeof(px4_msgs::msg::ControlAllocatorStatus),
   ControlAllocatorStatus_message_member_array,  // message members
   ControlAllocatorStatus_init_function,  // function to initialize message memory (memory has to be allocated)

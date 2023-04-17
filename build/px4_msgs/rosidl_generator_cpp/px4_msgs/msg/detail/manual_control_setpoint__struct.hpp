@@ -41,10 +41,10 @@ struct ManualControlSetpoint_
       this->timestamp_sample = 0ull;
       this->valid = false;
       this->data_source = 0;
-      this->roll = 0.0f;
-      this->pitch = 0.0f;
-      this->yaw = 0.0f;
-      this->throttle = 0.0f;
+      this->x = 0.0f;
+      this->y = 0.0f;
+      this->z = 0.0f;
+      this->r = 0.0f;
       this->flaps = 0.0f;
       this->aux1 = 0.0f;
       this->aux2 = 0.0f;
@@ -66,10 +66,10 @@ struct ManualControlSetpoint_
       this->timestamp_sample = 0ull;
       this->valid = false;
       this->data_source = 0;
-      this->roll = 0.0f;
-      this->pitch = 0.0f;
-      this->yaw = 0.0f;
-      this->throttle = 0.0f;
+      this->x = 0.0f;
+      this->y = 0.0f;
+      this->z = 0.0f;
+      this->r = 0.0f;
       this->flaps = 0.0f;
       this->aux1 = 0.0f;
       this->aux2 = 0.0f;
@@ -94,18 +94,18 @@ struct ManualControlSetpoint_
   using _data_source_type =
     uint8_t;
   _data_source_type data_source;
-  using _roll_type =
+  using _x_type =
     float;
-  _roll_type roll;
-  using _pitch_type =
+  _x_type x;
+  using _y_type =
     float;
-  _pitch_type pitch;
-  using _yaw_type =
+  _y_type y;
+  using _z_type =
     float;
-  _yaw_type yaw;
-  using _throttle_type =
+  _z_type z;
+  using _r_type =
     float;
-  _throttle_type throttle;
+  _r_type r;
   using _flaps_type =
     float;
   _flaps_type flaps;
@@ -156,28 +156,28 @@ struct ManualControlSetpoint_
     this->data_source = _arg;
     return *this;
   }
-  Type & set__roll(
+  Type & set__x(
     const float & _arg)
   {
-    this->roll = _arg;
+    this->x = _arg;
     return *this;
   }
-  Type & set__pitch(
+  Type & set__y(
     const float & _arg)
   {
-    this->pitch = _arg;
+    this->y = _arg;
     return *this;
   }
-  Type & set__yaw(
+  Type & set__z(
     const float & _arg)
   {
-    this->yaw = _arg;
+    this->z = _arg;
     return *this;
   }
-  Type & set__throttle(
+  Type & set__r(
     const float & _arg)
   {
-    this->throttle = _arg;
+    this->r = _arg;
     return *this;
   }
   Type & set__flaps(
@@ -299,16 +299,16 @@ struct ManualControlSetpoint_
     if (this->data_source != other.data_source) {
       return false;
     }
-    if (this->roll != other.roll) {
+    if (this->x != other.x) {
       return false;
     }
-    if (this->pitch != other.pitch) {
+    if (this->y != other.y) {
       return false;
     }
-    if (this->yaw != other.yaw) {
+    if (this->z != other.z) {
       return false;
     }
-    if (this->throttle != other.throttle) {
+    if (this->r != other.r) {
       return false;
     }
     if (this->flaps != other.flaps) {

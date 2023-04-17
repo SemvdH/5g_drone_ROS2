@@ -22,7 +22,6 @@ px4_msgs__msg__VehicleRatesSetpoint__init(px4_msgs__msg__VehicleRatesSetpoint * 
   // pitch
   // yaw
   // thrust_body
-  // reset_integral
   return true;
 }
 
@@ -37,7 +36,6 @@ px4_msgs__msg__VehicleRatesSetpoint__fini(px4_msgs__msg__VehicleRatesSetpoint * 
   // pitch
   // yaw
   // thrust_body
-  // reset_integral
 }
 
 bool
@@ -68,10 +66,6 @@ px4_msgs__msg__VehicleRatesSetpoint__are_equal(const px4_msgs__msg__VehicleRates
       return false;
     }
   }
-  // reset_integral
-  if (lhs->reset_integral != rhs->reset_integral) {
-    return false;
-  }
   return true;
 }
 
@@ -95,8 +89,6 @@ px4_msgs__msg__VehicleRatesSetpoint__copy(
   for (size_t i = 0; i < 3; ++i) {
     output->thrust_body[i] = input->thrust_body[i];
   }
-  // reset_integral
-  output->reset_integral = input->reset_integral;
   return true;
 }
 

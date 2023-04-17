@@ -57,7 +57,7 @@ void * get_function__InputRc__values(void * untyped_member, size_t index)
   return &member[index];
 }
 
-static const ::rosidl_typesupport_introspection_cpp::MessageMember InputRc_message_member_array[13] = {
+static const ::rosidl_typesupport_introspection_cpp::MessageMember InputRc_message_member_array[11] = {
   {
     "timestamp",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_UINT64,  // type
@@ -222,43 +222,13 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember InputRc_messa
     get_const_function__InputRc__values,  // get_const(index) function pointer
     get_function__InputRc__values,  // get(index) function pointer
     nullptr  // resize(index) function pointer
-  },
-  {
-    "link_quality",  // name
-    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_INT8,  // type
-    0,  // upper bound of string
-    nullptr,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs::msg::InputRc, link_quality),  // bytes offset in struct
-    nullptr,  // default value
-    nullptr,  // size() function pointer
-    nullptr,  // get_const(index) function pointer
-    nullptr,  // get(index) function pointer
-    nullptr  // resize(index) function pointer
-  },
-  {
-    "rssi_dbm",  // name
-    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
-    0,  // upper bound of string
-    nullptr,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs::msg::InputRc, rssi_dbm),  // bytes offset in struct
-    nullptr,  // default value
-    nullptr,  // size() function pointer
-    nullptr,  // get_const(index) function pointer
-    nullptr,  // get(index) function pointer
-    nullptr  // resize(index) function pointer
   }
 };
 
 static const ::rosidl_typesupport_introspection_cpp::MessageMembers InputRc_message_members = {
   "px4_msgs::msg",  // message namespace
   "InputRc",  // message name
-  13,  // number of fields
+  11,  // number of fields
   sizeof(px4_msgs::msg::InputRc),
   InputRc_message_member_array,  // message members
   InputRc_init_function,  // function to initialize message memory (memory has to be allocated)

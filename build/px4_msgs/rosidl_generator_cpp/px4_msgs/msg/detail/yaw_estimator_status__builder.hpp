@@ -84,32 +84,16 @@ private:
   ::px4_msgs::msg::YawEstimatorStatus msg_;
 };
 
-class Init_YawEstimatorStatus_yaw_composite_valid
-{
-public:
-  explicit Init_YawEstimatorStatus_yaw_composite_valid(::px4_msgs::msg::YawEstimatorStatus & msg)
-  : msg_(msg)
-  {}
-  Init_YawEstimatorStatus_yaw yaw_composite_valid(::px4_msgs::msg::YawEstimatorStatus::_yaw_composite_valid_type arg)
-  {
-    msg_.yaw_composite_valid = std::move(arg);
-    return Init_YawEstimatorStatus_yaw(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::YawEstimatorStatus msg_;
-};
-
 class Init_YawEstimatorStatus_yaw_variance
 {
 public:
   explicit Init_YawEstimatorStatus_yaw_variance(::px4_msgs::msg::YawEstimatorStatus & msg)
   : msg_(msg)
   {}
-  Init_YawEstimatorStatus_yaw_composite_valid yaw_variance(::px4_msgs::msg::YawEstimatorStatus::_yaw_variance_type arg)
+  Init_YawEstimatorStatus_yaw yaw_variance(::px4_msgs::msg::YawEstimatorStatus::_yaw_variance_type arg)
   {
     msg_.yaw_variance = std::move(arg);
-    return Init_YawEstimatorStatus_yaw_composite_valid(msg_);
+    return Init_YawEstimatorStatus_yaw(msg_);
   }
 
 private:

@@ -33,10 +33,6 @@ px4_msgs__msg__EstimatorEventFlags__init(px4_msgs__msg__EstimatorEventFlags * ms
   // starting_vision_vel_fusion
   // starting_vision_yaw_fusion
   // yaw_aligned_to_imu_gps
-  // reset_hgt_to_baro
-  // reset_hgt_to_gps
-  // reset_hgt_to_rng
-  // reset_hgt_to_ev
   // warning_event_changes
   // gps_quality_poor
   // gps_fusion_timout
@@ -75,10 +71,6 @@ px4_msgs__msg__EstimatorEventFlags__fini(px4_msgs__msg__EstimatorEventFlags * ms
   // starting_vision_vel_fusion
   // starting_vision_yaw_fusion
   // yaw_aligned_to_imu_gps
-  // reset_hgt_to_baro
-  // reset_hgt_to_gps
-  // reset_hgt_to_rng
-  // reset_hgt_to_ev
   // warning_event_changes
   // gps_quality_poor
   // gps_fusion_timout
@@ -162,22 +154,6 @@ px4_msgs__msg__EstimatorEventFlags__are_equal(const px4_msgs__msg__EstimatorEven
   }
   // yaw_aligned_to_imu_gps
   if (lhs->yaw_aligned_to_imu_gps != rhs->yaw_aligned_to_imu_gps) {
-    return false;
-  }
-  // reset_hgt_to_baro
-  if (lhs->reset_hgt_to_baro != rhs->reset_hgt_to_baro) {
-    return false;
-  }
-  // reset_hgt_to_gps
-  if (lhs->reset_hgt_to_gps != rhs->reset_hgt_to_gps) {
-    return false;
-  }
-  // reset_hgt_to_rng
-  if (lhs->reset_hgt_to_rng != rhs->reset_hgt_to_rng) {
-    return false;
-  }
-  // reset_hgt_to_ev
-  if (lhs->reset_hgt_to_ev != rhs->reset_hgt_to_ev) {
     return false;
   }
   // warning_event_changes
@@ -275,14 +251,6 @@ px4_msgs__msg__EstimatorEventFlags__copy(
   output->starting_vision_yaw_fusion = input->starting_vision_yaw_fusion;
   // yaw_aligned_to_imu_gps
   output->yaw_aligned_to_imu_gps = input->yaw_aligned_to_imu_gps;
-  // reset_hgt_to_baro
-  output->reset_hgt_to_baro = input->reset_hgt_to_baro;
-  // reset_hgt_to_gps
-  output->reset_hgt_to_gps = input->reset_hgt_to_gps;
-  // reset_hgt_to_rng
-  output->reset_hgt_to_rng = input->reset_hgt_to_rng;
-  // reset_hgt_to_ev
-  output->reset_hgt_to_ev = input->reset_hgt_to_ev;
   // warning_event_changes
   output->warning_event_changes = input->warning_event_changes;
   // gps_quality_poor

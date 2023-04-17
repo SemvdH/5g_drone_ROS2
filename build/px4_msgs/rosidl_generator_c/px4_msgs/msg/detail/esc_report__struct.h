@@ -93,11 +93,8 @@ typedef struct px4_msgs__msg__EscReport
   float esc_current;
   float esc_temperature;
   uint8_t esc_address;
-  uint8_t esc_cmdcount;
   uint8_t esc_state;
-  uint8_t actuator_function;
   uint16_t failures;
-  int8_t esc_power;
 } px4_msgs__msg__EscReport;
 
 // Struct for a sequence of px4_msgs__msg__EscReport.

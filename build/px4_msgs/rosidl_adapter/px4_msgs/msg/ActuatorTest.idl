@@ -9,10 +9,10 @@ module px4_msgs {
       const uint8 ACTION_RELEASE_CONTROL = 0;
       const uint8 ACTION_DO_CONTROL = 1;
       const uint8 FUNCTION_MOTOR1 = 101;
-      const uint8 MAX_NUM_MOTORS = 12;
+      const uint8 MAX_NUM_MOTORS = 8;
       const uint8 FUNCTION_SERVO1 = 201;
       const uint8 MAX_NUM_SERVOS = 8;
-      const uint8 ORB_QUEUE_LENGTH = 12;
+      const uint8 ORB_QUEUE_LENGTH = 8;
     };
     struct ActuatorTest {
       @verbatim (language="comment", text=

@@ -89,15 +89,6 @@ bool px4_msgs__msg__yaw_estimator_status__convert_from_py(PyObject * _pymsg, voi
     ros_message->yaw_variance = (float)PyFloat_AS_DOUBLE(field);
     Py_DECREF(field);
   }
-  {  // yaw_composite_valid
-    PyObject * field = PyObject_GetAttrString(_pymsg, "yaw_composite_valid");
-    if (!field) {
-      return false;
-    }
-    assert(PyBool_Check(field));
-    ros_message->yaw_composite_valid = (Py_True == field);
-    Py_DECREF(field);
-  }
   {  // yaw
     PyObject * field = PyObject_GetAttrString(_pymsg, "yaw");
     if (!field) {
@@ -254,17 +245,6 @@ PyObject * px4_msgs__msg__yaw_estimator_status__convert_to_py(void * raw_ros_mes
     field = PyFloat_FromDouble(ros_message->yaw_variance);
     {
       int rc = PyObject_SetAttrString(_pymessage, "yaw_variance", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
-  {  // yaw_composite_valid
-    PyObject * field = NULL;
-    field = PyBool_FromLong(ros_message->yaw_composite_valid ? 1 : 0);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "yaw_composite_valid", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;

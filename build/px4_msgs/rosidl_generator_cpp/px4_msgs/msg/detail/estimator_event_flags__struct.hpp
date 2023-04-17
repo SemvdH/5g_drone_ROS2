@@ -53,10 +53,6 @@ struct EstimatorEventFlags_
       this->starting_vision_vel_fusion = false;
       this->starting_vision_yaw_fusion = false;
       this->yaw_aligned_to_imu_gps = false;
-      this->reset_hgt_to_baro = false;
-      this->reset_hgt_to_gps = false;
-      this->reset_hgt_to_rng = false;
-      this->reset_hgt_to_ev = false;
       this->warning_event_changes = 0ul;
       this->gps_quality_poor = false;
       this->gps_fusion_timout = false;
@@ -95,10 +91,6 @@ struct EstimatorEventFlags_
       this->starting_vision_vel_fusion = false;
       this->starting_vision_yaw_fusion = false;
       this->yaw_aligned_to_imu_gps = false;
-      this->reset_hgt_to_baro = false;
-      this->reset_hgt_to_gps = false;
-      this->reset_hgt_to_rng = false;
-      this->reset_hgt_to_ev = false;
       this->warning_event_changes = 0ul;
       this->gps_quality_poor = false;
       this->gps_fusion_timout = false;
@@ -164,18 +156,6 @@ struct EstimatorEventFlags_
   using _yaw_aligned_to_imu_gps_type =
     bool;
   _yaw_aligned_to_imu_gps_type yaw_aligned_to_imu_gps;
-  using _reset_hgt_to_baro_type =
-    bool;
-  _reset_hgt_to_baro_type reset_hgt_to_baro;
-  using _reset_hgt_to_gps_type =
-    bool;
-  _reset_hgt_to_gps_type reset_hgt_to_gps;
-  using _reset_hgt_to_rng_type =
-    bool;
-  _reset_hgt_to_rng_type reset_hgt_to_rng;
-  using _reset_hgt_to_ev_type =
-    bool;
-  _reset_hgt_to_ev_type reset_hgt_to_ev;
   using _warning_event_changes_type =
     uint32_t;
   _warning_event_changes_type warning_event_changes;
@@ -311,30 +291,6 @@ struct EstimatorEventFlags_
     const bool & _arg)
   {
     this->yaw_aligned_to_imu_gps = _arg;
-    return *this;
-  }
-  Type & set__reset_hgt_to_baro(
-    const bool & _arg)
-  {
-    this->reset_hgt_to_baro = _arg;
-    return *this;
-  }
-  Type & set__reset_hgt_to_gps(
-    const bool & _arg)
-  {
-    this->reset_hgt_to_gps = _arg;
-    return *this;
-  }
-  Type & set__reset_hgt_to_rng(
-    const bool & _arg)
-  {
-    this->reset_hgt_to_rng = _arg;
-    return *this;
-  }
-  Type & set__reset_hgt_to_ev(
-    const bool & _arg)
-  {
-    this->reset_hgt_to_ev = _arg;
     return *this;
   }
   Type & set__warning_event_changes(
@@ -504,18 +460,6 @@ struct EstimatorEventFlags_
       return false;
     }
     if (this->yaw_aligned_to_imu_gps != other.yaw_aligned_to_imu_gps) {
-      return false;
-    }
-    if (this->reset_hgt_to_baro != other.reset_hgt_to_baro) {
-      return false;
-    }
-    if (this->reset_hgt_to_gps != other.reset_hgt_to_gps) {
-      return false;
-    }
-    if (this->reset_hgt_to_rng != other.reset_hgt_to_rng) {
-      return false;
-    }
-    if (this->reset_hgt_to_ev != other.reset_hgt_to_ev) {
       return false;
     }
     if (this->warning_event_changes != other.warning_event_changes) {

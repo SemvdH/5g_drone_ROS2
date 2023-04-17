@@ -40,11 +40,11 @@ struct VehicleCommandAck_
       this->timestamp = 0ull;
       this->command = 0ul;
       this->result = 0;
+      this->from_external = false;
       this->result_param1 = 0;
       this->result_param2 = 0l;
       this->target_system = 0;
       this->target_component = 0;
-      this->from_external = false;
     }
   }
 
@@ -57,11 +57,11 @@ struct VehicleCommandAck_
       this->timestamp = 0ull;
       this->command = 0ul;
       this->result = 0;
+      this->from_external = false;
       this->result_param1 = 0;
       this->result_param2 = 0l;
       this->target_system = 0;
       this->target_component = 0;
-      this->from_external = false;
     }
   }
 
@@ -75,6 +75,9 @@ struct VehicleCommandAck_
   using _result_type =
     uint8_t;
   _result_type result;
+  using _from_external_type =
+    bool;
+  _from_external_type from_external;
   using _result_param1_type =
     uint8_t;
   _result_param1_type result_param1;
@@ -87,9 +90,6 @@ struct VehicleCommandAck_
   using _target_component_type =
     uint8_t;
   _target_component_type target_component;
-  using _from_external_type =
-    bool;
-  _from_external_type from_external;
 
   // setters for named parameter idiom
   Type & set__timestamp(
@@ -108,6 +108,12 @@ struct VehicleCommandAck_
     const uint8_t & _arg)
   {
     this->result = _arg;
+    return *this;
+  }
+  Type & set__from_external(
+    const bool & _arg)
+  {
+    this->from_external = _arg;
     return *this;
   }
   Type & set__result_param1(
@@ -134,28 +140,20 @@ struct VehicleCommandAck_
     this->target_component = _arg;
     return *this;
   }
-  Type & set__from_external(
-    const bool & _arg)
-  {
-    this->from_external = _arg;
-    return *this;
-  }
 
   // constant declarations
-  static constexpr uint8_t VEHICLE_CMD_RESULT_ACCEPTED =
+  static constexpr uint8_t VEHICLE_RESULT_ACCEPTED =
     0u;
-  static constexpr uint8_t VEHICLE_CMD_RESULT_TEMPORARILY_REJECTED =
+  static constexpr uint8_t VEHICLE_RESULT_TEMPORARILY_REJECTED =
     1u;
-  static constexpr uint8_t VEHICLE_CMD_RESULT_DENIED =
+  static constexpr uint8_t VEHICLE_RESULT_DENIED =
     2u;
-  static constexpr uint8_t VEHICLE_CMD_RESULT_UNSUPPORTED =
+  static constexpr uint8_t VEHICLE_RESULT_UNSUPPORTED =
     3u;
-  static constexpr uint8_t VEHICLE_CMD_RESULT_FAILED =
+  static constexpr uint8_t VEHICLE_RESULT_FAILED =
     4u;
-  static constexpr uint8_t VEHICLE_CMD_RESULT_IN_PROGRESS =
+  static constexpr uint8_t VEHICLE_RESULT_IN_PROGRESS =
     5u;
-  static constexpr uint8_t VEHICLE_CMD_RESULT_CANCELLED =
-    6u;
   static constexpr uint16_t ARM_AUTH_DENIED_REASON_GENERIC =
     0u;
   static constexpr uint16_t ARM_AUTH_DENIED_REASON_NONE =
@@ -220,6 +218,9 @@ struct VehicleCommandAck_
     if (this->result != other.result) {
       return false;
     }
+    if (this->from_external != other.from_external) {
+      return false;
+    }
     if (this->result_param1 != other.result_param1) {
       return false;
     }
@@ -230,9 +231,6 @@ struct VehicleCommandAck_
       return false;
     }
     if (this->target_component != other.target_component) {
-      return false;
-    }
-    if (this->from_external != other.from_external) {
       return false;
     }
     return true;
@@ -249,19 +247,17 @@ using VehicleCommandAck =
 
 // constant definitions
 template<typename ContainerAllocator>
-constexpr uint8_t VehicleCommandAck_<ContainerAllocator>::VEHICLE_CMD_RESULT_ACCEPTED;
+constexpr uint8_t VehicleCommandAck_<ContainerAllocator>::VEHICLE_RESULT_ACCEPTED;
 template<typename ContainerAllocator>
-constexpr uint8_t VehicleCommandAck_<ContainerAllocator>::VEHICLE_CMD_RESULT_TEMPORARILY_REJECTED;
+constexpr uint8_t VehicleCommandAck_<ContainerAllocator>::VEHICLE_RESULT_TEMPORARILY_REJECTED;
 template<typename ContainerAllocator>
-constexpr uint8_t VehicleCommandAck_<ContainerAllocator>::VEHICLE_CMD_RESULT_DENIED;
+constexpr uint8_t VehicleCommandAck_<ContainerAllocator>::VEHICLE_RESULT_DENIED;
 template<typename ContainerAllocator>
-constexpr uint8_t VehicleCommandAck_<ContainerAllocator>::VEHICLE_CMD_RESULT_UNSUPPORTED;
+constexpr uint8_t VehicleCommandAck_<ContainerAllocator>::VEHICLE_RESULT_UNSUPPORTED;
 template<typename ContainerAllocator>
-constexpr uint8_t VehicleCommandAck_<ContainerAllocator>::VEHICLE_CMD_RESULT_FAILED;
+constexpr uint8_t VehicleCommandAck_<ContainerAllocator>::VEHICLE_RESULT_FAILED;
 template<typename ContainerAllocator>
-constexpr uint8_t VehicleCommandAck_<ContainerAllocator>::VEHICLE_CMD_RESULT_IN_PROGRESS;
-template<typename ContainerAllocator>
-constexpr uint8_t VehicleCommandAck_<ContainerAllocator>::VEHICLE_CMD_RESULT_CANCELLED;
+constexpr uint8_t VehicleCommandAck_<ContainerAllocator>::VEHICLE_RESULT_IN_PROGRESS;
 template<typename ContainerAllocator>
 constexpr uint16_t VehicleCommandAck_<ContainerAllocator>::ARM_AUTH_DENIED_REASON_GENERIC;
 template<typename ContainerAllocator>

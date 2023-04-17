@@ -57,9 +57,8 @@ enum
 typedef struct px4_msgs__msg__GeofenceResult
 {
   uint64_t timestamp;
-  uint8_t geofence_violation_reason;
-  bool primary_geofence_breached;
-  uint8_t primary_geofence_action;
+  bool geofence_violated;
+  uint8_t geofence_action;
   bool home_required;
 } px4_msgs__msg__GeofenceResult;
 

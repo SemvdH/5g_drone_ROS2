@@ -116,16 +116,64 @@ private:
   ::px4_msgs::msg::EstimatorStatusFlags msg_;
 };
 
+class Init_EstimatorStatusFlags_reject_mag_z
+{
+public:
+  explicit Init_EstimatorStatusFlags_reject_mag_z(::px4_msgs::msg::EstimatorStatusFlags & msg)
+  : msg_(msg)
+  {}
+  Init_EstimatorStatusFlags_reject_yaw reject_mag_z(::px4_msgs::msg::EstimatorStatusFlags::_reject_mag_z_type arg)
+  {
+    msg_.reject_mag_z = std::move(arg);
+    return Init_EstimatorStatusFlags_reject_yaw(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::EstimatorStatusFlags msg_;
+};
+
+class Init_EstimatorStatusFlags_reject_mag_y
+{
+public:
+  explicit Init_EstimatorStatusFlags_reject_mag_y(::px4_msgs::msg::EstimatorStatusFlags & msg)
+  : msg_(msg)
+  {}
+  Init_EstimatorStatusFlags_reject_mag_z reject_mag_y(::px4_msgs::msg::EstimatorStatusFlags::_reject_mag_y_type arg)
+  {
+    msg_.reject_mag_y = std::move(arg);
+    return Init_EstimatorStatusFlags_reject_mag_z(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::EstimatorStatusFlags msg_;
+};
+
+class Init_EstimatorStatusFlags_reject_mag_x
+{
+public:
+  explicit Init_EstimatorStatusFlags_reject_mag_x(::px4_msgs::msg::EstimatorStatusFlags & msg)
+  : msg_(msg)
+  {}
+  Init_EstimatorStatusFlags_reject_mag_y reject_mag_x(::px4_msgs::msg::EstimatorStatusFlags::_reject_mag_x_type arg)
+  {
+    msg_.reject_mag_x = std::move(arg);
+    return Init_EstimatorStatusFlags_reject_mag_y(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::EstimatorStatusFlags msg_;
+};
+
 class Init_EstimatorStatusFlags_reject_ver_pos
 {
 public:
   explicit Init_EstimatorStatusFlags_reject_ver_pos(::px4_msgs::msg::EstimatorStatusFlags & msg)
   : msg_(msg)
   {}
-  Init_EstimatorStatusFlags_reject_yaw reject_ver_pos(::px4_msgs::msg::EstimatorStatusFlags::_reject_ver_pos_type arg)
+  Init_EstimatorStatusFlags_reject_mag_x reject_ver_pos(::px4_msgs::msg::EstimatorStatusFlags::_reject_ver_pos_type arg)
   {
     msg_.reject_ver_pos = std::move(arg);
-    return Init_EstimatorStatusFlags_reject_yaw(msg_);
+    return Init_EstimatorStatusFlags_reject_mag_x(msg_);
   }
 
 private:
@@ -500,64 +548,16 @@ private:
   ::px4_msgs::msg::EstimatorStatusFlags msg_;
 };
 
-class Init_EstimatorStatusFlags_cs_gravity_vector
-{
-public:
-  explicit Init_EstimatorStatusFlags_cs_gravity_vector(::px4_msgs::msg::EstimatorStatusFlags & msg)
-  : msg_(msg)
-  {}
-  Init_EstimatorStatusFlags_fault_status_changes cs_gravity_vector(::px4_msgs::msg::EstimatorStatusFlags::_cs_gravity_vector_type arg)
-  {
-    msg_.cs_gravity_vector = std::move(arg);
-    return Init_EstimatorStatusFlags_fault_status_changes(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::EstimatorStatusFlags msg_;
-};
-
-class Init_EstimatorStatusFlags_cs_fake_hgt
-{
-public:
-  explicit Init_EstimatorStatusFlags_cs_fake_hgt(::px4_msgs::msg::EstimatorStatusFlags & msg)
-  : msg_(msg)
-  {}
-  Init_EstimatorStatusFlags_cs_gravity_vector cs_fake_hgt(::px4_msgs::msg::EstimatorStatusFlags::_cs_fake_hgt_type arg)
-  {
-    msg_.cs_fake_hgt = std::move(arg);
-    return Init_EstimatorStatusFlags_cs_gravity_vector(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::EstimatorStatusFlags msg_;
-};
-
-class Init_EstimatorStatusFlags_cs_fake_pos
-{
-public:
-  explicit Init_EstimatorStatusFlags_cs_fake_pos(::px4_msgs::msg::EstimatorStatusFlags & msg)
-  : msg_(msg)
-  {}
-  Init_EstimatorStatusFlags_cs_fake_hgt cs_fake_pos(::px4_msgs::msg::EstimatorStatusFlags::_cs_fake_pos_type arg)
-  {
-    msg_.cs_fake_pos = std::move(arg);
-    return Init_EstimatorStatusFlags_cs_fake_hgt(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::EstimatorStatusFlags msg_;
-};
-
 class Init_EstimatorStatusFlags_cs_rng_kin_consistent
 {
 public:
   explicit Init_EstimatorStatusFlags_cs_rng_kin_consistent(::px4_msgs::msg::EstimatorStatusFlags & msg)
   : msg_(msg)
   {}
-  Init_EstimatorStatusFlags_cs_fake_pos cs_rng_kin_consistent(::px4_msgs::msg::EstimatorStatusFlags::_cs_rng_kin_consistent_type arg)
+  Init_EstimatorStatusFlags_fault_status_changes cs_rng_kin_consistent(::px4_msgs::msg::EstimatorStatusFlags::_cs_rng_kin_consistent_type arg)
   {
     msg_.cs_rng_kin_consistent = std::move(arg);
-    return Init_EstimatorStatusFlags_cs_fake_pos(msg_);
+    return Init_EstimatorStatusFlags_fault_status_changes(msg_);
   }
 
 private:

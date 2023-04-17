@@ -20,15 +20,15 @@ namespace msg
 namespace builder
 {
 
-class Init_VehicleLocalPositionSetpoint_yawspeed
+class Init_VehicleLocalPositionSetpoint_thrust
 {
 public:
-  explicit Init_VehicleLocalPositionSetpoint_yawspeed(::px4_msgs::msg::VehicleLocalPositionSetpoint & msg)
+  explicit Init_VehicleLocalPositionSetpoint_thrust(::px4_msgs::msg::VehicleLocalPositionSetpoint & msg)
   : msg_(msg)
   {}
-  ::px4_msgs::msg::VehicleLocalPositionSetpoint yawspeed(::px4_msgs::msg::VehicleLocalPositionSetpoint::_yawspeed_type arg)
+  ::px4_msgs::msg::VehicleLocalPositionSetpoint thrust(::px4_msgs::msg::VehicleLocalPositionSetpoint::_thrust_type arg)
   {
-    msg_.yawspeed = std::move(arg);
+    msg_.thrust = std::move(arg);
     return std::move(msg_);
   }
 
@@ -36,32 +36,16 @@ private:
   ::px4_msgs::msg::VehicleLocalPositionSetpoint msg_;
 };
 
-class Init_VehicleLocalPositionSetpoint_yaw
+class Init_VehicleLocalPositionSetpoint_jerk
 {
 public:
-  explicit Init_VehicleLocalPositionSetpoint_yaw(::px4_msgs::msg::VehicleLocalPositionSetpoint & msg)
+  explicit Init_VehicleLocalPositionSetpoint_jerk(::px4_msgs::msg::VehicleLocalPositionSetpoint & msg)
   : msg_(msg)
   {}
-  Init_VehicleLocalPositionSetpoint_yawspeed yaw(::px4_msgs::msg::VehicleLocalPositionSetpoint::_yaw_type arg)
+  Init_VehicleLocalPositionSetpoint_thrust jerk(::px4_msgs::msg::VehicleLocalPositionSetpoint::_jerk_type arg)
   {
-    msg_.yaw = std::move(arg);
-    return Init_VehicleLocalPositionSetpoint_yawspeed(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::VehicleLocalPositionSetpoint msg_;
-};
-
-class Init_VehicleLocalPositionSetpoint_thrust
-{
-public:
-  explicit Init_VehicleLocalPositionSetpoint_thrust(::px4_msgs::msg::VehicleLocalPositionSetpoint & msg)
-  : msg_(msg)
-  {}
-  Init_VehicleLocalPositionSetpoint_yaw thrust(::px4_msgs::msg::VehicleLocalPositionSetpoint::_thrust_type arg)
-  {
-    msg_.thrust = std::move(arg);
-    return Init_VehicleLocalPositionSetpoint_yaw(msg_);
+    msg_.jerk = std::move(arg);
+    return Init_VehicleLocalPositionSetpoint_thrust(msg_);
   }
 
 private:
@@ -74,10 +58,10 @@ public:
   explicit Init_VehicleLocalPositionSetpoint_acceleration(::px4_msgs::msg::VehicleLocalPositionSetpoint & msg)
   : msg_(msg)
   {}
-  Init_VehicleLocalPositionSetpoint_thrust acceleration(::px4_msgs::msg::VehicleLocalPositionSetpoint::_acceleration_type arg)
+  Init_VehicleLocalPositionSetpoint_jerk acceleration(::px4_msgs::msg::VehicleLocalPositionSetpoint::_acceleration_type arg)
   {
     msg_.acceleration = std::move(arg);
-    return Init_VehicleLocalPositionSetpoint_thrust(msg_);
+    return Init_VehicleLocalPositionSetpoint_jerk(msg_);
   }
 
 private:
@@ -132,16 +116,48 @@ private:
   ::px4_msgs::msg::VehicleLocalPositionSetpoint msg_;
 };
 
+class Init_VehicleLocalPositionSetpoint_yawspeed
+{
+public:
+  explicit Init_VehicleLocalPositionSetpoint_yawspeed(::px4_msgs::msg::VehicleLocalPositionSetpoint & msg)
+  : msg_(msg)
+  {}
+  Init_VehicleLocalPositionSetpoint_vx yawspeed(::px4_msgs::msg::VehicleLocalPositionSetpoint::_yawspeed_type arg)
+  {
+    msg_.yawspeed = std::move(arg);
+    return Init_VehicleLocalPositionSetpoint_vx(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::VehicleLocalPositionSetpoint msg_;
+};
+
+class Init_VehicleLocalPositionSetpoint_yaw
+{
+public:
+  explicit Init_VehicleLocalPositionSetpoint_yaw(::px4_msgs::msg::VehicleLocalPositionSetpoint & msg)
+  : msg_(msg)
+  {}
+  Init_VehicleLocalPositionSetpoint_yawspeed yaw(::px4_msgs::msg::VehicleLocalPositionSetpoint::_yaw_type arg)
+  {
+    msg_.yaw = std::move(arg);
+    return Init_VehicleLocalPositionSetpoint_yawspeed(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::VehicleLocalPositionSetpoint msg_;
+};
+
 class Init_VehicleLocalPositionSetpoint_z
 {
 public:
   explicit Init_VehicleLocalPositionSetpoint_z(::px4_msgs::msg::VehicleLocalPositionSetpoint & msg)
   : msg_(msg)
   {}
-  Init_VehicleLocalPositionSetpoint_vx z(::px4_msgs::msg::VehicleLocalPositionSetpoint::_z_type arg)
+  Init_VehicleLocalPositionSetpoint_yaw z(::px4_msgs::msg::VehicleLocalPositionSetpoint::_z_type arg)
   {
     msg_.z = std::move(arg);
-    return Init_VehicleLocalPositionSetpoint_vx(msg_);
+    return Init_VehicleLocalPositionSetpoint_yaw(msg_);
   }
 
 private:

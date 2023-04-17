@@ -40,20 +40,20 @@ void ActuatorControlsStatus_fini_function(void * message_memory)
 size_t size_function__ActuatorControlsStatus__control_power(const void * untyped_member)
 {
   (void)untyped_member;
-  return 3;
+  return 4;
 }
 
 const void * get_const_function__ActuatorControlsStatus__control_power(const void * untyped_member, size_t index)
 {
   const auto & member =
-    *reinterpret_cast<const std::array<float, 3> *>(untyped_member);
+    *reinterpret_cast<const std::array<float, 4> *>(untyped_member);
   return &member[index];
 }
 
 void * get_function__ActuatorControlsStatus__control_power(void * untyped_member, size_t index)
 {
   auto & member =
-    *reinterpret_cast<std::array<float, 3> *>(untyped_member);
+    *reinterpret_cast<std::array<float, 4> *>(untyped_member);
   return &member[index];
 }
 
@@ -79,7 +79,7 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember ActuatorContr
     0,  // upper bound of string
     nullptr,  // members of sub message
     true,  // is array
-    3,  // array size
+    4,  // array size
     false,  // is upper bound
     offsetof(px4_msgs::msg::ActuatorControlsStatus, control_power),  // bytes offset in struct
     nullptr,  // default value

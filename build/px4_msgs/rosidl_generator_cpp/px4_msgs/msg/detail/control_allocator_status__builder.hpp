@@ -20,32 +20,16 @@ namespace msg
 namespace builder
 {
 
-class Init_ControlAllocatorStatus_handled_motor_failure_mask
-{
-public:
-  explicit Init_ControlAllocatorStatus_handled_motor_failure_mask(::px4_msgs::msg::ControlAllocatorStatus & msg)
-  : msg_(msg)
-  {}
-  ::px4_msgs::msg::ControlAllocatorStatus handled_motor_failure_mask(::px4_msgs::msg::ControlAllocatorStatus::_handled_motor_failure_mask_type arg)
-  {
-    msg_.handled_motor_failure_mask = std::move(arg);
-    return std::move(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::ControlAllocatorStatus msg_;
-};
-
 class Init_ControlAllocatorStatus_actuator_saturation
 {
 public:
   explicit Init_ControlAllocatorStatus_actuator_saturation(::px4_msgs::msg::ControlAllocatorStatus & msg)
   : msg_(msg)
   {}
-  Init_ControlAllocatorStatus_handled_motor_failure_mask actuator_saturation(::px4_msgs::msg::ControlAllocatorStatus::_actuator_saturation_type arg)
+  ::px4_msgs::msg::ControlAllocatorStatus actuator_saturation(::px4_msgs::msg::ControlAllocatorStatus::_actuator_saturation_type arg)
   {
     msg_.actuator_saturation = std::move(arg);
-    return Init_ControlAllocatorStatus_handled_motor_failure_mask(msg_);
+    return std::move(msg_);
   }
 
 private:
@@ -68,16 +52,32 @@ private:
   ::px4_msgs::msg::ControlAllocatorStatus msg_;
 };
 
+class Init_ControlAllocatorStatus_allocated_thrust
+{
+public:
+  explicit Init_ControlAllocatorStatus_allocated_thrust(::px4_msgs::msg::ControlAllocatorStatus & msg)
+  : msg_(msg)
+  {}
+  Init_ControlAllocatorStatus_unallocated_thrust allocated_thrust(::px4_msgs::msg::ControlAllocatorStatus::_allocated_thrust_type arg)
+  {
+    msg_.allocated_thrust = std::move(arg);
+    return Init_ControlAllocatorStatus_unallocated_thrust(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::ControlAllocatorStatus msg_;
+};
+
 class Init_ControlAllocatorStatus_thrust_setpoint_achieved
 {
 public:
   explicit Init_ControlAllocatorStatus_thrust_setpoint_achieved(::px4_msgs::msg::ControlAllocatorStatus & msg)
   : msg_(msg)
   {}
-  Init_ControlAllocatorStatus_unallocated_thrust thrust_setpoint_achieved(::px4_msgs::msg::ControlAllocatorStatus::_thrust_setpoint_achieved_type arg)
+  Init_ControlAllocatorStatus_allocated_thrust thrust_setpoint_achieved(::px4_msgs::msg::ControlAllocatorStatus::_thrust_setpoint_achieved_type arg)
   {
     msg_.thrust_setpoint_achieved = std::move(arg);
-    return Init_ControlAllocatorStatus_unallocated_thrust(msg_);
+    return Init_ControlAllocatorStatus_allocated_thrust(msg_);
   }
 
 private:
@@ -100,16 +100,32 @@ private:
   ::px4_msgs::msg::ControlAllocatorStatus msg_;
 };
 
+class Init_ControlAllocatorStatus_allocated_torque
+{
+public:
+  explicit Init_ControlAllocatorStatus_allocated_torque(::px4_msgs::msg::ControlAllocatorStatus & msg)
+  : msg_(msg)
+  {}
+  Init_ControlAllocatorStatus_unallocated_torque allocated_torque(::px4_msgs::msg::ControlAllocatorStatus::_allocated_torque_type arg)
+  {
+    msg_.allocated_torque = std::move(arg);
+    return Init_ControlAllocatorStatus_unallocated_torque(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::ControlAllocatorStatus msg_;
+};
+
 class Init_ControlAllocatorStatus_torque_setpoint_achieved
 {
 public:
   explicit Init_ControlAllocatorStatus_torque_setpoint_achieved(::px4_msgs::msg::ControlAllocatorStatus & msg)
   : msg_(msg)
   {}
-  Init_ControlAllocatorStatus_unallocated_torque torque_setpoint_achieved(::px4_msgs::msg::ControlAllocatorStatus::_torque_setpoint_achieved_type arg)
+  Init_ControlAllocatorStatus_allocated_torque torque_setpoint_achieved(::px4_msgs::msg::ControlAllocatorStatus::_torque_setpoint_achieved_type arg)
   {
     msg_.torque_setpoint_achieved = std::move(arg);
-    return Init_ControlAllocatorStatus_unallocated_torque(msg_);
+    return Init_ControlAllocatorStatus_allocated_torque(msg_);
   }
 
 private:

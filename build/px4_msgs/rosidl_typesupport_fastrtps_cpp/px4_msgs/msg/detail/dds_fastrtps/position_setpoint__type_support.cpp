@@ -44,6 +44,12 @@ cdr_serialize(
   cdr << ros_message.vy;
   // Member: vz
   cdr << ros_message.vz;
+  // Member: velocity_valid
+  cdr << (ros_message.velocity_valid ? true : false);
+  // Member: velocity_frame
+  cdr << ros_message.velocity_frame;
+  // Member: alt_valid
+  cdr << (ros_message.alt_valid ? true : false);
   // Member: lat
   cdr << ros_message.lat;
   // Member: lon
@@ -58,16 +64,16 @@ cdr_serialize(
   cdr << ros_message.yawspeed;
   // Member: yawspeed_valid
   cdr << (ros_message.yawspeed_valid ? true : false);
+  // Member: landing_gear
+  cdr << ros_message.landing_gear;
   // Member: loiter_radius
   cdr << ros_message.loiter_radius;
-  // Member: loiter_direction_counter_clockwise
-  cdr << (ros_message.loiter_direction_counter_clockwise ? true : false);
+  // Member: loiter_direction
+  cdr << ros_message.loiter_direction;
   // Member: acceptance_radius
   cdr << ros_message.acceptance_radius;
   // Member: cruising_speed
   cdr << ros_message.cruising_speed;
-  // Member: gliding_enabled
-  cdr << (ros_message.gliding_enabled ? true : false);
   // Member: cruising_throttle
   cdr << ros_message.cruising_throttle;
   // Member: disable_weather_vane
@@ -103,6 +109,23 @@ cdr_deserialize(
   // Member: vz
   cdr >> ros_message.vz;
 
+  // Member: velocity_valid
+  {
+    uint8_t tmp;
+    cdr >> tmp;
+    ros_message.velocity_valid = tmp ? true : false;
+  }
+
+  // Member: velocity_frame
+  cdr >> ros_message.velocity_frame;
+
+  // Member: alt_valid
+  {
+    uint8_t tmp;
+    cdr >> tmp;
+    ros_message.alt_valid = tmp ? true : false;
+  }
+
   // Member: lat
   cdr >> ros_message.lat;
 
@@ -132,28 +155,20 @@ cdr_deserialize(
     ros_message.yawspeed_valid = tmp ? true : false;
   }
 
+  // Member: landing_gear
+  cdr >> ros_message.landing_gear;
+
   // Member: loiter_radius
   cdr >> ros_message.loiter_radius;
 
-  // Member: loiter_direction_counter_clockwise
-  {
-    uint8_t tmp;
-    cdr >> tmp;
-    ros_message.loiter_direction_counter_clockwise = tmp ? true : false;
-  }
+  // Member: loiter_direction
+  cdr >> ros_message.loiter_direction;
 
   // Member: acceptance_radius
   cdr >> ros_message.acceptance_radius;
 
   // Member: cruising_speed
   cdr >> ros_message.cruising_speed;
-
-  // Member: gliding_enabled
-  {
-    uint8_t tmp;
-    cdr >> tmp;
-    ros_message.gliding_enabled = tmp ? true : false;
-  }
 
   // Member: cruising_throttle
   cdr >> ros_message.cruising_throttle;
@@ -217,6 +232,24 @@ get_serialized_size(
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
+  // Member: velocity_valid
+  {
+    size_t item_size = sizeof(ros_message.velocity_valid);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // Member: velocity_frame
+  {
+    size_t item_size = sizeof(ros_message.velocity_frame);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // Member: alt_valid
+  {
+    size_t item_size = sizeof(ros_message.alt_valid);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
   // Member: lat
   {
     size_t item_size = sizeof(ros_message.lat);
@@ -259,15 +292,21 @@ get_serialized_size(
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
+  // Member: landing_gear
+  {
+    size_t item_size = sizeof(ros_message.landing_gear);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
   // Member: loiter_radius
   {
     size_t item_size = sizeof(ros_message.loiter_radius);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // Member: loiter_direction_counter_clockwise
+  // Member: loiter_direction
   {
-    size_t item_size = sizeof(ros_message.loiter_direction_counter_clockwise);
+    size_t item_size = sizeof(ros_message.loiter_direction);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -280,12 +319,6 @@ get_serialized_size(
   // Member: cruising_speed
   {
     size_t item_size = sizeof(ros_message.cruising_speed);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // Member: gliding_enabled
-  {
-    size_t item_size = sizeof(ros_message.gliding_enabled);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -366,6 +399,27 @@ max_serialized_size_PositionSetpoint(
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
 
+  // Member: velocity_valid
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
+  }
+
+  // Member: velocity_frame
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
+  }
+
+  // Member: alt_valid
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
+  }
+
   // Member: lat
   {
     size_t array_size = 1;
@@ -420,6 +474,13 @@ max_serialized_size_PositionSetpoint(
     current_alignment += array_size * sizeof(uint8_t);
   }
 
+  // Member: landing_gear
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
+  }
+
   // Member: loiter_radius
   {
     size_t array_size = 1;
@@ -428,7 +489,7 @@ max_serialized_size_PositionSetpoint(
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
 
-  // Member: loiter_direction_counter_clockwise
+  // Member: loiter_direction
   {
     size_t array_size = 1;
 
@@ -449,13 +510,6 @@ max_serialized_size_PositionSetpoint(
 
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
-  }
-
-  // Member: gliding_enabled
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint8_t);
   }
 
   // Member: cruising_throttle

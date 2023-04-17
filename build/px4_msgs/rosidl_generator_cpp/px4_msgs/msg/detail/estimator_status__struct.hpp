@@ -41,7 +41,7 @@ struct EstimatorStatus_
       this->timestamp_sample = 0ull;
       std::fill<typename std::array<float, 3>::iterator, float>(this->output_tracking_error.begin(), this->output_tracking_error.end(), 0.0f);
       this->gps_check_fail_flags = 0;
-      this->control_mode_flags = 0ull;
+      this->control_mode_flags = 0ul;
       this->filter_fault_flags = 0ul;
       this->pos_horiz_accuracy = 0.0f;
       this->pos_vert_accuracy = 0.0f;
@@ -84,7 +84,7 @@ struct EstimatorStatus_
       this->timestamp_sample = 0ull;
       std::fill<typename std::array<float, 3>::iterator, float>(this->output_tracking_error.begin(), this->output_tracking_error.end(), 0.0f);
       this->gps_check_fail_flags = 0;
-      this->control_mode_flags = 0ull;
+      this->control_mode_flags = 0ul;
       this->filter_fault_flags = 0ul;
       this->pos_horiz_accuracy = 0.0f;
       this->pos_vert_accuracy = 0.0f;
@@ -131,7 +131,7 @@ struct EstimatorStatus_
     uint16_t;
   _gps_check_fail_flags_type gps_check_fail_flags;
   using _control_mode_flags_type =
-    uint64_t;
+    uint32_t;
   _control_mode_flags_type control_mode_flags;
   using _filter_fault_flags_type =
     uint32_t;
@@ -247,7 +247,7 @@ struct EstimatorStatus_
     return *this;
   }
   Type & set__control_mode_flags(
-    const uint64_t & _arg)
+    const uint32_t & _arg)
   {
     this->control_mode_flags = _arg;
     return *this;

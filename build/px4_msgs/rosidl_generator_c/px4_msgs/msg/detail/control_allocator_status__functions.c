@@ -19,11 +19,12 @@ px4_msgs__msg__ControlAllocatorStatus__init(px4_msgs__msg__ControlAllocatorStatu
   }
   // timestamp
   // torque_setpoint_achieved
+  // allocated_torque
   // unallocated_torque
   // thrust_setpoint_achieved
+  // allocated_thrust
   // unallocated_thrust
   // actuator_saturation
-  // handled_motor_failure_mask
   return true;
 }
 
@@ -35,11 +36,12 @@ px4_msgs__msg__ControlAllocatorStatus__fini(px4_msgs__msg__ControlAllocatorStatu
   }
   // timestamp
   // torque_setpoint_achieved
+  // allocated_torque
   // unallocated_torque
   // thrust_setpoint_achieved
+  // allocated_thrust
   // unallocated_thrust
   // actuator_saturation
-  // handled_motor_failure_mask
 }
 
 bool
@@ -56,6 +58,12 @@ px4_msgs__msg__ControlAllocatorStatus__are_equal(const px4_msgs__msg__ControlAll
   if (lhs->torque_setpoint_achieved != rhs->torque_setpoint_achieved) {
     return false;
   }
+  // allocated_torque
+  for (size_t i = 0; i < 3; ++i) {
+    if (lhs->allocated_torque[i] != rhs->allocated_torque[i]) {
+      return false;
+    }
+  }
   // unallocated_torque
   for (size_t i = 0; i < 3; ++i) {
     if (lhs->unallocated_torque[i] != rhs->unallocated_torque[i]) {
@@ -65,6 +73,12 @@ px4_msgs__msg__ControlAllocatorStatus__are_equal(const px4_msgs__msg__ControlAll
   // thrust_setpoint_achieved
   if (lhs->thrust_setpoint_achieved != rhs->thrust_setpoint_achieved) {
     return false;
+  }
+  // allocated_thrust
+  for (size_t i = 0; i < 3; ++i) {
+    if (lhs->allocated_thrust[i] != rhs->allocated_thrust[i]) {
+      return false;
+    }
   }
   // unallocated_thrust
   for (size_t i = 0; i < 3; ++i) {
@@ -77,10 +91,6 @@ px4_msgs__msg__ControlAllocatorStatus__are_equal(const px4_msgs__msg__ControlAll
     if (lhs->actuator_saturation[i] != rhs->actuator_saturation[i]) {
       return false;
     }
-  }
-  // handled_motor_failure_mask
-  if (lhs->handled_motor_failure_mask != rhs->handled_motor_failure_mask) {
-    return false;
   }
   return true;
 }
@@ -97,12 +107,20 @@ px4_msgs__msg__ControlAllocatorStatus__copy(
   output->timestamp = input->timestamp;
   // torque_setpoint_achieved
   output->torque_setpoint_achieved = input->torque_setpoint_achieved;
+  // allocated_torque
+  for (size_t i = 0; i < 3; ++i) {
+    output->allocated_torque[i] = input->allocated_torque[i];
+  }
   // unallocated_torque
   for (size_t i = 0; i < 3; ++i) {
     output->unallocated_torque[i] = input->unallocated_torque[i];
   }
   // thrust_setpoint_achieved
   output->thrust_setpoint_achieved = input->thrust_setpoint_achieved;
+  // allocated_thrust
+  for (size_t i = 0; i < 3; ++i) {
+    output->allocated_thrust[i] = input->allocated_thrust[i];
+  }
   // unallocated_thrust
   for (size_t i = 0; i < 3; ++i) {
     output->unallocated_thrust[i] = input->unallocated_thrust[i];
@@ -111,8 +129,6 @@ px4_msgs__msg__ControlAllocatorStatus__copy(
   for (size_t i = 0; i < 16; ++i) {
     output->actuator_saturation[i] = input->actuator_saturation[i];
   }
-  // handled_motor_failure_mask
-  output->handled_motor_failure_mask = input->handled_motor_failure_mask;
   return true;
 }
 

@@ -117,7 +117,7 @@ void * get_function__YawEstimatorStatus__weight(void * untyped_member, size_t in
   return &member[index];
 }
 
-static const ::rosidl_typesupport_introspection_cpp::MessageMember YawEstimatorStatus_message_member_array[9] = {
+static const ::rosidl_typesupport_introspection_cpp::MessageMember YawEstimatorStatus_message_member_array[8] = {
   {
     "timestamp",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_UINT64,  // type
@@ -172,21 +172,6 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember YawEstimatorS
     0,  // array size
     false,  // is upper bound
     offsetof(px4_msgs::msg::YawEstimatorStatus, yaw_variance),  // bytes offset in struct
-    nullptr,  // default value
-    nullptr,  // size() function pointer
-    nullptr,  // get_const(index) function pointer
-    nullptr,  // get(index) function pointer
-    nullptr  // resize(index) function pointer
-  },
-  {
-    "yaw_composite_valid",  // name
-    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_BOOLEAN,  // type
-    0,  // upper bound of string
-    nullptr,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs::msg::YawEstimatorStatus, yaw_composite_valid),  // bytes offset in struct
     nullptr,  // default value
     nullptr,  // size() function pointer
     nullptr,  // get_const(index) function pointer
@@ -258,7 +243,7 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember YawEstimatorS
 static const ::rosidl_typesupport_introspection_cpp::MessageMembers YawEstimatorStatus_message_members = {
   "px4_msgs::msg",  // message namespace
   "YawEstimatorStatus",  // message name
-  9,  // number of fields
+  8,  // number of fields
   sizeof(px4_msgs::msg::YawEstimatorStatus),
   YawEstimatorStatus_message_member_array,  // message members
   YawEstimatorStatus_init_function,  // function to initialize message memory (memory has to be allocated)

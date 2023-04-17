@@ -24,10 +24,6 @@ module px4_msgs {
         " total clipping per axis")
       uint32__3 accel_clipping;
 
-      @verbatim (language="comment", text=
-        " total clipping per axis")
-      uint32__3 gyro_clipping;
-
       uint32 accel_error_count;
 
       uint32 gyro_error_count;

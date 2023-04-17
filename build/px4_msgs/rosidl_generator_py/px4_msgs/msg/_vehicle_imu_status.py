@@ -6,7 +6,6 @@
 # Import statements for member types
 
 # Member 'accel_clipping'
-# Member 'gyro_clipping'
 # Member 'mean_accel'
 # Member 'mean_gyro'
 # Member 'var_accel'
@@ -65,7 +64,6 @@ class VehicleImuStatus(metaclass=Metaclass_VehicleImuStatus):
         '_accel_device_id',
         '_gyro_device_id',
         '_accel_clipping',
-        '_gyro_clipping',
         '_accel_error_count',
         '_gyro_error_count',
         '_accel_rate_hz',
@@ -88,7 +86,6 @@ class VehicleImuStatus(metaclass=Metaclass_VehicleImuStatus):
         'accel_device_id': 'uint32',
         'gyro_device_id': 'uint32',
         'accel_clipping': 'uint32[3]',
-        'gyro_clipping': 'uint32[3]',
         'accel_error_count': 'uint32',
         'gyro_error_count': 'uint32',
         'accel_rate_hz': 'float',
@@ -110,7 +107,6 @@ class VehicleImuStatus(metaclass=Metaclass_VehicleImuStatus):
         rosidl_parser.definition.BasicType('uint64'),  # noqa: E501
         rosidl_parser.definition.BasicType('uint32'),  # noqa: E501
         rosidl_parser.definition.BasicType('uint32'),  # noqa: E501
-        rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('uint32'), 3),  # noqa: E501
         rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('uint32'), 3),  # noqa: E501
         rosidl_parser.definition.BasicType('uint32'),  # noqa: E501
         rosidl_parser.definition.BasicType('uint32'),  # noqa: E501
@@ -141,11 +137,6 @@ class VehicleImuStatus(metaclass=Metaclass_VehicleImuStatus):
         else:
             self.accel_clipping = numpy.array(kwargs.get('accel_clipping'), dtype=numpy.uint32)
             assert self.accel_clipping.shape == (3, )
-        if 'gyro_clipping' not in kwargs:
-            self.gyro_clipping = numpy.zeros(3, dtype=numpy.uint32)
-        else:
-            self.gyro_clipping = numpy.array(kwargs.get('gyro_clipping'), dtype=numpy.uint32)
-            assert self.gyro_clipping.shape == (3, )
         self.accel_error_count = kwargs.get('accel_error_count', int())
         self.gyro_error_count = kwargs.get('gyro_error_count', int())
         self.accel_rate_hz = kwargs.get('accel_rate_hz', float())
@@ -214,8 +205,6 @@ class VehicleImuStatus(metaclass=Metaclass_VehicleImuStatus):
         if self.gyro_device_id != other.gyro_device_id:
             return False
         if all(self.accel_clipping != other.accel_clipping):
-            return False
-        if all(self.gyro_clipping != other.gyro_clipping):
             return False
         if self.accel_error_count != other.accel_error_count:
             return False
@@ -329,37 +318,6 @@ class VehicleImuStatus(metaclass=Metaclass_VehicleImuStatus):
                  all(val >= 0 and val < 4294967296 for val in value)), \
                 "The 'accel_clipping' field must be a set or sequence with length 3 and each value of type 'int' and each unsigned integer in [0, 4294967295]"
         self._accel_clipping = numpy.array(value, dtype=numpy.uint32)
-
-    @property
-    def gyro_clipping(self):
-        """Message field 'gyro_clipping'."""
-        return self._gyro_clipping
-
-    @gyro_clipping.setter
-    def gyro_clipping(self, value):
-        if isinstance(value, numpy.ndarray):
-            assert value.dtype == numpy.uint32, \
-                "The 'gyro_clipping' numpy.ndarray() must have the dtype of 'numpy.uint32'"
-            assert value.size == 3, \
-                "The 'gyro_clipping' numpy.ndarray() must have a size of 3"
-            self._gyro_clipping = value
-            return
-        if __debug__:
-            from collections.abc import Sequence
-            from collections.abc import Set
-            from collections import UserList
-            from collections import UserString
-            assert \
-                ((isinstance(value, Sequence) or
-                  isinstance(value, Set) or
-                  isinstance(value, UserList)) and
-                 not isinstance(value, str) and
-                 not isinstance(value, UserString) and
-                 len(value) == 3 and
-                 all(isinstance(v, int) for v in value) and
-                 all(val >= 0 and val < 4294967296 for val in value)), \
-                "The 'gyro_clipping' field must be a set or sequence with length 3 and each value of type 'int' and each unsigned integer in [0, 4294967295]"
-        self._gyro_clipping = numpy.array(value, dtype=numpy.uint32)
 
     @property
     def accel_error_count(self):

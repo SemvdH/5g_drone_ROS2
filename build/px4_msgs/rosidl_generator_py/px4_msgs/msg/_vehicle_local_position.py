@@ -126,7 +126,6 @@ class VehicleLocalPosition(metaclass=Metaclass_VehicleLocalPosition):
         '_epv',
         '_evh',
         '_evv',
-        '_dead_reckoning',
         '_vxy_max',
         '_vz_max',
         '_hagl_min',
@@ -175,7 +174,6 @@ class VehicleLocalPosition(metaclass=Metaclass_VehicleLocalPosition):
         'epv': 'float',
         'evh': 'float',
         'evv': 'float',
-        'dead_reckoning': 'boolean',
         'vxy_max': 'float',
         'vz_max': 'float',
         'hagl_min': 'float',
@@ -224,7 +222,6 @@ class VehicleLocalPosition(metaclass=Metaclass_VehicleLocalPosition):
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
-        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
@@ -284,7 +281,6 @@ class VehicleLocalPosition(metaclass=Metaclass_VehicleLocalPosition):
         self.epv = kwargs.get('epv', float())
         self.evh = kwargs.get('evh', float())
         self.evv = kwargs.get('evv', float())
-        self.dead_reckoning = kwargs.get('dead_reckoning', bool())
         self.vxy_max = kwargs.get('vxy_max', float())
         self.vz_max = kwargs.get('vz_max', float())
         self.hagl_min = kwargs.get('hagl_min', float())
@@ -400,8 +396,6 @@ class VehicleLocalPosition(metaclass=Metaclass_VehicleLocalPosition):
         if self.evh != other.evh:
             return False
         if self.evv != other.evv:
-            return False
-        if self.dead_reckoning != other.dead_reckoning:
             return False
         if self.vxy_max != other.vxy_max:
             return False
@@ -1004,19 +998,6 @@ class VehicleLocalPosition(metaclass=Metaclass_VehicleLocalPosition):
                 isinstance(value, float), \
                 "The 'evv' field must be of type 'float'"
         self._evv = value
-
-    @property
-    def dead_reckoning(self):
-        """Message field 'dead_reckoning'."""
-        return self._dead_reckoning
-
-    @dead_reckoning.setter
-    def dead_reckoning(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, bool), \
-                "The 'dead_reckoning' field must be of type 'bool'"
-        self._dead_reckoning = value
 
     @property
     def vxy_max(self):

@@ -71,6 +71,30 @@ bool px4_msgs__msg__control_allocator_status__convert_from_py(PyObject * _pymsg,
     ros_message->torque_setpoint_achieved = (Py_True == field);
     Py_DECREF(field);
   }
+  {  // allocated_torque
+    PyObject * field = PyObject_GetAttrString(_pymsg, "allocated_torque");
+    if (!field) {
+      return false;
+    }
+    {
+      // TODO(dirk-thomas) use a better way to check the type before casting
+      assert(field->ob_type != NULL);
+      assert(field->ob_type->tp_name != NULL);
+      assert(strcmp(field->ob_type->tp_name, "numpy.ndarray") == 0);
+      PyArrayObject * seq_field = (PyArrayObject *)field;
+      Py_INCREF(seq_field);
+      assert(PyArray_NDIM(seq_field) == 1);
+      assert(PyArray_TYPE(seq_field) == NPY_FLOAT32);
+      Py_ssize_t size = 3;
+      float * dest = ros_message->allocated_torque;
+      for (Py_ssize_t i = 0; i < size; ++i) {
+        float tmp = *(npy_float32 *)PyArray_GETPTR1(seq_field, i);
+        memcpy(&dest[i], &tmp, sizeof(float));
+      }
+      Py_DECREF(seq_field);
+    }
+    Py_DECREF(field);
+  }
   {  // unallocated_torque
     PyObject * field = PyObject_GetAttrString(_pymsg, "unallocated_torque");
     if (!field) {
@@ -102,6 +126,30 @@ bool px4_msgs__msg__control_allocator_status__convert_from_py(PyObject * _pymsg,
     }
     assert(PyBool_Check(field));
     ros_message->thrust_setpoint_achieved = (Py_True == field);
+    Py_DECREF(field);
+  }
+  {  // allocated_thrust
+    PyObject * field = PyObject_GetAttrString(_pymsg, "allocated_thrust");
+    if (!field) {
+      return false;
+    }
+    {
+      // TODO(dirk-thomas) use a better way to check the type before casting
+      assert(field->ob_type != NULL);
+      assert(field->ob_type->tp_name != NULL);
+      assert(strcmp(field->ob_type->tp_name, "numpy.ndarray") == 0);
+      PyArrayObject * seq_field = (PyArrayObject *)field;
+      Py_INCREF(seq_field);
+      assert(PyArray_NDIM(seq_field) == 1);
+      assert(PyArray_TYPE(seq_field) == NPY_FLOAT32);
+      Py_ssize_t size = 3;
+      float * dest = ros_message->allocated_thrust;
+      for (Py_ssize_t i = 0; i < size; ++i) {
+        float tmp = *(npy_float32 *)PyArray_GETPTR1(seq_field, i);
+        memcpy(&dest[i], &tmp, sizeof(float));
+      }
+      Py_DECREF(seq_field);
+    }
     Py_DECREF(field);
   }
   {  // unallocated_thrust
@@ -152,15 +200,6 @@ bool px4_msgs__msg__control_allocator_status__convert_from_py(PyObject * _pymsg,
     }
     Py_DECREF(field);
   }
-  {  // handled_motor_failure_mask
-    PyObject * field = PyObject_GetAttrString(_pymsg, "handled_motor_failure_mask");
-    if (!field) {
-      return false;
-    }
-    assert(PyLong_Check(field));
-    ros_message->handled_motor_failure_mask = (uint16_t)PyLong_AsUnsignedLong(field);
-    Py_DECREF(field);
-  }
 
   return true;
 }
@@ -205,6 +244,24 @@ PyObject * px4_msgs__msg__control_allocator_status__convert_to_py(void * raw_ros
       }
     }
   }
+  {  // allocated_torque
+    PyObject * field = NULL;
+    field = PyObject_GetAttrString(_pymessage, "allocated_torque");
+    if (!field) {
+      return NULL;
+    }
+    assert(field->ob_type != NULL);
+    assert(field->ob_type->tp_name != NULL);
+    assert(strcmp(field->ob_type->tp_name, "numpy.ndarray") == 0);
+    PyArrayObject * seq_field = (PyArrayObject *)field;
+    assert(PyArray_NDIM(seq_field) == 1);
+    assert(PyArray_TYPE(seq_field) == NPY_FLOAT32);
+    assert(sizeof(npy_float32) == sizeof(float));
+    npy_float32 * dst = (npy_float32 *)PyArray_GETPTR1(seq_field, 0);
+    float * src = &(ros_message->allocated_torque[0]);
+    memcpy(dst, src, 3 * sizeof(float));
+    Py_DECREF(field);
+  }
   {  // unallocated_torque
     PyObject * field = NULL;
     field = PyObject_GetAttrString(_pymessage, "unallocated_torque");
@@ -233,6 +290,24 @@ PyObject * px4_msgs__msg__control_allocator_status__convert_to_py(void * raw_ros
         return NULL;
       }
     }
+  }
+  {  // allocated_thrust
+    PyObject * field = NULL;
+    field = PyObject_GetAttrString(_pymessage, "allocated_thrust");
+    if (!field) {
+      return NULL;
+    }
+    assert(field->ob_type != NULL);
+    assert(field->ob_type->tp_name != NULL);
+    assert(strcmp(field->ob_type->tp_name, "numpy.ndarray") == 0);
+    PyArrayObject * seq_field = (PyArrayObject *)field;
+    assert(PyArray_NDIM(seq_field) == 1);
+    assert(PyArray_TYPE(seq_field) == NPY_FLOAT32);
+    assert(sizeof(npy_float32) == sizeof(float));
+    npy_float32 * dst = (npy_float32 *)PyArray_GETPTR1(seq_field, 0);
+    float * src = &(ros_message->allocated_thrust[0]);
+    memcpy(dst, src, 3 * sizeof(float));
+    Py_DECREF(field);
   }
   {  // unallocated_thrust
     PyObject * field = NULL;
@@ -269,17 +344,6 @@ PyObject * px4_msgs__msg__control_allocator_status__convert_to_py(void * raw_ros
     int8_t * src = &(ros_message->actuator_saturation[0]);
     memcpy(dst, src, 16 * sizeof(int8_t));
     Py_DECREF(field);
-  }
-  {  // handled_motor_failure_mask
-    PyObject * field = NULL;
-    field = PyLong_FromUnsignedLong(ros_message->handled_motor_failure_mask);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "handled_motor_failure_mask", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
   }
 
   // ownership of _pymessage is transferred to the caller

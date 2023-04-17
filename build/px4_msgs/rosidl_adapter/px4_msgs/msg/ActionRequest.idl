@@ -33,7 +33,7 @@ module px4_msgs {
       uint8 source;
 
       @verbatim (language="comment", text=
-        " for ACTION_SWITCH_MODE what mode is requested according to vehicle_status_s::NAVIGATION_STATE_*")
+        " for ACTION_SWITCH_MODE what mode is requested according to commander_state.MAIN_STATE_")
       uint8 mode;
     };
   };

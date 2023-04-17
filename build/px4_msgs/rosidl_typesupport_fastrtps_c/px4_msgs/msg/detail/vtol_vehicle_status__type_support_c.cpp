@@ -54,14 +54,29 @@ static bool _VtolVehicleStatus__cdr_serialize(
     cdr << ros_message->timestamp;
   }
 
-  // Field name: vehicle_vtol_state
+  // Field name: vtol_in_rw_mode
   {
-    cdr << ros_message->vehicle_vtol_state;
+    cdr << (ros_message->vtol_in_rw_mode ? true : false);
   }
 
-  // Field name: fixed_wing_system_failure
+  // Field name: vtol_in_trans_mode
   {
-    cdr << (ros_message->fixed_wing_system_failure ? true : false);
+    cdr << (ros_message->vtol_in_trans_mode ? true : false);
+  }
+
+  // Field name: in_transition_to_fw
+  {
+    cdr << (ros_message->in_transition_to_fw ? true : false);
+  }
+
+  // Field name: vtol_transition_failsafe
+  {
+    cdr << (ros_message->vtol_transition_failsafe ? true : false);
+  }
+
+  // Field name: fw_permanent_stab
+  {
+    cdr << (ros_message->fw_permanent_stab ? true : false);
   }
 
   return true;
@@ -81,16 +96,39 @@ static bool _VtolVehicleStatus__cdr_deserialize(
     cdr >> ros_message->timestamp;
   }
 
-  // Field name: vehicle_vtol_state
-  {
-    cdr >> ros_message->vehicle_vtol_state;
-  }
-
-  // Field name: fixed_wing_system_failure
+  // Field name: vtol_in_rw_mode
   {
     uint8_t tmp;
     cdr >> tmp;
-    ros_message->fixed_wing_system_failure = tmp ? true : false;
+    ros_message->vtol_in_rw_mode = tmp ? true : false;
+  }
+
+  // Field name: vtol_in_trans_mode
+  {
+    uint8_t tmp;
+    cdr >> tmp;
+    ros_message->vtol_in_trans_mode = tmp ? true : false;
+  }
+
+  // Field name: in_transition_to_fw
+  {
+    uint8_t tmp;
+    cdr >> tmp;
+    ros_message->in_transition_to_fw = tmp ? true : false;
+  }
+
+  // Field name: vtol_transition_failsafe
+  {
+    uint8_t tmp;
+    cdr >> tmp;
+    ros_message->vtol_transition_failsafe = tmp ? true : false;
+  }
+
+  // Field name: fw_permanent_stab
+  {
+    uint8_t tmp;
+    cdr >> tmp;
+    ros_message->fw_permanent_stab = tmp ? true : false;
   }
 
   return true;
@@ -116,15 +154,33 @@ size_t get_serialized_size_px4_msgs__msg__VtolVehicleStatus(
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // field.name vehicle_vtol_state
+  // field.name vtol_in_rw_mode
   {
-    size_t item_size = sizeof(ros_message->vehicle_vtol_state);
+    size_t item_size = sizeof(ros_message->vtol_in_rw_mode);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // field.name fixed_wing_system_failure
+  // field.name vtol_in_trans_mode
   {
-    size_t item_size = sizeof(ros_message->fixed_wing_system_failure);
+    size_t item_size = sizeof(ros_message->vtol_in_trans_mode);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // field.name in_transition_to_fw
+  {
+    size_t item_size = sizeof(ros_message->in_transition_to_fw);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // field.name vtol_transition_failsafe
+  {
+    size_t item_size = sizeof(ros_message->vtol_transition_failsafe);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // field.name fw_permanent_stab
+  {
+    size_t item_size = sizeof(ros_message->fw_permanent_stab);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -159,13 +215,31 @@ size_t max_serialized_size_px4_msgs__msg__VtolVehicleStatus(
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
-  // member: vehicle_vtol_state
+  // member: vtol_in_rw_mode
   {
     size_t array_size = 1;
 
     current_alignment += array_size * sizeof(uint8_t);
   }
-  // member: fixed_wing_system_failure
+  // member: vtol_in_trans_mode
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
+  }
+  // member: in_transition_to_fw
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
+  }
+  // member: vtol_transition_failsafe
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
+  }
+  // member: fw_permanent_stab
   {
     size_t array_size = 1;
 

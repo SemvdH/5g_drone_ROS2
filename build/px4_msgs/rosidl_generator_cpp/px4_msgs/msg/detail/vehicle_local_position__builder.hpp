@@ -84,32 +84,16 @@ private:
   ::px4_msgs::msg::VehicleLocalPosition msg_;
 };
 
-class Init_VehicleLocalPosition_dead_reckoning
-{
-public:
-  explicit Init_VehicleLocalPosition_dead_reckoning(::px4_msgs::msg::VehicleLocalPosition & msg)
-  : msg_(msg)
-  {}
-  Init_VehicleLocalPosition_vxy_max dead_reckoning(::px4_msgs::msg::VehicleLocalPosition::_dead_reckoning_type arg)
-  {
-    msg_.dead_reckoning = std::move(arg);
-    return Init_VehicleLocalPosition_vxy_max(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::VehicleLocalPosition msg_;
-};
-
 class Init_VehicleLocalPosition_evv
 {
 public:
   explicit Init_VehicleLocalPosition_evv(::px4_msgs::msg::VehicleLocalPosition & msg)
   : msg_(msg)
   {}
-  Init_VehicleLocalPosition_dead_reckoning evv(::px4_msgs::msg::VehicleLocalPosition::_evv_type arg)
+  Init_VehicleLocalPosition_vxy_max evv(::px4_msgs::msg::VehicleLocalPosition::_evv_type arg)
   {
     msg_.evv = std::move(arg);
-    return Init_VehicleLocalPosition_dead_reckoning(msg_);
+    return Init_VehicleLocalPosition_vxy_max(msg_);
   }
 
 private:

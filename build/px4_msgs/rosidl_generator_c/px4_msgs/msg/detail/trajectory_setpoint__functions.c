@@ -18,12 +18,17 @@ px4_msgs__msg__TrajectorySetpoint__init(px4_msgs__msg__TrajectorySetpoint * msg)
     return false;
   }
   // timestamp
-  // position
-  // velocity
-  // acceleration
-  // jerk
+  // x
+  // y
+  // z
   // yaw
   // yawspeed
+  // vx
+  // vy
+  // vz
+  // acceleration
+  // jerk
+  // thrust
   return true;
 }
 
@@ -34,12 +39,17 @@ px4_msgs__msg__TrajectorySetpoint__fini(px4_msgs__msg__TrajectorySetpoint * msg)
     return;
   }
   // timestamp
-  // position
-  // velocity
-  // acceleration
-  // jerk
+  // x
+  // y
+  // z
   // yaw
   // yawspeed
+  // vx
+  // vy
+  // vz
+  // acceleration
+  // jerk
+  // thrust
 }
 
 bool
@@ -52,17 +62,37 @@ px4_msgs__msg__TrajectorySetpoint__are_equal(const px4_msgs__msg__TrajectorySetp
   if (lhs->timestamp != rhs->timestamp) {
     return false;
   }
-  // position
-  for (size_t i = 0; i < 3; ++i) {
-    if (lhs->position[i] != rhs->position[i]) {
-      return false;
-    }
+  // x
+  if (lhs->x != rhs->x) {
+    return false;
   }
-  // velocity
-  for (size_t i = 0; i < 3; ++i) {
-    if (lhs->velocity[i] != rhs->velocity[i]) {
-      return false;
-    }
+  // y
+  if (lhs->y != rhs->y) {
+    return false;
+  }
+  // z
+  if (lhs->z != rhs->z) {
+    return false;
+  }
+  // yaw
+  if (lhs->yaw != rhs->yaw) {
+    return false;
+  }
+  // yawspeed
+  if (lhs->yawspeed != rhs->yawspeed) {
+    return false;
+  }
+  // vx
+  if (lhs->vx != rhs->vx) {
+    return false;
+  }
+  // vy
+  if (lhs->vy != rhs->vy) {
+    return false;
+  }
+  // vz
+  if (lhs->vz != rhs->vz) {
+    return false;
   }
   // acceleration
   for (size_t i = 0; i < 3; ++i) {
@@ -76,13 +106,11 @@ px4_msgs__msg__TrajectorySetpoint__are_equal(const px4_msgs__msg__TrajectorySetp
       return false;
     }
   }
-  // yaw
-  if (lhs->yaw != rhs->yaw) {
-    return false;
-  }
-  // yawspeed
-  if (lhs->yawspeed != rhs->yawspeed) {
-    return false;
+  // thrust
+  for (size_t i = 0; i < 3; ++i) {
+    if (lhs->thrust[i] != rhs->thrust[i]) {
+      return false;
+    }
   }
   return true;
 }
@@ -97,14 +125,22 @@ px4_msgs__msg__TrajectorySetpoint__copy(
   }
   // timestamp
   output->timestamp = input->timestamp;
-  // position
-  for (size_t i = 0; i < 3; ++i) {
-    output->position[i] = input->position[i];
-  }
-  // velocity
-  for (size_t i = 0; i < 3; ++i) {
-    output->velocity[i] = input->velocity[i];
-  }
+  // x
+  output->x = input->x;
+  // y
+  output->y = input->y;
+  // z
+  output->z = input->z;
+  // yaw
+  output->yaw = input->yaw;
+  // yawspeed
+  output->yawspeed = input->yawspeed;
+  // vx
+  output->vx = input->vx;
+  // vy
+  output->vy = input->vy;
+  // vz
+  output->vz = input->vz;
   // acceleration
   for (size_t i = 0; i < 3; ++i) {
     output->acceleration[i] = input->acceleration[i];
@@ -113,10 +149,10 @@ px4_msgs__msg__TrajectorySetpoint__copy(
   for (size_t i = 0; i < 3; ++i) {
     output->jerk[i] = input->jerk[i];
   }
-  // yaw
-  output->yaw = input->yaw;
-  // yawspeed
-  output->yawspeed = input->yawspeed;
+  // thrust
+  for (size_t i = 0; i < 3; ++i) {
+    output->thrust[i] = input->thrust[i];
+  }
   return true;
 }
 

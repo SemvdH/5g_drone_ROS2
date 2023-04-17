@@ -59,11 +59,6 @@ static bool _PpsCapture__cdr_serialize(
     cdr << ros_message->rtc_timestamp;
   }
 
-  // Field name: pps_rate_exceeded_counter
-  {
-    cdr << ros_message->pps_rate_exceeded_counter;
-  }
-
   return true;
 }
 
@@ -84,11 +79,6 @@ static bool _PpsCapture__cdr_deserialize(
   // Field name: rtc_timestamp
   {
     cdr >> ros_message->rtc_timestamp;
-  }
-
-  // Field name: pps_rate_exceeded_counter
-  {
-    cdr >> ros_message->pps_rate_exceeded_counter;
   }
 
   return true;
@@ -117,12 +107,6 @@ size_t get_serialized_size_px4_msgs__msg__PpsCapture(
   // field.name rtc_timestamp
   {
     size_t item_size = sizeof(ros_message->rtc_timestamp);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // field.name pps_rate_exceeded_counter
-  {
-    size_t item_size = sizeof(ros_message->pps_rate_exceeded_counter);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -163,12 +147,6 @@ size_t max_serialized_size_px4_msgs__msg__PpsCapture(
 
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
-  }
-  // member: pps_rate_exceeded_counter
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint8_t);
   }
 
   return current_alignment - initial_alignment;

@@ -61,6 +61,7 @@ class ActuatorArmed(metaclass=Metaclass_ActuatorArmed):
         '_manual_lockdown',
         '_force_failsafe',
         '_in_esc_calibration_mode',
+        '_soft_stop',
     ]
 
     _fields_and_field_types = {
@@ -72,10 +73,12 @@ class ActuatorArmed(metaclass=Metaclass_ActuatorArmed):
         'manual_lockdown': 'boolean',
         'force_failsafe': 'boolean',
         'in_esc_calibration_mode': 'boolean',
+        'soft_stop': 'boolean',
     }
 
     SLOT_TYPES = (
         rosidl_parser.definition.BasicType('uint64'),  # noqa: E501
+        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
         rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
         rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
         rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
@@ -97,6 +100,7 @@ class ActuatorArmed(metaclass=Metaclass_ActuatorArmed):
         self.manual_lockdown = kwargs.get('manual_lockdown', bool())
         self.force_failsafe = kwargs.get('force_failsafe', bool())
         self.in_esc_calibration_mode = kwargs.get('in_esc_calibration_mode', bool())
+        self.soft_stop = kwargs.get('soft_stop', bool())
 
     def __repr__(self):
         typename = self.__class__.__module__.split('.')
@@ -142,6 +146,8 @@ class ActuatorArmed(metaclass=Metaclass_ActuatorArmed):
         if self.force_failsafe != other.force_failsafe:
             return False
         if self.in_esc_calibration_mode != other.in_esc_calibration_mode:
+            return False
+        if self.soft_stop != other.soft_stop:
             return False
         return True
 
@@ -255,3 +261,16 @@ class ActuatorArmed(metaclass=Metaclass_ActuatorArmed):
                 isinstance(value, bool), \
                 "The 'in_esc_calibration_mode' field must be of type 'bool'"
         self._in_esc_calibration_mode = value
+
+    @property
+    def soft_stop(self):
+        """Message field 'soft_stop'."""
+        return self._soft_stop
+
+    @soft_stop.setter
+    def soft_stop(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, bool), \
+                "The 'soft_stop' field must be of type 'bool'"
+        self._soft_stop = value

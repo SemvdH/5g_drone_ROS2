@@ -18,8 +18,11 @@ px4_msgs__msg__VtolVehicleStatus__init(px4_msgs__msg__VtolVehicleStatus * msg)
     return false;
   }
   // timestamp
-  // vehicle_vtol_state
-  // fixed_wing_system_failure
+  // vtol_in_rw_mode
+  // vtol_in_trans_mode
+  // in_transition_to_fw
+  // vtol_transition_failsafe
+  // fw_permanent_stab
   return true;
 }
 
@@ -30,8 +33,11 @@ px4_msgs__msg__VtolVehicleStatus__fini(px4_msgs__msg__VtolVehicleStatus * msg)
     return;
   }
   // timestamp
-  // vehicle_vtol_state
-  // fixed_wing_system_failure
+  // vtol_in_rw_mode
+  // vtol_in_trans_mode
+  // in_transition_to_fw
+  // vtol_transition_failsafe
+  // fw_permanent_stab
 }
 
 bool
@@ -44,12 +50,24 @@ px4_msgs__msg__VtolVehicleStatus__are_equal(const px4_msgs__msg__VtolVehicleStat
   if (lhs->timestamp != rhs->timestamp) {
     return false;
   }
-  // vehicle_vtol_state
-  if (lhs->vehicle_vtol_state != rhs->vehicle_vtol_state) {
+  // vtol_in_rw_mode
+  if (lhs->vtol_in_rw_mode != rhs->vtol_in_rw_mode) {
     return false;
   }
-  // fixed_wing_system_failure
-  if (lhs->fixed_wing_system_failure != rhs->fixed_wing_system_failure) {
+  // vtol_in_trans_mode
+  if (lhs->vtol_in_trans_mode != rhs->vtol_in_trans_mode) {
+    return false;
+  }
+  // in_transition_to_fw
+  if (lhs->in_transition_to_fw != rhs->in_transition_to_fw) {
+    return false;
+  }
+  // vtol_transition_failsafe
+  if (lhs->vtol_transition_failsafe != rhs->vtol_transition_failsafe) {
+    return false;
+  }
+  // fw_permanent_stab
+  if (lhs->fw_permanent_stab != rhs->fw_permanent_stab) {
     return false;
   }
   return true;
@@ -65,10 +83,16 @@ px4_msgs__msg__VtolVehicleStatus__copy(
   }
   // timestamp
   output->timestamp = input->timestamp;
-  // vehicle_vtol_state
-  output->vehicle_vtol_state = input->vehicle_vtol_state;
-  // fixed_wing_system_failure
-  output->fixed_wing_system_failure = input->fixed_wing_system_failure;
+  // vtol_in_rw_mode
+  output->vtol_in_rw_mode = input->vtol_in_rw_mode;
+  // vtol_in_trans_mode
+  output->vtol_in_trans_mode = input->vtol_in_trans_mode;
+  // in_transition_to_fw
+  output->in_transition_to_fw = input->in_transition_to_fw;
+  // vtol_transition_failsafe
+  output->vtol_transition_failsafe = input->vtol_transition_failsafe;
+  // fw_permanent_stab
+  output->fw_permanent_stab = input->fw_permanent_stab;
   return true;
 }
 

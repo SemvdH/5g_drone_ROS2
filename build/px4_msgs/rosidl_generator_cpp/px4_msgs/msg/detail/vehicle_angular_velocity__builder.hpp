@@ -20,32 +20,16 @@ namespace msg
 namespace builder
 {
 
-class Init_VehicleAngularVelocity_xyz_derivative
-{
-public:
-  explicit Init_VehicleAngularVelocity_xyz_derivative(::px4_msgs::msg::VehicleAngularVelocity & msg)
-  : msg_(msg)
-  {}
-  ::px4_msgs::msg::VehicleAngularVelocity xyz_derivative(::px4_msgs::msg::VehicleAngularVelocity::_xyz_derivative_type arg)
-  {
-    msg_.xyz_derivative = std::move(arg);
-    return std::move(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::VehicleAngularVelocity msg_;
-};
-
 class Init_VehicleAngularVelocity_xyz
 {
 public:
   explicit Init_VehicleAngularVelocity_xyz(::px4_msgs::msg::VehicleAngularVelocity & msg)
   : msg_(msg)
   {}
-  Init_VehicleAngularVelocity_xyz_derivative xyz(::px4_msgs::msg::VehicleAngularVelocity::_xyz_type arg)
+  ::px4_msgs::msg::VehicleAngularVelocity xyz(::px4_msgs::msg::VehicleAngularVelocity::_xyz_type arg)
   {
     msg_.xyz = std::move(arg);
-    return Init_VehicleAngularVelocity_xyz_derivative(msg_);
+    return std::move(msg_);
   }
 
 private:

@@ -21,10 +21,10 @@ class Metaclass_ActuatorTest(type):
         'ACTION_RELEASE_CONTROL': 0,
         'ACTION_DO_CONTROL': 1,
         'FUNCTION_MOTOR1': 101,
-        'MAX_NUM_MOTORS': 12,
+        'MAX_NUM_MOTORS': 8,
         'FUNCTION_SERVO1': 201,
         'MAX_NUM_SERVOS': 8,
-        'ORB_QUEUE_LENGTH': 12,
+        'ORB_QUEUE_LENGTH': 8,
     }
 
     @classmethod

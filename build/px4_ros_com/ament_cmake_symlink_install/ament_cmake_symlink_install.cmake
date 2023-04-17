@@ -331,11 +331,14 @@ ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_ros_com" FILES "
 # install(DIRECTORY "include/px4_ros_com/" "DESTINATION" "include/px4_ros_com")
 ament_cmake_symlink_install_directory("/home/ubuntu/ros2_ws/src/px4_ros_com" DIRECTORY "include/px4_ros_com/" "DESTINATION" "include/px4_ros_com")
 
-# install(DIRECTORY "launch" "DESTINATION" "share/px4_ros_com/")
-ament_cmake_symlink_install_directory("/home/ubuntu/ros2_ws/src/px4_ros_com" DIRECTORY "launch" "DESTINATION" "share/px4_ros_com/")
+# install(DIRECTORY "cmake" "DESTINATION" "share/px4_ros_com")
+ament_cmake_symlink_install_directory("/home/ubuntu/ros2_ws/src/px4_ros_com" DIRECTORY "cmake" "DESTINATION" "share/px4_ros_com")
 
-# install(DIRECTORY "test" "DESTINATION" "share/px4_ros_com/")
-ament_cmake_symlink_install_directory("/home/ubuntu/ros2_ws/src/px4_ros_com" DIRECTORY "test" "DESTINATION" "share/px4_ros_com/")
+# install(DIRECTORY "launch" "DESTINATION" "share/px4_ros_com")
+ament_cmake_symlink_install_directory("/home/ubuntu/ros2_ws/src/px4_ros_com" DIRECTORY "launch" "DESTINATION" "share/px4_ros_com")
+
+# install(DIRECTORY "test" "DESTINATION" "share/px4_ros_com")
+ament_cmake_symlink_install_directory("/home/ubuntu/ros2_ws/src/px4_ros_com" DIRECTORY "test" "DESTINATION" "share/px4_ros_com")
 
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_ros_com/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/px4_ros_com" "DESTINATION" "share/ament_index/resource_index/package_run_dependencies")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_ros_com" FILES "/home/ubuntu/ros2_ws/build/px4_ros_com/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/px4_ros_com" "DESTINATION" "share/ament_index/resource_index/package_run_dependencies")

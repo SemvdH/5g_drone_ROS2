@@ -72,9 +72,6 @@ struct EstimatorStatusFlags_
       this->cs_inertial_dead_reckoning = false;
       this->cs_wind_dead_reckoning = false;
       this->cs_rng_kin_consistent = false;
-      this->cs_fake_pos = false;
-      this->cs_fake_hgt = false;
-      this->cs_gravity_vector = false;
       this->fault_status_changes = 0ul;
       this->fs_bad_mag_x = false;
       this->fs_bad_mag_y = false;
@@ -99,6 +96,9 @@ struct EstimatorStatusFlags_
       this->reject_ver_vel = false;
       this->reject_hor_pos = false;
       this->reject_ver_pos = false;
+      this->reject_mag_x = false;
+      this->reject_mag_y = false;
+      this->reject_mag_z = false;
       this->reject_yaw = false;
       this->reject_airspeed = false;
       this->reject_sideslip = false;
@@ -149,9 +149,6 @@ struct EstimatorStatusFlags_
       this->cs_inertial_dead_reckoning = false;
       this->cs_wind_dead_reckoning = false;
       this->cs_rng_kin_consistent = false;
-      this->cs_fake_pos = false;
-      this->cs_fake_hgt = false;
-      this->cs_gravity_vector = false;
       this->fault_status_changes = 0ul;
       this->fs_bad_mag_x = false;
       this->fs_bad_mag_y = false;
@@ -176,6 +173,9 @@ struct EstimatorStatusFlags_
       this->reject_ver_vel = false;
       this->reject_hor_pos = false;
       this->reject_ver_pos = false;
+      this->reject_mag_x = false;
+      this->reject_mag_y = false;
+      this->reject_mag_z = false;
       this->reject_yaw = false;
       this->reject_airspeed = false;
       this->reject_sideslip = false;
@@ -291,15 +291,6 @@ struct EstimatorStatusFlags_
   using _cs_rng_kin_consistent_type =
     bool;
   _cs_rng_kin_consistent_type cs_rng_kin_consistent;
-  using _cs_fake_pos_type =
-    bool;
-  _cs_fake_pos_type cs_fake_pos;
-  using _cs_fake_hgt_type =
-    bool;
-  _cs_fake_hgt_type cs_fake_hgt;
-  using _cs_gravity_vector_type =
-    bool;
-  _cs_gravity_vector_type cs_gravity_vector;
   using _fault_status_changes_type =
     uint32_t;
   _fault_status_changes_type fault_status_changes;
@@ -372,6 +363,15 @@ struct EstimatorStatusFlags_
   using _reject_ver_pos_type =
     bool;
   _reject_ver_pos_type reject_ver_pos;
+  using _reject_mag_x_type =
+    bool;
+  _reject_mag_x_type reject_mag_x;
+  using _reject_mag_y_type =
+    bool;
+  _reject_mag_y_type reject_mag_y;
+  using _reject_mag_z_type =
+    bool;
+  _reject_mag_z_type reject_mag_z;
   using _reject_yaw_type =
     bool;
   _reject_yaw_type reject_yaw;
@@ -602,24 +602,6 @@ struct EstimatorStatusFlags_
     this->cs_rng_kin_consistent = _arg;
     return *this;
   }
-  Type & set__cs_fake_pos(
-    const bool & _arg)
-  {
-    this->cs_fake_pos = _arg;
-    return *this;
-  }
-  Type & set__cs_fake_hgt(
-    const bool & _arg)
-  {
-    this->cs_fake_hgt = _arg;
-    return *this;
-  }
-  Type & set__cs_gravity_vector(
-    const bool & _arg)
-  {
-    this->cs_gravity_vector = _arg;
-    return *this;
-  }
   Type & set__fault_status_changes(
     const uint32_t & _arg)
   {
@@ -762,6 +744,24 @@ struct EstimatorStatusFlags_
     const bool & _arg)
   {
     this->reject_ver_pos = _arg;
+    return *this;
+  }
+  Type & set__reject_mag_x(
+    const bool & _arg)
+  {
+    this->reject_mag_x = _arg;
+    return *this;
+  }
+  Type & set__reject_mag_y(
+    const bool & _arg)
+  {
+    this->reject_mag_y = _arg;
+    return *this;
+  }
+  Type & set__reject_mag_z(
+    const bool & _arg)
+  {
+    this->reject_mag_z = _arg;
     return *this;
   }
   Type & set__reject_yaw(
@@ -948,15 +948,6 @@ struct EstimatorStatusFlags_
     if (this->cs_rng_kin_consistent != other.cs_rng_kin_consistent) {
       return false;
     }
-    if (this->cs_fake_pos != other.cs_fake_pos) {
-      return false;
-    }
-    if (this->cs_fake_hgt != other.cs_fake_hgt) {
-      return false;
-    }
-    if (this->cs_gravity_vector != other.cs_gravity_vector) {
-      return false;
-    }
     if (this->fault_status_changes != other.fault_status_changes) {
       return false;
     }
@@ -1027,6 +1018,15 @@ struct EstimatorStatusFlags_
       return false;
     }
     if (this->reject_ver_pos != other.reject_ver_pos) {
+      return false;
+    }
+    if (this->reject_mag_x != other.reject_mag_x) {
+      return false;
+    }
+    if (this->reject_mag_y != other.reject_mag_y) {
+      return false;
+    }
+    if (this->reject_mag_z != other.reject_mag_z) {
       return false;
     }
     if (this->reject_yaw != other.reject_yaw) {

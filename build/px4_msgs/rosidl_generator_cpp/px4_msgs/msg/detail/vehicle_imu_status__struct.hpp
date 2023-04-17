@@ -41,7 +41,6 @@ struct VehicleImuStatus_
       this->accel_device_id = 0ul;
       this->gyro_device_id = 0ul;
       std::fill<typename std::array<uint32_t, 3>::iterator, uint32_t>(this->accel_clipping.begin(), this->accel_clipping.end(), 0ul);
-      std::fill<typename std::array<uint32_t, 3>::iterator, uint32_t>(this->gyro_clipping.begin(), this->gyro_clipping.end(), 0ul);
       this->accel_error_count = 0ul;
       this->gyro_error_count = 0ul;
       this->accel_rate_hz = 0.0f;
@@ -62,7 +61,6 @@ struct VehicleImuStatus_
 
   explicit VehicleImuStatus_(const ContainerAllocator & _alloc, rosidl_runtime_cpp::MessageInitialization _init = rosidl_runtime_cpp::MessageInitialization::ALL)
   : accel_clipping(_alloc),
-    gyro_clipping(_alloc),
     mean_accel(_alloc),
     mean_gyro(_alloc),
     var_accel(_alloc),
@@ -75,7 +73,6 @@ struct VehicleImuStatus_
       this->accel_device_id = 0ul;
       this->gyro_device_id = 0ul;
       std::fill<typename std::array<uint32_t, 3>::iterator, uint32_t>(this->accel_clipping.begin(), this->accel_clipping.end(), 0ul);
-      std::fill<typename std::array<uint32_t, 3>::iterator, uint32_t>(this->gyro_clipping.begin(), this->gyro_clipping.end(), 0ul);
       this->accel_error_count = 0ul;
       this->gyro_error_count = 0ul;
       this->accel_rate_hz = 0.0f;
@@ -107,9 +104,6 @@ struct VehicleImuStatus_
   using _accel_clipping_type =
     std::array<uint32_t, 3>;
   _accel_clipping_type accel_clipping;
-  using _gyro_clipping_type =
-    std::array<uint32_t, 3>;
-  _gyro_clipping_type gyro_clipping;
   using _accel_error_count_type =
     uint32_t;
   _accel_error_count_type accel_error_count;
@@ -179,12 +173,6 @@ struct VehicleImuStatus_
     const std::array<uint32_t, 3> & _arg)
   {
     this->accel_clipping = _arg;
-    return *this;
-  }
-  Type & set__gyro_clipping(
-    const std::array<uint32_t, 3> & _arg)
-  {
-    this->gyro_clipping = _arg;
     return *this;
   }
   Type & set__accel_error_count(
@@ -330,9 +318,6 @@ struct VehicleImuStatus_
       return false;
     }
     if (this->accel_clipping != other.accel_clipping) {
-      return false;
-    }
-    if (this->gyro_clipping != other.gyro_clipping) {
       return false;
     }
     if (this->accel_error_count != other.accel_error_count) {

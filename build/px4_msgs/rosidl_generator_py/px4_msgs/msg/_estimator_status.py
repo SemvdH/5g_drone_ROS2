@@ -413,7 +413,7 @@ class EstimatorStatus(metaclass=Metaclass_EstimatorStatus):
         'timestamp_sample': 'uint64',
         'output_tracking_error': 'float[3]',
         'gps_check_fail_flags': 'uint16',
-        'control_mode_flags': 'uint64',
+        'control_mode_flags': 'uint32',
         'filter_fault_flags': 'uint32',
         'pos_horiz_accuracy': 'float',
         'pos_vert_accuracy': 'float',
@@ -450,7 +450,7 @@ class EstimatorStatus(metaclass=Metaclass_EstimatorStatus):
         rosidl_parser.definition.BasicType('uint64'),  # noqa: E501
         rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 3),  # noqa: E501
         rosidl_parser.definition.BasicType('uint16'),  # noqa: E501
-        rosidl_parser.definition.BasicType('uint64'),  # noqa: E501
+        rosidl_parser.definition.BasicType('uint32'),  # noqa: E501
         rosidl_parser.definition.BasicType('uint32'),  # noqa: E501
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
@@ -716,8 +716,8 @@ class EstimatorStatus(metaclass=Metaclass_EstimatorStatus):
             assert \
                 isinstance(value, int), \
                 "The 'control_mode_flags' field must be of type 'int'"
-            assert value >= 0 and value < 18446744073709551616, \
-                "The 'control_mode_flags' field must be an unsigned integer in [0, 18446744073709551615]"
+            assert value >= 0 and value < 4294967296, \
+                "The 'control_mode_flags' field must be an unsigned integer in [0, 4294967295]"
         self._control_mode_flags = value
 
     @property

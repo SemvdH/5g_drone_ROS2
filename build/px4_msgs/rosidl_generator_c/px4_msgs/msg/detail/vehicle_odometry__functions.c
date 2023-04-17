@@ -19,17 +19,22 @@ px4_msgs__msg__VehicleOdometry__init(px4_msgs__msg__VehicleOdometry * msg)
   }
   // timestamp
   // timestamp_sample
-  // pose_frame
-  // position
+  // local_frame
+  // x
+  // y
+  // z
   // q
+  // q_offset
+  // pose_covariance
   // velocity_frame
-  // velocity
-  // angular_velocity
-  // position_variance
-  // orientation_variance
-  // velocity_variance
+  // vx
+  // vy
+  // vz
+  // rollspeed
+  // pitchspeed
+  // yawspeed
+  // velocity_covariance
   // reset_counter
-  // quality
   return true;
 }
 
@@ -41,17 +46,22 @@ px4_msgs__msg__VehicleOdometry__fini(px4_msgs__msg__VehicleOdometry * msg)
   }
   // timestamp
   // timestamp_sample
-  // pose_frame
-  // position
+  // local_frame
+  // x
+  // y
+  // z
   // q
+  // q_offset
+  // pose_covariance
   // velocity_frame
-  // velocity
-  // angular_velocity
-  // position_variance
-  // orientation_variance
-  // velocity_variance
+  // vx
+  // vy
+  // vz
+  // rollspeed
+  // pitchspeed
+  // yawspeed
+  // velocity_covariance
   // reset_counter
-  // quality
 }
 
 bool
@@ -68,15 +78,21 @@ px4_msgs__msg__VehicleOdometry__are_equal(const px4_msgs__msg__VehicleOdometry *
   if (lhs->timestamp_sample != rhs->timestamp_sample) {
     return false;
   }
-  // pose_frame
-  if (lhs->pose_frame != rhs->pose_frame) {
+  // local_frame
+  if (lhs->local_frame != rhs->local_frame) {
     return false;
   }
-  // position
-  for (size_t i = 0; i < 3; ++i) {
-    if (lhs->position[i] != rhs->position[i]) {
-      return false;
-    }
+  // x
+  if (lhs->x != rhs->x) {
+    return false;
+  }
+  // y
+  if (lhs->y != rhs->y) {
+    return false;
+  }
+  // z
+  if (lhs->z != rhs->z) {
+    return false;
   }
   // q
   for (size_t i = 0; i < 4; ++i) {
@@ -84,46 +100,54 @@ px4_msgs__msg__VehicleOdometry__are_equal(const px4_msgs__msg__VehicleOdometry *
       return false;
     }
   }
+  // q_offset
+  for (size_t i = 0; i < 4; ++i) {
+    if (lhs->q_offset[i] != rhs->q_offset[i]) {
+      return false;
+    }
+  }
+  // pose_covariance
+  for (size_t i = 0; i < 21; ++i) {
+    if (lhs->pose_covariance[i] != rhs->pose_covariance[i]) {
+      return false;
+    }
+  }
   // velocity_frame
   if (lhs->velocity_frame != rhs->velocity_frame) {
     return false;
   }
-  // velocity
-  for (size_t i = 0; i < 3; ++i) {
-    if (lhs->velocity[i] != rhs->velocity[i]) {
-      return false;
-    }
+  // vx
+  if (lhs->vx != rhs->vx) {
+    return false;
   }
-  // angular_velocity
-  for (size_t i = 0; i < 3; ++i) {
-    if (lhs->angular_velocity[i] != rhs->angular_velocity[i]) {
-      return false;
-    }
+  // vy
+  if (lhs->vy != rhs->vy) {
+    return false;
   }
-  // position_variance
-  for (size_t i = 0; i < 3; ++i) {
-    if (lhs->position_variance[i] != rhs->position_variance[i]) {
-      return false;
-    }
+  // vz
+  if (lhs->vz != rhs->vz) {
+    return false;
   }
-  // orientation_variance
-  for (size_t i = 0; i < 3; ++i) {
-    if (lhs->orientation_variance[i] != rhs->orientation_variance[i]) {
-      return false;
-    }
+  // rollspeed
+  if (lhs->rollspeed != rhs->rollspeed) {
+    return false;
   }
-  // velocity_variance
-  for (size_t i = 0; i < 3; ++i) {
-    if (lhs->velocity_variance[i] != rhs->velocity_variance[i]) {
+  // pitchspeed
+  if (lhs->pitchspeed != rhs->pitchspeed) {
+    return false;
+  }
+  // yawspeed
+  if (lhs->yawspeed != rhs->yawspeed) {
+    return false;
+  }
+  // velocity_covariance
+  for (size_t i = 0; i < 21; ++i) {
+    if (lhs->velocity_covariance[i] != rhs->velocity_covariance[i]) {
       return false;
     }
   }
   // reset_counter
   if (lhs->reset_counter != rhs->reset_counter) {
-    return false;
-  }
-  // quality
-  if (lhs->quality != rhs->quality) {
     return false;
   }
   return true;
@@ -141,42 +165,46 @@ px4_msgs__msg__VehicleOdometry__copy(
   output->timestamp = input->timestamp;
   // timestamp_sample
   output->timestamp_sample = input->timestamp_sample;
-  // pose_frame
-  output->pose_frame = input->pose_frame;
-  // position
-  for (size_t i = 0; i < 3; ++i) {
-    output->position[i] = input->position[i];
-  }
+  // local_frame
+  output->local_frame = input->local_frame;
+  // x
+  output->x = input->x;
+  // y
+  output->y = input->y;
+  // z
+  output->z = input->z;
   // q
   for (size_t i = 0; i < 4; ++i) {
     output->q[i] = input->q[i];
   }
+  // q_offset
+  for (size_t i = 0; i < 4; ++i) {
+    output->q_offset[i] = input->q_offset[i];
+  }
+  // pose_covariance
+  for (size_t i = 0; i < 21; ++i) {
+    output->pose_covariance[i] = input->pose_covariance[i];
+  }
   // velocity_frame
   output->velocity_frame = input->velocity_frame;
-  // velocity
-  for (size_t i = 0; i < 3; ++i) {
-    output->velocity[i] = input->velocity[i];
-  }
-  // angular_velocity
-  for (size_t i = 0; i < 3; ++i) {
-    output->angular_velocity[i] = input->angular_velocity[i];
-  }
-  // position_variance
-  for (size_t i = 0; i < 3; ++i) {
-    output->position_variance[i] = input->position_variance[i];
-  }
-  // orientation_variance
-  for (size_t i = 0; i < 3; ++i) {
-    output->orientation_variance[i] = input->orientation_variance[i];
-  }
-  // velocity_variance
-  for (size_t i = 0; i < 3; ++i) {
-    output->velocity_variance[i] = input->velocity_variance[i];
+  // vx
+  output->vx = input->vx;
+  // vy
+  output->vy = input->vy;
+  // vz
+  output->vz = input->vz;
+  // rollspeed
+  output->rollspeed = input->rollspeed;
+  // pitchspeed
+  output->pitchspeed = input->pitchspeed;
+  // yawspeed
+  output->yawspeed = input->yawspeed;
+  // velocity_covariance
+  for (size_t i = 0; i < 21; ++i) {
+    output->velocity_covariance[i] = input->velocity_covariance[i];
   }
   // reset_counter
   output->reset_counter = input->reset_counter;
-  // quality
-  output->quality = input->quality;
   return true;
 }
 

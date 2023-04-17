@@ -46,7 +46,6 @@ typedef struct px4_msgs__msg__VehicleImu
   float delta_velocity[3];
   uint16_t delta_angle_dt;
   uint16_t delta_velocity_dt;
-  uint8_t delta_angle_clipping;
   uint8_t delta_velocity_clipping;
   uint8_t accel_calibration_count;
   uint8_t gyro_calibration_count;

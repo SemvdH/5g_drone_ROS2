@@ -110,7 +110,7 @@ struct Event_
 
   // constant declarations
   static constexpr uint8_t ORB_QUEUE_LENGTH =
-    16u;
+    8u;
 
   // pointer types
   using RawPtr =

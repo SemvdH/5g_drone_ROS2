@@ -38,6 +38,8 @@ cdr_serialize(
   cdr << ros_message.command;
   // Member: result
   cdr << ros_message.result;
+  // Member: from_external
+  cdr << (ros_message.from_external ? true : false);
   // Member: result_param1
   cdr << ros_message.result_param1;
   // Member: result_param2
@@ -46,8 +48,6 @@ cdr_serialize(
   cdr << ros_message.target_system;
   // Member: target_component
   cdr << ros_message.target_component;
-  // Member: from_external
-  cdr << (ros_message.from_external ? true : false);
   return true;
 }
 
@@ -66,6 +66,13 @@ cdr_deserialize(
   // Member: result
   cdr >> ros_message.result;
 
+  // Member: from_external
+  {
+    uint8_t tmp;
+    cdr >> tmp;
+    ros_message.from_external = tmp ? true : false;
+  }
+
   // Member: result_param1
   cdr >> ros_message.result_param1;
 
@@ -77,13 +84,6 @@ cdr_deserialize(
 
   // Member: target_component
   cdr >> ros_message.target_component;
-
-  // Member: from_external
-  {
-    uint8_t tmp;
-    cdr >> tmp;
-    ros_message.from_external = tmp ? true : false;
-  }
 
   return true;
 }
@@ -119,6 +119,12 @@ get_serialized_size(
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
+  // Member: from_external
+  {
+    size_t item_size = sizeof(ros_message.from_external);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
   // Member: result_param1
   {
     size_t item_size = sizeof(ros_message.result_param1);
@@ -140,12 +146,6 @@ get_serialized_size(
   // Member: target_component
   {
     size_t item_size = sizeof(ros_message.target_component);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // Member: from_external
-  {
-    size_t item_size = sizeof(ros_message.from_external);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -191,6 +191,13 @@ max_serialized_size_VehicleCommandAck(
     current_alignment += array_size * sizeof(uint8_t);
   }
 
+  // Member: from_external
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
+  }
+
   // Member: result_param1
   {
     size_t array_size = 1;
@@ -214,13 +221,6 @@ max_serialized_size_VehicleCommandAck(
   }
 
   // Member: target_component
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint8_t);
-  }
-
-  // Member: from_external
   {
     size_t array_size = 1;
 

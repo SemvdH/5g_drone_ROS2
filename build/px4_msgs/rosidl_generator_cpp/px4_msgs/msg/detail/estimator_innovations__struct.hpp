@@ -52,10 +52,8 @@ struct EstimatorInnovations_
       std::fill<typename std::array<float, 2>::iterator, float>(this->aux_hvel.begin(), this->aux_hvel.end(), 0.0f);
       this->aux_vvel = 0.0f;
       std::fill<typename std::array<float, 2>::iterator, float>(this->flow.begin(), this->flow.end(), 0.0f);
-      std::fill<typename std::array<float, 2>::iterator, float>(this->terr_flow.begin(), this->terr_flow.end(), 0.0f);
       this->heading = 0.0f;
       std::fill<typename std::array<float, 3>::iterator, float>(this->mag_field.begin(), this->mag_field.end(), 0.0f);
-      std::fill<typename std::array<float, 3>::iterator, float>(this->gravity.begin(), this->gravity.end(), 0.0f);
       std::fill<typename std::array<float, 2>::iterator, float>(this->drag.begin(), this->drag.end(), 0.0f);
       this->airspeed = 0.0f;
       this->beta = 0.0f;
@@ -71,9 +69,7 @@ struct EstimatorInnovations_
     ev_hpos(_alloc),
     aux_hvel(_alloc),
     flow(_alloc),
-    terr_flow(_alloc),
     mag_field(_alloc),
-    gravity(_alloc),
     drag(_alloc)
   {
     if (rosidl_runtime_cpp::MessageInitialization::ALL == _init ||
@@ -94,10 +90,8 @@ struct EstimatorInnovations_
       std::fill<typename std::array<float, 2>::iterator, float>(this->aux_hvel.begin(), this->aux_hvel.end(), 0.0f);
       this->aux_vvel = 0.0f;
       std::fill<typename std::array<float, 2>::iterator, float>(this->flow.begin(), this->flow.end(), 0.0f);
-      std::fill<typename std::array<float, 2>::iterator, float>(this->terr_flow.begin(), this->terr_flow.end(), 0.0f);
       this->heading = 0.0f;
       std::fill<typename std::array<float, 3>::iterator, float>(this->mag_field.begin(), this->mag_field.end(), 0.0f);
-      std::fill<typename std::array<float, 3>::iterator, float>(this->gravity.begin(), this->gravity.end(), 0.0f);
       std::fill<typename std::array<float, 2>::iterator, float>(this->drag.begin(), this->drag.end(), 0.0f);
       this->airspeed = 0.0f;
       this->beta = 0.0f;
@@ -152,18 +146,12 @@ struct EstimatorInnovations_
   using _flow_type =
     std::array<float, 2>;
   _flow_type flow;
-  using _terr_flow_type =
-    std::array<float, 2>;
-  _terr_flow_type terr_flow;
   using _heading_type =
     float;
   _heading_type heading;
   using _mag_field_type =
     std::array<float, 3>;
   _mag_field_type mag_field;
-  using _gravity_type =
-    std::array<float, 3>;
-  _gravity_type gravity;
   using _drag_type =
     std::array<float, 2>;
   _drag_type drag;
@@ -271,12 +259,6 @@ struct EstimatorInnovations_
     this->flow = _arg;
     return *this;
   }
-  Type & set__terr_flow(
-    const std::array<float, 2> & _arg)
-  {
-    this->terr_flow = _arg;
-    return *this;
-  }
   Type & set__heading(
     const float & _arg)
   {
@@ -287,12 +269,6 @@ struct EstimatorInnovations_
     const std::array<float, 3> & _arg)
   {
     this->mag_field = _arg;
-    return *this;
-  }
-  Type & set__gravity(
-    const std::array<float, 3> & _arg)
-  {
-    this->gravity = _arg;
     return *this;
   }
   Type & set__drag(
@@ -413,16 +389,10 @@ struct EstimatorInnovations_
     if (this->flow != other.flow) {
       return false;
     }
-    if (this->terr_flow != other.terr_flow) {
-      return false;
-    }
     if (this->heading != other.heading) {
       return false;
     }
     if (this->mag_field != other.mag_field) {
-      return false;
-    }
-    if (this->gravity != other.gravity) {
       return false;
     }
     if (this->drag != other.drag) {

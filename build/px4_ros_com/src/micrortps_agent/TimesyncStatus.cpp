@@ -37,17 +37,17 @@ using namespace eprosima::fastcdr::exception;
 
 px4_msgs::msg::TimesyncStatus::TimesyncStatus()
 {
-    // m_timestamp com.eprosima.idl.parser.typecode.PrimitiveTypeCode@1649b0e6
+    // m_timestamp com.eprosima.idl.parser.typecode.PrimitiveTypeCode@6a6afff2
     m_timestamp = 0;
-    // m_source_protocol com.eprosima.idl.parser.typecode.PrimitiveTypeCode@865dd6
+    // m_source_protocol com.eprosima.idl.parser.typecode.PrimitiveTypeCode@1649b0e6
     m_source_protocol = 0;
-    // m_remote_timestamp com.eprosima.idl.parser.typecode.PrimitiveTypeCode@4da4253
+    // m_remote_timestamp com.eprosima.idl.parser.typecode.PrimitiveTypeCode@865dd6
     m_remote_timestamp = 0;
-    // m_observed_offset com.eprosima.idl.parser.typecode.PrimitiveTypeCode@3972a855
+    // m_observed_offset com.eprosima.idl.parser.typecode.PrimitiveTypeCode@4da4253
     m_observed_offset = 0;
-    // m_estimated_offset com.eprosima.idl.parser.typecode.PrimitiveTypeCode@62e7f11d
+    // m_estimated_offset com.eprosima.idl.parser.typecode.PrimitiveTypeCode@3972a855
     m_estimated_offset = 0;
-    // m_round_trip_time com.eprosima.idl.parser.typecode.PrimitiveTypeCode@503d687a
+    // m_round_trip_time com.eprosima.idl.parser.typecode.PrimitiveTypeCode@62e7f11d
     m_round_trip_time = 0;
 
 }

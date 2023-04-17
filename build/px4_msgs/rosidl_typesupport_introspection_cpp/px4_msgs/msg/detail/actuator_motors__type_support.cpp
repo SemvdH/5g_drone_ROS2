@@ -40,20 +40,20 @@ void ActuatorMotors_fini_function(void * message_memory)
 size_t size_function__ActuatorMotors__control(const void * untyped_member)
 {
   (void)untyped_member;
-  return 12;
+  return 8;
 }
 
 const void * get_const_function__ActuatorMotors__control(const void * untyped_member, size_t index)
 {
   const auto & member =
-    *reinterpret_cast<const std::array<float, 12> *>(untyped_member);
+    *reinterpret_cast<const std::array<float, 8> *>(untyped_member);
   return &member[index];
 }
 
 void * get_function__ActuatorMotors__control(void * untyped_member, size_t index)
 {
   auto & member =
-    *reinterpret_cast<std::array<float, 12> *>(untyped_member);
+    *reinterpret_cast<std::array<float, 8> *>(untyped_member);
   return &member[index];
 }
 
@@ -109,7 +109,7 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember ActuatorMotor
     0,  // upper bound of string
     nullptr,  // members of sub message
     true,  // is array
-    12,  // array size
+    8,  // array size
     false,  // is upper bound
     offsetof(px4_msgs::msg::ActuatorMotors, control),  // bytes offset in struct
     nullptr,  // default value

@@ -24,8 +24,11 @@ px4_msgs__msg__VehicleAttitudeSetpoint__init(px4_msgs__msg__VehicleAttitudeSetpo
   // yaw_sp_move_rate
   // q_d
   // thrust_body
-  // reset_integral
-  // fw_control_yaw_wheel
+  // roll_reset_integral
+  // pitch_reset_integral
+  // yaw_reset_integral
+  // fw_control_yaw
+  // apply_flaps
   return true;
 }
 
@@ -42,8 +45,11 @@ px4_msgs__msg__VehicleAttitudeSetpoint__fini(px4_msgs__msg__VehicleAttitudeSetpo
   // yaw_sp_move_rate
   // q_d
   // thrust_body
-  // reset_integral
-  // fw_control_yaw_wheel
+  // roll_reset_integral
+  // pitch_reset_integral
+  // yaw_reset_integral
+  // fw_control_yaw
+  // apply_flaps
 }
 
 bool
@@ -84,12 +90,24 @@ px4_msgs__msg__VehicleAttitudeSetpoint__are_equal(const px4_msgs__msg__VehicleAt
       return false;
     }
   }
-  // reset_integral
-  if (lhs->reset_integral != rhs->reset_integral) {
+  // roll_reset_integral
+  if (lhs->roll_reset_integral != rhs->roll_reset_integral) {
     return false;
   }
-  // fw_control_yaw_wheel
-  if (lhs->fw_control_yaw_wheel != rhs->fw_control_yaw_wheel) {
+  // pitch_reset_integral
+  if (lhs->pitch_reset_integral != rhs->pitch_reset_integral) {
+    return false;
+  }
+  // yaw_reset_integral
+  if (lhs->yaw_reset_integral != rhs->yaw_reset_integral) {
+    return false;
+  }
+  // fw_control_yaw
+  if (lhs->fw_control_yaw != rhs->fw_control_yaw) {
+    return false;
+  }
+  // apply_flaps
+  if (lhs->apply_flaps != rhs->apply_flaps) {
     return false;
   }
   return true;
@@ -121,10 +139,16 @@ px4_msgs__msg__VehicleAttitudeSetpoint__copy(
   for (size_t i = 0; i < 3; ++i) {
     output->thrust_body[i] = input->thrust_body[i];
   }
-  // reset_integral
-  output->reset_integral = input->reset_integral;
-  // fw_control_yaw_wheel
-  output->fw_control_yaw_wheel = input->fw_control_yaw_wheel;
+  // roll_reset_integral
+  output->roll_reset_integral = input->roll_reset_integral;
+  // pitch_reset_integral
+  output->pitch_reset_integral = input->pitch_reset_integral;
+  // yaw_reset_integral
+  output->yaw_reset_integral = input->yaw_reset_integral;
+  // fw_control_yaw
+  output->fw_control_yaw = input->fw_control_yaw;
+  // apply_flaps
+  output->apply_flaps = input->apply_flaps;
   return true;
 }
 

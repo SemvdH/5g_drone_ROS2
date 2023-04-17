@@ -25,7 +25,6 @@ typedef struct px4_msgs__msg__VehicleRatesSetpoint
   float pitch;
   float yaw;
   float thrust_body[3];
-  bool reset_integral;
 } px4_msgs__msg__VehicleRatesSetpoint;
 
 // Struct for a sequence of px4_msgs__msg__VehicleRatesSetpoint.

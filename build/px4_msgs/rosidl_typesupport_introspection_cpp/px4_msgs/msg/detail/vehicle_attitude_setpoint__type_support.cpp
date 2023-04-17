@@ -77,7 +77,7 @@ void * get_function__VehicleAttitudeSetpoint__thrust_body(void * untyped_member,
   return &member[index];
 }
 
-static const ::rosidl_typesupport_introspection_cpp::MessageMember VehicleAttitudeSetpoint_message_member_array[9] = {
+static const ::rosidl_typesupport_introspection_cpp::MessageMember VehicleAttitudeSetpoint_message_member_array[12] = {
   {
     "timestamp",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_UINT64,  // type
@@ -184,14 +184,14 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember VehicleAttitu
     nullptr  // resize(index) function pointer
   },
   {
-    "reset_integral",  // name
+    "roll_reset_integral",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_BOOLEAN,  // type
     0,  // upper bound of string
     nullptr,  // members of sub message
     false,  // is array
     0,  // array size
     false,  // is upper bound
-    offsetof(px4_msgs::msg::VehicleAttitudeSetpoint, reset_integral),  // bytes offset in struct
+    offsetof(px4_msgs::msg::VehicleAttitudeSetpoint, roll_reset_integral),  // bytes offset in struct
     nullptr,  // default value
     nullptr,  // size() function pointer
     nullptr,  // get_const(index) function pointer
@@ -199,14 +199,59 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember VehicleAttitu
     nullptr  // resize(index) function pointer
   },
   {
-    "fw_control_yaw_wheel",  // name
+    "pitch_reset_integral",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_BOOLEAN,  // type
     0,  // upper bound of string
     nullptr,  // members of sub message
     false,  // is array
     0,  // array size
     false,  // is upper bound
-    offsetof(px4_msgs::msg::VehicleAttitudeSetpoint, fw_control_yaw_wheel),  // bytes offset in struct
+    offsetof(px4_msgs::msg::VehicleAttitudeSetpoint, pitch_reset_integral),  // bytes offset in struct
+    nullptr,  // default value
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
+    nullptr  // resize(index) function pointer
+  },
+  {
+    "yaw_reset_integral",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_BOOLEAN,  // type
+    0,  // upper bound of string
+    nullptr,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs::msg::VehicleAttitudeSetpoint, yaw_reset_integral),  // bytes offset in struct
+    nullptr,  // default value
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
+    nullptr  // resize(index) function pointer
+  },
+  {
+    "fw_control_yaw",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_BOOLEAN,  // type
+    0,  // upper bound of string
+    nullptr,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs::msg::VehicleAttitudeSetpoint, fw_control_yaw),  // bytes offset in struct
+    nullptr,  // default value
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
+    nullptr  // resize(index) function pointer
+  },
+  {
+    "apply_flaps",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_UINT8,  // type
+    0,  // upper bound of string
+    nullptr,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs::msg::VehicleAttitudeSetpoint, apply_flaps),  // bytes offset in struct
     nullptr,  // default value
     nullptr,  // size() function pointer
     nullptr,  // get_const(index) function pointer
@@ -218,7 +263,7 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember VehicleAttitu
 static const ::rosidl_typesupport_introspection_cpp::MessageMembers VehicleAttitudeSetpoint_message_members = {
   "px4_msgs::msg",  // message namespace
   "VehicleAttitudeSetpoint",  // message name
-  9,  // number of fields
+  12,  // number of fields
   sizeof(px4_msgs::msg::VehicleAttitudeSetpoint),
   VehicleAttitudeSetpoint_message_member_array,  // message members
   VehicleAttitudeSetpoint_init_function,  // function to initialize message memory (memory has to be allocated)

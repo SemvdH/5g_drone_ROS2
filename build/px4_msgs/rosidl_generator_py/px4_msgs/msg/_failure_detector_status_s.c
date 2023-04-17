@@ -104,6 +104,15 @@ bool px4_msgs__msg__failure_detector_status__convert_from_py(PyObject * _pymsg, 
     ros_message->fd_arm_escs = (Py_True == field);
     Py_DECREF(field);
   }
+  {  // fd_high_wind
+    PyObject * field = PyObject_GetAttrString(_pymsg, "fd_high_wind");
+    if (!field) {
+      return false;
+    }
+    assert(PyBool_Check(field));
+    ros_message->fd_high_wind = (Py_True == field);
+    Py_DECREF(field);
+  }
   {  // fd_battery
     PyObject * field = PyObject_GetAttrString(_pymsg, "fd_battery");
     if (!field) {
@@ -122,15 +131,6 @@ bool px4_msgs__msg__failure_detector_status__convert_from_py(PyObject * _pymsg, 
     ros_message->fd_imbalanced_prop = (Py_True == field);
     Py_DECREF(field);
   }
-  {  // fd_motor
-    PyObject * field = PyObject_GetAttrString(_pymsg, "fd_motor");
-    if (!field) {
-      return false;
-    }
-    assert(PyBool_Check(field));
-    ros_message->fd_motor = (Py_True == field);
-    Py_DECREF(field);
-  }
   {  // imbalanced_prop_metric
     PyObject * field = PyObject_GetAttrString(_pymsg, "imbalanced_prop_metric");
     if (!field) {
@@ -138,15 +138,6 @@ bool px4_msgs__msg__failure_detector_status__convert_from_py(PyObject * _pymsg, 
     }
     assert(PyFloat_Check(field));
     ros_message->imbalanced_prop_metric = (float)PyFloat_AS_DOUBLE(field);
-    Py_DECREF(field);
-  }
-  {  // motor_failure_mask
-    PyObject * field = PyObject_GetAttrString(_pymsg, "motor_failure_mask");
-    if (!field) {
-      return false;
-    }
-    assert(PyLong_Check(field));
-    ros_message->motor_failure_mask = (uint16_t)PyLong_AsUnsignedLong(field);
     Py_DECREF(field);
   }
 
@@ -237,6 +228,17 @@ PyObject * px4_msgs__msg__failure_detector_status__convert_to_py(void * raw_ros_
       }
     }
   }
+  {  // fd_high_wind
+    PyObject * field = NULL;
+    field = PyBool_FromLong(ros_message->fd_high_wind ? 1 : 0);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "fd_high_wind", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
   {  // fd_battery
     PyObject * field = NULL;
     field = PyBool_FromLong(ros_message->fd_battery ? 1 : 0);
@@ -259,33 +261,11 @@ PyObject * px4_msgs__msg__failure_detector_status__convert_to_py(void * raw_ros_
       }
     }
   }
-  {  // fd_motor
-    PyObject * field = NULL;
-    field = PyBool_FromLong(ros_message->fd_motor ? 1 : 0);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "fd_motor", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
   {  // imbalanced_prop_metric
     PyObject * field = NULL;
     field = PyFloat_FromDouble(ros_message->imbalanced_prop_metric);
     {
       int rc = PyObject_SetAttrString(_pymessage, "imbalanced_prop_metric", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
-  {  // motor_failure_mask
-    PyObject * field = NULL;
-    field = PyLong_FromUnsignedLong(ros_message->motor_failure_mask);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "motor_failure_mask", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;

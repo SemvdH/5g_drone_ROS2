@@ -55,9 +55,6 @@ typedef struct px4_msgs__msg__EstimatorStatusFlags
   bool cs_inertial_dead_reckoning;
   bool cs_wind_dead_reckoning;
   bool cs_rng_kin_consistent;
-  bool cs_fake_pos;
-  bool cs_fake_hgt;
-  bool cs_gravity_vector;
   uint32_t fault_status_changes;
   bool fs_bad_mag_x;
   bool fs_bad_mag_y;
@@ -82,6 +79,9 @@ typedef struct px4_msgs__msg__EstimatorStatusFlags
   bool reject_ver_vel;
   bool reject_hor_pos;
   bool reject_ver_pos;
+  bool reject_mag_x;
+  bool reject_mag_y;
+  bool reject_mag_z;
   bool reject_yaw;
   bool reject_airspeed;
   bool reject_sideslip;

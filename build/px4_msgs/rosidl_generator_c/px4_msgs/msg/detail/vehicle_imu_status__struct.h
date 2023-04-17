@@ -24,7 +24,6 @@ typedef struct px4_msgs__msg__VehicleImuStatus
   uint32_t accel_device_id;
   uint32_t gyro_device_id;
   uint32_t accel_clipping[3];
-  uint32_t gyro_clipping[3];
   uint32_t accel_error_count;
   uint32_t gyro_error_count;
   float accel_rate_hz;

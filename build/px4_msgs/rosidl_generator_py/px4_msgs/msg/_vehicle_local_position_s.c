@@ -452,15 +452,6 @@ bool px4_msgs__msg__vehicle_local_position__convert_from_py(PyObject * _pymsg, v
     ros_message->evv = (float)PyFloat_AS_DOUBLE(field);
     Py_DECREF(field);
   }
-  {  // dead_reckoning
-    PyObject * field = PyObject_GetAttrString(_pymsg, "dead_reckoning");
-    if (!field) {
-      return false;
-    }
-    assert(PyBool_Check(field));
-    ros_message->dead_reckoning = (Py_True == field);
-    Py_DECREF(field);
-  }
   {  // vxy_max
     PyObject * field = PyObject_GetAttrString(_pymsg, "vxy_max");
     if (!field) {
@@ -978,17 +969,6 @@ PyObject * px4_msgs__msg__vehicle_local_position__convert_to_py(void * raw_ros_m
     field = PyFloat_FromDouble(ros_message->evv);
     {
       int rc = PyObject_SetAttrString(_pymessage, "evv", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
-  {  // dead_reckoning
-    PyObject * field = NULL;
-    field = PyBool_FromLong(ros_message->dead_reckoning ? 1 : 0);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "dead_reckoning", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;

@@ -59,15 +59,6 @@ bool px4_msgs__msg__sensor_gps__convert_from_py(PyObject * _pymsg, void * _ros_m
     ros_message->timestamp = PyLong_AsUnsignedLongLong(field);
     Py_DECREF(field);
   }
-  {  // timestamp_sample
-    PyObject * field = PyObject_GetAttrString(_pymsg, "timestamp_sample");
-    if (!field) {
-      return false;
-    }
-    assert(PyLong_Check(field));
-    ros_message->timestamp_sample = PyLong_AsUnsignedLongLong(field);
-    Py_DECREF(field);
-  }
   {  // device_id
     PyObject * field = PyObject_GetAttrString(_pymsg, "device_id");
     if (!field) {
@@ -194,15 +185,6 @@ bool px4_msgs__msg__sensor_gps__convert_from_py(PyObject * _pymsg, void * _ros_m
     ros_message->automatic_gain_control = (uint16_t)PyLong_AsUnsignedLong(field);
     Py_DECREF(field);
   }
-  {  // jamming_state
-    PyObject * field = PyObject_GetAttrString(_pymsg, "jamming_state");
-    if (!field) {
-      return false;
-    }
-    assert(PyLong_Check(field));
-    ros_message->jamming_state = (uint8_t)PyLong_AsUnsignedLong(field);
-    Py_DECREF(field);
-  }
   {  // jamming_indicator
     PyObject * field = PyObject_GetAttrString(_pymsg, "jamming_indicator");
     if (!field) {
@@ -212,13 +194,13 @@ bool px4_msgs__msg__sensor_gps__convert_from_py(PyObject * _pymsg, void * _ros_m
     ros_message->jamming_indicator = (int32_t)PyLong_AsLong(field);
     Py_DECREF(field);
   }
-  {  // spoofing_state
-    PyObject * field = PyObject_GetAttrString(_pymsg, "spoofing_state");
+  {  // jamming_state
+    PyObject * field = PyObject_GetAttrString(_pymsg, "jamming_state");
     if (!field) {
       return false;
     }
     assert(PyLong_Check(field));
-    ros_message->spoofing_state = (uint8_t)PyLong_AsUnsignedLong(field);
+    ros_message->jamming_state = (uint8_t)PyLong_AsUnsignedLong(field);
     Py_DECREF(field);
   }
   {  // vel_m_s
@@ -329,24 +311,6 @@ bool px4_msgs__msg__sensor_gps__convert_from_py(PyObject * _pymsg, void * _ros_m
     ros_message->heading_accuracy = (float)PyFloat_AS_DOUBLE(field);
     Py_DECREF(field);
   }
-  {  // rtcm_injection_rate
-    PyObject * field = PyObject_GetAttrString(_pymsg, "rtcm_injection_rate");
-    if (!field) {
-      return false;
-    }
-    assert(PyFloat_Check(field));
-    ros_message->rtcm_injection_rate = (float)PyFloat_AS_DOUBLE(field);
-    Py_DECREF(field);
-  }
-  {  // selected_rtcm_instance
-    PyObject * field = PyObject_GetAttrString(_pymsg, "selected_rtcm_instance");
-    if (!field) {
-      return false;
-    }
-    assert(PyLong_Check(field));
-    ros_message->selected_rtcm_instance = (uint8_t)PyLong_AsUnsignedLong(field);
-    Py_DECREF(field);
-  }
 
   return true;
 }
@@ -374,17 +338,6 @@ PyObject * px4_msgs__msg__sensor_gps__convert_to_py(void * raw_ros_message)
     field = PyLong_FromUnsignedLongLong(ros_message->timestamp);
     {
       int rc = PyObject_SetAttrString(_pymessage, "timestamp", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
-  {  // timestamp_sample
-    PyObject * field = NULL;
-    field = PyLong_FromUnsignedLongLong(ros_message->timestamp_sample);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "timestamp_sample", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;
@@ -545,17 +498,6 @@ PyObject * px4_msgs__msg__sensor_gps__convert_to_py(void * raw_ros_message)
       }
     }
   }
-  {  // jamming_state
-    PyObject * field = NULL;
-    field = PyLong_FromUnsignedLong(ros_message->jamming_state);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "jamming_state", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
   {  // jamming_indicator
     PyObject * field = NULL;
     field = PyLong_FromLong(ros_message->jamming_indicator);
@@ -567,11 +509,11 @@ PyObject * px4_msgs__msg__sensor_gps__convert_to_py(void * raw_ros_message)
       }
     }
   }
-  {  // spoofing_state
+  {  // jamming_state
     PyObject * field = NULL;
-    field = PyLong_FromUnsignedLong(ros_message->spoofing_state);
+    field = PyLong_FromUnsignedLong(ros_message->jamming_state);
     {
-      int rc = PyObject_SetAttrString(_pymessage, "spoofing_state", field);
+      int rc = PyObject_SetAttrString(_pymessage, "jamming_state", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;
@@ -704,28 +646,6 @@ PyObject * px4_msgs__msg__sensor_gps__convert_to_py(void * raw_ros_message)
     field = PyFloat_FromDouble(ros_message->heading_accuracy);
     {
       int rc = PyObject_SetAttrString(_pymessage, "heading_accuracy", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
-  {  // rtcm_injection_rate
-    PyObject * field = NULL;
-    field = PyFloat_FromDouble(ros_message->rtcm_injection_rate);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "rtcm_injection_rate", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
-  {  // selected_rtcm_instance
-    PyObject * field = NULL;
-    field = PyLong_FromUnsignedLong(ros_message->selected_rtcm_instance);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "selected_rtcm_instance", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;

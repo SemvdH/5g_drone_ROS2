@@ -101,7 +101,7 @@ get_serialized_size(
   }
   // Member: control
   {
-    size_t array_size = 12;
+    size_t array_size = 8;
     size_t item_size = sizeof(ros_message.control[0]);
     current_alignment += array_size * item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
@@ -151,7 +151,7 @@ max_serialized_size_ActuatorMotors(
 
   // Member: control
   {
-    size_t array_size = 12;
+    size_t array_size = 8;
 
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));

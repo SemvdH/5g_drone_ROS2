@@ -23,6 +23,9 @@ px4_msgs__msg__PositionSetpoint__init(px4_msgs__msg__PositionSetpoint * msg)
   // vx
   // vy
   // vz
+  // velocity_valid
+  // velocity_frame
+  // alt_valid
   // lat
   // lon
   // alt
@@ -30,11 +33,11 @@ px4_msgs__msg__PositionSetpoint__init(px4_msgs__msg__PositionSetpoint * msg)
   // yaw_valid
   // yawspeed
   // yawspeed_valid
+  // landing_gear
   // loiter_radius
-  // loiter_direction_counter_clockwise
+  // loiter_direction
   // acceptance_radius
   // cruising_speed
-  // gliding_enabled
   // cruising_throttle
   // disable_weather_vane
   return true;
@@ -52,6 +55,9 @@ px4_msgs__msg__PositionSetpoint__fini(px4_msgs__msg__PositionSetpoint * msg)
   // vx
   // vy
   // vz
+  // velocity_valid
+  // velocity_frame
+  // alt_valid
   // lat
   // lon
   // alt
@@ -59,11 +65,11 @@ px4_msgs__msg__PositionSetpoint__fini(px4_msgs__msg__PositionSetpoint * msg)
   // yaw_valid
   // yawspeed
   // yawspeed_valid
+  // landing_gear
   // loiter_radius
-  // loiter_direction_counter_clockwise
+  // loiter_direction
   // acceptance_radius
   // cruising_speed
-  // gliding_enabled
   // cruising_throttle
   // disable_weather_vane
 }
@@ -98,6 +104,18 @@ px4_msgs__msg__PositionSetpoint__are_equal(const px4_msgs__msg__PositionSetpoint
   if (lhs->vz != rhs->vz) {
     return false;
   }
+  // velocity_valid
+  if (lhs->velocity_valid != rhs->velocity_valid) {
+    return false;
+  }
+  // velocity_frame
+  if (lhs->velocity_frame != rhs->velocity_frame) {
+    return false;
+  }
+  // alt_valid
+  if (lhs->alt_valid != rhs->alt_valid) {
+    return false;
+  }
   // lat
   if (lhs->lat != rhs->lat) {
     return false;
@@ -126,12 +144,16 @@ px4_msgs__msg__PositionSetpoint__are_equal(const px4_msgs__msg__PositionSetpoint
   if (lhs->yawspeed_valid != rhs->yawspeed_valid) {
     return false;
   }
+  // landing_gear
+  if (lhs->landing_gear != rhs->landing_gear) {
+    return false;
+  }
   // loiter_radius
   if (lhs->loiter_radius != rhs->loiter_radius) {
     return false;
   }
-  // loiter_direction_counter_clockwise
-  if (lhs->loiter_direction_counter_clockwise != rhs->loiter_direction_counter_clockwise) {
+  // loiter_direction
+  if (lhs->loiter_direction != rhs->loiter_direction) {
     return false;
   }
   // acceptance_radius
@@ -140,10 +162,6 @@ px4_msgs__msg__PositionSetpoint__are_equal(const px4_msgs__msg__PositionSetpoint
   }
   // cruising_speed
   if (lhs->cruising_speed != rhs->cruising_speed) {
-    return false;
-  }
-  // gliding_enabled
-  if (lhs->gliding_enabled != rhs->gliding_enabled) {
     return false;
   }
   // cruising_throttle
@@ -177,6 +195,12 @@ px4_msgs__msg__PositionSetpoint__copy(
   output->vy = input->vy;
   // vz
   output->vz = input->vz;
+  // velocity_valid
+  output->velocity_valid = input->velocity_valid;
+  // velocity_frame
+  output->velocity_frame = input->velocity_frame;
+  // alt_valid
+  output->alt_valid = input->alt_valid;
   // lat
   output->lat = input->lat;
   // lon
@@ -191,16 +215,16 @@ px4_msgs__msg__PositionSetpoint__copy(
   output->yawspeed = input->yawspeed;
   // yawspeed_valid
   output->yawspeed_valid = input->yawspeed_valid;
+  // landing_gear
+  output->landing_gear = input->landing_gear;
   // loiter_radius
   output->loiter_radius = input->loiter_radius;
-  // loiter_direction_counter_clockwise
-  output->loiter_direction_counter_clockwise = input->loiter_direction_counter_clockwise;
+  // loiter_direction
+  output->loiter_direction = input->loiter_direction;
   // acceptance_radius
   output->acceptance_radius = input->acceptance_radius;
   // cruising_speed
   output->cruising_speed = input->cruising_speed;
-  // gliding_enabled
-  output->gliding_enabled = input->gliding_enabled;
   // cruising_throttle
   output->cruising_throttle = input->cruising_throttle;
   // disable_weather_vane

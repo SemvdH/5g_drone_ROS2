@@ -60,20 +60,20 @@ void * get_function__RcChannels__channels(void * untyped_member, size_t index)
 size_t size_function__RcChannels__function(const void * untyped_member)
 {
   (void)untyped_member;
-  return 28;
+  return 27;
 }
 
 const void * get_const_function__RcChannels__function(const void * untyped_member, size_t index)
 {
   const auto & member =
-    *reinterpret_cast<const std::array<int8_t, 28> *>(untyped_member);
+    *reinterpret_cast<const std::array<int8_t, 27> *>(untyped_member);
   return &member[index];
 }
 
 void * get_function__RcChannels__function(void * untyped_member, size_t index)
 {
   auto & member =
-    *reinterpret_cast<std::array<int8_t, 28> *>(untyped_member);
+    *reinterpret_cast<std::array<int8_t, 27> *>(untyped_member);
   return &member[index];
 }
 
@@ -144,7 +144,7 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember RcChannels_me
     0,  // upper bound of string
     nullptr,  // members of sub message
     true,  // is array
-    28,  // array size
+    27,  // array size
     false,  // is upper bound
     offsetof(px4_msgs::msg::RcChannels, function),  // bytes offset in struct
     nullptr,  // default value

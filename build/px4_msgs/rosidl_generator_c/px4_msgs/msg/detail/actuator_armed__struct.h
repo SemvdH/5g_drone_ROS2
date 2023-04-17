@@ -28,6 +28,7 @@ typedef struct px4_msgs__msg__ActuatorArmed
   bool manual_lockdown;
   bool force_failsafe;
   bool in_esc_calibration_mode;
+  bool soft_stop;
 } px4_msgs__msg__ActuatorArmed;
 
 // Struct for a sequence of px4_msgs__msg__ActuatorArmed.

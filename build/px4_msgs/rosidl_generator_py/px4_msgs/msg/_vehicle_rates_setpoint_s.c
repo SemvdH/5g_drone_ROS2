@@ -113,15 +113,6 @@ bool px4_msgs__msg__vehicle_rates_setpoint__convert_from_py(PyObject * _pymsg, v
     }
     Py_DECREF(field);
   }
-  {  // reset_integral
-    PyObject * field = PyObject_GetAttrString(_pymsg, "reset_integral");
-    if (!field) {
-      return false;
-    }
-    assert(PyBool_Check(field));
-    ros_message->reset_integral = (Py_True == field);
-    Py_DECREF(field);
-  }
 
   return true;
 }
@@ -205,17 +196,6 @@ PyObject * px4_msgs__msg__vehicle_rates_setpoint__convert_to_py(void * raw_ros_m
     float * src = &(ros_message->thrust_body[0]);
     memcpy(dst, src, 3 * sizeof(float));
     Py_DECREF(field);
-  }
-  {  // reset_integral
-    PyObject * field = NULL;
-    field = PyBool_FromLong(ros_message->reset_integral ? 1 : 0);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "reset_integral", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
   }
 
   // ownership of _pymessage is transferred to the caller

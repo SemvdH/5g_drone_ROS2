@@ -52,32 +52,16 @@ private:
   ::px4_msgs::msg::VehicleLandDetected msg_;
 };
 
-class Init_VehicleLandDetected_rotational_movement
-{
-public:
-  explicit Init_VehicleLandDetected_rotational_movement(::px4_msgs::msg::VehicleLandDetected & msg)
-  : msg_(msg)
-  {}
-  Init_VehicleLandDetected_close_to_ground_or_skipped_check rotational_movement(::px4_msgs::msg::VehicleLandDetected::_rotational_movement_type arg)
-  {
-    msg_.rotational_movement = std::move(arg);
-    return Init_VehicleLandDetected_close_to_ground_or_skipped_check(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::VehicleLandDetected msg_;
-};
-
 class Init_VehicleLandDetected_horizontal_movement
 {
 public:
   explicit Init_VehicleLandDetected_horizontal_movement(::px4_msgs::msg::VehicleLandDetected & msg)
   : msg_(msg)
   {}
-  Init_VehicleLandDetected_rotational_movement horizontal_movement(::px4_msgs::msg::VehicleLandDetected::_horizontal_movement_type arg)
+  Init_VehicleLandDetected_close_to_ground_or_skipped_check horizontal_movement(::px4_msgs::msg::VehicleLandDetected::_horizontal_movement_type arg)
   {
     msg_.horizontal_movement = std::move(arg);
-    return Init_VehicleLandDetected_rotational_movement(msg_);
+    return Init_VehicleLandDetected_close_to_ground_or_skipped_check(msg_);
   }
 
 private:

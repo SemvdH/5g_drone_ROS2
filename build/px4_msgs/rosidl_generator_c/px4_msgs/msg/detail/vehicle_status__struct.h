@@ -59,88 +59,70 @@ enum
   px4_msgs__msg__VehicleStatus__ARMING_STATE_MAX = 6
 };
 
-/// Constant 'ARM_DISARM_REASON_TRANSITION_TO_STANDBY'.
+/// Constant 'FAILURE_NONE'.
 enum
 {
-  px4_msgs__msg__VehicleStatus__ARM_DISARM_REASON_TRANSITION_TO_STANDBY = 0
+  px4_msgs__msg__VehicleStatus__FAILURE_NONE = 0
 };
 
-/// Constant 'ARM_DISARM_REASON_RC_STICK'.
+/// Constant 'FAILURE_ROLL'.
 enum
 {
-  px4_msgs__msg__VehicleStatus__ARM_DISARM_REASON_RC_STICK = 1
+  px4_msgs__msg__VehicleStatus__FAILURE_ROLL = 1
 };
 
-/// Constant 'ARM_DISARM_REASON_RC_SWITCH'.
+/// Constant 'FAILURE_PITCH'.
 enum
 {
-  px4_msgs__msg__VehicleStatus__ARM_DISARM_REASON_RC_SWITCH = 2
+  px4_msgs__msg__VehicleStatus__FAILURE_PITCH = 2
 };
 
-/// Constant 'ARM_DISARM_REASON_COMMAND_INTERNAL'.
+/// Constant 'FAILURE_ALT'.
 enum
 {
-  px4_msgs__msg__VehicleStatus__ARM_DISARM_REASON_COMMAND_INTERNAL = 3
+  px4_msgs__msg__VehicleStatus__FAILURE_ALT = 4
 };
 
-/// Constant 'ARM_DISARM_REASON_COMMAND_EXTERNAL'.
+/// Constant 'FAILURE_EXT'.
 enum
 {
-  px4_msgs__msg__VehicleStatus__ARM_DISARM_REASON_COMMAND_EXTERNAL = 4
+  px4_msgs__msg__VehicleStatus__FAILURE_EXT = 8
 };
 
-/// Constant 'ARM_DISARM_REASON_MISSION_START'.
+/// Constant 'FAILURE_ARM_ESC'.
 enum
 {
-  px4_msgs__msg__VehicleStatus__ARM_DISARM_REASON_MISSION_START = 5
+  px4_msgs__msg__VehicleStatus__FAILURE_ARM_ESC = 16
 };
 
-/// Constant 'ARM_DISARM_REASON_SAFETY_BUTTON'.
+/// Constant 'FAILURE_HIGH_WIND'.
 enum
 {
-  px4_msgs__msg__VehicleStatus__ARM_DISARM_REASON_SAFETY_BUTTON = 6
+  px4_msgs__msg__VehicleStatus__FAILURE_HIGH_WIND = 32
 };
 
-/// Constant 'ARM_DISARM_REASON_AUTO_DISARM_LAND'.
+/// Constant 'FAILURE_BATTERY'.
 enum
 {
-  px4_msgs__msg__VehicleStatus__ARM_DISARM_REASON_AUTO_DISARM_LAND = 7
+  px4_msgs__msg__VehicleStatus__FAILURE_BATTERY = 64
 };
 
-/// Constant 'ARM_DISARM_REASON_AUTO_DISARM_PREFLIGHT'.
+/// Constant 'FAILURE_IMBALANCED_PROP'.
 enum
 {
-  px4_msgs__msg__VehicleStatus__ARM_DISARM_REASON_AUTO_DISARM_PREFLIGHT = 8
+  px4_msgs__msg__VehicleStatus__FAILURE_IMBALANCED_PROP = 128
 };
 
-/// Constant 'ARM_DISARM_REASON_KILL_SWITCH'.
+/// Constant 'HIL_STATE_OFF'.
 enum
 {
-  px4_msgs__msg__VehicleStatus__ARM_DISARM_REASON_KILL_SWITCH = 9
+  px4_msgs__msg__VehicleStatus__HIL_STATE_OFF = 0
 };
 
-/// Constant 'ARM_DISARM_REASON_LOCKDOWN'.
+/// Constant 'HIL_STATE_ON'.
 enum
 {
-  px4_msgs__msg__VehicleStatus__ARM_DISARM_REASON_LOCKDOWN = 10
-};
-
-/// Constant 'ARM_DISARM_REASON_FAILURE_DETECTOR'.
-enum
-{
-  px4_msgs__msg__VehicleStatus__ARM_DISARM_REASON_FAILURE_DETECTOR = 11
-};
-
-/// Constant 'ARM_DISARM_REASON_SHUTDOWN'.
-enum
-{
-  px4_msgs__msg__VehicleStatus__ARM_DISARM_REASON_SHUTDOWN = 12
-};
-
-/// Constant 'ARM_DISARM_REASON_UNIT_TEST'.
-enum
-{
-  px4_msgs__msg__VehicleStatus__ARM_DISARM_REASON_UNIT_TEST = 13
+  px4_msgs__msg__VehicleStatus__HIL_STATE_ON = 1
 };
 
 /// Constant 'NAVIGATION_STATE_MANUAL'.
@@ -179,10 +161,10 @@ enum
   px4_msgs__msg__VehicleStatus__NAVIGATION_STATE_AUTO_RTL = 5
 };
 
-/// Constant 'NAVIGATION_STATE_UNUSED3'.
+/// Constant 'NAVIGATION_STATE_AUTO_LANDENGFAIL'.
 enum
 {
-  px4_msgs__msg__VehicleStatus__NAVIGATION_STATE_UNUSED3 = 8
+  px4_msgs__msg__VehicleStatus__NAVIGATION_STATE_AUTO_LANDENGFAIL = 8
 };
 
 /// Constant 'NAVIGATION_STATE_UNUSED'.
@@ -275,72 +257,6 @@ enum
   px4_msgs__msg__VehicleStatus__NAVIGATION_STATE_MAX = 23
 };
 
-/// Constant 'FAILURE_NONE'.
-enum
-{
-  px4_msgs__msg__VehicleStatus__FAILURE_NONE = 0
-};
-
-/// Constant 'FAILURE_ROLL'.
-enum
-{
-  px4_msgs__msg__VehicleStatus__FAILURE_ROLL = 1
-};
-
-/// Constant 'FAILURE_PITCH'.
-enum
-{
-  px4_msgs__msg__VehicleStatus__FAILURE_PITCH = 2
-};
-
-/// Constant 'FAILURE_ALT'.
-enum
-{
-  px4_msgs__msg__VehicleStatus__FAILURE_ALT = 4
-};
-
-/// Constant 'FAILURE_EXT'.
-enum
-{
-  px4_msgs__msg__VehicleStatus__FAILURE_EXT = 8
-};
-
-/// Constant 'FAILURE_ARM_ESC'.
-enum
-{
-  px4_msgs__msg__VehicleStatus__FAILURE_ARM_ESC = 16
-};
-
-/// Constant 'FAILURE_BATTERY'.
-enum
-{
-  px4_msgs__msg__VehicleStatus__FAILURE_BATTERY = 32
-};
-
-/// Constant 'FAILURE_IMBALANCED_PROP'.
-enum
-{
-  px4_msgs__msg__VehicleStatus__FAILURE_IMBALANCED_PROP = 64
-};
-
-/// Constant 'FAILURE_MOTOR'.
-enum
-{
-  px4_msgs__msg__VehicleStatus__FAILURE_MOTOR = 128
-};
-
-/// Constant 'HIL_STATE_OFF'.
-enum
-{
-  px4_msgs__msg__VehicleStatus__HIL_STATE_OFF = 0
-};
-
-/// Constant 'HIL_STATE_ON'.
-enum
-{
-  px4_msgs__msg__VehicleStatus__HIL_STATE_ON = 1
-};
-
 /// Constant 'VEHICLE_TYPE_UNKNOWN'.
 enum
 {
@@ -371,46 +287,124 @@ enum
   px4_msgs__msg__VehicleStatus__VEHICLE_TYPE_AIRSHIP = 4
 };
 
+/// Constant 'ARM_DISARM_REASON_TRANSITION_TO_STANDBY'.
+enum
+{
+  px4_msgs__msg__VehicleStatus__ARM_DISARM_REASON_TRANSITION_TO_STANDBY = 0
+};
+
+/// Constant 'ARM_DISARM_REASON_RC_STICK'.
+enum
+{
+  px4_msgs__msg__VehicleStatus__ARM_DISARM_REASON_RC_STICK = 1
+};
+
+/// Constant 'ARM_DISARM_REASON_RC_SWITCH'.
+enum
+{
+  px4_msgs__msg__VehicleStatus__ARM_DISARM_REASON_RC_SWITCH = 2
+};
+
+/// Constant 'ARM_DISARM_REASON_COMMAND_INTERNAL'.
+enum
+{
+  px4_msgs__msg__VehicleStatus__ARM_DISARM_REASON_COMMAND_INTERNAL = 3
+};
+
+/// Constant 'ARM_DISARM_REASON_COMMAND_EXTERNAL'.
+enum
+{
+  px4_msgs__msg__VehicleStatus__ARM_DISARM_REASON_COMMAND_EXTERNAL = 4
+};
+
+/// Constant 'ARM_DISARM_REASON_MISSION_START'.
+enum
+{
+  px4_msgs__msg__VehicleStatus__ARM_DISARM_REASON_MISSION_START = 5
+};
+
+/// Constant 'ARM_DISARM_REASON_SAFETY_BUTTON'.
+enum
+{
+  px4_msgs__msg__VehicleStatus__ARM_DISARM_REASON_SAFETY_BUTTON = 6
+};
+
+/// Constant 'ARM_DISARM_REASON_AUTO_DISARM_LAND'.
+enum
+{
+  px4_msgs__msg__VehicleStatus__ARM_DISARM_REASON_AUTO_DISARM_LAND = 7
+};
+
+/// Constant 'ARM_DISARM_REASON_AUTO_DISARM_PREFLIGHT'.
+enum
+{
+  px4_msgs__msg__VehicleStatus__ARM_DISARM_REASON_AUTO_DISARM_PREFLIGHT = 8
+};
+
+/// Constant 'ARM_DISARM_REASON_KILL_SWITCH'.
+enum
+{
+  px4_msgs__msg__VehicleStatus__ARM_DISARM_REASON_KILL_SWITCH = 9
+};
+
+/// Constant 'ARM_DISARM_REASON_LOCKDOWN'.
+enum
+{
+  px4_msgs__msg__VehicleStatus__ARM_DISARM_REASON_LOCKDOWN = 10
+};
+
+/// Constant 'ARM_DISARM_REASON_FAILURE_DETECTOR'.
+enum
+{
+  px4_msgs__msg__VehicleStatus__ARM_DISARM_REASON_FAILURE_DETECTOR = 11
+};
+
+/// Constant 'ARM_DISARM_REASON_SHUTDOWN'.
+enum
+{
+  px4_msgs__msg__VehicleStatus__ARM_DISARM_REASON_SHUTDOWN = 12
+};
+
+/// Constant 'ARM_DISARM_REASON_UNIT_TEST'.
+enum
+{
+  px4_msgs__msg__VehicleStatus__ARM_DISARM_REASON_UNIT_TEST = 13
+};
+
 // Struct defined in msg/VehicleStatus in the package px4_msgs.
 typedef struct px4_msgs__msg__VehicleStatus
 {
   uint64_t timestamp;
-  uint64_t armed_time;
-  uint64_t takeoff_time;
-  uint8_t arming_state;
-  uint8_t latest_arming_reason;
-  uint8_t latest_disarming_reason;
-  uint64_t nav_state_timestamp;
-  uint8_t nav_state_user_intention;
   uint8_t nav_state;
-  uint16_t failure_detector_status;
+  uint64_t nav_state_timestamp;
+  uint8_t arming_state;
   uint8_t hil_state;
-  uint8_t vehicle_type;
   bool failsafe;
-  bool failsafe_and_user_took_over;
-  bool gcs_connection_lost;
-  uint8_t gcs_connection_lost_counter;
-  bool high_latency_data_link_lost;
-  bool is_vtol;
-  bool is_vtol_tailsitter;
-  bool in_transition_mode;
-  bool in_transition_to_fw;
+  uint64_t failsafe_timestamp;
   uint8_t system_type;
   uint8_t system_id;
   uint8_t component_id;
-  bool safety_button_available;
-  bool safety_off;
-  bool power_input_valid;
-  bool usb_connected;
-  bool open_drone_id_system_present;
-  bool open_drone_id_system_healthy;
-  bool parachute_system_present;
-  bool parachute_system_healthy;
-  bool avoidance_system_required;
-  bool avoidance_system_valid;
-  bool rc_calibration_in_progress;
-  bool calibration_enabled;
-  bool pre_flight_checks_pass;
+  uint8_t vehicle_type;
+  bool is_vtol;
+  bool is_vtol_tailsitter;
+  bool vtol_fw_permanent_stab;
+  bool in_transition_mode;
+  bool in_transition_to_fw;
+  bool rc_signal_lost;
+  bool data_link_lost;
+  uint8_t data_link_lost_counter;
+  bool high_latency_data_link_lost;
+  bool engine_failure;
+  bool mission_failure;
+  bool geofence_violated;
+  uint8_t failure_detector_status;
+  uint64_t onboard_control_sensors_present;
+  uint64_t onboard_control_sensors_enabled;
+  uint64_t onboard_control_sensors_health;
+  uint8_t latest_arming_reason;
+  uint8_t latest_disarming_reason;
+  uint64_t armed_time;
+  uint64_t takeoff_time;
 } px4_msgs__msg__VehicleStatus;
 
 // Struct for a sequence of px4_msgs__msg__VehicleStatus.

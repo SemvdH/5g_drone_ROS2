@@ -131,6 +131,24 @@ bool px4_msgs__msg__mission_result__convert_from_py(PyObject * _pymsg, void * _r
     ros_message->failure = (Py_True == field);
     Py_DECREF(field);
   }
+  {  // stay_in_failsafe
+    PyObject * field = PyObject_GetAttrString(_pymsg, "stay_in_failsafe");
+    if (!field) {
+      return false;
+    }
+    assert(PyBool_Check(field));
+    ros_message->stay_in_failsafe = (Py_True == field);
+    Py_DECREF(field);
+  }
+  {  // flight_termination
+    PyObject * field = PyObject_GetAttrString(_pymsg, "flight_termination");
+    if (!field) {
+      return false;
+    }
+    assert(PyBool_Check(field));
+    ros_message->flight_termination = (Py_True == field);
+    Py_DECREF(field);
+  }
   {  // item_do_jump_changed
     PyObject * field = PyObject_GetAttrString(_pymsg, "item_do_jump_changed");
     if (!field) {
@@ -282,6 +300,28 @@ PyObject * px4_msgs__msg__mission_result__convert_to_py(void * raw_ros_message)
     field = PyBool_FromLong(ros_message->failure ? 1 : 0);
     {
       int rc = PyObject_SetAttrString(_pymessage, "failure", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // stay_in_failsafe
+    PyObject * field = NULL;
+    field = PyBool_FromLong(ros_message->stay_in_failsafe ? 1 : 0);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "stay_in_failsafe", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // flight_termination
+    PyObject * field = NULL;
+    field = PyBool_FromLong(ros_message->flight_termination ? 1 : 0);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "flight_termination", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;

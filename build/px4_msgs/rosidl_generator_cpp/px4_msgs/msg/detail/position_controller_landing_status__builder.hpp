@@ -20,15 +20,15 @@ namespace msg
 namespace builder
 {
 
-class Init_PositionControllerLandingStatus_abort_status
+class Init_PositionControllerLandingStatus_abort_landing
 {
 public:
-  explicit Init_PositionControllerLandingStatus_abort_status(::px4_msgs::msg::PositionControllerLandingStatus & msg)
+  explicit Init_PositionControllerLandingStatus_abort_landing(::px4_msgs::msg::PositionControllerLandingStatus & msg)
   : msg_(msg)
   {}
-  ::px4_msgs::msg::PositionControllerLandingStatus abort_status(::px4_msgs::msg::PositionControllerLandingStatus::_abort_status_type arg)
+  ::px4_msgs::msg::PositionControllerLandingStatus abort_landing(::px4_msgs::msg::PositionControllerLandingStatus::_abort_landing_type arg)
   {
-    msg_.abort_status = std::move(arg);
+    msg_.abort_landing = std::move(arg);
     return std::move(msg_);
   }
 
@@ -36,32 +36,48 @@ private:
   ::px4_msgs::msg::PositionControllerLandingStatus msg_;
 };
 
-class Init_PositionControllerLandingStatus_flaring
+class Init_PositionControllerLandingStatus_flare_length
 {
 public:
-  explicit Init_PositionControllerLandingStatus_flaring(::px4_msgs::msg::PositionControllerLandingStatus & msg)
+  explicit Init_PositionControllerLandingStatus_flare_length(::px4_msgs::msg::PositionControllerLandingStatus & msg)
   : msg_(msg)
   {}
-  Init_PositionControllerLandingStatus_abort_status flaring(::px4_msgs::msg::PositionControllerLandingStatus::_flaring_type arg)
+  Init_PositionControllerLandingStatus_abort_landing flare_length(::px4_msgs::msg::PositionControllerLandingStatus::_flare_length_type arg)
   {
-    msg_.flaring = std::move(arg);
-    return Init_PositionControllerLandingStatus_abort_status(msg_);
+    msg_.flare_length = std::move(arg);
+    return Init_PositionControllerLandingStatus_abort_landing(msg_);
   }
 
 private:
   ::px4_msgs::msg::PositionControllerLandingStatus msg_;
 };
 
-class Init_PositionControllerLandingStatus_lateral_touchdown_offset
+class Init_PositionControllerLandingStatus_slope_angle_rad
 {
 public:
-  explicit Init_PositionControllerLandingStatus_lateral_touchdown_offset(::px4_msgs::msg::PositionControllerLandingStatus & msg)
+  explicit Init_PositionControllerLandingStatus_slope_angle_rad(::px4_msgs::msg::PositionControllerLandingStatus & msg)
   : msg_(msg)
   {}
-  Init_PositionControllerLandingStatus_flaring lateral_touchdown_offset(::px4_msgs::msg::PositionControllerLandingStatus::_lateral_touchdown_offset_type arg)
+  Init_PositionControllerLandingStatus_flare_length slope_angle_rad(::px4_msgs::msg::PositionControllerLandingStatus::_slope_angle_rad_type arg)
   {
-    msg_.lateral_touchdown_offset = std::move(arg);
-    return Init_PositionControllerLandingStatus_flaring(msg_);
+    msg_.slope_angle_rad = std::move(arg);
+    return Init_PositionControllerLandingStatus_flare_length(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::PositionControllerLandingStatus msg_;
+};
+
+class Init_PositionControllerLandingStatus_horizontal_slope_displacement
+{
+public:
+  explicit Init_PositionControllerLandingStatus_horizontal_slope_displacement(::px4_msgs::msg::PositionControllerLandingStatus & msg)
+  : msg_(msg)
+  {}
+  Init_PositionControllerLandingStatus_slope_angle_rad horizontal_slope_displacement(::px4_msgs::msg::PositionControllerLandingStatus::_horizontal_slope_displacement_type arg)
+  {
+    msg_.horizontal_slope_displacement = std::move(arg);
+    return Init_PositionControllerLandingStatus_slope_angle_rad(msg_);
   }
 
 private:
@@ -74,10 +90,10 @@ public:
   Init_PositionControllerLandingStatus_timestamp()
   : msg_(::rosidl_runtime_cpp::MessageInitialization::SKIP)
   {}
-  Init_PositionControllerLandingStatus_lateral_touchdown_offset timestamp(::px4_msgs::msg::PositionControllerLandingStatus::_timestamp_type arg)
+  Init_PositionControllerLandingStatus_horizontal_slope_displacement timestamp(::px4_msgs::msg::PositionControllerLandingStatus::_timestamp_type arg)
   {
     msg_.timestamp = std::move(arg);
-    return Init_PositionControllerLandingStatus_lateral_touchdown_offset(msg_);
+    return Init_PositionControllerLandingStatus_horizontal_slope_displacement(msg_);
   }
 
 private:

@@ -36,42 +36,46 @@ cdr_serialize(
   cdr << ros_message.timestamp;
   // Member: timestamp_sample
   cdr << ros_message.timestamp_sample;
-  // Member: pose_frame
-  cdr << ros_message.pose_frame;
-  // Member: position
-  {
-    cdr << ros_message.position;
-  }
+  // Member: local_frame
+  cdr << ros_message.local_frame;
+  // Member: x
+  cdr << ros_message.x;
+  // Member: y
+  cdr << ros_message.y;
+  // Member: z
+  cdr << ros_message.z;
   // Member: q
   {
     cdr << ros_message.q;
   }
+  // Member: q_offset
+  {
+    cdr << ros_message.q_offset;
+  }
+  // Member: pose_covariance
+  {
+    cdr << ros_message.pose_covariance;
+  }
   // Member: velocity_frame
   cdr << ros_message.velocity_frame;
-  // Member: velocity
+  // Member: vx
+  cdr << ros_message.vx;
+  // Member: vy
+  cdr << ros_message.vy;
+  // Member: vz
+  cdr << ros_message.vz;
+  // Member: rollspeed
+  cdr << ros_message.rollspeed;
+  // Member: pitchspeed
+  cdr << ros_message.pitchspeed;
+  // Member: yawspeed
+  cdr << ros_message.yawspeed;
+  // Member: velocity_covariance
   {
-    cdr << ros_message.velocity;
-  }
-  // Member: angular_velocity
-  {
-    cdr << ros_message.angular_velocity;
-  }
-  // Member: position_variance
-  {
-    cdr << ros_message.position_variance;
-  }
-  // Member: orientation_variance
-  {
-    cdr << ros_message.orientation_variance;
-  }
-  // Member: velocity_variance
-  {
-    cdr << ros_message.velocity_variance;
+    cdr << ros_message.velocity_covariance;
   }
   // Member: reset_counter
   cdr << ros_message.reset_counter;
-  // Member: quality
-  cdr << ros_message.quality;
   return true;
 }
 
@@ -87,52 +91,61 @@ cdr_deserialize(
   // Member: timestamp_sample
   cdr >> ros_message.timestamp_sample;
 
-  // Member: pose_frame
-  cdr >> ros_message.pose_frame;
+  // Member: local_frame
+  cdr >> ros_message.local_frame;
 
-  // Member: position
-  {
-    cdr >> ros_message.position;
-  }
+  // Member: x
+  cdr >> ros_message.x;
+
+  // Member: y
+  cdr >> ros_message.y;
+
+  // Member: z
+  cdr >> ros_message.z;
 
   // Member: q
   {
     cdr >> ros_message.q;
   }
 
+  // Member: q_offset
+  {
+    cdr >> ros_message.q_offset;
+  }
+
+  // Member: pose_covariance
+  {
+    cdr >> ros_message.pose_covariance;
+  }
+
   // Member: velocity_frame
   cdr >> ros_message.velocity_frame;
 
-  // Member: velocity
-  {
-    cdr >> ros_message.velocity;
-  }
+  // Member: vx
+  cdr >> ros_message.vx;
 
-  // Member: angular_velocity
-  {
-    cdr >> ros_message.angular_velocity;
-  }
+  // Member: vy
+  cdr >> ros_message.vy;
 
-  // Member: position_variance
-  {
-    cdr >> ros_message.position_variance;
-  }
+  // Member: vz
+  cdr >> ros_message.vz;
 
-  // Member: orientation_variance
-  {
-    cdr >> ros_message.orientation_variance;
-  }
+  // Member: rollspeed
+  cdr >> ros_message.rollspeed;
 
-  // Member: velocity_variance
+  // Member: pitchspeed
+  cdr >> ros_message.pitchspeed;
+
+  // Member: yawspeed
+  cdr >> ros_message.yawspeed;
+
+  // Member: velocity_covariance
   {
-    cdr >> ros_message.velocity_variance;
+    cdr >> ros_message.velocity_covariance;
   }
 
   // Member: reset_counter
   cdr >> ros_message.reset_counter;
-
-  // Member: quality
-  cdr >> ros_message.quality;
 
   return true;
 }
@@ -162,17 +175,28 @@ get_serialized_size(
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // Member: pose_frame
+  // Member: local_frame
   {
-    size_t item_size = sizeof(ros_message.pose_frame);
+    size_t item_size = sizeof(ros_message.local_frame);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // Member: position
+  // Member: x
   {
-    size_t array_size = 3;
-    size_t item_size = sizeof(ros_message.position[0]);
-    current_alignment += array_size * item_size +
+    size_t item_size = sizeof(ros_message.x);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // Member: y
+  {
+    size_t item_size = sizeof(ros_message.y);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // Member: z
+  {
+    size_t item_size = sizeof(ros_message.z);
+    current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
   // Member: q
@@ -182,56 +206,72 @@ get_serialized_size(
     current_alignment += array_size * item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
+  // Member: q_offset
+  {
+    size_t array_size = 4;
+    size_t item_size = sizeof(ros_message.q_offset[0]);
+    current_alignment += array_size * item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // Member: pose_covariance
+  {
+    size_t array_size = 21;
+    size_t item_size = sizeof(ros_message.pose_covariance[0]);
+    current_alignment += array_size * item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
   // Member: velocity_frame
   {
     size_t item_size = sizeof(ros_message.velocity_frame);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // Member: velocity
+  // Member: vx
   {
-    size_t array_size = 3;
-    size_t item_size = sizeof(ros_message.velocity[0]);
-    current_alignment += array_size * item_size +
+    size_t item_size = sizeof(ros_message.vx);
+    current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // Member: angular_velocity
+  // Member: vy
   {
-    size_t array_size = 3;
-    size_t item_size = sizeof(ros_message.angular_velocity[0]);
-    current_alignment += array_size * item_size +
+    size_t item_size = sizeof(ros_message.vy);
+    current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // Member: position_variance
+  // Member: vz
   {
-    size_t array_size = 3;
-    size_t item_size = sizeof(ros_message.position_variance[0]);
-    current_alignment += array_size * item_size +
+    size_t item_size = sizeof(ros_message.vz);
+    current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // Member: orientation_variance
+  // Member: rollspeed
   {
-    size_t array_size = 3;
-    size_t item_size = sizeof(ros_message.orientation_variance[0]);
-    current_alignment += array_size * item_size +
+    size_t item_size = sizeof(ros_message.rollspeed);
+    current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // Member: velocity_variance
+  // Member: pitchspeed
   {
-    size_t array_size = 3;
-    size_t item_size = sizeof(ros_message.velocity_variance[0]);
+    size_t item_size = sizeof(ros_message.pitchspeed);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // Member: yawspeed
+  {
+    size_t item_size = sizeof(ros_message.yawspeed);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // Member: velocity_covariance
+  {
+    size_t array_size = 21;
+    size_t item_size = sizeof(ros_message.velocity_covariance[0]);
     current_alignment += array_size * item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
   // Member: reset_counter
   {
     size_t item_size = sizeof(ros_message.reset_counter);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // Member: quality
-  {
-    size_t item_size = sizeof(ros_message.quality);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -270,16 +310,32 @@ max_serialized_size_VehicleOdometry(
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
 
-  // Member: pose_frame
+  // Member: local_frame
   {
     size_t array_size = 1;
 
     current_alignment += array_size * sizeof(uint8_t);
   }
 
-  // Member: position
+  // Member: x
   {
-    size_t array_size = 3;
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint32_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
+  }
+
+  // Member: y
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint32_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
+  }
+
+  // Member: z
+  {
+    size_t array_size = 1;
 
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
@@ -293,6 +349,22 @@ max_serialized_size_VehicleOdometry(
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
 
+  // Member: q_offset
+  {
+    size_t array_size = 4;
+
+    current_alignment += array_size * sizeof(uint32_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
+  }
+
+  // Member: pose_covariance
+  {
+    size_t array_size = 21;
+
+    current_alignment += array_size * sizeof(uint32_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
+  }
+
   // Member: velocity_frame
   {
     size_t array_size = 1;
@@ -300,54 +372,63 @@ max_serialized_size_VehicleOdometry(
     current_alignment += array_size * sizeof(uint8_t);
   }
 
-  // Member: velocity
+  // Member: vx
   {
-    size_t array_size = 3;
+    size_t array_size = 1;
 
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
 
-  // Member: angular_velocity
+  // Member: vy
   {
-    size_t array_size = 3;
+    size_t array_size = 1;
 
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
 
-  // Member: position_variance
+  // Member: vz
   {
-    size_t array_size = 3;
+    size_t array_size = 1;
 
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
 
-  // Member: orientation_variance
+  // Member: rollspeed
   {
-    size_t array_size = 3;
+    size_t array_size = 1;
 
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
 
-  // Member: velocity_variance
+  // Member: pitchspeed
   {
-    size_t array_size = 3;
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint32_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
+  }
+
+  // Member: yawspeed
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint32_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
+  }
+
+  // Member: velocity_covariance
+  {
+    size_t array_size = 21;
 
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
 
   // Member: reset_counter
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint8_t);
-  }
-
-  // Member: quality
   {
     size_t array_size = 1;
 

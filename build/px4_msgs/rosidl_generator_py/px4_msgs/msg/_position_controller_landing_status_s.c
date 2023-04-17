@@ -59,31 +59,40 @@ bool px4_msgs__msg__position_controller_landing_status__convert_from_py(PyObject
     ros_message->timestamp = PyLong_AsUnsignedLongLong(field);
     Py_DECREF(field);
   }
-  {  // lateral_touchdown_offset
-    PyObject * field = PyObject_GetAttrString(_pymsg, "lateral_touchdown_offset");
+  {  // horizontal_slope_displacement
+    PyObject * field = PyObject_GetAttrString(_pymsg, "horizontal_slope_displacement");
     if (!field) {
       return false;
     }
     assert(PyFloat_Check(field));
-    ros_message->lateral_touchdown_offset = (float)PyFloat_AS_DOUBLE(field);
+    ros_message->horizontal_slope_displacement = (float)PyFloat_AS_DOUBLE(field);
     Py_DECREF(field);
   }
-  {  // flaring
-    PyObject * field = PyObject_GetAttrString(_pymsg, "flaring");
+  {  // slope_angle_rad
+    PyObject * field = PyObject_GetAttrString(_pymsg, "slope_angle_rad");
+    if (!field) {
+      return false;
+    }
+    assert(PyFloat_Check(field));
+    ros_message->slope_angle_rad = (float)PyFloat_AS_DOUBLE(field);
+    Py_DECREF(field);
+  }
+  {  // flare_length
+    PyObject * field = PyObject_GetAttrString(_pymsg, "flare_length");
+    if (!field) {
+      return false;
+    }
+    assert(PyFloat_Check(field));
+    ros_message->flare_length = (float)PyFloat_AS_DOUBLE(field);
+    Py_DECREF(field);
+  }
+  {  // abort_landing
+    PyObject * field = PyObject_GetAttrString(_pymsg, "abort_landing");
     if (!field) {
       return false;
     }
     assert(PyBool_Check(field));
-    ros_message->flaring = (Py_True == field);
-    Py_DECREF(field);
-  }
-  {  // abort_status
-    PyObject * field = PyObject_GetAttrString(_pymsg, "abort_status");
-    if (!field) {
-      return false;
-    }
-    assert(PyLong_Check(field));
-    ros_message->abort_status = (uint8_t)PyLong_AsUnsignedLong(field);
+    ros_message->abort_landing = (Py_True == field);
     Py_DECREF(field);
   }
 
@@ -119,33 +128,44 @@ PyObject * px4_msgs__msg__position_controller_landing_status__convert_to_py(void
       }
     }
   }
-  {  // lateral_touchdown_offset
+  {  // horizontal_slope_displacement
     PyObject * field = NULL;
-    field = PyFloat_FromDouble(ros_message->lateral_touchdown_offset);
+    field = PyFloat_FromDouble(ros_message->horizontal_slope_displacement);
     {
-      int rc = PyObject_SetAttrString(_pymessage, "lateral_touchdown_offset", field);
+      int rc = PyObject_SetAttrString(_pymessage, "horizontal_slope_displacement", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;
       }
     }
   }
-  {  // flaring
+  {  // slope_angle_rad
     PyObject * field = NULL;
-    field = PyBool_FromLong(ros_message->flaring ? 1 : 0);
+    field = PyFloat_FromDouble(ros_message->slope_angle_rad);
     {
-      int rc = PyObject_SetAttrString(_pymessage, "flaring", field);
+      int rc = PyObject_SetAttrString(_pymessage, "slope_angle_rad", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;
       }
     }
   }
-  {  // abort_status
+  {  // flare_length
     PyObject * field = NULL;
-    field = PyLong_FromUnsignedLong(ros_message->abort_status);
+    field = PyFloat_FromDouble(ros_message->flare_length);
     {
-      int rc = PyObject_SetAttrString(_pymessage, "abort_status", field);
+      int rc = PyObject_SetAttrString(_pymessage, "flare_length", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // abort_landing
+    PyObject * field = NULL;
+    field = PyBool_FromLong(ros_message->abort_landing ? 1 : 0);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "abort_landing", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;

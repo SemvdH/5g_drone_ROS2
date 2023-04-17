@@ -7,6 +7,11 @@ module px4_msgs {
   module msg {
     typedef float float__4[4];
     typedef float float__3[3];
+    module VehicleAttitudeSetpoint_Constants {
+      const uint8 FLAPS_OFF = 0;
+      const uint8 FLAPS_LAND = 1;
+      const uint8 FLAPS_TAKEOFF = 2;
+    };
     struct VehicleAttitudeSetpoint {
       @verbatim (language="comment", text=
         " time since system start (microseconds)")
@@ -40,12 +45,24 @@ module px4_msgs {
       float__3 thrust_body;
 
       @verbatim (language="comment", text=
-        " Reset roll/pitch/yaw integrals (navigation logic change)")
-      boolean reset_integral;
+        " Reset roll integral part (navigation logic change)")
+      boolean roll_reset_integral;
 
       @verbatim (language="comment", text=
-        " control heading with steering wheel (used for auto takeoff on runway)")
-      boolean fw_control_yaw_wheel;
+        " Reset pitch integral part (navigation logic change)")
+      boolean pitch_reset_integral;
+
+      @verbatim (language="comment", text=
+        " Reset yaw integral part (navigation logic change)")
+      boolean yaw_reset_integral;
+
+      @verbatim (language="comment", text=
+        " control heading with rudder (used for auto takeoff on runway)")
+      boolean fw_control_yaw;
+
+      @verbatim (language="comment", text=
+        " flap config specifier")
+      uint8 apply_flaps;
     };
   };
 };

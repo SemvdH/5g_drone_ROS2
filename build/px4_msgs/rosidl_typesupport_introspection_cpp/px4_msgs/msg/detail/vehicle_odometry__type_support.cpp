@@ -37,26 +37,6 @@ void VehicleOdometry_fini_function(void * message_memory)
   typed_message->~VehicleOdometry();
 }
 
-size_t size_function__VehicleOdometry__position(const void * untyped_member)
-{
-  (void)untyped_member;
-  return 3;
-}
-
-const void * get_const_function__VehicleOdometry__position(const void * untyped_member, size_t index)
-{
-  const auto & member =
-    *reinterpret_cast<const std::array<float, 3> *>(untyped_member);
-  return &member[index];
-}
-
-void * get_function__VehicleOdometry__position(void * untyped_member, size_t index)
-{
-  auto & member =
-    *reinterpret_cast<std::array<float, 3> *>(untyped_member);
-  return &member[index];
-}
-
 size_t size_function__VehicleOdometry__q(const void * untyped_member)
 {
   (void)untyped_member;
@@ -77,107 +57,67 @@ void * get_function__VehicleOdometry__q(void * untyped_member, size_t index)
   return &member[index];
 }
 
-size_t size_function__VehicleOdometry__velocity(const void * untyped_member)
+size_t size_function__VehicleOdometry__q_offset(const void * untyped_member)
 {
   (void)untyped_member;
-  return 3;
+  return 4;
 }
 
-const void * get_const_function__VehicleOdometry__velocity(const void * untyped_member, size_t index)
+const void * get_const_function__VehicleOdometry__q_offset(const void * untyped_member, size_t index)
 {
   const auto & member =
-    *reinterpret_cast<const std::array<float, 3> *>(untyped_member);
+    *reinterpret_cast<const std::array<float, 4> *>(untyped_member);
   return &member[index];
 }
 
-void * get_function__VehicleOdometry__velocity(void * untyped_member, size_t index)
+void * get_function__VehicleOdometry__q_offset(void * untyped_member, size_t index)
 {
   auto & member =
-    *reinterpret_cast<std::array<float, 3> *>(untyped_member);
+    *reinterpret_cast<std::array<float, 4> *>(untyped_member);
   return &member[index];
 }
 
-size_t size_function__VehicleOdometry__angular_velocity(const void * untyped_member)
+size_t size_function__VehicleOdometry__pose_covariance(const void * untyped_member)
 {
   (void)untyped_member;
-  return 3;
+  return 21;
 }
 
-const void * get_const_function__VehicleOdometry__angular_velocity(const void * untyped_member, size_t index)
+const void * get_const_function__VehicleOdometry__pose_covariance(const void * untyped_member, size_t index)
 {
   const auto & member =
-    *reinterpret_cast<const std::array<float, 3> *>(untyped_member);
+    *reinterpret_cast<const std::array<float, 21> *>(untyped_member);
   return &member[index];
 }
 
-void * get_function__VehicleOdometry__angular_velocity(void * untyped_member, size_t index)
+void * get_function__VehicleOdometry__pose_covariance(void * untyped_member, size_t index)
 {
   auto & member =
-    *reinterpret_cast<std::array<float, 3> *>(untyped_member);
+    *reinterpret_cast<std::array<float, 21> *>(untyped_member);
   return &member[index];
 }
 
-size_t size_function__VehicleOdometry__position_variance(const void * untyped_member)
+size_t size_function__VehicleOdometry__velocity_covariance(const void * untyped_member)
 {
   (void)untyped_member;
-  return 3;
+  return 21;
 }
 
-const void * get_const_function__VehicleOdometry__position_variance(const void * untyped_member, size_t index)
+const void * get_const_function__VehicleOdometry__velocity_covariance(const void * untyped_member, size_t index)
 {
   const auto & member =
-    *reinterpret_cast<const std::array<float, 3> *>(untyped_member);
+    *reinterpret_cast<const std::array<float, 21> *>(untyped_member);
   return &member[index];
 }
 
-void * get_function__VehicleOdometry__position_variance(void * untyped_member, size_t index)
+void * get_function__VehicleOdometry__velocity_covariance(void * untyped_member, size_t index)
 {
   auto & member =
-    *reinterpret_cast<std::array<float, 3> *>(untyped_member);
+    *reinterpret_cast<std::array<float, 21> *>(untyped_member);
   return &member[index];
 }
 
-size_t size_function__VehicleOdometry__orientation_variance(const void * untyped_member)
-{
-  (void)untyped_member;
-  return 3;
-}
-
-const void * get_const_function__VehicleOdometry__orientation_variance(const void * untyped_member, size_t index)
-{
-  const auto & member =
-    *reinterpret_cast<const std::array<float, 3> *>(untyped_member);
-  return &member[index];
-}
-
-void * get_function__VehicleOdometry__orientation_variance(void * untyped_member, size_t index)
-{
-  auto & member =
-    *reinterpret_cast<std::array<float, 3> *>(untyped_member);
-  return &member[index];
-}
-
-size_t size_function__VehicleOdometry__velocity_variance(const void * untyped_member)
-{
-  (void)untyped_member;
-  return 3;
-}
-
-const void * get_const_function__VehicleOdometry__velocity_variance(const void * untyped_member, size_t index)
-{
-  const auto & member =
-    *reinterpret_cast<const std::array<float, 3> *>(untyped_member);
-  return &member[index];
-}
-
-void * get_function__VehicleOdometry__velocity_variance(void * untyped_member, size_t index)
-{
-  auto & member =
-    *reinterpret_cast<std::array<float, 3> *>(untyped_member);
-  return &member[index];
-}
-
-static const ::rosidl_typesupport_introspection_cpp::MessageMember VehicleOdometry_message_member_array[13] = {
+static const ::rosidl_typesupport_introspection_cpp::MessageMember VehicleOdometry_message_member_array[18] = {
   {
     "timestamp",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_UINT64,  // type
@@ -209,14 +149,14 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember VehicleOdomet
     nullptr  // resize(index) function pointer
   },
   {
-    "pose_frame",  // name
+    "local_frame",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_UINT8,  // type
     0,  // upper bound of string
     nullptr,  // members of sub message
     false,  // is array
     0,  // array size
     false,  // is upper bound
-    offsetof(px4_msgs::msg::VehicleOdometry, pose_frame),  // bytes offset in struct
+    offsetof(px4_msgs::msg::VehicleOdometry, local_frame),  // bytes offset in struct
     nullptr,  // default value
     nullptr,  // size() function pointer
     nullptr,  // get_const(index) function pointer
@@ -224,18 +164,48 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember VehicleOdomet
     nullptr  // resize(index) function pointer
   },
   {
-    "position",  // name
+    "x",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
     0,  // upper bound of string
     nullptr,  // members of sub message
-    true,  // is array
-    3,  // array size
+    false,  // is array
+    0,  // array size
     false,  // is upper bound
-    offsetof(px4_msgs::msg::VehicleOdometry, position),  // bytes offset in struct
+    offsetof(px4_msgs::msg::VehicleOdometry, x),  // bytes offset in struct
     nullptr,  // default value
-    size_function__VehicleOdometry__position,  // size() function pointer
-    get_const_function__VehicleOdometry__position,  // get_const(index) function pointer
-    get_function__VehicleOdometry__position,  // get(index) function pointer
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
+    nullptr  // resize(index) function pointer
+  },
+  {
+    "y",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
+    0,  // upper bound of string
+    nullptr,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs::msg::VehicleOdometry, y),  // bytes offset in struct
+    nullptr,  // default value
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
+    nullptr  // resize(index) function pointer
+  },
+  {
+    "z",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
+    0,  // upper bound of string
+    nullptr,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs::msg::VehicleOdometry, z),  // bytes offset in struct
+    nullptr,  // default value
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
     nullptr  // resize(index) function pointer
   },
   {
@@ -254,6 +224,36 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember VehicleOdomet
     nullptr  // resize(index) function pointer
   },
   {
+    "q_offset",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
+    0,  // upper bound of string
+    nullptr,  // members of sub message
+    true,  // is array
+    4,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs::msg::VehicleOdometry, q_offset),  // bytes offset in struct
+    nullptr,  // default value
+    size_function__VehicleOdometry__q_offset,  // size() function pointer
+    get_const_function__VehicleOdometry__q_offset,  // get_const(index) function pointer
+    get_function__VehicleOdometry__q_offset,  // get(index) function pointer
+    nullptr  // resize(index) function pointer
+  },
+  {
+    "pose_covariance",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
+    0,  // upper bound of string
+    nullptr,  // members of sub message
+    true,  // is array
+    21,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs::msg::VehicleOdometry, pose_covariance),  // bytes offset in struct
+    nullptr,  // default value
+    size_function__VehicleOdometry__pose_covariance,  // size() function pointer
+    get_const_function__VehicleOdometry__pose_covariance,  // get_const(index) function pointer
+    get_function__VehicleOdometry__pose_covariance,  // get(index) function pointer
+    nullptr  // resize(index) function pointer
+  },
+  {
     "velocity_frame",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_UINT8,  // type
     0,  // upper bound of string
@@ -269,78 +269,108 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember VehicleOdomet
     nullptr  // resize(index) function pointer
   },
   {
-    "velocity",  // name
+    "vx",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
     0,  // upper bound of string
     nullptr,  // members of sub message
-    true,  // is array
-    3,  // array size
+    false,  // is array
+    0,  // array size
     false,  // is upper bound
-    offsetof(px4_msgs::msg::VehicleOdometry, velocity),  // bytes offset in struct
+    offsetof(px4_msgs::msg::VehicleOdometry, vx),  // bytes offset in struct
     nullptr,  // default value
-    size_function__VehicleOdometry__velocity,  // size() function pointer
-    get_const_function__VehicleOdometry__velocity,  // get_const(index) function pointer
-    get_function__VehicleOdometry__velocity,  // get(index) function pointer
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
     nullptr  // resize(index) function pointer
   },
   {
-    "angular_velocity",  // name
+    "vy",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
     0,  // upper bound of string
     nullptr,  // members of sub message
-    true,  // is array
-    3,  // array size
+    false,  // is array
+    0,  // array size
     false,  // is upper bound
-    offsetof(px4_msgs::msg::VehicleOdometry, angular_velocity),  // bytes offset in struct
+    offsetof(px4_msgs::msg::VehicleOdometry, vy),  // bytes offset in struct
     nullptr,  // default value
-    size_function__VehicleOdometry__angular_velocity,  // size() function pointer
-    get_const_function__VehicleOdometry__angular_velocity,  // get_const(index) function pointer
-    get_function__VehicleOdometry__angular_velocity,  // get(index) function pointer
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
     nullptr  // resize(index) function pointer
   },
   {
-    "position_variance",  // name
+    "vz",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
     0,  // upper bound of string
     nullptr,  // members of sub message
-    true,  // is array
-    3,  // array size
+    false,  // is array
+    0,  // array size
     false,  // is upper bound
-    offsetof(px4_msgs::msg::VehicleOdometry, position_variance),  // bytes offset in struct
+    offsetof(px4_msgs::msg::VehicleOdometry, vz),  // bytes offset in struct
     nullptr,  // default value
-    size_function__VehicleOdometry__position_variance,  // size() function pointer
-    get_const_function__VehicleOdometry__position_variance,  // get_const(index) function pointer
-    get_function__VehicleOdometry__position_variance,  // get(index) function pointer
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
     nullptr  // resize(index) function pointer
   },
   {
-    "orientation_variance",  // name
+    "rollspeed",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
     0,  // upper bound of string
     nullptr,  // members of sub message
-    true,  // is array
-    3,  // array size
+    false,  // is array
+    0,  // array size
     false,  // is upper bound
-    offsetof(px4_msgs::msg::VehicleOdometry, orientation_variance),  // bytes offset in struct
+    offsetof(px4_msgs::msg::VehicleOdometry, rollspeed),  // bytes offset in struct
     nullptr,  // default value
-    size_function__VehicleOdometry__orientation_variance,  // size() function pointer
-    get_const_function__VehicleOdometry__orientation_variance,  // get_const(index) function pointer
-    get_function__VehicleOdometry__orientation_variance,  // get(index) function pointer
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
     nullptr  // resize(index) function pointer
   },
   {
-    "velocity_variance",  // name
+    "pitchspeed",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
+    0,  // upper bound of string
+    nullptr,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs::msg::VehicleOdometry, pitchspeed),  // bytes offset in struct
+    nullptr,  // default value
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
+    nullptr  // resize(index) function pointer
+  },
+  {
+    "yawspeed",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
+    0,  // upper bound of string
+    nullptr,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs::msg::VehicleOdometry, yawspeed),  // bytes offset in struct
+    nullptr,  // default value
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
+    nullptr  // resize(index) function pointer
+  },
+  {
+    "velocity_covariance",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
     0,  // upper bound of string
     nullptr,  // members of sub message
     true,  // is array
-    3,  // array size
+    21,  // array size
     false,  // is upper bound
-    offsetof(px4_msgs::msg::VehicleOdometry, velocity_variance),  // bytes offset in struct
+    offsetof(px4_msgs::msg::VehicleOdometry, velocity_covariance),  // bytes offset in struct
     nullptr,  // default value
-    size_function__VehicleOdometry__velocity_variance,  // size() function pointer
-    get_const_function__VehicleOdometry__velocity_variance,  // get_const(index) function pointer
-    get_function__VehicleOdometry__velocity_variance,  // get(index) function pointer
+    size_function__VehicleOdometry__velocity_covariance,  // size() function pointer
+    get_const_function__VehicleOdometry__velocity_covariance,  // get_const(index) function pointer
+    get_function__VehicleOdometry__velocity_covariance,  // get(index) function pointer
     nullptr  // resize(index) function pointer
   },
   {
@@ -357,28 +387,13 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember VehicleOdomet
     nullptr,  // get_const(index) function pointer
     nullptr,  // get(index) function pointer
     nullptr  // resize(index) function pointer
-  },
-  {
-    "quality",  // name
-    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_INT8,  // type
-    0,  // upper bound of string
-    nullptr,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs::msg::VehicleOdometry, quality),  // bytes offset in struct
-    nullptr,  // default value
-    nullptr,  // size() function pointer
-    nullptr,  // get_const(index) function pointer
-    nullptr,  // get(index) function pointer
-    nullptr  // resize(index) function pointer
   }
 };
 
 static const ::rosidl_typesupport_introspection_cpp::MessageMembers VehicleOdometry_message_members = {
   "px4_msgs::msg",  // message namespace
   "VehicleOdometry",  // message name
-  13,  // number of fields
+  18,  // number of fields
   sizeof(px4_msgs::msg::VehicleOdometry),
   VehicleOdometry_message_member_array,  // message members
   VehicleOdometry_init_function,  // function to initialize message memory (memory has to be allocated)

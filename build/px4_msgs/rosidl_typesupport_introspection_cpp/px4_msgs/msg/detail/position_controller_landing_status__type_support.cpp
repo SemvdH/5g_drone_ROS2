@@ -37,7 +37,7 @@ void PositionControllerLandingStatus_fini_function(void * message_memory)
   typed_message->~PositionControllerLandingStatus();
 }
 
-static const ::rosidl_typesupport_introspection_cpp::MessageMember PositionControllerLandingStatus_message_member_array[4] = {
+static const ::rosidl_typesupport_introspection_cpp::MessageMember PositionControllerLandingStatus_message_member_array[5] = {
   {
     "timestamp",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_UINT64,  // type
@@ -54,14 +54,14 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember PositionContr
     nullptr  // resize(index) function pointer
   },
   {
-    "lateral_touchdown_offset",  // name
+    "horizontal_slope_displacement",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
     0,  // upper bound of string
     nullptr,  // members of sub message
     false,  // is array
     0,  // array size
     false,  // is upper bound
-    offsetof(px4_msgs::msg::PositionControllerLandingStatus, lateral_touchdown_offset),  // bytes offset in struct
+    offsetof(px4_msgs::msg::PositionControllerLandingStatus, horizontal_slope_displacement),  // bytes offset in struct
     nullptr,  // default value
     nullptr,  // size() function pointer
     nullptr,  // get_const(index) function pointer
@@ -69,29 +69,44 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember PositionContr
     nullptr  // resize(index) function pointer
   },
   {
-    "flaring",  // name
+    "slope_angle_rad",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
+    0,  // upper bound of string
+    nullptr,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs::msg::PositionControllerLandingStatus, slope_angle_rad),  // bytes offset in struct
+    nullptr,  // default value
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
+    nullptr  // resize(index) function pointer
+  },
+  {
+    "flare_length",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
+    0,  // upper bound of string
+    nullptr,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs::msg::PositionControllerLandingStatus, flare_length),  // bytes offset in struct
+    nullptr,  // default value
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
+    nullptr  // resize(index) function pointer
+  },
+  {
+    "abort_landing",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_BOOLEAN,  // type
     0,  // upper bound of string
     nullptr,  // members of sub message
     false,  // is array
     0,  // array size
     false,  // is upper bound
-    offsetof(px4_msgs::msg::PositionControllerLandingStatus, flaring),  // bytes offset in struct
-    nullptr,  // default value
-    nullptr,  // size() function pointer
-    nullptr,  // get_const(index) function pointer
-    nullptr,  // get(index) function pointer
-    nullptr  // resize(index) function pointer
-  },
-  {
-    "abort_status",  // name
-    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_UINT8,  // type
-    0,  // upper bound of string
-    nullptr,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs::msg::PositionControllerLandingStatus, abort_status),  // bytes offset in struct
+    offsetof(px4_msgs::msg::PositionControllerLandingStatus, abort_landing),  // bytes offset in struct
     nullptr,  // default value
     nullptr,  // size() function pointer
     nullptr,  // get_const(index) function pointer
@@ -103,7 +118,7 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember PositionContr
 static const ::rosidl_typesupport_introspection_cpp::MessageMembers PositionControllerLandingStatus_message_members = {
   "px4_msgs::msg",  // message namespace
   "PositionControllerLandingStatus",  // message name
-  4,  // number of fields
+  5,  // number of fields
   sizeof(px4_msgs::msg::PositionControllerLandingStatus),
   PositionControllerLandingStatus_message_member_array,  // message members
   PositionControllerLandingStatus_init_function,  // function to initialize message memory (memory has to be allocated)

@@ -79,7 +79,6 @@ typedef struct px4_msgs__msg__VehicleLocalPosition
   float epv;
   float evh;
   float evv;
-  bool dead_reckoning;
   float vxy_max;
   float vz_max;
   float hagl_min;

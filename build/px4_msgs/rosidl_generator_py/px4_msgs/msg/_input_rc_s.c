@@ -167,24 +167,6 @@ bool px4_msgs__msg__input_rc__convert_from_py(PyObject * _pymsg, void * _ros_mes
     }
     Py_DECREF(field);
   }
-  {  // link_quality
-    PyObject * field = PyObject_GetAttrString(_pymsg, "link_quality");
-    if (!field) {
-      return false;
-    }
-    assert(PyLong_Check(field));
-    ros_message->link_quality = (int8_t)PyLong_AsLong(field);
-    Py_DECREF(field);
-  }
-  {  // rssi_dbm
-    PyObject * field = PyObject_GetAttrString(_pymsg, "rssi_dbm");
-    if (!field) {
-      return false;
-    }
-    assert(PyFloat_Check(field));
-    ros_message->rssi_dbm = (float)PyFloat_AS_DOUBLE(field);
-    Py_DECREF(field);
-  }
 
   return true;
 }
@@ -334,28 +316,6 @@ PyObject * px4_msgs__msg__input_rc__convert_to_py(void * raw_ros_message)
     uint16_t * src = &(ros_message->values[0]);
     memcpy(dst, src, 18 * sizeof(uint16_t));
     Py_DECREF(field);
-  }
-  {  // link_quality
-    PyObject * field = NULL;
-    field = PyLong_FromLong(ros_message->link_quality);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "link_quality", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
-  {  // rssi_dbm
-    PyObject * field = NULL;
-    field = PyFloat_FromDouble(ros_message->rssi_dbm);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "rssi_dbm", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
   }
 
   // ownership of _pymessage is transferred to the caller

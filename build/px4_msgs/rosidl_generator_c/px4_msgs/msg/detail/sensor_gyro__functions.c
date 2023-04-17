@@ -25,7 +25,6 @@ px4_msgs__msg__SensorGyro__init(px4_msgs__msg__SensorGyro * msg)
   // z
   // temperature
   // error_count
-  // clip_counter
   // samples
   return true;
 }
@@ -44,7 +43,6 @@ px4_msgs__msg__SensorGyro__fini(px4_msgs__msg__SensorGyro * msg)
   // z
   // temperature
   // error_count
-  // clip_counter
   // samples
 }
 
@@ -86,12 +84,6 @@ px4_msgs__msg__SensorGyro__are_equal(const px4_msgs__msg__SensorGyro * lhs, cons
   if (lhs->error_count != rhs->error_count) {
     return false;
   }
-  // clip_counter
-  for (size_t i = 0; i < 3; ++i) {
-    if (lhs->clip_counter[i] != rhs->clip_counter[i]) {
-      return false;
-    }
-  }
   // samples
   if (lhs->samples != rhs->samples) {
     return false;
@@ -123,10 +115,6 @@ px4_msgs__msg__SensorGyro__copy(
   output->temperature = input->temperature;
   // error_count
   output->error_count = input->error_count;
-  // clip_counter
-  for (size_t i = 0; i < 3; ++i) {
-    output->clip_counter[i] = input->clip_counter[i];
-  }
   // samples
   output->samples = input->samples;
   return true;

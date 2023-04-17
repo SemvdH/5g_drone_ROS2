@@ -18,9 +18,8 @@ px4_msgs__msg__GeofenceResult__init(px4_msgs__msg__GeofenceResult * msg)
     return false;
   }
   // timestamp
-  // geofence_violation_reason
-  // primary_geofence_breached
-  // primary_geofence_action
+  // geofence_violated
+  // geofence_action
   // home_required
   return true;
 }
@@ -32,9 +31,8 @@ px4_msgs__msg__GeofenceResult__fini(px4_msgs__msg__GeofenceResult * msg)
     return;
   }
   // timestamp
-  // geofence_violation_reason
-  // primary_geofence_breached
-  // primary_geofence_action
+  // geofence_violated
+  // geofence_action
   // home_required
 }
 
@@ -48,16 +46,12 @@ px4_msgs__msg__GeofenceResult__are_equal(const px4_msgs__msg__GeofenceResult * l
   if (lhs->timestamp != rhs->timestamp) {
     return false;
   }
-  // geofence_violation_reason
-  if (lhs->geofence_violation_reason != rhs->geofence_violation_reason) {
+  // geofence_violated
+  if (lhs->geofence_violated != rhs->geofence_violated) {
     return false;
   }
-  // primary_geofence_breached
-  if (lhs->primary_geofence_breached != rhs->primary_geofence_breached) {
-    return false;
-  }
-  // primary_geofence_action
-  if (lhs->primary_geofence_action != rhs->primary_geofence_action) {
+  // geofence_action
+  if (lhs->geofence_action != rhs->geofence_action) {
     return false;
   }
   // home_required
@@ -77,12 +71,10 @@ px4_msgs__msg__GeofenceResult__copy(
   }
   // timestamp
   output->timestamp = input->timestamp;
-  // geofence_violation_reason
-  output->geofence_violation_reason = input->geofence_violation_reason;
-  // primary_geofence_breached
-  output->primary_geofence_breached = input->primary_geofence_breached;
-  // primary_geofence_action
-  output->primary_geofence_action = input->primary_geofence_action;
+  // geofence_violated
+  output->geofence_violated = input->geofence_violated;
+  // geofence_action
+  output->geofence_action = input->geofence_action;
   // home_required
   output->home_required = input->home_required;
   return true;

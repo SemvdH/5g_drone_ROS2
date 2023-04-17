@@ -302,15 +302,6 @@ bool px4_msgs__msg__telemetry_status__convert_from_py(PyObject * _pymsg, void * 
     ros_message->heartbeat_type_parachute = (Py_True == field);
     Py_DECREF(field);
   }
-  {  // heartbeat_type_open_drone_id
-    PyObject * field = PyObject_GetAttrString(_pymsg, "heartbeat_type_open_drone_id");
-    if (!field) {
-      return false;
-    }
-    assert(PyBool_Check(field));
-    ros_message->heartbeat_type_open_drone_id = (Py_True == field);
-    Py_DECREF(field);
-  }
   {  // heartbeat_component_telemetry_radio
     PyObject * field = PyObject_GetAttrString(_pymsg, "heartbeat_component_telemetry_radio");
     if (!field) {
@@ -390,15 +381,6 @@ bool px4_msgs__msg__telemetry_status__convert_from_py(PyObject * _pymsg, void * 
     }
     assert(PyBool_Check(field));
     ros_message->avoidance_system_healthy = (Py_True == field);
-    Py_DECREF(field);
-  }
-  {  // open_drone_id_system_healthy
-    PyObject * field = PyObject_GetAttrString(_pymsg, "open_drone_id_system_healthy");
-    if (!field) {
-      return false;
-    }
-    assert(PyBool_Check(field));
-    ros_message->open_drone_id_system_healthy = (Py_True == field);
     Py_DECREF(field);
   }
   {  // parachute_system_healthy
@@ -740,17 +722,6 @@ PyObject * px4_msgs__msg__telemetry_status__convert_to_py(void * raw_ros_message
       }
     }
   }
-  {  // heartbeat_type_open_drone_id
-    PyObject * field = NULL;
-    field = PyBool_FromLong(ros_message->heartbeat_type_open_drone_id ? 1 : 0);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "heartbeat_type_open_drone_id", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
   {  // heartbeat_component_telemetry_radio
     PyObject * field = NULL;
     field = PyBool_FromLong(ros_message->heartbeat_component_telemetry_radio ? 1 : 0);
@@ -844,17 +815,6 @@ PyObject * px4_msgs__msg__telemetry_status__convert_to_py(void * raw_ros_message
     field = PyBool_FromLong(ros_message->avoidance_system_healthy ? 1 : 0);
     {
       int rc = PyObject_SetAttrString(_pymessage, "avoidance_system_healthy", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
-  {  // open_drone_id_system_healthy
-    PyObject * field = NULL;
-    field = PyBool_FromLong(ros_message->open_drone_id_system_healthy ? 1 : 0);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "open_drone_id_system_healthy", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;

@@ -21,13 +21,14 @@ px4_msgs__msg__VehicleLocalPositionSetpoint__init(px4_msgs__msg__VehicleLocalPos
   // x
   // y
   // z
+  // yaw
+  // yawspeed
   // vx
   // vy
   // vz
   // acceleration
+  // jerk
   // thrust
-  // yaw
-  // yawspeed
   return true;
 }
 
@@ -41,13 +42,14 @@ px4_msgs__msg__VehicleLocalPositionSetpoint__fini(px4_msgs__msg__VehicleLocalPos
   // x
   // y
   // z
+  // yaw
+  // yawspeed
   // vx
   // vy
   // vz
   // acceleration
+  // jerk
   // thrust
-  // yaw
-  // yawspeed
 }
 
 bool
@@ -72,6 +74,14 @@ px4_msgs__msg__VehicleLocalPositionSetpoint__are_equal(const px4_msgs__msg__Vehi
   if (lhs->z != rhs->z) {
     return false;
   }
+  // yaw
+  if (lhs->yaw != rhs->yaw) {
+    return false;
+  }
+  // yawspeed
+  if (lhs->yawspeed != rhs->yawspeed) {
+    return false;
+  }
   // vx
   if (lhs->vx != rhs->vx) {
     return false;
@@ -90,19 +100,17 @@ px4_msgs__msg__VehicleLocalPositionSetpoint__are_equal(const px4_msgs__msg__Vehi
       return false;
     }
   }
+  // jerk
+  for (size_t i = 0; i < 3; ++i) {
+    if (lhs->jerk[i] != rhs->jerk[i]) {
+      return false;
+    }
+  }
   // thrust
   for (size_t i = 0; i < 3; ++i) {
     if (lhs->thrust[i] != rhs->thrust[i]) {
       return false;
     }
-  }
-  // yaw
-  if (lhs->yaw != rhs->yaw) {
-    return false;
-  }
-  // yawspeed
-  if (lhs->yawspeed != rhs->yawspeed) {
-    return false;
   }
   return true;
 }
@@ -123,6 +131,10 @@ px4_msgs__msg__VehicleLocalPositionSetpoint__copy(
   output->y = input->y;
   // z
   output->z = input->z;
+  // yaw
+  output->yaw = input->yaw;
+  // yawspeed
+  output->yawspeed = input->yawspeed;
   // vx
   output->vx = input->vx;
   // vy
@@ -133,14 +145,14 @@ px4_msgs__msg__VehicleLocalPositionSetpoint__copy(
   for (size_t i = 0; i < 3; ++i) {
     output->acceleration[i] = input->acceleration[i];
   }
+  // jerk
+  for (size_t i = 0; i < 3; ++i) {
+    output->jerk[i] = input->jerk[i];
+  }
   // thrust
   for (size_t i = 0; i < 3; ++i) {
     output->thrust[i] = input->thrust[i];
   }
-  // yaw
-  output->yaw = input->yaw;
-  // yawspeed
-  output->yawspeed = input->yawspeed;
   return true;
 }
 

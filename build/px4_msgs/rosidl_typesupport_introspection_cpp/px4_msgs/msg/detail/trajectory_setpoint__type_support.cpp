@@ -37,46 +37,6 @@ void TrajectorySetpoint_fini_function(void * message_memory)
   typed_message->~TrajectorySetpoint();
 }
 
-size_t size_function__TrajectorySetpoint__position(const void * untyped_member)
-{
-  (void)untyped_member;
-  return 3;
-}
-
-const void * get_const_function__TrajectorySetpoint__position(const void * untyped_member, size_t index)
-{
-  const auto & member =
-    *reinterpret_cast<const std::array<float, 3> *>(untyped_member);
-  return &member[index];
-}
-
-void * get_function__TrajectorySetpoint__position(void * untyped_member, size_t index)
-{
-  auto & member =
-    *reinterpret_cast<std::array<float, 3> *>(untyped_member);
-  return &member[index];
-}
-
-size_t size_function__TrajectorySetpoint__velocity(const void * untyped_member)
-{
-  (void)untyped_member;
-  return 3;
-}
-
-const void * get_const_function__TrajectorySetpoint__velocity(const void * untyped_member, size_t index)
-{
-  const auto & member =
-    *reinterpret_cast<const std::array<float, 3> *>(untyped_member);
-  return &member[index];
-}
-
-void * get_function__TrajectorySetpoint__velocity(void * untyped_member, size_t index)
-{
-  auto & member =
-    *reinterpret_cast<std::array<float, 3> *>(untyped_member);
-  return &member[index];
-}
-
 size_t size_function__TrajectorySetpoint__acceleration(const void * untyped_member)
 {
   (void)untyped_member;
@@ -117,7 +77,27 @@ void * get_function__TrajectorySetpoint__jerk(void * untyped_member, size_t inde
   return &member[index];
 }
 
-static const ::rosidl_typesupport_introspection_cpp::MessageMember TrajectorySetpoint_message_member_array[7] = {
+size_t size_function__TrajectorySetpoint__thrust(const void * untyped_member)
+{
+  (void)untyped_member;
+  return 3;
+}
+
+const void * get_const_function__TrajectorySetpoint__thrust(const void * untyped_member, size_t index)
+{
+  const auto & member =
+    *reinterpret_cast<const std::array<float, 3> *>(untyped_member);
+  return &member[index];
+}
+
+void * get_function__TrajectorySetpoint__thrust(void * untyped_member, size_t index)
+{
+  auto & member =
+    *reinterpret_cast<std::array<float, 3> *>(untyped_member);
+  return &member[index];
+}
+
+static const ::rosidl_typesupport_introspection_cpp::MessageMember TrajectorySetpoint_message_member_array[12] = {
   {
     "timestamp",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_UINT64,  // type
@@ -134,33 +114,123 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember TrajectorySet
     nullptr  // resize(index) function pointer
   },
   {
-    "position",  // name
+    "x",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
     0,  // upper bound of string
     nullptr,  // members of sub message
-    true,  // is array
-    3,  // array size
+    false,  // is array
+    0,  // array size
     false,  // is upper bound
-    offsetof(px4_msgs::msg::TrajectorySetpoint, position),  // bytes offset in struct
+    offsetof(px4_msgs::msg::TrajectorySetpoint, x),  // bytes offset in struct
     nullptr,  // default value
-    size_function__TrajectorySetpoint__position,  // size() function pointer
-    get_const_function__TrajectorySetpoint__position,  // get_const(index) function pointer
-    get_function__TrajectorySetpoint__position,  // get(index) function pointer
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
     nullptr  // resize(index) function pointer
   },
   {
-    "velocity",  // name
+    "y",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
     0,  // upper bound of string
     nullptr,  // members of sub message
-    true,  // is array
-    3,  // array size
+    false,  // is array
+    0,  // array size
     false,  // is upper bound
-    offsetof(px4_msgs::msg::TrajectorySetpoint, velocity),  // bytes offset in struct
+    offsetof(px4_msgs::msg::TrajectorySetpoint, y),  // bytes offset in struct
     nullptr,  // default value
-    size_function__TrajectorySetpoint__velocity,  // size() function pointer
-    get_const_function__TrajectorySetpoint__velocity,  // get_const(index) function pointer
-    get_function__TrajectorySetpoint__velocity,  // get(index) function pointer
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
+    nullptr  // resize(index) function pointer
+  },
+  {
+    "z",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
+    0,  // upper bound of string
+    nullptr,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs::msg::TrajectorySetpoint, z),  // bytes offset in struct
+    nullptr,  // default value
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
+    nullptr  // resize(index) function pointer
+  },
+  {
+    "yaw",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
+    0,  // upper bound of string
+    nullptr,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs::msg::TrajectorySetpoint, yaw),  // bytes offset in struct
+    nullptr,  // default value
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
+    nullptr  // resize(index) function pointer
+  },
+  {
+    "yawspeed",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
+    0,  // upper bound of string
+    nullptr,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs::msg::TrajectorySetpoint, yawspeed),  // bytes offset in struct
+    nullptr,  // default value
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
+    nullptr  // resize(index) function pointer
+  },
+  {
+    "vx",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
+    0,  // upper bound of string
+    nullptr,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs::msg::TrajectorySetpoint, vx),  // bytes offset in struct
+    nullptr,  // default value
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
+    nullptr  // resize(index) function pointer
+  },
+  {
+    "vy",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
+    0,  // upper bound of string
+    nullptr,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs::msg::TrajectorySetpoint, vy),  // bytes offset in struct
+    nullptr,  // default value
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
+    nullptr  // resize(index) function pointer
+  },
+  {
+    "vz",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
+    0,  // upper bound of string
+    nullptr,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(px4_msgs::msg::TrajectorySetpoint, vz),  // bytes offset in struct
+    nullptr,  // default value
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
     nullptr  // resize(index) function pointer
   },
   {
@@ -194,33 +264,18 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember TrajectorySet
     nullptr  // resize(index) function pointer
   },
   {
-    "yaw",  // name
+    "thrust",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
     0,  // upper bound of string
     nullptr,  // members of sub message
-    false,  // is array
-    0,  // array size
+    true,  // is array
+    3,  // array size
     false,  // is upper bound
-    offsetof(px4_msgs::msg::TrajectorySetpoint, yaw),  // bytes offset in struct
+    offsetof(px4_msgs::msg::TrajectorySetpoint, thrust),  // bytes offset in struct
     nullptr,  // default value
-    nullptr,  // size() function pointer
-    nullptr,  // get_const(index) function pointer
-    nullptr,  // get(index) function pointer
-    nullptr  // resize(index) function pointer
-  },
-  {
-    "yawspeed",  // name
-    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
-    0,  // upper bound of string
-    nullptr,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs::msg::TrajectorySetpoint, yawspeed),  // bytes offset in struct
-    nullptr,  // default value
-    nullptr,  // size() function pointer
-    nullptr,  // get_const(index) function pointer
-    nullptr,  // get(index) function pointer
+    size_function__TrajectorySetpoint__thrust,  // size() function pointer
+    get_const_function__TrajectorySetpoint__thrust,  // get_const(index) function pointer
+    get_function__TrajectorySetpoint__thrust,  // get(index) function pointer
     nullptr  // resize(index) function pointer
   }
 };
@@ -228,7 +283,7 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember TrajectorySet
 static const ::rosidl_typesupport_introspection_cpp::MessageMembers TrajectorySetpoint_message_members = {
   "px4_msgs::msg",  // message namespace
   "TrajectorySetpoint",  // message name
-  7,  // number of fields
+  12,  // number of fields
   sizeof(px4_msgs::msg::TrajectorySetpoint),
   TrajectorySetpoint_message_member_array,  // message members
   TrajectorySetpoint_init_function,  // function to initialize message memory (memory has to be allocated)

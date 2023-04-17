@@ -18,11 +18,6 @@ class Metaclass_PositionControllerLandingStatus(type):
     _TYPE_SUPPORT = None
 
     __constants = {
-        'NOT_ABORTED': 0,
-        'ABORTED_BY_OPERATOR': 1,
-        'TERRAIN_NOT_FOUND': 2,
-        'TERRAIN_TIMEOUT': 3,
-        'UNKNOWN_ABORT_CRITERION': 4,
     }
 
     @classmethod
@@ -51,70 +46,34 @@ class Metaclass_PositionControllerLandingStatus(type):
         # the message class under "Data and other attributes defined here:"
         # as well as populate each message instance
         return {
-            'NOT_ABORTED': cls.__constants['NOT_ABORTED'],
-            'ABORTED_BY_OPERATOR': cls.__constants['ABORTED_BY_OPERATOR'],
-            'TERRAIN_NOT_FOUND': cls.__constants['TERRAIN_NOT_FOUND'],
-            'TERRAIN_TIMEOUT': cls.__constants['TERRAIN_TIMEOUT'],
-            'UNKNOWN_ABORT_CRITERION': cls.__constants['UNKNOWN_ABORT_CRITERION'],
         }
-
-    @property
-    def NOT_ABORTED(self):
-        """Message constant 'NOT_ABORTED'."""
-        return Metaclass_PositionControllerLandingStatus.__constants['NOT_ABORTED']
-
-    @property
-    def ABORTED_BY_OPERATOR(self):
-        """Message constant 'ABORTED_BY_OPERATOR'."""
-        return Metaclass_PositionControllerLandingStatus.__constants['ABORTED_BY_OPERATOR']
-
-    @property
-    def TERRAIN_NOT_FOUND(self):
-        """Message constant 'TERRAIN_NOT_FOUND'."""
-        return Metaclass_PositionControllerLandingStatus.__constants['TERRAIN_NOT_FOUND']
-
-    @property
-    def TERRAIN_TIMEOUT(self):
-        """Message constant 'TERRAIN_TIMEOUT'."""
-        return Metaclass_PositionControllerLandingStatus.__constants['TERRAIN_TIMEOUT']
-
-    @property
-    def UNKNOWN_ABORT_CRITERION(self):
-        """Message constant 'UNKNOWN_ABORT_CRITERION'."""
-        return Metaclass_PositionControllerLandingStatus.__constants['UNKNOWN_ABORT_CRITERION']
 
 
 class PositionControllerLandingStatus(metaclass=Metaclass_PositionControllerLandingStatus):
-    """
-    Message class 'PositionControllerLandingStatus'.
-
-    Constants:
-      NOT_ABORTED
-      ABORTED_BY_OPERATOR
-      TERRAIN_NOT_FOUND
-      TERRAIN_TIMEOUT
-      UNKNOWN_ABORT_CRITERION
-    """
+    """Message class 'PositionControllerLandingStatus'."""
 
     __slots__ = [
         '_timestamp',
-        '_lateral_touchdown_offset',
-        '_flaring',
-        '_abort_status',
+        '_horizontal_slope_displacement',
+        '_slope_angle_rad',
+        '_flare_length',
+        '_abort_landing',
     ]
 
     _fields_and_field_types = {
         'timestamp': 'uint64',
-        'lateral_touchdown_offset': 'float',
-        'flaring': 'boolean',
-        'abort_status': 'uint8',
+        'horizontal_slope_displacement': 'float',
+        'slope_angle_rad': 'float',
+        'flare_length': 'float',
+        'abort_landing': 'boolean',
     }
 
     SLOT_TYPES = (
         rosidl_parser.definition.BasicType('uint64'),  # noqa: E501
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
+        rosidl_parser.definition.BasicType('float'),  # noqa: E501
+        rosidl_parser.definition.BasicType('float'),  # noqa: E501
         rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
-        rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
     )
 
     def __init__(self, **kwargs):
@@ -122,9 +81,10 @@ class PositionControllerLandingStatus(metaclass=Metaclass_PositionControllerLand
             'Invalid arguments passed to constructor: %s' % \
             ', '.join(sorted(k for k in kwargs.keys() if '_' + k not in self.__slots__))
         self.timestamp = kwargs.get('timestamp', int())
-        self.lateral_touchdown_offset = kwargs.get('lateral_touchdown_offset', float())
-        self.flaring = kwargs.get('flaring', bool())
-        self.abort_status = kwargs.get('abort_status', int())
+        self.horizontal_slope_displacement = kwargs.get('horizontal_slope_displacement', float())
+        self.slope_angle_rad = kwargs.get('slope_angle_rad', float())
+        self.flare_length = kwargs.get('flare_length', float())
+        self.abort_landing = kwargs.get('abort_landing', bool())
 
     def __repr__(self):
         typename = self.__class__.__module__.split('.')
@@ -157,11 +117,13 @@ class PositionControllerLandingStatus(metaclass=Metaclass_PositionControllerLand
             return False
         if self.timestamp != other.timestamp:
             return False
-        if self.lateral_touchdown_offset != other.lateral_touchdown_offset:
+        if self.horizontal_slope_displacement != other.horizontal_slope_displacement:
             return False
-        if self.flaring != other.flaring:
+        if self.slope_angle_rad != other.slope_angle_rad:
             return False
-        if self.abort_status != other.abort_status:
+        if self.flare_length != other.flare_length:
+            return False
+        if self.abort_landing != other.abort_landing:
             return False
         return True
 
@@ -186,42 +148,53 @@ class PositionControllerLandingStatus(metaclass=Metaclass_PositionControllerLand
         self._timestamp = value
 
     @property
-    def lateral_touchdown_offset(self):
-        """Message field 'lateral_touchdown_offset'."""
-        return self._lateral_touchdown_offset
+    def horizontal_slope_displacement(self):
+        """Message field 'horizontal_slope_displacement'."""
+        return self._horizontal_slope_displacement
 
-    @lateral_touchdown_offset.setter
-    def lateral_touchdown_offset(self, value):
+    @horizontal_slope_displacement.setter
+    def horizontal_slope_displacement(self, value):
         if __debug__:
             assert \
                 isinstance(value, float), \
-                "The 'lateral_touchdown_offset' field must be of type 'float'"
-        self._lateral_touchdown_offset = value
+                "The 'horizontal_slope_displacement' field must be of type 'float'"
+        self._horizontal_slope_displacement = value
 
     @property
-    def flaring(self):
-        """Message field 'flaring'."""
-        return self._flaring
+    def slope_angle_rad(self):
+        """Message field 'slope_angle_rad'."""
+        return self._slope_angle_rad
 
-    @flaring.setter
-    def flaring(self, value):
+    @slope_angle_rad.setter
+    def slope_angle_rad(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, float), \
+                "The 'slope_angle_rad' field must be of type 'float'"
+        self._slope_angle_rad = value
+
+    @property
+    def flare_length(self):
+        """Message field 'flare_length'."""
+        return self._flare_length
+
+    @flare_length.setter
+    def flare_length(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, float), \
+                "The 'flare_length' field must be of type 'float'"
+        self._flare_length = value
+
+    @property
+    def abort_landing(self):
+        """Message field 'abort_landing'."""
+        return self._abort_landing
+
+    @abort_landing.setter
+    def abort_landing(self, value):
         if __debug__:
             assert \
                 isinstance(value, bool), \
-                "The 'flaring' field must be of type 'bool'"
-        self._flaring = value
-
-    @property
-    def abort_status(self):
-        """Message field 'abort_status'."""
-        return self._abort_status
-
-    @abort_status.setter
-    def abort_status(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, int), \
-                "The 'abort_status' field must be of type 'int'"
-            assert value >= 0 and value < 256, \
-                "The 'abort_status' field must be an unsigned integer in [0, 255]"
-        self._abort_status = value
+                "The 'abort_landing' field must be of type 'bool'"
+        self._abort_landing = value

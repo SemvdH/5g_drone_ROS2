@@ -17,7 +17,7 @@ module px4_msgs {
       uint32 device_id;
 
       @verbatim (language="comment", text=
-        " Temperature provided by sensor (Celsius)")
+        " Temperature provided by sensor (Celcius)")
       float temperature;
 
       @verbatim (language="comment", text=

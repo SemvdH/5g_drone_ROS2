@@ -54,19 +54,24 @@ static bool _PositionControllerLandingStatus__cdr_serialize(
     cdr << ros_message->timestamp;
   }
 
-  // Field name: lateral_touchdown_offset
+  // Field name: horizontal_slope_displacement
   {
-    cdr << ros_message->lateral_touchdown_offset;
+    cdr << ros_message->horizontal_slope_displacement;
   }
 
-  // Field name: flaring
+  // Field name: slope_angle_rad
   {
-    cdr << (ros_message->flaring ? true : false);
+    cdr << ros_message->slope_angle_rad;
   }
 
-  // Field name: abort_status
+  // Field name: flare_length
   {
-    cdr << ros_message->abort_status;
+    cdr << ros_message->flare_length;
+  }
+
+  // Field name: abort_landing
+  {
+    cdr << (ros_message->abort_landing ? true : false);
   }
 
   return true;
@@ -86,21 +91,26 @@ static bool _PositionControllerLandingStatus__cdr_deserialize(
     cdr >> ros_message->timestamp;
   }
 
-  // Field name: lateral_touchdown_offset
+  // Field name: horizontal_slope_displacement
   {
-    cdr >> ros_message->lateral_touchdown_offset;
+    cdr >> ros_message->horizontal_slope_displacement;
   }
 
-  // Field name: flaring
+  // Field name: slope_angle_rad
+  {
+    cdr >> ros_message->slope_angle_rad;
+  }
+
+  // Field name: flare_length
+  {
+    cdr >> ros_message->flare_length;
+  }
+
+  // Field name: abort_landing
   {
     uint8_t tmp;
     cdr >> tmp;
-    ros_message->flaring = tmp ? true : false;
-  }
-
-  // Field name: abort_status
-  {
-    cdr >> ros_message->abort_status;
+    ros_message->abort_landing = tmp ? true : false;
   }
 
   return true;
@@ -126,21 +136,27 @@ size_t get_serialized_size_px4_msgs__msg__PositionControllerLandingStatus(
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // field.name lateral_touchdown_offset
+  // field.name horizontal_slope_displacement
   {
-    size_t item_size = sizeof(ros_message->lateral_touchdown_offset);
+    size_t item_size = sizeof(ros_message->horizontal_slope_displacement);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // field.name flaring
+  // field.name slope_angle_rad
   {
-    size_t item_size = sizeof(ros_message->flaring);
+    size_t item_size = sizeof(ros_message->slope_angle_rad);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // field.name abort_status
+  // field.name flare_length
   {
-    size_t item_size = sizeof(ros_message->abort_status);
+    size_t item_size = sizeof(ros_message->flare_length);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // field.name abort_landing
+  {
+    size_t item_size = sizeof(ros_message->abort_landing);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -175,20 +191,28 @@ size_t max_serialized_size_px4_msgs__msg__PositionControllerLandingStatus(
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
-  // member: lateral_touchdown_offset
+  // member: horizontal_slope_displacement
   {
     size_t array_size = 1;
 
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
-  // member: flaring
+  // member: slope_angle_rad
   {
     size_t array_size = 1;
 
-    current_alignment += array_size * sizeof(uint8_t);
+    current_alignment += array_size * sizeof(uint32_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
-  // member: abort_status
+  // member: flare_length
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint32_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
+  }
+  // member: abort_landing
   {
     size_t array_size = 1;
 

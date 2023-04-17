@@ -36,7 +36,7 @@ module px4_msgs {
       float ground_distance;
 
       @verbatim (language="comment", text=
-        " Attitude of the camera relative to NED earth-fixed frame when using a gimbal, otherwise vehicle attitude")
+        " Attitude of the camera, zero rotation is facing towards front of vehicle")
       float__4 q;
 
       @verbatim (language="comment", text=

@@ -21,7 +21,6 @@ px4_msgs__msg__YawEstimatorStatus__init(px4_msgs__msg__YawEstimatorStatus * msg)
   // timestamp_sample
   // yaw_composite
   // yaw_variance
-  // yaw_composite_valid
   // yaw
   // innov_vn
   // innov_ve
@@ -39,7 +38,6 @@ px4_msgs__msg__YawEstimatorStatus__fini(px4_msgs__msg__YawEstimatorStatus * msg)
   // timestamp_sample
   // yaw_composite
   // yaw_variance
-  // yaw_composite_valid
   // yaw
   // innov_vn
   // innov_ve
@@ -66,10 +64,6 @@ px4_msgs__msg__YawEstimatorStatus__are_equal(const px4_msgs__msg__YawEstimatorSt
   }
   // yaw_variance
   if (lhs->yaw_variance != rhs->yaw_variance) {
-    return false;
-  }
-  // yaw_composite_valid
-  if (lhs->yaw_composite_valid != rhs->yaw_composite_valid) {
     return false;
   }
   // yaw
@@ -115,8 +109,6 @@ px4_msgs__msg__YawEstimatorStatus__copy(
   output->yaw_composite = input->yaw_composite;
   // yaw_variance
   output->yaw_variance = input->yaw_variance;
-  // yaw_composite_valid
-  output->yaw_composite_valid = input->yaw_composite_valid;
   // yaw
   for (size_t i = 0; i < 5; ++i) {
     output->yaw[i] = input->yaw[i];

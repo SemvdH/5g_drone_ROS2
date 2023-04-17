@@ -31,7 +31,7 @@ void VehicleLocalPosition__rosidl_typesupport_introspection_c__VehicleLocalPosit
   px4_msgs__msg__VehicleLocalPosition__fini(message_memory);
 }
 
-static rosidl_typesupport_introspection_c__MessageMember VehicleLocalPosition__rosidl_typesupport_introspection_c__VehicleLocalPosition_message_member_array[46] = {
+static rosidl_typesupport_introspection_c__MessageMember VehicleLocalPosition__rosidl_typesupport_introspection_c__VehicleLocalPosition_message_member_array[45] = {
   {
     "timestamp",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_UINT64,  // type
@@ -648,21 +648,6 @@ static rosidl_typesupport_introspection_c__MessageMember VehicleLocalPosition__r
     NULL  // resize(index) function pointer
   },
   {
-    "dead_reckoning",  // name
-    rosidl_typesupport_introspection_c__ROS_TYPE_BOOLEAN,  // type
-    0,  // upper bound of string
-    NULL,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs__msg__VehicleLocalPosition, dead_reckoning),  // bytes offset in struct
-    NULL,  // default value
-    NULL,  // size() function pointer
-    NULL,  // get_const(index) function pointer
-    NULL,  // get(index) function pointer
-    NULL  // resize(index) function pointer
-  },
-  {
     "vxy_max",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
     0,  // upper bound of string
@@ -727,7 +712,7 @@ static rosidl_typesupport_introspection_c__MessageMember VehicleLocalPosition__r
 static const rosidl_typesupport_introspection_c__MessageMembers VehicleLocalPosition__rosidl_typesupport_introspection_c__VehicleLocalPosition_message_members = {
   "px4_msgs__msg",  // message namespace
   "VehicleLocalPosition",  // message name
-  46,  // number of fields
+  45,  // number of fields
   sizeof(px4_msgs__msg__VehicleLocalPosition),
   VehicleLocalPosition__rosidl_typesupport_introspection_c__VehicleLocalPosition_message_member_array,  // message members
   VehicleLocalPosition__rosidl_typesupport_introspection_c__VehicleLocalPosition_init_function,  // function to initialize message memory (memory has to be allocated)

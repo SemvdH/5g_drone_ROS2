@@ -18,7 +18,6 @@ px4_msgs__msg__SensorGps__init(px4_msgs__msg__SensorGps * msg)
     return false;
   }
   // timestamp
-  // timestamp_sample
   // device_id
   // lat
   // lon
@@ -33,9 +32,8 @@ px4_msgs__msg__SensorGps__init(px4_msgs__msg__SensorGps * msg)
   // vdop
   // noise_per_ms
   // automatic_gain_control
-  // jamming_state
   // jamming_indicator
-  // spoofing_state
+  // jamming_state
   // vel_m_s
   // vel_n_m_s
   // vel_e_m_s
@@ -48,8 +46,6 @@ px4_msgs__msg__SensorGps__init(px4_msgs__msg__SensorGps * msg)
   // heading
   // heading_offset
   // heading_accuracy
-  // rtcm_injection_rate
-  // selected_rtcm_instance
   return true;
 }
 
@@ -60,7 +56,6 @@ px4_msgs__msg__SensorGps__fini(px4_msgs__msg__SensorGps * msg)
     return;
   }
   // timestamp
-  // timestamp_sample
   // device_id
   // lat
   // lon
@@ -75,9 +70,8 @@ px4_msgs__msg__SensorGps__fini(px4_msgs__msg__SensorGps * msg)
   // vdop
   // noise_per_ms
   // automatic_gain_control
-  // jamming_state
   // jamming_indicator
-  // spoofing_state
+  // jamming_state
   // vel_m_s
   // vel_n_m_s
   // vel_e_m_s
@@ -90,8 +84,6 @@ px4_msgs__msg__SensorGps__fini(px4_msgs__msg__SensorGps * msg)
   // heading
   // heading_offset
   // heading_accuracy
-  // rtcm_injection_rate
-  // selected_rtcm_instance
 }
 
 bool
@@ -102,10 +94,6 @@ px4_msgs__msg__SensorGps__are_equal(const px4_msgs__msg__SensorGps * lhs, const 
   }
   // timestamp
   if (lhs->timestamp != rhs->timestamp) {
-    return false;
-  }
-  // timestamp_sample
-  if (lhs->timestamp_sample != rhs->timestamp_sample) {
     return false;
   }
   // device_id
@@ -164,16 +152,12 @@ px4_msgs__msg__SensorGps__are_equal(const px4_msgs__msg__SensorGps * lhs, const 
   if (lhs->automatic_gain_control != rhs->automatic_gain_control) {
     return false;
   }
-  // jamming_state
-  if (lhs->jamming_state != rhs->jamming_state) {
-    return false;
-  }
   // jamming_indicator
   if (lhs->jamming_indicator != rhs->jamming_indicator) {
     return false;
   }
-  // spoofing_state
-  if (lhs->spoofing_state != rhs->spoofing_state) {
+  // jamming_state
+  if (lhs->jamming_state != rhs->jamming_state) {
     return false;
   }
   // vel_m_s
@@ -224,14 +208,6 @@ px4_msgs__msg__SensorGps__are_equal(const px4_msgs__msg__SensorGps * lhs, const 
   if (lhs->heading_accuracy != rhs->heading_accuracy) {
     return false;
   }
-  // rtcm_injection_rate
-  if (lhs->rtcm_injection_rate != rhs->rtcm_injection_rate) {
-    return false;
-  }
-  // selected_rtcm_instance
-  if (lhs->selected_rtcm_instance != rhs->selected_rtcm_instance) {
-    return false;
-  }
   return true;
 }
 
@@ -245,8 +221,6 @@ px4_msgs__msg__SensorGps__copy(
   }
   // timestamp
   output->timestamp = input->timestamp;
-  // timestamp_sample
-  output->timestamp_sample = input->timestamp_sample;
   // device_id
   output->device_id = input->device_id;
   // lat
@@ -275,12 +249,10 @@ px4_msgs__msg__SensorGps__copy(
   output->noise_per_ms = input->noise_per_ms;
   // automatic_gain_control
   output->automatic_gain_control = input->automatic_gain_control;
-  // jamming_state
-  output->jamming_state = input->jamming_state;
   // jamming_indicator
   output->jamming_indicator = input->jamming_indicator;
-  // spoofing_state
-  output->spoofing_state = input->spoofing_state;
+  // jamming_state
+  output->jamming_state = input->jamming_state;
   // vel_m_s
   output->vel_m_s = input->vel_m_s;
   // vel_n_m_s
@@ -305,10 +277,6 @@ px4_msgs__msg__SensorGps__copy(
   output->heading_offset = input->heading_offset;
   // heading_accuracy
   output->heading_accuracy = input->heading_accuracy;
-  // rtcm_injection_rate
-  output->rtcm_injection_rate = input->rtcm_injection_rate;
-  // selected_rtcm_instance
-  output->selected_rtcm_instance = input->selected_rtcm_instance;
   return true;
 }
 

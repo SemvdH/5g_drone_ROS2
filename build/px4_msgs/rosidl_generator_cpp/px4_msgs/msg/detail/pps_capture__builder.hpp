@@ -20,32 +20,16 @@ namespace msg
 namespace builder
 {
 
-class Init_PpsCapture_pps_rate_exceeded_counter
-{
-public:
-  explicit Init_PpsCapture_pps_rate_exceeded_counter(::px4_msgs::msg::PpsCapture & msg)
-  : msg_(msg)
-  {}
-  ::px4_msgs::msg::PpsCapture pps_rate_exceeded_counter(::px4_msgs::msg::PpsCapture::_pps_rate_exceeded_counter_type arg)
-  {
-    msg_.pps_rate_exceeded_counter = std::move(arg);
-    return std::move(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::PpsCapture msg_;
-};
-
 class Init_PpsCapture_rtc_timestamp
 {
 public:
   explicit Init_PpsCapture_rtc_timestamp(::px4_msgs::msg::PpsCapture & msg)
   : msg_(msg)
   {}
-  Init_PpsCapture_pps_rate_exceeded_counter rtc_timestamp(::px4_msgs::msg::PpsCapture::_rtc_timestamp_type arg)
+  ::px4_msgs::msg::PpsCapture rtc_timestamp(::px4_msgs::msg::PpsCapture::_rtc_timestamp_type arg)
   {
     msg_.rtc_timestamp = std::move(arg);
-    return Init_PpsCapture_pps_rate_exceeded_counter(msg_);
+    return std::move(msg_);
   }
 
 private:

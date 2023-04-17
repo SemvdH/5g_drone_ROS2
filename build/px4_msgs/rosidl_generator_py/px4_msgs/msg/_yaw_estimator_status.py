@@ -63,7 +63,6 @@ class YawEstimatorStatus(metaclass=Metaclass_YawEstimatorStatus):
         '_timestamp_sample',
         '_yaw_composite',
         '_yaw_variance',
-        '_yaw_composite_valid',
         '_yaw',
         '_innov_vn',
         '_innov_ve',
@@ -75,7 +74,6 @@ class YawEstimatorStatus(metaclass=Metaclass_YawEstimatorStatus):
         'timestamp_sample': 'uint64',
         'yaw_composite': 'float',
         'yaw_variance': 'float',
-        'yaw_composite_valid': 'boolean',
         'yaw': 'float[5]',
         'innov_vn': 'float[5]',
         'innov_ve': 'float[5]',
@@ -87,7 +85,6 @@ class YawEstimatorStatus(metaclass=Metaclass_YawEstimatorStatus):
         rosidl_parser.definition.BasicType('uint64'),  # noqa: E501
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
-        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
         rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 5),  # noqa: E501
         rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 5),  # noqa: E501
         rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 5),  # noqa: E501
@@ -102,7 +99,6 @@ class YawEstimatorStatus(metaclass=Metaclass_YawEstimatorStatus):
         self.timestamp_sample = kwargs.get('timestamp_sample', int())
         self.yaw_composite = kwargs.get('yaw_composite', float())
         self.yaw_variance = kwargs.get('yaw_variance', float())
-        self.yaw_composite_valid = kwargs.get('yaw_composite_valid', bool())
         if 'yaw' not in kwargs:
             self.yaw = numpy.zeros(5, dtype=numpy.float32)
         else:
@@ -160,8 +156,6 @@ class YawEstimatorStatus(metaclass=Metaclass_YawEstimatorStatus):
         if self.yaw_composite != other.yaw_composite:
             return False
         if self.yaw_variance != other.yaw_variance:
-            return False
-        if self.yaw_composite_valid != other.yaw_composite_valid:
             return False
         if all(self.yaw != other.yaw):
             return False
@@ -233,19 +227,6 @@ class YawEstimatorStatus(metaclass=Metaclass_YawEstimatorStatus):
                 isinstance(value, float), \
                 "The 'yaw_variance' field must be of type 'float'"
         self._yaw_variance = value
-
-    @property
-    def yaw_composite_valid(self):
-        """Message field 'yaw_composite_valid'."""
-        return self._yaw_composite_valid
-
-    @yaw_composite_valid.setter
-    def yaw_composite_valid(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, bool), \
-                "The 'yaw_composite_valid' field must be of type 'bool'"
-        self._yaw_composite_valid = value
 
     @property
     def yaw(self):

@@ -165,7 +165,6 @@ class ManualControlSwitches(metaclass=Metaclass_ManualControlSwitches):
         '_transition_switch',
         '_photo_switch',
         '_video_switch',
-        '_engage_main_motor_switch',
         '_switch_changes',
     ]
 
@@ -182,14 +181,12 @@ class ManualControlSwitches(metaclass=Metaclass_ManualControlSwitches):
         'transition_switch': 'uint8',
         'photo_switch': 'uint8',
         'video_switch': 'uint8',
-        'engage_main_motor_switch': 'uint8',
         'switch_changes': 'uint32',
     }
 
     SLOT_TYPES = (
         rosidl_parser.definition.BasicType('uint64'),  # noqa: E501
         rosidl_parser.definition.BasicType('uint64'),  # noqa: E501
-        rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
         rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
         rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
         rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
@@ -219,7 +216,6 @@ class ManualControlSwitches(metaclass=Metaclass_ManualControlSwitches):
         self.transition_switch = kwargs.get('transition_switch', int())
         self.photo_switch = kwargs.get('photo_switch', int())
         self.video_switch = kwargs.get('video_switch', int())
-        self.engage_main_motor_switch = kwargs.get('engage_main_motor_switch', int())
         self.switch_changes = kwargs.get('switch_changes', int())
 
     def __repr__(self):
@@ -274,8 +270,6 @@ class ManualControlSwitches(metaclass=Metaclass_ManualControlSwitches):
         if self.photo_switch != other.photo_switch:
             return False
         if self.video_switch != other.video_switch:
-            return False
-        if self.engage_main_motor_switch != other.engage_main_motor_switch:
             return False
         if self.switch_changes != other.switch_changes:
             return False
@@ -465,21 +459,6 @@ class ManualControlSwitches(metaclass=Metaclass_ManualControlSwitches):
             assert value >= 0 and value < 256, \
                 "The 'video_switch' field must be an unsigned integer in [0, 255]"
         self._video_switch = value
-
-    @property
-    def engage_main_motor_switch(self):
-        """Message field 'engage_main_motor_switch'."""
-        return self._engage_main_motor_switch
-
-    @engage_main_motor_switch.setter
-    def engage_main_motor_switch(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, int), \
-                "The 'engage_main_motor_switch' field must be of type 'int'"
-            assert value >= 0 and value < 256, \
-                "The 'engage_main_motor_switch' field must be an unsigned integer in [0, 255]"
-        self._engage_main_motor_switch = value
 
     @property
     def switch_changes(self):

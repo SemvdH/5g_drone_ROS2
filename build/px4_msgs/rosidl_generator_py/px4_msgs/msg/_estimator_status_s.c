@@ -110,7 +110,7 @@ bool px4_msgs__msg__estimator_status__convert_from_py(PyObject * _pymsg, void * 
       return false;
     }
     assert(PyLong_Check(field));
-    ros_message->control_mode_flags = PyLong_AsUnsignedLongLong(field);
+    ros_message->control_mode_flags = PyLong_AsUnsignedLong(field);
     Py_DECREF(field);
   }
   {  // filter_fault_flags
@@ -449,7 +449,7 @@ PyObject * px4_msgs__msg__estimator_status__convert_to_py(void * raw_ros_message
   }
   {  // control_mode_flags
     PyObject * field = NULL;
-    field = PyLong_FromUnsignedLongLong(ros_message->control_mode_flags);
+    field = PyLong_FromUnsignedLong(ros_message->control_mode_flags);
     {
       int rc = PyObject_SetAttrString(_pymessage, "control_mode_flags", field);
       Py_DECREF(field);

@@ -146,22 +146,49 @@ bool px4_msgs__msg__vehicle_attitude_setpoint__convert_from_py(PyObject * _pymsg
     }
     Py_DECREF(field);
   }
-  {  // reset_integral
-    PyObject * field = PyObject_GetAttrString(_pymsg, "reset_integral");
+  {  // roll_reset_integral
+    PyObject * field = PyObject_GetAttrString(_pymsg, "roll_reset_integral");
     if (!field) {
       return false;
     }
     assert(PyBool_Check(field));
-    ros_message->reset_integral = (Py_True == field);
+    ros_message->roll_reset_integral = (Py_True == field);
     Py_DECREF(field);
   }
-  {  // fw_control_yaw_wheel
-    PyObject * field = PyObject_GetAttrString(_pymsg, "fw_control_yaw_wheel");
+  {  // pitch_reset_integral
+    PyObject * field = PyObject_GetAttrString(_pymsg, "pitch_reset_integral");
     if (!field) {
       return false;
     }
     assert(PyBool_Check(field));
-    ros_message->fw_control_yaw_wheel = (Py_True == field);
+    ros_message->pitch_reset_integral = (Py_True == field);
+    Py_DECREF(field);
+  }
+  {  // yaw_reset_integral
+    PyObject * field = PyObject_GetAttrString(_pymsg, "yaw_reset_integral");
+    if (!field) {
+      return false;
+    }
+    assert(PyBool_Check(field));
+    ros_message->yaw_reset_integral = (Py_True == field);
+    Py_DECREF(field);
+  }
+  {  // fw_control_yaw
+    PyObject * field = PyObject_GetAttrString(_pymsg, "fw_control_yaw");
+    if (!field) {
+      return false;
+    }
+    assert(PyBool_Check(field));
+    ros_message->fw_control_yaw = (Py_True == field);
+    Py_DECREF(field);
+  }
+  {  // apply_flaps
+    PyObject * field = PyObject_GetAttrString(_pymsg, "apply_flaps");
+    if (!field) {
+      return false;
+    }
+    assert(PyLong_Check(field));
+    ros_message->apply_flaps = (uint8_t)PyLong_AsUnsignedLong(field);
     Py_DECREF(field);
   }
 
@@ -277,22 +304,55 @@ PyObject * px4_msgs__msg__vehicle_attitude_setpoint__convert_to_py(void * raw_ro
     memcpy(dst, src, 3 * sizeof(float));
     Py_DECREF(field);
   }
-  {  // reset_integral
+  {  // roll_reset_integral
     PyObject * field = NULL;
-    field = PyBool_FromLong(ros_message->reset_integral ? 1 : 0);
+    field = PyBool_FromLong(ros_message->roll_reset_integral ? 1 : 0);
     {
-      int rc = PyObject_SetAttrString(_pymessage, "reset_integral", field);
+      int rc = PyObject_SetAttrString(_pymessage, "roll_reset_integral", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;
       }
     }
   }
-  {  // fw_control_yaw_wheel
+  {  // pitch_reset_integral
     PyObject * field = NULL;
-    field = PyBool_FromLong(ros_message->fw_control_yaw_wheel ? 1 : 0);
+    field = PyBool_FromLong(ros_message->pitch_reset_integral ? 1 : 0);
     {
-      int rc = PyObject_SetAttrString(_pymessage, "fw_control_yaw_wheel", field);
+      int rc = PyObject_SetAttrString(_pymessage, "pitch_reset_integral", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // yaw_reset_integral
+    PyObject * field = NULL;
+    field = PyBool_FromLong(ros_message->yaw_reset_integral ? 1 : 0);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "yaw_reset_integral", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // fw_control_yaw
+    PyObject * field = NULL;
+    field = PyBool_FromLong(ros_message->fw_control_yaw ? 1 : 0);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "fw_control_yaw", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // apply_flaps
+    PyObject * field = NULL;
+    field = PyLong_FromUnsignedLong(ros_message->apply_flaps);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "apply_flaps", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;

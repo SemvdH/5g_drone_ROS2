@@ -68,15 +68,6 @@ bool px4_msgs__msg__pps_capture__convert_from_py(PyObject * _pymsg, void * _ros_
     ros_message->rtc_timestamp = PyLong_AsUnsignedLongLong(field);
     Py_DECREF(field);
   }
-  {  // pps_rate_exceeded_counter
-    PyObject * field = PyObject_GetAttrString(_pymsg, "pps_rate_exceeded_counter");
-    if (!field) {
-      return false;
-    }
-    assert(PyLong_Check(field));
-    ros_message->pps_rate_exceeded_counter = (uint8_t)PyLong_AsUnsignedLong(field);
-    Py_DECREF(field);
-  }
 
   return true;
 }
@@ -115,17 +106,6 @@ PyObject * px4_msgs__msg__pps_capture__convert_to_py(void * raw_ros_message)
     field = PyLong_FromUnsignedLongLong(ros_message->rtc_timestamp);
     {
       int rc = PyObject_SetAttrString(_pymessage, "rtc_timestamp", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
-  {  // pps_rate_exceeded_counter
-    PyObject * field = NULL;
-    field = PyLong_FromUnsignedLong(ros_message->pps_rate_exceeded_counter);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "pps_rate_exceeded_counter", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;

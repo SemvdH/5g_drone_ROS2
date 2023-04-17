@@ -31,27 +31,40 @@ module px4_msgs {
       @verbatim (language="comment", text=
         " Any of the channels may not be available and be set to NaN" "\n"
         " to indicate that it does not contain valid data." "\n"
-        " Stick positions [-1,1]" "\n"
-        " on a common RC mode 1/2/3/4 remote/joystick the stick deflection: -1 is down/left, 1 is up/right" "\n"
-        " Note: QGC sends throttle/z in range [0,1000] - [0,1]. The MAVLink input conversion [0,1] to [-1,1] is at the moment kept backwards compatible." "\n"
-        " Positive values are generally used for:" "\n"
-        " move right,   positive roll rotation,  right side down")
-      float roll;
+        " The variable names follow the definition of the" "\n"
+        " MANUAL_CONTROL mavlink message." "\n"
+        " The default range is from -1 to 1 (mavlink message -1000 to 1000)" "\n"
+        " The range for the z variable is defined from 0 to 1. (The z field of" "\n"
+        " the MANUAL_CONTROL mavlink message is defined from -1000 to 1000)" "\n"
+        " stick position in x direction -1..1" "\n"
+        " in general corresponds to forward/back motion or pitch of vehicle," "\n"
+        " in general a positive value means forward or negative pitch and" "\n"
+        " a negative value means backward or positive pitch")
+      float x;
 
       @verbatim (language="comment", text=
-        " move forward, negative pitch rotation, nose down")
-      float pitch;
+        " stick position in y direction -1..1" "\n"
+        " in general corresponds to right/left motion or roll of vehicle," "\n"
+        " in general a positive value means right or positive roll and" "\n"
+        " a negative value means left or negative roll")
+      float y;
 
       @verbatim (language="comment", text=
-        "               positive yaw rotation,   clockwise when seen top down")
-      float yaw;
+        " throttle stick position 0..1" "\n"
+        " in general corresponds to up/down motion or thrust of vehicle," "\n"
+        " in general the value corresponds to the demanded throttle by the user," "\n"
+        " if the input is used for setting the setpoint of a vertical position" "\n"
+        " controller any value > 0.5 means up and any value < 0.5 means down")
+      float z;
 
       @verbatim (language="comment", text=
-        " move up,      positive thrust,         -1 is minimum available 0% or -100% +1 is 100% thrust")
-      float throttle;
+        " yaw stick/twist position, -1..1" "\n"
+        " in general corresponds to the righthand rotation around the vertical" "\n"
+        " (downwards) axis of the vehicle")
+      float r;
 
       @verbatim (language="comment", text=
-        " position of flaps switch/knob/lever [-1, 1]")
+        " flap position")
       float flaps;
 
       float aux1;

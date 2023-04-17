@@ -48,10 +48,6 @@ cdr_serialize(
   cdr << ros_message.temperature;
   // Member: error_count
   cdr << ros_message.error_count;
-  // Member: clip_counter
-  {
-    cdr << ros_message.clip_counter;
-  }
   // Member: samples
   cdr << ros_message.samples;
   return true;
@@ -86,11 +82,6 @@ cdr_deserialize(
 
   // Member: error_count
   cdr >> ros_message.error_count;
-
-  // Member: clip_counter
-  {
-    cdr >> ros_message.clip_counter;
-  }
 
   // Member: samples
   cdr >> ros_message.samples;
@@ -157,13 +148,6 @@ get_serialized_size(
   {
     size_t item_size = sizeof(ros_message.error_count);
     current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // Member: clip_counter
-  {
-    size_t array_size = 3;
-    size_t item_size = sizeof(ros_message.clip_counter[0]);
-    current_alignment += array_size * item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
   // Member: samples
@@ -253,13 +237,6 @@ max_serialized_size_SensorGyro(
 
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
-  }
-
-  // Member: clip_counter
-  {
-    size_t array_size = 3;
-
-    current_alignment += array_size * sizeof(uint8_t);
   }
 
   // Member: samples

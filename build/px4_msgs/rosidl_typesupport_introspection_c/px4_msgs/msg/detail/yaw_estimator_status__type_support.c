@@ -31,7 +31,7 @@ void YawEstimatorStatus__rosidl_typesupport_introspection_c__YawEstimatorStatus_
   px4_msgs__msg__YawEstimatorStatus__fini(message_memory);
 }
 
-static rosidl_typesupport_introspection_c__MessageMember YawEstimatorStatus__rosidl_typesupport_introspection_c__YawEstimatorStatus_message_member_array[9] = {
+static rosidl_typesupport_introspection_c__MessageMember YawEstimatorStatus__rosidl_typesupport_introspection_c__YawEstimatorStatus_message_member_array[8] = {
   {
     "timestamp",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_UINT64,  // type
@@ -86,21 +86,6 @@ static rosidl_typesupport_introspection_c__MessageMember YawEstimatorStatus__ros
     0,  // array size
     false,  // is upper bound
     offsetof(px4_msgs__msg__YawEstimatorStatus, yaw_variance),  // bytes offset in struct
-    NULL,  // default value
-    NULL,  // size() function pointer
-    NULL,  // get_const(index) function pointer
-    NULL,  // get(index) function pointer
-    NULL  // resize(index) function pointer
-  },
-  {
-    "yaw_composite_valid",  // name
-    rosidl_typesupport_introspection_c__ROS_TYPE_BOOLEAN,  // type
-    0,  // upper bound of string
-    NULL,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs__msg__YawEstimatorStatus, yaw_composite_valid),  // bytes offset in struct
     NULL,  // default value
     NULL,  // size() function pointer
     NULL,  // get_const(index) function pointer
@@ -172,7 +157,7 @@ static rosidl_typesupport_introspection_c__MessageMember YawEstimatorStatus__ros
 static const rosidl_typesupport_introspection_c__MessageMembers YawEstimatorStatus__rosidl_typesupport_introspection_c__YawEstimatorStatus_message_members = {
   "px4_msgs__msg",  // message namespace
   "YawEstimatorStatus",  // message name
-  9,  // number of fields
+  8,  // number of fields
   sizeof(px4_msgs__msg__YawEstimatorStatus),
   YawEstimatorStatus__rosidl_typesupport_introspection_c__YawEstimatorStatus_message_member_array,  // message members
   YawEstimatorStatus__rosidl_typesupport_introspection_c__YawEstimatorStatus_init_function,  // function to initialize message memory (memory has to be allocated)

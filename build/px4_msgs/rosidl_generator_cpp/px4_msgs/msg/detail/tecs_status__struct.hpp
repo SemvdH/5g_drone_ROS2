@@ -39,9 +39,7 @@ struct TecsStatus_
     {
       this->timestamp = 0ull;
       this->altitude_sp = 0.0f;
-      this->altitude_reference = 0.0f;
-      this->height_rate_reference = 0.0f;
-      this->height_rate_direct = 0.0f;
+      this->altitude_filtered = 0.0f;
       this->height_rate_setpoint = 0.0f;
       this->height_rate = 0.0f;
       this->equivalent_airspeed_sp = 0.0f;
@@ -50,15 +48,23 @@ struct TecsStatus_
       this->true_airspeed_derivative_sp = 0.0f;
       this->true_airspeed_derivative = 0.0f;
       this->true_airspeed_derivative_raw = 0.0f;
-      this->total_energy_rate_sp = 0.0f;
+      this->true_airspeed_innovation = 0.0f;
+      this->total_energy_error = 0.0f;
+      this->energy_distribution_error = 0.0f;
+      this->total_energy_rate_error = 0.0f;
+      this->energy_distribution_rate_error = 0.0f;
+      this->total_energy = 0.0f;
       this->total_energy_rate = 0.0f;
-      this->total_energy_balance_rate_sp = 0.0f;
+      this->total_energy_balance = 0.0f;
       this->total_energy_balance_rate = 0.0f;
+      this->total_energy_sp = 0.0f;
+      this->total_energy_rate_sp = 0.0f;
+      this->total_energy_balance_sp = 0.0f;
+      this->total_energy_balance_rate_sp = 0.0f;
       this->throttle_integ = 0.0f;
       this->pitch_integ = 0.0f;
       this->throttle_sp = 0.0f;
       this->pitch_sp_rad = 0.0f;
-      this->throttle_trim = 0.0f;
       this->mode = 0;
     }
   }
@@ -71,9 +77,7 @@ struct TecsStatus_
     {
       this->timestamp = 0ull;
       this->altitude_sp = 0.0f;
-      this->altitude_reference = 0.0f;
-      this->height_rate_reference = 0.0f;
-      this->height_rate_direct = 0.0f;
+      this->altitude_filtered = 0.0f;
       this->height_rate_setpoint = 0.0f;
       this->height_rate = 0.0f;
       this->equivalent_airspeed_sp = 0.0f;
@@ -82,15 +86,23 @@ struct TecsStatus_
       this->true_airspeed_derivative_sp = 0.0f;
       this->true_airspeed_derivative = 0.0f;
       this->true_airspeed_derivative_raw = 0.0f;
-      this->total_energy_rate_sp = 0.0f;
+      this->true_airspeed_innovation = 0.0f;
+      this->total_energy_error = 0.0f;
+      this->energy_distribution_error = 0.0f;
+      this->total_energy_rate_error = 0.0f;
+      this->energy_distribution_rate_error = 0.0f;
+      this->total_energy = 0.0f;
       this->total_energy_rate = 0.0f;
-      this->total_energy_balance_rate_sp = 0.0f;
+      this->total_energy_balance = 0.0f;
       this->total_energy_balance_rate = 0.0f;
+      this->total_energy_sp = 0.0f;
+      this->total_energy_rate_sp = 0.0f;
+      this->total_energy_balance_sp = 0.0f;
+      this->total_energy_balance_rate_sp = 0.0f;
       this->throttle_integ = 0.0f;
       this->pitch_integ = 0.0f;
       this->throttle_sp = 0.0f;
       this->pitch_sp_rad = 0.0f;
-      this->throttle_trim = 0.0f;
       this->mode = 0;
     }
   }
@@ -102,15 +114,9 @@ struct TecsStatus_
   using _altitude_sp_type =
     float;
   _altitude_sp_type altitude_sp;
-  using _altitude_reference_type =
+  using _altitude_filtered_type =
     float;
-  _altitude_reference_type altitude_reference;
-  using _height_rate_reference_type =
-    float;
-  _height_rate_reference_type height_rate_reference;
-  using _height_rate_direct_type =
-    float;
-  _height_rate_direct_type height_rate_direct;
+  _altitude_filtered_type altitude_filtered;
   using _height_rate_setpoint_type =
     float;
   _height_rate_setpoint_type height_rate_setpoint;
@@ -135,18 +141,45 @@ struct TecsStatus_
   using _true_airspeed_derivative_raw_type =
     float;
   _true_airspeed_derivative_raw_type true_airspeed_derivative_raw;
-  using _total_energy_rate_sp_type =
+  using _true_airspeed_innovation_type =
     float;
-  _total_energy_rate_sp_type total_energy_rate_sp;
+  _true_airspeed_innovation_type true_airspeed_innovation;
+  using _total_energy_error_type =
+    float;
+  _total_energy_error_type total_energy_error;
+  using _energy_distribution_error_type =
+    float;
+  _energy_distribution_error_type energy_distribution_error;
+  using _total_energy_rate_error_type =
+    float;
+  _total_energy_rate_error_type total_energy_rate_error;
+  using _energy_distribution_rate_error_type =
+    float;
+  _energy_distribution_rate_error_type energy_distribution_rate_error;
+  using _total_energy_type =
+    float;
+  _total_energy_type total_energy;
   using _total_energy_rate_type =
     float;
   _total_energy_rate_type total_energy_rate;
-  using _total_energy_balance_rate_sp_type =
+  using _total_energy_balance_type =
     float;
-  _total_energy_balance_rate_sp_type total_energy_balance_rate_sp;
+  _total_energy_balance_type total_energy_balance;
   using _total_energy_balance_rate_type =
     float;
   _total_energy_balance_rate_type total_energy_balance_rate;
+  using _total_energy_sp_type =
+    float;
+  _total_energy_sp_type total_energy_sp;
+  using _total_energy_rate_sp_type =
+    float;
+  _total_energy_rate_sp_type total_energy_rate_sp;
+  using _total_energy_balance_sp_type =
+    float;
+  _total_energy_balance_sp_type total_energy_balance_sp;
+  using _total_energy_balance_rate_sp_type =
+    float;
+  _total_energy_balance_rate_sp_type total_energy_balance_rate_sp;
   using _throttle_integ_type =
     float;
   _throttle_integ_type throttle_integ;
@@ -159,9 +192,6 @@ struct TecsStatus_
   using _pitch_sp_rad_type =
     float;
   _pitch_sp_rad_type pitch_sp_rad;
-  using _throttle_trim_type =
-    float;
-  _throttle_trim_type throttle_trim;
   using _mode_type =
     uint8_t;
   _mode_type mode;
@@ -179,22 +209,10 @@ struct TecsStatus_
     this->altitude_sp = _arg;
     return *this;
   }
-  Type & set__altitude_reference(
+  Type & set__altitude_filtered(
     const float & _arg)
   {
-    this->altitude_reference = _arg;
-    return *this;
-  }
-  Type & set__height_rate_reference(
-    const float & _arg)
-  {
-    this->height_rate_reference = _arg;
-    return *this;
-  }
-  Type & set__height_rate_direct(
-    const float & _arg)
-  {
-    this->height_rate_direct = _arg;
+    this->altitude_filtered = _arg;
     return *this;
   }
   Type & set__height_rate_setpoint(
@@ -245,10 +263,40 @@ struct TecsStatus_
     this->true_airspeed_derivative_raw = _arg;
     return *this;
   }
-  Type & set__total_energy_rate_sp(
+  Type & set__true_airspeed_innovation(
     const float & _arg)
   {
-    this->total_energy_rate_sp = _arg;
+    this->true_airspeed_innovation = _arg;
+    return *this;
+  }
+  Type & set__total_energy_error(
+    const float & _arg)
+  {
+    this->total_energy_error = _arg;
+    return *this;
+  }
+  Type & set__energy_distribution_error(
+    const float & _arg)
+  {
+    this->energy_distribution_error = _arg;
+    return *this;
+  }
+  Type & set__total_energy_rate_error(
+    const float & _arg)
+  {
+    this->total_energy_rate_error = _arg;
+    return *this;
+  }
+  Type & set__energy_distribution_rate_error(
+    const float & _arg)
+  {
+    this->energy_distribution_rate_error = _arg;
+    return *this;
+  }
+  Type & set__total_energy(
+    const float & _arg)
+  {
+    this->total_energy = _arg;
     return *this;
   }
   Type & set__total_energy_rate(
@@ -257,16 +305,40 @@ struct TecsStatus_
     this->total_energy_rate = _arg;
     return *this;
   }
-  Type & set__total_energy_balance_rate_sp(
+  Type & set__total_energy_balance(
     const float & _arg)
   {
-    this->total_energy_balance_rate_sp = _arg;
+    this->total_energy_balance = _arg;
     return *this;
   }
   Type & set__total_energy_balance_rate(
     const float & _arg)
   {
     this->total_energy_balance_rate = _arg;
+    return *this;
+  }
+  Type & set__total_energy_sp(
+    const float & _arg)
+  {
+    this->total_energy_sp = _arg;
+    return *this;
+  }
+  Type & set__total_energy_rate_sp(
+    const float & _arg)
+  {
+    this->total_energy_rate_sp = _arg;
+    return *this;
+  }
+  Type & set__total_energy_balance_sp(
+    const float & _arg)
+  {
+    this->total_energy_balance_sp = _arg;
+    return *this;
+  }
+  Type & set__total_energy_balance_rate_sp(
+    const float & _arg)
+  {
+    this->total_energy_balance_rate_sp = _arg;
     return *this;
   }
   Type & set__throttle_integ(
@@ -293,12 +365,6 @@ struct TecsStatus_
     this->pitch_sp_rad = _arg;
     return *this;
   }
-  Type & set__throttle_trim(
-    const float & _arg)
-  {
-    this->throttle_trim = _arg;
-    return *this;
-  }
   Type & set__mode(
     const uint8_t & _arg)
   {
@@ -311,6 +377,16 @@ struct TecsStatus_
     0u;
   static constexpr uint8_t TECS_MODE_UNDERSPEED =
     1u;
+  static constexpr uint8_t TECS_MODE_TAKEOFF =
+    2u;
+  static constexpr uint8_t TECS_MODE_LAND =
+    3u;
+  static constexpr uint8_t TECS_MODE_LAND_THROTTLELIM =
+    4u;
+  static constexpr uint8_t TECS_MODE_BAD_DESCENT =
+    5u;
+  static constexpr uint8_t TECS_MODE_CLIMBOUT =
+    6u;
 
   // pointer types
   using RawPtr =
@@ -358,13 +434,7 @@ struct TecsStatus_
     if (this->altitude_sp != other.altitude_sp) {
       return false;
     }
-    if (this->altitude_reference != other.altitude_reference) {
-      return false;
-    }
-    if (this->height_rate_reference != other.height_rate_reference) {
-      return false;
-    }
-    if (this->height_rate_direct != other.height_rate_direct) {
+    if (this->altitude_filtered != other.altitude_filtered) {
       return false;
     }
     if (this->height_rate_setpoint != other.height_rate_setpoint) {
@@ -391,16 +461,43 @@ struct TecsStatus_
     if (this->true_airspeed_derivative_raw != other.true_airspeed_derivative_raw) {
       return false;
     }
-    if (this->total_energy_rate_sp != other.total_energy_rate_sp) {
+    if (this->true_airspeed_innovation != other.true_airspeed_innovation) {
+      return false;
+    }
+    if (this->total_energy_error != other.total_energy_error) {
+      return false;
+    }
+    if (this->energy_distribution_error != other.energy_distribution_error) {
+      return false;
+    }
+    if (this->total_energy_rate_error != other.total_energy_rate_error) {
+      return false;
+    }
+    if (this->energy_distribution_rate_error != other.energy_distribution_rate_error) {
+      return false;
+    }
+    if (this->total_energy != other.total_energy) {
       return false;
     }
     if (this->total_energy_rate != other.total_energy_rate) {
       return false;
     }
-    if (this->total_energy_balance_rate_sp != other.total_energy_balance_rate_sp) {
+    if (this->total_energy_balance != other.total_energy_balance) {
       return false;
     }
     if (this->total_energy_balance_rate != other.total_energy_balance_rate) {
+      return false;
+    }
+    if (this->total_energy_sp != other.total_energy_sp) {
+      return false;
+    }
+    if (this->total_energy_rate_sp != other.total_energy_rate_sp) {
+      return false;
+    }
+    if (this->total_energy_balance_sp != other.total_energy_balance_sp) {
+      return false;
+    }
+    if (this->total_energy_balance_rate_sp != other.total_energy_balance_rate_sp) {
       return false;
     }
     if (this->throttle_integ != other.throttle_integ) {
@@ -413,9 +510,6 @@ struct TecsStatus_
       return false;
     }
     if (this->pitch_sp_rad != other.pitch_sp_rad) {
-      return false;
-    }
-    if (this->throttle_trim != other.throttle_trim) {
       return false;
     }
     if (this->mode != other.mode) {
@@ -438,6 +532,16 @@ template<typename ContainerAllocator>
 constexpr uint8_t TecsStatus_<ContainerAllocator>::TECS_MODE_NORMAL;
 template<typename ContainerAllocator>
 constexpr uint8_t TecsStatus_<ContainerAllocator>::TECS_MODE_UNDERSPEED;
+template<typename ContainerAllocator>
+constexpr uint8_t TecsStatus_<ContainerAllocator>::TECS_MODE_TAKEOFF;
+template<typename ContainerAllocator>
+constexpr uint8_t TecsStatus_<ContainerAllocator>::TECS_MODE_LAND;
+template<typename ContainerAllocator>
+constexpr uint8_t TecsStatus_<ContainerAllocator>::TECS_MODE_LAND_THROTTLELIM;
+template<typename ContainerAllocator>
+constexpr uint8_t TecsStatus_<ContainerAllocator>::TECS_MODE_BAD_DESCENT;
+template<typename ContainerAllocator>
+constexpr uint8_t TecsStatus_<ContainerAllocator>::TECS_MODE_CLIMBOUT;
 
 }  // namespace msg
 

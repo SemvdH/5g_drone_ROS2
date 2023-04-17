@@ -59,49 +59,13 @@ bool px4_msgs__msg__vehicle_status__convert_from_py(PyObject * _pymsg, void * _r
     ros_message->timestamp = PyLong_AsUnsignedLongLong(field);
     Py_DECREF(field);
   }
-  {  // armed_time
-    PyObject * field = PyObject_GetAttrString(_pymsg, "armed_time");
+  {  // nav_state
+    PyObject * field = PyObject_GetAttrString(_pymsg, "nav_state");
     if (!field) {
       return false;
     }
     assert(PyLong_Check(field));
-    ros_message->armed_time = PyLong_AsUnsignedLongLong(field);
-    Py_DECREF(field);
-  }
-  {  // takeoff_time
-    PyObject * field = PyObject_GetAttrString(_pymsg, "takeoff_time");
-    if (!field) {
-      return false;
-    }
-    assert(PyLong_Check(field));
-    ros_message->takeoff_time = PyLong_AsUnsignedLongLong(field);
-    Py_DECREF(field);
-  }
-  {  // arming_state
-    PyObject * field = PyObject_GetAttrString(_pymsg, "arming_state");
-    if (!field) {
-      return false;
-    }
-    assert(PyLong_Check(field));
-    ros_message->arming_state = (uint8_t)PyLong_AsUnsignedLong(field);
-    Py_DECREF(field);
-  }
-  {  // latest_arming_reason
-    PyObject * field = PyObject_GetAttrString(_pymsg, "latest_arming_reason");
-    if (!field) {
-      return false;
-    }
-    assert(PyLong_Check(field));
-    ros_message->latest_arming_reason = (uint8_t)PyLong_AsUnsignedLong(field);
-    Py_DECREF(field);
-  }
-  {  // latest_disarming_reason
-    PyObject * field = PyObject_GetAttrString(_pymsg, "latest_disarming_reason");
-    if (!field) {
-      return false;
-    }
-    assert(PyLong_Check(field));
-    ros_message->latest_disarming_reason = (uint8_t)PyLong_AsUnsignedLong(field);
+    ros_message->nav_state = (uint8_t)PyLong_AsUnsignedLong(field);
     Py_DECREF(field);
   }
   {  // nav_state_timestamp
@@ -113,31 +77,13 @@ bool px4_msgs__msg__vehicle_status__convert_from_py(PyObject * _pymsg, void * _r
     ros_message->nav_state_timestamp = PyLong_AsUnsignedLongLong(field);
     Py_DECREF(field);
   }
-  {  // nav_state_user_intention
-    PyObject * field = PyObject_GetAttrString(_pymsg, "nav_state_user_intention");
+  {  // arming_state
+    PyObject * field = PyObject_GetAttrString(_pymsg, "arming_state");
     if (!field) {
       return false;
     }
     assert(PyLong_Check(field));
-    ros_message->nav_state_user_intention = (uint8_t)PyLong_AsUnsignedLong(field);
-    Py_DECREF(field);
-  }
-  {  // nav_state
-    PyObject * field = PyObject_GetAttrString(_pymsg, "nav_state");
-    if (!field) {
-      return false;
-    }
-    assert(PyLong_Check(field));
-    ros_message->nav_state = (uint8_t)PyLong_AsUnsignedLong(field);
-    Py_DECREF(field);
-  }
-  {  // failure_detector_status
-    PyObject * field = PyObject_GetAttrString(_pymsg, "failure_detector_status");
-    if (!field) {
-      return false;
-    }
-    assert(PyLong_Check(field));
-    ros_message->failure_detector_status = (uint16_t)PyLong_AsUnsignedLong(field);
+    ros_message->arming_state = (uint8_t)PyLong_AsUnsignedLong(field);
     Py_DECREF(field);
   }
   {  // hil_state
@@ -149,15 +95,6 @@ bool px4_msgs__msg__vehicle_status__convert_from_py(PyObject * _pymsg, void * _r
     ros_message->hil_state = (uint8_t)PyLong_AsUnsignedLong(field);
     Py_DECREF(field);
   }
-  {  // vehicle_type
-    PyObject * field = PyObject_GetAttrString(_pymsg, "vehicle_type");
-    if (!field) {
-      return false;
-    }
-    assert(PyLong_Check(field));
-    ros_message->vehicle_type = (uint8_t)PyLong_AsUnsignedLong(field);
-    Py_DECREF(field);
-  }
   {  // failsafe
     PyObject * field = PyObject_GetAttrString(_pymsg, "failsafe");
     if (!field) {
@@ -167,76 +104,13 @@ bool px4_msgs__msg__vehicle_status__convert_from_py(PyObject * _pymsg, void * _r
     ros_message->failsafe = (Py_True == field);
     Py_DECREF(field);
   }
-  {  // failsafe_and_user_took_over
-    PyObject * field = PyObject_GetAttrString(_pymsg, "failsafe_and_user_took_over");
-    if (!field) {
-      return false;
-    }
-    assert(PyBool_Check(field));
-    ros_message->failsafe_and_user_took_over = (Py_True == field);
-    Py_DECREF(field);
-  }
-  {  // gcs_connection_lost
-    PyObject * field = PyObject_GetAttrString(_pymsg, "gcs_connection_lost");
-    if (!field) {
-      return false;
-    }
-    assert(PyBool_Check(field));
-    ros_message->gcs_connection_lost = (Py_True == field);
-    Py_DECREF(field);
-  }
-  {  // gcs_connection_lost_counter
-    PyObject * field = PyObject_GetAttrString(_pymsg, "gcs_connection_lost_counter");
+  {  // failsafe_timestamp
+    PyObject * field = PyObject_GetAttrString(_pymsg, "failsafe_timestamp");
     if (!field) {
       return false;
     }
     assert(PyLong_Check(field));
-    ros_message->gcs_connection_lost_counter = (uint8_t)PyLong_AsUnsignedLong(field);
-    Py_DECREF(field);
-  }
-  {  // high_latency_data_link_lost
-    PyObject * field = PyObject_GetAttrString(_pymsg, "high_latency_data_link_lost");
-    if (!field) {
-      return false;
-    }
-    assert(PyBool_Check(field));
-    ros_message->high_latency_data_link_lost = (Py_True == field);
-    Py_DECREF(field);
-  }
-  {  // is_vtol
-    PyObject * field = PyObject_GetAttrString(_pymsg, "is_vtol");
-    if (!field) {
-      return false;
-    }
-    assert(PyBool_Check(field));
-    ros_message->is_vtol = (Py_True == field);
-    Py_DECREF(field);
-  }
-  {  // is_vtol_tailsitter
-    PyObject * field = PyObject_GetAttrString(_pymsg, "is_vtol_tailsitter");
-    if (!field) {
-      return false;
-    }
-    assert(PyBool_Check(field));
-    ros_message->is_vtol_tailsitter = (Py_True == field);
-    Py_DECREF(field);
-  }
-  {  // in_transition_mode
-    PyObject * field = PyObject_GetAttrString(_pymsg, "in_transition_mode");
-    if (!field) {
-      return false;
-    }
-    assert(PyBool_Check(field));
-    ros_message->in_transition_mode = (Py_True == field);
-    Py_DECREF(field);
-  }
-  {  // in_transition_to_fw
-    PyObject * field = PyObject_GetAttrString(_pymsg, "in_transition_to_fw");
-    if (!field) {
-      return false;
-    }
-    assert(PyBool_Check(field));
-    ros_message->in_transition_to_fw = (Py_True == field);
+    ros_message->failsafe_timestamp = PyLong_AsUnsignedLongLong(field);
     Py_DECREF(field);
   }
   {  // system_type
@@ -266,121 +140,193 @@ bool px4_msgs__msg__vehicle_status__convert_from_py(PyObject * _pymsg, void * _r
     ros_message->component_id = (uint8_t)PyLong_AsUnsignedLong(field);
     Py_DECREF(field);
   }
-  {  // safety_button_available
-    PyObject * field = PyObject_GetAttrString(_pymsg, "safety_button_available");
+  {  // vehicle_type
+    PyObject * field = PyObject_GetAttrString(_pymsg, "vehicle_type");
     if (!field) {
       return false;
     }
-    assert(PyBool_Check(field));
-    ros_message->safety_button_available = (Py_True == field);
+    assert(PyLong_Check(field));
+    ros_message->vehicle_type = (uint8_t)PyLong_AsUnsignedLong(field);
     Py_DECREF(field);
   }
-  {  // safety_off
-    PyObject * field = PyObject_GetAttrString(_pymsg, "safety_off");
+  {  // is_vtol
+    PyObject * field = PyObject_GetAttrString(_pymsg, "is_vtol");
     if (!field) {
       return false;
     }
     assert(PyBool_Check(field));
-    ros_message->safety_off = (Py_True == field);
+    ros_message->is_vtol = (Py_True == field);
     Py_DECREF(field);
   }
-  {  // power_input_valid
-    PyObject * field = PyObject_GetAttrString(_pymsg, "power_input_valid");
+  {  // is_vtol_tailsitter
+    PyObject * field = PyObject_GetAttrString(_pymsg, "is_vtol_tailsitter");
     if (!field) {
       return false;
     }
     assert(PyBool_Check(field));
-    ros_message->power_input_valid = (Py_True == field);
+    ros_message->is_vtol_tailsitter = (Py_True == field);
     Py_DECREF(field);
   }
-  {  // usb_connected
-    PyObject * field = PyObject_GetAttrString(_pymsg, "usb_connected");
+  {  // vtol_fw_permanent_stab
+    PyObject * field = PyObject_GetAttrString(_pymsg, "vtol_fw_permanent_stab");
     if (!field) {
       return false;
     }
     assert(PyBool_Check(field));
-    ros_message->usb_connected = (Py_True == field);
+    ros_message->vtol_fw_permanent_stab = (Py_True == field);
     Py_DECREF(field);
   }
-  {  // open_drone_id_system_present
-    PyObject * field = PyObject_GetAttrString(_pymsg, "open_drone_id_system_present");
+  {  // in_transition_mode
+    PyObject * field = PyObject_GetAttrString(_pymsg, "in_transition_mode");
     if (!field) {
       return false;
     }
     assert(PyBool_Check(field));
-    ros_message->open_drone_id_system_present = (Py_True == field);
+    ros_message->in_transition_mode = (Py_True == field);
     Py_DECREF(field);
   }
-  {  // open_drone_id_system_healthy
-    PyObject * field = PyObject_GetAttrString(_pymsg, "open_drone_id_system_healthy");
+  {  // in_transition_to_fw
+    PyObject * field = PyObject_GetAttrString(_pymsg, "in_transition_to_fw");
     if (!field) {
       return false;
     }
     assert(PyBool_Check(field));
-    ros_message->open_drone_id_system_healthy = (Py_True == field);
+    ros_message->in_transition_to_fw = (Py_True == field);
     Py_DECREF(field);
   }
-  {  // parachute_system_present
-    PyObject * field = PyObject_GetAttrString(_pymsg, "parachute_system_present");
+  {  // rc_signal_lost
+    PyObject * field = PyObject_GetAttrString(_pymsg, "rc_signal_lost");
     if (!field) {
       return false;
     }
     assert(PyBool_Check(field));
-    ros_message->parachute_system_present = (Py_True == field);
+    ros_message->rc_signal_lost = (Py_True == field);
     Py_DECREF(field);
   }
-  {  // parachute_system_healthy
-    PyObject * field = PyObject_GetAttrString(_pymsg, "parachute_system_healthy");
+  {  // data_link_lost
+    PyObject * field = PyObject_GetAttrString(_pymsg, "data_link_lost");
     if (!field) {
       return false;
     }
     assert(PyBool_Check(field));
-    ros_message->parachute_system_healthy = (Py_True == field);
+    ros_message->data_link_lost = (Py_True == field);
     Py_DECREF(field);
   }
-  {  // avoidance_system_required
-    PyObject * field = PyObject_GetAttrString(_pymsg, "avoidance_system_required");
+  {  // data_link_lost_counter
+    PyObject * field = PyObject_GetAttrString(_pymsg, "data_link_lost_counter");
     if (!field) {
       return false;
     }
-    assert(PyBool_Check(field));
-    ros_message->avoidance_system_required = (Py_True == field);
+    assert(PyLong_Check(field));
+    ros_message->data_link_lost_counter = (uint8_t)PyLong_AsUnsignedLong(field);
     Py_DECREF(field);
   }
-  {  // avoidance_system_valid
-    PyObject * field = PyObject_GetAttrString(_pymsg, "avoidance_system_valid");
+  {  // high_latency_data_link_lost
+    PyObject * field = PyObject_GetAttrString(_pymsg, "high_latency_data_link_lost");
     if (!field) {
       return false;
     }
     assert(PyBool_Check(field));
-    ros_message->avoidance_system_valid = (Py_True == field);
+    ros_message->high_latency_data_link_lost = (Py_True == field);
     Py_DECREF(field);
   }
-  {  // rc_calibration_in_progress
-    PyObject * field = PyObject_GetAttrString(_pymsg, "rc_calibration_in_progress");
+  {  // engine_failure
+    PyObject * field = PyObject_GetAttrString(_pymsg, "engine_failure");
     if (!field) {
       return false;
     }
     assert(PyBool_Check(field));
-    ros_message->rc_calibration_in_progress = (Py_True == field);
+    ros_message->engine_failure = (Py_True == field);
     Py_DECREF(field);
   }
-  {  // calibration_enabled
-    PyObject * field = PyObject_GetAttrString(_pymsg, "calibration_enabled");
+  {  // mission_failure
+    PyObject * field = PyObject_GetAttrString(_pymsg, "mission_failure");
     if (!field) {
       return false;
     }
     assert(PyBool_Check(field));
-    ros_message->calibration_enabled = (Py_True == field);
+    ros_message->mission_failure = (Py_True == field);
     Py_DECREF(field);
   }
-  {  // pre_flight_checks_pass
-    PyObject * field = PyObject_GetAttrString(_pymsg, "pre_flight_checks_pass");
+  {  // geofence_violated
+    PyObject * field = PyObject_GetAttrString(_pymsg, "geofence_violated");
     if (!field) {
       return false;
     }
     assert(PyBool_Check(field));
-    ros_message->pre_flight_checks_pass = (Py_True == field);
+    ros_message->geofence_violated = (Py_True == field);
+    Py_DECREF(field);
+  }
+  {  // failure_detector_status
+    PyObject * field = PyObject_GetAttrString(_pymsg, "failure_detector_status");
+    if (!field) {
+      return false;
+    }
+    assert(PyLong_Check(field));
+    ros_message->failure_detector_status = (uint8_t)PyLong_AsUnsignedLong(field);
+    Py_DECREF(field);
+  }
+  {  // onboard_control_sensors_present
+    PyObject * field = PyObject_GetAttrString(_pymsg, "onboard_control_sensors_present");
+    if (!field) {
+      return false;
+    }
+    assert(PyLong_Check(field));
+    ros_message->onboard_control_sensors_present = PyLong_AsUnsignedLongLong(field);
+    Py_DECREF(field);
+  }
+  {  // onboard_control_sensors_enabled
+    PyObject * field = PyObject_GetAttrString(_pymsg, "onboard_control_sensors_enabled");
+    if (!field) {
+      return false;
+    }
+    assert(PyLong_Check(field));
+    ros_message->onboard_control_sensors_enabled = PyLong_AsUnsignedLongLong(field);
+    Py_DECREF(field);
+  }
+  {  // onboard_control_sensors_health
+    PyObject * field = PyObject_GetAttrString(_pymsg, "onboard_control_sensors_health");
+    if (!field) {
+      return false;
+    }
+    assert(PyLong_Check(field));
+    ros_message->onboard_control_sensors_health = PyLong_AsUnsignedLongLong(field);
+    Py_DECREF(field);
+  }
+  {  // latest_arming_reason
+    PyObject * field = PyObject_GetAttrString(_pymsg, "latest_arming_reason");
+    if (!field) {
+      return false;
+    }
+    assert(PyLong_Check(field));
+    ros_message->latest_arming_reason = (uint8_t)PyLong_AsUnsignedLong(field);
+    Py_DECREF(field);
+  }
+  {  // latest_disarming_reason
+    PyObject * field = PyObject_GetAttrString(_pymsg, "latest_disarming_reason");
+    if (!field) {
+      return false;
+    }
+    assert(PyLong_Check(field));
+    ros_message->latest_disarming_reason = (uint8_t)PyLong_AsUnsignedLong(field);
+    Py_DECREF(field);
+  }
+  {  // armed_time
+    PyObject * field = PyObject_GetAttrString(_pymsg, "armed_time");
+    if (!field) {
+      return false;
+    }
+    assert(PyLong_Check(field));
+    ros_message->armed_time = PyLong_AsUnsignedLongLong(field);
+    Py_DECREF(field);
+  }
+  {  // takeoff_time
+    PyObject * field = PyObject_GetAttrString(_pymsg, "takeoff_time");
+    if (!field) {
+      return false;
+    }
+    assert(PyLong_Check(field));
+    ros_message->takeoff_time = PyLong_AsUnsignedLongLong(field);
     Py_DECREF(field);
   }
 
@@ -416,55 +362,11 @@ PyObject * px4_msgs__msg__vehicle_status__convert_to_py(void * raw_ros_message)
       }
     }
   }
-  {  // armed_time
+  {  // nav_state
     PyObject * field = NULL;
-    field = PyLong_FromUnsignedLongLong(ros_message->armed_time);
+    field = PyLong_FromUnsignedLong(ros_message->nav_state);
     {
-      int rc = PyObject_SetAttrString(_pymessage, "armed_time", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
-  {  // takeoff_time
-    PyObject * field = NULL;
-    field = PyLong_FromUnsignedLongLong(ros_message->takeoff_time);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "takeoff_time", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
-  {  // arming_state
-    PyObject * field = NULL;
-    field = PyLong_FromUnsignedLong(ros_message->arming_state);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "arming_state", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
-  {  // latest_arming_reason
-    PyObject * field = NULL;
-    field = PyLong_FromUnsignedLong(ros_message->latest_arming_reason);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "latest_arming_reason", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
-  {  // latest_disarming_reason
-    PyObject * field = NULL;
-    field = PyLong_FromUnsignedLong(ros_message->latest_disarming_reason);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "latest_disarming_reason", field);
+      int rc = PyObject_SetAttrString(_pymessage, "nav_state", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;
@@ -482,33 +384,11 @@ PyObject * px4_msgs__msg__vehicle_status__convert_to_py(void * raw_ros_message)
       }
     }
   }
-  {  // nav_state_user_intention
+  {  // arming_state
     PyObject * field = NULL;
-    field = PyLong_FromUnsignedLong(ros_message->nav_state_user_intention);
+    field = PyLong_FromUnsignedLong(ros_message->arming_state);
     {
-      int rc = PyObject_SetAttrString(_pymessage, "nav_state_user_intention", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
-  {  // nav_state
-    PyObject * field = NULL;
-    field = PyLong_FromUnsignedLong(ros_message->nav_state);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "nav_state", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
-  {  // failure_detector_status
-    PyObject * field = NULL;
-    field = PyLong_FromUnsignedLong(ros_message->failure_detector_status);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "failure_detector_status", field);
+      int rc = PyObject_SetAttrString(_pymessage, "arming_state", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;
@@ -526,17 +406,6 @@ PyObject * px4_msgs__msg__vehicle_status__convert_to_py(void * raw_ros_message)
       }
     }
   }
-  {  // vehicle_type
-    PyObject * field = NULL;
-    field = PyLong_FromUnsignedLong(ros_message->vehicle_type);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "vehicle_type", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
   {  // failsafe
     PyObject * field = NULL;
     field = PyBool_FromLong(ros_message->failsafe ? 1 : 0);
@@ -548,88 +417,11 @@ PyObject * px4_msgs__msg__vehicle_status__convert_to_py(void * raw_ros_message)
       }
     }
   }
-  {  // failsafe_and_user_took_over
+  {  // failsafe_timestamp
     PyObject * field = NULL;
-    field = PyBool_FromLong(ros_message->failsafe_and_user_took_over ? 1 : 0);
+    field = PyLong_FromUnsignedLongLong(ros_message->failsafe_timestamp);
     {
-      int rc = PyObject_SetAttrString(_pymessage, "failsafe_and_user_took_over", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
-  {  // gcs_connection_lost
-    PyObject * field = NULL;
-    field = PyBool_FromLong(ros_message->gcs_connection_lost ? 1 : 0);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "gcs_connection_lost", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
-  {  // gcs_connection_lost_counter
-    PyObject * field = NULL;
-    field = PyLong_FromUnsignedLong(ros_message->gcs_connection_lost_counter);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "gcs_connection_lost_counter", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
-  {  // high_latency_data_link_lost
-    PyObject * field = NULL;
-    field = PyBool_FromLong(ros_message->high_latency_data_link_lost ? 1 : 0);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "high_latency_data_link_lost", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
-  {  // is_vtol
-    PyObject * field = NULL;
-    field = PyBool_FromLong(ros_message->is_vtol ? 1 : 0);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "is_vtol", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
-  {  // is_vtol_tailsitter
-    PyObject * field = NULL;
-    field = PyBool_FromLong(ros_message->is_vtol_tailsitter ? 1 : 0);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "is_vtol_tailsitter", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
-  {  // in_transition_mode
-    PyObject * field = NULL;
-    field = PyBool_FromLong(ros_message->in_transition_mode ? 1 : 0);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "in_transition_mode", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
-  {  // in_transition_to_fw
-    PyObject * field = NULL;
-    field = PyBool_FromLong(ros_message->in_transition_to_fw ? 1 : 0);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "in_transition_to_fw", field);
+      int rc = PyObject_SetAttrString(_pymessage, "failsafe_timestamp", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;
@@ -669,143 +461,231 @@ PyObject * px4_msgs__msg__vehicle_status__convert_to_py(void * raw_ros_message)
       }
     }
   }
-  {  // safety_button_available
+  {  // vehicle_type
     PyObject * field = NULL;
-    field = PyBool_FromLong(ros_message->safety_button_available ? 1 : 0);
+    field = PyLong_FromUnsignedLong(ros_message->vehicle_type);
     {
-      int rc = PyObject_SetAttrString(_pymessage, "safety_button_available", field);
+      int rc = PyObject_SetAttrString(_pymessage, "vehicle_type", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;
       }
     }
   }
-  {  // safety_off
+  {  // is_vtol
     PyObject * field = NULL;
-    field = PyBool_FromLong(ros_message->safety_off ? 1 : 0);
+    field = PyBool_FromLong(ros_message->is_vtol ? 1 : 0);
     {
-      int rc = PyObject_SetAttrString(_pymessage, "safety_off", field);
+      int rc = PyObject_SetAttrString(_pymessage, "is_vtol", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;
       }
     }
   }
-  {  // power_input_valid
+  {  // is_vtol_tailsitter
     PyObject * field = NULL;
-    field = PyBool_FromLong(ros_message->power_input_valid ? 1 : 0);
+    field = PyBool_FromLong(ros_message->is_vtol_tailsitter ? 1 : 0);
     {
-      int rc = PyObject_SetAttrString(_pymessage, "power_input_valid", field);
+      int rc = PyObject_SetAttrString(_pymessage, "is_vtol_tailsitter", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;
       }
     }
   }
-  {  // usb_connected
+  {  // vtol_fw_permanent_stab
     PyObject * field = NULL;
-    field = PyBool_FromLong(ros_message->usb_connected ? 1 : 0);
+    field = PyBool_FromLong(ros_message->vtol_fw_permanent_stab ? 1 : 0);
     {
-      int rc = PyObject_SetAttrString(_pymessage, "usb_connected", field);
+      int rc = PyObject_SetAttrString(_pymessage, "vtol_fw_permanent_stab", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;
       }
     }
   }
-  {  // open_drone_id_system_present
+  {  // in_transition_mode
     PyObject * field = NULL;
-    field = PyBool_FromLong(ros_message->open_drone_id_system_present ? 1 : 0);
+    field = PyBool_FromLong(ros_message->in_transition_mode ? 1 : 0);
     {
-      int rc = PyObject_SetAttrString(_pymessage, "open_drone_id_system_present", field);
+      int rc = PyObject_SetAttrString(_pymessage, "in_transition_mode", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;
       }
     }
   }
-  {  // open_drone_id_system_healthy
+  {  // in_transition_to_fw
     PyObject * field = NULL;
-    field = PyBool_FromLong(ros_message->open_drone_id_system_healthy ? 1 : 0);
+    field = PyBool_FromLong(ros_message->in_transition_to_fw ? 1 : 0);
     {
-      int rc = PyObject_SetAttrString(_pymessage, "open_drone_id_system_healthy", field);
+      int rc = PyObject_SetAttrString(_pymessage, "in_transition_to_fw", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;
       }
     }
   }
-  {  // parachute_system_present
+  {  // rc_signal_lost
     PyObject * field = NULL;
-    field = PyBool_FromLong(ros_message->parachute_system_present ? 1 : 0);
+    field = PyBool_FromLong(ros_message->rc_signal_lost ? 1 : 0);
     {
-      int rc = PyObject_SetAttrString(_pymessage, "parachute_system_present", field);
+      int rc = PyObject_SetAttrString(_pymessage, "rc_signal_lost", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;
       }
     }
   }
-  {  // parachute_system_healthy
+  {  // data_link_lost
     PyObject * field = NULL;
-    field = PyBool_FromLong(ros_message->parachute_system_healthy ? 1 : 0);
+    field = PyBool_FromLong(ros_message->data_link_lost ? 1 : 0);
     {
-      int rc = PyObject_SetAttrString(_pymessage, "parachute_system_healthy", field);
+      int rc = PyObject_SetAttrString(_pymessage, "data_link_lost", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;
       }
     }
   }
-  {  // avoidance_system_required
+  {  // data_link_lost_counter
     PyObject * field = NULL;
-    field = PyBool_FromLong(ros_message->avoidance_system_required ? 1 : 0);
+    field = PyLong_FromUnsignedLong(ros_message->data_link_lost_counter);
     {
-      int rc = PyObject_SetAttrString(_pymessage, "avoidance_system_required", field);
+      int rc = PyObject_SetAttrString(_pymessage, "data_link_lost_counter", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;
       }
     }
   }
-  {  // avoidance_system_valid
+  {  // high_latency_data_link_lost
     PyObject * field = NULL;
-    field = PyBool_FromLong(ros_message->avoidance_system_valid ? 1 : 0);
+    field = PyBool_FromLong(ros_message->high_latency_data_link_lost ? 1 : 0);
     {
-      int rc = PyObject_SetAttrString(_pymessage, "avoidance_system_valid", field);
+      int rc = PyObject_SetAttrString(_pymessage, "high_latency_data_link_lost", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;
       }
     }
   }
-  {  // rc_calibration_in_progress
+  {  // engine_failure
     PyObject * field = NULL;
-    field = PyBool_FromLong(ros_message->rc_calibration_in_progress ? 1 : 0);
+    field = PyBool_FromLong(ros_message->engine_failure ? 1 : 0);
     {
-      int rc = PyObject_SetAttrString(_pymessage, "rc_calibration_in_progress", field);
+      int rc = PyObject_SetAttrString(_pymessage, "engine_failure", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;
       }
     }
   }
-  {  // calibration_enabled
+  {  // mission_failure
     PyObject * field = NULL;
-    field = PyBool_FromLong(ros_message->calibration_enabled ? 1 : 0);
+    field = PyBool_FromLong(ros_message->mission_failure ? 1 : 0);
     {
-      int rc = PyObject_SetAttrString(_pymessage, "calibration_enabled", field);
+      int rc = PyObject_SetAttrString(_pymessage, "mission_failure", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;
       }
     }
   }
-  {  // pre_flight_checks_pass
+  {  // geofence_violated
     PyObject * field = NULL;
-    field = PyBool_FromLong(ros_message->pre_flight_checks_pass ? 1 : 0);
+    field = PyBool_FromLong(ros_message->geofence_violated ? 1 : 0);
     {
-      int rc = PyObject_SetAttrString(_pymessage, "pre_flight_checks_pass", field);
+      int rc = PyObject_SetAttrString(_pymessage, "geofence_violated", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // failure_detector_status
+    PyObject * field = NULL;
+    field = PyLong_FromUnsignedLong(ros_message->failure_detector_status);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "failure_detector_status", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // onboard_control_sensors_present
+    PyObject * field = NULL;
+    field = PyLong_FromUnsignedLongLong(ros_message->onboard_control_sensors_present);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "onboard_control_sensors_present", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // onboard_control_sensors_enabled
+    PyObject * field = NULL;
+    field = PyLong_FromUnsignedLongLong(ros_message->onboard_control_sensors_enabled);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "onboard_control_sensors_enabled", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // onboard_control_sensors_health
+    PyObject * field = NULL;
+    field = PyLong_FromUnsignedLongLong(ros_message->onboard_control_sensors_health);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "onboard_control_sensors_health", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // latest_arming_reason
+    PyObject * field = NULL;
+    field = PyLong_FromUnsignedLong(ros_message->latest_arming_reason);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "latest_arming_reason", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // latest_disarming_reason
+    PyObject * field = NULL;
+    field = PyLong_FromUnsignedLong(ros_message->latest_disarming_reason);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "latest_disarming_reason", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // armed_time
+    PyObject * field = NULL;
+    field = PyLong_FromUnsignedLongLong(ros_message->armed_time);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "armed_time", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // takeoff_time
+    PyObject * field = NULL;
+    field = PyLong_FromUnsignedLongLong(ros_message->takeoff_time);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "takeoff_time", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;

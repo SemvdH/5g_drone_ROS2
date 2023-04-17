@@ -1,2 +1,1 @@
-source;share/beacon_positioning/environment/ament_prefix_path.sh
-source;share/beacon_positioning/environment/path.sh
+/home/ubuntu/ros2_ws/build/beacon_positioning/ament_cmake_environment_hooks/local_setup.dsv

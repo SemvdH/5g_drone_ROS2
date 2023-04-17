@@ -1,3 +1,4 @@
 /home/ubuntu/ros2_ws/install/px4_ros_com/lib/libframe_transforms.so
+/home/ubuntu/ros2_ws/install/px4_ros_com/bin/micrortps_agent
 /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/cmake/export_frame_transformsExport.cmake
 /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/cmake/export_frame_transformsExport-relwithdebinfo.cmake

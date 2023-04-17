@@ -98,7 +98,7 @@ static rosidl_typesupport_introspection_c__MessageMember RcChannels__rosidl_type
     0,  // upper bound of string
     NULL,  // members of sub message
     true,  // is array
-    28,  // array size
+    27,  // array size
     false,  // is upper bound
     offsetof(px4_msgs__msg__RcChannels, function),  // bytes offset in struct
     NULL,  // default value

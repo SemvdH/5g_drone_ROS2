@@ -20,16 +20,32 @@ namespace msg
 namespace builder
 {
 
+class Init_ActuatorArmed_soft_stop
+{
+public:
+  explicit Init_ActuatorArmed_soft_stop(::px4_msgs::msg::ActuatorArmed & msg)
+  : msg_(msg)
+  {}
+  ::px4_msgs::msg::ActuatorArmed soft_stop(::px4_msgs::msg::ActuatorArmed::_soft_stop_type arg)
+  {
+    msg_.soft_stop = std::move(arg);
+    return std::move(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::ActuatorArmed msg_;
+};
+
 class Init_ActuatorArmed_in_esc_calibration_mode
 {
 public:
   explicit Init_ActuatorArmed_in_esc_calibration_mode(::px4_msgs::msg::ActuatorArmed & msg)
   : msg_(msg)
   {}
-  ::px4_msgs::msg::ActuatorArmed in_esc_calibration_mode(::px4_msgs::msg::ActuatorArmed::_in_esc_calibration_mode_type arg)
+  Init_ActuatorArmed_soft_stop in_esc_calibration_mode(::px4_msgs::msg::ActuatorArmed::_in_esc_calibration_mode_type arg)
   {
     msg_.in_esc_calibration_mode = std::move(arg);
-    return std::move(msg_);
+    return Init_ActuatorArmed_soft_stop(msg_);
   }
 
 private:

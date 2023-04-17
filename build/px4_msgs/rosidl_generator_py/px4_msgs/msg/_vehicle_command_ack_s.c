@@ -77,6 +77,15 @@ bool px4_msgs__msg__vehicle_command_ack__convert_from_py(PyObject * _pymsg, void
     ros_message->result = (uint8_t)PyLong_AsUnsignedLong(field);
     Py_DECREF(field);
   }
+  {  // from_external
+    PyObject * field = PyObject_GetAttrString(_pymsg, "from_external");
+    if (!field) {
+      return false;
+    }
+    assert(PyBool_Check(field));
+    ros_message->from_external = (Py_True == field);
+    Py_DECREF(field);
+  }
   {  // result_param1
     PyObject * field = PyObject_GetAttrString(_pymsg, "result_param1");
     if (!field) {
@@ -111,15 +120,6 @@ bool px4_msgs__msg__vehicle_command_ack__convert_from_py(PyObject * _pymsg, void
     }
     assert(PyLong_Check(field));
     ros_message->target_component = (uint8_t)PyLong_AsUnsignedLong(field);
-    Py_DECREF(field);
-  }
-  {  // from_external
-    PyObject * field = PyObject_GetAttrString(_pymsg, "from_external");
-    if (!field) {
-      return false;
-    }
-    assert(PyBool_Check(field));
-    ros_message->from_external = (Py_True == field);
     Py_DECREF(field);
   }
 
@@ -177,6 +177,17 @@ PyObject * px4_msgs__msg__vehicle_command_ack__convert_to_py(void * raw_ros_mess
       }
     }
   }
+  {  // from_external
+    PyObject * field = NULL;
+    field = PyBool_FromLong(ros_message->from_external ? 1 : 0);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "from_external", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
   {  // result_param1
     PyObject * field = NULL;
     field = PyLong_FromUnsignedLong(ros_message->result_param1);
@@ -215,17 +226,6 @@ PyObject * px4_msgs__msg__vehicle_command_ack__convert_to_py(void * raw_ros_mess
     field = PyLong_FromUnsignedLong(ros_message->target_component);
     {
       int rc = PyObject_SetAttrString(_pymessage, "target_component", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
-  {  // from_external
-    PyObject * field = NULL;
-    field = PyBool_FromLong(ros_message->from_external ? 1 : 0);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "from_external", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;

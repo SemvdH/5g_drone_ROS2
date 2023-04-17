@@ -68,31 +68,13 @@ bool px4_msgs__msg__tecs_status__convert_from_py(PyObject * _pymsg, void * _ros_
     ros_message->altitude_sp = (float)PyFloat_AS_DOUBLE(field);
     Py_DECREF(field);
   }
-  {  // altitude_reference
-    PyObject * field = PyObject_GetAttrString(_pymsg, "altitude_reference");
+  {  // altitude_filtered
+    PyObject * field = PyObject_GetAttrString(_pymsg, "altitude_filtered");
     if (!field) {
       return false;
     }
     assert(PyFloat_Check(field));
-    ros_message->altitude_reference = (float)PyFloat_AS_DOUBLE(field);
-    Py_DECREF(field);
-  }
-  {  // height_rate_reference
-    PyObject * field = PyObject_GetAttrString(_pymsg, "height_rate_reference");
-    if (!field) {
-      return false;
-    }
-    assert(PyFloat_Check(field));
-    ros_message->height_rate_reference = (float)PyFloat_AS_DOUBLE(field);
-    Py_DECREF(field);
-  }
-  {  // height_rate_direct
-    PyObject * field = PyObject_GetAttrString(_pymsg, "height_rate_direct");
-    if (!field) {
-      return false;
-    }
-    assert(PyFloat_Check(field));
-    ros_message->height_rate_direct = (float)PyFloat_AS_DOUBLE(field);
+    ros_message->altitude_filtered = (float)PyFloat_AS_DOUBLE(field);
     Py_DECREF(field);
   }
   {  // height_rate_setpoint
@@ -167,13 +149,58 @@ bool px4_msgs__msg__tecs_status__convert_from_py(PyObject * _pymsg, void * _ros_
     ros_message->true_airspeed_derivative_raw = (float)PyFloat_AS_DOUBLE(field);
     Py_DECREF(field);
   }
-  {  // total_energy_rate_sp
-    PyObject * field = PyObject_GetAttrString(_pymsg, "total_energy_rate_sp");
+  {  // true_airspeed_innovation
+    PyObject * field = PyObject_GetAttrString(_pymsg, "true_airspeed_innovation");
     if (!field) {
       return false;
     }
     assert(PyFloat_Check(field));
-    ros_message->total_energy_rate_sp = (float)PyFloat_AS_DOUBLE(field);
+    ros_message->true_airspeed_innovation = (float)PyFloat_AS_DOUBLE(field);
+    Py_DECREF(field);
+  }
+  {  // total_energy_error
+    PyObject * field = PyObject_GetAttrString(_pymsg, "total_energy_error");
+    if (!field) {
+      return false;
+    }
+    assert(PyFloat_Check(field));
+    ros_message->total_energy_error = (float)PyFloat_AS_DOUBLE(field);
+    Py_DECREF(field);
+  }
+  {  // energy_distribution_error
+    PyObject * field = PyObject_GetAttrString(_pymsg, "energy_distribution_error");
+    if (!field) {
+      return false;
+    }
+    assert(PyFloat_Check(field));
+    ros_message->energy_distribution_error = (float)PyFloat_AS_DOUBLE(field);
+    Py_DECREF(field);
+  }
+  {  // total_energy_rate_error
+    PyObject * field = PyObject_GetAttrString(_pymsg, "total_energy_rate_error");
+    if (!field) {
+      return false;
+    }
+    assert(PyFloat_Check(field));
+    ros_message->total_energy_rate_error = (float)PyFloat_AS_DOUBLE(field);
+    Py_DECREF(field);
+  }
+  {  // energy_distribution_rate_error
+    PyObject * field = PyObject_GetAttrString(_pymsg, "energy_distribution_rate_error");
+    if (!field) {
+      return false;
+    }
+    assert(PyFloat_Check(field));
+    ros_message->energy_distribution_rate_error = (float)PyFloat_AS_DOUBLE(field);
+    Py_DECREF(field);
+  }
+  {  // total_energy
+    PyObject * field = PyObject_GetAttrString(_pymsg, "total_energy");
+    if (!field) {
+      return false;
+    }
+    assert(PyFloat_Check(field));
+    ros_message->total_energy = (float)PyFloat_AS_DOUBLE(field);
     Py_DECREF(field);
   }
   {  // total_energy_rate
@@ -185,13 +212,13 @@ bool px4_msgs__msg__tecs_status__convert_from_py(PyObject * _pymsg, void * _ros_
     ros_message->total_energy_rate = (float)PyFloat_AS_DOUBLE(field);
     Py_DECREF(field);
   }
-  {  // total_energy_balance_rate_sp
-    PyObject * field = PyObject_GetAttrString(_pymsg, "total_energy_balance_rate_sp");
+  {  // total_energy_balance
+    PyObject * field = PyObject_GetAttrString(_pymsg, "total_energy_balance");
     if (!field) {
       return false;
     }
     assert(PyFloat_Check(field));
-    ros_message->total_energy_balance_rate_sp = (float)PyFloat_AS_DOUBLE(field);
+    ros_message->total_energy_balance = (float)PyFloat_AS_DOUBLE(field);
     Py_DECREF(field);
   }
   {  // total_energy_balance_rate
@@ -201,6 +228,42 @@ bool px4_msgs__msg__tecs_status__convert_from_py(PyObject * _pymsg, void * _ros_
     }
     assert(PyFloat_Check(field));
     ros_message->total_energy_balance_rate = (float)PyFloat_AS_DOUBLE(field);
+    Py_DECREF(field);
+  }
+  {  // total_energy_sp
+    PyObject * field = PyObject_GetAttrString(_pymsg, "total_energy_sp");
+    if (!field) {
+      return false;
+    }
+    assert(PyFloat_Check(field));
+    ros_message->total_energy_sp = (float)PyFloat_AS_DOUBLE(field);
+    Py_DECREF(field);
+  }
+  {  // total_energy_rate_sp
+    PyObject * field = PyObject_GetAttrString(_pymsg, "total_energy_rate_sp");
+    if (!field) {
+      return false;
+    }
+    assert(PyFloat_Check(field));
+    ros_message->total_energy_rate_sp = (float)PyFloat_AS_DOUBLE(field);
+    Py_DECREF(field);
+  }
+  {  // total_energy_balance_sp
+    PyObject * field = PyObject_GetAttrString(_pymsg, "total_energy_balance_sp");
+    if (!field) {
+      return false;
+    }
+    assert(PyFloat_Check(field));
+    ros_message->total_energy_balance_sp = (float)PyFloat_AS_DOUBLE(field);
+    Py_DECREF(field);
+  }
+  {  // total_energy_balance_rate_sp
+    PyObject * field = PyObject_GetAttrString(_pymsg, "total_energy_balance_rate_sp");
+    if (!field) {
+      return false;
+    }
+    assert(PyFloat_Check(field));
+    ros_message->total_energy_balance_rate_sp = (float)PyFloat_AS_DOUBLE(field);
     Py_DECREF(field);
   }
   {  // throttle_integ
@@ -237,15 +300,6 @@ bool px4_msgs__msg__tecs_status__convert_from_py(PyObject * _pymsg, void * _ros_
     }
     assert(PyFloat_Check(field));
     ros_message->pitch_sp_rad = (float)PyFloat_AS_DOUBLE(field);
-    Py_DECREF(field);
-  }
-  {  // throttle_trim
-    PyObject * field = PyObject_GetAttrString(_pymsg, "throttle_trim");
-    if (!field) {
-      return false;
-    }
-    assert(PyFloat_Check(field));
-    ros_message->throttle_trim = (float)PyFloat_AS_DOUBLE(field);
     Py_DECREF(field);
   }
   {  // mode
@@ -301,33 +355,11 @@ PyObject * px4_msgs__msg__tecs_status__convert_to_py(void * raw_ros_message)
       }
     }
   }
-  {  // altitude_reference
+  {  // altitude_filtered
     PyObject * field = NULL;
-    field = PyFloat_FromDouble(ros_message->altitude_reference);
+    field = PyFloat_FromDouble(ros_message->altitude_filtered);
     {
-      int rc = PyObject_SetAttrString(_pymessage, "altitude_reference", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
-  {  // height_rate_reference
-    PyObject * field = NULL;
-    field = PyFloat_FromDouble(ros_message->height_rate_reference);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "height_rate_reference", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
-  {  // height_rate_direct
-    PyObject * field = NULL;
-    field = PyFloat_FromDouble(ros_message->height_rate_direct);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "height_rate_direct", field);
+      int rc = PyObject_SetAttrString(_pymessage, "altitude_filtered", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;
@@ -422,11 +454,66 @@ PyObject * px4_msgs__msg__tecs_status__convert_to_py(void * raw_ros_message)
       }
     }
   }
-  {  // total_energy_rate_sp
+  {  // true_airspeed_innovation
     PyObject * field = NULL;
-    field = PyFloat_FromDouble(ros_message->total_energy_rate_sp);
+    field = PyFloat_FromDouble(ros_message->true_airspeed_innovation);
     {
-      int rc = PyObject_SetAttrString(_pymessage, "total_energy_rate_sp", field);
+      int rc = PyObject_SetAttrString(_pymessage, "true_airspeed_innovation", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // total_energy_error
+    PyObject * field = NULL;
+    field = PyFloat_FromDouble(ros_message->total_energy_error);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "total_energy_error", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // energy_distribution_error
+    PyObject * field = NULL;
+    field = PyFloat_FromDouble(ros_message->energy_distribution_error);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "energy_distribution_error", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // total_energy_rate_error
+    PyObject * field = NULL;
+    field = PyFloat_FromDouble(ros_message->total_energy_rate_error);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "total_energy_rate_error", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // energy_distribution_rate_error
+    PyObject * field = NULL;
+    field = PyFloat_FromDouble(ros_message->energy_distribution_rate_error);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "energy_distribution_rate_error", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // total_energy
+    PyObject * field = NULL;
+    field = PyFloat_FromDouble(ros_message->total_energy);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "total_energy", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;
@@ -444,11 +531,11 @@ PyObject * px4_msgs__msg__tecs_status__convert_to_py(void * raw_ros_message)
       }
     }
   }
-  {  // total_energy_balance_rate_sp
+  {  // total_energy_balance
     PyObject * field = NULL;
-    field = PyFloat_FromDouble(ros_message->total_energy_balance_rate_sp);
+    field = PyFloat_FromDouble(ros_message->total_energy_balance);
     {
-      int rc = PyObject_SetAttrString(_pymessage, "total_energy_balance_rate_sp", field);
+      int rc = PyObject_SetAttrString(_pymessage, "total_energy_balance", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;
@@ -460,6 +547,50 @@ PyObject * px4_msgs__msg__tecs_status__convert_to_py(void * raw_ros_message)
     field = PyFloat_FromDouble(ros_message->total_energy_balance_rate);
     {
       int rc = PyObject_SetAttrString(_pymessage, "total_energy_balance_rate", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // total_energy_sp
+    PyObject * field = NULL;
+    field = PyFloat_FromDouble(ros_message->total_energy_sp);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "total_energy_sp", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // total_energy_rate_sp
+    PyObject * field = NULL;
+    field = PyFloat_FromDouble(ros_message->total_energy_rate_sp);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "total_energy_rate_sp", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // total_energy_balance_sp
+    PyObject * field = NULL;
+    field = PyFloat_FromDouble(ros_message->total_energy_balance_sp);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "total_energy_balance_sp", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // total_energy_balance_rate_sp
+    PyObject * field = NULL;
+    field = PyFloat_FromDouble(ros_message->total_energy_balance_rate_sp);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "total_energy_balance_rate_sp", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;
@@ -504,17 +635,6 @@ PyObject * px4_msgs__msg__tecs_status__convert_to_py(void * raw_ros_message)
     field = PyFloat_FromDouble(ros_message->pitch_sp_rad);
     {
       int rc = PyObject_SetAttrString(_pymessage, "pitch_sp_rad", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
-  {  // throttle_trim
-    PyObject * field = NULL;
-    field = PyFloat_FromDouble(ros_message->throttle_trim);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "throttle_trim", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;

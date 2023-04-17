@@ -20,11 +20,11 @@ px4_msgs__msg__VehicleCommandAck__init(px4_msgs__msg__VehicleCommandAck * msg)
   // timestamp
   // command
   // result
+  // from_external
   // result_param1
   // result_param2
   // target_system
   // target_component
-  // from_external
   return true;
 }
 
@@ -37,11 +37,11 @@ px4_msgs__msg__VehicleCommandAck__fini(px4_msgs__msg__VehicleCommandAck * msg)
   // timestamp
   // command
   // result
+  // from_external
   // result_param1
   // result_param2
   // target_system
   // target_component
-  // from_external
 }
 
 bool
@@ -62,6 +62,10 @@ px4_msgs__msg__VehicleCommandAck__are_equal(const px4_msgs__msg__VehicleCommandA
   if (lhs->result != rhs->result) {
     return false;
   }
+  // from_external
+  if (lhs->from_external != rhs->from_external) {
+    return false;
+  }
   // result_param1
   if (lhs->result_param1 != rhs->result_param1) {
     return false;
@@ -76,10 +80,6 @@ px4_msgs__msg__VehicleCommandAck__are_equal(const px4_msgs__msg__VehicleCommandA
   }
   // target_component
   if (lhs->target_component != rhs->target_component) {
-    return false;
-  }
-  // from_external
-  if (lhs->from_external != rhs->from_external) {
     return false;
   }
   return true;
@@ -99,6 +99,8 @@ px4_msgs__msg__VehicleCommandAck__copy(
   output->command = input->command;
   // result
   output->result = input->result;
+  // from_external
+  output->from_external = input->from_external;
   // result_param1
   output->result_param1 = input->result_param1;
   // result_param2
@@ -107,8 +109,6 @@ px4_msgs__msg__VehicleCommandAck__copy(
   output->target_system = input->target_system;
   // target_component
   output->target_component = input->target_component;
-  // from_external
-  output->from_external = input->from_external;
   return true;
 }
 

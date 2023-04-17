@@ -83,7 +83,7 @@ static rosidl_typesupport_introspection_c__MessageMember ActuatorMotors__rosidl_
     0,  // upper bound of string
     NULL,  // members of sub message
     true,  // is array
-    12,  // array size
+    8,  // array size
     false,  // is upper bound
     offsetof(px4_msgs__msg__ActuatorMotors, control),  // bytes offset in struct
     NULL,  // default value

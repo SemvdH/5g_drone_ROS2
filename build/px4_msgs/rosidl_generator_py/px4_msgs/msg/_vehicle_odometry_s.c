@@ -71,37 +71,40 @@ bool px4_msgs__msg__vehicle_odometry__convert_from_py(PyObject * _pymsg, void * 
     ros_message->timestamp_sample = PyLong_AsUnsignedLongLong(field);
     Py_DECREF(field);
   }
-  {  // pose_frame
-    PyObject * field = PyObject_GetAttrString(_pymsg, "pose_frame");
+  {  // local_frame
+    PyObject * field = PyObject_GetAttrString(_pymsg, "local_frame");
     if (!field) {
       return false;
     }
     assert(PyLong_Check(field));
-    ros_message->pose_frame = (uint8_t)PyLong_AsUnsignedLong(field);
+    ros_message->local_frame = (uint8_t)PyLong_AsUnsignedLong(field);
     Py_DECREF(field);
   }
-  {  // position
-    PyObject * field = PyObject_GetAttrString(_pymsg, "position");
+  {  // x
+    PyObject * field = PyObject_GetAttrString(_pymsg, "x");
     if (!field) {
       return false;
     }
-    {
-      // TODO(dirk-thomas) use a better way to check the type before casting
-      assert(field->ob_type != NULL);
-      assert(field->ob_type->tp_name != NULL);
-      assert(strcmp(field->ob_type->tp_name, "numpy.ndarray") == 0);
-      PyArrayObject * seq_field = (PyArrayObject *)field;
-      Py_INCREF(seq_field);
-      assert(PyArray_NDIM(seq_field) == 1);
-      assert(PyArray_TYPE(seq_field) == NPY_FLOAT32);
-      Py_ssize_t size = 3;
-      float * dest = ros_message->position;
-      for (Py_ssize_t i = 0; i < size; ++i) {
-        float tmp = *(npy_float32 *)PyArray_GETPTR1(seq_field, i);
-        memcpy(&dest[i], &tmp, sizeof(float));
-      }
-      Py_DECREF(seq_field);
+    assert(PyFloat_Check(field));
+    ros_message->x = (float)PyFloat_AS_DOUBLE(field);
+    Py_DECREF(field);
+  }
+  {  // y
+    PyObject * field = PyObject_GetAttrString(_pymsg, "y");
+    if (!field) {
+      return false;
     }
+    assert(PyFloat_Check(field));
+    ros_message->y = (float)PyFloat_AS_DOUBLE(field);
+    Py_DECREF(field);
+  }
+  {  // z
+    PyObject * field = PyObject_GetAttrString(_pymsg, "z");
+    if (!field) {
+      return false;
+    }
+    assert(PyFloat_Check(field));
+    ros_message->z = (float)PyFloat_AS_DOUBLE(field);
     Py_DECREF(field);
   }
   {  // q
@@ -128,6 +131,54 @@ bool px4_msgs__msg__vehicle_odometry__convert_from_py(PyObject * _pymsg, void * 
     }
     Py_DECREF(field);
   }
+  {  // q_offset
+    PyObject * field = PyObject_GetAttrString(_pymsg, "q_offset");
+    if (!field) {
+      return false;
+    }
+    {
+      // TODO(dirk-thomas) use a better way to check the type before casting
+      assert(field->ob_type != NULL);
+      assert(field->ob_type->tp_name != NULL);
+      assert(strcmp(field->ob_type->tp_name, "numpy.ndarray") == 0);
+      PyArrayObject * seq_field = (PyArrayObject *)field;
+      Py_INCREF(seq_field);
+      assert(PyArray_NDIM(seq_field) == 1);
+      assert(PyArray_TYPE(seq_field) == NPY_FLOAT32);
+      Py_ssize_t size = 4;
+      float * dest = ros_message->q_offset;
+      for (Py_ssize_t i = 0; i < size; ++i) {
+        float tmp = *(npy_float32 *)PyArray_GETPTR1(seq_field, i);
+        memcpy(&dest[i], &tmp, sizeof(float));
+      }
+      Py_DECREF(seq_field);
+    }
+    Py_DECREF(field);
+  }
+  {  // pose_covariance
+    PyObject * field = PyObject_GetAttrString(_pymsg, "pose_covariance");
+    if (!field) {
+      return false;
+    }
+    {
+      // TODO(dirk-thomas) use a better way to check the type before casting
+      assert(field->ob_type != NULL);
+      assert(field->ob_type->tp_name != NULL);
+      assert(strcmp(field->ob_type->tp_name, "numpy.ndarray") == 0);
+      PyArrayObject * seq_field = (PyArrayObject *)field;
+      Py_INCREF(seq_field);
+      assert(PyArray_NDIM(seq_field) == 1);
+      assert(PyArray_TYPE(seq_field) == NPY_FLOAT32);
+      Py_ssize_t size = 21;
+      float * dest = ros_message->pose_covariance;
+      for (Py_ssize_t i = 0; i < size; ++i) {
+        float tmp = *(npy_float32 *)PyArray_GETPTR1(seq_field, i);
+        memcpy(&dest[i], &tmp, sizeof(float));
+      }
+      Py_DECREF(seq_field);
+    }
+    Py_DECREF(field);
+  }
   {  // velocity_frame
     PyObject * field = PyObject_GetAttrString(_pymsg, "velocity_frame");
     if (!field) {
@@ -137,104 +188,62 @@ bool px4_msgs__msg__vehicle_odometry__convert_from_py(PyObject * _pymsg, void * 
     ros_message->velocity_frame = (uint8_t)PyLong_AsUnsignedLong(field);
     Py_DECREF(field);
   }
-  {  // velocity
-    PyObject * field = PyObject_GetAttrString(_pymsg, "velocity");
+  {  // vx
+    PyObject * field = PyObject_GetAttrString(_pymsg, "vx");
     if (!field) {
       return false;
     }
-    {
-      // TODO(dirk-thomas) use a better way to check the type before casting
-      assert(field->ob_type != NULL);
-      assert(field->ob_type->tp_name != NULL);
-      assert(strcmp(field->ob_type->tp_name, "numpy.ndarray") == 0);
-      PyArrayObject * seq_field = (PyArrayObject *)field;
-      Py_INCREF(seq_field);
-      assert(PyArray_NDIM(seq_field) == 1);
-      assert(PyArray_TYPE(seq_field) == NPY_FLOAT32);
-      Py_ssize_t size = 3;
-      float * dest = ros_message->velocity;
-      for (Py_ssize_t i = 0; i < size; ++i) {
-        float tmp = *(npy_float32 *)PyArray_GETPTR1(seq_field, i);
-        memcpy(&dest[i], &tmp, sizeof(float));
-      }
-      Py_DECREF(seq_field);
-    }
+    assert(PyFloat_Check(field));
+    ros_message->vx = (float)PyFloat_AS_DOUBLE(field);
     Py_DECREF(field);
   }
-  {  // angular_velocity
-    PyObject * field = PyObject_GetAttrString(_pymsg, "angular_velocity");
+  {  // vy
+    PyObject * field = PyObject_GetAttrString(_pymsg, "vy");
     if (!field) {
       return false;
     }
-    {
-      // TODO(dirk-thomas) use a better way to check the type before casting
-      assert(field->ob_type != NULL);
-      assert(field->ob_type->tp_name != NULL);
-      assert(strcmp(field->ob_type->tp_name, "numpy.ndarray") == 0);
-      PyArrayObject * seq_field = (PyArrayObject *)field;
-      Py_INCREF(seq_field);
-      assert(PyArray_NDIM(seq_field) == 1);
-      assert(PyArray_TYPE(seq_field) == NPY_FLOAT32);
-      Py_ssize_t size = 3;
-      float * dest = ros_message->angular_velocity;
-      for (Py_ssize_t i = 0; i < size; ++i) {
-        float tmp = *(npy_float32 *)PyArray_GETPTR1(seq_field, i);
-        memcpy(&dest[i], &tmp, sizeof(float));
-      }
-      Py_DECREF(seq_field);
-    }
+    assert(PyFloat_Check(field));
+    ros_message->vy = (float)PyFloat_AS_DOUBLE(field);
     Py_DECREF(field);
   }
-  {  // position_variance
-    PyObject * field = PyObject_GetAttrString(_pymsg, "position_variance");
+  {  // vz
+    PyObject * field = PyObject_GetAttrString(_pymsg, "vz");
     if (!field) {
       return false;
     }
-    {
-      // TODO(dirk-thomas) use a better way to check the type before casting
-      assert(field->ob_type != NULL);
-      assert(field->ob_type->tp_name != NULL);
-      assert(strcmp(field->ob_type->tp_name, "numpy.ndarray") == 0);
-      PyArrayObject * seq_field = (PyArrayObject *)field;
-      Py_INCREF(seq_field);
-      assert(PyArray_NDIM(seq_field) == 1);
-      assert(PyArray_TYPE(seq_field) == NPY_FLOAT32);
-      Py_ssize_t size = 3;
-      float * dest = ros_message->position_variance;
-      for (Py_ssize_t i = 0; i < size; ++i) {
-        float tmp = *(npy_float32 *)PyArray_GETPTR1(seq_field, i);
-        memcpy(&dest[i], &tmp, sizeof(float));
-      }
-      Py_DECREF(seq_field);
-    }
+    assert(PyFloat_Check(field));
+    ros_message->vz = (float)PyFloat_AS_DOUBLE(field);
     Py_DECREF(field);
   }
-  {  // orientation_variance
-    PyObject * field = PyObject_GetAttrString(_pymsg, "orientation_variance");
+  {  // rollspeed
+    PyObject * field = PyObject_GetAttrString(_pymsg, "rollspeed");
     if (!field) {
       return false;
     }
-    {
-      // TODO(dirk-thomas) use a better way to check the type before casting
-      assert(field->ob_type != NULL);
-      assert(field->ob_type->tp_name != NULL);
-      assert(strcmp(field->ob_type->tp_name, "numpy.ndarray") == 0);
-      PyArrayObject * seq_field = (PyArrayObject *)field;
-      Py_INCREF(seq_field);
-      assert(PyArray_NDIM(seq_field) == 1);
-      assert(PyArray_TYPE(seq_field) == NPY_FLOAT32);
-      Py_ssize_t size = 3;
-      float * dest = ros_message->orientation_variance;
-      for (Py_ssize_t i = 0; i < size; ++i) {
-        float tmp = *(npy_float32 *)PyArray_GETPTR1(seq_field, i);
-        memcpy(&dest[i], &tmp, sizeof(float));
-      }
-      Py_DECREF(seq_field);
-    }
+    assert(PyFloat_Check(field));
+    ros_message->rollspeed = (float)PyFloat_AS_DOUBLE(field);
     Py_DECREF(field);
   }
-  {  // velocity_variance
-    PyObject * field = PyObject_GetAttrString(_pymsg, "velocity_variance");
+  {  // pitchspeed
+    PyObject * field = PyObject_GetAttrString(_pymsg, "pitchspeed");
+    if (!field) {
+      return false;
+    }
+    assert(PyFloat_Check(field));
+    ros_message->pitchspeed = (float)PyFloat_AS_DOUBLE(field);
+    Py_DECREF(field);
+  }
+  {  // yawspeed
+    PyObject * field = PyObject_GetAttrString(_pymsg, "yawspeed");
+    if (!field) {
+      return false;
+    }
+    assert(PyFloat_Check(field));
+    ros_message->yawspeed = (float)PyFloat_AS_DOUBLE(field);
+    Py_DECREF(field);
+  }
+  {  // velocity_covariance
+    PyObject * field = PyObject_GetAttrString(_pymsg, "velocity_covariance");
     if (!field) {
       return false;
     }
@@ -247,8 +256,8 @@ bool px4_msgs__msg__vehicle_odometry__convert_from_py(PyObject * _pymsg, void * 
       Py_INCREF(seq_field);
       assert(PyArray_NDIM(seq_field) == 1);
       assert(PyArray_TYPE(seq_field) == NPY_FLOAT32);
-      Py_ssize_t size = 3;
-      float * dest = ros_message->velocity_variance;
+      Py_ssize_t size = 21;
+      float * dest = ros_message->velocity_covariance;
       for (Py_ssize_t i = 0; i < size; ++i) {
         float tmp = *(npy_float32 *)PyArray_GETPTR1(seq_field, i);
         memcpy(&dest[i], &tmp, sizeof(float));
@@ -264,15 +273,6 @@ bool px4_msgs__msg__vehicle_odometry__convert_from_py(PyObject * _pymsg, void * 
     }
     assert(PyLong_Check(field));
     ros_message->reset_counter = (uint8_t)PyLong_AsUnsignedLong(field);
-    Py_DECREF(field);
-  }
-  {  // quality
-    PyObject * field = PyObject_GetAttrString(_pymsg, "quality");
-    if (!field) {
-      return false;
-    }
-    assert(PyLong_Check(field));
-    ros_message->quality = (int8_t)PyLong_AsLong(field);
     Py_DECREF(field);
   }
 
@@ -319,34 +319,49 @@ PyObject * px4_msgs__msg__vehicle_odometry__convert_to_py(void * raw_ros_message
       }
     }
   }
-  {  // pose_frame
+  {  // local_frame
     PyObject * field = NULL;
-    field = PyLong_FromUnsignedLong(ros_message->pose_frame);
+    field = PyLong_FromUnsignedLong(ros_message->local_frame);
     {
-      int rc = PyObject_SetAttrString(_pymessage, "pose_frame", field);
+      int rc = PyObject_SetAttrString(_pymessage, "local_frame", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;
       }
     }
   }
-  {  // position
+  {  // x
     PyObject * field = NULL;
-    field = PyObject_GetAttrString(_pymessage, "position");
-    if (!field) {
-      return NULL;
+    field = PyFloat_FromDouble(ros_message->x);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "x", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
     }
-    assert(field->ob_type != NULL);
-    assert(field->ob_type->tp_name != NULL);
-    assert(strcmp(field->ob_type->tp_name, "numpy.ndarray") == 0);
-    PyArrayObject * seq_field = (PyArrayObject *)field;
-    assert(PyArray_NDIM(seq_field) == 1);
-    assert(PyArray_TYPE(seq_field) == NPY_FLOAT32);
-    assert(sizeof(npy_float32) == sizeof(float));
-    npy_float32 * dst = (npy_float32 *)PyArray_GETPTR1(seq_field, 0);
-    float * src = &(ros_message->position[0]);
-    memcpy(dst, src, 3 * sizeof(float));
-    Py_DECREF(field);
+  }
+  {  // y
+    PyObject * field = NULL;
+    field = PyFloat_FromDouble(ros_message->y);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "y", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // z
+    PyObject * field = NULL;
+    field = PyFloat_FromDouble(ros_message->z);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "z", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
   }
   {  // q
     PyObject * field = NULL;
@@ -366,6 +381,42 @@ PyObject * px4_msgs__msg__vehicle_odometry__convert_to_py(void * raw_ros_message
     memcpy(dst, src, 4 * sizeof(float));
     Py_DECREF(field);
   }
+  {  // q_offset
+    PyObject * field = NULL;
+    field = PyObject_GetAttrString(_pymessage, "q_offset");
+    if (!field) {
+      return NULL;
+    }
+    assert(field->ob_type != NULL);
+    assert(field->ob_type->tp_name != NULL);
+    assert(strcmp(field->ob_type->tp_name, "numpy.ndarray") == 0);
+    PyArrayObject * seq_field = (PyArrayObject *)field;
+    assert(PyArray_NDIM(seq_field) == 1);
+    assert(PyArray_TYPE(seq_field) == NPY_FLOAT32);
+    assert(sizeof(npy_float32) == sizeof(float));
+    npy_float32 * dst = (npy_float32 *)PyArray_GETPTR1(seq_field, 0);
+    float * src = &(ros_message->q_offset[0]);
+    memcpy(dst, src, 4 * sizeof(float));
+    Py_DECREF(field);
+  }
+  {  // pose_covariance
+    PyObject * field = NULL;
+    field = PyObject_GetAttrString(_pymessage, "pose_covariance");
+    if (!field) {
+      return NULL;
+    }
+    assert(field->ob_type != NULL);
+    assert(field->ob_type->tp_name != NULL);
+    assert(strcmp(field->ob_type->tp_name, "numpy.ndarray") == 0);
+    PyArrayObject * seq_field = (PyArrayObject *)field;
+    assert(PyArray_NDIM(seq_field) == 1);
+    assert(PyArray_TYPE(seq_field) == NPY_FLOAT32);
+    assert(sizeof(npy_float32) == sizeof(float));
+    npy_float32 * dst = (npy_float32 *)PyArray_GETPTR1(seq_field, 0);
+    float * src = &(ros_message->pose_covariance[0]);
+    memcpy(dst, src, 21 * sizeof(float));
+    Py_DECREF(field);
+  }
   {  // velocity_frame
     PyObject * field = NULL;
     field = PyLong_FromUnsignedLong(ros_message->velocity_frame);
@@ -377,81 +428,75 @@ PyObject * px4_msgs__msg__vehicle_odometry__convert_to_py(void * raw_ros_message
       }
     }
   }
-  {  // velocity
+  {  // vx
     PyObject * field = NULL;
-    field = PyObject_GetAttrString(_pymessage, "velocity");
-    if (!field) {
-      return NULL;
+    field = PyFloat_FromDouble(ros_message->vx);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "vx", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
     }
-    assert(field->ob_type != NULL);
-    assert(field->ob_type->tp_name != NULL);
-    assert(strcmp(field->ob_type->tp_name, "numpy.ndarray") == 0);
-    PyArrayObject * seq_field = (PyArrayObject *)field;
-    assert(PyArray_NDIM(seq_field) == 1);
-    assert(PyArray_TYPE(seq_field) == NPY_FLOAT32);
-    assert(sizeof(npy_float32) == sizeof(float));
-    npy_float32 * dst = (npy_float32 *)PyArray_GETPTR1(seq_field, 0);
-    float * src = &(ros_message->velocity[0]);
-    memcpy(dst, src, 3 * sizeof(float));
-    Py_DECREF(field);
   }
-  {  // angular_velocity
+  {  // vy
     PyObject * field = NULL;
-    field = PyObject_GetAttrString(_pymessage, "angular_velocity");
-    if (!field) {
-      return NULL;
+    field = PyFloat_FromDouble(ros_message->vy);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "vy", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
     }
-    assert(field->ob_type != NULL);
-    assert(field->ob_type->tp_name != NULL);
-    assert(strcmp(field->ob_type->tp_name, "numpy.ndarray") == 0);
-    PyArrayObject * seq_field = (PyArrayObject *)field;
-    assert(PyArray_NDIM(seq_field) == 1);
-    assert(PyArray_TYPE(seq_field) == NPY_FLOAT32);
-    assert(sizeof(npy_float32) == sizeof(float));
-    npy_float32 * dst = (npy_float32 *)PyArray_GETPTR1(seq_field, 0);
-    float * src = &(ros_message->angular_velocity[0]);
-    memcpy(dst, src, 3 * sizeof(float));
-    Py_DECREF(field);
   }
-  {  // position_variance
+  {  // vz
     PyObject * field = NULL;
-    field = PyObject_GetAttrString(_pymessage, "position_variance");
-    if (!field) {
-      return NULL;
+    field = PyFloat_FromDouble(ros_message->vz);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "vz", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
     }
-    assert(field->ob_type != NULL);
-    assert(field->ob_type->tp_name != NULL);
-    assert(strcmp(field->ob_type->tp_name, "numpy.ndarray") == 0);
-    PyArrayObject * seq_field = (PyArrayObject *)field;
-    assert(PyArray_NDIM(seq_field) == 1);
-    assert(PyArray_TYPE(seq_field) == NPY_FLOAT32);
-    assert(sizeof(npy_float32) == sizeof(float));
-    npy_float32 * dst = (npy_float32 *)PyArray_GETPTR1(seq_field, 0);
-    float * src = &(ros_message->position_variance[0]);
-    memcpy(dst, src, 3 * sizeof(float));
-    Py_DECREF(field);
   }
-  {  // orientation_variance
+  {  // rollspeed
     PyObject * field = NULL;
-    field = PyObject_GetAttrString(_pymessage, "orientation_variance");
-    if (!field) {
-      return NULL;
+    field = PyFloat_FromDouble(ros_message->rollspeed);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "rollspeed", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
     }
-    assert(field->ob_type != NULL);
-    assert(field->ob_type->tp_name != NULL);
-    assert(strcmp(field->ob_type->tp_name, "numpy.ndarray") == 0);
-    PyArrayObject * seq_field = (PyArrayObject *)field;
-    assert(PyArray_NDIM(seq_field) == 1);
-    assert(PyArray_TYPE(seq_field) == NPY_FLOAT32);
-    assert(sizeof(npy_float32) == sizeof(float));
-    npy_float32 * dst = (npy_float32 *)PyArray_GETPTR1(seq_field, 0);
-    float * src = &(ros_message->orientation_variance[0]);
-    memcpy(dst, src, 3 * sizeof(float));
-    Py_DECREF(field);
   }
-  {  // velocity_variance
+  {  // pitchspeed
     PyObject * field = NULL;
-    field = PyObject_GetAttrString(_pymessage, "velocity_variance");
+    field = PyFloat_FromDouble(ros_message->pitchspeed);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "pitchspeed", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // yawspeed
+    PyObject * field = NULL;
+    field = PyFloat_FromDouble(ros_message->yawspeed);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "yawspeed", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // velocity_covariance
+    PyObject * field = NULL;
+    field = PyObject_GetAttrString(_pymessage, "velocity_covariance");
     if (!field) {
       return NULL;
     }
@@ -463,8 +508,8 @@ PyObject * px4_msgs__msg__vehicle_odometry__convert_to_py(void * raw_ros_message
     assert(PyArray_TYPE(seq_field) == NPY_FLOAT32);
     assert(sizeof(npy_float32) == sizeof(float));
     npy_float32 * dst = (npy_float32 *)PyArray_GETPTR1(seq_field, 0);
-    float * src = &(ros_message->velocity_variance[0]);
-    memcpy(dst, src, 3 * sizeof(float));
+    float * src = &(ros_message->velocity_covariance[0]);
+    memcpy(dst, src, 21 * sizeof(float));
     Py_DECREF(field);
   }
   {  // reset_counter
@@ -472,17 +517,6 @@ PyObject * px4_msgs__msg__vehicle_odometry__convert_to_py(void * raw_ros_message
     field = PyLong_FromUnsignedLong(ros_message->reset_counter);
     {
       int rc = PyObject_SetAttrString(_pymessage, "reset_counter", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
-  {  // quality
-    PyObject * field = NULL;
-    field = PyLong_FromLong(ros_message->quality);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "quality", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;

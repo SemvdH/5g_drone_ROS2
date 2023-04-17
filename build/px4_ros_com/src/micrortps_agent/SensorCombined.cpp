@@ -40,23 +40,23 @@ using namespace eprosima::fastcdr::exception;
 
 px4_msgs::msg::SensorCombined::SensorCombined()
 {
-    // m_timestamp com.eprosima.idl.parser.typecode.PrimitiveTypeCode@3e78b6a5
+    // m_timestamp com.eprosima.idl.parser.typecode.PrimitiveTypeCode@7068e664
     m_timestamp = 0;
-    // m_gyro_rad com.eprosima.idl.parser.typecode.AliasTypeCode@769a1df5
+    // m_gyro_rad com.eprosima.idl.parser.typecode.AliasTypeCode@60db1c0e
     memset(&m_gyro_rad, 0, (3) * 4);
-    // m_gyro_integral_dt com.eprosima.idl.parser.typecode.PrimitiveTypeCode@41f69e84
+    // m_gyro_integral_dt com.eprosima.idl.parser.typecode.PrimitiveTypeCode@3e78b6a5
     m_gyro_integral_dt = 0;
-    // m_accelerometer_timestamp_relative com.eprosima.idl.parser.typecode.PrimitiveTypeCode@7975d1d8
+    // m_accelerometer_timestamp_relative com.eprosima.idl.parser.typecode.PrimitiveTypeCode@769a1df5
     m_accelerometer_timestamp_relative = 0;
-    // m_accelerometer_m_s2 com.eprosima.idl.parser.typecode.AliasTypeCode@769a1df5
+    // m_accelerometer_m_s2 com.eprosima.idl.parser.typecode.AliasTypeCode@60db1c0e
     memset(&m_accelerometer_m_s2, 0, (3) * 4);
-    // m_accelerometer_integral_dt com.eprosima.idl.parser.typecode.PrimitiveTypeCode@2438dcd
+    // m_accelerometer_integral_dt com.eprosima.idl.parser.typecode.PrimitiveTypeCode@41f69e84
     m_accelerometer_integral_dt = 0;
-    // m_accelerometer_clipping com.eprosima.idl.parser.typecode.PrimitiveTypeCode@24105dc5
+    // m_accelerometer_clipping com.eprosima.idl.parser.typecode.PrimitiveTypeCode@7975d1d8
     m_accelerometer_clipping = 0;
-    // m_accel_calibration_count com.eprosima.idl.parser.typecode.PrimitiveTypeCode@5167f57d
+    // m_accel_calibration_count com.eprosima.idl.parser.typecode.PrimitiveTypeCode@2438dcd
     m_accel_calibration_count = 0;
-    // m_gyro_calibration_count com.eprosima.idl.parser.typecode.PrimitiveTypeCode@64b0598
+    // m_gyro_calibration_count com.eprosima.idl.parser.typecode.PrimitiveTypeCode@24105dc5
     m_gyro_calibration_count = 0;
 
 }

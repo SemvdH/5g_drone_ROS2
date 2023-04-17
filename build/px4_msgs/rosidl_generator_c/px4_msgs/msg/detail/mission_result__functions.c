@@ -26,6 +26,8 @@ px4_msgs__msg__MissionResult__init(px4_msgs__msg__MissionResult * msg)
   // warning
   // finished
   // failure
+  // stay_in_failsafe
+  // flight_termination
   // item_do_jump_changed
   // item_changed_index
   // item_do_jump_remaining
@@ -48,6 +50,8 @@ px4_msgs__msg__MissionResult__fini(px4_msgs__msg__MissionResult * msg)
   // warning
   // finished
   // failure
+  // stay_in_failsafe
+  // flight_termination
   // item_do_jump_changed
   // item_changed_index
   // item_do_jump_remaining
@@ -96,6 +100,14 @@ px4_msgs__msg__MissionResult__are_equal(const px4_msgs__msg__MissionResult * lhs
   if (lhs->failure != rhs->failure) {
     return false;
   }
+  // stay_in_failsafe
+  if (lhs->stay_in_failsafe != rhs->stay_in_failsafe) {
+    return false;
+  }
+  // flight_termination
+  if (lhs->flight_termination != rhs->flight_termination) {
+    return false;
+  }
   // item_do_jump_changed
   if (lhs->item_do_jump_changed != rhs->item_do_jump_changed) {
     return false;
@@ -141,6 +153,10 @@ px4_msgs__msg__MissionResult__copy(
   output->finished = input->finished;
   // failure
   output->failure = input->failure;
+  // stay_in_failsafe
+  output->stay_in_failsafe = input->stay_in_failsafe;
+  // flight_termination
+  output->flight_termination = input->flight_termination;
   // item_do_jump_changed
   output->item_do_jump_changed = input->item_do_jump_changed;
   // item_changed_index

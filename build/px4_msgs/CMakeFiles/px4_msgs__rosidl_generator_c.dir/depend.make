@@ -25,6 +25,90 @@ CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/deta
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_armed__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/actuator_armed__struct.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_armed__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
 
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls0__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/actuator_controls0__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls0__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls0__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls0__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls0__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls0__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls0__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls0__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls0__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/actuator_controls0__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls0__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/actuator_controls0__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls0__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls1__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/actuator_controls1__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls1__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls1__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls1__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls1__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls1__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls1__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls1__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls1__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/actuator_controls1__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls1__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/actuator_controls1__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls1__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls2__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/actuator_controls2__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls2__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls2__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls2__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls2__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls2__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls2__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls2__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls2__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/actuator_controls2__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls2__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/actuator_controls2__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls2__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls3__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/actuator_controls3__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls3__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls3__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls3__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls3__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls3__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls3__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls3__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls3__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/actuator_controls3__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls3__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/actuator_controls3__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls3__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/actuator_controls__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/actuator_controls__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/actuator_controls__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_status0__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_status0__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_status0__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_status0__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_status0__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_status0__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_status0__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_status0__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_status0__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_status0__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_status0__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_status0__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_status0__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_status0__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_status1__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_status1__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_status1__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_status1__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_status1__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_status1__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_status1__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_status1__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_status1__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_status1__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_status1__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_status1__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_status1__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_status1__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_status__functions.c
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_status__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_status__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
@@ -36,6 +120,30 @@ CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/deta
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_status__functions.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_status__struct.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_virtual_fw__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_virtual_fw__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_virtual_fw__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_virtual_fw__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_virtual_fw__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_virtual_fw__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_virtual_fw__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_virtual_fw__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_virtual_fw__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_virtual_fw__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_virtual_fw__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_virtual_fw__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_virtual_fw__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_virtual_fw__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_virtual_mc__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_virtual_mc__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_virtual_mc__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_virtual_mc__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_virtual_mc__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_virtual_mc__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_virtual_mc__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_virtual_mc__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_virtual_mc__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_virtual_mc__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_virtual_mc__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_virtual_mc__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_virtual_mc__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_controls_virtual_mc__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
 
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_motors__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/actuator_motors__functions.c
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_motors__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
@@ -60,6 +168,18 @@ CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/deta
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_outputs__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/actuator_outputs__functions.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_outputs__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/actuator_outputs__struct.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_outputs__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_outputs_sim__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/actuator_outputs_sim__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_outputs_sim__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_outputs_sim__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_outputs_sim__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_outputs_sim__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_outputs_sim__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_outputs_sim__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_outputs_sim__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_outputs_sim__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/actuator_outputs_sim__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_outputs_sim__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/actuator_outputs_sim__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_outputs_sim__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
 
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_servos__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/actuator_servos__functions.c
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/actuator_servos__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
@@ -253,6 +373,18 @@ CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/deta
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/collision_report__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/collision_report__struct.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/collision_report__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
 
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/commander_state__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/commander_state__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/commander_state__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/commander_state__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/commander_state__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/commander_state__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/commander_state__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/commander_state__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/commander_state__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/commander_state__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/commander_state__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/commander_state__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/commander_state__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/commander_state__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/control_allocator_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/control_allocator_status__functions.c
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/control_allocator_status__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/control_allocator_status__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
@@ -387,65 +519,29 @@ CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/deta
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/esc_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/esc_status__struct.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/esc_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
 
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_aid_source1d__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_aid_source1d__functions.c
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_aid_source1d__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_aid_source1d__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_aid_source1d__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_aid_source1d__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_aid_source1d__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_aid_source1d__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_aid_source1d__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_aid_source1d__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_aid_source1d__functions.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_aid_source1d__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_aid_source1d__struct.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_aid_source1d__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_attitude__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_attitude__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_attitude__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_attitude__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_attitude__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_attitude__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_attitude__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_attitude__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_attitude__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_attitude__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_attitude__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_attitude__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_attitude__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_attitude__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
 
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_aid_source2d__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_aid_source2d__functions.c
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_aid_source2d__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_aid_source2d__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_aid_source2d__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_aid_source2d__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_aid_source2d__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_aid_source2d__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_aid_source2d__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_aid_source2d__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_aid_source2d__functions.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_aid_source2d__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_aid_source2d__struct.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_aid_source2d__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
-
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_aid_source3d__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_aid_source3d__functions.c
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_aid_source3d__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_aid_source3d__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_aid_source3d__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_aid_source3d__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_aid_source3d__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_aid_source3d__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_aid_source3d__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_aid_source3d__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_aid_source3d__functions.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_aid_source3d__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_aid_source3d__struct.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_aid_source3d__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
-
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_bias3d__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_bias3d__functions.c
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_bias3d__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_bias3d__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_bias3d__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_bias3d__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_bias3d__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_bias3d__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_bias3d__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_bias3d__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_bias3d__functions.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_bias3d__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_bias3d__struct.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_bias3d__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
-
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_bias__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_bias__functions.c
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_bias__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_bias__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_bias__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_bias__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_bias__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_bias__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_bias__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_bias__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_bias__functions.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_bias__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_bias__struct.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_bias__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_baro_bias__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_baro_bias__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_baro_bias__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_baro_bias__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_baro_bias__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_baro_bias__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_baro_bias__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_baro_bias__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_baro_bias__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_baro_bias__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_baro_bias__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_baro_bias__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_baro_bias__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_baro_bias__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
 
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_event_flags__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_event_flags__functions.c
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_event_flags__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
@@ -459,6 +555,18 @@ CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/deta
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_event_flags__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_event_flags__struct.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_event_flags__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
 
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_global_position__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_global_position__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_global_position__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_global_position__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_global_position__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_global_position__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_global_position__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_global_position__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_global_position__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_global_position__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_global_position__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_global_position__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_global_position__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_global_position__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_gps_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_gps_status__functions.c
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_gps_status__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_gps_status__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
@@ -471,6 +579,30 @@ CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/deta
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_gps_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_gps_status__struct.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_gps_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
 
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_innovation_test_ratios__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_innovation_test_ratios__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_innovation_test_ratios__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_innovation_test_ratios__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_innovation_test_ratios__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_innovation_test_ratios__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_innovation_test_ratios__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_innovation_test_ratios__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_innovation_test_ratios__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_innovation_test_ratios__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_innovation_test_ratios__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_innovation_test_ratios__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_innovation_test_ratios__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_innovation_test_ratios__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_innovation_variances__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_innovation_variances__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_innovation_variances__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_innovation_variances__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_innovation_variances__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_innovation_variances__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_innovation_variances__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_innovation_variances__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_innovation_variances__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_innovation_variances__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_innovation_variances__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_innovation_variances__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_innovation_variances__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_innovation_variances__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_innovations__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_innovations__functions.c
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_innovations__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_innovations__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
@@ -482,6 +614,42 @@ CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/deta
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_innovations__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_innovations__functions.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_innovations__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_innovations__struct.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_innovations__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_local_position__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_local_position__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_local_position__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_local_position__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_local_position__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_local_position__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_local_position__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_local_position__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_local_position__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_local_position__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_local_position__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_local_position__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_local_position__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_local_position__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_odometry__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_odometry__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_odometry__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_odometry__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_odometry__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_odometry__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_odometry__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_odometry__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_odometry__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_odometry__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_odometry__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_odometry__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_odometry__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_odometry__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_optical_flow_vel__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_optical_flow_vel__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_optical_flow_vel__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_optical_flow_vel__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_optical_flow_vel__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_optical_flow_vel__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_optical_flow_vel__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_optical_flow_vel__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_optical_flow_vel__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_optical_flow_vel__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_optical_flow_vel__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_optical_flow_vel__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_optical_flow_vel__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_optical_flow_vel__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
 
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_selector_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_selector_status__functions.c
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_selector_status__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
@@ -543,6 +711,30 @@ CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/deta
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_status_flags__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_status_flags__struct.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_status_flags__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
 
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_visual_odometry_aligned__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_visual_odometry_aligned__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_visual_odometry_aligned__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_visual_odometry_aligned__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_visual_odometry_aligned__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_visual_odometry_aligned__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_visual_odometry_aligned__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_visual_odometry_aligned__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_visual_odometry_aligned__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_visual_odometry_aligned__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_visual_odometry_aligned__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_visual_odometry_aligned__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_visual_odometry_aligned__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_visual_odometry_aligned__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_wind__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_wind__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_wind__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_wind__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_wind__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_wind__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_wind__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_wind__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_wind__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_wind__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_wind__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_wind__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/estimator_wind__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/estimator_wind__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/event__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/event__functions.c
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/event__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/event__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
@@ -554,18 +746,6 @@ CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/deta
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/event__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/event__functions.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/event__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/event__struct.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/event__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
-
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/failsafe_flags__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/failsafe_flags__functions.c
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/failsafe_flags__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/failsafe_flags__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/failsafe_flags__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/failsafe_flags__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/failsafe_flags__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/failsafe_flags__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/failsafe_flags__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/failsafe_flags__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/failsafe_flags__functions.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/failsafe_flags__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/failsafe_flags__struct.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/failsafe_flags__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
 
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/failure_detector_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/failure_detector_status__functions.c
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/failure_detector_status__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
@@ -591,29 +771,17 @@ CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/deta
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/follow_target__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/follow_target__struct.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/follow_target__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
 
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/follow_target_estimator__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/follow_target_estimator__functions.c
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/follow_target_estimator__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/follow_target_estimator__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/follow_target_estimator__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/follow_target_estimator__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/follow_target_estimator__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/follow_target_estimator__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/follow_target_estimator__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/follow_target_estimator__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/follow_target_estimator__functions.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/follow_target_estimator__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/follow_target_estimator__struct.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/follow_target_estimator__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
-
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/follow_target_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/follow_target_status__functions.c
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/follow_target_status__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/follow_target_status__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/follow_target_status__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/follow_target_status__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/follow_target_status__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/follow_target_status__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/follow_target_status__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/follow_target_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/follow_target_status__functions.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/follow_target_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/follow_target_status__struct.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/follow_target_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/fw_virtual_attitude_setpoint__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/fw_virtual_attitude_setpoint__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/fw_virtual_attitude_setpoint__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/fw_virtual_attitude_setpoint__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/fw_virtual_attitude_setpoint__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/fw_virtual_attitude_setpoint__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/fw_virtual_attitude_setpoint__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/fw_virtual_attitude_setpoint__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/fw_virtual_attitude_setpoint__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/fw_virtual_attitude_setpoint__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/fw_virtual_attitude_setpoint__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/fw_virtual_attitude_setpoint__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/fw_virtual_attitude_setpoint__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/fw_virtual_attitude_setpoint__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
 
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/generator_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/generator_status__functions.c
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/generator_status__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
@@ -638,18 +806,6 @@ CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/deta
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/geofence_result__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/geofence_result__functions.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/geofence_result__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/geofence_result__struct.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/geofence_result__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
-
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gimbal_controls__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/gimbal_controls__functions.c
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gimbal_controls__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gimbal_controls__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gimbal_controls__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gimbal_controls__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gimbal_controls__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gimbal_controls__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gimbal_controls__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gimbal_controls__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/gimbal_controls__functions.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gimbal_controls__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/gimbal_controls__struct.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gimbal_controls__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
 
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gimbal_device_attitude_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/gimbal_device_attitude_status__functions.c
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gimbal_device_attitude_status__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
@@ -735,6 +891,18 @@ CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/deta
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gimbal_manager_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/gimbal_manager_status__struct.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gimbal_manager_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
 
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gimbal_v1_command__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/gimbal_v1_command__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gimbal_v1_command__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gimbal_v1_command__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gimbal_v1_command__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gimbal_v1_command__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gimbal_v1_command__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gimbal_v1_command__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gimbal_v1_command__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gimbal_v1_command__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/gimbal_v1_command__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gimbal_v1_command__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/gimbal_v1_command__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gimbal_v1_command__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gps_dump__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/gps_dump__functions.c
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gps_dump__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gps_dump__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
@@ -758,30 +926,6 @@ CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/deta
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gps_inject_data__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/gps_inject_data__functions.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gps_inject_data__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/gps_inject_data__struct.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gps_inject_data__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
-
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gripper__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/gripper__functions.c
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gripper__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gripper__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gripper__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gripper__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gripper__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gripper__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gripper__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gripper__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/gripper__functions.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gripper__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/gripper__struct.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/gripper__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
-
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/health_report__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/health_report__functions.c
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/health_report__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/health_report__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/health_report__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/health_report__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/health_report__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/health_report__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/health_report__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/health_report__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/health_report__functions.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/health_report__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/health_report__struct.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/health_report__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
 
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/heater_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/heater_status__functions.c
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/heater_status__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
@@ -879,18 +1023,6 @@ CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/deta
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/landing_gear__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/landing_gear__struct.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/landing_gear__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
 
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/landing_gear_wheel__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/landing_gear_wheel__functions.c
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/landing_gear_wheel__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/landing_gear_wheel__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/landing_gear_wheel__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/landing_gear_wheel__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/landing_gear_wheel__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/landing_gear_wheel__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/landing_gear_wheel__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/landing_gear_wheel__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/landing_gear_wheel__functions.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/landing_gear_wheel__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/landing_gear_wheel__struct.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/landing_gear_wheel__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
-
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/landing_target_innovations__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/landing_target_innovations__functions.c
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/landing_target_innovations__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/landing_target_innovations__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
@@ -914,18 +1046,6 @@ CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/deta
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/landing_target_pose__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/landing_target_pose__functions.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/landing_target_pose__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/landing_target_pose__struct.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/landing_target_pose__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
-
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/launch_detection_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/launch_detection_status__functions.c
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/launch_detection_status__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/launch_detection_status__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/launch_detection_status__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/launch_detection_status__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/launch_detection_status__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/launch_detection_status__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/launch_detection_status__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/launch_detection_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/launch_detection_status__functions.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/launch_detection_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/launch_detection_status__struct.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/launch_detection_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
 
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/led_control__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/led_control__functions.c
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/led_control__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
@@ -987,6 +1107,18 @@ CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/deta
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/magnetometer_bias_estimate__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/magnetometer_bias_estimate__struct.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/magnetometer_bias_estimate__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
 
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/manual_control_input__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/manual_control_input__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/manual_control_input__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/manual_control_input__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/manual_control_input__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/manual_control_input__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/manual_control_input__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/manual_control_input__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/manual_control_input__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/manual_control_input__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/manual_control_input__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/manual_control_input__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/manual_control_input__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/manual_control_input__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/manual_control_setpoint__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/manual_control_setpoint__functions.c
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/manual_control_setpoint__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/manual_control_setpoint__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
@@ -1035,6 +1167,18 @@ CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/deta
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/mavlink_tunnel__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/mavlink_tunnel__struct.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/mavlink_tunnel__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
 
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/mc_virtual_attitude_setpoint__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/mc_virtual_attitude_setpoint__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/mc_virtual_attitude_setpoint__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/mc_virtual_attitude_setpoint__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/mc_virtual_attitude_setpoint__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/mc_virtual_attitude_setpoint__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/mc_virtual_attitude_setpoint__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/mc_virtual_attitude_setpoint__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/mc_virtual_attitude_setpoint__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/mc_virtual_attitude_setpoint__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/mc_virtual_attitude_setpoint__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/mc_virtual_attitude_setpoint__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/mc_virtual_attitude_setpoint__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/mc_virtual_attitude_setpoint__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/mission__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/mission__functions.c
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/mission__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/mission__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
@@ -1058,18 +1202,6 @@ CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/deta
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/mission_result__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/mission_result__functions.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/mission_result__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/mission_result__struct.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/mission_result__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
-
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/mode_completed__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/mode_completed__functions.c
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/mode_completed__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/mode_completed__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/mode_completed__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/mode_completed__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/mode_completed__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/mode_completed__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/mode_completed__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/mode_completed__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/mode_completed__functions.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/mode_completed__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/mode_completed__struct.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/mode_completed__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
 
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/mount_orientation__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/mount_orientation__functions.c
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/mount_orientation__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
@@ -1095,18 +1227,6 @@ CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/deta
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/navigator_mission_item__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/navigator_mission_item__struct.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/navigator_mission_item__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
 
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/normalized_unsigned_setpoint__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/normalized_unsigned_setpoint__functions.c
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/normalized_unsigned_setpoint__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/normalized_unsigned_setpoint__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/normalized_unsigned_setpoint__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/normalized_unsigned_setpoint__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/normalized_unsigned_setpoint__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/normalized_unsigned_setpoint__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/normalized_unsigned_setpoint__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/normalized_unsigned_setpoint__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/normalized_unsigned_setpoint__functions.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/normalized_unsigned_setpoint__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/normalized_unsigned_setpoint__struct.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/normalized_unsigned_setpoint__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
-
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/npfg_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/npfg_status__functions.c
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/npfg_status__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/npfg_status__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
@@ -1131,6 +1251,18 @@ CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/deta
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/obstacle_distance__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/obstacle_distance__struct.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/obstacle_distance__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
 
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/obstacle_distance_fused__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/obstacle_distance_fused__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/obstacle_distance_fused__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/obstacle_distance_fused__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/obstacle_distance_fused__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/obstacle_distance_fused__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/obstacle_distance_fused__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/obstacle_distance_fused__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/obstacle_distance_fused__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/obstacle_distance_fused__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/obstacle_distance_fused__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/obstacle_distance_fused__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/obstacle_distance_fused__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/obstacle_distance_fused__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/offboard_control_mode__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/offboard_control_mode__functions.c
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/offboard_control_mode__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/offboard_control_mode__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
@@ -1154,6 +1286,30 @@ CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/deta
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/onboard_computer_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/onboard_computer_status__functions.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/onboard_computer_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/onboard_computer_status__struct.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/onboard_computer_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/optical_flow__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/optical_flow__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/optical_flow__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/optical_flow__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/optical_flow__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/optical_flow__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/optical_flow__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/optical_flow__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/optical_flow__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/optical_flow__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/optical_flow__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/optical_flow__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/optical_flow__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/optical_flow__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_multitest__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/orb_multitest__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_multitest__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_multitest__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_multitest__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_multitest__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_multitest__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_multitest__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_multitest__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_multitest__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/orb_multitest__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_multitest__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/orb_multitest__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_multitest__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
 
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/orb_test__functions.c
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
@@ -1190,6 +1346,54 @@ CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/deta
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium__functions.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium__struct.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_multi__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_multi__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_multi__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_multi__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_multi__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_multi__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_multi__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_multi__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_multi__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_multi__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_multi__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_multi__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_multi__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_multi__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_queue__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_queue__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_queue__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_queue__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_queue__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_queue__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_queue__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_queue__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_queue__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_queue__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_queue__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_queue__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_queue__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_queue__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_queue_poll__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_queue_poll__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_queue_poll__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_queue_poll__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_queue_poll__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_queue_poll__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_queue_poll__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_queue_poll__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_queue_poll__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_queue_poll__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_queue_poll__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_queue_poll__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_queue_poll__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_queue_poll__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_wrap_around__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_wrap_around__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_wrap_around__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_wrap_around__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_wrap_around__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_wrap_around__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_wrap_around__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_wrap_around__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_wrap_around__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_wrap_around__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_wrap_around__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_wrap_around__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_wrap_around__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orb_test_medium_wrap_around__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
 
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orbit_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/orbit_status__functions.c
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/orbit_status__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
@@ -1325,41 +1529,17 @@ CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/deta
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/pwm_input__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/pwm_input__struct.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/pwm_input__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
 
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/px4io_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/px4io_status__functions.c
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/px4io_status__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/px4io_status__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/px4io_status__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/px4io_status__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/px4io_status__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/px4io_status__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/px4io_status__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/px4io_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/px4io_status__functions.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/px4io_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/px4io_status__struct.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/px4io_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
-
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/qshell_req__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/qshell_req__functions.c
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/qshell_req__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/qshell_req__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/qshell_req__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/qshell_req__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/qshell_req__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/qshell_req__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/qshell_req__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/qshell_req__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/qshell_req__functions.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/qshell_req__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/qshell_req__struct.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/qshell_req__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
-
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/qshell_retval__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/qshell_retval__functions.c
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/qshell_retval__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/qshell_retval__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/qshell_retval__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/qshell_retval__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/qshell_retval__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/qshell_retval__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/qshell_retval__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/qshell_retval__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/qshell_retval__functions.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/qshell_retval__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/qshell_retval__struct.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/qshell_retval__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/px4_io_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/px4_io_status__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/px4_io_status__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/px4_io_status__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/px4_io_status__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/px4_io_status__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/px4_io_status__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/px4_io_status__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/px4_io_status__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/px4_io_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/px4_io_status__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/px4_io_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/px4_io_status__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/px4_io_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
 
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/radio_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/radio_status__functions.c
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/radio_status__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
@@ -1432,6 +1612,30 @@ CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/deta
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/rtl_time_estimate__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/rtl_time_estimate__functions.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/rtl_time_estimate__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/rtl_time_estimate__struct.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/rtl_time_estimate__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/safety__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/safety__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/safety__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/safety__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/safety__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/safety__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/safety__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/safety__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/safety__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/safety__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/safety__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/safety__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/safety__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/safety__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/safety_button__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/safety_button__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/safety_button__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/safety_button__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/safety_button__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/safety_button__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/safety_button__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/safety_button__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/safety_button__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/safety_button__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/safety_button__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/safety_button__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/safety_button__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/safety_button__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
 
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/satellite_info__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/satellite_info__functions.c
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/satellite_info__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
@@ -1589,18 +1793,6 @@ CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/deta
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/sensor_mag__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/sensor_mag__struct.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/sensor_mag__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
 
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/sensor_optical_flow__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/sensor_optical_flow__functions.c
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/sensor_optical_flow__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/sensor_optical_flow__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/sensor_optical_flow__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/sensor_optical_flow__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/sensor_optical_flow__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/sensor_optical_flow__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/sensor_optical_flow__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/sensor_optical_flow__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/sensor_optical_flow__functions.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/sensor_optical_flow__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/sensor_optical_flow__struct.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/sensor_optical_flow__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
-
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/sensor_preflight_mag__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/sensor_preflight_mag__functions.c
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/sensor_preflight_mag__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/sensor_preflight_mag__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
@@ -1637,6 +1829,18 @@ CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/deta
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/sensors_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/sensors_status__struct.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/sensors_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
 
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/sensors_status_baro__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/sensors_status_baro__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/sensors_status_baro__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/sensors_status_baro__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/sensors_status_baro__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/sensors_status_baro__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/sensors_status_baro__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/sensors_status_baro__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/sensors_status_baro__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/sensors_status_baro__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/sensors_status_baro__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/sensors_status_baro__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/sensors_status_baro__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/sensors_status_baro__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/sensors_status_imu__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/sensors_status_imu__functions.c
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/sensors_status_imu__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/sensors_status_imu__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
@@ -1648,6 +1852,18 @@ CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/deta
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/sensors_status_imu__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/sensors_status_imu__functions.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/sensors_status_imu__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/sensors_status_imu__struct.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/sensors_status_imu__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/sensors_status_mag__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/sensors_status_mag__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/sensors_status_mag__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/sensors_status_mag__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/sensors_status_mag__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/sensors_status_mag__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/sensors_status_mag__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/sensors_status_mag__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/sensors_status_mag__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/sensors_status_mag__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/sensors_status_mag__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/sensors_status_mag__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/sensors_status_mag__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/sensors_status_mag__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
 
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/system_power__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/system_power__functions.c
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/system_power__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
@@ -1709,17 +1925,29 @@ CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/deta
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/telemetry_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/telemetry_status__struct.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/telemetry_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
 
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/tiltrotor_extra_controls__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/tiltrotor_extra_controls__functions.c
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/tiltrotor_extra_controls__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/tiltrotor_extra_controls__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/tiltrotor_extra_controls__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/tiltrotor_extra_controls__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/tiltrotor_extra_controls__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/tiltrotor_extra_controls__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/tiltrotor_extra_controls__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/tiltrotor_extra_controls__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/tiltrotor_extra_controls__functions.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/tiltrotor_extra_controls__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/tiltrotor_extra_controls__struct.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/tiltrotor_extra_controls__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/test_motor__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/test_motor__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/test_motor__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/test_motor__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/test_motor__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/test_motor__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/test_motor__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/test_motor__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/test_motor__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/test_motor__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/test_motor__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/test_motor__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/test_motor__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/test_motor__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/timesync__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/timesync__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/timesync__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/timesync__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/timesync__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/timesync__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/timesync__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/timesync__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/timesync__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/timesync__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/timesync__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/timesync__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/timesync__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/timesync__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
 
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/timesync_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/timesync_status__functions.c
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/timesync_status__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
@@ -1889,6 +2117,18 @@ CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/deta
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_air_data__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_air_data__struct.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_air_data__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
 
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_angular_acceleration__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_angular_acceleration__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_angular_acceleration__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_angular_acceleration__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_angular_acceleration__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_angular_acceleration__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_angular_acceleration__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_angular_acceleration__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_angular_acceleration__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_angular_acceleration__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_angular_acceleration__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_angular_acceleration__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_angular_acceleration__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_angular_acceleration__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_angular_acceleration_setpoint__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_angular_acceleration_setpoint__functions.c
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_angular_acceleration_setpoint__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_angular_acceleration_setpoint__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
@@ -1913,6 +2153,18 @@ CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/deta
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_angular_velocity__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_angular_velocity__struct.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_angular_velocity__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
 
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_angular_velocity_groundtruth__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_angular_velocity_groundtruth__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_angular_velocity_groundtruth__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_angular_velocity_groundtruth__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_angular_velocity_groundtruth__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_angular_velocity_groundtruth__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_angular_velocity_groundtruth__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_angular_velocity_groundtruth__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_angular_velocity_groundtruth__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_angular_velocity_groundtruth__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_angular_velocity_groundtruth__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_angular_velocity_groundtruth__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_angular_velocity_groundtruth__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_angular_velocity_groundtruth__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_attitude__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_attitude__functions.c
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_attitude__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_attitude__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
@@ -1924,6 +2176,18 @@ CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/deta
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_attitude__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_attitude__functions.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_attitude__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_attitude__struct.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_attitude__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_attitude_groundtruth__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_attitude_groundtruth__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_attitude_groundtruth__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_attitude_groundtruth__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_attitude_groundtruth__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_attitude_groundtruth__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_attitude_groundtruth__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_attitude_groundtruth__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_attitude_groundtruth__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_attitude_groundtruth__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_attitude_groundtruth__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_attitude_groundtruth__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_attitude_groundtruth__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_attitude_groundtruth__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
 
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_attitude_setpoint__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_attitude_setpoint__functions.c
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_attitude_setpoint__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
@@ -1997,6 +2261,30 @@ CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/deta
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_global_position__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_global_position__struct.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_global_position__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
 
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_global_position_groundtruth__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_global_position_groundtruth__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_global_position_groundtruth__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_global_position_groundtruth__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_global_position_groundtruth__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_global_position_groundtruth__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_global_position_groundtruth__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_global_position_groundtruth__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_global_position_groundtruth__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_global_position_groundtruth__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_global_position_groundtruth__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_global_position_groundtruth__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_global_position_groundtruth__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_global_position_groundtruth__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_gps_position__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_gps_position__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_gps_position__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_gps_position__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_gps_position__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_gps_position__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_gps_position__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_gps_position__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_gps_position__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_gps_position__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_gps_position__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_gps_position__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_gps_position__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_gps_position__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_imu__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_imu__functions.c
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_imu__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_imu__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
@@ -2045,6 +2333,18 @@ CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/deta
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_local_position__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_local_position__struct.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_local_position__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
 
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_local_position_groundtruth__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_local_position_groundtruth__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_local_position_groundtruth__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_local_position_groundtruth__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_local_position_groundtruth__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_local_position_groundtruth__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_local_position_groundtruth__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_local_position_groundtruth__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_local_position_groundtruth__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_local_position_groundtruth__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_local_position_groundtruth__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_local_position_groundtruth__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_local_position_groundtruth__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_local_position_groundtruth__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_local_position_setpoint__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_local_position_setpoint__functions.c
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_local_position_setpoint__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_local_position_setpoint__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
@@ -2069,6 +2369,18 @@ CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/deta
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_magnetometer__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_magnetometer__struct.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_magnetometer__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
 
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_mocap_odometry__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_mocap_odometry__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_mocap_odometry__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_mocap_odometry__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_mocap_odometry__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_mocap_odometry__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_mocap_odometry__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_mocap_odometry__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_mocap_odometry__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_mocap_odometry__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_mocap_odometry__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_mocap_odometry__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_mocap_odometry__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_mocap_odometry__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_odometry__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_odometry__functions.c
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_odometry__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_odometry__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
@@ -2080,30 +2392,6 @@ CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/deta
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_odometry__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_odometry__functions.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_odometry__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_odometry__struct.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_odometry__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
-
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_optical_flow__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_optical_flow__functions.c
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_optical_flow__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_optical_flow__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_optical_flow__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_optical_flow__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_optical_flow__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_optical_flow__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_optical_flow__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_optical_flow__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_optical_flow__functions.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_optical_flow__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_optical_flow__struct.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_optical_flow__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
-
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_optical_flow_vel__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_optical_flow_vel__functions.c
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_optical_flow_vel__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_optical_flow_vel__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_optical_flow_vel__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_optical_flow_vel__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_optical_flow_vel__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_optical_flow_vel__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_optical_flow_vel__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_optical_flow_vel__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_optical_flow_vel__functions.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_optical_flow_vel__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_optical_flow_vel__struct.h
-CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_optical_flow_vel__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
 
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_rates_setpoint__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_rates_setpoint__functions.c
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_rates_setpoint__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
@@ -2140,6 +2428,18 @@ CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/deta
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_status__functions.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_status__struct.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_status_flags__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_status_flags__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_status_flags__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_status_flags__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_status_flags__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_status_flags__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_status_flags__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_status_flags__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_status_flags__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_status_flags__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_status_flags__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_status_flags__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_status_flags__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_status_flags__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
 
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_thrust_setpoint__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_thrust_setpoint__functions.c
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_thrust_setpoint__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
@@ -2193,6 +2493,44 @@ CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/deta
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_trajectory_waypoint__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_trajectory_waypoint__struct.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_trajectory_waypoint__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
 
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_trajectory_waypoint_desired__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_trajectory_waypoint_desired__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_trajectory_waypoint_desired__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_trajectory_waypoint_desired__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_trajectory_waypoint_desired__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_trajectory_waypoint_desired__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_trajectory_waypoint_desired__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_trajectory_waypoint_desired__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_trajectory_waypoint_desired__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_trajectory_waypoint_desired__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/trajectory_waypoint__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_trajectory_waypoint_desired__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/trajectory_waypoint__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_trajectory_waypoint_desired__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_trajectory_waypoint_desired__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_trajectory_waypoint_desired__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_trajectory_waypoint_desired__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_trajectory_waypoint_desired__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_vision_attitude__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_vision_attitude__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_vision_attitude__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_vision_attitude__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_vision_attitude__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_vision_attitude__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_vision_attitude__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_vision_attitude__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_vision_attitude__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_vision_attitude__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_vision_attitude__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_vision_attitude__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_vision_attitude__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_vision_attitude__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_visual_odometry__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_visual_odometry__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_visual_odometry__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_visual_odometry__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_visual_odometry__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_visual_odometry__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_visual_odometry__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_visual_odometry__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_visual_odometry__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_visual_odometry__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_visual_odometry__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_visual_odometry__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vehicle_visual_odometry__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vehicle_visual_odometry__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vtol_vehicle_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vtol_vehicle_status__functions.c
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vtol_vehicle_status__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vtol_vehicle_status__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
@@ -2204,6 +2542,18 @@ CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/deta
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vtol_vehicle_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vtol_vehicle_status__functions.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vtol_vehicle_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/vtol_vehicle_status__struct.h
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/vtol_vehicle_status__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
+
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/wheel_encoders__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/wheel_encoders__functions.c
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/wheel_encoders__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/wheel_encoders__functions.c.o: /opt/ros/foxy/include/rcutils/macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/wheel_encoders__functions.c.o: /opt/ros/foxy/include/rcutils/testing/fault_injection.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/wheel_encoders__functions.c.o: /opt/ros/foxy/include/rcutils/types/rcutils_ret.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/wheel_encoders__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/wheel_encoders__functions.c.o: /opt/ros/foxy/include/rcutils/visibility_control_macros.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/wheel_encoders__functions.c.o: /opt/ros/foxy/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/wheel_encoders__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/wheel_encoders__functions.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/wheel_encoders__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/wheel_encoders__struct.h
+CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/wheel_encoders__functions.c.o: rosidl_generator_c/px4_msgs/msg/rosidl_generator_c__visibility_control.h
 
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/wind__functions.c.o: rosidl_generator_c/px4_msgs/msg/detail/wind__functions.c
 CMakeFiles/px4_msgs__rosidl_generator_c.dir/rosidl_generator_c/px4_msgs/msg/detail/wind__functions.c.o: /opt/ros/foxy/include/rcutils/allocator.h

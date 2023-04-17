@@ -125,10 +125,10 @@ class ManualControlSetpoint(metaclass=Metaclass_ManualControlSetpoint):
         '_timestamp_sample',
         '_valid',
         '_data_source',
-        '_roll',
-        '_pitch',
-        '_yaw',
-        '_throttle',
+        '_x',
+        '_y',
+        '_z',
+        '_r',
         '_flaps',
         '_aux1',
         '_aux2',
@@ -144,10 +144,10 @@ class ManualControlSetpoint(metaclass=Metaclass_ManualControlSetpoint):
         'timestamp_sample': 'uint64',
         'valid': 'boolean',
         'data_source': 'uint8',
-        'roll': 'float',
-        'pitch': 'float',
-        'yaw': 'float',
-        'throttle': 'float',
+        'x': 'float',
+        'y': 'float',
+        'z': 'float',
+        'r': 'float',
         'flaps': 'float',
         'aux1': 'float',
         'aux2': 'float',
@@ -185,10 +185,10 @@ class ManualControlSetpoint(metaclass=Metaclass_ManualControlSetpoint):
         self.timestamp_sample = kwargs.get('timestamp_sample', int())
         self.valid = kwargs.get('valid', bool())
         self.data_source = kwargs.get('data_source', int())
-        self.roll = kwargs.get('roll', float())
-        self.pitch = kwargs.get('pitch', float())
-        self.yaw = kwargs.get('yaw', float())
-        self.throttle = kwargs.get('throttle', float())
+        self.x = kwargs.get('x', float())
+        self.y = kwargs.get('y', float())
+        self.z = kwargs.get('z', float())
+        self.r = kwargs.get('r', float())
         self.flaps = kwargs.get('flaps', float())
         self.aux1 = kwargs.get('aux1', float())
         self.aux2 = kwargs.get('aux2', float())
@@ -235,13 +235,13 @@ class ManualControlSetpoint(metaclass=Metaclass_ManualControlSetpoint):
             return False
         if self.data_source != other.data_source:
             return False
-        if self.roll != other.roll:
+        if self.x != other.x:
             return False
-        if self.pitch != other.pitch:
+        if self.y != other.y:
             return False
-        if self.yaw != other.yaw:
+        if self.z != other.z:
             return False
-        if self.throttle != other.throttle:
+        if self.r != other.r:
             return False
         if self.flaps != other.flaps:
             return False
@@ -325,56 +325,56 @@ class ManualControlSetpoint(metaclass=Metaclass_ManualControlSetpoint):
         self._data_source = value
 
     @property
-    def roll(self):
-        """Message field 'roll'."""
-        return self._roll
+    def x(self):
+        """Message field 'x'."""
+        return self._x
 
-    @roll.setter
-    def roll(self, value):
+    @x.setter
+    def x(self, value):
         if __debug__:
             assert \
                 isinstance(value, float), \
-                "The 'roll' field must be of type 'float'"
-        self._roll = value
+                "The 'x' field must be of type 'float'"
+        self._x = value
 
     @property
-    def pitch(self):
-        """Message field 'pitch'."""
-        return self._pitch
+    def y(self):
+        """Message field 'y'."""
+        return self._y
 
-    @pitch.setter
-    def pitch(self, value):
+    @y.setter
+    def y(self, value):
         if __debug__:
             assert \
                 isinstance(value, float), \
-                "The 'pitch' field must be of type 'float'"
-        self._pitch = value
+                "The 'y' field must be of type 'float'"
+        self._y = value
 
     @property
-    def yaw(self):
-        """Message field 'yaw'."""
-        return self._yaw
+    def z(self):
+        """Message field 'z'."""
+        return self._z
 
-    @yaw.setter
-    def yaw(self, value):
+    @z.setter
+    def z(self, value):
         if __debug__:
             assert \
                 isinstance(value, float), \
-                "The 'yaw' field must be of type 'float'"
-        self._yaw = value
+                "The 'z' field must be of type 'float'"
+        self._z = value
 
     @property
-    def throttle(self):
-        """Message field 'throttle'."""
-        return self._throttle
+    def r(self):
+        """Message field 'r'."""
+        return self._r
 
-    @throttle.setter
-    def throttle(self, value):
+    @r.setter
+    def r(self, value):
         if __debug__:
             assert \
                 isinstance(value, float), \
-                "The 'throttle' field must be of type 'float'"
-        self._throttle = value
+                "The 'r' field must be of type 'float'"
+        self._r = value
 
     @property
     def flaps(self):

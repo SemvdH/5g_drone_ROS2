@@ -20,15 +20,15 @@ namespace msg
 namespace builder
 {
 
-class Init_VehicleOdometry_quality
+class Init_VehicleOdometry_reset_counter
 {
 public:
-  explicit Init_VehicleOdometry_quality(::px4_msgs::msg::VehicleOdometry & msg)
+  explicit Init_VehicleOdometry_reset_counter(::px4_msgs::msg::VehicleOdometry & msg)
   : msg_(msg)
   {}
-  ::px4_msgs::msg::VehicleOdometry quality(::px4_msgs::msg::VehicleOdometry::_quality_type arg)
+  ::px4_msgs::msg::VehicleOdometry reset_counter(::px4_msgs::msg::VehicleOdometry::_reset_counter_type arg)
   {
-    msg_.quality = std::move(arg);
+    msg_.reset_counter = std::move(arg);
     return std::move(msg_);
   }
 
@@ -36,31 +36,15 @@ private:
   ::px4_msgs::msg::VehicleOdometry msg_;
 };
 
-class Init_VehicleOdometry_reset_counter
+class Init_VehicleOdometry_velocity_covariance
 {
 public:
-  explicit Init_VehicleOdometry_reset_counter(::px4_msgs::msg::VehicleOdometry & msg)
+  explicit Init_VehicleOdometry_velocity_covariance(::px4_msgs::msg::VehicleOdometry & msg)
   : msg_(msg)
   {}
-  Init_VehicleOdometry_quality reset_counter(::px4_msgs::msg::VehicleOdometry::_reset_counter_type arg)
+  Init_VehicleOdometry_reset_counter velocity_covariance(::px4_msgs::msg::VehicleOdometry::_velocity_covariance_type arg)
   {
-    msg_.reset_counter = std::move(arg);
-    return Init_VehicleOdometry_quality(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::VehicleOdometry msg_;
-};
-
-class Init_VehicleOdometry_velocity_variance
-{
-public:
-  explicit Init_VehicleOdometry_velocity_variance(::px4_msgs::msg::VehicleOdometry & msg)
-  : msg_(msg)
-  {}
-  Init_VehicleOdometry_reset_counter velocity_variance(::px4_msgs::msg::VehicleOdometry::_velocity_variance_type arg)
-  {
-    msg_.velocity_variance = std::move(arg);
+    msg_.velocity_covariance = std::move(arg);
     return Init_VehicleOdometry_reset_counter(msg_);
   }
 
@@ -68,64 +52,96 @@ private:
   ::px4_msgs::msg::VehicleOdometry msg_;
 };
 
-class Init_VehicleOdometry_orientation_variance
+class Init_VehicleOdometry_yawspeed
 {
 public:
-  explicit Init_VehicleOdometry_orientation_variance(::px4_msgs::msg::VehicleOdometry & msg)
+  explicit Init_VehicleOdometry_yawspeed(::px4_msgs::msg::VehicleOdometry & msg)
   : msg_(msg)
   {}
-  Init_VehicleOdometry_velocity_variance orientation_variance(::px4_msgs::msg::VehicleOdometry::_orientation_variance_type arg)
+  Init_VehicleOdometry_velocity_covariance yawspeed(::px4_msgs::msg::VehicleOdometry::_yawspeed_type arg)
   {
-    msg_.orientation_variance = std::move(arg);
-    return Init_VehicleOdometry_velocity_variance(msg_);
+    msg_.yawspeed = std::move(arg);
+    return Init_VehicleOdometry_velocity_covariance(msg_);
   }
 
 private:
   ::px4_msgs::msg::VehicleOdometry msg_;
 };
 
-class Init_VehicleOdometry_position_variance
+class Init_VehicleOdometry_pitchspeed
 {
 public:
-  explicit Init_VehicleOdometry_position_variance(::px4_msgs::msg::VehicleOdometry & msg)
+  explicit Init_VehicleOdometry_pitchspeed(::px4_msgs::msg::VehicleOdometry & msg)
   : msg_(msg)
   {}
-  Init_VehicleOdometry_orientation_variance position_variance(::px4_msgs::msg::VehicleOdometry::_position_variance_type arg)
+  Init_VehicleOdometry_yawspeed pitchspeed(::px4_msgs::msg::VehicleOdometry::_pitchspeed_type arg)
   {
-    msg_.position_variance = std::move(arg);
-    return Init_VehicleOdometry_orientation_variance(msg_);
+    msg_.pitchspeed = std::move(arg);
+    return Init_VehicleOdometry_yawspeed(msg_);
   }
 
 private:
   ::px4_msgs::msg::VehicleOdometry msg_;
 };
 
-class Init_VehicleOdometry_angular_velocity
+class Init_VehicleOdometry_rollspeed
 {
 public:
-  explicit Init_VehicleOdometry_angular_velocity(::px4_msgs::msg::VehicleOdometry & msg)
+  explicit Init_VehicleOdometry_rollspeed(::px4_msgs::msg::VehicleOdometry & msg)
   : msg_(msg)
   {}
-  Init_VehicleOdometry_position_variance angular_velocity(::px4_msgs::msg::VehicleOdometry::_angular_velocity_type arg)
+  Init_VehicleOdometry_pitchspeed rollspeed(::px4_msgs::msg::VehicleOdometry::_rollspeed_type arg)
   {
-    msg_.angular_velocity = std::move(arg);
-    return Init_VehicleOdometry_position_variance(msg_);
+    msg_.rollspeed = std::move(arg);
+    return Init_VehicleOdometry_pitchspeed(msg_);
   }
 
 private:
   ::px4_msgs::msg::VehicleOdometry msg_;
 };
 
-class Init_VehicleOdometry_velocity
+class Init_VehicleOdometry_vz
 {
 public:
-  explicit Init_VehicleOdometry_velocity(::px4_msgs::msg::VehicleOdometry & msg)
+  explicit Init_VehicleOdometry_vz(::px4_msgs::msg::VehicleOdometry & msg)
   : msg_(msg)
   {}
-  Init_VehicleOdometry_angular_velocity velocity(::px4_msgs::msg::VehicleOdometry::_velocity_type arg)
+  Init_VehicleOdometry_rollspeed vz(::px4_msgs::msg::VehicleOdometry::_vz_type arg)
   {
-    msg_.velocity = std::move(arg);
-    return Init_VehicleOdometry_angular_velocity(msg_);
+    msg_.vz = std::move(arg);
+    return Init_VehicleOdometry_rollspeed(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::VehicleOdometry msg_;
+};
+
+class Init_VehicleOdometry_vy
+{
+public:
+  explicit Init_VehicleOdometry_vy(::px4_msgs::msg::VehicleOdometry & msg)
+  : msg_(msg)
+  {}
+  Init_VehicleOdometry_vz vy(::px4_msgs::msg::VehicleOdometry::_vy_type arg)
+  {
+    msg_.vy = std::move(arg);
+    return Init_VehicleOdometry_vz(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::VehicleOdometry msg_;
+};
+
+class Init_VehicleOdometry_vx
+{
+public:
+  explicit Init_VehicleOdometry_vx(::px4_msgs::msg::VehicleOdometry & msg)
+  : msg_(msg)
+  {}
+  Init_VehicleOdometry_vy vx(::px4_msgs::msg::VehicleOdometry::_vx_type arg)
+  {
+    msg_.vx = std::move(arg);
+    return Init_VehicleOdometry_vy(msg_);
   }
 
 private:
@@ -138,10 +154,42 @@ public:
   explicit Init_VehicleOdometry_velocity_frame(::px4_msgs::msg::VehicleOdometry & msg)
   : msg_(msg)
   {}
-  Init_VehicleOdometry_velocity velocity_frame(::px4_msgs::msg::VehicleOdometry::_velocity_frame_type arg)
+  Init_VehicleOdometry_vx velocity_frame(::px4_msgs::msg::VehicleOdometry::_velocity_frame_type arg)
   {
     msg_.velocity_frame = std::move(arg);
-    return Init_VehicleOdometry_velocity(msg_);
+    return Init_VehicleOdometry_vx(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::VehicleOdometry msg_;
+};
+
+class Init_VehicleOdometry_pose_covariance
+{
+public:
+  explicit Init_VehicleOdometry_pose_covariance(::px4_msgs::msg::VehicleOdometry & msg)
+  : msg_(msg)
+  {}
+  Init_VehicleOdometry_velocity_frame pose_covariance(::px4_msgs::msg::VehicleOdometry::_pose_covariance_type arg)
+  {
+    msg_.pose_covariance = std::move(arg);
+    return Init_VehicleOdometry_velocity_frame(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::VehicleOdometry msg_;
+};
+
+class Init_VehicleOdometry_q_offset
+{
+public:
+  explicit Init_VehicleOdometry_q_offset(::px4_msgs::msg::VehicleOdometry & msg)
+  : msg_(msg)
+  {}
+  Init_VehicleOdometry_pose_covariance q_offset(::px4_msgs::msg::VehicleOdometry::_q_offset_type arg)
+  {
+    msg_.q_offset = std::move(arg);
+    return Init_VehicleOdometry_pose_covariance(msg_);
   }
 
 private:
@@ -154,25 +202,25 @@ public:
   explicit Init_VehicleOdometry_q(::px4_msgs::msg::VehicleOdometry & msg)
   : msg_(msg)
   {}
-  Init_VehicleOdometry_velocity_frame q(::px4_msgs::msg::VehicleOdometry::_q_type arg)
+  Init_VehicleOdometry_q_offset q(::px4_msgs::msg::VehicleOdometry::_q_type arg)
   {
     msg_.q = std::move(arg);
-    return Init_VehicleOdometry_velocity_frame(msg_);
+    return Init_VehicleOdometry_q_offset(msg_);
   }
 
 private:
   ::px4_msgs::msg::VehicleOdometry msg_;
 };
 
-class Init_VehicleOdometry_position
+class Init_VehicleOdometry_z
 {
 public:
-  explicit Init_VehicleOdometry_position(::px4_msgs::msg::VehicleOdometry & msg)
+  explicit Init_VehicleOdometry_z(::px4_msgs::msg::VehicleOdometry & msg)
   : msg_(msg)
   {}
-  Init_VehicleOdometry_q position(::px4_msgs::msg::VehicleOdometry::_position_type arg)
+  Init_VehicleOdometry_q z(::px4_msgs::msg::VehicleOdometry::_z_type arg)
   {
-    msg_.position = std::move(arg);
+    msg_.z = std::move(arg);
     return Init_VehicleOdometry_q(msg_);
   }
 
@@ -180,16 +228,48 @@ private:
   ::px4_msgs::msg::VehicleOdometry msg_;
 };
 
-class Init_VehicleOdometry_pose_frame
+class Init_VehicleOdometry_y
 {
 public:
-  explicit Init_VehicleOdometry_pose_frame(::px4_msgs::msg::VehicleOdometry & msg)
+  explicit Init_VehicleOdometry_y(::px4_msgs::msg::VehicleOdometry & msg)
   : msg_(msg)
   {}
-  Init_VehicleOdometry_position pose_frame(::px4_msgs::msg::VehicleOdometry::_pose_frame_type arg)
+  Init_VehicleOdometry_z y(::px4_msgs::msg::VehicleOdometry::_y_type arg)
   {
-    msg_.pose_frame = std::move(arg);
-    return Init_VehicleOdometry_position(msg_);
+    msg_.y = std::move(arg);
+    return Init_VehicleOdometry_z(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::VehicleOdometry msg_;
+};
+
+class Init_VehicleOdometry_x
+{
+public:
+  explicit Init_VehicleOdometry_x(::px4_msgs::msg::VehicleOdometry & msg)
+  : msg_(msg)
+  {}
+  Init_VehicleOdometry_y x(::px4_msgs::msg::VehicleOdometry::_x_type arg)
+  {
+    msg_.x = std::move(arg);
+    return Init_VehicleOdometry_y(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::VehicleOdometry msg_;
+};
+
+class Init_VehicleOdometry_local_frame
+{
+public:
+  explicit Init_VehicleOdometry_local_frame(::px4_msgs::msg::VehicleOdometry & msg)
+  : msg_(msg)
+  {}
+  Init_VehicleOdometry_x local_frame(::px4_msgs::msg::VehicleOdometry::_local_frame_type arg)
+  {
+    msg_.local_frame = std::move(arg);
+    return Init_VehicleOdometry_x(msg_);
   }
 
 private:
@@ -202,10 +282,10 @@ public:
   explicit Init_VehicleOdometry_timestamp_sample(::px4_msgs::msg::VehicleOdometry & msg)
   : msg_(msg)
   {}
-  Init_VehicleOdometry_pose_frame timestamp_sample(::px4_msgs::msg::VehicleOdometry::_timestamp_sample_type arg)
+  Init_VehicleOdometry_local_frame timestamp_sample(::px4_msgs::msg::VehicleOdometry::_timestamp_sample_type arg)
   {
     msg_.timestamp_sample = std::move(arg);
-    return Init_VehicleOdometry_pose_frame(msg_);
+    return Init_VehicleOdometry_local_frame(msg_);
   }
 
 private:

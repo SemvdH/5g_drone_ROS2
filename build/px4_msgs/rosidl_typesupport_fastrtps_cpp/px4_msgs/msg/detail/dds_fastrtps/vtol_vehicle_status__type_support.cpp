@@ -34,10 +34,16 @@ cdr_serialize(
 {
   // Member: timestamp
   cdr << ros_message.timestamp;
-  // Member: vehicle_vtol_state
-  cdr << ros_message.vehicle_vtol_state;
-  // Member: fixed_wing_system_failure
-  cdr << (ros_message.fixed_wing_system_failure ? true : false);
+  // Member: vtol_in_rw_mode
+  cdr << (ros_message.vtol_in_rw_mode ? true : false);
+  // Member: vtol_in_trans_mode
+  cdr << (ros_message.vtol_in_trans_mode ? true : false);
+  // Member: in_transition_to_fw
+  cdr << (ros_message.in_transition_to_fw ? true : false);
+  // Member: vtol_transition_failsafe
+  cdr << (ros_message.vtol_transition_failsafe ? true : false);
+  // Member: fw_permanent_stab
+  cdr << (ros_message.fw_permanent_stab ? true : false);
   return true;
 }
 
@@ -50,14 +56,39 @@ cdr_deserialize(
   // Member: timestamp
   cdr >> ros_message.timestamp;
 
-  // Member: vehicle_vtol_state
-  cdr >> ros_message.vehicle_vtol_state;
-
-  // Member: fixed_wing_system_failure
+  // Member: vtol_in_rw_mode
   {
     uint8_t tmp;
     cdr >> tmp;
-    ros_message.fixed_wing_system_failure = tmp ? true : false;
+    ros_message.vtol_in_rw_mode = tmp ? true : false;
+  }
+
+  // Member: vtol_in_trans_mode
+  {
+    uint8_t tmp;
+    cdr >> tmp;
+    ros_message.vtol_in_trans_mode = tmp ? true : false;
+  }
+
+  // Member: in_transition_to_fw
+  {
+    uint8_t tmp;
+    cdr >> tmp;
+    ros_message.in_transition_to_fw = tmp ? true : false;
+  }
+
+  // Member: vtol_transition_failsafe
+  {
+    uint8_t tmp;
+    cdr >> tmp;
+    ros_message.vtol_transition_failsafe = tmp ? true : false;
+  }
+
+  // Member: fw_permanent_stab
+  {
+    uint8_t tmp;
+    cdr >> tmp;
+    ros_message.fw_permanent_stab = tmp ? true : false;
   }
 
   return true;
@@ -82,15 +113,33 @@ get_serialized_size(
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // Member: vehicle_vtol_state
+  // Member: vtol_in_rw_mode
   {
-    size_t item_size = sizeof(ros_message.vehicle_vtol_state);
+    size_t item_size = sizeof(ros_message.vtol_in_rw_mode);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // Member: fixed_wing_system_failure
+  // Member: vtol_in_trans_mode
   {
-    size_t item_size = sizeof(ros_message.fixed_wing_system_failure);
+    size_t item_size = sizeof(ros_message.vtol_in_trans_mode);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // Member: in_transition_to_fw
+  {
+    size_t item_size = sizeof(ros_message.in_transition_to_fw);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // Member: vtol_transition_failsafe
+  {
+    size_t item_size = sizeof(ros_message.vtol_transition_failsafe);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // Member: fw_permanent_stab
+  {
+    size_t item_size = sizeof(ros_message.fw_permanent_stab);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -121,14 +170,35 @@ max_serialized_size_VtolVehicleStatus(
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
 
-  // Member: vehicle_vtol_state
+  // Member: vtol_in_rw_mode
   {
     size_t array_size = 1;
 
     current_alignment += array_size * sizeof(uint8_t);
   }
 
-  // Member: fixed_wing_system_failure
+  // Member: vtol_in_trans_mode
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
+  }
+
+  // Member: in_transition_to_fw
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
+  }
+
+  // Member: vtol_transition_failsafe
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
+  }
+
+  // Member: fw_permanent_stab
   {
     size_t array_size = 1;
 

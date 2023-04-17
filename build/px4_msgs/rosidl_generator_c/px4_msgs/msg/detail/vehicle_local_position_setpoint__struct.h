@@ -24,13 +24,14 @@ typedef struct px4_msgs__msg__VehicleLocalPositionSetpoint
   float x;
   float y;
   float z;
+  float yaw;
+  float yawspeed;
   float vx;
   float vy;
   float vz;
   float acceleration[3];
+  float jerk[3];
   float thrust[3];
-  float yaw;
-  float yawspeed;
 } px4_msgs__msg__VehicleLocalPositionSetpoint;
 
 // Struct for a sequence of px4_msgs__msg__VehicleLocalPositionSetpoint.

@@ -50,8 +50,6 @@ cdr_serialize(
   cdr << ros_message.accelerometer_integral_dt;
   // Member: accelerometer_clipping
   cdr << ros_message.accelerometer_clipping;
-  // Member: gyro_clipping
-  cdr << ros_message.gyro_clipping;
   // Member: accel_calibration_count
   cdr << ros_message.accel_calibration_count;
   // Member: gyro_calibration_count
@@ -89,9 +87,6 @@ cdr_deserialize(
 
   // Member: accelerometer_clipping
   cdr >> ros_message.accelerometer_clipping;
-
-  // Member: gyro_clipping
-  cdr >> ros_message.gyro_clipping;
 
   // Member: accel_calibration_count
   cdr >> ros_message.accel_calibration_count;
@@ -156,12 +151,6 @@ get_serialized_size(
   // Member: accelerometer_clipping
   {
     size_t item_size = sizeof(ros_message.accelerometer_clipping);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // Member: gyro_clipping
-  {
-    size_t item_size = sizeof(ros_message.gyro_clipping);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -245,13 +234,6 @@ max_serialized_size_SensorCombined(
   }
 
   // Member: accelerometer_clipping
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint8_t);
-  }
-
-  // Member: gyro_clipping
   {
     size_t array_size = 1;
 

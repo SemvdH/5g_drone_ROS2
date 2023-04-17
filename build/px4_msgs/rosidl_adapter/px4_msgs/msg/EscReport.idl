@@ -52,24 +52,12 @@ module px4_msgs {
       uint8 esc_address;
 
       @verbatim (language="comment", text=
-        " Counter of number of commands")
-      uint8 esc_cmdcount;
-
-      @verbatim (language="comment", text=
         " State of ESC - depend on Vendor")
       uint8 esc_state;
 
       @verbatim (language="comment", text=
-        " actuator output function (one of Motor1...MotorN)")
-      uint8 actuator_function;
-
-      @verbatim (language="comment", text=
         " Bitmask to indicate the internal ESC faults")
       uint16 failures;
-
-      @verbatim (language="comment", text=
-        " Applied power 0-100 in % (negative values reserved)")
-      int8 esc_power;
     };
   };
 };

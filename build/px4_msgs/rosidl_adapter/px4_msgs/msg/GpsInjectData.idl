@@ -8,7 +8,6 @@ module px4_msgs {
     typedef uint8 uint8__300[300];
     module GpsInjectData_Constants {
       const uint8 ORB_QUEUE_LENGTH = 8;
-      const uint8 MAX_INSTANCES = 2;
     };
     struct GpsInjectData {
       @verbatim (language="comment", text=

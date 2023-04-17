@@ -20,48 +20,16 @@ namespace msg
 namespace builder
 {
 
-class Init_SensorGps_selected_rtcm_instance
-{
-public:
-  explicit Init_SensorGps_selected_rtcm_instance(::px4_msgs::msg::SensorGps & msg)
-  : msg_(msg)
-  {}
-  ::px4_msgs::msg::SensorGps selected_rtcm_instance(::px4_msgs::msg::SensorGps::_selected_rtcm_instance_type arg)
-  {
-    msg_.selected_rtcm_instance = std::move(arg);
-    return std::move(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::SensorGps msg_;
-};
-
-class Init_SensorGps_rtcm_injection_rate
-{
-public:
-  explicit Init_SensorGps_rtcm_injection_rate(::px4_msgs::msg::SensorGps & msg)
-  : msg_(msg)
-  {}
-  Init_SensorGps_selected_rtcm_instance rtcm_injection_rate(::px4_msgs::msg::SensorGps::_rtcm_injection_rate_type arg)
-  {
-    msg_.rtcm_injection_rate = std::move(arg);
-    return Init_SensorGps_selected_rtcm_instance(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::SensorGps msg_;
-};
-
 class Init_SensorGps_heading_accuracy
 {
 public:
   explicit Init_SensorGps_heading_accuracy(::px4_msgs::msg::SensorGps & msg)
   : msg_(msg)
   {}
-  Init_SensorGps_rtcm_injection_rate heading_accuracy(::px4_msgs::msg::SensorGps::_heading_accuracy_type arg)
+  ::px4_msgs::msg::SensorGps heading_accuracy(::px4_msgs::msg::SensorGps::_heading_accuracy_type arg)
   {
     msg_.heading_accuracy = std::move(arg);
-    return Init_SensorGps_rtcm_injection_rate(msg_);
+    return std::move(msg_);
   }
 
 private:
@@ -244,15 +212,15 @@ private:
   ::px4_msgs::msg::SensorGps msg_;
 };
 
-class Init_SensorGps_spoofing_state
+class Init_SensorGps_jamming_state
 {
 public:
-  explicit Init_SensorGps_spoofing_state(::px4_msgs::msg::SensorGps & msg)
+  explicit Init_SensorGps_jamming_state(::px4_msgs::msg::SensorGps & msg)
   : msg_(msg)
   {}
-  Init_SensorGps_vel_m_s spoofing_state(::px4_msgs::msg::SensorGps::_spoofing_state_type arg)
+  Init_SensorGps_vel_m_s jamming_state(::px4_msgs::msg::SensorGps::_jamming_state_type arg)
   {
-    msg_.spoofing_state = std::move(arg);
+    msg_.jamming_state = std::move(arg);
     return Init_SensorGps_vel_m_s(msg_);
   }
 
@@ -266,26 +234,10 @@ public:
   explicit Init_SensorGps_jamming_indicator(::px4_msgs::msg::SensorGps & msg)
   : msg_(msg)
   {}
-  Init_SensorGps_spoofing_state jamming_indicator(::px4_msgs::msg::SensorGps::_jamming_indicator_type arg)
+  Init_SensorGps_jamming_state jamming_indicator(::px4_msgs::msg::SensorGps::_jamming_indicator_type arg)
   {
     msg_.jamming_indicator = std::move(arg);
-    return Init_SensorGps_spoofing_state(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::SensorGps msg_;
-};
-
-class Init_SensorGps_jamming_state
-{
-public:
-  explicit Init_SensorGps_jamming_state(::px4_msgs::msg::SensorGps & msg)
-  : msg_(msg)
-  {}
-  Init_SensorGps_jamming_indicator jamming_state(::px4_msgs::msg::SensorGps::_jamming_state_type arg)
-  {
-    msg_.jamming_state = std::move(arg);
-    return Init_SensorGps_jamming_indicator(msg_);
+    return Init_SensorGps_jamming_state(msg_);
   }
 
 private:
@@ -298,10 +250,10 @@ public:
   explicit Init_SensorGps_automatic_gain_control(::px4_msgs::msg::SensorGps & msg)
   : msg_(msg)
   {}
-  Init_SensorGps_jamming_state automatic_gain_control(::px4_msgs::msg::SensorGps::_automatic_gain_control_type arg)
+  Init_SensorGps_jamming_indicator automatic_gain_control(::px4_msgs::msg::SensorGps::_automatic_gain_control_type arg)
   {
     msg_.automatic_gain_control = std::move(arg);
-    return Init_SensorGps_jamming_state(msg_);
+    return Init_SensorGps_jamming_indicator(msg_);
   }
 
 private:
@@ -516,32 +468,16 @@ private:
   ::px4_msgs::msg::SensorGps msg_;
 };
 
-class Init_SensorGps_timestamp_sample
-{
-public:
-  explicit Init_SensorGps_timestamp_sample(::px4_msgs::msg::SensorGps & msg)
-  : msg_(msg)
-  {}
-  Init_SensorGps_device_id timestamp_sample(::px4_msgs::msg::SensorGps::_timestamp_sample_type arg)
-  {
-    msg_.timestamp_sample = std::move(arg);
-    return Init_SensorGps_device_id(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::SensorGps msg_;
-};
-
 class Init_SensorGps_timestamp
 {
 public:
   Init_SensorGps_timestamp()
   : msg_(::rosidl_runtime_cpp::MessageInitialization::SKIP)
   {}
-  Init_SensorGps_timestamp_sample timestamp(::px4_msgs::msg::SensorGps::_timestamp_type arg)
+  Init_SensorGps_device_id timestamp(::px4_msgs::msg::SensorGps::_timestamp_type arg)
   {
     msg_.timestamp = std::move(arg);
-    return Init_SensorGps_timestamp_sample(msg_);
+    return Init_SensorGps_device_id(msg_);
   }
 
 private:

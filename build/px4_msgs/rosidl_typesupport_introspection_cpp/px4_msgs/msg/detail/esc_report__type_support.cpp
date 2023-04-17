@@ -37,7 +37,7 @@ void EscReport_fini_function(void * message_memory)
   typed_message->~EscReport();
 }
 
-static const ::rosidl_typesupport_introspection_cpp::MessageMember EscReport_message_member_array[12] = {
+static const ::rosidl_typesupport_introspection_cpp::MessageMember EscReport_message_member_array[9] = {
   {
     "timestamp",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_UINT64,  // type
@@ -144,21 +144,6 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember EscReport_mes
     nullptr  // resize(index) function pointer
   },
   {
-    "esc_cmdcount",  // name
-    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_UINT8,  // type
-    0,  // upper bound of string
-    nullptr,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs::msg::EscReport, esc_cmdcount),  // bytes offset in struct
-    nullptr,  // default value
-    nullptr,  // size() function pointer
-    nullptr,  // get_const(index) function pointer
-    nullptr,  // get(index) function pointer
-    nullptr  // resize(index) function pointer
-  },
-  {
     "esc_state",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_UINT8,  // type
     0,  // upper bound of string
@@ -167,21 +152,6 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember EscReport_mes
     0,  // array size
     false,  // is upper bound
     offsetof(px4_msgs::msg::EscReport, esc_state),  // bytes offset in struct
-    nullptr,  // default value
-    nullptr,  // size() function pointer
-    nullptr,  // get_const(index) function pointer
-    nullptr,  // get(index) function pointer
-    nullptr  // resize(index) function pointer
-  },
-  {
-    "actuator_function",  // name
-    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_UINT8,  // type
-    0,  // upper bound of string
-    nullptr,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs::msg::EscReport, actuator_function),  // bytes offset in struct
     nullptr,  // default value
     nullptr,  // size() function pointer
     nullptr,  // get_const(index) function pointer
@@ -202,28 +172,13 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember EscReport_mes
     nullptr,  // get_const(index) function pointer
     nullptr,  // get(index) function pointer
     nullptr  // resize(index) function pointer
-  },
-  {
-    "esc_power",  // name
-    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_INT8,  // type
-    0,  // upper bound of string
-    nullptr,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(px4_msgs::msg::EscReport, esc_power),  // bytes offset in struct
-    nullptr,  // default value
-    nullptr,  // size() function pointer
-    nullptr,  // get_const(index) function pointer
-    nullptr,  // get(index) function pointer
-    nullptr  // resize(index) function pointer
   }
 };
 
 static const ::rosidl_typesupport_introspection_cpp::MessageMembers EscReport_message_members = {
   "px4_msgs::msg",  // message namespace
   "EscReport",  // message name
-  12,  // number of fields
+  9,  // number of fields
   sizeof(px4_msgs::msg::EscReport),
   EscReport_message_member_array,  // message members
   EscReport_init_function,  // function to initialize message memory (memory has to be allocated)

@@ -16,7 +16,7 @@ uint8 GPS_CHECK_FAIL_MAX_VERT_DRIFT = 7		# 7 : maximum allowed vertical position
 uint8 GPS_CHECK_FAIL_MAX_HORZ_SPD_ERR = 8	# 8 : maximum allowed horizontal speed fail - requires stationary vehicle
 uint8 GPS_CHECK_FAIL_MAX_VERT_SPD_ERR = 9	# 9 : maximum allowed vertical velocity discrepancy fail
 
-uint64 control_mode_flags	# Bitmask to indicate EKF logic state
+uint32 control_mode_flags	# Bitmask to indicate EKF logic state
 uint8 CS_TILT_ALIGN = 0		# 0 - true if the filter tilt alignment is complete
 uint8 CS_YAW_ALIGN = 1		# 1 - true if the filter yaw alignment is complete
 uint8 CS_GPS = 2		# 2 - true if GPS measurements are being fused
@@ -35,7 +35,7 @@ uint8 CS_EV_HGT = 14		# 14 - true when height data from external vision measurem
 uint8 CS_BETA = 15		# 15 - true when synthetic sideslip measurements are being fused
 uint8 CS_MAG_FIELD = 16		# 16 - true when only the magnetic field states are updated by the magnetometer
 uint8 CS_FIXED_WING = 17	# 17 - true when thought to be operating as a fixed wing vehicle with constrained sideslip
-uint8 CS_MAG_FAULT = 18		# 18 - true when the magnetometer has been declared faulty and is no longer being used
+uint8 CS_MAG_FAULT = 18		# 18 - true when the magnetomer has been declared faulty and is no longer being used
 uint8 CS_ASPD = 19		# 19 - true when airspeed measurements are being fused
 uint8 CS_GND_EFFECT = 20	# 20 - true when when protection from ground effect induced static pressure rise is active
 uint8 CS_RNG_STUCK = 21		# 21 - true when a stuck range finder sensor has been detected

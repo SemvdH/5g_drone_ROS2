@@ -55,7 +55,7 @@ px4_msgs__msg__ActuatorMotors__are_equal(const px4_msgs__msg__ActuatorMotors * l
     return false;
   }
   // control
-  for (size_t i = 0; i < 12; ++i) {
+  for (size_t i = 0; i < 8; ++i) {
     if (lhs->control[i] != rhs->control[i]) {
       return false;
     }
@@ -78,7 +78,7 @@ px4_msgs__msg__ActuatorMotors__copy(
   // reversible_flags
   output->reversible_flags = input->reversible_flags;
   // control
-  for (size_t i = 0; i < 12; ++i) {
+  for (size_t i = 0; i < 8; ++i) {
     output->control[i] = input->control[i];
   }
   return true;

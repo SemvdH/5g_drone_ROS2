@@ -24,11 +24,8 @@ px4_msgs__msg__EscReport__init(px4_msgs__msg__EscReport * msg)
   // esc_current
   // esc_temperature
   // esc_address
-  // esc_cmdcount
   // esc_state
-  // actuator_function
   // failures
-  // esc_power
   return true;
 }
 
@@ -45,11 +42,8 @@ px4_msgs__msg__EscReport__fini(px4_msgs__msg__EscReport * msg)
   // esc_current
   // esc_temperature
   // esc_address
-  // esc_cmdcount
   // esc_state
-  // actuator_function
   // failures
-  // esc_power
 }
 
 bool
@@ -86,24 +80,12 @@ px4_msgs__msg__EscReport__are_equal(const px4_msgs__msg__EscReport * lhs, const 
   if (lhs->esc_address != rhs->esc_address) {
     return false;
   }
-  // esc_cmdcount
-  if (lhs->esc_cmdcount != rhs->esc_cmdcount) {
-    return false;
-  }
   // esc_state
   if (lhs->esc_state != rhs->esc_state) {
     return false;
   }
-  // actuator_function
-  if (lhs->actuator_function != rhs->actuator_function) {
-    return false;
-  }
   // failures
   if (lhs->failures != rhs->failures) {
-    return false;
-  }
-  // esc_power
-  if (lhs->esc_power != rhs->esc_power) {
     return false;
   }
   return true;
@@ -131,16 +113,10 @@ px4_msgs__msg__EscReport__copy(
   output->esc_temperature = input->esc_temperature;
   // esc_address
   output->esc_address = input->esc_address;
-  // esc_cmdcount
-  output->esc_cmdcount = input->esc_cmdcount;
   // esc_state
   output->esc_state = input->esc_state;
-  // actuator_function
-  output->actuator_function = input->actuator_function;
   // failures
   output->failures = input->failures;
-  // esc_power
-  output->esc_power = input->esc_power;
   return true;
 }
 

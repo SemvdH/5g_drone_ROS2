@@ -38,7 +38,7 @@ module px4_msgs {
       uint16 status;
 
       @verbatim (language="comment", text=
-        " distance in cm to each UWB Anchor (UWB Device which takes part in Ranging)")
+        " distance in cm to each UWB Anchor (UWB Device wich takes part in Ranging)")
       uint16__12 anchor_distance;
 
       @verbatim (language="comment", text=
@@ -46,7 +46,7 @@ module px4_msgs {
       boolean__12 nlos;
 
       @verbatim (language="comment", text=
-        " Angle of arrival of first incoming RX msg")
+        " Angle of arrival of first incomming RX msg")
       float__12 aoafirst;
 
       @verbatim (language="comment", text=

@@ -140,15 +140,6 @@ bool px4_msgs__msg__vehicle_land_detected__convert_from_py(PyObject * _pymsg, vo
     ros_message->horizontal_movement = (Py_True == field);
     Py_DECREF(field);
   }
-  {  // rotational_movement
-    PyObject * field = PyObject_GetAttrString(_pymsg, "rotational_movement");
-    if (!field) {
-      return false;
-    }
-    assert(PyBool_Check(field));
-    ros_message->rotational_movement = (Py_True == field);
-    Py_DECREF(field);
-  }
   {  // close_to_ground_or_skipped_check
     PyObject * field = PyObject_GetAttrString(_pymsg, "close_to_ground_or_skipped_check");
     if (!field) {
@@ -293,17 +284,6 @@ PyObject * px4_msgs__msg__vehicle_land_detected__convert_to_py(void * raw_ros_me
     field = PyBool_FromLong(ros_message->horizontal_movement ? 1 : 0);
     {
       int rc = PyObject_SetAttrString(_pymessage, "horizontal_movement", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
-  {  // rotational_movement
-    PyObject * field = NULL;
-    field = PyBool_FromLong(ros_message->rotational_movement ? 1 : 0);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "rotational_movement", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;

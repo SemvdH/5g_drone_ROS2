@@ -39,9 +39,9 @@ module px4_msgs {
       const uint16 VEHICLE_CMD_DO_SET_PARAMETER = 180;
       const uint16 VEHICLE_CMD_DO_SET_RELAY = 181;
       const uint16 VEHICLE_CMD_DO_REPEAT_RELAY = 182;
+      const uint16 VEHICLE_CMD_DO_SET_SERVO = 183;
       const uint16 VEHICLE_CMD_DO_REPEAT_SERVO = 184;
       const uint16 VEHICLE_CMD_DO_FLIGHTTERMINATION = 185;
-      const uint16 VEHICLE_CMD_DO_CHANGE_ALTITUDE = 186;
       const uint16 VEHICLE_CMD_DO_SET_ACTUATOR = 187;
       const uint16 VEHICLE_CMD_DO_LAND_START = 189;
       const uint16 VEHICLE_CMD_DO_GO_AROUND = 191;
@@ -60,7 +60,6 @@ module px4_msgs {
       const uint16 VEHICLE_CMD_DO_PARACHUTE = 208;
       const uint16 VEHICLE_CMD_DO_MOTOR_TEST = 209;
       const uint16 VEHICLE_CMD_DO_INVERTED_FLIGHT = 210;
-      const uint16 VEHICLE_CMD_DO_GRIPPER = 211;
       const uint16 VEHICLE_CMD_DO_SET_CAM_TRIGG_INTERVAL = 214;
       const uint16 VEHICLE_CMD_DO_MOUNT_CONTROL_QUAT = 220;
       const uint16 VEHICLE_CMD_DO_GUIDED_MASTER = 221;
@@ -78,7 +77,6 @@ module px4_msgs {
       const uint16 VEHICLE_CMD_ACTUATOR_TEST = 310;
       const uint16 VEHICLE_CMD_CONFIGURE_ACTUATOR = 311;
       const uint16 VEHICLE_CMD_COMPONENT_ARM_DISARM = 400;
-      const uint16 VEHICLE_CMD_RUN_PREARM_CHECKS = 401;
       const uint16 VEHICLE_CMD_INJECT_FAILURE = 420;
       const uint16 VEHICLE_CMD_START_RX_PAIR = 500;
       const uint16 VEHICLE_CMD_REQUEST_MESSAGE = 512;
@@ -99,9 +97,15 @@ module px4_msgs {
       const uint16 VEHICLE_CMD_PAYLOAD_PREPARE_DEPLOY = 30001;
       const uint16 VEHICLE_CMD_PAYLOAD_CONTROL_DEPLOY = 30002;
       const uint16 VEHICLE_CMD_FIXED_MAG_CAL_YAW = 42006;
-      const uint16 VEHICLE_CMD_DO_WINCH = 42600;
       const uint32 VEHICLE_CMD_PX4_INTERNAL_START = 65537;
       const uint32 VEHICLE_CMD_SET_GPS_GLOBAL_ORIGIN = 100000;
+      const uint8 VEHICLE_CMD_RESULT_ACCEPTED = 0;
+      const uint8 VEHICLE_CMD_RESULT_TEMPORARILY_REJECTED = 1;
+      const uint8 VEHICLE_CMD_RESULT_DENIED = 2;
+      const uint8 VEHICLE_CMD_RESULT_UNSUPPORTED = 3;
+      const uint8 VEHICLE_CMD_RESULT_FAILED = 4;
+      const uint8 VEHICLE_CMD_RESULT_IN_PROGRESS = 5;
+      const uint8 VEHICLE_CMD_RESULT_ENUM_END = 6;
       const uint8 VEHICLE_MOUNT_MODE_RETRACT = 0;
       const uint8 VEHICLE_MOUNT_MODE_NEUTRAL = 1;
       const uint8 VEHICLE_MOUNT_MODE_MAVLINK_TARGETING = 2;
@@ -114,6 +118,10 @@ module px4_msgs {
       const uint8 VEHICLE_ROI_LOCATION = 3;
       const uint8 VEHICLE_ROI_TARGET = 4;
       const uint8 VEHICLE_ROI_ENUM_END = 5;
+      const uint8 VEHICLE_CAMERA_ZOOM_TYPE_STEP = 0;
+      const uint8 VEHICLE_CAMERA_ZOOM_TYPE_CONTINUOUS = 1;
+      const uint8 VEHICLE_CAMERA_ZOOM_TYPE_RANGE = 2;
+      const uint8 VEHICLE_CAMERA_ZOOM_TYPE_FOCAL_LENGTH = 3;
       const uint8 PARACHUTE_ACTION_DISABLE = 0;
       const uint8 PARACHUTE_ACTION_ENABLE = 1;
       const uint8 PARACHUTE_ACTION_RELEASE = 2;
@@ -146,13 +154,8 @@ module px4_msgs {
       const uint8 SPEED_TYPE_DESCEND_SPEED = 3;
       const int8 ARMING_ACTION_DISARM = 0;
       const int8 ARMING_ACTION_ARM = 1;
-      const uint8 GRIPPER_ACTION_RELEASE = 0;
-      const uint8 GRIPPER_ACTION_GRAB = 1;
       const uint8 ORB_QUEUE_LENGTH = 8;
     };
-    @verbatim (language="comment", text=
-      " Vehicle Command uORB message. Used for commanding a mission / action / etc." "\n"
-      " Follows the MAVLink COMMAND_INT / COMMAND_LONG definition")
     struct VehicleCommand {
       @verbatim (language="comment", text=
         " time since system start (microseconds)")

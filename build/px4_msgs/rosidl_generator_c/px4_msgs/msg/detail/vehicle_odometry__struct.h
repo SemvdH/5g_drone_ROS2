@@ -17,46 +17,100 @@ extern "C"
 
 // Constants defined in the message
 
-/// Constant 'POSE_FRAME_UNKNOWN'.
+/// Constant 'COVARIANCE_MATRIX_X_VARIANCE'.
 enum
 {
-  px4_msgs__msg__VehicleOdometry__POSE_FRAME_UNKNOWN = 0
+  px4_msgs__msg__VehicleOdometry__COVARIANCE_MATRIX_X_VARIANCE = 0
 };
 
-/// Constant 'POSE_FRAME_NED'.
+/// Constant 'COVARIANCE_MATRIX_Y_VARIANCE'.
 enum
 {
-  px4_msgs__msg__VehicleOdometry__POSE_FRAME_NED = 1
+  px4_msgs__msg__VehicleOdometry__COVARIANCE_MATRIX_Y_VARIANCE = 6
 };
 
-/// Constant 'POSE_FRAME_FRD'.
+/// Constant 'COVARIANCE_MATRIX_Z_VARIANCE'.
 enum
 {
-  px4_msgs__msg__VehicleOdometry__POSE_FRAME_FRD = 2
+  px4_msgs__msg__VehicleOdometry__COVARIANCE_MATRIX_Z_VARIANCE = 11
 };
 
-/// Constant 'VELOCITY_FRAME_UNKNOWN'.
+/// Constant 'COVARIANCE_MATRIX_ROLL_VARIANCE'.
 enum
 {
-  px4_msgs__msg__VehicleOdometry__VELOCITY_FRAME_UNKNOWN = 0
+  px4_msgs__msg__VehicleOdometry__COVARIANCE_MATRIX_ROLL_VARIANCE = 15
 };
 
-/// Constant 'VELOCITY_FRAME_NED'.
+/// Constant 'COVARIANCE_MATRIX_PITCH_VARIANCE'.
 enum
 {
-  px4_msgs__msg__VehicleOdometry__VELOCITY_FRAME_NED = 1
+  px4_msgs__msg__VehicleOdometry__COVARIANCE_MATRIX_PITCH_VARIANCE = 18
 };
 
-/// Constant 'VELOCITY_FRAME_FRD'.
+/// Constant 'COVARIANCE_MATRIX_YAW_VARIANCE'.
 enum
 {
-  px4_msgs__msg__VehicleOdometry__VELOCITY_FRAME_FRD = 2
+  px4_msgs__msg__VehicleOdometry__COVARIANCE_MATRIX_YAW_VARIANCE = 20
 };
 
-/// Constant 'VELOCITY_FRAME_BODY_FRD'.
+/// Constant 'COVARIANCE_MATRIX_VX_VARIANCE'.
 enum
 {
-  px4_msgs__msg__VehicleOdometry__VELOCITY_FRAME_BODY_FRD = 3
+  px4_msgs__msg__VehicleOdometry__COVARIANCE_MATRIX_VX_VARIANCE = 0
+};
+
+/// Constant 'COVARIANCE_MATRIX_VY_VARIANCE'.
+enum
+{
+  px4_msgs__msg__VehicleOdometry__COVARIANCE_MATRIX_VY_VARIANCE = 6
+};
+
+/// Constant 'COVARIANCE_MATRIX_VZ_VARIANCE'.
+enum
+{
+  px4_msgs__msg__VehicleOdometry__COVARIANCE_MATRIX_VZ_VARIANCE = 11
+};
+
+/// Constant 'COVARIANCE_MATRIX_ROLLRATE_VARIANCE'.
+enum
+{
+  px4_msgs__msg__VehicleOdometry__COVARIANCE_MATRIX_ROLLRATE_VARIANCE = 15
+};
+
+/// Constant 'COVARIANCE_MATRIX_PITCHRATE_VARIANCE'.
+enum
+{
+  px4_msgs__msg__VehicleOdometry__COVARIANCE_MATRIX_PITCHRATE_VARIANCE = 18
+};
+
+/// Constant 'COVARIANCE_MATRIX_YAWRATE_VARIANCE'.
+enum
+{
+  px4_msgs__msg__VehicleOdometry__COVARIANCE_MATRIX_YAWRATE_VARIANCE = 20
+};
+
+/// Constant 'LOCAL_FRAME_NED'.
+enum
+{
+  px4_msgs__msg__VehicleOdometry__LOCAL_FRAME_NED = 0
+};
+
+/// Constant 'LOCAL_FRAME_FRD'.
+enum
+{
+  px4_msgs__msg__VehicleOdometry__LOCAL_FRAME_FRD = 1
+};
+
+/// Constant 'LOCAL_FRAME_OTHER'.
+enum
+{
+  px4_msgs__msg__VehicleOdometry__LOCAL_FRAME_OTHER = 2
+};
+
+/// Constant 'BODY_FRAME_FRD'.
+enum
+{
+  px4_msgs__msg__VehicleOdometry__BODY_FRAME_FRD = 3
 };
 
 // Struct defined in msg/VehicleOdometry in the package px4_msgs.
@@ -64,17 +118,22 @@ typedef struct px4_msgs__msg__VehicleOdometry
 {
   uint64_t timestamp;
   uint64_t timestamp_sample;
-  uint8_t pose_frame;
-  float position[3];
+  uint8_t local_frame;
+  float x;
+  float y;
+  float z;
   float q[4];
+  float q_offset[4];
+  float pose_covariance[21];
   uint8_t velocity_frame;
-  float velocity[3];
-  float angular_velocity[3];
-  float position_variance[3];
-  float orientation_variance[3];
-  float velocity_variance[3];
+  float vx;
+  float vy;
+  float vz;
+  float rollspeed;
+  float pitchspeed;
+  float yawspeed;
+  float velocity_covariance[21];
   uint8_t reset_counter;
-  int8_t quality;
 } px4_msgs__msg__VehicleOdometry;
 
 // Struct for a sequence of px4_msgs__msg__VehicleOdometry.

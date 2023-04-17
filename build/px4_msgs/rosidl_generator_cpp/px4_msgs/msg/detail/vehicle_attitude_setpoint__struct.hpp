@@ -44,8 +44,11 @@ struct VehicleAttitudeSetpoint_
       this->yaw_sp_move_rate = 0.0f;
       std::fill<typename std::array<float, 4>::iterator, float>(this->q_d.begin(), this->q_d.end(), 0.0f);
       std::fill<typename std::array<float, 3>::iterator, float>(this->thrust_body.begin(), this->thrust_body.end(), 0.0f);
-      this->reset_integral = false;
-      this->fw_control_yaw_wheel = false;
+      this->roll_reset_integral = false;
+      this->pitch_reset_integral = false;
+      this->yaw_reset_integral = false;
+      this->fw_control_yaw = false;
+      this->apply_flaps = 0;
     }
   }
 
@@ -63,8 +66,11 @@ struct VehicleAttitudeSetpoint_
       this->yaw_sp_move_rate = 0.0f;
       std::fill<typename std::array<float, 4>::iterator, float>(this->q_d.begin(), this->q_d.end(), 0.0f);
       std::fill<typename std::array<float, 3>::iterator, float>(this->thrust_body.begin(), this->thrust_body.end(), 0.0f);
-      this->reset_integral = false;
-      this->fw_control_yaw_wheel = false;
+      this->roll_reset_integral = false;
+      this->pitch_reset_integral = false;
+      this->yaw_reset_integral = false;
+      this->fw_control_yaw = false;
+      this->apply_flaps = 0;
     }
   }
 
@@ -90,12 +96,21 @@ struct VehicleAttitudeSetpoint_
   using _thrust_body_type =
     std::array<float, 3>;
   _thrust_body_type thrust_body;
-  using _reset_integral_type =
+  using _roll_reset_integral_type =
     bool;
-  _reset_integral_type reset_integral;
-  using _fw_control_yaw_wheel_type =
+  _roll_reset_integral_type roll_reset_integral;
+  using _pitch_reset_integral_type =
     bool;
-  _fw_control_yaw_wheel_type fw_control_yaw_wheel;
+  _pitch_reset_integral_type pitch_reset_integral;
+  using _yaw_reset_integral_type =
+    bool;
+  _yaw_reset_integral_type yaw_reset_integral;
+  using _fw_control_yaw_type =
+    bool;
+  _fw_control_yaw_type fw_control_yaw;
+  using _apply_flaps_type =
+    uint8_t;
+  _apply_flaps_type apply_flaps;
 
   // setters for named parameter idiom
   Type & set__timestamp(
@@ -140,20 +155,44 @@ struct VehicleAttitudeSetpoint_
     this->thrust_body = _arg;
     return *this;
   }
-  Type & set__reset_integral(
+  Type & set__roll_reset_integral(
     const bool & _arg)
   {
-    this->reset_integral = _arg;
+    this->roll_reset_integral = _arg;
     return *this;
   }
-  Type & set__fw_control_yaw_wheel(
+  Type & set__pitch_reset_integral(
     const bool & _arg)
   {
-    this->fw_control_yaw_wheel = _arg;
+    this->pitch_reset_integral = _arg;
+    return *this;
+  }
+  Type & set__yaw_reset_integral(
+    const bool & _arg)
+  {
+    this->yaw_reset_integral = _arg;
+    return *this;
+  }
+  Type & set__fw_control_yaw(
+    const bool & _arg)
+  {
+    this->fw_control_yaw = _arg;
+    return *this;
+  }
+  Type & set__apply_flaps(
+    const uint8_t & _arg)
+  {
+    this->apply_flaps = _arg;
     return *this;
   }
 
   // constant declarations
+  static constexpr uint8_t FLAPS_OFF =
+    0u;
+  static constexpr uint8_t FLAPS_LAND =
+    1u;
+  static constexpr uint8_t FLAPS_TAKEOFF =
+    2u;
 
   // pointer types
   using RawPtr =
@@ -216,10 +255,19 @@ struct VehicleAttitudeSetpoint_
     if (this->thrust_body != other.thrust_body) {
       return false;
     }
-    if (this->reset_integral != other.reset_integral) {
+    if (this->roll_reset_integral != other.roll_reset_integral) {
       return false;
     }
-    if (this->fw_control_yaw_wheel != other.fw_control_yaw_wheel) {
+    if (this->pitch_reset_integral != other.pitch_reset_integral) {
+      return false;
+    }
+    if (this->yaw_reset_integral != other.yaw_reset_integral) {
+      return false;
+    }
+    if (this->fw_control_yaw != other.fw_control_yaw) {
+      return false;
+    }
+    if (this->apply_flaps != other.apply_flaps) {
       return false;
     }
     return true;
@@ -235,6 +283,12 @@ using VehicleAttitudeSetpoint =
   px4_msgs::msg::VehicleAttitudeSetpoint_<std::allocator<void>>;
 
 // constant definitions
+template<typename ContainerAllocator>
+constexpr uint8_t VehicleAttitudeSetpoint_<ContainerAllocator>::FLAPS_OFF;
+template<typename ContainerAllocator>
+constexpr uint8_t VehicleAttitudeSetpoint_<ContainerAllocator>::FLAPS_LAND;
+template<typename ContainerAllocator>
+constexpr uint8_t VehicleAttitudeSetpoint_<ContainerAllocator>::FLAPS_TAKEOFF;
 
 }  // namespace msg
 

@@ -18,9 +18,8 @@ class Metaclass_TimesyncStatus(type):
     _TYPE_SUPPORT = None
 
     __constants = {
-        'SOURCE_PROTOCOL_UNKNOWN': 0,
-        'SOURCE_PROTOCOL_MAVLINK': 1,
-        'SOURCE_PROTOCOL_DDS': 2,
+        'SOURCE_PROTOCOL_MAVLINK': 0,
+        'SOURCE_PROTOCOL_RTPS': 1,
     }
 
     @classmethod
@@ -49,15 +48,9 @@ class Metaclass_TimesyncStatus(type):
         # the message class under "Data and other attributes defined here:"
         # as well as populate each message instance
         return {
-            'SOURCE_PROTOCOL_UNKNOWN': cls.__constants['SOURCE_PROTOCOL_UNKNOWN'],
             'SOURCE_PROTOCOL_MAVLINK': cls.__constants['SOURCE_PROTOCOL_MAVLINK'],
-            'SOURCE_PROTOCOL_DDS': cls.__constants['SOURCE_PROTOCOL_DDS'],
+            'SOURCE_PROTOCOL_RTPS': cls.__constants['SOURCE_PROTOCOL_RTPS'],
         }
-
-    @property
-    def SOURCE_PROTOCOL_UNKNOWN(self):
-        """Message constant 'SOURCE_PROTOCOL_UNKNOWN'."""
-        return Metaclass_TimesyncStatus.__constants['SOURCE_PROTOCOL_UNKNOWN']
 
     @property
     def SOURCE_PROTOCOL_MAVLINK(self):
@@ -65,9 +58,9 @@ class Metaclass_TimesyncStatus(type):
         return Metaclass_TimesyncStatus.__constants['SOURCE_PROTOCOL_MAVLINK']
 
     @property
-    def SOURCE_PROTOCOL_DDS(self):
-        """Message constant 'SOURCE_PROTOCOL_DDS'."""
-        return Metaclass_TimesyncStatus.__constants['SOURCE_PROTOCOL_DDS']
+    def SOURCE_PROTOCOL_RTPS(self):
+        """Message constant 'SOURCE_PROTOCOL_RTPS'."""
+        return Metaclass_TimesyncStatus.__constants['SOURCE_PROTOCOL_RTPS']
 
 
 class TimesyncStatus(metaclass=Metaclass_TimesyncStatus):
@@ -75,9 +68,8 @@ class TimesyncStatus(metaclass=Metaclass_TimesyncStatus):
     Message class 'TimesyncStatus'.
 
     Constants:
-      SOURCE_PROTOCOL_UNKNOWN
       SOURCE_PROTOCOL_MAVLINK
-      SOURCE_PROTOCOL_DDS
+      SOURCE_PROTOCOL_RTPS
     """
 
     __slots__ = [

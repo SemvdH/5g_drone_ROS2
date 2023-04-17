@@ -19,7 +19,6 @@ px4_msgs__msg__PpsCapture__init(px4_msgs__msg__PpsCapture * msg)
   }
   // timestamp
   // rtc_timestamp
-  // pps_rate_exceeded_counter
   return true;
 }
 
@@ -31,7 +30,6 @@ px4_msgs__msg__PpsCapture__fini(px4_msgs__msg__PpsCapture * msg)
   }
   // timestamp
   // rtc_timestamp
-  // pps_rate_exceeded_counter
 }
 
 bool
@@ -46,10 +44,6 @@ px4_msgs__msg__PpsCapture__are_equal(const px4_msgs__msg__PpsCapture * lhs, cons
   }
   // rtc_timestamp
   if (lhs->rtc_timestamp != rhs->rtc_timestamp) {
-    return false;
-  }
-  // pps_rate_exceeded_counter
-  if (lhs->pps_rate_exceeded_counter != rhs->pps_rate_exceeded_counter) {
     return false;
   }
   return true;
@@ -67,8 +61,6 @@ px4_msgs__msg__PpsCapture__copy(
   output->timestamp = input->timestamp;
   // rtc_timestamp
   output->rtc_timestamp = input->rtc_timestamp;
-  // pps_rate_exceeded_counter
-  output->pps_rate_exceeded_counter = input->pps_rate_exceeded_counter;
   return true;
 }
 

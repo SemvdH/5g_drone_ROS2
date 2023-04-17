@@ -59,6 +59,13 @@ static bool _ControlAllocatorStatus__cdr_serialize(
     cdr << (ros_message->torque_setpoint_achieved ? true : false);
   }
 
+  // Field name: allocated_torque
+  {
+    size_t size = 3;
+    auto array_ptr = ros_message->allocated_torque;
+    cdr.serializeArray(array_ptr, size);
+  }
+
   // Field name: unallocated_torque
   {
     size_t size = 3;
@@ -69,6 +76,13 @@ static bool _ControlAllocatorStatus__cdr_serialize(
   // Field name: thrust_setpoint_achieved
   {
     cdr << (ros_message->thrust_setpoint_achieved ? true : false);
+  }
+
+  // Field name: allocated_thrust
+  {
+    size_t size = 3;
+    auto array_ptr = ros_message->allocated_thrust;
+    cdr.serializeArray(array_ptr, size);
   }
 
   // Field name: unallocated_thrust
@@ -83,11 +97,6 @@ static bool _ControlAllocatorStatus__cdr_serialize(
     size_t size = 16;
     auto array_ptr = ros_message->actuator_saturation;
     cdr.serializeArray(array_ptr, size);
-  }
-
-  // Field name: handled_motor_failure_mask
-  {
-    cdr << ros_message->handled_motor_failure_mask;
   }
 
   return true;
@@ -114,6 +123,13 @@ static bool _ControlAllocatorStatus__cdr_deserialize(
     ros_message->torque_setpoint_achieved = tmp ? true : false;
   }
 
+  // Field name: allocated_torque
+  {
+    size_t size = 3;
+    auto array_ptr = ros_message->allocated_torque;
+    cdr.deserializeArray(array_ptr, size);
+  }
+
   // Field name: unallocated_torque
   {
     size_t size = 3;
@@ -128,6 +144,13 @@ static bool _ControlAllocatorStatus__cdr_deserialize(
     ros_message->thrust_setpoint_achieved = tmp ? true : false;
   }
 
+  // Field name: allocated_thrust
+  {
+    size_t size = 3;
+    auto array_ptr = ros_message->allocated_thrust;
+    cdr.deserializeArray(array_ptr, size);
+  }
+
   // Field name: unallocated_thrust
   {
     size_t size = 3;
@@ -140,11 +163,6 @@ static bool _ControlAllocatorStatus__cdr_deserialize(
     size_t size = 16;
     auto array_ptr = ros_message->actuator_saturation;
     cdr.deserializeArray(array_ptr, size);
-  }
-
-  // Field name: handled_motor_failure_mask
-  {
-    cdr >> ros_message->handled_motor_failure_mask;
   }
 
   return true;
@@ -176,6 +194,15 @@ size_t get_serialized_size_px4_msgs__msg__ControlAllocatorStatus(
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
+  // field.name allocated_torque
+  {
+    size_t array_size = 3;
+    auto array_ptr = ros_message->allocated_torque;
+    (void)array_ptr;
+    size_t item_size = sizeof(array_ptr[0]);
+    current_alignment += array_size * item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
   // field.name unallocated_torque
   {
     size_t array_size = 3;
@@ -189,6 +216,15 @@ size_t get_serialized_size_px4_msgs__msg__ControlAllocatorStatus(
   {
     size_t item_size = sizeof(ros_message->thrust_setpoint_achieved);
     current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // field.name allocated_thrust
+  {
+    size_t array_size = 3;
+    auto array_ptr = ros_message->allocated_thrust;
+    (void)array_ptr;
+    size_t item_size = sizeof(array_ptr[0]);
+    current_alignment += array_size * item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
   // field.name unallocated_thrust
@@ -207,12 +243,6 @@ size_t get_serialized_size_px4_msgs__msg__ControlAllocatorStatus(
     (void)array_ptr;
     size_t item_size = sizeof(array_ptr[0]);
     current_alignment += array_size * item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // field.name handled_motor_failure_mask
-  {
-    size_t item_size = sizeof(ros_message->handled_motor_failure_mask);
-    current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
 
@@ -252,6 +282,13 @@ size_t max_serialized_size_px4_msgs__msg__ControlAllocatorStatus(
 
     current_alignment += array_size * sizeof(uint8_t);
   }
+  // member: allocated_torque
+  {
+    size_t array_size = 3;
+
+    current_alignment += array_size * sizeof(uint32_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
+  }
   // member: unallocated_torque
   {
     size_t array_size = 3;
@@ -265,6 +302,13 @@ size_t max_serialized_size_px4_msgs__msg__ControlAllocatorStatus(
 
     current_alignment += array_size * sizeof(uint8_t);
   }
+  // member: allocated_thrust
+  {
+    size_t array_size = 3;
+
+    current_alignment += array_size * sizeof(uint32_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
+  }
   // member: unallocated_thrust
   {
     size_t array_size = 3;
@@ -277,13 +321,6 @@ size_t max_serialized_size_px4_msgs__msg__ControlAllocatorStatus(
     size_t array_size = 16;
 
     current_alignment += array_size * sizeof(uint8_t);
-  }
-  // member: handled_motor_failure_mask
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint16_t) +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint16_t));
   }
 
   return current_alignment - initial_alignment;

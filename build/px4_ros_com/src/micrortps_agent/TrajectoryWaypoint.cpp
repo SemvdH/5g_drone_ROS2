@@ -35,21 +35,21 @@ using namespace eprosima::fastcdr::exception;
 
 px4_msgs::msg::TrajectoryWaypoint::TrajectoryWaypoint()
 {
-    // m_timestamp com.eprosima.idl.parser.typecode.PrimitiveTypeCode@7eecb5b8
+    // m_timestamp com.eprosima.idl.parser.typecode.PrimitiveTypeCode@28cda624
     m_timestamp = 0;
-    // m_position com.eprosima.idl.parser.typecode.AliasTypeCode@126253fd
+    // m_position com.eprosima.idl.parser.typecode.AliasTypeCode@1500b2f3
     memset(&m_position, 0, (3) * 4);
-    // m_velocity com.eprosima.idl.parser.typecode.AliasTypeCode@126253fd
+    // m_velocity com.eprosima.idl.parser.typecode.AliasTypeCode@1500b2f3
     memset(&m_velocity, 0, (3) * 4);
-    // m_acceleration com.eprosima.idl.parser.typecode.AliasTypeCode@126253fd
+    // m_acceleration com.eprosima.idl.parser.typecode.AliasTypeCode@1500b2f3
     memset(&m_acceleration, 0, (3) * 4);
-    // m_yaw com.eprosima.idl.parser.typecode.PrimitiveTypeCode@57db2b13
+    // m_yaw com.eprosima.idl.parser.typecode.PrimitiveTypeCode@7eecb5b8
     m_yaw = 0.0;
-    // m_yaw_speed com.eprosima.idl.parser.typecode.PrimitiveTypeCode@475c9c31
+    // m_yaw_speed com.eprosima.idl.parser.typecode.PrimitiveTypeCode@126253fd
     m_yaw_speed = 0.0;
-    // m_point_valid com.eprosima.idl.parser.typecode.PrimitiveTypeCode@5c86a017
+    // m_point_valid com.eprosima.idl.parser.typecode.PrimitiveTypeCode@57db2b13
     m_point_valid = false;
-    // m_type com.eprosima.idl.parser.typecode.PrimitiveTypeCode@5c7bfdc1
+    // m_type com.eprosima.idl.parser.typecode.PrimitiveTypeCode@475c9c31
     m_type = 0;
 
 }

@@ -43,7 +43,7 @@ px4_msgs__msg__ActuatorControlsStatus__are_equal(const px4_msgs__msg__ActuatorCo
     return false;
   }
   // control_power
-  for (size_t i = 0; i < 3; ++i) {
+  for (size_t i = 0; i < 4; ++i) {
     if (lhs->control_power[i] != rhs->control_power[i]) {
       return false;
     }
@@ -62,7 +62,7 @@ px4_msgs__msg__ActuatorControlsStatus__copy(
   // timestamp
   output->timestamp = input->timestamp;
   // control_power
-  for (size_t i = 0; i < 3; ++i) {
+  for (size_t i = 0; i < 4; ++i) {
     output->control_power[i] = input->control_power[i];
   }
   return true;

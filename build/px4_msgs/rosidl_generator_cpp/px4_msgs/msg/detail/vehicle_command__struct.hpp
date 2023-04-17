@@ -285,12 +285,12 @@ struct VehicleCommand_
     181u;
   static constexpr uint16_t VEHICLE_CMD_DO_REPEAT_RELAY =
     182u;
+  static constexpr uint16_t VEHICLE_CMD_DO_SET_SERVO =
+    183u;
   static constexpr uint16_t VEHICLE_CMD_DO_REPEAT_SERVO =
     184u;
   static constexpr uint16_t VEHICLE_CMD_DO_FLIGHTTERMINATION =
     185u;
-  static constexpr uint16_t VEHICLE_CMD_DO_CHANGE_ALTITUDE =
-    186u;
   static constexpr uint16_t VEHICLE_CMD_DO_SET_ACTUATOR =
     187u;
   static constexpr uint16_t VEHICLE_CMD_DO_LAND_START =
@@ -327,8 +327,6 @@ struct VehicleCommand_
     209u;
   static constexpr uint16_t VEHICLE_CMD_DO_INVERTED_FLIGHT =
     210u;
-  static constexpr uint16_t VEHICLE_CMD_DO_GRIPPER =
-    211u;
   static constexpr uint16_t VEHICLE_CMD_DO_SET_CAM_TRIGG_INTERVAL =
     214u;
   static constexpr uint16_t VEHICLE_CMD_DO_MOUNT_CONTROL_QUAT =
@@ -363,8 +361,6 @@ struct VehicleCommand_
     311u;
   static constexpr uint16_t VEHICLE_CMD_COMPONENT_ARM_DISARM =
     400u;
-  static constexpr uint16_t VEHICLE_CMD_RUN_PREARM_CHECKS =
-    401u;
   static constexpr uint16_t VEHICLE_CMD_INJECT_FAILURE =
     420u;
   static constexpr uint16_t VEHICLE_CMD_START_RX_PAIR =
@@ -405,12 +401,24 @@ struct VehicleCommand_
     30002u;
   static constexpr uint16_t VEHICLE_CMD_FIXED_MAG_CAL_YAW =
     42006u;
-  static constexpr uint16_t VEHICLE_CMD_DO_WINCH =
-    42600u;
   static constexpr uint32_t VEHICLE_CMD_PX4_INTERNAL_START =
     65537u;
   static constexpr uint32_t VEHICLE_CMD_SET_GPS_GLOBAL_ORIGIN =
     100000u;
+  static constexpr uint8_t VEHICLE_CMD_RESULT_ACCEPTED =
+    0u;
+  static constexpr uint8_t VEHICLE_CMD_RESULT_TEMPORARILY_REJECTED =
+    1u;
+  static constexpr uint8_t VEHICLE_CMD_RESULT_DENIED =
+    2u;
+  static constexpr uint8_t VEHICLE_CMD_RESULT_UNSUPPORTED =
+    3u;
+  static constexpr uint8_t VEHICLE_CMD_RESULT_FAILED =
+    4u;
+  static constexpr uint8_t VEHICLE_CMD_RESULT_IN_PROGRESS =
+    5u;
+  static constexpr uint8_t VEHICLE_CMD_RESULT_ENUM_END =
+    6u;
   static constexpr uint8_t VEHICLE_MOUNT_MODE_RETRACT =
     0u;
   static constexpr uint8_t VEHICLE_MOUNT_MODE_NEUTRAL =
@@ -435,6 +443,14 @@ struct VehicleCommand_
     4u;
   static constexpr uint8_t VEHICLE_ROI_ENUM_END =
     5u;
+  static constexpr uint8_t VEHICLE_CAMERA_ZOOM_TYPE_STEP =
+    0u;
+  static constexpr uint8_t VEHICLE_CAMERA_ZOOM_TYPE_CONTINUOUS =
+    1u;
+  static constexpr uint8_t VEHICLE_CAMERA_ZOOM_TYPE_RANGE =
+    2u;
+  static constexpr uint8_t VEHICLE_CAMERA_ZOOM_TYPE_FOCAL_LENGTH =
+    3u;
   static constexpr uint8_t PARACHUTE_ACTION_DISABLE =
     0u;
   static constexpr uint8_t PARACHUTE_ACTION_ENABLE =
@@ -499,10 +515,6 @@ struct VehicleCommand_
     0;
   static constexpr int8_t ARMING_ACTION_ARM =
     1;
-  static constexpr uint8_t GRIPPER_ACTION_RELEASE =
-    0u;
-  static constexpr uint8_t GRIPPER_ACTION_GRAB =
-    1u;
   static constexpr uint8_t ORB_QUEUE_LENGTH =
     8u;
 
@@ -671,11 +683,11 @@ constexpr uint16_t VehicleCommand_<ContainerAllocator>::VEHICLE_CMD_DO_SET_RELAY
 template<typename ContainerAllocator>
 constexpr uint16_t VehicleCommand_<ContainerAllocator>::VEHICLE_CMD_DO_REPEAT_RELAY;
 template<typename ContainerAllocator>
+constexpr uint16_t VehicleCommand_<ContainerAllocator>::VEHICLE_CMD_DO_SET_SERVO;
+template<typename ContainerAllocator>
 constexpr uint16_t VehicleCommand_<ContainerAllocator>::VEHICLE_CMD_DO_REPEAT_SERVO;
 template<typename ContainerAllocator>
 constexpr uint16_t VehicleCommand_<ContainerAllocator>::VEHICLE_CMD_DO_FLIGHTTERMINATION;
-template<typename ContainerAllocator>
-constexpr uint16_t VehicleCommand_<ContainerAllocator>::VEHICLE_CMD_DO_CHANGE_ALTITUDE;
 template<typename ContainerAllocator>
 constexpr uint16_t VehicleCommand_<ContainerAllocator>::VEHICLE_CMD_DO_SET_ACTUATOR;
 template<typename ContainerAllocator>
@@ -713,8 +725,6 @@ constexpr uint16_t VehicleCommand_<ContainerAllocator>::VEHICLE_CMD_DO_MOTOR_TES
 template<typename ContainerAllocator>
 constexpr uint16_t VehicleCommand_<ContainerAllocator>::VEHICLE_CMD_DO_INVERTED_FLIGHT;
 template<typename ContainerAllocator>
-constexpr uint16_t VehicleCommand_<ContainerAllocator>::VEHICLE_CMD_DO_GRIPPER;
-template<typename ContainerAllocator>
 constexpr uint16_t VehicleCommand_<ContainerAllocator>::VEHICLE_CMD_DO_SET_CAM_TRIGG_INTERVAL;
 template<typename ContainerAllocator>
 constexpr uint16_t VehicleCommand_<ContainerAllocator>::VEHICLE_CMD_DO_MOUNT_CONTROL_QUAT;
@@ -748,8 +758,6 @@ template<typename ContainerAllocator>
 constexpr uint16_t VehicleCommand_<ContainerAllocator>::VEHICLE_CMD_CONFIGURE_ACTUATOR;
 template<typename ContainerAllocator>
 constexpr uint16_t VehicleCommand_<ContainerAllocator>::VEHICLE_CMD_COMPONENT_ARM_DISARM;
-template<typename ContainerAllocator>
-constexpr uint16_t VehicleCommand_<ContainerAllocator>::VEHICLE_CMD_RUN_PREARM_CHECKS;
 template<typename ContainerAllocator>
 constexpr uint16_t VehicleCommand_<ContainerAllocator>::VEHICLE_CMD_INJECT_FAILURE;
 template<typename ContainerAllocator>
@@ -791,11 +799,23 @@ constexpr uint16_t VehicleCommand_<ContainerAllocator>::VEHICLE_CMD_PAYLOAD_CONT
 template<typename ContainerAllocator>
 constexpr uint16_t VehicleCommand_<ContainerAllocator>::VEHICLE_CMD_FIXED_MAG_CAL_YAW;
 template<typename ContainerAllocator>
-constexpr uint16_t VehicleCommand_<ContainerAllocator>::VEHICLE_CMD_DO_WINCH;
-template<typename ContainerAllocator>
 constexpr uint32_t VehicleCommand_<ContainerAllocator>::VEHICLE_CMD_PX4_INTERNAL_START;
 template<typename ContainerAllocator>
 constexpr uint32_t VehicleCommand_<ContainerAllocator>::VEHICLE_CMD_SET_GPS_GLOBAL_ORIGIN;
+template<typename ContainerAllocator>
+constexpr uint8_t VehicleCommand_<ContainerAllocator>::VEHICLE_CMD_RESULT_ACCEPTED;
+template<typename ContainerAllocator>
+constexpr uint8_t VehicleCommand_<ContainerAllocator>::VEHICLE_CMD_RESULT_TEMPORARILY_REJECTED;
+template<typename ContainerAllocator>
+constexpr uint8_t VehicleCommand_<ContainerAllocator>::VEHICLE_CMD_RESULT_DENIED;
+template<typename ContainerAllocator>
+constexpr uint8_t VehicleCommand_<ContainerAllocator>::VEHICLE_CMD_RESULT_UNSUPPORTED;
+template<typename ContainerAllocator>
+constexpr uint8_t VehicleCommand_<ContainerAllocator>::VEHICLE_CMD_RESULT_FAILED;
+template<typename ContainerAllocator>
+constexpr uint8_t VehicleCommand_<ContainerAllocator>::VEHICLE_CMD_RESULT_IN_PROGRESS;
+template<typename ContainerAllocator>
+constexpr uint8_t VehicleCommand_<ContainerAllocator>::VEHICLE_CMD_RESULT_ENUM_END;
 template<typename ContainerAllocator>
 constexpr uint8_t VehicleCommand_<ContainerAllocator>::VEHICLE_MOUNT_MODE_RETRACT;
 template<typename ContainerAllocator>
@@ -820,6 +840,14 @@ template<typename ContainerAllocator>
 constexpr uint8_t VehicleCommand_<ContainerAllocator>::VEHICLE_ROI_TARGET;
 template<typename ContainerAllocator>
 constexpr uint8_t VehicleCommand_<ContainerAllocator>::VEHICLE_ROI_ENUM_END;
+template<typename ContainerAllocator>
+constexpr uint8_t VehicleCommand_<ContainerAllocator>::VEHICLE_CAMERA_ZOOM_TYPE_STEP;
+template<typename ContainerAllocator>
+constexpr uint8_t VehicleCommand_<ContainerAllocator>::VEHICLE_CAMERA_ZOOM_TYPE_CONTINUOUS;
+template<typename ContainerAllocator>
+constexpr uint8_t VehicleCommand_<ContainerAllocator>::VEHICLE_CAMERA_ZOOM_TYPE_RANGE;
+template<typename ContainerAllocator>
+constexpr uint8_t VehicleCommand_<ContainerAllocator>::VEHICLE_CAMERA_ZOOM_TYPE_FOCAL_LENGTH;
 template<typename ContainerAllocator>
 constexpr uint8_t VehicleCommand_<ContainerAllocator>::PARACHUTE_ACTION_DISABLE;
 template<typename ContainerAllocator>
@@ -884,10 +912,6 @@ template<typename ContainerAllocator>
 constexpr int8_t VehicleCommand_<ContainerAllocator>::ARMING_ACTION_DISARM;
 template<typename ContainerAllocator>
 constexpr int8_t VehicleCommand_<ContainerAllocator>::ARMING_ACTION_ARM;
-template<typename ContainerAllocator>
-constexpr uint8_t VehicleCommand_<ContainerAllocator>::GRIPPER_ACTION_RELEASE;
-template<typename ContainerAllocator>
-constexpr uint8_t VehicleCommand_<ContainerAllocator>::GRIPPER_ACTION_GRAB;
 template<typename ContainerAllocator>
 constexpr uint8_t VehicleCommand_<ContainerAllocator>::ORB_QUEUE_LENGTH;
 

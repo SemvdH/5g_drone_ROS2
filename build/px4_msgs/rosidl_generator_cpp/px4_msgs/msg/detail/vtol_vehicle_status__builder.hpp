@@ -20,15 +20,15 @@ namespace msg
 namespace builder
 {
 
-class Init_VtolVehicleStatus_fixed_wing_system_failure
+class Init_VtolVehicleStatus_fw_permanent_stab
 {
 public:
-  explicit Init_VtolVehicleStatus_fixed_wing_system_failure(::px4_msgs::msg::VtolVehicleStatus & msg)
+  explicit Init_VtolVehicleStatus_fw_permanent_stab(::px4_msgs::msg::VtolVehicleStatus & msg)
   : msg_(msg)
   {}
-  ::px4_msgs::msg::VtolVehicleStatus fixed_wing_system_failure(::px4_msgs::msg::VtolVehicleStatus::_fixed_wing_system_failure_type arg)
+  ::px4_msgs::msg::VtolVehicleStatus fw_permanent_stab(::px4_msgs::msg::VtolVehicleStatus::_fw_permanent_stab_type arg)
   {
-    msg_.fixed_wing_system_failure = std::move(arg);
+    msg_.fw_permanent_stab = std::move(arg);
     return std::move(msg_);
   }
 
@@ -36,16 +36,64 @@ private:
   ::px4_msgs::msg::VtolVehicleStatus msg_;
 };
 
-class Init_VtolVehicleStatus_vehicle_vtol_state
+class Init_VtolVehicleStatus_vtol_transition_failsafe
 {
 public:
-  explicit Init_VtolVehicleStatus_vehicle_vtol_state(::px4_msgs::msg::VtolVehicleStatus & msg)
+  explicit Init_VtolVehicleStatus_vtol_transition_failsafe(::px4_msgs::msg::VtolVehicleStatus & msg)
   : msg_(msg)
   {}
-  Init_VtolVehicleStatus_fixed_wing_system_failure vehicle_vtol_state(::px4_msgs::msg::VtolVehicleStatus::_vehicle_vtol_state_type arg)
+  Init_VtolVehicleStatus_fw_permanent_stab vtol_transition_failsafe(::px4_msgs::msg::VtolVehicleStatus::_vtol_transition_failsafe_type arg)
   {
-    msg_.vehicle_vtol_state = std::move(arg);
-    return Init_VtolVehicleStatus_fixed_wing_system_failure(msg_);
+    msg_.vtol_transition_failsafe = std::move(arg);
+    return Init_VtolVehicleStatus_fw_permanent_stab(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::VtolVehicleStatus msg_;
+};
+
+class Init_VtolVehicleStatus_in_transition_to_fw
+{
+public:
+  explicit Init_VtolVehicleStatus_in_transition_to_fw(::px4_msgs::msg::VtolVehicleStatus & msg)
+  : msg_(msg)
+  {}
+  Init_VtolVehicleStatus_vtol_transition_failsafe in_transition_to_fw(::px4_msgs::msg::VtolVehicleStatus::_in_transition_to_fw_type arg)
+  {
+    msg_.in_transition_to_fw = std::move(arg);
+    return Init_VtolVehicleStatus_vtol_transition_failsafe(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::VtolVehicleStatus msg_;
+};
+
+class Init_VtolVehicleStatus_vtol_in_trans_mode
+{
+public:
+  explicit Init_VtolVehicleStatus_vtol_in_trans_mode(::px4_msgs::msg::VtolVehicleStatus & msg)
+  : msg_(msg)
+  {}
+  Init_VtolVehicleStatus_in_transition_to_fw vtol_in_trans_mode(::px4_msgs::msg::VtolVehicleStatus::_vtol_in_trans_mode_type arg)
+  {
+    msg_.vtol_in_trans_mode = std::move(arg);
+    return Init_VtolVehicleStatus_in_transition_to_fw(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::VtolVehicleStatus msg_;
+};
+
+class Init_VtolVehicleStatus_vtol_in_rw_mode
+{
+public:
+  explicit Init_VtolVehicleStatus_vtol_in_rw_mode(::px4_msgs::msg::VtolVehicleStatus & msg)
+  : msg_(msg)
+  {}
+  Init_VtolVehicleStatus_vtol_in_trans_mode vtol_in_rw_mode(::px4_msgs::msg::VtolVehicleStatus::_vtol_in_rw_mode_type arg)
+  {
+    msg_.vtol_in_rw_mode = std::move(arg);
+    return Init_VtolVehicleStatus_vtol_in_trans_mode(msg_);
   }
 
 private:
@@ -58,10 +106,10 @@ public:
   Init_VtolVehicleStatus_timestamp()
   : msg_(::rosidl_runtime_cpp::MessageInitialization::SKIP)
   {}
-  Init_VtolVehicleStatus_vehicle_vtol_state timestamp(::px4_msgs::msg::VtolVehicleStatus::_timestamp_type arg)
+  Init_VtolVehicleStatus_vtol_in_rw_mode timestamp(::px4_msgs::msg::VtolVehicleStatus::_timestamp_type arg)
   {
     msg_.timestamp = std::move(arg);
-    return Init_VtolVehicleStatus_vehicle_vtol_state(msg_);
+    return Init_VtolVehicleStatus_vtol_in_rw_mode(msg_);
   }
 
 private:

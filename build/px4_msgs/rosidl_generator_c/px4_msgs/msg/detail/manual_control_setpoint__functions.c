@@ -21,10 +21,10 @@ px4_msgs__msg__ManualControlSetpoint__init(px4_msgs__msg__ManualControlSetpoint 
   // timestamp_sample
   // valid
   // data_source
-  // roll
-  // pitch
-  // yaw
-  // throttle
+  // x
+  // y
+  // z
+  // r
   // flaps
   // aux1
   // aux2
@@ -46,10 +46,10 @@ px4_msgs__msg__ManualControlSetpoint__fini(px4_msgs__msg__ManualControlSetpoint 
   // timestamp_sample
   // valid
   // data_source
-  // roll
-  // pitch
-  // yaw
-  // throttle
+  // x
+  // y
+  // z
+  // r
   // flaps
   // aux1
   // aux2
@@ -82,20 +82,20 @@ px4_msgs__msg__ManualControlSetpoint__are_equal(const px4_msgs__msg__ManualContr
   if (lhs->data_source != rhs->data_source) {
     return false;
   }
-  // roll
-  if (lhs->roll != rhs->roll) {
+  // x
+  if (lhs->x != rhs->x) {
     return false;
   }
-  // pitch
-  if (lhs->pitch != rhs->pitch) {
+  // y
+  if (lhs->y != rhs->y) {
     return false;
   }
-  // yaw
-  if (lhs->yaw != rhs->yaw) {
+  // z
+  if (lhs->z != rhs->z) {
     return false;
   }
-  // throttle
-  if (lhs->throttle != rhs->throttle) {
+  // r
+  if (lhs->r != rhs->r) {
     return false;
   }
   // flaps
@@ -149,14 +149,14 @@ px4_msgs__msg__ManualControlSetpoint__copy(
   output->valid = input->valid;
   // data_source
   output->data_source = input->data_source;
-  // roll
-  output->roll = input->roll;
-  // pitch
-  output->pitch = input->pitch;
-  // yaw
-  output->yaw = input->yaw;
-  // throttle
-  output->throttle = input->throttle;
+  // x
+  output->x = input->x;
+  // y
+  output->y = input->y;
+  // z
+  output->z = input->z;
+  // r
+  output->r = input->r;
   // flaps
   output->flaps = input->flaps;
   // aux1

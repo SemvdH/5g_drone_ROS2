@@ -373,14 +373,44 @@ ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/ho
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/ActuatorArmed.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/ActuatorArmed.idl" "DESTINATION" "share/px4_msgs/msg")
 
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/ActuatorControls.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/ActuatorControls.idl" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/ActuatorControls0.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/ActuatorControls0.idl" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/ActuatorControls1.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/ActuatorControls1.idl" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/ActuatorControls2.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/ActuatorControls2.idl" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/ActuatorControls3.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/ActuatorControls3.idl" "DESTINATION" "share/px4_msgs/msg")
+
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/ActuatorControlsStatus.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/ActuatorControlsStatus.idl" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/ActuatorControlsStatus0.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/ActuatorControlsStatus0.idl" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/ActuatorControlsStatus1.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/ActuatorControlsStatus1.idl" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/ActuatorControlsVirtualFw.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/ActuatorControlsVirtualFw.idl" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/ActuatorControlsVirtualMc.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/ActuatorControlsVirtualMc.idl" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/ActuatorMotors.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/ActuatorMotors.idl" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/ActuatorOutputs.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/ActuatorOutputs.idl" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/ActuatorOutputsSim.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/ActuatorOutputsSim.idl" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/ActuatorServos.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/ActuatorServos.idl" "DESTINATION" "share/px4_msgs/msg")
@@ -430,6 +460,9 @@ ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/ho
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/CollisionReport.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/CollisionReport.idl" "DESTINATION" "share/px4_msgs/msg")
 
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/CommanderState.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/CommanderState.idl" "DESTINATION" "share/px4_msgs/msg")
+
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/ControlAllocatorStatus.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/ControlAllocatorStatus.idl" "DESTINATION" "share/px4_msgs/msg")
 
@@ -463,29 +496,38 @@ ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/ho
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/EscStatus.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/EscStatus.idl" "DESTINATION" "share/px4_msgs/msg")
 
-# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/EstimatorAidSource1d.idl" "DESTINATION" "share/px4_msgs/msg")
-ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/EstimatorAidSource1d.idl" "DESTINATION" "share/px4_msgs/msg")
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/EstimatorAttitude.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/EstimatorAttitude.idl" "DESTINATION" "share/px4_msgs/msg")
 
-# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/EstimatorAidSource2d.idl" "DESTINATION" "share/px4_msgs/msg")
-ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/EstimatorAidSource2d.idl" "DESTINATION" "share/px4_msgs/msg")
-
-# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/EstimatorAidSource3d.idl" "DESTINATION" "share/px4_msgs/msg")
-ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/EstimatorAidSource3d.idl" "DESTINATION" "share/px4_msgs/msg")
-
-# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/EstimatorBias.idl" "DESTINATION" "share/px4_msgs/msg")
-ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/EstimatorBias.idl" "DESTINATION" "share/px4_msgs/msg")
-
-# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/EstimatorBias3d.idl" "DESTINATION" "share/px4_msgs/msg")
-ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/EstimatorBias3d.idl" "DESTINATION" "share/px4_msgs/msg")
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/EstimatorBaroBias.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/EstimatorBaroBias.idl" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/EstimatorEventFlags.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/EstimatorEventFlags.idl" "DESTINATION" "share/px4_msgs/msg")
 
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/EstimatorGlobalPosition.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/EstimatorGlobalPosition.idl" "DESTINATION" "share/px4_msgs/msg")
+
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/EstimatorGpsStatus.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/EstimatorGpsStatus.idl" "DESTINATION" "share/px4_msgs/msg")
 
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/EstimatorInnovationTestRatios.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/EstimatorInnovationTestRatios.idl" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/EstimatorInnovationVariances.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/EstimatorInnovationVariances.idl" "DESTINATION" "share/px4_msgs/msg")
+
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/EstimatorInnovations.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/EstimatorInnovations.idl" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/EstimatorLocalPosition.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/EstimatorLocalPosition.idl" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/EstimatorOdometry.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/EstimatorOdometry.idl" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/EstimatorOpticalFlowVel.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/EstimatorOpticalFlowVel.idl" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/EstimatorSelectorStatus.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/EstimatorSelectorStatus.idl" "DESTINATION" "share/px4_msgs/msg")
@@ -502,11 +544,14 @@ ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/ho
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/EstimatorStatusFlags.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/EstimatorStatusFlags.idl" "DESTINATION" "share/px4_msgs/msg")
 
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/EstimatorVisualOdometryAligned.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/EstimatorVisualOdometryAligned.idl" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/EstimatorWind.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/EstimatorWind.idl" "DESTINATION" "share/px4_msgs/msg")
+
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/Event.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/Event.idl" "DESTINATION" "share/px4_msgs/msg")
-
-# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/FailsafeFlags.idl" "DESTINATION" "share/px4_msgs/msg")
-ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/FailsafeFlags.idl" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/FailureDetectorStatus.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/FailureDetectorStatus.idl" "DESTINATION" "share/px4_msgs/msg")
@@ -514,20 +559,14 @@ ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/ho
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/FollowTarget.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/FollowTarget.idl" "DESTINATION" "share/px4_msgs/msg")
 
-# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/FollowTargetEstimator.idl" "DESTINATION" "share/px4_msgs/msg")
-ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/FollowTargetEstimator.idl" "DESTINATION" "share/px4_msgs/msg")
-
-# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/FollowTargetStatus.idl" "DESTINATION" "share/px4_msgs/msg")
-ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/FollowTargetStatus.idl" "DESTINATION" "share/px4_msgs/msg")
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/FwVirtualAttitudeSetpoint.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/FwVirtualAttitudeSetpoint.idl" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/GeneratorStatus.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/GeneratorStatus.idl" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/GeofenceResult.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/GeofenceResult.idl" "DESTINATION" "share/px4_msgs/msg")
-
-# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/GimbalControls.idl" "DESTINATION" "share/px4_msgs/msg")
-ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/GimbalControls.idl" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/GimbalDeviceAttitudeStatus.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/GimbalDeviceAttitudeStatus.idl" "DESTINATION" "share/px4_msgs/msg")
@@ -550,17 +589,14 @@ ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/ho
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/GimbalManagerStatus.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/GimbalManagerStatus.idl" "DESTINATION" "share/px4_msgs/msg")
 
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/GimbalV1Command.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/GimbalV1Command.idl" "DESTINATION" "share/px4_msgs/msg")
+
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/GpsDump.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/GpsDump.idl" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/GpsInjectData.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/GpsInjectData.idl" "DESTINATION" "share/px4_msgs/msg")
-
-# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/Gripper.idl" "DESTINATION" "share/px4_msgs/msg")
-ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/Gripper.idl" "DESTINATION" "share/px4_msgs/msg")
-
-# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/HealthReport.idl" "DESTINATION" "share/px4_msgs/msg")
-ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/HealthReport.idl" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/HeaterStatus.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/HeaterStatus.idl" "DESTINATION" "share/px4_msgs/msg")
@@ -586,17 +622,11 @@ ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/ho
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/LandingGear.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/LandingGear.idl" "DESTINATION" "share/px4_msgs/msg")
 
-# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/LandingGearWheel.idl" "DESTINATION" "share/px4_msgs/msg")
-ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/LandingGearWheel.idl" "DESTINATION" "share/px4_msgs/msg")
-
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/LandingTargetInnovations.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/LandingTargetInnovations.idl" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/LandingTargetPose.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/LandingTargetPose.idl" "DESTINATION" "share/px4_msgs/msg")
-
-# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/LaunchDetectionStatus.idl" "DESTINATION" "share/px4_msgs/msg")
-ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/LaunchDetectionStatus.idl" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/LedControl.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/LedControl.idl" "DESTINATION" "share/px4_msgs/msg")
@@ -613,6 +643,9 @@ ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/ho
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/MagnetometerBiasEstimate.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/MagnetometerBiasEstimate.idl" "DESTINATION" "share/px4_msgs/msg")
 
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/ManualControlInput.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/ManualControlInput.idl" "DESTINATION" "share/px4_msgs/msg")
+
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/ManualControlSetpoint.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/ManualControlSetpoint.idl" "DESTINATION" "share/px4_msgs/msg")
 
@@ -625,14 +658,14 @@ ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/ho
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/MavlinkTunnel.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/MavlinkTunnel.idl" "DESTINATION" "share/px4_msgs/msg")
 
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/McVirtualAttitudeSetpoint.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/McVirtualAttitudeSetpoint.idl" "DESTINATION" "share/px4_msgs/msg")
+
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/Mission.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/Mission.idl" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/MissionResult.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/MissionResult.idl" "DESTINATION" "share/px4_msgs/msg")
-
-# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/ModeCompleted.idl" "DESTINATION" "share/px4_msgs/msg")
-ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/ModeCompleted.idl" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/MountOrientation.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/MountOrientation.idl" "DESTINATION" "share/px4_msgs/msg")
@@ -640,20 +673,26 @@ ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/ho
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/NavigatorMissionItem.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/NavigatorMissionItem.idl" "DESTINATION" "share/px4_msgs/msg")
 
-# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/NormalizedUnsignedSetpoint.idl" "DESTINATION" "share/px4_msgs/msg")
-ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/NormalizedUnsignedSetpoint.idl" "DESTINATION" "share/px4_msgs/msg")
-
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/NpfgStatus.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/NpfgStatus.idl" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/ObstacleDistance.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/ObstacleDistance.idl" "DESTINATION" "share/px4_msgs/msg")
 
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/ObstacleDistanceFused.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/ObstacleDistanceFused.idl" "DESTINATION" "share/px4_msgs/msg")
+
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/OffboardControlMode.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/OffboardControlMode.idl" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/OnboardComputerStatus.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/OnboardComputerStatus.idl" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/OpticalFlow.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/OpticalFlow.idl" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/OrbMultitest.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/OrbMultitest.idl" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/OrbTest.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/OrbTest.idl" "DESTINATION" "share/px4_msgs/msg")
@@ -663,6 +702,18 @@ ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/ho
 
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/OrbTestMedium.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/OrbTestMedium.idl" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/OrbTestMediumMulti.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/OrbTestMediumMulti.idl" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/OrbTestMediumQueue.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/OrbTestMediumQueue.idl" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/OrbTestMediumQueuePoll.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/OrbTestMediumQueuePoll.idl" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/OrbTestMediumWrapAround.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/OrbTestMediumWrapAround.idl" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/OrbitStatus.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/OrbitStatus.idl" "DESTINATION" "share/px4_msgs/msg")
@@ -697,14 +748,8 @@ ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/ho
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/PwmInput.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/PwmInput.idl" "DESTINATION" "share/px4_msgs/msg")
 
-# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/Px4ioStatus.idl" "DESTINATION" "share/px4_msgs/msg")
-ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/Px4ioStatus.idl" "DESTINATION" "share/px4_msgs/msg")
-
-# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/QshellReq.idl" "DESTINATION" "share/px4_msgs/msg")
-ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/QshellReq.idl" "DESTINATION" "share/px4_msgs/msg")
-
-# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/QshellRetval.idl" "DESTINATION" "share/px4_msgs/msg")
-ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/QshellRetval.idl" "DESTINATION" "share/px4_msgs/msg")
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/Px4IoStatus.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/Px4IoStatus.idl" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/RadioStatus.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/RadioStatus.idl" "DESTINATION" "share/px4_msgs/msg")
@@ -723,6 +768,12 @@ ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/ho
 
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/RtlTimeEstimate.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/RtlTimeEstimate.idl" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/Safety.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/Safety.idl" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/SafetyButton.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/SafetyButton.idl" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/SatelliteInfo.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/SatelliteInfo.idl" "DESTINATION" "share/px4_msgs/msg")
@@ -763,9 +814,6 @@ ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/ho
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/SensorMag.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/SensorMag.idl" "DESTINATION" "share/px4_msgs/msg")
 
-# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/SensorOpticalFlow.idl" "DESTINATION" "share/px4_msgs/msg")
-ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/SensorOpticalFlow.idl" "DESTINATION" "share/px4_msgs/msg")
-
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/SensorPreflightMag.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/SensorPreflightMag.idl" "DESTINATION" "share/px4_msgs/msg")
 
@@ -775,8 +823,14 @@ ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/ho
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/SensorsStatus.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/SensorsStatus.idl" "DESTINATION" "share/px4_msgs/msg")
 
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/SensorsStatusBaro.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/SensorsStatusBaro.idl" "DESTINATION" "share/px4_msgs/msg")
+
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/SensorsStatusImu.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/SensorsStatusImu.idl" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/SensorsStatusMag.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/SensorsStatusMag.idl" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/SystemPower.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/SystemPower.idl" "DESTINATION" "share/px4_msgs/msg")
@@ -793,8 +847,11 @@ ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/ho
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/TelemetryStatus.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/TelemetryStatus.idl" "DESTINATION" "share/px4_msgs/msg")
 
-# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/TiltrotorExtraControls.idl" "DESTINATION" "share/px4_msgs/msg")
-ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/TiltrotorExtraControls.idl" "DESTINATION" "share/px4_msgs/msg")
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/TestMotor.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/TestMotor.idl" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/Timesync.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/Timesync.idl" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/TimesyncStatus.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/TimesyncStatus.idl" "DESTINATION" "share/px4_msgs/msg")
@@ -838,14 +895,23 @@ ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/ho
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleAirData.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleAirData.idl" "DESTINATION" "share/px4_msgs/msg")
 
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleAngularAcceleration.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleAngularAcceleration.idl" "DESTINATION" "share/px4_msgs/msg")
+
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleAngularAccelerationSetpoint.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleAngularAccelerationSetpoint.idl" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleAngularVelocity.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleAngularVelocity.idl" "DESTINATION" "share/px4_msgs/msg")
 
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleAngularVelocityGroundtruth.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleAngularVelocityGroundtruth.idl" "DESTINATION" "share/px4_msgs/msg")
+
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleAttitude.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleAttitude.idl" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleAttitudeGroundtruth.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleAttitudeGroundtruth.idl" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleAttitudeSetpoint.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleAttitudeSetpoint.idl" "DESTINATION" "share/px4_msgs/msg")
@@ -865,6 +931,12 @@ ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/ho
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleGlobalPosition.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleGlobalPosition.idl" "DESTINATION" "share/px4_msgs/msg")
 
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleGlobalPositionGroundtruth.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleGlobalPositionGroundtruth.idl" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleGpsPosition.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleGpsPosition.idl" "DESTINATION" "share/px4_msgs/msg")
+
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleImu.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleImu.idl" "DESTINATION" "share/px4_msgs/msg")
 
@@ -877,20 +949,20 @@ ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/ho
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleLocalPosition.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleLocalPosition.idl" "DESTINATION" "share/px4_msgs/msg")
 
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleLocalPositionGroundtruth.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleLocalPositionGroundtruth.idl" "DESTINATION" "share/px4_msgs/msg")
+
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleLocalPositionSetpoint.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleLocalPositionSetpoint.idl" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleMagnetometer.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleMagnetometer.idl" "DESTINATION" "share/px4_msgs/msg")
 
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleMocapOdometry.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleMocapOdometry.idl" "DESTINATION" "share/px4_msgs/msg")
+
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleOdometry.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleOdometry.idl" "DESTINATION" "share/px4_msgs/msg")
-
-# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleOpticalFlow.idl" "DESTINATION" "share/px4_msgs/msg")
-ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleOpticalFlow.idl" "DESTINATION" "share/px4_msgs/msg")
-
-# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleOpticalFlowVel.idl" "DESTINATION" "share/px4_msgs/msg")
-ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleOpticalFlowVel.idl" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleRatesSetpoint.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleRatesSetpoint.idl" "DESTINATION" "share/px4_msgs/msg")
@@ -900,6 +972,9 @@ ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/ho
 
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleStatus.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleStatus.idl" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleStatusFlags.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleStatusFlags.idl" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleThrustSetpoint.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleThrustSetpoint.idl" "DESTINATION" "share/px4_msgs/msg")
@@ -913,8 +988,20 @@ ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/ho
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleTrajectoryWaypoint.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleTrajectoryWaypoint.idl" "DESTINATION" "share/px4_msgs/msg")
 
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleTrajectoryWaypointDesired.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleTrajectoryWaypointDesired.idl" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleVisionAttitude.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleVisionAttitude.idl" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleVisualOdometry.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VehicleVisualOdometry.idl" "DESTINATION" "share/px4_msgs/msg")
+
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VtolVehicleStatus.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/VtolVehicleStatus.idl" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/WheelEncoders.idl" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/WheelEncoders.idl" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/Wind.idl" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/build/px4_msgs/rosidl_adapter/px4_msgs/msg/Wind.idl" "DESTINATION" "share/px4_msgs/msg")
@@ -928,14 +1015,44 @@ ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/ho
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/ActuatorArmed.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/ActuatorArmed.msg" "DESTINATION" "share/px4_msgs/msg")
 
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/ActuatorControls.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/ActuatorControls.msg" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/ActuatorControls0.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/ActuatorControls0.msg" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/ActuatorControls1.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/ActuatorControls1.msg" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/ActuatorControls2.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/ActuatorControls2.msg" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/ActuatorControls3.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/ActuatorControls3.msg" "DESTINATION" "share/px4_msgs/msg")
+
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/ActuatorControlsStatus.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/ActuatorControlsStatus.msg" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/ActuatorControlsStatus0.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/ActuatorControlsStatus0.msg" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/ActuatorControlsStatus1.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/ActuatorControlsStatus1.msg" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/ActuatorControlsVirtualFw.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/ActuatorControlsVirtualFw.msg" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/ActuatorControlsVirtualMc.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/ActuatorControlsVirtualMc.msg" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/ActuatorMotors.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/ActuatorMotors.msg" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/ActuatorOutputs.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/ActuatorOutputs.msg" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/ActuatorOutputsSim.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/ActuatorOutputsSim.msg" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/ActuatorServos.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/ActuatorServos.msg" "DESTINATION" "share/px4_msgs/msg")
@@ -985,6 +1102,9 @@ ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/ho
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/CollisionReport.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/CollisionReport.msg" "DESTINATION" "share/px4_msgs/msg")
 
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/CommanderState.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/CommanderState.msg" "DESTINATION" "share/px4_msgs/msg")
+
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/ControlAllocatorStatus.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/ControlAllocatorStatus.msg" "DESTINATION" "share/px4_msgs/msg")
 
@@ -1018,29 +1138,38 @@ ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/ho
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/EscStatus.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/EscStatus.msg" "DESTINATION" "share/px4_msgs/msg")
 
-# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/EstimatorAidSource1d.msg" "DESTINATION" "share/px4_msgs/msg")
-ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/EstimatorAidSource1d.msg" "DESTINATION" "share/px4_msgs/msg")
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/EstimatorAttitude.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/EstimatorAttitude.msg" "DESTINATION" "share/px4_msgs/msg")
 
-# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/EstimatorAidSource2d.msg" "DESTINATION" "share/px4_msgs/msg")
-ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/EstimatorAidSource2d.msg" "DESTINATION" "share/px4_msgs/msg")
-
-# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/EstimatorAidSource3d.msg" "DESTINATION" "share/px4_msgs/msg")
-ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/EstimatorAidSource3d.msg" "DESTINATION" "share/px4_msgs/msg")
-
-# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/EstimatorBias.msg" "DESTINATION" "share/px4_msgs/msg")
-ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/EstimatorBias.msg" "DESTINATION" "share/px4_msgs/msg")
-
-# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/EstimatorBias3d.msg" "DESTINATION" "share/px4_msgs/msg")
-ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/EstimatorBias3d.msg" "DESTINATION" "share/px4_msgs/msg")
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/EstimatorBaroBias.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/EstimatorBaroBias.msg" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/EstimatorEventFlags.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/EstimatorEventFlags.msg" "DESTINATION" "share/px4_msgs/msg")
 
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/EstimatorGlobalPosition.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/EstimatorGlobalPosition.msg" "DESTINATION" "share/px4_msgs/msg")
+
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/EstimatorGpsStatus.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/EstimatorGpsStatus.msg" "DESTINATION" "share/px4_msgs/msg")
 
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/EstimatorInnovationTestRatios.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/EstimatorInnovationTestRatios.msg" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/EstimatorInnovationVariances.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/EstimatorInnovationVariances.msg" "DESTINATION" "share/px4_msgs/msg")
+
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/EstimatorInnovations.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/EstimatorInnovations.msg" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/EstimatorLocalPosition.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/EstimatorLocalPosition.msg" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/EstimatorOdometry.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/EstimatorOdometry.msg" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/EstimatorOpticalFlowVel.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/EstimatorOpticalFlowVel.msg" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/EstimatorSelectorStatus.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/EstimatorSelectorStatus.msg" "DESTINATION" "share/px4_msgs/msg")
@@ -1057,11 +1186,14 @@ ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/ho
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/EstimatorStatusFlags.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/EstimatorStatusFlags.msg" "DESTINATION" "share/px4_msgs/msg")
 
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/EstimatorVisualOdometryAligned.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/EstimatorVisualOdometryAligned.msg" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/EstimatorWind.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/EstimatorWind.msg" "DESTINATION" "share/px4_msgs/msg")
+
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/Event.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/Event.msg" "DESTINATION" "share/px4_msgs/msg")
-
-# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/FailsafeFlags.msg" "DESTINATION" "share/px4_msgs/msg")
-ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/FailsafeFlags.msg" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/FailureDetectorStatus.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/FailureDetectorStatus.msg" "DESTINATION" "share/px4_msgs/msg")
@@ -1069,20 +1201,14 @@ ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/ho
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/FollowTarget.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/FollowTarget.msg" "DESTINATION" "share/px4_msgs/msg")
 
-# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/FollowTargetEstimator.msg" "DESTINATION" "share/px4_msgs/msg")
-ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/FollowTargetEstimator.msg" "DESTINATION" "share/px4_msgs/msg")
-
-# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/FollowTargetStatus.msg" "DESTINATION" "share/px4_msgs/msg")
-ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/FollowTargetStatus.msg" "DESTINATION" "share/px4_msgs/msg")
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/FwVirtualAttitudeSetpoint.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/FwVirtualAttitudeSetpoint.msg" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/GeneratorStatus.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/GeneratorStatus.msg" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/GeofenceResult.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/GeofenceResult.msg" "DESTINATION" "share/px4_msgs/msg")
-
-# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/GimbalControls.msg" "DESTINATION" "share/px4_msgs/msg")
-ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/GimbalControls.msg" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/GimbalDeviceAttitudeStatus.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/GimbalDeviceAttitudeStatus.msg" "DESTINATION" "share/px4_msgs/msg")
@@ -1105,17 +1231,14 @@ ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/ho
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/GimbalManagerStatus.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/GimbalManagerStatus.msg" "DESTINATION" "share/px4_msgs/msg")
 
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/GimbalV1Command.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/GimbalV1Command.msg" "DESTINATION" "share/px4_msgs/msg")
+
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/GpsDump.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/GpsDump.msg" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/GpsInjectData.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/GpsInjectData.msg" "DESTINATION" "share/px4_msgs/msg")
-
-# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/Gripper.msg" "DESTINATION" "share/px4_msgs/msg")
-ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/Gripper.msg" "DESTINATION" "share/px4_msgs/msg")
-
-# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/HealthReport.msg" "DESTINATION" "share/px4_msgs/msg")
-ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/HealthReport.msg" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/HeaterStatus.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/HeaterStatus.msg" "DESTINATION" "share/px4_msgs/msg")
@@ -1141,17 +1264,11 @@ ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/ho
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/LandingGear.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/LandingGear.msg" "DESTINATION" "share/px4_msgs/msg")
 
-# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/LandingGearWheel.msg" "DESTINATION" "share/px4_msgs/msg")
-ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/LandingGearWheel.msg" "DESTINATION" "share/px4_msgs/msg")
-
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/LandingTargetInnovations.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/LandingTargetInnovations.msg" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/LandingTargetPose.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/LandingTargetPose.msg" "DESTINATION" "share/px4_msgs/msg")
-
-# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/LaunchDetectionStatus.msg" "DESTINATION" "share/px4_msgs/msg")
-ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/LaunchDetectionStatus.msg" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/LedControl.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/LedControl.msg" "DESTINATION" "share/px4_msgs/msg")
@@ -1168,6 +1285,9 @@ ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/ho
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/MagnetometerBiasEstimate.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/MagnetometerBiasEstimate.msg" "DESTINATION" "share/px4_msgs/msg")
 
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/ManualControlInput.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/ManualControlInput.msg" "DESTINATION" "share/px4_msgs/msg")
+
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/ManualControlSetpoint.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/ManualControlSetpoint.msg" "DESTINATION" "share/px4_msgs/msg")
 
@@ -1180,14 +1300,14 @@ ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/ho
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/MavlinkTunnel.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/MavlinkTunnel.msg" "DESTINATION" "share/px4_msgs/msg")
 
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/McVirtualAttitudeSetpoint.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/McVirtualAttitudeSetpoint.msg" "DESTINATION" "share/px4_msgs/msg")
+
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/Mission.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/Mission.msg" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/MissionResult.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/MissionResult.msg" "DESTINATION" "share/px4_msgs/msg")
-
-# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/ModeCompleted.msg" "DESTINATION" "share/px4_msgs/msg")
-ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/ModeCompleted.msg" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/MountOrientation.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/MountOrientation.msg" "DESTINATION" "share/px4_msgs/msg")
@@ -1195,20 +1315,26 @@ ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/ho
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/NavigatorMissionItem.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/NavigatorMissionItem.msg" "DESTINATION" "share/px4_msgs/msg")
 
-# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/NormalizedUnsignedSetpoint.msg" "DESTINATION" "share/px4_msgs/msg")
-ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/NormalizedUnsignedSetpoint.msg" "DESTINATION" "share/px4_msgs/msg")
-
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/NpfgStatus.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/NpfgStatus.msg" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/ObstacleDistance.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/ObstacleDistance.msg" "DESTINATION" "share/px4_msgs/msg")
 
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/ObstacleDistanceFused.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/ObstacleDistanceFused.msg" "DESTINATION" "share/px4_msgs/msg")
+
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/OffboardControlMode.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/OffboardControlMode.msg" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/OnboardComputerStatus.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/OnboardComputerStatus.msg" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/OpticalFlow.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/OpticalFlow.msg" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/OrbMultitest.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/OrbMultitest.msg" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/OrbTest.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/OrbTest.msg" "DESTINATION" "share/px4_msgs/msg")
@@ -1218,6 +1344,18 @@ ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/ho
 
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/OrbTestMedium.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/OrbTestMedium.msg" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/OrbTestMediumMulti.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/OrbTestMediumMulti.msg" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/OrbTestMediumQueue.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/OrbTestMediumQueue.msg" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/OrbTestMediumQueuePoll.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/OrbTestMediumQueuePoll.msg" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/OrbTestMediumWrapAround.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/OrbTestMediumWrapAround.msg" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/OrbitStatus.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/OrbitStatus.msg" "DESTINATION" "share/px4_msgs/msg")
@@ -1252,14 +1390,8 @@ ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/ho
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/PwmInput.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/PwmInput.msg" "DESTINATION" "share/px4_msgs/msg")
 
-# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/Px4ioStatus.msg" "DESTINATION" "share/px4_msgs/msg")
-ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/Px4ioStatus.msg" "DESTINATION" "share/px4_msgs/msg")
-
-# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/QshellReq.msg" "DESTINATION" "share/px4_msgs/msg")
-ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/QshellReq.msg" "DESTINATION" "share/px4_msgs/msg")
-
-# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/QshellRetval.msg" "DESTINATION" "share/px4_msgs/msg")
-ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/QshellRetval.msg" "DESTINATION" "share/px4_msgs/msg")
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/Px4IoStatus.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/Px4IoStatus.msg" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/RadioStatus.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/RadioStatus.msg" "DESTINATION" "share/px4_msgs/msg")
@@ -1278,6 +1410,12 @@ ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/ho
 
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/RtlTimeEstimate.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/RtlTimeEstimate.msg" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/Safety.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/Safety.msg" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/SafetyButton.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/SafetyButton.msg" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/SatelliteInfo.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/SatelliteInfo.msg" "DESTINATION" "share/px4_msgs/msg")
@@ -1318,9 +1456,6 @@ ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/ho
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/SensorMag.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/SensorMag.msg" "DESTINATION" "share/px4_msgs/msg")
 
-# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/SensorOpticalFlow.msg" "DESTINATION" "share/px4_msgs/msg")
-ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/SensorOpticalFlow.msg" "DESTINATION" "share/px4_msgs/msg")
-
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/SensorPreflightMag.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/SensorPreflightMag.msg" "DESTINATION" "share/px4_msgs/msg")
 
@@ -1330,8 +1465,14 @@ ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/ho
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/SensorsStatus.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/SensorsStatus.msg" "DESTINATION" "share/px4_msgs/msg")
 
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/SensorsStatusBaro.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/SensorsStatusBaro.msg" "DESTINATION" "share/px4_msgs/msg")
+
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/SensorsStatusImu.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/SensorsStatusImu.msg" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/SensorsStatusMag.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/SensorsStatusMag.msg" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/SystemPower.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/SystemPower.msg" "DESTINATION" "share/px4_msgs/msg")
@@ -1348,8 +1489,11 @@ ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/ho
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/TelemetryStatus.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/TelemetryStatus.msg" "DESTINATION" "share/px4_msgs/msg")
 
-# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/TiltrotorExtraControls.msg" "DESTINATION" "share/px4_msgs/msg")
-ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/TiltrotorExtraControls.msg" "DESTINATION" "share/px4_msgs/msg")
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/TestMotor.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/TestMotor.msg" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/Timesync.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/Timesync.msg" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/TimesyncStatus.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/TimesyncStatus.msg" "DESTINATION" "share/px4_msgs/msg")
@@ -1393,14 +1537,23 @@ ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/ho
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleAirData.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleAirData.msg" "DESTINATION" "share/px4_msgs/msg")
 
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleAngularAcceleration.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleAngularAcceleration.msg" "DESTINATION" "share/px4_msgs/msg")
+
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleAngularAccelerationSetpoint.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleAngularAccelerationSetpoint.msg" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleAngularVelocity.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleAngularVelocity.msg" "DESTINATION" "share/px4_msgs/msg")
 
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleAngularVelocityGroundtruth.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleAngularVelocityGroundtruth.msg" "DESTINATION" "share/px4_msgs/msg")
+
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleAttitude.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleAttitude.msg" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleAttitudeGroundtruth.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleAttitudeGroundtruth.msg" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleAttitudeSetpoint.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleAttitudeSetpoint.msg" "DESTINATION" "share/px4_msgs/msg")
@@ -1420,6 +1573,12 @@ ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/ho
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleGlobalPosition.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleGlobalPosition.msg" "DESTINATION" "share/px4_msgs/msg")
 
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleGlobalPositionGroundtruth.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleGlobalPositionGroundtruth.msg" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleGpsPosition.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleGpsPosition.msg" "DESTINATION" "share/px4_msgs/msg")
+
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleImu.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleImu.msg" "DESTINATION" "share/px4_msgs/msg")
 
@@ -1432,20 +1591,20 @@ ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/ho
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleLocalPosition.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleLocalPosition.msg" "DESTINATION" "share/px4_msgs/msg")
 
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleLocalPositionGroundtruth.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleLocalPositionGroundtruth.msg" "DESTINATION" "share/px4_msgs/msg")
+
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleLocalPositionSetpoint.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleLocalPositionSetpoint.msg" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleMagnetometer.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleMagnetometer.msg" "DESTINATION" "share/px4_msgs/msg")
 
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleMocapOdometry.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleMocapOdometry.msg" "DESTINATION" "share/px4_msgs/msg")
+
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleOdometry.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleOdometry.msg" "DESTINATION" "share/px4_msgs/msg")
-
-# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleOpticalFlow.msg" "DESTINATION" "share/px4_msgs/msg")
-ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleOpticalFlow.msg" "DESTINATION" "share/px4_msgs/msg")
-
-# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleOpticalFlowVel.msg" "DESTINATION" "share/px4_msgs/msg")
-ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleOpticalFlowVel.msg" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleRatesSetpoint.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleRatesSetpoint.msg" "DESTINATION" "share/px4_msgs/msg")
@@ -1455,6 +1614,9 @@ ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/ho
 
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleStatus.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleStatus.msg" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleStatusFlags.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleStatusFlags.msg" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleThrustSetpoint.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleThrustSetpoint.msg" "DESTINATION" "share/px4_msgs/msg")
@@ -1468,8 +1630,20 @@ ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/ho
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleTrajectoryWaypoint.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleTrajectoryWaypoint.msg" "DESTINATION" "share/px4_msgs/msg")
 
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleTrajectoryWaypointDesired.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleTrajectoryWaypointDesired.msg" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleVisionAttitude.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleVisionAttitude.msg" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleVisualOdometry.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleVisualOdometry.msg" "DESTINATION" "share/px4_msgs/msg")
+
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VtolVehicleStatus.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/VtolVehicleStatus.msg" "DESTINATION" "share/px4_msgs/msg")
+
+# install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/WheelEncoders.msg" "DESTINATION" "share/px4_msgs/msg")
+ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/WheelEncoders.msg" "DESTINATION" "share/px4_msgs/msg")
 
 # install(FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/Wind.msg" "DESTINATION" "share/px4_msgs/msg")
 ament_cmake_symlink_install_files("/home/ubuntu/ros2_ws/src/px4_msgs" FILES "/home/ubuntu/ros2_ws/src/px4_msgs/msg/Wind.msg" "DESTINATION" "share/px4_msgs/msg")

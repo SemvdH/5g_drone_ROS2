@@ -14,7 +14,7 @@ module px4_msgs {
       const uint8 TAKEOFF_STATE_FLIGHT = 5;
     };
     @verbatim (language="comment", text=
-      " Status of the takeoff state machine currently just available for multicopters")
+      " Status of the takeoff state machine currently just availble for multicopters")
     struct TakeoffStatus {
       @verbatim (language="comment", text=
         " time since system start (microseconds)")
@@ -23,7 +23,7 @@ module px4_msgs {
       uint8 takeoff_state;
 
       @verbatim (language="comment", text=
-        " limited tilt feasibility during takeoff, contains maximum tilt otherwise")
+        " limited tilt feasability during takeoff, contains maximum tilt otherwise")
       float tilt_limit;
     };
   };

@@ -20,32 +20,16 @@ namespace msg
 namespace builder
 {
 
-class Init_VehicleCommandAck_from_external
-{
-public:
-  explicit Init_VehicleCommandAck_from_external(::px4_msgs::msg::VehicleCommandAck & msg)
-  : msg_(msg)
-  {}
-  ::px4_msgs::msg::VehicleCommandAck from_external(::px4_msgs::msg::VehicleCommandAck::_from_external_type arg)
-  {
-    msg_.from_external = std::move(arg);
-    return std::move(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::VehicleCommandAck msg_;
-};
-
 class Init_VehicleCommandAck_target_component
 {
 public:
   explicit Init_VehicleCommandAck_target_component(::px4_msgs::msg::VehicleCommandAck & msg)
   : msg_(msg)
   {}
-  Init_VehicleCommandAck_from_external target_component(::px4_msgs::msg::VehicleCommandAck::_target_component_type arg)
+  ::px4_msgs::msg::VehicleCommandAck target_component(::px4_msgs::msg::VehicleCommandAck::_target_component_type arg)
   {
     msg_.target_component = std::move(arg);
-    return Init_VehicleCommandAck_from_external(msg_);
+    return std::move(msg_);
   }
 
 private:
@@ -100,16 +84,32 @@ private:
   ::px4_msgs::msg::VehicleCommandAck msg_;
 };
 
+class Init_VehicleCommandAck_from_external
+{
+public:
+  explicit Init_VehicleCommandAck_from_external(::px4_msgs::msg::VehicleCommandAck & msg)
+  : msg_(msg)
+  {}
+  Init_VehicleCommandAck_result_param1 from_external(::px4_msgs::msg::VehicleCommandAck::_from_external_type arg)
+  {
+    msg_.from_external = std::move(arg);
+    return Init_VehicleCommandAck_result_param1(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::VehicleCommandAck msg_;
+};
+
 class Init_VehicleCommandAck_result
 {
 public:
   explicit Init_VehicleCommandAck_result(::px4_msgs::msg::VehicleCommandAck & msg)
   : msg_(msg)
   {}
-  Init_VehicleCommandAck_result_param1 result(::px4_msgs::msg::VehicleCommandAck::_result_type arg)
+  Init_VehicleCommandAck_from_external result(::px4_msgs::msg::VehicleCommandAck::_result_type arg)
   {
     msg_.result = std::move(arg);
-    return Init_VehicleCommandAck_result_param1(msg_);
+    return Init_VehicleCommandAck_from_external(msg_);
   }
 
 private:

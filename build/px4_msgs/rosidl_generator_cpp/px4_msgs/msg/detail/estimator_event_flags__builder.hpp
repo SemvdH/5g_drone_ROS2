@@ -228,80 +228,16 @@ private:
   ::px4_msgs::msg::EstimatorEventFlags msg_;
 };
 
-class Init_EstimatorEventFlags_reset_hgt_to_ev
-{
-public:
-  explicit Init_EstimatorEventFlags_reset_hgt_to_ev(::px4_msgs::msg::EstimatorEventFlags & msg)
-  : msg_(msg)
-  {}
-  Init_EstimatorEventFlags_warning_event_changes reset_hgt_to_ev(::px4_msgs::msg::EstimatorEventFlags::_reset_hgt_to_ev_type arg)
-  {
-    msg_.reset_hgt_to_ev = std::move(arg);
-    return Init_EstimatorEventFlags_warning_event_changes(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::EstimatorEventFlags msg_;
-};
-
-class Init_EstimatorEventFlags_reset_hgt_to_rng
-{
-public:
-  explicit Init_EstimatorEventFlags_reset_hgt_to_rng(::px4_msgs::msg::EstimatorEventFlags & msg)
-  : msg_(msg)
-  {}
-  Init_EstimatorEventFlags_reset_hgt_to_ev reset_hgt_to_rng(::px4_msgs::msg::EstimatorEventFlags::_reset_hgt_to_rng_type arg)
-  {
-    msg_.reset_hgt_to_rng = std::move(arg);
-    return Init_EstimatorEventFlags_reset_hgt_to_ev(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::EstimatorEventFlags msg_;
-};
-
-class Init_EstimatorEventFlags_reset_hgt_to_gps
-{
-public:
-  explicit Init_EstimatorEventFlags_reset_hgt_to_gps(::px4_msgs::msg::EstimatorEventFlags & msg)
-  : msg_(msg)
-  {}
-  Init_EstimatorEventFlags_reset_hgt_to_rng reset_hgt_to_gps(::px4_msgs::msg::EstimatorEventFlags::_reset_hgt_to_gps_type arg)
-  {
-    msg_.reset_hgt_to_gps = std::move(arg);
-    return Init_EstimatorEventFlags_reset_hgt_to_rng(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::EstimatorEventFlags msg_;
-};
-
-class Init_EstimatorEventFlags_reset_hgt_to_baro
-{
-public:
-  explicit Init_EstimatorEventFlags_reset_hgt_to_baro(::px4_msgs::msg::EstimatorEventFlags & msg)
-  : msg_(msg)
-  {}
-  Init_EstimatorEventFlags_reset_hgt_to_gps reset_hgt_to_baro(::px4_msgs::msg::EstimatorEventFlags::_reset_hgt_to_baro_type arg)
-  {
-    msg_.reset_hgt_to_baro = std::move(arg);
-    return Init_EstimatorEventFlags_reset_hgt_to_gps(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::EstimatorEventFlags msg_;
-};
-
 class Init_EstimatorEventFlags_yaw_aligned_to_imu_gps
 {
 public:
   explicit Init_EstimatorEventFlags_yaw_aligned_to_imu_gps(::px4_msgs::msg::EstimatorEventFlags & msg)
   : msg_(msg)
   {}
-  Init_EstimatorEventFlags_reset_hgt_to_baro yaw_aligned_to_imu_gps(::px4_msgs::msg::EstimatorEventFlags::_yaw_aligned_to_imu_gps_type arg)
+  Init_EstimatorEventFlags_warning_event_changes yaw_aligned_to_imu_gps(::px4_msgs::msg::EstimatorEventFlags::_yaw_aligned_to_imu_gps_type arg)
   {
     msg_.yaw_aligned_to_imu_gps = std::move(arg);
-    return Init_EstimatorEventFlags_reset_hgt_to_baro(msg_);
+    return Init_EstimatorEventFlags_warning_event_changes(msg_);
   }
 
 private:

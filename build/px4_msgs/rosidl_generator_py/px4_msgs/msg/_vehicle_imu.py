@@ -93,7 +93,6 @@ class VehicleImu(metaclass=Metaclass_VehicleImu):
         '_delta_velocity',
         '_delta_angle_dt',
         '_delta_velocity_dt',
-        '_delta_angle_clipping',
         '_delta_velocity_clipping',
         '_accel_calibration_count',
         '_gyro_calibration_count',
@@ -108,7 +107,6 @@ class VehicleImu(metaclass=Metaclass_VehicleImu):
         'delta_velocity': 'float[3]',
         'delta_angle_dt': 'uint16',
         'delta_velocity_dt': 'uint16',
-        'delta_angle_clipping': 'uint8',
         'delta_velocity_clipping': 'uint8',
         'accel_calibration_count': 'uint8',
         'gyro_calibration_count': 'uint8',
@@ -123,7 +121,6 @@ class VehicleImu(metaclass=Metaclass_VehicleImu):
         rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 3),  # noqa: E501
         rosidl_parser.definition.BasicType('uint16'),  # noqa: E501
         rosidl_parser.definition.BasicType('uint16'),  # noqa: E501
-        rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
         rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
         rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
         rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
@@ -149,7 +146,6 @@ class VehicleImu(metaclass=Metaclass_VehicleImu):
             assert self.delta_velocity.shape == (3, )
         self.delta_angle_dt = kwargs.get('delta_angle_dt', int())
         self.delta_velocity_dt = kwargs.get('delta_velocity_dt', int())
-        self.delta_angle_clipping = kwargs.get('delta_angle_clipping', int())
         self.delta_velocity_clipping = kwargs.get('delta_velocity_clipping', int())
         self.accel_calibration_count = kwargs.get('accel_calibration_count', int())
         self.gyro_calibration_count = kwargs.get('gyro_calibration_count', int())
@@ -198,8 +194,6 @@ class VehicleImu(metaclass=Metaclass_VehicleImu):
         if self.delta_angle_dt != other.delta_angle_dt:
             return False
         if self.delta_velocity_dt != other.delta_velocity_dt:
-            return False
-        if self.delta_angle_clipping != other.delta_angle_clipping:
             return False
         if self.delta_velocity_clipping != other.delta_velocity_clipping:
             return False
@@ -365,21 +359,6 @@ class VehicleImu(metaclass=Metaclass_VehicleImu):
             assert value >= 0 and value < 65536, \
                 "The 'delta_velocity_dt' field must be an unsigned integer in [0, 65535]"
         self._delta_velocity_dt = value
-
-    @property
-    def delta_angle_clipping(self):
-        """Message field 'delta_angle_clipping'."""
-        return self._delta_angle_clipping
-
-    @delta_angle_clipping.setter
-    def delta_angle_clipping(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, int), \
-                "The 'delta_angle_clipping' field must be of type 'int'"
-            assert value >= 0 and value < 256, \
-                "The 'delta_angle_clipping' field must be an unsigned integer in [0, 255]"
-        self._delta_angle_clipping = value
 
     @property
     def delta_velocity_clipping(self):
