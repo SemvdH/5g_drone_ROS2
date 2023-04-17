@@ -80,8 +80,7 @@ tracker_position_EXTERNAL_OBJECTS =
 tracker_position: CMakeFiles/tracker_position.dir/src/tracker_position.cpp.o
 tracker_position: CMakeFiles/tracker_position.dir/build.make
 tracker_position: /opt/ros/foxy/lib/librclcpp.so
-tracker_position: /usr/local/lib/libfollow_me_driver.so.1.6.0
-tracker_position: /usr/local/lib/libserial_communication.so.1.6.0
+tracker_position: /usr/local/lib/librtls_driver.so.1.6.0
 tracker_position: /opt/ros/foxy/lib/liblibstatistics_collector.so
 tracker_position: /opt/ros/foxy/lib/liblibstatistics_collector_test_msgs__rosidl_typesupport_introspection_c.so
 tracker_position: /opt/ros/foxy/lib/liblibstatistics_collector_test_msgs__rosidl_generator_c.so
@@ -128,6 +127,7 @@ tracker_position: /opt/ros/foxy/lib/librcpputils.so
 tracker_position: /opt/ros/foxy/lib/librosidl_runtime_c.so
 tracker_position: /opt/ros/foxy/lib/librcutils.so
 tracker_position: /opt/ros/foxy/lib/libtracetools.so
+tracker_position: /usr/local/lib/libserial_communication.so.1.6.0
 tracker_position: /usr/local/lib/liblogger.so.1.6.0
 tracker_position: CMakeFiles/tracker_position.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ubuntu/ros2_ws/build/beacon_positioning/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable tracker_position"

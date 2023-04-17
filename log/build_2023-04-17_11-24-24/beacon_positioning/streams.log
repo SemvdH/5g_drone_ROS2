@@ -1,0 +1,26 @@
+[0.116s] Invoking command in '/home/ubuntu/ros2_ws/build/beacon_positioning': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/ubuntu/ros2_ws/build/beacon_positioning -- -j4 -l4
+[0.298s] [35m[1mScanning dependencies of target tracker_position[0m
+[0.422s] [ 50%] [32mBuilding CXX object CMakeFiles/tracker_position.dir/src/tracker_position.cpp.o[0m
+[6.806s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:46:59:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ at end of member declaration
+[6.806s]    46 |   std::shared_ptr<terabee::serial_communication::ISerial> [01;31m[Kserial_port[m[K get_serial_port() {
+[6.807s]       |                                                           [01;31m[K^~~~~~~~~~~[m[K
+[6.807s]       |                                                                      [32m[K;[m[K
+[6.807s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:46:87:[m[K [01;31m[Kerror: [m[KISO C++ forbids declaration of ‘[01m[Kget_serial_port[m[K’ with no type [[01;31m[K-fpermissive[m[K]
+[6.808s]    46 |   std::shared_ptr<terabee::serial_communication::ISerial> serial_port get_serial_port([01;31m[K)[m[K {
+[6.808s]       |                                                                                       [01;31m[K^[m[K
+[6.826s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:86:59:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[Kstd::shared_ptr<terabee::serial_communication::ISerial> BeaconPositioningPublisher::serial_port[m[K’
+[6.826s]    86 |   std::shared_ptr<terabee::serial_communication::ISerial> [01;31m[Kserial_port[m[K; // serial port for communicating with tracker
+[6.827s]       |                                                           [01;31m[K^~~~~~~~~~~[m[K
+[6.827s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:46:59:[m[K [01;36m[Knote: [m[Kprevious declaration ‘[01m[Kstd::shared_ptr<terabee::serial_communication::ISerial> BeaconPositioningPublisher::serial_port[m[K’
+[6.828s]    46 |   std::shared_ptr<terabee::serial_communication::ISerial> [01;36m[Kserial_port[m[K get_serial_port() {
+[6.828s]       |                                                           [01;36m[K^~~~~~~~~~~[m[K
+[6.920s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:[m[K In member function ‘[01m[Kint BeaconPositioningPublisher::get_serial_port()[m[K’:
+[6.921s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:47:12:[m[K [01;31m[Kerror: [m[Kcannot convert ‘[01m[Kstd::shared_ptr<terabee::serial_communication::ISerial>[m[K’ to ‘[01m[Kint[m[K’ in return
+[6.921s]    47 |     return [01;31m[Kserial_port[m[K;
+[6.922s]       |            [01;31m[K^~~~~~~~~~~[m[K
+[6.922s]       |            [01;31m[K|[m[K
+[6.922s]       |            [01;31m[Kstd::shared_ptr<terabee::serial_communication::ISerial>[m[K
+[10.118s] make[2]: *** [CMakeFiles/tracker_position.dir/build.make:63: CMakeFiles/tracker_position.dir/src/tracker_position.cpp.o] Error 1
+[10.119s] make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/tracker_position.dir/all] Error 2
+[10.119s] make: *** [Makefile:141: all] Error 2
+[10.125s] Invoked command in '/home/ubuntu/ros2_ws/build/beacon_positioning' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/ubuntu/ros2_ws/build/beacon_positioning -- -j4 -l4

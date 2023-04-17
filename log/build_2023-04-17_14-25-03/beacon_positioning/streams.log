@@ -1,0 +1,22 @@
+[0.113s] Invoking command in '/home/ubuntu/ros2_ws/build/beacon_positioning': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/ubuntu/ros2_ws/build/beacon_positioning -- -j4 -l4
+[0.250s] -- Found ament_cmake: 0.9.11 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.359s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[1.022s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[1.088s] -- Found rclcpp: 2.4.2 (/opt/ros/foxy/share/rclcpp/cmake)
+[1.276s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.295s] -- Found rosidl_adapter: 1.3.0 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[1.908s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[2.163s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[2.173s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[2.824s] CMake Error at /opt/ros/foxy/share/ament_cmake_core/cmake/symlink_install/ament_cmake_symlink_install_targets.cmake:67 (message):
+[2.825s]   ament_cmake_symlink_install_targets() 'DIRECTORY' is not a target
+[2.825s] Call Stack (most recent call first):
+[2.826s]   /opt/ros/foxy/share/ament_cmake_core/cmake/symlink_install/install.cmake:37 (ament_cmake_symlink_install_targets)
+[2.826s]   CMakeLists.txt:39 (install)
+[2.826s] 
+[2.827s] 
+[2.838s] -- Configuring incomplete, errors occurred!
+[2.838s] See also "/home/ubuntu/ros2_ws/build/beacon_positioning/CMakeFiles/CMakeOutput.log".
+[2.839s] See also "/home/ubuntu/ros2_ws/build/beacon_positioning/CMakeFiles/CMakeError.log".
+[2.857s] make: *** [Makefile:266: cmake_check_build_system] Error 1
+[2.862s] Invoked command in '/home/ubuntu/ros2_ws/build/beacon_positioning' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/ubuntu/ros2_ws/build/beacon_positioning -- -j4 -l4

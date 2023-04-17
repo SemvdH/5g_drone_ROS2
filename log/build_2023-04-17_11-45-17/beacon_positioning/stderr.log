@@ -1,0 +1,158 @@
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:81:33:[m[K [01;31m[Kerror: [m[K‘[01m[Kstd_msgs::msg[m[K’ is not a type
+   81 |   void timer_callback(std_msgs::[01;31m[Kmsg[m[K msg)
+      |                                 [01;31m[K^~~[m[K
+In file included from [01m[K/opt/ros/foxy/include/rclcpp/context.hpp:19[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/contexts/default_context.hpp:18[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:32[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+                 from [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:4[m[K:
+/usr/include/c++/9/functional: In instantiation of ‘[01m[Kstruct std::_Bind_check_arity<void (BeaconPositioningPublisher::*)(int), BeaconPositioningPublisher*>[m[K’:
+[01m[K/usr/include/c++/9/functional:787:12:[m[K   required from ‘[01m[Kstruct std::_Bind_helper<false, void (BeaconPositioningPublisher::*)(int), BeaconPositioningPublisher*>[m[K’
+[01m[K/usr/include/c++/9/functional:808:5:[m[K   required by substitution of ‘[01m[Ktemplate<class _Func, class ... _BoundArgs> typename std::_Bind_helper<std::__is_socketlike<_Func>::value, _Func, _BoundArgs ...>::type std::bind(_Func&&, _BoundArgs&& ...) [with _Func = void (BeaconPositioningPublisher::*)(int); _BoundArgs = {BeaconPositioningPublisher*}][m[K’
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:42:75:[m[K   required from here
+[01m[K/usr/include/c++/9/functional:775:7:[m[K [01;31m[Kerror: [m[Kstatic assertion failed: Wrong number of arguments for pointer-to-member
+  774 |       static_assert(_Varargs::[01;31m[Kvalue[m[K
+      |                               [01;31m[K~~~~~[m[K
+  775 | [01;31m[K      ? sizeof...(_BoundArgs) >= _Arity::value + 1[m[K
+      |       [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+  776 | [01;31m[K      : sizeof...(_BoundArgs) == _Arity::value + 1[m[K,
+      |       [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:[m[K In constructor ‘[01m[KBeaconPositioningPublisher::BeaconPositioningPublisher()[m[K’:
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:42:76:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KBeaconPositioningPublisher::create_wall_timer(std::chrono::milliseconds, std::_Bind_helper<false, void (BeaconPositioningPublisher::*)(int), BeaconPositioningPublisher*>::type)[m[K’
+   42 |         500ms, std::bind(&BeaconPositioningPublisher::timer_callback, this)[01;31m[K)[m[K;
+      |                                                                            [01;31m[K^[m[K
+In file included from [01m[K/opt/ros/foxy/include/rclcpp/executors/single_threaded_executor.hpp:28[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:22[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+                 from [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:4[m[K:
+[01m[K/opt/ros/foxy/include/rclcpp/node.hpp:232:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class DurationRepT, class DurationT, class CallbackT> typename rclcpp::WallTimer<CallbackT>::SharedPtr rclcpp::Node::create_wall_timer(std::chrono::duration<_Rep1, _Period1>, CallbackT, rclcpp::CallbackGroup::SharedPtr)[m[K’
+  232 |   [01;36m[Kcreate_wall_timer[m[K(
+      |   [01;36m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/opt/ros/foxy/include/rclcpp/node.hpp:232:3:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+In file included from [01m[K/opt/ros/foxy/include/rclcpp/node.hpp:1224[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executors/single_threaded_executor.hpp:28[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:22[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+                 from [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:4[m[K:
+/opt/ros/foxy/include/rclcpp/node_impl.hpp: In substitution of ‘[01m[Ktemplate<class DurationRepT, class DurationT, class CallbackT> typename rclcpp::WallTimer<CallbackT>::SharedPtr rclcpp::Node::create_wall_timer(std::chrono::duration<_Rep1, _Period1>, CallbackT, rclcpp::CallbackGroup::SharedPtr) [with DurationRepT = long int; DurationT = std::ratio<1, 1000>; CallbackT = std::_Bind<void (BeaconPositioningPublisher::*(BeaconPositioningPublisher*))(int)>][m[K’:
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:42:76:[m[K   required from here
+[01m[K/opt/ros/foxy/include/rclcpp/node_impl.hpp:109:1:[m[K [01;31m[Kerror: [m[Kno type named ‘[01m[Ktype[m[K’ in ‘[01m[Kstruct std::enable_if<false, void>[m[K’
+  109 | [01;31m[KNode[m[K::create_wall_timer(
+      | [01;31m[K^~~~[m[K
+[01m[K/opt/ros/foxy/include/rclcpp/node_impl.hpp:109:1:[m[K [01;31m[Kerror: [m[Kno type named ‘[01m[Ktype[m[K’ in ‘[01m[Kstruct std::enable_if<false, void>[m[K’
+[01m[K/opt/ros/foxy/include/rclcpp/node_impl.hpp:109:1:[m[K [01;36m[Knote: [m[Kinvalid template non-type parameter
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:[m[K In member function ‘[01m[Kvoid BeaconPositioningPublisher::publish()[m[K’:
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:77:25:[m[K [01;31m[Kerror: [m[K‘[01m[Kmsg[m[K’ was not declared in this scope
+   77 |     publisher_->publish([01;31m[Kmsg[m[K);
+      |                         [01;31m[K^~~[m[K
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:77:25:[m[K [01;36m[Knote: [m[Ksuggested alternatives:
+In file included from [01m[K/opt/ros/foxy/include/builtin_interfaces/msg/duration.hpp:7[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/duration.hpp:20[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/qos.hpp:20[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/node_interfaces/node_graph_interface.hpp:31[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/client.hpp:34[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:23[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+                 from [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:4[m[K:
+[01m[K/opt/ros/foxy/include/builtin_interfaces/msg/detail/duration__struct.hpp:26:11:[m[K [01;36m[Knote: [m[K  ‘[01m[Kbuiltin_interfaces::msg[m[K’
+   26 | namespace [01;36m[Kmsg[m[K
+      |           [01;36m[K^~~[m[K
+In file included from [01m[K/opt/ros/foxy/include/statistics_msgs/msg/detail/metrics_message__struct.hpp:22[m[K,
+                 from [01m[K/opt/ros/foxy/include/statistics_msgs/msg/metrics_message.hpp:7[m[K,
+                 from [01m[K/opt/ros/foxy/include/libstatistics_collector/collector/generate_statistics_message.hpp:21[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/topic_statistics/subscription_topic_statistics.hpp:23[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/subscription.hpp:50[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:25[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+                 from [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:4[m[K:
+[01m[K/opt/ros/foxy/include/statistics_msgs/msg/detail/statistic_data_point__struct.hpp:26:11:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstatistics_msgs::msg[m[K’
+   26 | namespace [01;36m[Kmsg[m[K
+      |           [01;36m[K^~~[m[K
+In file included from [01m[K/opt/ros/foxy/include/rcl_interfaces/msg/list_parameters_result.hpp:7[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/node.hpp:34[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executors/single_threaded_executor.hpp:28[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:22[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+                 from [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:4[m[K:
+[01m[K/opt/ros/foxy/include/rcl_interfaces/msg/detail/list_parameters_result__struct.hpp:26:11:[m[K [01;36m[Knote: [m[K  ‘[01m[Krcl_interfaces::msg[m[K’
+   26 | namespace [01;36m[Kmsg[m[K
+      |           [01;36m[K^~~[m[K
+In file included from [01m[K/opt/ros/foxy/include/std_msgs/msg/string.hpp:7[m[K,
+                 from [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:5[m[K:
+[01m[K/opt/ros/foxy/include/std_msgs/msg/detail/string__struct.hpp:26:11:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd_msgs::msg[m[K’
+   26 | namespace [01;36m[Kmsg[m[K
+      |           [01;36m[K^~~[m[K
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:[m[K In member function ‘[01m[Kvoid BeaconPositioningPublisher::timer_callback(int)[m[K’:
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:81:37:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kmsg[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+   81 |   void timer_callback([01;35m[Kstd_msgs::msg msg[m[K)
+      |                       [01;35m[K~~~~~~~~~~~~~~^~~[m[K
+In file included from [01m[K/opt/ros/foxy/include/rclcpp/client.hpp:40[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:23[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+                 from [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:4[m[K:
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:[m[K In lambda function:
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:117:89:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst struct terabee::RtlsDevice::tracker_msg_t[m[K’ has no member named ‘[01m[Klabel[m[K’
+  117 |       RCLCPP_INFO(node->get_logger(), "Tracker %d: x = %f, y = %f, z = %f", tracker_msg.[01;31m[Klabel[m[K, tracker_msg.x, tracker_msg.y, tracker_msg.z);
+      |                                                                                         [01;31m[K^~~~~[m[K
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:117:108:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst struct terabee::RtlsDevice::tracker_msg_t[m[K’ has no member named ‘[01m[Kx[m[K’
+  117 |       RCLCPP_INFO(node->get_logger(), "Tracker %d: x = %f, y = %f, z = %f", tracker_msg.label, tracker_msg.[01;31m[Kx[m[K, tracker_msg.y, tracker_msg.z);
+      |                                                                                                            [01;31m[K^[m[K
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:117:123:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst struct terabee::RtlsDevice::tracker_msg_t[m[K’ has no member named ‘[01m[Ky[m[K’
+  117 |       RCLCPP_INFO(node->get_logger(), "Tracker %d: x = %f, y = %f, z = %f", tracker_msg.label, tracker_msg.x, tracker_msg.[01;31m[Ky[m[K, tracker_msg.z);
+      |                                                                                                                           [01;31m[K^[m[K
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:117:138:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst struct terabee::RtlsDevice::tracker_msg_t[m[K’ has no member named ‘[01m[Kz[m[K’
+  117 |       RCLCPP_INFO(node->get_logger(), "Tracker %d: x = %f, y = %f, z = %f", tracker_msg.label, tracker_msg.x, tracker_msg.y, tracker_msg.[01;31m[Kz[m[K);
+      |                                                                                                                                          [01;31m[K^[m[K
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:120:28:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KBeaconPositioningPublisher::publish(std_msgs::msg::String_<std::allocator<void> >&)[m[K’
+  120 |       node->publish(message[01;31m[K)[m[K;
+      |                            [01;31m[K^[m[K
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:75:8:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kvoid BeaconPositioningPublisher::publish()[m[K’
+   75 |   void [01;36m[Kpublish[m[K()
+      |        [01;36m[K^~~~~~~[m[K
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:75:8:[m[K [01;36m[Knote: [m[K  candidate expects 0 arguments, 1 provided
+In file included from [01m[K/usr/include/aarch64-linux-gnu/c++/9/bits/c++allocator.h:33[m[K,
+                 from [01m[K/usr/include/c++/9/bits/allocator.h:46[m[K,
+                 from [01m[K/usr/include/c++/9/memory:63[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:144[m[K,
+                 from [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:4[m[K:
+/usr/include/c++/9/ext/new_allocator.h: In instantiation of ‘[01m[Kvoid __gnu_cxx::new_allocator<_Tp>::construct(_Up*, _Args&& ...) [with _Up = terabee::RtlsDevice; _Args = {terabee::RtlsDevice&}; _Tp = terabee::RtlsDevice][m[K’:
+[01m[K/usr/include/c++/9/bits/alloc_traits.h:483:4:[m[K   required from ‘[01m[Kstatic void std::allocator_traits<std::allocator<_Tp1> >::construct(std::allocator_traits<std::allocator<_Tp1> >::allocator_type&, _Up*, _Args&& ...) [with _Up = terabee::RtlsDevice; _Args = {terabee::RtlsDevice&}; _Tp = terabee::RtlsDevice; std::allocator_traits<std::allocator<_Tp1> >::allocator_type = std::allocator<terabee::RtlsDevice>][m[K’
+[01m[K/usr/include/c++/9/bits/shared_ptr_base.h:548:39:[m[K   required from ‘[01m[Kstd::_Sp_counted_ptr_inplace<_Tp, _Alloc, _Lp>::_Sp_counted_ptr_inplace(_Alloc, _Args&& ...) [with _Args = {terabee::RtlsDevice&}; _Tp = terabee::RtlsDevice; _Alloc = std::allocator<terabee::RtlsDevice>; __gnu_cxx::_Lock_policy _Lp = __gnu_cxx::_S_atomic][m[K’
+[01m[K/usr/include/c++/9/bits/shared_ptr_base.h:679:16:[m[K   required from ‘[01m[Kstd::__shared_count<_Lp>::__shared_count(_Tp*&, std::_Sp_alloc_shared_tag<_Alloc>, _Args&& ...) [with _Tp = terabee::RtlsDevice; _Alloc = std::allocator<terabee::RtlsDevice>; _Args = {terabee::RtlsDevice&}; __gnu_cxx::_Lock_policy _Lp = __gnu_cxx::_S_atomic][m[K’
+[01m[K/usr/include/c++/9/bits/shared_ptr_base.h:1344:71:[m[K   required from ‘[01m[Kstd::__shared_ptr<_Tp, _Lp>::__shared_ptr(std::_Sp_alloc_shared_tag<_Tp>, _Args&& ...) [with _Alloc = std::allocator<terabee::RtlsDevice>; _Args = {terabee::RtlsDevice&}; _Tp = terabee::RtlsDevice; __gnu_cxx::_Lock_policy _Lp = __gnu_cxx::_S_atomic][m[K’
+[01m[K/usr/include/c++/9/bits/shared_ptr.h:359:59:[m[K   required from ‘[01m[Kstd::shared_ptr<_Tp>::shared_ptr(std::_Sp_alloc_shared_tag<_Tp>, _Args&& ...) [with _Alloc = std::allocator<terabee::RtlsDevice>; _Args = {terabee::RtlsDevice&}; _Tp = terabee::RtlsDevice][m[K’
+[01m[K/usr/include/c++/9/bits/shared_ptr.h:701:14:[m[K   required from ‘[01m[Kstd::shared_ptr<_Tp> std::allocate_shared(const _Alloc&, _Args&& ...) [with _Tp = terabee::RtlsDevice; _Alloc = std::allocator<terabee::RtlsDevice>; _Args = {terabee::RtlsDevice&}][m[K’
+[01m[K/usr/include/c++/9/bits/shared_ptr.h:717:39:[m[K   required from ‘[01m[Kstd::shared_ptr<_Tp> std::make_shared(_Args&& ...) [with _Tp = terabee::RtlsDevice; _Args = {terabee::RtlsDevice&}][m[K’
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:111:75:[m[K   required from here
+[01m[K/usr/include/c++/9/ext/new_allocator.h:146:4:[m[K [01;31m[Kerror: [m[Kuse of deleted function ‘[01m[Kterabee::RtlsDevice::RtlsDevice(const terabee::RtlsDevice&)[m[K’
+  146 |  { [01;31m[K::new((void *)__p) _Up(std::forward<_Args>(__args)...)[m[K; }
+      |    [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:7[m[K:
+[01m[K/usr/local/include/rtls_driver/rtls_driver.hpp:116:3:[m[K [01;36m[Knote: [m[Kdeclared here
+  116 |   [01;36m[KRtlsDevice[m[K(const RtlsDevice &other) = delete;
+      |   [01;36m[K^~~~~~~~~~[m[K
+make[2]: *** [CMakeFiles/tracker_position.dir/build.make:63: CMakeFiles/tracker_position.dir/src/tracker_position.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/tracker_position.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

@@ -1,0 +1,52 @@
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:82:35:[m[K [01;31m[Kerror: [m[K‘[01m[Kserial_port[m[K’ is not a type
+   82 |   terabee::RtlsDevice rtls_device([01;31m[Kserial_port[m[K);
+      |                                   [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:[m[K In member function ‘[01m[Kvoid BeaconPositioningPublisher::setup_rtlsdevice(int, int, int, int, bool)[m[K’:
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:56:5:[m[K [01;31m[Kerror: [m[Kinvalid use of member function ‘[01m[Kterabee::RtlsDevice BeaconPositioningPublisher::rtls_device(int)[m[K’ (did you forget the ‘[01m[K()[m[K’ ?)
+   56 |     [01;31m[Krtls_device[m[K.disableTrackerStream();
+      |     [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:58:5:[m[K [01;31m[Kerror: [m[Kinvalid use of member function ‘[01m[Kterabee::RtlsDevice BeaconPositioningPublisher::rtls_device(int)[m[K’ (did you forget the ‘[01m[K()[m[K’ ?)
+   58 |     [01;31m[Krtls_device[m[K.setDevice(terabee::RtlsDevice::device_type::tracker, priority);
+      |     [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:59:5:[m[K [01;31m[Kerror: [m[Kinvalid use of member function ‘[01m[Kterabee::RtlsDevice BeaconPositioningPublisher::rtls_device(int)[m[K’ (did you forget the ‘[01m[K()[m[K’ ?)
+   59 |     [01;31m[Krtls_device[m[K.setLabel(label);
+      |     [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:60:5:[m[K [01;31m[Kerror: [m[Kinvalid use of member function ‘[01m[Kterabee::RtlsDevice BeaconPositioningPublisher::rtls_device(int)[m[K’ (did you forget the ‘[01m[K()[m[K’ ?)
+   60 |     [01;31m[Krtls_device[m[K.setUpdateTime(update_time);
+      |     [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:61:5:[m[K [01;31m[Kerror: [m[Kinvalid use of member function ‘[01m[Kterabee::RtlsDevice BeaconPositioningPublisher::rtls_device(int)[m[K’ (did you forget the ‘[01m[K()[m[K’ ?)
+   61 |     [01;31m[Krtls_device[m[K.setNetworkId(network_id);
+      |     [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:64:7:[m[K [01;31m[Kerror: [m[Kinvalid use of member function ‘[01m[Kterabee::RtlsDevice BeaconPositioningPublisher::rtls_device(int)[m[K’ (did you forget the ‘[01m[K()[m[K’ ?)
+   64 |       [01;31m[Krtls_device[m[K.setTrackerMessageLong();
+      |       [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:68:7:[m[K [01;31m[Kerror: [m[Kinvalid use of member function ‘[01m[Kterabee::RtlsDevice BeaconPositioningPublisher::rtls_device(int)[m[K’ (did you forget the ‘[01m[K()[m[K’ ?)
+   68 |       [01;31m[Krtls_device[m[K.setTrackerMessageShort();
+      |       [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:70:5:[m[K [01;31m[Kerror: [m[Kinvalid use of member function ‘[01m[Kterabee::RtlsDevice BeaconPositioningPublisher::rtls_device(int)[m[K’ (did you forget the ‘[01m[K()[m[K’ ?)
+   70 |     [01;31m[Krtls_device[m[K.enableLED();
+      |     [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:71:5:[m[K [01;31m[Kerror: [m[Kinvalid use of member function ‘[01m[Kterabee::RtlsDevice BeaconPositioningPublisher::rtls_device(int)[m[K’ (did you forget the ‘[01m[K()[m[K’ ?)
+   71 |     [01;31m[Krtls_device[m[K.requestConfig();
+      |     [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:72:28:[m[K [01;31m[Kerror: [m[Kinvalid use of member function ‘[01m[Kterabee::RtlsDevice BeaconPositioningPublisher::rtls_device(int)[m[K’ (did you forget the ‘[01m[K()[m[K’ ?)
+   72 |     device_configuration = [01;31m[Krtls_device[m[K.getConfig();
+      |                            [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:74:5:[m[K [01;31m[Kerror: [m[Kinvalid use of member function ‘[01m[Kterabee::RtlsDevice BeaconPositioningPublisher::rtls_device(int)[m[K’ (did you forget the ‘[01m[K()[m[K’ ?)
+   74 |     [01;31m[Krtls_device[m[K.enableTrackerStream();
+      |     [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:54:29:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kpriority[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+   54 |   void setup_rtlsdevice([01;35m[Kint priority[m[K, int label, int update_time, int network_id, bool long_message)
+      |                         [01;35m[K~~~~^~~~~~~~[m[K
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:54:43:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Klabel[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+   54 |   void setup_rtlsdevice(int priority, [01;35m[Kint label[m[K, int update_time, int network_id, bool long_message)
+      |                                       [01;35m[K~~~~^~~~~[m[K
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:54:54:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kupdate_time[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+   54 |   void setup_rtlsdevice(int priority, int label, [01;35m[Kint update_time[m[K, int network_id, bool long_message)
+      |                                                  [01;35m[K~~~~^~~~~~~~~~~[m[K
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:54:71:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Knetwork_id[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+   54 |   void setup_rtlsdevice(int priority, int label, int update_time, [01;35m[Kint network_id[m[K, bool long_message)
+      |                                                                   [01;35m[K~~~~^~~~~~~~~~[m[K
+make[2]: *** [CMakeFiles/tracker_position.dir/build.make:63: CMakeFiles/tracker_position.dir/src/tracker_position.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/tracker_position.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

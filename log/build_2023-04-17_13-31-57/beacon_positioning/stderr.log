@@ -1,0 +1,42 @@
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:[m[K In lambda function:
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:119:19:[m[K [01;31m[Kerror: [m[KISO C++ forbids declaration of ‘[01m[Kanchor_data_t[m[K’ with no type [[01;31m[K-fpermissive[m[K]
+  119 |       for (const &[01;31m[Kanchor_data_t[m[K : tracker_msg.anchor_data)
+      |                   [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:119:47:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst struct terabee::RtlsDevice::tracker_msg_t[m[K’ has no member named ‘[01m[Kanchor_data[m[K’; did you mean ‘[01m[Kanchors_data[m[K’?
+  119 |       for (const &anchor_data_t : tracker_msg.[01;31m[Kanchor_data[m[K)
+      |                                               [01;31m[K^~~~~~~~~~~[m[K
+      |                                               [32m[Kanchors_data[m[K
+In file included from [01m[K/opt/ros/foxy/include/rclcpp/client.hpp:40[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:23[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+                 from [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:4[m[K:
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:121:115:[m[K [01;31m[Kerror: [m[Krequest for member ‘[01m[Knumber[m[K’ in ‘[01m[Kanchor_data_t[m[K’, which is of non-class type ‘[01m[Kconst int[m[K’
+  121 | NFO(node->get_logger(), "anchor number= %d, distance = %f, x = %f, y = %f, z = %f", anchor_data_t.[01;31m[Knumber[m[K, anchor_data_t.distance, anchor_data_t.pos_x, anchor_data_t.pos_y, anchor_data_t.pos_z);
+      |                                                                                                   [01;31m[K^~~~~~[m[K
+
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:121:137:[m[K [01;31m[Kerror: [m[Krequest for member ‘[01m[Kdistance[m[K’ in ‘[01m[Kanchor_data_t[m[K’, which is of non-class type ‘[01m[Kconst int[m[K’
+  121 | , "anchor number= %d, distance = %f, x = %f, y = %f, z = %f", anchor_data_t.number, anchor_data_t.[01;31m[Kdistance[m[K, anchor_data_t.pos_x, anchor_data_t.pos_y, anchor_data_t.pos_z);
+      |                                                                                                   [01;31m[K^~~~~~~~[m[K
+
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:121:161:[m[K [01;31m[Kerror: [m[Krequest for member ‘[01m[Kpos_x[m[K’ in ‘[01m[Kanchor_data_t[m[K’, which is of non-class type ‘[01m[Kconst int[m[K’
+  121 | stance = %f, x = %f, y = %f, z = %f", anchor_data_t.number, anchor_data_t.distance, anchor_data_t.[01;31m[Kpos_x[m[K, anchor_data_t.pos_y, anchor_data_t.pos_z);
+      |                                                                                                   [01;31m[K^~~~~[m[K
+
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:121:182:[m[K [01;31m[Kerror: [m[Krequest for member ‘[01m[Kpos_y[m[K’ in ‘[01m[Kanchor_data_t[m[K’, which is of non-class type ‘[01m[Kconst int[m[K’
+  121 | y = %f, z = %f", anchor_data_t.number, anchor_data_t.distance, anchor_data_t.pos_x, anchor_data_t.[01;31m[Kpos_y[m[K, anchor_data_t.pos_z);
+      |                                                                                                   [01;31m[K^~~~~[m[K
+
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:121:203:[m[K [01;31m[Kerror: [m[Krequest for member ‘[01m[Kpos_z[m[K’ in ‘[01m[Kanchor_data_t[m[K’, which is of non-class type ‘[01m[Kconst int[m[K’
+  121 | or_data_t.number, anchor_data_t.distance, anchor_data_t.pos_x, anchor_data_t.pos_y, anchor_data_t.[01;31m[Kpos_z[m[K);
+      |                                                                                                   [01;31m[K^~~~~[m[K
+
+make[2]: *** [CMakeFiles/tracker_position.dir/build.make:63: CMakeFiles/tracker_position.dir/src/tracker_position.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/tracker_position.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

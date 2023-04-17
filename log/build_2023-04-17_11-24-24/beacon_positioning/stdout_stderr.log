@@ -1,0 +1,24 @@
+[35m[1mScanning dependencies of target tracker_position[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/tracker_position.dir/src/tracker_position.cpp.o[0m
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:46:59:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ at end of member declaration
+   46 |   std::shared_ptr<terabee::serial_communication::ISerial> [01;31m[Kserial_port[m[K get_serial_port() {
+      |                                                           [01;31m[K^~~~~~~~~~~[m[K
+      |                                                                      [32m[K;[m[K
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:46:87:[m[K [01;31m[Kerror: [m[KISO C++ forbids declaration of ‘[01m[Kget_serial_port[m[K’ with no type [[01;31m[K-fpermissive[m[K]
+   46 |   std::shared_ptr<terabee::serial_communication::ISerial> serial_port get_serial_port([01;31m[K)[m[K {
+      |                                                                                       [01;31m[K^[m[K
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:86:59:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[Kstd::shared_ptr<terabee::serial_communication::ISerial> BeaconPositioningPublisher::serial_port[m[K’
+   86 |   std::shared_ptr<terabee::serial_communication::ISerial> [01;31m[Kserial_port[m[K; // serial port for communicating with tracker
+      |                                                           [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:46:59:[m[K [01;36m[Knote: [m[Kprevious declaration ‘[01m[Kstd::shared_ptr<terabee::serial_communication::ISerial> BeaconPositioningPublisher::serial_port[m[K’
+   46 |   std::shared_ptr<terabee::serial_communication::ISerial> [01;36m[Kserial_port[m[K get_serial_port() {
+      |                                                           [01;36m[K^~~~~~~~~~~[m[K
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:[m[K In member function ‘[01m[Kint BeaconPositioningPublisher::get_serial_port()[m[K’:
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:47:12:[m[K [01;31m[Kerror: [m[Kcannot convert ‘[01m[Kstd::shared_ptr<terabee::serial_communication::ISerial>[m[K’ to ‘[01m[Kint[m[K’ in return
+   47 |     return [01;31m[Kserial_port[m[K;
+      |            [01;31m[K^~~~~~~~~~~[m[K
+      |            [01;31m[K|[m[K
+      |            [01;31m[Kstd::shared_ptr<terabee::serial_communication::ISerial>[m[K
+make[2]: *** [CMakeFiles/tracker_position.dir/build.make:63: CMakeFiles/tracker_position.dir/src/tracker_position.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/tracker_position.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

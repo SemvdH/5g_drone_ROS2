@@ -1,0 +1,23 @@
+[0.117s] Invoking command in '/home/ubuntu/ros2_ws/build/beacon_positioning': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/ubuntu/ros2_ws/build/beacon_positioning -- -j4 -l4
+[0.297s] [35m[1mScanning dependencies of target tracker_position[0m
+[0.421s] [ 50%] [32mBuilding CXX object CMakeFiles/tracker_position.dir/src/tracker_position.cpp.o[0m
+[6.831s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:[m[K In constructor ‘[01m[KBeaconPositioningPublisher::BeaconPositioningPublisher()[m[K’:
+[6.832s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:18:69:[m[K [01;31m[Kerror: [m[Kuse of deleted function ‘[01m[Kterabee::RtlsDevice::RtlsDevice()[m[K’
+[6.832s]    18 |   BeaconPositioningPublisher() : Node("beacon_positioning_publisher"[01;31m[K)[m[K
+[6.832s]       |                                                                     [01;31m[K^[m[K
+[6.833s] In file included from [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:7[m[K:
+[6.833s] [01m[K/usr/local/include/rtls_driver/rtls_driver.hpp:113:3:[m[K [01;36m[Knote: [m[Kdeclared here
+[6.834s]   113 |   [01;36m[KRtlsDevice[m[K() = delete;
+[6.834s]       |   [01;36m[K^~~~~~~~~~[m[K
+[6.874s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:40:19:[m[K [01;31m[Kerror: [m[Kno match for ‘[01m[Koperator=[m[K’ (operand types are ‘[01m[Kterabee::RtlsDevice[m[K’ and ‘[01m[Kstd::shared_ptr<terabee::serial_communication::ISerial>[m[K’)
+[6.875s]    40 |     rtls_device = [01;31m[Kserial_port[m[K;
+[6.875s]       |                   [01;31m[K^~~~~~~~~~~[m[K
+[6.876s] In file included from [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:7[m[K:
+[6.876s] [01m[K/usr/local/include/rtls_driver/rtls_driver.hpp:13:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kterabee::RtlsDevice& terabee::RtlsDevice::operator=(const terabee::RtlsDevice&)[m[K’ <deleted>
+[6.876s]    13 | class [01;36m[KRtlsDevice[m[K
+[6.877s]       |       [01;36m[K^~~~~~~~~~[m[K
+[6.877s] [01m[K/usr/local/include/rtls_driver/rtls_driver.hpp:13:7:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kstd::shared_ptr<terabee::serial_communication::ISerial>[m[K’ to ‘[01m[Kconst terabee::RtlsDevice&[m[K’
+[10.134s] make[2]: *** [CMakeFiles/tracker_position.dir/build.make:63: CMakeFiles/tracker_position.dir/src/tracker_position.cpp.o] Error 1
+[10.134s] make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/tracker_position.dir/all] Error 2
+[10.135s] make: *** [Makefile:141: all] Error 2
+[10.141s] Invoked command in '/home/ubuntu/ros2_ws/build/beacon_positioning' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/ubuntu/ros2_ws/build/beacon_positioning -- -j4 -l4

@@ -17,6 +17,8 @@ std_msgs/msg/string.hpp
 /home/ubuntu/ros2_ws/src/beacon_positioning/src/std_msgs/msg/string.hpp
 rtls_driver/rtls_driver.hpp
 /home/ubuntu/ros2_ws/src/beacon_positioning/src/rtls_driver/rtls_driver.hpp
+serial_communication/serial.hpp
+/home/ubuntu/ros2_ws/src/beacon_positioning/src/serial_communication/serial.hpp
 
 /opt/ros/foxy/include/builtin_interfaces/msg/detail/duration__builder.hpp
 builtin_interfaces/msg/detail/duration__struct.hpp

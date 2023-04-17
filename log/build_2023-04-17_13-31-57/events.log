@@ -1,0 +1,159 @@
+[0.000000] (-) TimerEvent: {}
+[0.000848] (-) JobUnselected: {'identifier': 'drone_sensors'}
+[0.001117] (-) JobUnselected: {'identifier': 'px4_msgs'}
+[0.001737] (-) JobUnselected: {'identifier': 'px4_ros_com'}
+[0.002208] (beacon_positioning) JobQueued: {'identifier': 'beacon_positioning', 'dependencies': OrderedDict()}
+[0.003163] (beacon_positioning) JobStarted: {'identifier': 'beacon_positioning'}
+[0.099319] (-) TimerEvent: {}
+[0.108906] (beacon_positioning) JobProgress: {'identifier': 'beacon_positioning', 'progress': 'cmake'}
+[0.111684] (beacon_positioning) JobProgress: {'identifier': 'beacon_positioning', 'progress': 'build'}
+[0.114562] (beacon_positioning) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/ubuntu/ros2_ws/build/beacon_positioning', '--', '-j4', '-l4'], 'cwd': '/home/ubuntu/ros2_ws/build/beacon_positioning', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'ubuntu'), ('SSH_CLIENT', '10.0.0.29 55860 22'), ('LC_TIME', 'nl_NL.UTF-8'), ('XDG_SESSION_TYPE', 'tty'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/ubuntu/ros2_ws/install/px4_ros_com/lib:/home/ubuntu/ros2_ws/install/px4_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/ubuntu'), ('OLDPWD', '/home/ubuntu'), ('SSH_TTY', '/dev/pts/0'), ('ROS_PYTHON_VERSION', '3'), ('LC_MONETARY', 'nl_NL.UTF-8'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('_colcon_cd_root', '/opt/ros/foxy/'), ('COLCON_PREFIX_PATH', '/home/ubuntu/ros2_ws/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'ubuntu'), ('_', '/home/ubuntu/.local/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '1'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/ubuntu/.local/bin:/home/ubuntu/ros2_ws/install/px4_ros_com/bin:/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('LC_ADDRESS', 'nl_NL.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('LANG', 'en_US.UTF-8'), ('LC_TELEPHONE', 'nl_NL.UTF-8'), ('RMW_IMPLEMENTATION', 'rmw_fastrtps_cpp'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('ROS_DOMAIN_ID', ''), ('AMENT_PREFIX_PATH', '/home/ubuntu/ros2_ws/install/px4_ros_com:/home/ubuntu/ros2_ws/install/px4_msgs:/home/ubuntu/ros2_ws/install/drone_sensors:/home/ubuntu/ros2_ws/install/beacon_positioning:/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('LC_NAME', 'nl_NL.UTF-8'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'nl_NL.UTF-8'), ('LC_IDENTIFICATION', 'nl_NL.UTF-8'), ('PWD', '/home/ubuntu/ros2_ws/build/beacon_positioning'), ('LC_ALL', 'en_US.UTF-8'), ('SSH_CONNECTION', '10.0.0.29 55860 10.0.0.59 22'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/ubuntu/ros2_ws/install/px4_msgs/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('LC_NUMERIC', 'nl_NL.UTF-8'), ('LC_PAPER', 'nl_NL.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/ubuntu/ros2_ws/install/px4_ros_com:/home/ubuntu/ros2_ws/install/px4_msgs:/home/ubuntu/ros2_ws/install/drone_sensors:/home/ubuntu/ros2_ws/install/beacon_positioning:/opt/ros/foxy')]), 'shell': False}
+[0.199509] (-) TimerEvent: {}
+[0.295089] (beacon_positioning) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target tracker_position\x1b[0m\n'}
+[0.299609] (-) TimerEvent: {}
+[0.400289] (-) TimerEvent: {}
+[0.422096] (beacon_positioning) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/tracker_position.dir/src/tracker_position.cpp.o\x1b[0m\n'}
+[0.500483] (-) TimerEvent: {}
+[0.601204] (-) TimerEvent: {}
+[0.701897] (-) TimerEvent: {}
+[0.802539] (-) TimerEvent: {}
+[0.903226] (-) TimerEvent: {}
+[1.003940] (-) TimerEvent: {}
+[1.104697] (-) TimerEvent: {}
+[1.205378] (-) TimerEvent: {}
+[1.306059] (-) TimerEvent: {}
+[1.406766] (-) TimerEvent: {}
+[1.507464] (-) TimerEvent: {}
+[1.608128] (-) TimerEvent: {}
+[1.708850] (-) TimerEvent: {}
+[1.809518] (-) TimerEvent: {}
+[1.910208] (-) TimerEvent: {}
+[2.010966] (-) TimerEvent: {}
+[2.111639] (-) TimerEvent: {}
+[2.212339] (-) TimerEvent: {}
+[2.312993] (-) TimerEvent: {}
+[2.413700] (-) TimerEvent: {}
+[2.514444] (-) TimerEvent: {}
+[2.615110] (-) TimerEvent: {}
+[2.715788] (-) TimerEvent: {}
+[2.816485] (-) TimerEvent: {}
+[2.917212] (-) TimerEvent: {}
+[3.017905] (-) TimerEvent: {}
+[3.118627] (-) TimerEvent: {}
+[3.219318] (-) TimerEvent: {}
+[3.320011] (-) TimerEvent: {}
+[3.420735] (-) TimerEvent: {}
+[3.521465] (-) TimerEvent: {}
+[3.622213] (-) TimerEvent: {}
+[3.722915] (-) TimerEvent: {}
+[3.823587] (-) TimerEvent: {}
+[3.924254] (-) TimerEvent: {}
+[4.024980] (-) TimerEvent: {}
+[4.125675] (-) TimerEvent: {}
+[4.226454] (-) TimerEvent: {}
+[4.327134] (-) TimerEvent: {}
+[4.427818] (-) TimerEvent: {}
+[4.528492] (-) TimerEvent: {}
+[4.629353] (-) TimerEvent: {}
+[4.730083] (-) TimerEvent: {}
+[4.830796] (-) TimerEvent: {}
+[4.931492] (-) TimerEvent: {}
+[5.032179] (-) TimerEvent: {}
+[5.132850] (-) TimerEvent: {}
+[5.233577] (-) TimerEvent: {}
+[5.334280] (-) TimerEvent: {}
+[5.435030] (-) TimerEvent: {}
+[5.535776] (-) TimerEvent: {}
+[5.636486] (-) TimerEvent: {}
+[5.737339] (-) TimerEvent: {}
+[5.838068] (-) TimerEvent: {}
+[5.938781] (-) TimerEvent: {}
+[6.039471] (-) TimerEvent: {}
+[6.140214] (-) TimerEvent: {}
+[6.240953] (-) TimerEvent: {}
+[6.341654] (-) TimerEvent: {}
+[6.442376] (-) TimerEvent: {}
+[6.543152] (-) TimerEvent: {}
+[6.643896] (-) TimerEvent: {}
+[6.744622] (-) TimerEvent: {}
+[6.845349] (-) TimerEvent: {}
+[6.946028] (-) TimerEvent: {}
+[6.964800] (beacon_positioning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:\x1b[m\x1b[K In lambda function:\n'}
+[6.965561] (beacon_positioning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:119:19:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[KISO C++ forbids declaration of \xe2\x80\x98\x1b[01m\x1b[Kanchor_data_t\x1b[m\x1b[K\xe2\x80\x99 with no type [\x1b[01;31m\x1b[K-fpermissive\x1b[m\x1b[K]\n'}
+[6.965977] (beacon_positioning) StderrLine: {'line': b'  119 |       for (const &\x1b[01;31m\x1b[Kanchor_data_t\x1b[m\x1b[K : tracker_msg.anchor_data)\n'}
+[6.966341] (beacon_positioning) StderrLine: {'line': b'      |                   \x1b[01;31m\x1b[K^~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[6.966794] (beacon_positioning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:119:47:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kconst struct terabee::RtlsDevice::tracker_msg_t\x1b[m\x1b[K\xe2\x80\x99 has no member named \xe2\x80\x98\x1b[01m\x1b[Kanchor_data\x1b[m\x1b[K\xe2\x80\x99; did you mean \xe2\x80\x98\x1b[01m\x1b[Kanchors_data\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[6.967895] (beacon_positioning) StderrLine: {'line': b'  119 |       for (const &anchor_data_t : tracker_msg.\x1b[01;31m\x1b[Kanchor_data\x1b[m\x1b[K)\n'}
+[6.968294] (beacon_positioning) StderrLine: {'line': b'      |                                               \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[6.968642] (beacon_positioning) StderrLine: {'line': b'      |                                               \x1b[32m\x1b[Kanchors_data\x1b[m\x1b[K\n'}
+[6.968984] (beacon_positioning) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[6.969332] (beacon_positioning) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:23\x1b[m\x1b[K,\n'}
+[6.969688] (beacon_positioning) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[6.970033] (beacon_positioning) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24\x1b[m\x1b[K,\n'}
+[6.970370] (beacon_positioning) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[6.970797] (beacon_positioning) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[6.971119] (beacon_positioning) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executor.hpp:33\x1b[m\x1b[K,\n'}
+[6.971456] (beacon_positioning) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26\x1b[m\x1b[K,\n'}
+[6.971793] (beacon_positioning) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[6.972137] (beacon_positioning) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146\x1b[m\x1b[K,\n'}
+[6.972451] (beacon_positioning) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:4\x1b[m\x1b[K:\n'}
+[6.972770] (beacon_positioning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:121:115:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Krequest for member \xe2\x80\x98\x1b[01m\x1b[Knumber\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kanchor_data_t\x1b[m\x1b[K\xe2\x80\x99, which is of non-class type \xe2\x80\x98\x1b[01m\x1b[Kconst int\x1b[m\x1b[K\xe2\x80\x99\n'}
+[6.973112] (beacon_positioning) StderrLine: {'line': b'  121 | NFO(node->get_logger(), "anchor number= %d, distance = %f, x = %f, y = %f, z = %f", anchor_data_t.\x1b[01;31m\x1b[Knumber\x1b[m\x1b[K, anchor_data_t.distance, anchor_data_t.pos_x, anchor_data_t.pos_y, anchor_data_t.pos_z);\n'}
+[6.973452] (beacon_positioning) StderrLine: {'line': b'      |                                                                                                   \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[6.973779] (beacon_positioning) StderrLine: {'line': b'\n'}
+[6.974087] (beacon_positioning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:121:137:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Krequest for member \xe2\x80\x98\x1b[01m\x1b[Kdistance\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kanchor_data_t\x1b[m\x1b[K\xe2\x80\x99, which is of non-class type \xe2\x80\x98\x1b[01m\x1b[Kconst int\x1b[m\x1b[K\xe2\x80\x99\n'}
+[6.974468] (beacon_positioning) StderrLine: {'line': b'  121 | , "anchor number= %d, distance = %f, x = %f, y = %f, z = %f", anchor_data_t.number, anchor_data_t.\x1b[01;31m\x1b[Kdistance\x1b[m\x1b[K, anchor_data_t.pos_x, anchor_data_t.pos_y, anchor_data_t.pos_z);\n'}
+[6.974865] (beacon_positioning) StderrLine: {'line': b'      |                                                                                                   \x1b[01;31m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[6.975270] (beacon_positioning) StderrLine: {'line': b'\n'}
+[6.975616] (beacon_positioning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:121:161:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Krequest for member \xe2\x80\x98\x1b[01m\x1b[Kpos_x\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kanchor_data_t\x1b[m\x1b[K\xe2\x80\x99, which is of non-class type \xe2\x80\x98\x1b[01m\x1b[Kconst int\x1b[m\x1b[K\xe2\x80\x99\n'}
+[6.975985] (beacon_positioning) StderrLine: {'line': b'  121 | stance = %f, x = %f, y = %f, z = %f", anchor_data_t.number, anchor_data_t.distance, anchor_data_t.\x1b[01;31m\x1b[Kpos_x\x1b[m\x1b[K, anchor_data_t.pos_y, anchor_data_t.pos_z);\n'}
+[6.976392] (beacon_positioning) StderrLine: {'line': b'      |                                                                                                   \x1b[01;31m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[6.976929] (beacon_positioning) StderrLine: {'line': b'\n'}
+[6.977361] (beacon_positioning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:121:182:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Krequest for member \xe2\x80\x98\x1b[01m\x1b[Kpos_y\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kanchor_data_t\x1b[m\x1b[K\xe2\x80\x99, which is of non-class type \xe2\x80\x98\x1b[01m\x1b[Kconst int\x1b[m\x1b[K\xe2\x80\x99\n'}
+[6.977776] (beacon_positioning) StderrLine: {'line': b'  121 | y = %f, z = %f", anchor_data_t.number, anchor_data_t.distance, anchor_data_t.pos_x, anchor_data_t.\x1b[01;31m\x1b[Kpos_y\x1b[m\x1b[K, anchor_data_t.pos_z);\n'}
+[6.978160] (beacon_positioning) StderrLine: {'line': b'      |                                                                                                   \x1b[01;31m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[6.978565] (beacon_positioning) StderrLine: {'line': b'\n'}
+[6.978920] (beacon_positioning) StderrLine: {'line': b'\x1b[01m\x1b[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:121:203:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Krequest for member \xe2\x80\x98\x1b[01m\x1b[Kpos_z\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kanchor_data_t\x1b[m\x1b[K\xe2\x80\x99, which is of non-class type \xe2\x80\x98\x1b[01m\x1b[Kconst int\x1b[m\x1b[K\xe2\x80\x99\n'}
+[6.979280] (beacon_positioning) StderrLine: {'line': b'  121 | or_data_t.number, anchor_data_t.distance, anchor_data_t.pos_x, anchor_data_t.pos_y, anchor_data_t.\x1b[01;31m\x1b[Kpos_z\x1b[m\x1b[K);\n'}
+[6.979643] (beacon_positioning) StderrLine: {'line': b'      |                                                                                                   \x1b[01;31m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[6.979971] (beacon_positioning) StderrLine: {'line': b'\n'}
+[7.046223] (-) TimerEvent: {}
+[7.146976] (-) TimerEvent: {}
+[7.247689] (-) TimerEvent: {}
+[7.348390] (-) TimerEvent: {}
+[7.449081] (-) TimerEvent: {}
+[7.549792] (-) TimerEvent: {}
+[7.650507] (-) TimerEvent: {}
+[7.751205] (-) TimerEvent: {}
+[7.851900] (-) TimerEvent: {}
+[7.952582] (-) TimerEvent: {}
+[8.053302] (-) TimerEvent: {}
+[8.154005] (-) TimerEvent: {}
+[8.254702] (-) TimerEvent: {}
+[8.355383] (-) TimerEvent: {}
+[8.456070] (-) TimerEvent: {}
+[8.556790] (-) TimerEvent: {}
+[8.657488] (-) TimerEvent: {}
+[8.758184] (-) TimerEvent: {}
+[8.858902] (-) TimerEvent: {}
+[8.959585] (-) TimerEvent: {}
+[9.060270] (-) TimerEvent: {}
+[9.160990] (-) TimerEvent: {}
+[9.261674] (-) TimerEvent: {}
+[9.362424] (-) TimerEvent: {}
+[9.463116] (-) TimerEvent: {}
+[9.563792] (-) TimerEvent: {}
+[9.664479] (-) TimerEvent: {}
+[9.765231] (-) TimerEvent: {}
+[9.865939] (-) TimerEvent: {}
+[9.966661] (-) TimerEvent: {}
+[10.067373] (-) TimerEvent: {}
+[10.149130] (beacon_positioning) StderrLine: {'line': b'make[2]: *** [CMakeFiles/tracker_position.dir/build.make:63: CMakeFiles/tracker_position.dir/src/tracker_position.cpp.o] Error 1\n'}
+[10.149846] (beacon_positioning) StderrLine: {'line': b'make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/tracker_position.dir/all] Error 2\n'}
+[10.150480] (beacon_positioning) StderrLine: {'line': b'make: *** [Makefile:141: all] Error 2\n'}
+[10.155429] (beacon_positioning) CommandEnded: {'returncode': 2}
+[10.167605] (-) TimerEvent: {}
+[10.268591] (-) TimerEvent: {}
+[10.369994] (-) TimerEvent: {}
+[10.414114] (beacon_positioning) JobEnded: {'identifier': 'beacon_positioning', 'rc': 2}
+[10.417478] (-) EventReactorShutdown: {}

@@ -1,0 +1,11 @@
+[0.117s] Invoking command in '/home/ubuntu/ros2_ws/build/beacon_positioning': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/ubuntu/ros2_ws/build/beacon_positioning -- -j4 -l4
+[0.296s] [35m[1mScanning dependencies of target tracker_position[0m
+[0.423s] [ 50%] [32mBuilding CXX object CMakeFiles/tracker_position.dir/src/tracker_position.cpp.o[0m
+[6.977s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:[m[K In member function ‘[01m[Kvoid BeaconPositioningPublisher::setup_rtlsdevice(int, int, int, int, bool)[m[K’:
+[6.978s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:58:5:[m[K [01;31m[Kerror: [m[K‘[01m[Krtls_device[m[K’ was not declared in this scope
+[6.978s]    58 |     [01;31m[Krtls_device[m[K.disableTrackerStream();
+[6.979s]       |     [01;31m[K^~~~~~~~~~~[m[K
+[10.161s] make[2]: *** [CMakeFiles/tracker_position.dir/build.make:63: CMakeFiles/tracker_position.dir/src/tracker_position.cpp.o] Error 1
+[10.162s] make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/tracker_position.dir/all] Error 2
+[10.162s] make: *** [Makefile:141: all] Error 2
+[10.168s] Invoked command in '/home/ubuntu/ros2_ws/build/beacon_positioning' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/ubuntu/ros2_ws/build/beacon_positioning -- -j4 -l4

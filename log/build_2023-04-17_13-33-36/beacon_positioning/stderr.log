@@ -1,0 +1,41 @@
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:[m[K In lambda function:
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:119:19:[m[K [01;31m[Kerror: [m[KISO C++ forbids declaration of ‘[01m[Kanchor_data_t[m[K’ with no type [[01;31m[K-fpermissive[m[K]
+  119 |       for (const &[01;31m[Kanchor_data_t[m[K : tracker_msg.anchors_data)
+      |                   [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:119:47:[m[K [01;31m[Kerror: [m[Kinvalid initialization of reference of type ‘[01m[Kconst int&[m[K’ from expression of type ‘[01m[Kconst terabee::RtlsDevice::anchor_data_t[m[K’
+  119 |       for (const &anchor_data_t : tracker_msg.[01;31m[Kanchors_data[m[K)
+      |                                               [01;31m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/opt/ros/foxy/include/rclcpp/client.hpp:40[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:23[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+                 from [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:4[m[K:
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:121:114:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ is not a pointer
+  121 | INFO(node->get_logger(), "anchor number= %d, distance = %f, x = %f, y = %f, z = %f", anchor_data_t[01;31m[K->[m[Knumber, anchor_data_t->distance, anchor_data_t->pos_x, anchor_data_t->pos_y, anchor_data_t->pos_z);
+      |                                                                                                   [01;31m[K^~[m[K
+
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:121:137:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ is not a pointer
+  121 | , "anchor number= %d, distance = %f, x = %f, y = %f, z = %f", anchor_data_t->number, anchor_data_t[01;31m[K->[m[Kdistance, anchor_data_t->pos_x, anchor_data_t->pos_y, anchor_data_t->pos_z);
+      |                                                                                                   [01;31m[K^~[m[K
+
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:121:162:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ is not a pointer
+  121 | tance = %f, x = %f, y = %f, z = %f", anchor_data_t->number, anchor_data_t->distance, anchor_data_t[01;31m[K->[m[Kpos_x, anchor_data_t->pos_y, anchor_data_t->pos_z);
+      |                                                                                                   [01;31m[K^~[m[K
+
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:121:184:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ is not a pointer
+  121 | = %f, z = %f", anchor_data_t->number, anchor_data_t->distance, anchor_data_t->pos_x, anchor_data_t[01;31m[K->[m[Kpos_y, anchor_data_t->pos_z);
+      |                                                                                                   [01;31m[K^~[m[K
+
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:121:206:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ is not a pointer
+  121 | , anchor_data_t->number, anchor_data_t->distance, anchor_data_t->pos_x, anchor_data_t->pos_y, anchor_data_t[01;31m[K->[m[Kpos_z);
+      |                                                                                                            [01;31m[K^~[m[K
+
+make[2]: *** [CMakeFiles/tracker_position.dir/build.make:63: CMakeFiles/tracker_position.dir/src/tracker_position.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/tracker_position.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

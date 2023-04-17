@@ -1,0 +1,16 @@
+[35m[1mScanning dependencies of target tracker_position[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/tracker_position.dir/src/tracker_position.cpp.o[0m
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:[m[K In constructor ‘[01m[KBeaconPositioningPublisher::BeaconPositioningPublisher()[m[K’:
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:18:69:[m[K [01;31m[Kerror: [m[Kuse of deleted function ‘[01m[Kterabee::RtlsDevice::RtlsDevice()[m[K’
+   18 |   BeaconPositioningPublisher() : Node("beacon_positioning_publisher"[01;31m[K)[m[K
+      |                                                                     [01;31m[K^[m[K
+In file included from [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:7[m[K:
+[01m[K/usr/local/include/rtls_driver/rtls_driver.hpp:113:3:[m[K [01;36m[Knote: [m[Kdeclared here
+  113 |   [01;36m[KRtlsDevice[m[K() = delete;
+      |   [01;36m[K^~~~~~~~~~[m[K
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:40:28:[m[K [01;31m[Kerror: [m[Kno match for call to ‘[01m[K(terabee::RtlsDevice) (std::shared_ptr<terabee::serial_communication::ISerial>&)[m[K’
+   40 |     rtls_device(serial_port[01;31m[K)[m[K;
+      |                            [01;31m[K^[m[K
+make[2]: *** [CMakeFiles/tracker_position.dir/build.make:63: CMakeFiles/tracker_position.dir/src/tracker_position.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/tracker_position.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2
