@@ -24,7 +24,7 @@ public:
   BeaconPositioningPublisher() : Node("beacon_positioning_publisher")
   {
 
-    // this->declare_parameter("tracker_serial_port", "/dev/ttyUSB0");
+    this->declare_parameter("tracker_serial_port", "/dev/ttyUSB0");
 
     std::string serial_port_name = this->get_parameter("tracker_serial_port").as_string();
 
