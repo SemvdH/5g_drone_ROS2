@@ -94,6 +94,7 @@ private:
   std::shared_ptr<terabee::serial_communication::ISerial> serial_port; // serial port for communicating with tracker
   terabee::RtlsDevice::config_t device_configuration;
   terabee::RtlsDevice::OnTrackerDataCallback tracker_data_callback_;
+  terabee::RtlsDevice::tracker_msg_t tracker_msg;
 };
 
 int main(int argc, char **argv)
@@ -108,7 +109,7 @@ int main(int argc, char **argv)
   std::shared_ptr<BeaconPositioningPublisher> node = std::make_shared<BeaconPositioningPublisher>();
   executor.add_node(node);
   terabee::RtlsDevice rtls_device(node->get_serial_port());
-  node->setup_rtlsdevice(&rtls_device, 1, 0x1ABE, 1, 0xC0FE, true);
+  node->setup_rtlsdevice(&rtls_device, 0, 0, 1, 0, true);
 
   rtls_device.registerOnDistanceDataCaptureCallback([&node](const terabee::RtlsDevice::tracker_msg_t &tracker_msg)
                                                     {
