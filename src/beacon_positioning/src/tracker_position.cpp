@@ -42,7 +42,7 @@ public:
         500ms, std::bind(&BeaconPositioningPublisher::timer_callback, this));
   }
 
-  void setup_rtlsdevice(std::shared_ptr<terabee::RtlsDevice> rtls_device, int priority, int label, int update_time, int network_id, bool long_message)
+  void setup_rtlsdevice(terabee::RtlsDevice *rtls_device, int priority, int label, int update_time, int network_id, bool long_message)
   {
     rtls_device->disableTrackerStream();
     serial_port->flushInput();
@@ -108,7 +108,7 @@ int main(int argc, char **argv)
   std::shared_ptr<BeaconPositioningPublisher> node = std::make_shared<BeaconPositioningPublisher>();
   executor.add_node(node);
   terabee::RtlsDevice rtls_device(node->get_serial_port());
-  node->setup_rtlsdevice(std::make_shared<terabee::RtlsDevice>(rtls_device), 1, 0x1ABE, 1, 0xC0FE, true);
+  node->setup_rtlsdevice(&rtls_device, 1, 0x1ABE, 1, 0xC0FE, true);
 
   rtls_device.registerOnDistanceDataCaptureCallback([&node](const terabee::RtlsDevice::tracker_msg_t &tracker_msg)
                                                     {
@@ -123,7 +123,7 @@ int main(int argc, char **argv)
     {
       RCLCPP_ERROR(node->get_logger(), "invalid tracker position");
     } });
-    
+
   executor.spin();
   rtls_device.startReadingStream();
   rclcpp::shutdown();
