@@ -103,8 +103,8 @@ int main(int argc, char **argv)
 
   printf("starting tracker node of beacon_positioning package\n");
 
-  rclcpp::executors::SingleThreadedExecutor executor;
   rclcpp::init(argc, argv);
+  rclcpp::executors::SingleThreadedExecutor executor;
   std::shared_ptr<BeaconPositioningPublisher> node = std::make_shared<BeaconPositioningPublisher>();
   executor.add_node(node);
   terabee::RtlsDevice rtls_device(node->get_serial_port());
