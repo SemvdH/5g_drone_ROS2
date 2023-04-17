@@ -21,7 +21,7 @@ using namespace std::chrono_literals;
 class BeaconPositioningPublisher : public rclcpp::Node
 {
 public:
-  BeaconPositioningPublisher() : Node("beacon_positioning_publisher")
+  BeaconPositioningPublisher() : Node("beacon_positioning")
   {
 
     this->declare_parameter("tracker_serial_port", "/dev/ttyUSB0");
@@ -111,7 +111,7 @@ int main(int argc, char **argv)
   printf("starting tracker node of beacon_positioning package\n");
 
   rclcpp::init(argc, argv);
-  rclcpp::executors::SingleThreadedExecutor executor;
+  rclcpp::executors::MultiThreadedExecutor executor;
   std::shared_ptr<BeaconPositioningPublisher> node = std::make_shared<BeaconPositioningPublisher>();
   executor.add_node(node);
   terabee::RtlsDevice rtls_device(node->get_serial_port());
