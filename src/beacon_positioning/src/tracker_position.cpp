@@ -81,7 +81,7 @@ private:
 
   // terabee tower evo variables
   std::shared_ptr<terabee::serial_communication::ISerial> serial_port; // serial port for communicating with tracker
-  terabee::RtlsDevice rtls_device;
+  // terabee::RtlsDevice rtls_device;
   terabee::RtlsDevice::config_t device_configuration;
   terabee::RtlsDevice::OnTrackerDataCallback tracker_data_callback_;
 };
