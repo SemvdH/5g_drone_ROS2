@@ -115,7 +115,7 @@ int main(int argc, char **argv)
                                                     {
     if (tracker_msg.is_valid_position) 
     {
-      RCLCPP_INFO(node->get_logger(), "x = %f, y = %f, z = %f", tracker_msg.tracker_position_xyz[0], tracker_msg.tracker_position_xyz[1], tracker_msg.tracker_position_xyz[2]);
+      RCLCPP_INFO(node->get_logger(), "x = %f, y = %f, z = %f", tracker_msg.tracker_position_xyz.at(0), tracker_msg.tracker_position_xyz.at(1), tracker_msg.tracker_position_xyz.at(2));
       auto message = std_msgs::msg::String();
       message.data = "Hello from tracker callback!";
       node->publish(message);
@@ -123,7 +123,7 @@ int main(int argc, char **argv)
     else
     {
       RCLCPP_ERROR(node->get_logger(), "invalid tracker position");
-      RCLCPP_INFO(node->get_logger(), "x = %f, y = %f, z = %f", tracker_msg.tracker_position_xyz[0], tracker_msg.tracker_position_xyz[1], tracker_msg.tracker_position_xyz[2]);
+      // RCLCPP_INFO(node->get_logger(), "x = %f, y = %f, z = %f", tracker_msg.tracker_position_xyz[0], tracker_msg.tracker_position_xyz[1], tracker_msg.tracker_position_xyz[2]);
     } });
 
   rtls_device.startReadingStream();
