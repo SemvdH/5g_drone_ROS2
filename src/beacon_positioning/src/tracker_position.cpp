@@ -37,7 +37,7 @@ public:
       return;
     }
 
-    rtls_device = serial_port;
+    rtls_device = terabee::RtlsDevice(serial_port);
 
     publisher_ = this->create_publisher<std_msgs::msg::String>("beacon_positioning", 10);
     timer_ = this->create_wall_timer(
