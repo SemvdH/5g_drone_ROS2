@@ -1,0 +1,294 @@
+[0.115s] Invoking command in '/home/ubuntu/ros2_ws/build/beacon_positioning': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/ubuntu/ros2_ws/build/beacon_positioning -- -j4 -l4
+[0.295s] [35m[1mScanning dependencies of target tracker_position[0m
+[0.420s] [ 50%] [32mBuilding CXX object CMakeFiles/tracker_position.dir/src/tracker_position.cpp.o[0m
+[6.965s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/service.hpp:34[m[K,
+[6.966s]                  from [01m[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:25[m[K,
+[6.966s]                  from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20[m[K,
+[6.967s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+[6.969s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+[6.970s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20[m[K,
+[6.970s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+[6.971s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+[6.972s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+[6.973s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+[6.973s]                  from [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:4[m[K:
+[6.974s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:[m[K In function ‘[01m[Kint main(int, char**)[m[K’:
+[6.974s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:120:73:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KBeaconPositioningPublisher::get_logger(const char [38])[m[K’
+[6.974s]   120 |     RCLCPP_INFO(node->get_logger("Configuring RTLS device for tracker 0"[01;31m[K)[m[K);
+[6.975s]       |                                                                         [01;31m[K^[m[K
+[6.975s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/executors/single_threaded_executor.hpp:28[m[K,
+[6.975s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:22[m[K,
+[6.976s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+[6.976s]                  from [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:4[m[K:
+[6.977s] [01m[K/opt/ros/foxy/include/rclcpp/node.hpp:139:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Krclcpp::Logger rclcpp::Node::get_logger() const[m[K’
+[6.977s]   139 |   [01;36m[Kget_logger[m[K() const;
+[6.977s]       |   [01;36m[K^~~~~~~~~~[m[K
+[6.978s] [01m[K/opt/ros/foxy/include/rclcpp/node.hpp:139:3:[m[K [01;36m[Knote: [m[K  candidate expects 0 arguments, 1 provided
+[6.978s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/service.hpp:34[m[K,
+[6.978s]                  from [01m[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:25[m[K,
+[6.979s]                  from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20[m[K,
+[6.979s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+[6.979s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+[6.980s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20[m[K,
+[6.980s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+[6.980s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+[6.981s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+[6.981s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+[6.981s]                  from [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:4[m[K:
+[6.982s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:120:73:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KBeaconPositioningPublisher::get_logger(const char [38])[m[K’
+[6.982s]   120 |     RCLCPP_INFO(node->get_logger("Configuring RTLS device for tracker 0"[01;31m[K)[m[K);
+[6.983s]       |                                                                         [01;31m[K^[m[K
+[6.983s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/executors/single_threaded_executor.hpp:28[m[K,
+[6.983s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:22[m[K,
+[6.983s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+[6.984s]                  from [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:4[m[K:
+[6.984s] [01m[K/opt/ros/foxy/include/rclcpp/node.hpp:139:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Krclcpp::Logger rclcpp::Node::get_logger() const[m[K’
+[6.985s]   139 |   [01;36m[Kget_logger[m[K() const;
+[6.985s]       |   [01;36m[K^~~~~~~~~~[m[K
+[6.985s] [01m[K/opt/ros/foxy/include/rclcpp/node.hpp:139:3:[m[K [01;36m[Knote: [m[K  candidate expects 0 arguments, 1 provided
+[6.986s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/service.hpp:34[m[K,
+[6.986s]                  from [01m[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:25[m[K,
+[6.986s]                  from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20[m[K,
+[6.987s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+[6.987s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+[6.987s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20[m[K,
+[6.988s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+[6.988s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+[6.988s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+[6.989s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+[6.989s]                  from [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:4[m[K:
+[6.990s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:120:5:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+[6.990s]   120 |     [01;31m[KRCLCPP_INFO[m[K(node->get_logger("Configuring RTLS device for tracker 0"));
+[6.990s]       |     [01;31m[K^~~~~~~~~~~[m[K
+[6.991s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:120:5:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+[6.991s]   120 |     [01;31m[KRCLCPP_INFO[m[K(node->get_logger("Configuring RTLS device for tracker 0"));
+[6.991s]       |     [01;31m[K^~~~~~~~~~~[m[K
+[6.992s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:120:5:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+[6.992s]   120 |     [01;31m[KRCLCPP_INFO[m[K(node->get_logger("Configuring RTLS device for tracker 0"));
+[6.992s]       |     [01;31m[K^~~~~~~~~~~[m[K
+[6.993s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/client.hpp:40[m[K,
+[6.993s]                  from [01m[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:23[m[K,
+[6.994s]                  from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20[m[K,
+[6.994s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+[6.994s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+[6.995s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20[m[K,
+[6.995s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+[6.995s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+[6.995s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+[6.996s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+[6.996s]                  from [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:4[m[K:
+[6.997s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:120:73:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KBeaconPositioningPublisher::get_logger(const char [38])[m[K’
+[6.997s]   120 |     RCLCPP_INFO(node->get_logger("Configuring RTLS device for tracker 0"[01;31m[K)[m[K);
+[6.997s]       |                                                                         [01;31m[K^[m[K
+[6.998s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/executors/single_threaded_executor.hpp:28[m[K,
+[6.998s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:22[m[K,
+[6.998s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+[6.999s]                  from [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:4[m[K:
+[6.999s] [01m[K/opt/ros/foxy/include/rclcpp/node.hpp:139:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Krclcpp::Logger rclcpp::Node::get_logger() const[m[K’
+[6.999s]   139 |   [01;36m[Kget_logger[m[K() const;
+[7.000s]       |   [01;36m[K^~~~~~~~~~[m[K
+[7.000s] [01m[K/opt/ros/foxy/include/rclcpp/node.hpp:139:3:[m[K [01;36m[Knote: [m[K  candidate expects 0 arguments, 1 provided
+[7.000s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/client.hpp:40[m[K,
+[7.001s]                  from [01m[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:23[m[K,
+[7.001s]                  from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20[m[K,
+[7.001s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+[7.002s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+[7.002s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20[m[K,
+[7.002s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+[7.003s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+[7.003s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+[7.003s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+[7.004s]                  from [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:4[m[K:
+[7.004s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:120:73:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KBeaconPositioningPublisher::get_logger(const char [38])[m[K’
+[7.004s]   120 |     RCLCPP_INFO(node->get_logger("Configuring RTLS device for tracker 0"[01;31m[K)[m[K);
+[7.005s]       |                                                                         [01;31m[K^[m[K
+[7.005s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/executors/single_threaded_executor.hpp:28[m[K,
+[7.005s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:22[m[K,
+[7.006s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+[7.006s]                  from [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:4[m[K:
+[7.006s] [01m[K/opt/ros/foxy/include/rclcpp/node.hpp:139:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Krclcpp::Logger rclcpp::Node::get_logger() const[m[K’
+[7.007s]   139 |   [01;36m[Kget_logger[m[K() const;
+[7.007s]       |   [01;36m[K^~~~~~~~~~[m[K
+[7.007s] [01m[K/opt/ros/foxy/include/rclcpp/node.hpp:139:3:[m[K [01;36m[Knote: [m[K  candidate expects 0 arguments, 1 provided
+[7.008s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/client.hpp:40[m[K,
+[7.008s]                  from [01m[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:23[m[K,
+[7.008s]                  from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20[m[K,
+[7.009s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+[7.009s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+[7.009s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20[m[K,
+[7.010s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+[7.010s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+[7.010s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+[7.011s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+[7.011s]                  from [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:4[m[K:
+[7.011s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:120:5:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Kget_c_string()[m[K’
+[7.012s]   120 |     [01;31m[KRCLCPP_INFO[m[K(node->get_logger("Configuring RTLS device for tracker 0"));
+[7.012s]       |     [01;31m[K^~~~~~~~~~~[m[K
+[7.012s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/client.hpp:36[m[K,
+[7.013s]                  from [01m[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:23[m[K,
+[7.013s]                  from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20[m[K,
+[7.014s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+[7.014s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+[7.014s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20[m[K,
+[7.015s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+[7.015s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+[7.015s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+[7.016s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+[7.016s]                  from [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:4[m[K:
+[7.016s] [01m[K/opt/ros/foxy/include/rclcpp/utilities.hpp:296:1:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kconst char* rclcpp::get_c_string(const char*)[m[K’
+[7.017s]   296 | [01;36m[Kget_c_string[m[K(const char * string_in);
+[7.017s]       | [01;36m[K^~~~~~~~~~~~[m[K
+[7.017s] [01m[K/opt/ros/foxy/include/rclcpp/utilities.hpp:296:1:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 0 provided
+[7.018s] [01m[K/opt/ros/foxy/include/rclcpp/utilities.hpp:305:1:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kconst char* rclcpp::get_c_string(const string&)[m[K’
+[7.018s]   305 | [01;36m[Kget_c_string[m[K(const std::string & string_in);
+[7.018s]       | [01;36m[K^~~~~~~~~~~~[m[K
+[7.019s] [01m[K/opt/ros/foxy/include/rclcpp/utilities.hpp:305:1:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 0 provided
+[7.019s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/service.hpp:34[m[K,
+[7.019s]                  from [01m[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:25[m[K,
+[7.020s]                  from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20[m[K,
+[7.020s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+[7.020s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+[7.021s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20[m[K,
+[7.021s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+[7.021s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+[7.022s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+[7.022s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+[7.022s]                  from [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:4[m[K:
+[7.023s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:124:73:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KBeaconPositioningPublisher::get_logger(const char [38])[m[K’
+[7.023s]   124 |     RCLCPP_INFO(node->get_logger("Configuring RTLS device for tracker 1"[01;31m[K)[m[K);
+[7.023s]       |                                                                         [01;31m[K^[m[K
+[7.024s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/executors/single_threaded_executor.hpp:28[m[K,
+[7.024s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:22[m[K,
+[7.024s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+[7.025s]                  from [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:4[m[K:
+[7.025s] [01m[K/opt/ros/foxy/include/rclcpp/node.hpp:139:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Krclcpp::Logger rclcpp::Node::get_logger() const[m[K’
+[7.025s]   139 |   [01;36m[Kget_logger[m[K() const;
+[7.026s]       |   [01;36m[K^~~~~~~~~~[m[K
+[7.026s] [01m[K/opt/ros/foxy/include/rclcpp/node.hpp:139:3:[m[K [01;36m[Knote: [m[K  candidate expects 0 arguments, 1 provided
+[7.026s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/service.hpp:34[m[K,
+[7.027s]                  from [01m[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:25[m[K,
+[7.027s]                  from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20[m[K,
+[7.027s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+[7.028s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+[7.028s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20[m[K,
+[7.028s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+[7.029s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+[7.029s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+[7.029s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+[7.030s]                  from [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:4[m[K:
+[7.030s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:124:73:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KBeaconPositioningPublisher::get_logger(const char [38])[m[K’
+[7.030s]   124 |     RCLCPP_INFO(node->get_logger("Configuring RTLS device for tracker 1"[01;31m[K)[m[K);
+[7.031s]       |                                                                         [01;31m[K^[m[K
+[7.031s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/executors/single_threaded_executor.hpp:28[m[K,
+[7.031s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:22[m[K,
+[7.032s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+[7.032s]                  from [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:4[m[K:
+[7.033s] [01m[K/opt/ros/foxy/include/rclcpp/node.hpp:139:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Krclcpp::Logger rclcpp::Node::get_logger() const[m[K’
+[7.033s]   139 |   [01;36m[Kget_logger[m[K() const;
+[7.033s]       |   [01;36m[K^~~~~~~~~~[m[K
+[7.033s] [01m[K/opt/ros/foxy/include/rclcpp/node.hpp:139:3:[m[K [01;36m[Knote: [m[K  candidate expects 0 arguments, 1 provided
+[7.034s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/service.hpp:34[m[K,
+[7.034s]                  from [01m[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:25[m[K,
+[7.035s]                  from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20[m[K,
+[7.035s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+[7.035s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+[7.036s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20[m[K,
+[7.036s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+[7.036s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+[7.037s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+[7.037s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+[7.037s]                  from [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:4[m[K:
+[7.038s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:124:5:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+[7.038s]   124 |     [01;31m[KRCLCPP_INFO[m[K(node->get_logger("Configuring RTLS device for tracker 1"));
+[7.038s]       |     [01;31m[K^~~~~~~~~~~[m[K
+[7.039s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:124:5:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+[7.039s]   124 |     [01;31m[KRCLCPP_INFO[m[K(node->get_logger("Configuring RTLS device for tracker 1"));
+[7.039s]       |     [01;31m[K^~~~~~~~~~~[m[K
+[7.040s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:124:5:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+[7.040s]   124 |     [01;31m[KRCLCPP_INFO[m[K(node->get_logger("Configuring RTLS device for tracker 1"));
+[7.041s]       |     [01;31m[K^~~~~~~~~~~[m[K
+[7.041s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/client.hpp:40[m[K,
+[7.041s]                  from [01m[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:23[m[K,
+[7.042s]                  from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20[m[K,
+[7.042s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+[7.042s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+[7.043s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20[m[K,
+[7.043s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+[7.043s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+[7.044s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+[7.044s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+[7.044s]                  from [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:4[m[K:
+[7.045s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:124:73:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KBeaconPositioningPublisher::get_logger(const char [38])[m[K’
+[7.046s]   124 |     RCLCPP_INFO(node->get_logger("Configuring RTLS device for tracker 1"[01;31m[K)[m[K);
+[7.046s]       |                                                                         [01;31m[K^[m[K
+[7.046s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/executors/single_threaded_executor.hpp:28[m[K,
+[7.047s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:22[m[K,
+[7.047s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+[7.047s]                  from [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:4[m[K:
+[7.048s] [01m[K/opt/ros/foxy/include/rclcpp/node.hpp:139:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Krclcpp::Logger rclcpp::Node::get_logger() const[m[K’
+[7.048s]   139 |   [01;36m[Kget_logger[m[K() const;
+[7.048s]       |   [01;36m[K^~~~~~~~~~[m[K
+[7.049s] [01m[K/opt/ros/foxy/include/rclcpp/node.hpp:139:3:[m[K [01;36m[Knote: [m[K  candidate expects 0 arguments, 1 provided
+[7.049s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/client.hpp:40[m[K,
+[7.050s]                  from [01m[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:23[m[K,
+[7.050s]                  from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20[m[K,
+[7.050s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+[7.051s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+[7.051s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20[m[K,
+[7.051s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+[7.052s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+[7.052s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+[7.052s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+[7.053s]                  from [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:4[m[K:
+[7.053s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:124:73:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KBeaconPositioningPublisher::get_logger(const char [38])[m[K’
+[7.053s]   124 |     RCLCPP_INFO(node->get_logger("Configuring RTLS device for tracker 1"[01;31m[K)[m[K);
+[7.054s]       |                                                                         [01;31m[K^[m[K
+[7.054s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/executors/single_threaded_executor.hpp:28[m[K,
+[7.054s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:22[m[K,
+[7.055s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+[7.055s]                  from [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:4[m[K:
+[7.055s] [01m[K/opt/ros/foxy/include/rclcpp/node.hpp:139:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Krclcpp::Logger rclcpp::Node::get_logger() const[m[K’
+[7.056s]   139 |   [01;36m[Kget_logger[m[K() const;
+[7.056s]       |   [01;36m[K^~~~~~~~~~[m[K
+[7.056s] [01m[K/opt/ros/foxy/include/rclcpp/node.hpp:139:3:[m[K [01;36m[Knote: [m[K  candidate expects 0 arguments, 1 provided
+[7.057s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/client.hpp:40[m[K,
+[7.057s]                  from [01m[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:23[m[K,
+[7.058s]                  from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20[m[K,
+[7.058s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+[7.058s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+[7.059s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20[m[K,
+[7.059s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+[7.059s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+[7.060s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+[7.060s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+[7.060s]                  from [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:4[m[K:
+[7.061s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:124:5:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Kget_c_string()[m[K’
+[7.061s]   124 |     [01;31m[KRCLCPP_INFO[m[K(node->get_logger("Configuring RTLS device for tracker 1"));
+[7.061s]       |     [01;31m[K^~~~~~~~~~~[m[K
+[7.062s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/client.hpp:36[m[K,
+[7.062s]                  from [01m[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:23[m[K,
+[7.062s]                  from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20[m[K,
+[7.063s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+[7.063s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+[7.063s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20[m[K,
+[7.064s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+[7.064s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+[7.064s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+[7.065s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+[7.065s]                  from [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:4[m[K:
+[7.065s] [01m[K/opt/ros/foxy/include/rclcpp/utilities.hpp:296:1:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kconst char* rclcpp::get_c_string(const char*)[m[K’
+[7.066s]   296 | [01;36m[Kget_c_string[m[K(const char * string_in);
+[7.066s]       | [01;36m[K^~~~~~~~~~~~[m[K
+[7.066s] [01m[K/opt/ros/foxy/include/rclcpp/utilities.hpp:296:1:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 0 provided
+[7.067s] [01m[K/opt/ros/foxy/include/rclcpp/utilities.hpp:305:1:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kconst char* rclcpp::get_c_string(const string&)[m[K’
+[7.067s]   305 | [01;36m[Kget_c_string[m[K(const std::string & string_in);
+[7.067s]       | [01;36m[K^~~~~~~~~~~~[m[K
+[7.068s] [01m[K/opt/ros/foxy/include/rclcpp/utilities.hpp:305:1:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 0 provided
+[7.068s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:[m[K In lambda function:
+[7.068s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:133:25:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<terabee::RtlsDevice::anchor_data_t>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+[7.069s]   133 |       for (int i = 0; [01;35m[Ki < tracker_msg.anchors_data.size()[m[K; i++)
+[7.069s]       |                       [01;35m[K~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[10.186s] make[2]: *** [CMakeFiles/tracker_position.dir/build.make:63: CMakeFiles/tracker_position.dir/src/tracker_position.cpp.o] Error 1
+[10.187s] make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/tracker_position.dir/all] Error 2
+[10.188s] make: *** [Makefile:141: all] Error 2
+[10.194s] Invoked command in '/home/ubuntu/ros2_ws/build/beacon_positioning' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/ubuntu/ros2_ws/build/beacon_positioning -- -j4 -l4

@@ -1,0 +1,31 @@
+[0.116s] Invoking command in '/home/ubuntu/ros2_ws/build/beacon_positioning': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/ubuntu/ros2_ws/build/beacon_positioning -- -j4 -l4
+[0.289s] [35m[1mScanning dependencies of target tracker_position[0m
+[0.414s] [ 50%] [32mBuilding CXX object CMakeFiles/tracker_position.dir/src/tracker_position.cpp.o[0m
+[6.931s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:[m[K In lambda function:
+[6.932s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:133:25:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<terabee::RtlsDevice::anchor_data_t>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+[6.932s]   133 |       for (int i = 0; [01;35m[Ki < tracker_msg.anchors_data.size()[m[K; i++)
+[6.932s]       |                       [01;35m[K~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[24.466s] [100%] [32m[1mLinking CXX executable tracker_position[0m
+[25.099s] [100%] Built target tracker_position
+[25.139s] Invoked command in '/home/ubuntu/ros2_ws/build/beacon_positioning' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/ubuntu/ros2_ws/build/beacon_positioning -- -j4 -l4
+[25.302s] Invoking command in '/home/ubuntu/ros2_ws/build/beacon_positioning': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /home/ubuntu/ros2_ws/build/beacon_positioning
+[25.335s] -- Install configuration: "RELWITHDEBINFO"
+[25.336s] -- Execute custom install script
+[25.338s] -- Up-to-date symlink: /home/ubuntu/ros2_ws/install/beacon_positioning/lib/beacon_positioning/tracker_position
+[25.340s] -- Up-to-date symlink: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/launch/beacon_positioning_launch.py
+[25.342s] -- Up-to-date symlink: /home/ubuntu/ros2_ws/install/beacon_positioning/share/ament_index/resource_index/package_run_dependencies/beacon_positioning
+[25.343s] -- Up-to-date symlink: /home/ubuntu/ros2_ws/install/beacon_positioning/share/ament_index/resource_index/parent_prefix_path/beacon_positioning
+[25.344s] -- Up-to-date symlink: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/environment/ament_prefix_path.sh
+[25.346s] -- Up-to-date symlink: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/environment/ament_prefix_path.dsv
+[25.347s] -- Up-to-date symlink: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/environment/path.sh
+[25.348s] -- Up-to-date symlink: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/environment/path.dsv
+[25.349s] -- Up-to-date symlink: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/local_setup.bash
+[25.350s] -- Up-to-date symlink: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/local_setup.sh
+[25.352s] -- Up-to-date symlink: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/local_setup.zsh
+[25.353s] -- Up-to-date symlink: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/local_setup.dsv
+[25.354s] -- Symlinking: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/package.dsv
+[25.387s] -- Up-to-date symlink: /home/ubuntu/ros2_ws/install/beacon_positioning/share/ament_index/resource_index/packages/beacon_positioning
+[25.388s] -- Up-to-date symlink: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/cmake/beacon_positioningConfig.cmake
+[25.389s] -- Up-to-date symlink: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/cmake/beacon_positioningConfig-version.cmake
+[25.391s] -- Up-to-date symlink: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/package.xml
+[25.404s] Invoked command in '/home/ubuntu/ros2_ws/build/beacon_positioning' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /home/ubuntu/ros2_ws/build/beacon_positioning

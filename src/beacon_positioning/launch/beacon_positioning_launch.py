@@ -7,6 +7,7 @@ def generate_launch_description():
             package="beacon_positioning",
             executable="tracker_position",
             name="beacon_tracker_0",
+	    namespace="tracker0",
             parameters=[
                 {"tracker_serial_port": "/dev/ttyUSB0"}
             ]
@@ -15,6 +16,7 @@ def generate_launch_description():
             package="beacon_positioning",
             executable="tracker_position",
             name="beacon_tracker_1",
+	    namespace="tracker1",
             output="screen",
             emulate_tty=True,
             parameters=[
