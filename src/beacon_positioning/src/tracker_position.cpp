@@ -81,10 +81,10 @@ private:
   void timer_callback()
 
   {
-    auto message = std_msgs::msg::String();
-    message.data = "Hello beacons!";
-    RCLCPP_INFO(this->get_logger(), "Publishing: '%s'", message.data.c_str());
-    publisher_->publish(message);
+    // auto message = std_msgs::msg::String();
+    // message.data = "Hello beacons!";
+    // RCLCPP_INFO(this->get_logger(), "Publishing: '%s'", message.data.c_str());
+    // publisher_->publish(message);
   }
 
   rclcpp::TimerBase::SharedPtr timer_;                            // timer to trigger the
@@ -123,6 +123,7 @@ int main(int argc, char **argv)
     else
     {
       RCLCPP_ERROR(node->get_logger(), "invalid tracker position");
+      RCLCPP_INFO(node->get_logger(), "x = %f, y = %f, z = %f", tracker_msg.tracker_position_xyz[0], tracker_msg.tracker_position_xyz[1], tracker_msg.tracker_position_xyz[2]);
     } });
 
   rtls_device.startReadingStream();
