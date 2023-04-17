@@ -125,8 +125,8 @@ int main(int argc, char **argv)
       RCLCPP_ERROR(node->get_logger(), "invalid tracker position");
     } });
 
-  executor.spin();
   rtls_device.startReadingStream();
+  executor.spin();
   rclcpp::shutdown();
 
   rtls_device.stopReadingStream();
