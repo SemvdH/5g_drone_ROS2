@@ -37,9 +37,12 @@ public:
       return;
     }
 
+    terabee::RtlsDevice rtls_device(serial_port);
+
     publisher_ = this->create_publisher<std_msgs::msg::String>("beacon_positioning", 10);
     timer_ = this->create_wall_timer(
         500ms, std::bind(&BeaconPositioningPublisher::timer_callback, this));
+
   }
 
 private:
@@ -51,35 +54,34 @@ private:
     publisher_->publish(message);
   }
 
-  void setup_rtlsdevice(int priority, int label, int update_time, int network_id, bool long_message)
-  {
-    rtls_device.disableTrackerStream();
-    serial_port->flushInput();
-    rtls_device.setDevice(terabee::RtlsDevice::device_type::tracker, priority);
-    rtls_device.setLabel(label);
-    rtls_device.setUpdateTime(update_time);
-    rtls_device.setNetworkId(network_id);
-    if (long_message)
-    {
-      rtls_device.setTrackerMessageLong();
-    }
-    else
-    {
-      rtls_device.setTrackerMessageShort();
-    }
-    rtls_device.enableLED();
-    rtls_device.requestConfig();
-    device_configuration = rtls_device.getConfig();
+  // void setup_rtlsdevice(int priority, int label, int update_time, int network_id, bool long_message)
+  // {
+  //   rtls_device.disableTrackerStream();
+  //   serial_port->flushInput();
+  //   rtls_device.setDevice(terabee::RtlsDevice::device_type::tracker, priority);
+  //   rtls_device.setLabel(label);
+  //   rtls_device.setUpdateTime(update_time);
+  //   rtls_device.setNetworkId(network_id);
+  //   if (long_message)
+  //   {
+  //     rtls_device.setTrackerMessageLong();
+  //   }
+  //   else
+  //   {
+  //     rtls_device.setTrackerMessageShort();
+  //   }
+  //   rtls_device.enableLED();
+  //   rtls_device.requestConfig();
+  //   device_configuration = rtls_device.getConfig();
 
-    rtls_device.enableTrackerStream();
-  }
+  //   rtls_device.enableTrackerStream();
+  // }
 
   rclcpp::TimerBase::SharedPtr timer_;                            // timer to trigger the
   rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher_; // pointer to publisher object
 
   // terabee tower evo variables
   std::shared_ptr<terabee::serial_communication::ISerial> serial_port; // serial port for communicating with tracker
-  terabee::RtlsDevice rtls_device = terabee::RtlsDevice(serial_port);
   terabee::RtlsDevice::config_t device_configuration;
   terabee::RtlsDevice::OnTrackerDataCallback tracker_data_callback_;
 };
