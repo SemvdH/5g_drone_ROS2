@@ -116,7 +116,7 @@ int main(int argc, char **argv)
     if (tracker_msg.is_valid_position) 
     {
       RCLCPP_INFO(node->get_logger(), "x = %f, y = %f, z = %f", tracker_msg.tracker_position_xyz.at(0), tracker_msg.tracker_position_xyz.at(1), tracker_msg.tracker_position_xyz.at(2));
-      for (const anchor_data_t &anchor : tracker_msg.anchors_data)
+      for (const struct anchor_data_t &anchor : tracker_msg.anchors_data)
       {
         RCLCPP_INFO(node->get_logger(), "anchor number= %d, distance = %f, x = %f, y = %f, z = %f", anchor->number, anchor->distance, anchor->pos_x, anchor->pos_y, anchor->pos_z);
       }
