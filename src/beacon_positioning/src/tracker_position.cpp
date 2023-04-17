@@ -116,9 +116,9 @@ int main(int argc, char **argv)
     if (tracker_msg.is_valid_position) 
     {
       RCLCPP_INFO(node->get_logger(), "x = %f, y = %f, z = %f", tracker_msg.tracker_position_xyz.at(0), tracker_msg.tracker_position_xyz.at(1), tracker_msg.tracker_position_xyz.at(2));
-      for (const &anchor_data_t : tracker_msg.anchor_data)
+      for (const &anchor_data_t : tracker_msg.anchors_data)
       {
-        RCLCPP_INFO(node->get_logger(), "anchor number= %d, distance = %f, x = %f, y = %f, z = %f", anchor_data_t.number, anchor_data_t.distance, anchor_data_t.pos_x, anchor_data_t.pos_y, anchor_data_t.pos_z);
+        RCLCPP_INFO(node->get_logger(), "anchor number= %d, distance = %f, x = %f, y = %f, z = %f", anchor_data_t->number, anchor_data_t->distance, anchor_data_t->pos_x, anchor_data_t->pos_y, anchor_data_t->pos_z);
       }
       RCLCPP_INFO(node->get_logger(), "");
       auto message = std_msgs::msg::String();
