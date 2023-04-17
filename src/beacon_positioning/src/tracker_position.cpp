@@ -72,13 +72,13 @@ public:
     return serial_port;
   }
 
-  void publish()
+  void publish(std_msgs::msg msg)
   {
     publisher_->publish(msg);
   }
 
 private:
-  void timer_callback(std_msgs::msg msg)
+  void timer_callback()
 
   {
     auto message = std_msgs::msg::String();
@@ -114,7 +114,7 @@ int main(int argc, char **argv)
                                                     {
     if (tracker_msg.is_valid_position) 
     {
-      RCLCPP_INFO(node->get_logger(), "Tracker %d: x = %f, y = %f, z = %f", tracker_msg.label, tracker_msg.x, tracker_msg.y, tracker_msg.z);
+      RCLCPP_INFO(node->get_logger(), "x = %f, y = %f, z = %f", tracker_msg.tracker_position_xyz[0], tracker_msg.tracker_position_xyz[1], tracker_msg.ztracker_position_xyz[2]);
       auto message = std_msgs::msg::String();
       message.data = "Hello from tracker callback!";
       node->publish(message);
