@@ -117,11 +117,11 @@ int main(int argc, char **argv)
   terabee::RtlsDevice rtls_device(node->get_serial_port());
   if (node->get_parameter("tracker_serial_port").as_string().compare(TRACKER_0_PORT))
   {
-    RCLCPP_INFO(node->get_logger("Configuring RTLS device for tracker 0"));
+    RCLCPP_INFO(node->get_logger(),"Configuring RTLS device for tracker 0");
     node->setup_rtlsdevice(&rtls_device, 0, 0, 1, 0, true);
   } else 
   {
-    RCLCPP_INFO(node->get_logger("Configuring RTLS device for tracker 1"));
+    RCLCPP_INFO(node->get_logger(),"Configuring RTLS device for tracker 1");
     node->setup_rtlsdevice(&rtls_device, 1, 1, 1, 0, true);
   }
 
