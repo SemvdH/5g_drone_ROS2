@@ -8,6 +8,12 @@
 
 // from the example: https://github.com/Terabee/positioning_systems_api/blob/master/examples/rtls_tracker_example.cpp
 #include "serial_communication/serial.hpp"
+
+#define TRACKER_0_PORT "/dev/ttyUSB0"
+#define TRACKER_1_PORT "/dev/ttyUSB1"
+
+#define TRACKER_0_PRIORITY 0
+#define TRACKER_1_PRIORITY 1
 using SerialInterface = terabee::serial_communication::Serial;
 
 using namespace std::chrono_literals;
@@ -18,7 +24,7 @@ public:
   BeaconPositioningPublisher() : Node("beacon_positioning_publisher")
   {
 
-    this->declare_parameter("tracker_serial_port", "/dev/ttyUSB0");
+    // this->declare_parameter("tracker_serial_port", "/dev/ttyUSB0");
 
     std::string serial_port_name = this->get_parameter("tracker_serial_port").as_string();
 
@@ -109,7 +115,15 @@ int main(int argc, char **argv)
   std::shared_ptr<BeaconPositioningPublisher> node = std::make_shared<BeaconPositioningPublisher>();
   executor.add_node(node);
   terabee::RtlsDevice rtls_device(node->get_serial_port());
-  node->setup_rtlsdevice(&rtls_device, 0, 0, 1, 0, true);
+  if (node->get_parameter("tracker_serial_port").as_string().compare(TRACKER_0_PORT))
+  {
+    RCLCPP_INFO(node->get_logger("Configuring RTLS device for tracker 0"));
+    node->setup_rtlsdevice(&rtls_device, 0, 0, 1, 0, true);
+  } else 
+  {
+    RCLCPP_INFO(node->get_logger("Configuring RTLS device for tracker 1"));
+    node->setup_rtlsdevice(&rtls_device, 1, 1, 1, 0, true);
+  }
 
   rtls_device.registerOnDistanceDataCaptureCallback([&node](const terabee::RtlsDevice::tracker_msg_t &tracker_msg)
                                                     {
