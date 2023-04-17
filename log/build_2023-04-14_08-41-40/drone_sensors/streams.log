@@ -1,0 +1,23 @@
+[0.163s] Invoking command in '/home/ubuntu/ros2_ws/build/drone_sensors': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/ubuntu/ros2_ws/build/drone_sensors -- -j4 -l4
+[0.728s] [100%] Built target height_sensor
+[0.776s] Invoked command in '/home/ubuntu/ros2_ws/build/drone_sensors' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/ubuntu/ros2_ws/build/drone_sensors -- -j4 -l4
+[0.949s] Invoking command in '/home/ubuntu/ros2_ws/build/drone_sensors': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /home/ubuntu/ros2_ws/build/drone_sensors
+[0.993s] -- Install configuration: "RELWITHDEBINFO"
+[0.996s] -- Execute custom install script
+[1.000s] -- Up-to-date symlink: /home/ubuntu/ros2_ws/install/drone_sensors/lib/drone_sensors/height_sensor
+[1.003s] -- Up-to-date symlink: /home/ubuntu/ros2_ws/install/drone_sensors/share/ament_index/resource_index/package_run_dependencies/drone_sensors
+[1.008s] -- Up-to-date symlink: /home/ubuntu/ros2_ws/install/drone_sensors/share/ament_index/resource_index/parent_prefix_path/drone_sensors
+[1.012s] -- Up-to-date symlink: /home/ubuntu/ros2_ws/install/drone_sensors/share/drone_sensors/environment/ament_prefix_path.sh
+[1.015s] -- Up-to-date symlink: /home/ubuntu/ros2_ws/install/drone_sensors/share/drone_sensors/environment/ament_prefix_path.dsv
+[1.018s] -- Up-to-date symlink: /home/ubuntu/ros2_ws/install/drone_sensors/share/drone_sensors/environment/path.sh
+[1.020s] -- Up-to-date symlink: /home/ubuntu/ros2_ws/install/drone_sensors/share/drone_sensors/environment/path.dsv
+[1.023s] -- Up-to-date symlink: /home/ubuntu/ros2_ws/install/drone_sensors/share/drone_sensors/local_setup.bash
+[1.026s] -- Up-to-date symlink: /home/ubuntu/ros2_ws/install/drone_sensors/share/drone_sensors/local_setup.sh
+[1.029s] -- Up-to-date symlink: /home/ubuntu/ros2_ws/install/drone_sensors/share/drone_sensors/local_setup.zsh
+[1.031s] -- Up-to-date symlink: /home/ubuntu/ros2_ws/install/drone_sensors/share/drone_sensors/local_setup.dsv
+[1.033s] -- Symlinking: /home/ubuntu/ros2_ws/install/drone_sensors/share/drone_sensors/package.dsv
+[1.078s] -- Up-to-date symlink: /home/ubuntu/ros2_ws/install/drone_sensors/share/ament_index/resource_index/packages/drone_sensors
+[1.081s] -- Up-to-date symlink: /home/ubuntu/ros2_ws/install/drone_sensors/share/drone_sensors/cmake/drone_sensorsConfig.cmake
+[1.084s] -- Up-to-date symlink: /home/ubuntu/ros2_ws/install/drone_sensors/share/drone_sensors/cmake/drone_sensorsConfig-version.cmake
+[1.086s] -- Up-to-date symlink: /home/ubuntu/ros2_ws/install/drone_sensors/share/drone_sensors/package.xml
+[1.104s] Invoked command in '/home/ubuntu/ros2_ws/build/drone_sensors' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /home/ubuntu/ros2_ws/build/drone_sensors
