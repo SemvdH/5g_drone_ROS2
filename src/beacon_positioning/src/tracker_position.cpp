@@ -37,8 +37,6 @@ public:
       return;
     }
 
-    terabee::RtlsDevice rtls_device(serial_port);
-
     publisher_ = this->create_publisher<std_msgs::msg::String>("beacon_positioning", 10);
     timer_ = this->create_wall_timer(
         500ms, std::bind(&BeaconPositioningPublisher::timer_callback, this));
@@ -81,7 +79,7 @@ private:
 
   // terabee tower evo variables
   std::shared_ptr<terabee::serial_communication::ISerial> serial_port; // serial port for communicating with tracker
-  // terabee::RtlsDevice rtls_device;
+  terabee::RtlsDevice rtls_device(serial_port);
   terabee::RtlsDevice::config_t device_configuration;
   terabee::RtlsDevice::OnTrackerDataCallback tracker_data_callback_;
 };
