@@ -84,6 +84,18 @@ public:
     publisher_->publish(msg);
   }
 
+  void set_tracker_id(int id)
+  {
+    if (id >= 0) {
+      tracker_id = id;
+    }
+  }
+
+  void get_tracker_id()
+  {
+    return tracker_id;
+  }
+
 private:
   void timer_callback()
 
@@ -96,6 +108,7 @@ private:
 
   rclcpp::TimerBase::SharedPtr timer_;                            // timer to trigger the
   rclcpp::Publisher<beacon_positioning::msg::TrackerPosition>::SharedPtr publisher_; // pointer to publisher object
+  int tracker_id;
 
   // terabee tower evo variables
   std::shared_ptr<terabee::serial_communication::ISerial> serial_port; // serial port for communicating with tracker
@@ -119,10 +132,12 @@ int main(int argc, char **argv)
   if (node->get_parameter("tracker_serial_port").as_string().compare(TRACKER_0_PORT))
   {
     RCLCPP_INFO(node->get_logger(),"Configuring RTLS device for tracker 0");
+    node->set_tracker_id(0);
     node->setup_rtlsdevice(&rtls_device, 0, 0, 50, 0, true);
   } else 
   {
     RCLCPP_INFO(node->get_logger(),"Configuring RTLS device for tracker 1");
+    node->set_tracker_id(1);
     node->setup_rtlsdevice(&rtls_device, 1, 1, 50, 0, true);
   }
 
@@ -137,6 +152,7 @@ int main(int argc, char **argv)
       }
       RCLCPP_INFO(node->get_logger(), "");
       auto message = beacon_positioning::msg::TrackerPosition();
+      message.id = node->get_tracker_id();
       message.x_pos = tracker_msg.tracker_position_xyz.at(0);
       message.y_pos = tracker_msg.tracker_position_xyz.at(1);
       message.z_pos = tracker_msg.tracker_position_xyz.at(2);
