@@ -23,6 +23,12 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(positioning_systems_api REQUIRED)
+find_package(rosidl_default_generators REQUIRED)
+
+rosidl_generate_interfaces($PROJECT_NAME
+  "msg/TrackerPosition.msg" # message for tracker position
+)
+
 
 add_executable(tracker_position src/tracker_position.cpp)
 ament_target_dependencies(tracker_position rclcpp std_msgs)
