@@ -25,7 +25,7 @@ find_package(std_msgs REQUIRED)
 find_package(positioning_systems_api REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 
-rosidl_generate_interfaces($PROJECT_NAME
+rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/TrackerPosition.msg" # message for tracker position
 )
 

@@ -3,6 +3,7 @@
 
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
+#indlude "beacon_positioning/msg/TrackerPosition.hpp"
 
 #include "rtls_driver/rtls_driver.hpp"
 
@@ -43,7 +44,7 @@ public:
       return;
     }
 
-    publisher_ = this->create_publisher<std_msgs::msg::String>("beacon_positioning", 10);
+    publisher_ = this->create_publisher<beacon_positioning::msg::TrackerPosition>("beacon_positioning", 10);
     timer_ = this->create_wall_timer(
         500ms, std::bind(&BeaconPositioningPublisher::timer_callback, this));
   }
@@ -78,7 +79,7 @@ public:
     return serial_port;
   }
 
-  void publish(std_msgs::msg::String msg)
+  void publish(beacon_positioning::msg::TrackerPosition msg)
   {
     publisher_->publish(msg);
   }
@@ -94,7 +95,7 @@ private:
   }
 
   rclcpp::TimerBase::SharedPtr timer_;                            // timer to trigger the
-  rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher_; // pointer to publisher object
+  rclcpp::Publisher<beacon_positioning::msg::TrackerPosition>::SharedPtr publisher_; // pointer to publisher object
 
   // terabee tower evo variables
   std::shared_ptr<terabee::serial_communication::ISerial> serial_port; // serial port for communicating with tracker
@@ -135,8 +136,16 @@ int main(int argc, char **argv)
         RCLCPP_INFO(node->get_logger(), "anchor number= %d, distance = %d, x = %d, y = %d, z = %d", tracker_msg.anchors_data[i].number, tracker_msg.anchors_data[i].distance, tracker_msg.anchors_data[i].pos_x, tracker_msg.anchors_data[i].pos_y, tracker_msg.anchors_data[i].pos_z);
       }
       RCLCPP_INFO(node->get_logger(), "");
-      auto message = std_msgs::msg::String();
-      message.data = "Hello from tracker callback!";
+      auto message = beacon_positioning::msg::TrackerPosition();
+      message.x_pos = tracker_msg.tracker_position_xyz.at(0);
+      message.y_pos = tracker_msg.tracker_position_xyz.at(1);
+      message.z_pos = tracker_msg.tracker_position_xyz.at(2);
+      message.anchor_distances = {0, 0, 0, 0};
+      for (int i = 0; i < tracker_msg.anchors_data.size(); i++)
+      {
+        message.anchor_distances[i] = tracker_msg.anchors_data[i].distance;
+      }
+
       node->publish(message);
     }
     else
