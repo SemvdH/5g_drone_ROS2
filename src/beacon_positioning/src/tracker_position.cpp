@@ -3,7 +3,7 @@
 
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
-#indlude "beacon_positioning/msg/TrackerPosition.hpp"
+#include "beacon_positioning/msg/TrackerPosition.hpp"
 
 #include "rtls_driver/rtls_driver.hpp"
 
@@ -91,7 +91,7 @@ public:
     }
   }
 
-  void get_tracker_id()
+  int get_tracker_id()
   {
     return tracker_id;
   }
