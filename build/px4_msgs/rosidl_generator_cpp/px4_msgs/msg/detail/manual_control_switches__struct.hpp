@@ -49,6 +49,7 @@ struct ManualControlSwitches_
       this->transition_switch = 0;
       this->photo_switch = 0;
       this->video_switch = 0;
+      this->engage_main_motor_switch = 0;
       this->switch_changes = 0ul;
     }
   }
@@ -71,6 +72,7 @@ struct ManualControlSwitches_
       this->transition_switch = 0;
       this->photo_switch = 0;
       this->video_switch = 0;
+      this->engage_main_motor_switch = 0;
       this->switch_changes = 0ul;
     }
   }
@@ -112,6 +114,9 @@ struct ManualControlSwitches_
   using _video_switch_type =
     uint8_t;
   _video_switch_type video_switch;
+  using _engage_main_motor_switch_type =
+    uint8_t;
+  _engage_main_motor_switch_type engage_main_motor_switch;
   using _switch_changes_type =
     uint32_t;
   _switch_changes_type switch_changes;
@@ -187,6 +192,12 @@ struct ManualControlSwitches_
     const uint8_t & _arg)
   {
     this->video_switch = _arg;
+    return *this;
+  }
+  Type & set__engage_main_motor_switch(
+    const uint8_t & _arg)
+  {
+    this->engage_main_motor_switch = _arg;
     return *this;
   }
   Type & set__switch_changes(
@@ -296,6 +307,9 @@ struct ManualControlSwitches_
       return false;
     }
     if (this->video_switch != other.video_switch) {
+      return false;
+    }
+    if (this->engage_main_motor_switch != other.engage_main_motor_switch) {
       return false;
     }
     if (this->switch_changes != other.switch_changes) {

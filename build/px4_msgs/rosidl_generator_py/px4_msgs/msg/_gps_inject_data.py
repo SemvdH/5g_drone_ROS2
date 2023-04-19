@@ -22,6 +22,7 @@ class Metaclass_GpsInjectData(type):
 
     __constants = {
         'ORB_QUEUE_LENGTH': 8,
+        'MAX_INSTANCES': 2,
     }
 
     @classmethod
@@ -51,12 +52,18 @@ class Metaclass_GpsInjectData(type):
         # as well as populate each message instance
         return {
             'ORB_QUEUE_LENGTH': cls.__constants['ORB_QUEUE_LENGTH'],
+            'MAX_INSTANCES': cls.__constants['MAX_INSTANCES'],
         }
 
     @property
     def ORB_QUEUE_LENGTH(self):
         """Message constant 'ORB_QUEUE_LENGTH'."""
         return Metaclass_GpsInjectData.__constants['ORB_QUEUE_LENGTH']
+
+    @property
+    def MAX_INSTANCES(self):
+        """Message constant 'MAX_INSTANCES'."""
+        return Metaclass_GpsInjectData.__constants['MAX_INSTANCES']
 
 
 class GpsInjectData(metaclass=Metaclass_GpsInjectData):
@@ -65,6 +72,7 @@ class GpsInjectData(metaclass=Metaclass_GpsInjectData):
 
     Constants:
       ORB_QUEUE_LENGTH
+      MAX_INSTANCES
     """
 
     __slots__ = [

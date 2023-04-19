@@ -38,8 +38,9 @@ struct GeofenceResult_
       rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
     {
       this->timestamp = 0ull;
-      this->geofence_violated = false;
-      this->geofence_action = 0;
+      this->geofence_violation_reason = 0;
+      this->primary_geofence_breached = false;
+      this->primary_geofence_action = 0;
       this->home_required = false;
     }
   }
@@ -51,8 +52,9 @@ struct GeofenceResult_
       rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
     {
       this->timestamp = 0ull;
-      this->geofence_violated = false;
-      this->geofence_action = 0;
+      this->geofence_violation_reason = 0;
+      this->primary_geofence_breached = false;
+      this->primary_geofence_action = 0;
       this->home_required = false;
     }
   }
@@ -61,12 +63,15 @@ struct GeofenceResult_
   using _timestamp_type =
     uint64_t;
   _timestamp_type timestamp;
-  using _geofence_violated_type =
-    bool;
-  _geofence_violated_type geofence_violated;
-  using _geofence_action_type =
+  using _geofence_violation_reason_type =
     uint8_t;
-  _geofence_action_type geofence_action;
+  _geofence_violation_reason_type geofence_violation_reason;
+  using _primary_geofence_breached_type =
+    bool;
+  _primary_geofence_breached_type primary_geofence_breached;
+  using _primary_geofence_action_type =
+    uint8_t;
+  _primary_geofence_action_type primary_geofence_action;
   using _home_required_type =
     bool;
   _home_required_type home_required;
@@ -78,16 +83,22 @@ struct GeofenceResult_
     this->timestamp = _arg;
     return *this;
   }
-  Type & set__geofence_violated(
-    const bool & _arg)
-  {
-    this->geofence_violated = _arg;
-    return *this;
-  }
-  Type & set__geofence_action(
+  Type & set__geofence_violation_reason(
     const uint8_t & _arg)
   {
-    this->geofence_action = _arg;
+    this->geofence_violation_reason = _arg;
+    return *this;
+  }
+  Type & set__primary_geofence_breached(
+    const bool & _arg)
+  {
+    this->primary_geofence_breached = _arg;
+    return *this;
+  }
+  Type & set__primary_geofence_action(
+    const uint8_t & _arg)
+  {
+    this->primary_geofence_action = _arg;
     return *this;
   }
   Type & set__home_required(
@@ -154,10 +165,13 @@ struct GeofenceResult_
     if (this->timestamp != other.timestamp) {
       return false;
     }
-    if (this->geofence_violated != other.geofence_violated) {
+    if (this->geofence_violation_reason != other.geofence_violation_reason) {
       return false;
     }
-    if (this->geofence_action != other.geofence_action) {
+    if (this->primary_geofence_breached != other.primary_geofence_breached) {
+      return false;
+    }
+    if (this->primary_geofence_action != other.primary_geofence_action) {
       return false;
     }
     if (this->home_required != other.home_required) {

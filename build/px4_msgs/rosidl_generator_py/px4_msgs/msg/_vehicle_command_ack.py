@@ -18,12 +18,13 @@ class Metaclass_VehicleCommandAck(type):
     _TYPE_SUPPORT = None
 
     __constants = {
-        'VEHICLE_RESULT_ACCEPTED': 0,
-        'VEHICLE_RESULT_TEMPORARILY_REJECTED': 1,
-        'VEHICLE_RESULT_DENIED': 2,
-        'VEHICLE_RESULT_UNSUPPORTED': 3,
-        'VEHICLE_RESULT_FAILED': 4,
-        'VEHICLE_RESULT_IN_PROGRESS': 5,
+        'VEHICLE_CMD_RESULT_ACCEPTED': 0,
+        'VEHICLE_CMD_RESULT_TEMPORARILY_REJECTED': 1,
+        'VEHICLE_CMD_RESULT_DENIED': 2,
+        'VEHICLE_CMD_RESULT_UNSUPPORTED': 3,
+        'VEHICLE_CMD_RESULT_FAILED': 4,
+        'VEHICLE_CMD_RESULT_IN_PROGRESS': 5,
+        'VEHICLE_CMD_RESULT_CANCELLED': 6,
         'ARM_AUTH_DENIED_REASON_GENERIC': 0,
         'ARM_AUTH_DENIED_REASON_NONE': 1,
         'ARM_AUTH_DENIED_REASON_INVALID_WAYPOINT': 2,
@@ -59,12 +60,13 @@ class Metaclass_VehicleCommandAck(type):
         # the message class under "Data and other attributes defined here:"
         # as well as populate each message instance
         return {
-            'VEHICLE_RESULT_ACCEPTED': cls.__constants['VEHICLE_RESULT_ACCEPTED'],
-            'VEHICLE_RESULT_TEMPORARILY_REJECTED': cls.__constants['VEHICLE_RESULT_TEMPORARILY_REJECTED'],
-            'VEHICLE_RESULT_DENIED': cls.__constants['VEHICLE_RESULT_DENIED'],
-            'VEHICLE_RESULT_UNSUPPORTED': cls.__constants['VEHICLE_RESULT_UNSUPPORTED'],
-            'VEHICLE_RESULT_FAILED': cls.__constants['VEHICLE_RESULT_FAILED'],
-            'VEHICLE_RESULT_IN_PROGRESS': cls.__constants['VEHICLE_RESULT_IN_PROGRESS'],
+            'VEHICLE_CMD_RESULT_ACCEPTED': cls.__constants['VEHICLE_CMD_RESULT_ACCEPTED'],
+            'VEHICLE_CMD_RESULT_TEMPORARILY_REJECTED': cls.__constants['VEHICLE_CMD_RESULT_TEMPORARILY_REJECTED'],
+            'VEHICLE_CMD_RESULT_DENIED': cls.__constants['VEHICLE_CMD_RESULT_DENIED'],
+            'VEHICLE_CMD_RESULT_UNSUPPORTED': cls.__constants['VEHICLE_CMD_RESULT_UNSUPPORTED'],
+            'VEHICLE_CMD_RESULT_FAILED': cls.__constants['VEHICLE_CMD_RESULT_FAILED'],
+            'VEHICLE_CMD_RESULT_IN_PROGRESS': cls.__constants['VEHICLE_CMD_RESULT_IN_PROGRESS'],
+            'VEHICLE_CMD_RESULT_CANCELLED': cls.__constants['VEHICLE_CMD_RESULT_CANCELLED'],
             'ARM_AUTH_DENIED_REASON_GENERIC': cls.__constants['ARM_AUTH_DENIED_REASON_GENERIC'],
             'ARM_AUTH_DENIED_REASON_NONE': cls.__constants['ARM_AUTH_DENIED_REASON_NONE'],
             'ARM_AUTH_DENIED_REASON_INVALID_WAYPOINT': cls.__constants['ARM_AUTH_DENIED_REASON_INVALID_WAYPOINT'],
@@ -75,34 +77,39 @@ class Metaclass_VehicleCommandAck(type):
         }
 
     @property
-    def VEHICLE_RESULT_ACCEPTED(self):
-        """Message constant 'VEHICLE_RESULT_ACCEPTED'."""
-        return Metaclass_VehicleCommandAck.__constants['VEHICLE_RESULT_ACCEPTED']
+    def VEHICLE_CMD_RESULT_ACCEPTED(self):
+        """Message constant 'VEHICLE_CMD_RESULT_ACCEPTED'."""
+        return Metaclass_VehicleCommandAck.__constants['VEHICLE_CMD_RESULT_ACCEPTED']
 
     @property
-    def VEHICLE_RESULT_TEMPORARILY_REJECTED(self):
-        """Message constant 'VEHICLE_RESULT_TEMPORARILY_REJECTED'."""
-        return Metaclass_VehicleCommandAck.__constants['VEHICLE_RESULT_TEMPORARILY_REJECTED']
+    def VEHICLE_CMD_RESULT_TEMPORARILY_REJECTED(self):
+        """Message constant 'VEHICLE_CMD_RESULT_TEMPORARILY_REJECTED'."""
+        return Metaclass_VehicleCommandAck.__constants['VEHICLE_CMD_RESULT_TEMPORARILY_REJECTED']
 
     @property
-    def VEHICLE_RESULT_DENIED(self):
-        """Message constant 'VEHICLE_RESULT_DENIED'."""
-        return Metaclass_VehicleCommandAck.__constants['VEHICLE_RESULT_DENIED']
+    def VEHICLE_CMD_RESULT_DENIED(self):
+        """Message constant 'VEHICLE_CMD_RESULT_DENIED'."""
+        return Metaclass_VehicleCommandAck.__constants['VEHICLE_CMD_RESULT_DENIED']
 
     @property
-    def VEHICLE_RESULT_UNSUPPORTED(self):
-        """Message constant 'VEHICLE_RESULT_UNSUPPORTED'."""
-        return Metaclass_VehicleCommandAck.__constants['VEHICLE_RESULT_UNSUPPORTED']
+    def VEHICLE_CMD_RESULT_UNSUPPORTED(self):
+        """Message constant 'VEHICLE_CMD_RESULT_UNSUPPORTED'."""
+        return Metaclass_VehicleCommandAck.__constants['VEHICLE_CMD_RESULT_UNSUPPORTED']
 
     @property
-    def VEHICLE_RESULT_FAILED(self):
-        """Message constant 'VEHICLE_RESULT_FAILED'."""
-        return Metaclass_VehicleCommandAck.__constants['VEHICLE_RESULT_FAILED']
+    def VEHICLE_CMD_RESULT_FAILED(self):
+        """Message constant 'VEHICLE_CMD_RESULT_FAILED'."""
+        return Metaclass_VehicleCommandAck.__constants['VEHICLE_CMD_RESULT_FAILED']
 
     @property
-    def VEHICLE_RESULT_IN_PROGRESS(self):
-        """Message constant 'VEHICLE_RESULT_IN_PROGRESS'."""
-        return Metaclass_VehicleCommandAck.__constants['VEHICLE_RESULT_IN_PROGRESS']
+    def VEHICLE_CMD_RESULT_IN_PROGRESS(self):
+        """Message constant 'VEHICLE_CMD_RESULT_IN_PROGRESS'."""
+        return Metaclass_VehicleCommandAck.__constants['VEHICLE_CMD_RESULT_IN_PROGRESS']
+
+    @property
+    def VEHICLE_CMD_RESULT_CANCELLED(self):
+        """Message constant 'VEHICLE_CMD_RESULT_CANCELLED'."""
+        return Metaclass_VehicleCommandAck.__constants['VEHICLE_CMD_RESULT_CANCELLED']
 
     @property
     def ARM_AUTH_DENIED_REASON_GENERIC(self):
@@ -145,12 +152,13 @@ class VehicleCommandAck(metaclass=Metaclass_VehicleCommandAck):
     Message class 'VehicleCommandAck'.
 
     Constants:
-      VEHICLE_RESULT_ACCEPTED
-      VEHICLE_RESULT_TEMPORARILY_REJECTED
-      VEHICLE_RESULT_DENIED
-      VEHICLE_RESULT_UNSUPPORTED
-      VEHICLE_RESULT_FAILED
-      VEHICLE_RESULT_IN_PROGRESS
+      VEHICLE_CMD_RESULT_ACCEPTED
+      VEHICLE_CMD_RESULT_TEMPORARILY_REJECTED
+      VEHICLE_CMD_RESULT_DENIED
+      VEHICLE_CMD_RESULT_UNSUPPORTED
+      VEHICLE_CMD_RESULT_FAILED
+      VEHICLE_CMD_RESULT_IN_PROGRESS
+      VEHICLE_CMD_RESULT_CANCELLED
       ARM_AUTH_DENIED_REASON_GENERIC
       ARM_AUTH_DENIED_REASON_NONE
       ARM_AUTH_DENIED_REASON_INVALID_WAYPOINT
@@ -164,33 +172,33 @@ class VehicleCommandAck(metaclass=Metaclass_VehicleCommandAck):
         '_timestamp',
         '_command',
         '_result',
-        '_from_external',
         '_result_param1',
         '_result_param2',
         '_target_system',
         '_target_component',
+        '_from_external',
     ]
 
     _fields_and_field_types = {
         'timestamp': 'uint64',
         'command': 'uint32',
         'result': 'uint8',
-        'from_external': 'boolean',
         'result_param1': 'uint8',
         'result_param2': 'int32',
         'target_system': 'uint8',
         'target_component': 'uint8',
+        'from_external': 'boolean',
     }
 
     SLOT_TYPES = (
         rosidl_parser.definition.BasicType('uint64'),  # noqa: E501
         rosidl_parser.definition.BasicType('uint32'),  # noqa: E501
         rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
-        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
         rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
         rosidl_parser.definition.BasicType('int32'),  # noqa: E501
         rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
         rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
+        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
     )
 
     def __init__(self, **kwargs):
@@ -200,11 +208,11 @@ class VehicleCommandAck(metaclass=Metaclass_VehicleCommandAck):
         self.timestamp = kwargs.get('timestamp', int())
         self.command = kwargs.get('command', int())
         self.result = kwargs.get('result', int())
-        self.from_external = kwargs.get('from_external', bool())
         self.result_param1 = kwargs.get('result_param1', int())
         self.result_param2 = kwargs.get('result_param2', int())
         self.target_system = kwargs.get('target_system', int())
         self.target_component = kwargs.get('target_component', int())
+        self.from_external = kwargs.get('from_external', bool())
 
     def __repr__(self):
         typename = self.__class__.__module__.split('.')
@@ -241,8 +249,6 @@ class VehicleCommandAck(metaclass=Metaclass_VehicleCommandAck):
             return False
         if self.result != other.result:
             return False
-        if self.from_external != other.from_external:
-            return False
         if self.result_param1 != other.result_param1:
             return False
         if self.result_param2 != other.result_param2:
@@ -250,6 +256,8 @@ class VehicleCommandAck(metaclass=Metaclass_VehicleCommandAck):
         if self.target_system != other.target_system:
             return False
         if self.target_component != other.target_component:
+            return False
+        if self.from_external != other.from_external:
             return False
         return True
 
@@ -302,19 +310,6 @@ class VehicleCommandAck(metaclass=Metaclass_VehicleCommandAck):
             assert value >= 0 and value < 256, \
                 "The 'result' field must be an unsigned integer in [0, 255]"
         self._result = value
-
-    @property
-    def from_external(self):
-        """Message field 'from_external'."""
-        return self._from_external
-
-    @from_external.setter
-    def from_external(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, bool), \
-                "The 'from_external' field must be of type 'bool'"
-        self._from_external = value
 
     @property
     def result_param1(self):
@@ -375,3 +370,16 @@ class VehicleCommandAck(metaclass=Metaclass_VehicleCommandAck):
             assert value >= 0 and value < 256, \
                 "The 'target_component' field must be an unsigned integer in [0, 255]"
         self._target_component = value
+
+    @property
+    def from_external(self):
+        """Message field 'from_external'."""
+        return self._from_external
+
+    @from_external.setter
+    def from_external(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, bool), \
+                "The 'from_external' field must be of type 'bool'"
+        self._from_external = value

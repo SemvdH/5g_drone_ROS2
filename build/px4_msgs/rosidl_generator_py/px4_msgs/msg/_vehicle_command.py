@@ -51,9 +51,9 @@ class Metaclass_VehicleCommand(type):
         'VEHICLE_CMD_DO_SET_PARAMETER': 180,
         'VEHICLE_CMD_DO_SET_RELAY': 181,
         'VEHICLE_CMD_DO_REPEAT_RELAY': 182,
-        'VEHICLE_CMD_DO_SET_SERVO': 183,
         'VEHICLE_CMD_DO_REPEAT_SERVO': 184,
         'VEHICLE_CMD_DO_FLIGHTTERMINATION': 185,
+        'VEHICLE_CMD_DO_CHANGE_ALTITUDE': 186,
         'VEHICLE_CMD_DO_SET_ACTUATOR': 187,
         'VEHICLE_CMD_DO_LAND_START': 189,
         'VEHICLE_CMD_DO_GO_AROUND': 191,
@@ -72,6 +72,7 @@ class Metaclass_VehicleCommand(type):
         'VEHICLE_CMD_DO_PARACHUTE': 208,
         'VEHICLE_CMD_DO_MOTOR_TEST': 209,
         'VEHICLE_CMD_DO_INVERTED_FLIGHT': 210,
+        'VEHICLE_CMD_DO_GRIPPER': 211,
         'VEHICLE_CMD_DO_SET_CAM_TRIGG_INTERVAL': 214,
         'VEHICLE_CMD_DO_MOUNT_CONTROL_QUAT': 220,
         'VEHICLE_CMD_DO_GUIDED_MASTER': 221,
@@ -89,6 +90,7 @@ class Metaclass_VehicleCommand(type):
         'VEHICLE_CMD_ACTUATOR_TEST': 310,
         'VEHICLE_CMD_CONFIGURE_ACTUATOR': 311,
         'VEHICLE_CMD_COMPONENT_ARM_DISARM': 400,
+        'VEHICLE_CMD_RUN_PREARM_CHECKS': 401,
         'VEHICLE_CMD_INJECT_FAILURE': 420,
         'VEHICLE_CMD_START_RX_PAIR': 500,
         'VEHICLE_CMD_REQUEST_MESSAGE': 512,
@@ -109,15 +111,9 @@ class Metaclass_VehicleCommand(type):
         'VEHICLE_CMD_PAYLOAD_PREPARE_DEPLOY': 30001,
         'VEHICLE_CMD_PAYLOAD_CONTROL_DEPLOY': 30002,
         'VEHICLE_CMD_FIXED_MAG_CAL_YAW': 42006,
+        'VEHICLE_CMD_DO_WINCH': 42600,
         'VEHICLE_CMD_PX4_INTERNAL_START': 65537,
         'VEHICLE_CMD_SET_GPS_GLOBAL_ORIGIN': 100000,
-        'VEHICLE_CMD_RESULT_ACCEPTED': 0,
-        'VEHICLE_CMD_RESULT_TEMPORARILY_REJECTED': 1,
-        'VEHICLE_CMD_RESULT_DENIED': 2,
-        'VEHICLE_CMD_RESULT_UNSUPPORTED': 3,
-        'VEHICLE_CMD_RESULT_FAILED': 4,
-        'VEHICLE_CMD_RESULT_IN_PROGRESS': 5,
-        'VEHICLE_CMD_RESULT_ENUM_END': 6,
         'VEHICLE_MOUNT_MODE_RETRACT': 0,
         'VEHICLE_MOUNT_MODE_NEUTRAL': 1,
         'VEHICLE_MOUNT_MODE_MAVLINK_TARGETING': 2,
@@ -130,10 +126,6 @@ class Metaclass_VehicleCommand(type):
         'VEHICLE_ROI_LOCATION': 3,
         'VEHICLE_ROI_TARGET': 4,
         'VEHICLE_ROI_ENUM_END': 5,
-        'VEHICLE_CAMERA_ZOOM_TYPE_STEP': 0,
-        'VEHICLE_CAMERA_ZOOM_TYPE_CONTINUOUS': 1,
-        'VEHICLE_CAMERA_ZOOM_TYPE_RANGE': 2,
-        'VEHICLE_CAMERA_ZOOM_TYPE_FOCAL_LENGTH': 3,
         'PARACHUTE_ACTION_DISABLE': 0,
         'PARACHUTE_ACTION_ENABLE': 1,
         'PARACHUTE_ACTION_RELEASE': 2,
@@ -166,6 +158,8 @@ class Metaclass_VehicleCommand(type):
         'SPEED_TYPE_DESCEND_SPEED': 3,
         'ARMING_ACTION_DISARM': 0,
         'ARMING_ACTION_ARM': 1,
+        'GRIPPER_ACTION_RELEASE': 0,
+        'GRIPPER_ACTION_GRAB': 1,
         'ORB_QUEUE_LENGTH': 8,
     }
 
@@ -228,9 +222,9 @@ class Metaclass_VehicleCommand(type):
             'VEHICLE_CMD_DO_SET_PARAMETER': cls.__constants['VEHICLE_CMD_DO_SET_PARAMETER'],
             'VEHICLE_CMD_DO_SET_RELAY': cls.__constants['VEHICLE_CMD_DO_SET_RELAY'],
             'VEHICLE_CMD_DO_REPEAT_RELAY': cls.__constants['VEHICLE_CMD_DO_REPEAT_RELAY'],
-            'VEHICLE_CMD_DO_SET_SERVO': cls.__constants['VEHICLE_CMD_DO_SET_SERVO'],
             'VEHICLE_CMD_DO_REPEAT_SERVO': cls.__constants['VEHICLE_CMD_DO_REPEAT_SERVO'],
             'VEHICLE_CMD_DO_FLIGHTTERMINATION': cls.__constants['VEHICLE_CMD_DO_FLIGHTTERMINATION'],
+            'VEHICLE_CMD_DO_CHANGE_ALTITUDE': cls.__constants['VEHICLE_CMD_DO_CHANGE_ALTITUDE'],
             'VEHICLE_CMD_DO_SET_ACTUATOR': cls.__constants['VEHICLE_CMD_DO_SET_ACTUATOR'],
             'VEHICLE_CMD_DO_LAND_START': cls.__constants['VEHICLE_CMD_DO_LAND_START'],
             'VEHICLE_CMD_DO_GO_AROUND': cls.__constants['VEHICLE_CMD_DO_GO_AROUND'],
@@ -249,6 +243,7 @@ class Metaclass_VehicleCommand(type):
             'VEHICLE_CMD_DO_PARACHUTE': cls.__constants['VEHICLE_CMD_DO_PARACHUTE'],
             'VEHICLE_CMD_DO_MOTOR_TEST': cls.__constants['VEHICLE_CMD_DO_MOTOR_TEST'],
             'VEHICLE_CMD_DO_INVERTED_FLIGHT': cls.__constants['VEHICLE_CMD_DO_INVERTED_FLIGHT'],
+            'VEHICLE_CMD_DO_GRIPPER': cls.__constants['VEHICLE_CMD_DO_GRIPPER'],
             'VEHICLE_CMD_DO_SET_CAM_TRIGG_INTERVAL': cls.__constants['VEHICLE_CMD_DO_SET_CAM_TRIGG_INTERVAL'],
             'VEHICLE_CMD_DO_MOUNT_CONTROL_QUAT': cls.__constants['VEHICLE_CMD_DO_MOUNT_CONTROL_QUAT'],
             'VEHICLE_CMD_DO_GUIDED_MASTER': cls.__constants['VEHICLE_CMD_DO_GUIDED_MASTER'],
@@ -266,6 +261,7 @@ class Metaclass_VehicleCommand(type):
             'VEHICLE_CMD_ACTUATOR_TEST': cls.__constants['VEHICLE_CMD_ACTUATOR_TEST'],
             'VEHICLE_CMD_CONFIGURE_ACTUATOR': cls.__constants['VEHICLE_CMD_CONFIGURE_ACTUATOR'],
             'VEHICLE_CMD_COMPONENT_ARM_DISARM': cls.__constants['VEHICLE_CMD_COMPONENT_ARM_DISARM'],
+            'VEHICLE_CMD_RUN_PREARM_CHECKS': cls.__constants['VEHICLE_CMD_RUN_PREARM_CHECKS'],
             'VEHICLE_CMD_INJECT_FAILURE': cls.__constants['VEHICLE_CMD_INJECT_FAILURE'],
             'VEHICLE_CMD_START_RX_PAIR': cls.__constants['VEHICLE_CMD_START_RX_PAIR'],
             'VEHICLE_CMD_REQUEST_MESSAGE': cls.__constants['VEHICLE_CMD_REQUEST_MESSAGE'],
@@ -286,15 +282,9 @@ class Metaclass_VehicleCommand(type):
             'VEHICLE_CMD_PAYLOAD_PREPARE_DEPLOY': cls.__constants['VEHICLE_CMD_PAYLOAD_PREPARE_DEPLOY'],
             'VEHICLE_CMD_PAYLOAD_CONTROL_DEPLOY': cls.__constants['VEHICLE_CMD_PAYLOAD_CONTROL_DEPLOY'],
             'VEHICLE_CMD_FIXED_MAG_CAL_YAW': cls.__constants['VEHICLE_CMD_FIXED_MAG_CAL_YAW'],
+            'VEHICLE_CMD_DO_WINCH': cls.__constants['VEHICLE_CMD_DO_WINCH'],
             'VEHICLE_CMD_PX4_INTERNAL_START': cls.__constants['VEHICLE_CMD_PX4_INTERNAL_START'],
             'VEHICLE_CMD_SET_GPS_GLOBAL_ORIGIN': cls.__constants['VEHICLE_CMD_SET_GPS_GLOBAL_ORIGIN'],
-            'VEHICLE_CMD_RESULT_ACCEPTED': cls.__constants['VEHICLE_CMD_RESULT_ACCEPTED'],
-            'VEHICLE_CMD_RESULT_TEMPORARILY_REJECTED': cls.__constants['VEHICLE_CMD_RESULT_TEMPORARILY_REJECTED'],
-            'VEHICLE_CMD_RESULT_DENIED': cls.__constants['VEHICLE_CMD_RESULT_DENIED'],
-            'VEHICLE_CMD_RESULT_UNSUPPORTED': cls.__constants['VEHICLE_CMD_RESULT_UNSUPPORTED'],
-            'VEHICLE_CMD_RESULT_FAILED': cls.__constants['VEHICLE_CMD_RESULT_FAILED'],
-            'VEHICLE_CMD_RESULT_IN_PROGRESS': cls.__constants['VEHICLE_CMD_RESULT_IN_PROGRESS'],
-            'VEHICLE_CMD_RESULT_ENUM_END': cls.__constants['VEHICLE_CMD_RESULT_ENUM_END'],
             'VEHICLE_MOUNT_MODE_RETRACT': cls.__constants['VEHICLE_MOUNT_MODE_RETRACT'],
             'VEHICLE_MOUNT_MODE_NEUTRAL': cls.__constants['VEHICLE_MOUNT_MODE_NEUTRAL'],
             'VEHICLE_MOUNT_MODE_MAVLINK_TARGETING': cls.__constants['VEHICLE_MOUNT_MODE_MAVLINK_TARGETING'],
@@ -307,10 +297,6 @@ class Metaclass_VehicleCommand(type):
             'VEHICLE_ROI_LOCATION': cls.__constants['VEHICLE_ROI_LOCATION'],
             'VEHICLE_ROI_TARGET': cls.__constants['VEHICLE_ROI_TARGET'],
             'VEHICLE_ROI_ENUM_END': cls.__constants['VEHICLE_ROI_ENUM_END'],
-            'VEHICLE_CAMERA_ZOOM_TYPE_STEP': cls.__constants['VEHICLE_CAMERA_ZOOM_TYPE_STEP'],
-            'VEHICLE_CAMERA_ZOOM_TYPE_CONTINUOUS': cls.__constants['VEHICLE_CAMERA_ZOOM_TYPE_CONTINUOUS'],
-            'VEHICLE_CAMERA_ZOOM_TYPE_RANGE': cls.__constants['VEHICLE_CAMERA_ZOOM_TYPE_RANGE'],
-            'VEHICLE_CAMERA_ZOOM_TYPE_FOCAL_LENGTH': cls.__constants['VEHICLE_CAMERA_ZOOM_TYPE_FOCAL_LENGTH'],
             'PARACHUTE_ACTION_DISABLE': cls.__constants['PARACHUTE_ACTION_DISABLE'],
             'PARACHUTE_ACTION_ENABLE': cls.__constants['PARACHUTE_ACTION_ENABLE'],
             'PARACHUTE_ACTION_RELEASE': cls.__constants['PARACHUTE_ACTION_RELEASE'],
@@ -343,6 +329,8 @@ class Metaclass_VehicleCommand(type):
             'SPEED_TYPE_DESCEND_SPEED': cls.__constants['SPEED_TYPE_DESCEND_SPEED'],
             'ARMING_ACTION_DISARM': cls.__constants['ARMING_ACTION_DISARM'],
             'ARMING_ACTION_ARM': cls.__constants['ARMING_ACTION_ARM'],
+            'GRIPPER_ACTION_RELEASE': cls.__constants['GRIPPER_ACTION_RELEASE'],
+            'GRIPPER_ACTION_GRAB': cls.__constants['GRIPPER_ACTION_GRAB'],
             'ORB_QUEUE_LENGTH': cls.__constants['ORB_QUEUE_LENGTH'],
         }
 
@@ -512,11 +500,6 @@ class Metaclass_VehicleCommand(type):
         return Metaclass_VehicleCommand.__constants['VEHICLE_CMD_DO_REPEAT_RELAY']
 
     @property
-    def VEHICLE_CMD_DO_SET_SERVO(self):
-        """Message constant 'VEHICLE_CMD_DO_SET_SERVO'."""
-        return Metaclass_VehicleCommand.__constants['VEHICLE_CMD_DO_SET_SERVO']
-
-    @property
     def VEHICLE_CMD_DO_REPEAT_SERVO(self):
         """Message constant 'VEHICLE_CMD_DO_REPEAT_SERVO'."""
         return Metaclass_VehicleCommand.__constants['VEHICLE_CMD_DO_REPEAT_SERVO']
@@ -525,6 +508,11 @@ class Metaclass_VehicleCommand(type):
     def VEHICLE_CMD_DO_FLIGHTTERMINATION(self):
         """Message constant 'VEHICLE_CMD_DO_FLIGHTTERMINATION'."""
         return Metaclass_VehicleCommand.__constants['VEHICLE_CMD_DO_FLIGHTTERMINATION']
+
+    @property
+    def VEHICLE_CMD_DO_CHANGE_ALTITUDE(self):
+        """Message constant 'VEHICLE_CMD_DO_CHANGE_ALTITUDE'."""
+        return Metaclass_VehicleCommand.__constants['VEHICLE_CMD_DO_CHANGE_ALTITUDE']
 
     @property
     def VEHICLE_CMD_DO_SET_ACTUATOR(self):
@@ -617,6 +605,11 @@ class Metaclass_VehicleCommand(type):
         return Metaclass_VehicleCommand.__constants['VEHICLE_CMD_DO_INVERTED_FLIGHT']
 
     @property
+    def VEHICLE_CMD_DO_GRIPPER(self):
+        """Message constant 'VEHICLE_CMD_DO_GRIPPER'."""
+        return Metaclass_VehicleCommand.__constants['VEHICLE_CMD_DO_GRIPPER']
+
+    @property
     def VEHICLE_CMD_DO_SET_CAM_TRIGG_INTERVAL(self):
         """Message constant 'VEHICLE_CMD_DO_SET_CAM_TRIGG_INTERVAL'."""
         return Metaclass_VehicleCommand.__constants['VEHICLE_CMD_DO_SET_CAM_TRIGG_INTERVAL']
@@ -700,6 +693,11 @@ class Metaclass_VehicleCommand(type):
     def VEHICLE_CMD_COMPONENT_ARM_DISARM(self):
         """Message constant 'VEHICLE_CMD_COMPONENT_ARM_DISARM'."""
         return Metaclass_VehicleCommand.__constants['VEHICLE_CMD_COMPONENT_ARM_DISARM']
+
+    @property
+    def VEHICLE_CMD_RUN_PREARM_CHECKS(self):
+        """Message constant 'VEHICLE_CMD_RUN_PREARM_CHECKS'."""
+        return Metaclass_VehicleCommand.__constants['VEHICLE_CMD_RUN_PREARM_CHECKS']
 
     @property
     def VEHICLE_CMD_INJECT_FAILURE(self):
@@ -802,6 +800,11 @@ class Metaclass_VehicleCommand(type):
         return Metaclass_VehicleCommand.__constants['VEHICLE_CMD_FIXED_MAG_CAL_YAW']
 
     @property
+    def VEHICLE_CMD_DO_WINCH(self):
+        """Message constant 'VEHICLE_CMD_DO_WINCH'."""
+        return Metaclass_VehicleCommand.__constants['VEHICLE_CMD_DO_WINCH']
+
+    @property
     def VEHICLE_CMD_PX4_INTERNAL_START(self):
         """Message constant 'VEHICLE_CMD_PX4_INTERNAL_START'."""
         return Metaclass_VehicleCommand.__constants['VEHICLE_CMD_PX4_INTERNAL_START']
@@ -810,41 +813,6 @@ class Metaclass_VehicleCommand(type):
     def VEHICLE_CMD_SET_GPS_GLOBAL_ORIGIN(self):
         """Message constant 'VEHICLE_CMD_SET_GPS_GLOBAL_ORIGIN'."""
         return Metaclass_VehicleCommand.__constants['VEHICLE_CMD_SET_GPS_GLOBAL_ORIGIN']
-
-    @property
-    def VEHICLE_CMD_RESULT_ACCEPTED(self):
-        """Message constant 'VEHICLE_CMD_RESULT_ACCEPTED'."""
-        return Metaclass_VehicleCommand.__constants['VEHICLE_CMD_RESULT_ACCEPTED']
-
-    @property
-    def VEHICLE_CMD_RESULT_TEMPORARILY_REJECTED(self):
-        """Message constant 'VEHICLE_CMD_RESULT_TEMPORARILY_REJECTED'."""
-        return Metaclass_VehicleCommand.__constants['VEHICLE_CMD_RESULT_TEMPORARILY_REJECTED']
-
-    @property
-    def VEHICLE_CMD_RESULT_DENIED(self):
-        """Message constant 'VEHICLE_CMD_RESULT_DENIED'."""
-        return Metaclass_VehicleCommand.__constants['VEHICLE_CMD_RESULT_DENIED']
-
-    @property
-    def VEHICLE_CMD_RESULT_UNSUPPORTED(self):
-        """Message constant 'VEHICLE_CMD_RESULT_UNSUPPORTED'."""
-        return Metaclass_VehicleCommand.__constants['VEHICLE_CMD_RESULT_UNSUPPORTED']
-
-    @property
-    def VEHICLE_CMD_RESULT_FAILED(self):
-        """Message constant 'VEHICLE_CMD_RESULT_FAILED'."""
-        return Metaclass_VehicleCommand.__constants['VEHICLE_CMD_RESULT_FAILED']
-
-    @property
-    def VEHICLE_CMD_RESULT_IN_PROGRESS(self):
-        """Message constant 'VEHICLE_CMD_RESULT_IN_PROGRESS'."""
-        return Metaclass_VehicleCommand.__constants['VEHICLE_CMD_RESULT_IN_PROGRESS']
-
-    @property
-    def VEHICLE_CMD_RESULT_ENUM_END(self):
-        """Message constant 'VEHICLE_CMD_RESULT_ENUM_END'."""
-        return Metaclass_VehicleCommand.__constants['VEHICLE_CMD_RESULT_ENUM_END']
 
     @property
     def VEHICLE_MOUNT_MODE_RETRACT(self):
@@ -905,26 +873,6 @@ class Metaclass_VehicleCommand(type):
     def VEHICLE_ROI_ENUM_END(self):
         """Message constant 'VEHICLE_ROI_ENUM_END'."""
         return Metaclass_VehicleCommand.__constants['VEHICLE_ROI_ENUM_END']
-
-    @property
-    def VEHICLE_CAMERA_ZOOM_TYPE_STEP(self):
-        """Message constant 'VEHICLE_CAMERA_ZOOM_TYPE_STEP'."""
-        return Metaclass_VehicleCommand.__constants['VEHICLE_CAMERA_ZOOM_TYPE_STEP']
-
-    @property
-    def VEHICLE_CAMERA_ZOOM_TYPE_CONTINUOUS(self):
-        """Message constant 'VEHICLE_CAMERA_ZOOM_TYPE_CONTINUOUS'."""
-        return Metaclass_VehicleCommand.__constants['VEHICLE_CAMERA_ZOOM_TYPE_CONTINUOUS']
-
-    @property
-    def VEHICLE_CAMERA_ZOOM_TYPE_RANGE(self):
-        """Message constant 'VEHICLE_CAMERA_ZOOM_TYPE_RANGE'."""
-        return Metaclass_VehicleCommand.__constants['VEHICLE_CAMERA_ZOOM_TYPE_RANGE']
-
-    @property
-    def VEHICLE_CAMERA_ZOOM_TYPE_FOCAL_LENGTH(self):
-        """Message constant 'VEHICLE_CAMERA_ZOOM_TYPE_FOCAL_LENGTH'."""
-        return Metaclass_VehicleCommand.__constants['VEHICLE_CAMERA_ZOOM_TYPE_FOCAL_LENGTH']
 
     @property
     def PARACHUTE_ACTION_DISABLE(self):
@@ -1087,6 +1035,16 @@ class Metaclass_VehicleCommand(type):
         return Metaclass_VehicleCommand.__constants['ARMING_ACTION_ARM']
 
     @property
+    def GRIPPER_ACTION_RELEASE(self):
+        """Message constant 'GRIPPER_ACTION_RELEASE'."""
+        return Metaclass_VehicleCommand.__constants['GRIPPER_ACTION_RELEASE']
+
+    @property
+    def GRIPPER_ACTION_GRAB(self):
+        """Message constant 'GRIPPER_ACTION_GRAB'."""
+        return Metaclass_VehicleCommand.__constants['GRIPPER_ACTION_GRAB']
+
+    @property
     def ORB_QUEUE_LENGTH(self):
         """Message constant 'ORB_QUEUE_LENGTH'."""
         return Metaclass_VehicleCommand.__constants['ORB_QUEUE_LENGTH']
@@ -1130,9 +1088,9 @@ class VehicleCommand(metaclass=Metaclass_VehicleCommand):
       VEHICLE_CMD_DO_SET_PARAMETER
       VEHICLE_CMD_DO_SET_RELAY
       VEHICLE_CMD_DO_REPEAT_RELAY
-      VEHICLE_CMD_DO_SET_SERVO
       VEHICLE_CMD_DO_REPEAT_SERVO
       VEHICLE_CMD_DO_FLIGHTTERMINATION
+      VEHICLE_CMD_DO_CHANGE_ALTITUDE
       VEHICLE_CMD_DO_SET_ACTUATOR
       VEHICLE_CMD_DO_LAND_START
       VEHICLE_CMD_DO_GO_AROUND
@@ -1151,6 +1109,7 @@ class VehicleCommand(metaclass=Metaclass_VehicleCommand):
       VEHICLE_CMD_DO_PARACHUTE
       VEHICLE_CMD_DO_MOTOR_TEST
       VEHICLE_CMD_DO_INVERTED_FLIGHT
+      VEHICLE_CMD_DO_GRIPPER
       VEHICLE_CMD_DO_SET_CAM_TRIGG_INTERVAL
       VEHICLE_CMD_DO_MOUNT_CONTROL_QUAT
       VEHICLE_CMD_DO_GUIDED_MASTER
@@ -1168,6 +1127,7 @@ class VehicleCommand(metaclass=Metaclass_VehicleCommand):
       VEHICLE_CMD_ACTUATOR_TEST
       VEHICLE_CMD_CONFIGURE_ACTUATOR
       VEHICLE_CMD_COMPONENT_ARM_DISARM
+      VEHICLE_CMD_RUN_PREARM_CHECKS
       VEHICLE_CMD_INJECT_FAILURE
       VEHICLE_CMD_START_RX_PAIR
       VEHICLE_CMD_REQUEST_MESSAGE
@@ -1188,15 +1148,9 @@ class VehicleCommand(metaclass=Metaclass_VehicleCommand):
       VEHICLE_CMD_PAYLOAD_PREPARE_DEPLOY
       VEHICLE_CMD_PAYLOAD_CONTROL_DEPLOY
       VEHICLE_CMD_FIXED_MAG_CAL_YAW
+      VEHICLE_CMD_DO_WINCH
       VEHICLE_CMD_PX4_INTERNAL_START
       VEHICLE_CMD_SET_GPS_GLOBAL_ORIGIN
-      VEHICLE_CMD_RESULT_ACCEPTED
-      VEHICLE_CMD_RESULT_TEMPORARILY_REJECTED
-      VEHICLE_CMD_RESULT_DENIED
-      VEHICLE_CMD_RESULT_UNSUPPORTED
-      VEHICLE_CMD_RESULT_FAILED
-      VEHICLE_CMD_RESULT_IN_PROGRESS
-      VEHICLE_CMD_RESULT_ENUM_END
       VEHICLE_MOUNT_MODE_RETRACT
       VEHICLE_MOUNT_MODE_NEUTRAL
       VEHICLE_MOUNT_MODE_MAVLINK_TARGETING
@@ -1209,10 +1163,6 @@ class VehicleCommand(metaclass=Metaclass_VehicleCommand):
       VEHICLE_ROI_LOCATION
       VEHICLE_ROI_TARGET
       VEHICLE_ROI_ENUM_END
-      VEHICLE_CAMERA_ZOOM_TYPE_STEP
-      VEHICLE_CAMERA_ZOOM_TYPE_CONTINUOUS
-      VEHICLE_CAMERA_ZOOM_TYPE_RANGE
-      VEHICLE_CAMERA_ZOOM_TYPE_FOCAL_LENGTH
       PARACHUTE_ACTION_DISABLE
       PARACHUTE_ACTION_ENABLE
       PARACHUTE_ACTION_RELEASE
@@ -1245,6 +1195,8 @@ class VehicleCommand(metaclass=Metaclass_VehicleCommand):
       SPEED_TYPE_DESCEND_SPEED
       ARMING_ACTION_DISARM
       ARMING_ACTION_ARM
+      GRIPPER_ACTION_RELEASE
+      GRIPPER_ACTION_GRAB
       ORB_QUEUE_LENGTH
     """
 

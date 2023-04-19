@@ -36,16 +36,32 @@ private:
   ::px4_msgs::msg::TecsStatus msg_;
 };
 
+class Init_TecsStatus_throttle_trim
+{
+public:
+  explicit Init_TecsStatus_throttle_trim(::px4_msgs::msg::TecsStatus & msg)
+  : msg_(msg)
+  {}
+  Init_TecsStatus_mode throttle_trim(::px4_msgs::msg::TecsStatus::_throttle_trim_type arg)
+  {
+    msg_.throttle_trim = std::move(arg);
+    return Init_TecsStatus_mode(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::TecsStatus msg_;
+};
+
 class Init_TecsStatus_pitch_sp_rad
 {
 public:
   explicit Init_TecsStatus_pitch_sp_rad(::px4_msgs::msg::TecsStatus & msg)
   : msg_(msg)
   {}
-  Init_TecsStatus_mode pitch_sp_rad(::px4_msgs::msg::TecsStatus::_pitch_sp_rad_type arg)
+  Init_TecsStatus_throttle_trim pitch_sp_rad(::px4_msgs::msg::TecsStatus::_pitch_sp_rad_type arg)
   {
     msg_.pitch_sp_rad = std::move(arg);
-    return Init_TecsStatus_mode(msg_);
+    return Init_TecsStatus_throttle_trim(msg_);
   }
 
 private:
@@ -100,15 +116,15 @@ private:
   ::px4_msgs::msg::TecsStatus msg_;
 };
 
-class Init_TecsStatus_total_energy_balance_rate_sp
+class Init_TecsStatus_total_energy_balance_rate
 {
 public:
-  explicit Init_TecsStatus_total_energy_balance_rate_sp(::px4_msgs::msg::TecsStatus & msg)
+  explicit Init_TecsStatus_total_energy_balance_rate(::px4_msgs::msg::TecsStatus & msg)
   : msg_(msg)
   {}
-  Init_TecsStatus_throttle_integ total_energy_balance_rate_sp(::px4_msgs::msg::TecsStatus::_total_energy_balance_rate_sp_type arg)
+  Init_TecsStatus_throttle_integ total_energy_balance_rate(::px4_msgs::msg::TecsStatus::_total_energy_balance_rate_type arg)
   {
-    msg_.total_energy_balance_rate_sp = std::move(arg);
+    msg_.total_energy_balance_rate = std::move(arg);
     return Init_TecsStatus_throttle_integ(msg_);
   }
 
@@ -116,79 +132,15 @@ private:
   ::px4_msgs::msg::TecsStatus msg_;
 };
 
-class Init_TecsStatus_total_energy_balance_sp
+class Init_TecsStatus_total_energy_balance_rate_sp
 {
 public:
-  explicit Init_TecsStatus_total_energy_balance_sp(::px4_msgs::msg::TecsStatus & msg)
+  explicit Init_TecsStatus_total_energy_balance_rate_sp(::px4_msgs::msg::TecsStatus & msg)
   : msg_(msg)
   {}
-  Init_TecsStatus_total_energy_balance_rate_sp total_energy_balance_sp(::px4_msgs::msg::TecsStatus::_total_energy_balance_sp_type arg)
+  Init_TecsStatus_total_energy_balance_rate total_energy_balance_rate_sp(::px4_msgs::msg::TecsStatus::_total_energy_balance_rate_sp_type arg)
   {
-    msg_.total_energy_balance_sp = std::move(arg);
-    return Init_TecsStatus_total_energy_balance_rate_sp(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::TecsStatus msg_;
-};
-
-class Init_TecsStatus_total_energy_rate_sp
-{
-public:
-  explicit Init_TecsStatus_total_energy_rate_sp(::px4_msgs::msg::TecsStatus & msg)
-  : msg_(msg)
-  {}
-  Init_TecsStatus_total_energy_balance_sp total_energy_rate_sp(::px4_msgs::msg::TecsStatus::_total_energy_rate_sp_type arg)
-  {
-    msg_.total_energy_rate_sp = std::move(arg);
-    return Init_TecsStatus_total_energy_balance_sp(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::TecsStatus msg_;
-};
-
-class Init_TecsStatus_total_energy_sp
-{
-public:
-  explicit Init_TecsStatus_total_energy_sp(::px4_msgs::msg::TecsStatus & msg)
-  : msg_(msg)
-  {}
-  Init_TecsStatus_total_energy_rate_sp total_energy_sp(::px4_msgs::msg::TecsStatus::_total_energy_sp_type arg)
-  {
-    msg_.total_energy_sp = std::move(arg);
-    return Init_TecsStatus_total_energy_rate_sp(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::TecsStatus msg_;
-};
-
-class Init_TecsStatus_total_energy_balance_rate
-{
-public:
-  explicit Init_TecsStatus_total_energy_balance_rate(::px4_msgs::msg::TecsStatus & msg)
-  : msg_(msg)
-  {}
-  Init_TecsStatus_total_energy_sp total_energy_balance_rate(::px4_msgs::msg::TecsStatus::_total_energy_balance_rate_type arg)
-  {
-    msg_.total_energy_balance_rate = std::move(arg);
-    return Init_TecsStatus_total_energy_sp(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::TecsStatus msg_;
-};
-
-class Init_TecsStatus_total_energy_balance
-{
-public:
-  explicit Init_TecsStatus_total_energy_balance(::px4_msgs::msg::TecsStatus & msg)
-  : msg_(msg)
-  {}
-  Init_TecsStatus_total_energy_balance_rate total_energy_balance(::px4_msgs::msg::TecsStatus::_total_energy_balance_type arg)
-  {
-    msg_.total_energy_balance = std::move(arg);
+    msg_.total_energy_balance_rate_sp = std::move(arg);
     return Init_TecsStatus_total_energy_balance_rate(msg_);
   }
 
@@ -202,106 +154,26 @@ public:
   explicit Init_TecsStatus_total_energy_rate(::px4_msgs::msg::TecsStatus & msg)
   : msg_(msg)
   {}
-  Init_TecsStatus_total_energy_balance total_energy_rate(::px4_msgs::msg::TecsStatus::_total_energy_rate_type arg)
+  Init_TecsStatus_total_energy_balance_rate_sp total_energy_rate(::px4_msgs::msg::TecsStatus::_total_energy_rate_type arg)
   {
     msg_.total_energy_rate = std::move(arg);
-    return Init_TecsStatus_total_energy_balance(msg_);
+    return Init_TecsStatus_total_energy_balance_rate_sp(msg_);
   }
 
 private:
   ::px4_msgs::msg::TecsStatus msg_;
 };
 
-class Init_TecsStatus_total_energy
+class Init_TecsStatus_total_energy_rate_sp
 {
 public:
-  explicit Init_TecsStatus_total_energy(::px4_msgs::msg::TecsStatus & msg)
+  explicit Init_TecsStatus_total_energy_rate_sp(::px4_msgs::msg::TecsStatus & msg)
   : msg_(msg)
   {}
-  Init_TecsStatus_total_energy_rate total_energy(::px4_msgs::msg::TecsStatus::_total_energy_type arg)
+  Init_TecsStatus_total_energy_rate total_energy_rate_sp(::px4_msgs::msg::TecsStatus::_total_energy_rate_sp_type arg)
   {
-    msg_.total_energy = std::move(arg);
+    msg_.total_energy_rate_sp = std::move(arg);
     return Init_TecsStatus_total_energy_rate(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::TecsStatus msg_;
-};
-
-class Init_TecsStatus_energy_distribution_rate_error
-{
-public:
-  explicit Init_TecsStatus_energy_distribution_rate_error(::px4_msgs::msg::TecsStatus & msg)
-  : msg_(msg)
-  {}
-  Init_TecsStatus_total_energy energy_distribution_rate_error(::px4_msgs::msg::TecsStatus::_energy_distribution_rate_error_type arg)
-  {
-    msg_.energy_distribution_rate_error = std::move(arg);
-    return Init_TecsStatus_total_energy(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::TecsStatus msg_;
-};
-
-class Init_TecsStatus_total_energy_rate_error
-{
-public:
-  explicit Init_TecsStatus_total_energy_rate_error(::px4_msgs::msg::TecsStatus & msg)
-  : msg_(msg)
-  {}
-  Init_TecsStatus_energy_distribution_rate_error total_energy_rate_error(::px4_msgs::msg::TecsStatus::_total_energy_rate_error_type arg)
-  {
-    msg_.total_energy_rate_error = std::move(arg);
-    return Init_TecsStatus_energy_distribution_rate_error(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::TecsStatus msg_;
-};
-
-class Init_TecsStatus_energy_distribution_error
-{
-public:
-  explicit Init_TecsStatus_energy_distribution_error(::px4_msgs::msg::TecsStatus & msg)
-  : msg_(msg)
-  {}
-  Init_TecsStatus_total_energy_rate_error energy_distribution_error(::px4_msgs::msg::TecsStatus::_energy_distribution_error_type arg)
-  {
-    msg_.energy_distribution_error = std::move(arg);
-    return Init_TecsStatus_total_energy_rate_error(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::TecsStatus msg_;
-};
-
-class Init_TecsStatus_total_energy_error
-{
-public:
-  explicit Init_TecsStatus_total_energy_error(::px4_msgs::msg::TecsStatus & msg)
-  : msg_(msg)
-  {}
-  Init_TecsStatus_energy_distribution_error total_energy_error(::px4_msgs::msg::TecsStatus::_total_energy_error_type arg)
-  {
-    msg_.total_energy_error = std::move(arg);
-    return Init_TecsStatus_energy_distribution_error(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::TecsStatus msg_;
-};
-
-class Init_TecsStatus_true_airspeed_innovation
-{
-public:
-  explicit Init_TecsStatus_true_airspeed_innovation(::px4_msgs::msg::TecsStatus & msg)
-  : msg_(msg)
-  {}
-  Init_TecsStatus_total_energy_error true_airspeed_innovation(::px4_msgs::msg::TecsStatus::_true_airspeed_innovation_type arg)
-  {
-    msg_.true_airspeed_innovation = std::move(arg);
-    return Init_TecsStatus_total_energy_error(msg_);
   }
 
 private:
@@ -314,10 +186,10 @@ public:
   explicit Init_TecsStatus_true_airspeed_derivative_raw(::px4_msgs::msg::TecsStatus & msg)
   : msg_(msg)
   {}
-  Init_TecsStatus_true_airspeed_innovation true_airspeed_derivative_raw(::px4_msgs::msg::TecsStatus::_true_airspeed_derivative_raw_type arg)
+  Init_TecsStatus_total_energy_rate_sp true_airspeed_derivative_raw(::px4_msgs::msg::TecsStatus::_true_airspeed_derivative_raw_type arg)
   {
     msg_.true_airspeed_derivative_raw = std::move(arg);
-    return Init_TecsStatus_true_airspeed_innovation(msg_);
+    return Init_TecsStatus_total_energy_rate_sp(msg_);
   }
 
 private:
@@ -436,16 +308,48 @@ private:
   ::px4_msgs::msg::TecsStatus msg_;
 };
 
-class Init_TecsStatus_altitude_filtered
+class Init_TecsStatus_height_rate_direct
 {
 public:
-  explicit Init_TecsStatus_altitude_filtered(::px4_msgs::msg::TecsStatus & msg)
+  explicit Init_TecsStatus_height_rate_direct(::px4_msgs::msg::TecsStatus & msg)
   : msg_(msg)
   {}
-  Init_TecsStatus_height_rate_setpoint altitude_filtered(::px4_msgs::msg::TecsStatus::_altitude_filtered_type arg)
+  Init_TecsStatus_height_rate_setpoint height_rate_direct(::px4_msgs::msg::TecsStatus::_height_rate_direct_type arg)
   {
-    msg_.altitude_filtered = std::move(arg);
+    msg_.height_rate_direct = std::move(arg);
     return Init_TecsStatus_height_rate_setpoint(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::TecsStatus msg_;
+};
+
+class Init_TecsStatus_height_rate_reference
+{
+public:
+  explicit Init_TecsStatus_height_rate_reference(::px4_msgs::msg::TecsStatus & msg)
+  : msg_(msg)
+  {}
+  Init_TecsStatus_height_rate_direct height_rate_reference(::px4_msgs::msg::TecsStatus::_height_rate_reference_type arg)
+  {
+    msg_.height_rate_reference = std::move(arg);
+    return Init_TecsStatus_height_rate_direct(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::TecsStatus msg_;
+};
+
+class Init_TecsStatus_altitude_reference
+{
+public:
+  explicit Init_TecsStatus_altitude_reference(::px4_msgs::msg::TecsStatus & msg)
+  : msg_(msg)
+  {}
+  Init_TecsStatus_height_rate_reference altitude_reference(::px4_msgs::msg::TecsStatus::_altitude_reference_type arg)
+  {
+    msg_.altitude_reference = std::move(arg);
+    return Init_TecsStatus_height_rate_reference(msg_);
   }
 
 private:
@@ -458,10 +362,10 @@ public:
   explicit Init_TecsStatus_altitude_sp(::px4_msgs::msg::TecsStatus & msg)
   : msg_(msg)
   {}
-  Init_TecsStatus_altitude_filtered altitude_sp(::px4_msgs::msg::TecsStatus::_altitude_sp_type arg)
+  Init_TecsStatus_altitude_reference altitude_sp(::px4_msgs::msg::TecsStatus::_altitude_sp_type arg)
   {
     msg_.altitude_sp = std::move(arg);
-    return Init_TecsStatus_altitude_filtered(msg_);
+    return Init_TecsStatus_altitude_reference(msg_);
   }
 
 private:

@@ -52,12 +52,11 @@ typedef struct px4_msgs__msg__ControlAllocatorStatus
 {
   uint64_t timestamp;
   bool torque_setpoint_achieved;
-  float allocated_torque[3];
   float unallocated_torque[3];
   bool thrust_setpoint_achieved;
-  float allocated_thrust[3];
   float unallocated_thrust[3];
   int8_t actuator_saturation[16];
+  uint16_t handled_motor_failure_mask;
 } px4_msgs__msg__ControlAllocatorStatus;
 
 // Struct for a sequence of px4_msgs__msg__ControlAllocatorStatus.

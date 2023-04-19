@@ -118,6 +118,8 @@ cdr_serialize(
   cdr << ros_message.evh;
   // Member: evv
   cdr << ros_message.evv;
+  // Member: dead_reckoning
+  cdr << (ros_message.dead_reckoning ? true : false);
   // Member: vxy_max
   cdr << ros_message.vxy_max;
   // Member: vz_max
@@ -293,6 +295,13 @@ cdr_deserialize(
 
   // Member: evv
   cdr >> ros_message.evv;
+
+  // Member: dead_reckoning
+  {
+    uint8_t tmp;
+    cdr >> tmp;
+    ros_message.dead_reckoning = tmp ? true : false;
+  }
 
   // Member: vxy_max
   cdr >> ros_message.vxy_max;
@@ -567,6 +576,12 @@ get_serialized_size(
   // Member: evv
   {
     size_t item_size = sizeof(ros_message.evv);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // Member: dead_reckoning
+  {
+    size_t item_size = sizeof(ros_message.dead_reckoning);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -925,6 +940,13 @@ max_serialized_size_VehicleLocalPosition(
 
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
+  }
+
+  // Member: dead_reckoning
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
   }
 
   // Member: vxy_max

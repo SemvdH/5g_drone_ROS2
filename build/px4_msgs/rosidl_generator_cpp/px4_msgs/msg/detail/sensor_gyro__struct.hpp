@@ -45,13 +45,14 @@ struct SensorGyro_
       this->z = 0.0f;
       this->temperature = 0.0f;
       this->error_count = 0ul;
+      std::fill<typename std::array<uint8_t, 3>::iterator, uint8_t>(this->clip_counter.begin(), this->clip_counter.end(), 0);
       this->samples = 0;
     }
   }
 
   explicit SensorGyro_(const ContainerAllocator & _alloc, rosidl_runtime_cpp::MessageInitialization _init = rosidl_runtime_cpp::MessageInitialization::ALL)
+  : clip_counter(_alloc)
   {
-    (void)_alloc;
     if (rosidl_runtime_cpp::MessageInitialization::ALL == _init ||
       rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
     {
@@ -63,6 +64,7 @@ struct SensorGyro_
       this->z = 0.0f;
       this->temperature = 0.0f;
       this->error_count = 0ul;
+      std::fill<typename std::array<uint8_t, 3>::iterator, uint8_t>(this->clip_counter.begin(), this->clip_counter.end(), 0);
       this->samples = 0;
     }
   }
@@ -92,6 +94,9 @@ struct SensorGyro_
   using _error_count_type =
     uint32_t;
   _error_count_type error_count;
+  using _clip_counter_type =
+    std::array<uint8_t, 3>;
+  _clip_counter_type clip_counter;
   using _samples_type =
     uint8_t;
   _samples_type samples;
@@ -143,6 +148,12 @@ struct SensorGyro_
     const uint32_t & _arg)
   {
     this->error_count = _arg;
+    return *this;
+  }
+  Type & set__clip_counter(
+    const std::array<uint8_t, 3> & _arg)
+  {
+    this->clip_counter = _arg;
     return *this;
   }
   Type & set__samples(
@@ -218,6 +229,9 @@ struct SensorGyro_
       return false;
     }
     if (this->error_count != other.error_count) {
+      return false;
+    }
+    if (this->clip_counter != other.clip_counter) {
       return false;
     }
     if (this->samples != other.samples) {

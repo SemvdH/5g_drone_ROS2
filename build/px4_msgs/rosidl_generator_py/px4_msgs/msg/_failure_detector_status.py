@@ -59,10 +59,11 @@ class FailureDetectorStatus(metaclass=Metaclass_FailureDetectorStatus):
         '_fd_alt',
         '_fd_ext',
         '_fd_arm_escs',
-        '_fd_high_wind',
         '_fd_battery',
         '_fd_imbalanced_prop',
+        '_fd_motor',
         '_imbalanced_prop_metric',
+        '_motor_failure_mask',
     ]
 
     _fields_and_field_types = {
@@ -72,10 +73,11 @@ class FailureDetectorStatus(metaclass=Metaclass_FailureDetectorStatus):
         'fd_alt': 'boolean',
         'fd_ext': 'boolean',
         'fd_arm_escs': 'boolean',
-        'fd_high_wind': 'boolean',
         'fd_battery': 'boolean',
         'fd_imbalanced_prop': 'boolean',
+        'fd_motor': 'boolean',
         'imbalanced_prop_metric': 'float',
+        'motor_failure_mask': 'uint16',
     }
 
     SLOT_TYPES = (
@@ -89,6 +91,7 @@ class FailureDetectorStatus(metaclass=Metaclass_FailureDetectorStatus):
         rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
         rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
+        rosidl_parser.definition.BasicType('uint16'),  # noqa: E501
     )
 
     def __init__(self, **kwargs):
@@ -101,10 +104,11 @@ class FailureDetectorStatus(metaclass=Metaclass_FailureDetectorStatus):
         self.fd_alt = kwargs.get('fd_alt', bool())
         self.fd_ext = kwargs.get('fd_ext', bool())
         self.fd_arm_escs = kwargs.get('fd_arm_escs', bool())
-        self.fd_high_wind = kwargs.get('fd_high_wind', bool())
         self.fd_battery = kwargs.get('fd_battery', bool())
         self.fd_imbalanced_prop = kwargs.get('fd_imbalanced_prop', bool())
+        self.fd_motor = kwargs.get('fd_motor', bool())
         self.imbalanced_prop_metric = kwargs.get('imbalanced_prop_metric', float())
+        self.motor_failure_mask = kwargs.get('motor_failure_mask', int())
 
     def __repr__(self):
         typename = self.__class__.__module__.split('.')
@@ -147,13 +151,15 @@ class FailureDetectorStatus(metaclass=Metaclass_FailureDetectorStatus):
             return False
         if self.fd_arm_escs != other.fd_arm_escs:
             return False
-        if self.fd_high_wind != other.fd_high_wind:
-            return False
         if self.fd_battery != other.fd_battery:
             return False
         if self.fd_imbalanced_prop != other.fd_imbalanced_prop:
             return False
+        if self.fd_motor != other.fd_motor:
+            return False
         if self.imbalanced_prop_metric != other.imbalanced_prop_metric:
+            return False
+        if self.motor_failure_mask != other.motor_failure_mask:
             return False
         return True
 
@@ -243,19 +249,6 @@ class FailureDetectorStatus(metaclass=Metaclass_FailureDetectorStatus):
         self._fd_arm_escs = value
 
     @property
-    def fd_high_wind(self):
-        """Message field 'fd_high_wind'."""
-        return self._fd_high_wind
-
-    @fd_high_wind.setter
-    def fd_high_wind(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, bool), \
-                "The 'fd_high_wind' field must be of type 'bool'"
-        self._fd_high_wind = value
-
-    @property
     def fd_battery(self):
         """Message field 'fd_battery'."""
         return self._fd_battery
@@ -282,6 +275,19 @@ class FailureDetectorStatus(metaclass=Metaclass_FailureDetectorStatus):
         self._fd_imbalanced_prop = value
 
     @property
+    def fd_motor(self):
+        """Message field 'fd_motor'."""
+        return self._fd_motor
+
+    @fd_motor.setter
+    def fd_motor(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, bool), \
+                "The 'fd_motor' field must be of type 'bool'"
+        self._fd_motor = value
+
+    @property
     def imbalanced_prop_metric(self):
         """Message field 'imbalanced_prop_metric'."""
         return self._imbalanced_prop_metric
@@ -293,3 +299,18 @@ class FailureDetectorStatus(metaclass=Metaclass_FailureDetectorStatus):
                 isinstance(value, float), \
                 "The 'imbalanced_prop_metric' field must be of type 'float'"
         self._imbalanced_prop_metric = value
+
+    @property
+    def motor_failure_mask(self):
+        """Message field 'motor_failure_mask'."""
+        return self._motor_failure_mask
+
+    @motor_failure_mask.setter
+    def motor_failure_mask(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, int), \
+                "The 'motor_failure_mask' field must be of type 'int'"
+            assert value >= 0 and value < 65536, \
+                "The 'motor_failure_mask' field must be an unsigned integer in [0, 65535]"
+        self._motor_failure_mask = value

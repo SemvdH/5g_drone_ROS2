@@ -1,8 +1,0 @@
-source;share/beacon_positioning/hook/cmake_prefix_path.ps1
-source;share/beacon_positioning/hook/cmake_prefix_path.dsv
-source;share/beacon_positioning/hook/cmake_prefix_path.sh
-source;share/beacon_positioning/local_setup.bash
-source;share/beacon_positioning/local_setup.dsv
-source;share/beacon_positioning/local_setup.ps1
-source;share/beacon_positioning/local_setup.sh
-source;share/beacon_positioning/local_setup.zsh

@@ -45,6 +45,7 @@ struct VehicleImu_
       std::fill<typename std::array<float, 3>::iterator, float>(this->delta_velocity.begin(), this->delta_velocity.end(), 0.0f);
       this->delta_angle_dt = 0;
       this->delta_velocity_dt = 0;
+      this->delta_angle_clipping = 0;
       this->delta_velocity_clipping = 0;
       this->accel_calibration_count = 0;
       this->gyro_calibration_count = 0;
@@ -66,6 +67,7 @@ struct VehicleImu_
       std::fill<typename std::array<float, 3>::iterator, float>(this->delta_velocity.begin(), this->delta_velocity.end(), 0.0f);
       this->delta_angle_dt = 0;
       this->delta_velocity_dt = 0;
+      this->delta_angle_clipping = 0;
       this->delta_velocity_clipping = 0;
       this->accel_calibration_count = 0;
       this->gyro_calibration_count = 0;
@@ -97,6 +99,9 @@ struct VehicleImu_
   using _delta_velocity_dt_type =
     uint16_t;
   _delta_velocity_dt_type delta_velocity_dt;
+  using _delta_angle_clipping_type =
+    uint8_t;
+  _delta_angle_clipping_type delta_angle_clipping;
   using _delta_velocity_clipping_type =
     uint8_t;
   _delta_velocity_clipping_type delta_velocity_clipping;
@@ -154,6 +159,12 @@ struct VehicleImu_
     const uint16_t & _arg)
   {
     this->delta_velocity_dt = _arg;
+    return *this;
+  }
+  Type & set__delta_angle_clipping(
+    const uint8_t & _arg)
+  {
+    this->delta_angle_clipping = _arg;
     return *this;
   }
   Type & set__delta_velocity_clipping(
@@ -245,6 +256,9 @@ struct VehicleImu_
       return false;
     }
     if (this->delta_velocity_dt != other.delta_velocity_dt) {
+      return false;
+    }
+    if (this->delta_angle_clipping != other.delta_angle_clipping) {
       return false;
     }
     if (this->delta_velocity_clipping != other.delta_velocity_clipping) {

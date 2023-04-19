@@ -59,24 +59,16 @@ static bool _VehicleOdometry__cdr_serialize(
     cdr << ros_message->timestamp_sample;
   }
 
-  // Field name: local_frame
+  // Field name: pose_frame
   {
-    cdr << ros_message->local_frame;
+    cdr << ros_message->pose_frame;
   }
 
-  // Field name: x
+  // Field name: position
   {
-    cdr << ros_message->x;
-  }
-
-  // Field name: y
-  {
-    cdr << ros_message->y;
-  }
-
-  // Field name: z
-  {
-    cdr << ros_message->z;
+    size_t size = 3;
+    auto array_ptr = ros_message->position;
+    cdr.serializeArray(array_ptr, size);
   }
 
   // Field name: q
@@ -86,65 +78,54 @@ static bool _VehicleOdometry__cdr_serialize(
     cdr.serializeArray(array_ptr, size);
   }
 
-  // Field name: q_offset
-  {
-    size_t size = 4;
-    auto array_ptr = ros_message->q_offset;
-    cdr.serializeArray(array_ptr, size);
-  }
-
-  // Field name: pose_covariance
-  {
-    size_t size = 21;
-    auto array_ptr = ros_message->pose_covariance;
-    cdr.serializeArray(array_ptr, size);
-  }
-
   // Field name: velocity_frame
   {
     cdr << ros_message->velocity_frame;
   }
 
-  // Field name: vx
+  // Field name: velocity
   {
-    cdr << ros_message->vx;
+    size_t size = 3;
+    auto array_ptr = ros_message->velocity;
+    cdr.serializeArray(array_ptr, size);
   }
 
-  // Field name: vy
+  // Field name: angular_velocity
   {
-    cdr << ros_message->vy;
+    size_t size = 3;
+    auto array_ptr = ros_message->angular_velocity;
+    cdr.serializeArray(array_ptr, size);
   }
 
-  // Field name: vz
+  // Field name: position_variance
   {
-    cdr << ros_message->vz;
+    size_t size = 3;
+    auto array_ptr = ros_message->position_variance;
+    cdr.serializeArray(array_ptr, size);
   }
 
-  // Field name: rollspeed
+  // Field name: orientation_variance
   {
-    cdr << ros_message->rollspeed;
+    size_t size = 3;
+    auto array_ptr = ros_message->orientation_variance;
+    cdr.serializeArray(array_ptr, size);
   }
 
-  // Field name: pitchspeed
+  // Field name: velocity_variance
   {
-    cdr << ros_message->pitchspeed;
-  }
-
-  // Field name: yawspeed
-  {
-    cdr << ros_message->yawspeed;
-  }
-
-  // Field name: velocity_covariance
-  {
-    size_t size = 21;
-    auto array_ptr = ros_message->velocity_covariance;
+    size_t size = 3;
+    auto array_ptr = ros_message->velocity_variance;
     cdr.serializeArray(array_ptr, size);
   }
 
   // Field name: reset_counter
   {
     cdr << ros_message->reset_counter;
+  }
+
+  // Field name: quality
+  {
+    cdr << ros_message->quality;
   }
 
   return true;
@@ -169,24 +150,16 @@ static bool _VehicleOdometry__cdr_deserialize(
     cdr >> ros_message->timestamp_sample;
   }
 
-  // Field name: local_frame
+  // Field name: pose_frame
   {
-    cdr >> ros_message->local_frame;
+    cdr >> ros_message->pose_frame;
   }
 
-  // Field name: x
+  // Field name: position
   {
-    cdr >> ros_message->x;
-  }
-
-  // Field name: y
-  {
-    cdr >> ros_message->y;
-  }
-
-  // Field name: z
-  {
-    cdr >> ros_message->z;
+    size_t size = 3;
+    auto array_ptr = ros_message->position;
+    cdr.deserializeArray(array_ptr, size);
   }
 
   // Field name: q
@@ -196,65 +169,54 @@ static bool _VehicleOdometry__cdr_deserialize(
     cdr.deserializeArray(array_ptr, size);
   }
 
-  // Field name: q_offset
-  {
-    size_t size = 4;
-    auto array_ptr = ros_message->q_offset;
-    cdr.deserializeArray(array_ptr, size);
-  }
-
-  // Field name: pose_covariance
-  {
-    size_t size = 21;
-    auto array_ptr = ros_message->pose_covariance;
-    cdr.deserializeArray(array_ptr, size);
-  }
-
   // Field name: velocity_frame
   {
     cdr >> ros_message->velocity_frame;
   }
 
-  // Field name: vx
+  // Field name: velocity
   {
-    cdr >> ros_message->vx;
+    size_t size = 3;
+    auto array_ptr = ros_message->velocity;
+    cdr.deserializeArray(array_ptr, size);
   }
 
-  // Field name: vy
+  // Field name: angular_velocity
   {
-    cdr >> ros_message->vy;
+    size_t size = 3;
+    auto array_ptr = ros_message->angular_velocity;
+    cdr.deserializeArray(array_ptr, size);
   }
 
-  // Field name: vz
+  // Field name: position_variance
   {
-    cdr >> ros_message->vz;
+    size_t size = 3;
+    auto array_ptr = ros_message->position_variance;
+    cdr.deserializeArray(array_ptr, size);
   }
 
-  // Field name: rollspeed
+  // Field name: orientation_variance
   {
-    cdr >> ros_message->rollspeed;
+    size_t size = 3;
+    auto array_ptr = ros_message->orientation_variance;
+    cdr.deserializeArray(array_ptr, size);
   }
 
-  // Field name: pitchspeed
+  // Field name: velocity_variance
   {
-    cdr >> ros_message->pitchspeed;
-  }
-
-  // Field name: yawspeed
-  {
-    cdr >> ros_message->yawspeed;
-  }
-
-  // Field name: velocity_covariance
-  {
-    size_t size = 21;
-    auto array_ptr = ros_message->velocity_covariance;
+    size_t size = 3;
+    auto array_ptr = ros_message->velocity_variance;
     cdr.deserializeArray(array_ptr, size);
   }
 
   // Field name: reset_counter
   {
     cdr >> ros_message->reset_counter;
+  }
+
+  // Field name: quality
+  {
+    cdr >> ros_message->quality;
   }
 
   return true;
@@ -286,28 +248,19 @@ size_t get_serialized_size_px4_msgs__msg__VehicleOdometry(
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // field.name local_frame
+  // field.name pose_frame
   {
-    size_t item_size = sizeof(ros_message->local_frame);
+    size_t item_size = sizeof(ros_message->pose_frame);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // field.name x
+  // field.name position
   {
-    size_t item_size = sizeof(ros_message->x);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // field.name y
-  {
-    size_t item_size = sizeof(ros_message->y);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // field.name z
-  {
-    size_t item_size = sizeof(ros_message->z);
-    current_alignment += item_size +
+    size_t array_size = 3;
+    auto array_ptr = ros_message->position;
+    (void)array_ptr;
+    size_t item_size = sizeof(array_ptr[0]);
+    current_alignment += array_size * item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
   // field.name q
@@ -319,70 +272,52 @@ size_t get_serialized_size_px4_msgs__msg__VehicleOdometry(
     current_alignment += array_size * item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // field.name q_offset
-  {
-    size_t array_size = 4;
-    auto array_ptr = ros_message->q_offset;
-    (void)array_ptr;
-    size_t item_size = sizeof(array_ptr[0]);
-    current_alignment += array_size * item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // field.name pose_covariance
-  {
-    size_t array_size = 21;
-    auto array_ptr = ros_message->pose_covariance;
-    (void)array_ptr;
-    size_t item_size = sizeof(array_ptr[0]);
-    current_alignment += array_size * item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
   // field.name velocity_frame
   {
     size_t item_size = sizeof(ros_message->velocity_frame);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // field.name vx
+  // field.name velocity
   {
-    size_t item_size = sizeof(ros_message->vx);
-    current_alignment += item_size +
+    size_t array_size = 3;
+    auto array_ptr = ros_message->velocity;
+    (void)array_ptr;
+    size_t item_size = sizeof(array_ptr[0]);
+    current_alignment += array_size * item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // field.name vy
+  // field.name angular_velocity
   {
-    size_t item_size = sizeof(ros_message->vy);
-    current_alignment += item_size +
+    size_t array_size = 3;
+    auto array_ptr = ros_message->angular_velocity;
+    (void)array_ptr;
+    size_t item_size = sizeof(array_ptr[0]);
+    current_alignment += array_size * item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // field.name vz
+  // field.name position_variance
   {
-    size_t item_size = sizeof(ros_message->vz);
-    current_alignment += item_size +
+    size_t array_size = 3;
+    auto array_ptr = ros_message->position_variance;
+    (void)array_ptr;
+    size_t item_size = sizeof(array_ptr[0]);
+    current_alignment += array_size * item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // field.name rollspeed
+  // field.name orientation_variance
   {
-    size_t item_size = sizeof(ros_message->rollspeed);
-    current_alignment += item_size +
+    size_t array_size = 3;
+    auto array_ptr = ros_message->orientation_variance;
+    (void)array_ptr;
+    size_t item_size = sizeof(array_ptr[0]);
+    current_alignment += array_size * item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // field.name pitchspeed
+  // field.name velocity_variance
   {
-    size_t item_size = sizeof(ros_message->pitchspeed);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // field.name yawspeed
-  {
-    size_t item_size = sizeof(ros_message->yawspeed);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // field.name velocity_covariance
-  {
-    size_t array_size = 21;
-    auto array_ptr = ros_message->velocity_covariance;
+    size_t array_size = 3;
+    auto array_ptr = ros_message->velocity_variance;
     (void)array_ptr;
     size_t item_size = sizeof(array_ptr[0]);
     current_alignment += array_size * item_size +
@@ -391,6 +326,12 @@ size_t get_serialized_size_px4_msgs__msg__VehicleOdometry(
   // field.name reset_counter
   {
     size_t item_size = sizeof(ros_message->reset_counter);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // field.name quality
+  {
+    size_t item_size = sizeof(ros_message->quality);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -432,29 +373,15 @@ size_t max_serialized_size_px4_msgs__msg__VehicleOdometry(
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
-  // member: local_frame
+  // member: pose_frame
   {
     size_t array_size = 1;
 
     current_alignment += array_size * sizeof(uint8_t);
   }
-  // member: x
+  // member: position
   {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint32_t) +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
-  }
-  // member: y
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint32_t) +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
-  }
-  // member: z
-  {
-    size_t array_size = 1;
+    size_t array_size = 3;
 
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
@@ -466,76 +393,54 @@ size_t max_serialized_size_px4_msgs__msg__VehicleOdometry(
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
-  // member: q_offset
-  {
-    size_t array_size = 4;
-
-    current_alignment += array_size * sizeof(uint32_t) +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
-  }
-  // member: pose_covariance
-  {
-    size_t array_size = 21;
-
-    current_alignment += array_size * sizeof(uint32_t) +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
-  }
   // member: velocity_frame
   {
     size_t array_size = 1;
 
     current_alignment += array_size * sizeof(uint8_t);
   }
-  // member: vx
+  // member: velocity
   {
-    size_t array_size = 1;
+    size_t array_size = 3;
 
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
-  // member: vy
+  // member: angular_velocity
   {
-    size_t array_size = 1;
+    size_t array_size = 3;
 
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
-  // member: vz
+  // member: position_variance
   {
-    size_t array_size = 1;
+    size_t array_size = 3;
 
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
-  // member: rollspeed
+  // member: orientation_variance
   {
-    size_t array_size = 1;
+    size_t array_size = 3;
 
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
-  // member: pitchspeed
+  // member: velocity_variance
   {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint32_t) +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
-  }
-  // member: yawspeed
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint32_t) +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
-  }
-  // member: velocity_covariance
-  {
-    size_t array_size = 21;
+    size_t array_size = 3;
 
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
   // member: reset_counter
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
+  }
+  // member: quality
   {
     size_t array_size = 1;
 

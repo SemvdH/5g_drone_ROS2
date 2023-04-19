@@ -120,10 +120,12 @@ struct TimesyncStatus_
   }
 
   // constant declarations
-  static constexpr uint8_t SOURCE_PROTOCOL_MAVLINK =
+  static constexpr uint8_t SOURCE_PROTOCOL_UNKNOWN =
     0u;
-  static constexpr uint8_t SOURCE_PROTOCOL_RTPS =
+  static constexpr uint8_t SOURCE_PROTOCOL_MAVLINK =
     1u;
+  static constexpr uint8_t SOURCE_PROTOCOL_DDS =
+    2u;
 
   // pointer types
   using RawPtr =
@@ -197,9 +199,11 @@ using TimesyncStatus =
 
 // constant definitions
 template<typename ContainerAllocator>
+constexpr uint8_t TimesyncStatus_<ContainerAllocator>::SOURCE_PROTOCOL_UNKNOWN;
+template<typename ContainerAllocator>
 constexpr uint8_t TimesyncStatus_<ContainerAllocator>::SOURCE_PROTOCOL_MAVLINK;
 template<typename ContainerAllocator>
-constexpr uint8_t TimesyncStatus_<ContainerAllocator>::SOURCE_PROTOCOL_RTPS;
+constexpr uint8_t TimesyncStatus_<ContainerAllocator>::SOURCE_PROTOCOL_DDS;
 
 }  // namespace msg
 

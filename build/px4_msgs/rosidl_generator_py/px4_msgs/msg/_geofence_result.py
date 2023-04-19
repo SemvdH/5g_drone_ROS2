@@ -106,20 +106,23 @@ class GeofenceResult(metaclass=Metaclass_GeofenceResult):
 
     __slots__ = [
         '_timestamp',
-        '_geofence_violated',
-        '_geofence_action',
+        '_geofence_violation_reason',
+        '_primary_geofence_breached',
+        '_primary_geofence_action',
         '_home_required',
     ]
 
     _fields_and_field_types = {
         'timestamp': 'uint64',
-        'geofence_violated': 'boolean',
-        'geofence_action': 'uint8',
+        'geofence_violation_reason': 'uint8',
+        'primary_geofence_breached': 'boolean',
+        'primary_geofence_action': 'uint8',
         'home_required': 'boolean',
     }
 
     SLOT_TYPES = (
         rosidl_parser.definition.BasicType('uint64'),  # noqa: E501
+        rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
         rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
         rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
         rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
@@ -130,8 +133,9 @@ class GeofenceResult(metaclass=Metaclass_GeofenceResult):
             'Invalid arguments passed to constructor: %s' % \
             ', '.join(sorted(k for k in kwargs.keys() if '_' + k not in self.__slots__))
         self.timestamp = kwargs.get('timestamp', int())
-        self.geofence_violated = kwargs.get('geofence_violated', bool())
-        self.geofence_action = kwargs.get('geofence_action', int())
+        self.geofence_violation_reason = kwargs.get('geofence_violation_reason', int())
+        self.primary_geofence_breached = kwargs.get('primary_geofence_breached', bool())
+        self.primary_geofence_action = kwargs.get('primary_geofence_action', int())
         self.home_required = kwargs.get('home_required', bool())
 
     def __repr__(self):
@@ -165,9 +169,11 @@ class GeofenceResult(metaclass=Metaclass_GeofenceResult):
             return False
         if self.timestamp != other.timestamp:
             return False
-        if self.geofence_violated != other.geofence_violated:
+        if self.geofence_violation_reason != other.geofence_violation_reason:
             return False
-        if self.geofence_action != other.geofence_action:
+        if self.primary_geofence_breached != other.primary_geofence_breached:
+            return False
+        if self.primary_geofence_action != other.primary_geofence_action:
             return False
         if self.home_required != other.home_required:
             return False
@@ -194,32 +200,47 @@ class GeofenceResult(metaclass=Metaclass_GeofenceResult):
         self._timestamp = value
 
     @property
-    def geofence_violated(self):
-        """Message field 'geofence_violated'."""
-        return self._geofence_violated
+    def geofence_violation_reason(self):
+        """Message field 'geofence_violation_reason'."""
+        return self._geofence_violation_reason
 
-    @geofence_violated.setter
-    def geofence_violated(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, bool), \
-                "The 'geofence_violated' field must be of type 'bool'"
-        self._geofence_violated = value
-
-    @property
-    def geofence_action(self):
-        """Message field 'geofence_action'."""
-        return self._geofence_action
-
-    @geofence_action.setter
-    def geofence_action(self, value):
+    @geofence_violation_reason.setter
+    def geofence_violation_reason(self, value):
         if __debug__:
             assert \
                 isinstance(value, int), \
-                "The 'geofence_action' field must be of type 'int'"
+                "The 'geofence_violation_reason' field must be of type 'int'"
             assert value >= 0 and value < 256, \
-                "The 'geofence_action' field must be an unsigned integer in [0, 255]"
-        self._geofence_action = value
+                "The 'geofence_violation_reason' field must be an unsigned integer in [0, 255]"
+        self._geofence_violation_reason = value
+
+    @property
+    def primary_geofence_breached(self):
+        """Message field 'primary_geofence_breached'."""
+        return self._primary_geofence_breached
+
+    @primary_geofence_breached.setter
+    def primary_geofence_breached(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, bool), \
+                "The 'primary_geofence_breached' field must be of type 'bool'"
+        self._primary_geofence_breached = value
+
+    @property
+    def primary_geofence_action(self):
+        """Message field 'primary_geofence_action'."""
+        return self._primary_geofence_action
+
+    @primary_geofence_action.setter
+    def primary_geofence_action(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, int), \
+                "The 'primary_geofence_action' field must be of type 'int'"
+            assert value >= 0 and value < 256, \
+                "The 'primary_geofence_action' field must be an unsigned integer in [0, 255]"
+        self._primary_geofence_action = value
 
     @property
     def home_required(self):

@@ -61,17 +61,21 @@ module px4_msgs {
 
       @verbatim (language="comment", text=
         " Auxiliary velocity" "\n"
-        " horizontal auxiliar velocity innovation from landing target measurement (m/sec) and innovation variance ((m/sec)**2)")
+        " horizontal auxiliary velocity innovation from landing target measurement (m/sec) and innovation variance ((m/sec)**2)")
       float__2 aux_hvel;
 
       @verbatim (language="comment", text=
-        " vertical auxiliar velocity innovation from landing target measurement (m/sec) and innovation variance ((m/sec)**2)")
+        " vertical auxiliary velocity innovation from landing target measurement (m/sec) and innovation variance ((m/sec)**2)")
       float aux_vvel;
 
       @verbatim (language="comment", text=
         " Optical flow" "\n"
         " flow innvoation (rad/sec) and innovation variance ((rad/sec)**2)")
       float__2 flow;
+
+      @verbatim (language="comment", text=
+        " flow innvoation (rad/sec) and innovation variance computed by the terrain estimator ((rad/sec)**2)")
+      float__2 terr_flow;
 
       @verbatim (language="comment", text=
         " Various" "\n"
@@ -81,6 +85,10 @@ module px4_msgs {
       @verbatim (language="comment", text=
         " earth magnetic field innovation (Gauss) and innovation variance (Gauss**2)")
       float__3 mag_field;
+
+      @verbatim (language="comment", text=
+        " gravity innovation from accelerometerr vector (m/s**2)")
+      float__3 gravity;
 
       @verbatim (language="comment", text=
         " drag specific force innovation (m/sec**2) and innovation variance ((m/sec)**2)")

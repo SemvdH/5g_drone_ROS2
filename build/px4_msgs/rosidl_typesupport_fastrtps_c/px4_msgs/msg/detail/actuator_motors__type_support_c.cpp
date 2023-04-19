@@ -66,7 +66,7 @@ static bool _ActuatorMotors__cdr_serialize(
 
   // Field name: control
   {
-    size_t size = 8;
+    size_t size = 12;
     auto array_ptr = ros_message->control;
     cdr.serializeArray(array_ptr, size);
   }
@@ -100,7 +100,7 @@ static bool _ActuatorMotors__cdr_deserialize(
 
   // Field name: control
   {
-    size_t size = 8;
+    size_t size = 12;
     auto array_ptr = ros_message->control;
     cdr.deserializeArray(array_ptr, size);
   }
@@ -142,7 +142,7 @@ size_t get_serialized_size_px4_msgs__msg__ActuatorMotors(
   }
   // field.name control
   {
-    size_t array_size = 8;
+    size_t array_size = 12;
     auto array_ptr = ros_message->control;
     (void)array_ptr;
     size_t item_size = sizeof(array_ptr[0]);
@@ -196,7 +196,7 @@ size_t max_serialized_size_px4_msgs__msg__ActuatorMotors(
   }
   // member: control
   {
-    size_t array_size = 8;
+    size_t array_size = 12;
 
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));

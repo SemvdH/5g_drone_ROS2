@@ -78,6 +78,7 @@ struct VehicleLocalPosition_
       this->epv = 0.0f;
       this->evh = 0.0f;
       this->evv = 0.0f;
+      this->dead_reckoning = false;
       this->vxy_max = 0.0f;
       this->vz_max = 0.0f;
       this->hagl_min = 0.0f;
@@ -133,6 +134,7 @@ struct VehicleLocalPosition_
       this->epv = 0.0f;
       this->evh = 0.0f;
       this->evv = 0.0f;
+      this->dead_reckoning = false;
       this->vxy_max = 0.0f;
       this->vz_max = 0.0f;
       this->hagl_min = 0.0f;
@@ -264,6 +266,9 @@ struct VehicleLocalPosition_
   using _evv_type =
     float;
   _evv_type evv;
+  using _dead_reckoning_type =
+    bool;
+  _dead_reckoning_type dead_reckoning;
   using _vxy_max_type =
     float;
   _vxy_max_type vxy_max;
@@ -524,6 +529,12 @@ struct VehicleLocalPosition_
     this->evv = _arg;
     return *this;
   }
+  Type & set__dead_reckoning(
+    const bool & _arg)
+  {
+    this->dead_reckoning = _arg;
+    return *this;
+  }
   Type & set__vxy_max(
     const float & _arg)
   {
@@ -718,6 +729,9 @@ struct VehicleLocalPosition_
       return false;
     }
     if (this->evv != other.evv) {
+      return false;
+    }
+    if (this->dead_reckoning != other.dead_reckoning) {
       return false;
     }
     if (this->vxy_max != other.vxy_max) {

@@ -20,22 +20,12 @@ module px4_msgs {
       uint64 timestamp;
 
       @verbatim (language="comment", text=
-        " true: vtol vehicle is in rotating wing mode")
-      boolean vtol_in_rw_mode;
-
-      boolean vtol_in_trans_mode;
+        " current state of the vtol, see VEHICLE_VTOL_STATE")
+      uint8 vehicle_vtol_state;
 
       @verbatim (language="comment", text=
-        " True if VTOL is doing a transition from MC to FW")
-      boolean in_transition_to_fw;
-
-      @verbatim (language="comment", text=
-        " vtol in transition failsafe mode")
-      boolean vtol_transition_failsafe;
-
-      @verbatim (language="comment", text=
-        " In fw mode stabilize attitude even if in manual mode")
-      boolean fw_permanent_stab;
+        " vehicle in fixed-wing system failure failsafe mode (after quad-chute)")
+      boolean fixed_wing_system_failure;
     };
   };
 };

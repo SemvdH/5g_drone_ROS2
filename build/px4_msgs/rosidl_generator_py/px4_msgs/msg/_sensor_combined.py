@@ -100,6 +100,7 @@ class SensorCombined(metaclass=Metaclass_SensorCombined):
         '_accelerometer_m_s2',
         '_accelerometer_integral_dt',
         '_accelerometer_clipping',
+        '_gyro_clipping',
         '_accel_calibration_count',
         '_gyro_calibration_count',
     ]
@@ -112,6 +113,7 @@ class SensorCombined(metaclass=Metaclass_SensorCombined):
         'accelerometer_m_s2': 'float[3]',
         'accelerometer_integral_dt': 'uint32',
         'accelerometer_clipping': 'uint8',
+        'gyro_clipping': 'uint8',
         'accel_calibration_count': 'uint8',
         'gyro_calibration_count': 'uint8',
     }
@@ -123,6 +125,7 @@ class SensorCombined(metaclass=Metaclass_SensorCombined):
         rosidl_parser.definition.BasicType('int32'),  # noqa: E501
         rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 3),  # noqa: E501
         rosidl_parser.definition.BasicType('uint32'),  # noqa: E501
+        rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
         rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
         rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
         rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
@@ -147,6 +150,7 @@ class SensorCombined(metaclass=Metaclass_SensorCombined):
             assert self.accelerometer_m_s2.shape == (3, )
         self.accelerometer_integral_dt = kwargs.get('accelerometer_integral_dt', int())
         self.accelerometer_clipping = kwargs.get('accelerometer_clipping', int())
+        self.gyro_clipping = kwargs.get('gyro_clipping', int())
         self.accel_calibration_count = kwargs.get('accel_calibration_count', int())
         self.gyro_calibration_count = kwargs.get('gyro_calibration_count', int())
 
@@ -192,6 +196,8 @@ class SensorCombined(metaclass=Metaclass_SensorCombined):
         if self.accelerometer_integral_dt != other.accelerometer_integral_dt:
             return False
         if self.accelerometer_clipping != other.accelerometer_clipping:
+            return False
+        if self.gyro_clipping != other.gyro_clipping:
             return False
         if self.accel_calibration_count != other.accel_calibration_count:
             return False
@@ -340,6 +346,21 @@ class SensorCombined(metaclass=Metaclass_SensorCombined):
             assert value >= 0 and value < 256, \
                 "The 'accelerometer_clipping' field must be an unsigned integer in [0, 255]"
         self._accelerometer_clipping = value
+
+    @property
+    def gyro_clipping(self):
+        """Message field 'gyro_clipping'."""
+        return self._gyro_clipping
+
+    @gyro_clipping.setter
+    def gyro_clipping(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, int), \
+                "The 'gyro_clipping' field must be of type 'int'"
+            assert value >= 0 and value < 256, \
+                "The 'gyro_clipping' field must be an unsigned integer in [0, 255]"
+        self._gyro_clipping = value
 
     @property
     def accel_calibration_count(self):

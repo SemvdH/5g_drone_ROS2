@@ -36,16 +36,32 @@ private:
   ::px4_msgs::msg::TelemetryStatus msg_;
 };
 
+class Init_TelemetryStatus_open_drone_id_system_healthy
+{
+public:
+  explicit Init_TelemetryStatus_open_drone_id_system_healthy(::px4_msgs::msg::TelemetryStatus & msg)
+  : msg_(msg)
+  {}
+  Init_TelemetryStatus_parachute_system_healthy open_drone_id_system_healthy(::px4_msgs::msg::TelemetryStatus::_open_drone_id_system_healthy_type arg)
+  {
+    msg_.open_drone_id_system_healthy = std::move(arg);
+    return Init_TelemetryStatus_parachute_system_healthy(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::TelemetryStatus msg_;
+};
+
 class Init_TelemetryStatus_avoidance_system_healthy
 {
 public:
   explicit Init_TelemetryStatus_avoidance_system_healthy(::px4_msgs::msg::TelemetryStatus & msg)
   : msg_(msg)
   {}
-  Init_TelemetryStatus_parachute_system_healthy avoidance_system_healthy(::px4_msgs::msg::TelemetryStatus::_avoidance_system_healthy_type arg)
+  Init_TelemetryStatus_open_drone_id_system_healthy avoidance_system_healthy(::px4_msgs::msg::TelemetryStatus::_avoidance_system_healthy_type arg)
   {
     msg_.avoidance_system_healthy = std::move(arg);
-    return Init_TelemetryStatus_parachute_system_healthy(msg_);
+    return Init_TelemetryStatus_open_drone_id_system_healthy(msg_);
   }
 
 private:
@@ -180,16 +196,32 @@ private:
   ::px4_msgs::msg::TelemetryStatus msg_;
 };
 
+class Init_TelemetryStatus_heartbeat_type_open_drone_id
+{
+public:
+  explicit Init_TelemetryStatus_heartbeat_type_open_drone_id(::px4_msgs::msg::TelemetryStatus & msg)
+  : msg_(msg)
+  {}
+  Init_TelemetryStatus_heartbeat_component_telemetry_radio heartbeat_type_open_drone_id(::px4_msgs::msg::TelemetryStatus::_heartbeat_type_open_drone_id_type arg)
+  {
+    msg_.heartbeat_type_open_drone_id = std::move(arg);
+    return Init_TelemetryStatus_heartbeat_component_telemetry_radio(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::TelemetryStatus msg_;
+};
+
 class Init_TelemetryStatus_heartbeat_type_parachute
 {
 public:
   explicit Init_TelemetryStatus_heartbeat_type_parachute(::px4_msgs::msg::TelemetryStatus & msg)
   : msg_(msg)
   {}
-  Init_TelemetryStatus_heartbeat_component_telemetry_radio heartbeat_type_parachute(::px4_msgs::msg::TelemetryStatus::_heartbeat_type_parachute_type arg)
+  Init_TelemetryStatus_heartbeat_type_open_drone_id heartbeat_type_parachute(::px4_msgs::msg::TelemetryStatus::_heartbeat_type_parachute_type arg)
   {
     msg_.heartbeat_type_parachute = std::move(arg);
-    return Init_TelemetryStatus_heartbeat_component_telemetry_radio(msg_);
+    return Init_TelemetryStatus_heartbeat_type_open_drone_id(msg_);
   }
 
 private:

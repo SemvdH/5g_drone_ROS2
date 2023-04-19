@@ -18,6 +18,10 @@ module px4_msgs {
       @verbatim (language="comment", text=
         " Bias corrected angular velocity about the FRD body frame XYZ-axis in rad/s")
       float__3 xyz;
+
+      @verbatim (language="comment", text=
+        " angular acceleration about the FRD body frame XYZ-axis in rad/s^2")
+      float__3 xyz_derivative;
     };
   };
 };

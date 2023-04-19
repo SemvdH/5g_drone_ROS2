@@ -52,11 +52,11 @@ module px4_msgs {
       boolean rc_lost;
 
       @verbatim (language="comment", text=
-        " Number of lost RC frames. Note: intended purpose: observe the radio link quality if RSSI is not available. This value must not be used to trigger any failsafe-alike funtionality.")
+        " Number of lost RC frames. Note: intended purpose: observe the radio link quality if RSSI is not available. This value must not be used to trigger any failsafe-alike functionality.")
       uint16 rc_lost_frame_count;
 
       @verbatim (language="comment", text=
-        " Number of total RC frames. Note: intended purpose: observe the radio link quality if RSSI is not available. This value must not be used to trigger any failsafe-alike funtionality.")
+        " Number of total RC frames. Note: intended purpose: observe the radio link quality if RSSI is not available. This value must not be used to trigger any failsafe-alike functionality.")
       uint16 rc_total_frame_count;
 
       @verbatim (language="comment", text=
@@ -70,6 +70,14 @@ module px4_msgs {
       @verbatim (language="comment", text=
         " measured pulse widths for each of the supported channels")
       uint16__18 values;
+
+      @verbatim (language="comment", text=
+        " link quality. Percentage 0-100%. -1 = invalid")
+      int8 link_quality;
+
+      @verbatim (language="comment", text=
+        " Actual rssi in units of dBm. NaN = invalid")
+      float rssi_dbm;
     };
   };
 };

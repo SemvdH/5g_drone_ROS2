@@ -39,52 +39,45 @@ struct VehicleOdometry_
     {
       this->timestamp = 0ull;
       this->timestamp_sample = 0ull;
-      this->local_frame = 0;
-      this->x = 0.0f;
-      this->y = 0.0f;
-      this->z = 0.0f;
+      this->pose_frame = 0;
+      std::fill<typename std::array<float, 3>::iterator, float>(this->position.begin(), this->position.end(), 0.0f);
       std::fill<typename std::array<float, 4>::iterator, float>(this->q.begin(), this->q.end(), 0.0f);
-      std::fill<typename std::array<float, 4>::iterator, float>(this->q_offset.begin(), this->q_offset.end(), 0.0f);
-      std::fill<typename std::array<float, 21>::iterator, float>(this->pose_covariance.begin(), this->pose_covariance.end(), 0.0f);
       this->velocity_frame = 0;
-      this->vx = 0.0f;
-      this->vy = 0.0f;
-      this->vz = 0.0f;
-      this->rollspeed = 0.0f;
-      this->pitchspeed = 0.0f;
-      this->yawspeed = 0.0f;
-      std::fill<typename std::array<float, 21>::iterator, float>(this->velocity_covariance.begin(), this->velocity_covariance.end(), 0.0f);
+      std::fill<typename std::array<float, 3>::iterator, float>(this->velocity.begin(), this->velocity.end(), 0.0f);
+      std::fill<typename std::array<float, 3>::iterator, float>(this->angular_velocity.begin(), this->angular_velocity.end(), 0.0f);
+      std::fill<typename std::array<float, 3>::iterator, float>(this->position_variance.begin(), this->position_variance.end(), 0.0f);
+      std::fill<typename std::array<float, 3>::iterator, float>(this->orientation_variance.begin(), this->orientation_variance.end(), 0.0f);
+      std::fill<typename std::array<float, 3>::iterator, float>(this->velocity_variance.begin(), this->velocity_variance.end(), 0.0f);
       this->reset_counter = 0;
+      this->quality = 0;
     }
   }
 
   explicit VehicleOdometry_(const ContainerAllocator & _alloc, rosidl_runtime_cpp::MessageInitialization _init = rosidl_runtime_cpp::MessageInitialization::ALL)
-  : q(_alloc),
-    q_offset(_alloc),
-    pose_covariance(_alloc),
-    velocity_covariance(_alloc)
+  : position(_alloc),
+    q(_alloc),
+    velocity(_alloc),
+    angular_velocity(_alloc),
+    position_variance(_alloc),
+    orientation_variance(_alloc),
+    velocity_variance(_alloc)
   {
     if (rosidl_runtime_cpp::MessageInitialization::ALL == _init ||
       rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
     {
       this->timestamp = 0ull;
       this->timestamp_sample = 0ull;
-      this->local_frame = 0;
-      this->x = 0.0f;
-      this->y = 0.0f;
-      this->z = 0.0f;
+      this->pose_frame = 0;
+      std::fill<typename std::array<float, 3>::iterator, float>(this->position.begin(), this->position.end(), 0.0f);
       std::fill<typename std::array<float, 4>::iterator, float>(this->q.begin(), this->q.end(), 0.0f);
-      std::fill<typename std::array<float, 4>::iterator, float>(this->q_offset.begin(), this->q_offset.end(), 0.0f);
-      std::fill<typename std::array<float, 21>::iterator, float>(this->pose_covariance.begin(), this->pose_covariance.end(), 0.0f);
       this->velocity_frame = 0;
-      this->vx = 0.0f;
-      this->vy = 0.0f;
-      this->vz = 0.0f;
-      this->rollspeed = 0.0f;
-      this->pitchspeed = 0.0f;
-      this->yawspeed = 0.0f;
-      std::fill<typename std::array<float, 21>::iterator, float>(this->velocity_covariance.begin(), this->velocity_covariance.end(), 0.0f);
+      std::fill<typename std::array<float, 3>::iterator, float>(this->velocity.begin(), this->velocity.end(), 0.0f);
+      std::fill<typename std::array<float, 3>::iterator, float>(this->angular_velocity.begin(), this->angular_velocity.end(), 0.0f);
+      std::fill<typename std::array<float, 3>::iterator, float>(this->position_variance.begin(), this->position_variance.end(), 0.0f);
+      std::fill<typename std::array<float, 3>::iterator, float>(this->orientation_variance.begin(), this->orientation_variance.end(), 0.0f);
+      std::fill<typename std::array<float, 3>::iterator, float>(this->velocity_variance.begin(), this->velocity_variance.end(), 0.0f);
       this->reset_counter = 0;
+      this->quality = 0;
     }
   }
 
@@ -95,54 +88,39 @@ struct VehicleOdometry_
   using _timestamp_sample_type =
     uint64_t;
   _timestamp_sample_type timestamp_sample;
-  using _local_frame_type =
+  using _pose_frame_type =
     uint8_t;
-  _local_frame_type local_frame;
-  using _x_type =
-    float;
-  _x_type x;
-  using _y_type =
-    float;
-  _y_type y;
-  using _z_type =
-    float;
-  _z_type z;
+  _pose_frame_type pose_frame;
+  using _position_type =
+    std::array<float, 3>;
+  _position_type position;
   using _q_type =
     std::array<float, 4>;
   _q_type q;
-  using _q_offset_type =
-    std::array<float, 4>;
-  _q_offset_type q_offset;
-  using _pose_covariance_type =
-    std::array<float, 21>;
-  _pose_covariance_type pose_covariance;
   using _velocity_frame_type =
     uint8_t;
   _velocity_frame_type velocity_frame;
-  using _vx_type =
-    float;
-  _vx_type vx;
-  using _vy_type =
-    float;
-  _vy_type vy;
-  using _vz_type =
-    float;
-  _vz_type vz;
-  using _rollspeed_type =
-    float;
-  _rollspeed_type rollspeed;
-  using _pitchspeed_type =
-    float;
-  _pitchspeed_type pitchspeed;
-  using _yawspeed_type =
-    float;
-  _yawspeed_type yawspeed;
-  using _velocity_covariance_type =
-    std::array<float, 21>;
-  _velocity_covariance_type velocity_covariance;
+  using _velocity_type =
+    std::array<float, 3>;
+  _velocity_type velocity;
+  using _angular_velocity_type =
+    std::array<float, 3>;
+  _angular_velocity_type angular_velocity;
+  using _position_variance_type =
+    std::array<float, 3>;
+  _position_variance_type position_variance;
+  using _orientation_variance_type =
+    std::array<float, 3>;
+  _orientation_variance_type orientation_variance;
+  using _velocity_variance_type =
+    std::array<float, 3>;
+  _velocity_variance_type velocity_variance;
   using _reset_counter_type =
     uint8_t;
   _reset_counter_type reset_counter;
+  using _quality_type =
+    int8_t;
+  _quality_type quality;
 
   // setters for named parameter idiom
   Type & set__timestamp(
@@ -157,28 +135,16 @@ struct VehicleOdometry_
     this->timestamp_sample = _arg;
     return *this;
   }
-  Type & set__local_frame(
+  Type & set__pose_frame(
     const uint8_t & _arg)
   {
-    this->local_frame = _arg;
+    this->pose_frame = _arg;
     return *this;
   }
-  Type & set__x(
-    const float & _arg)
+  Type & set__position(
+    const std::array<float, 3> & _arg)
   {
-    this->x = _arg;
-    return *this;
-  }
-  Type & set__y(
-    const float & _arg)
-  {
-    this->y = _arg;
-    return *this;
-  }
-  Type & set__z(
-    const float & _arg)
-  {
-    this->z = _arg;
+    this->position = _arg;
     return *this;
   }
   Type & set__q(
@@ -187,64 +153,40 @@ struct VehicleOdometry_
     this->q = _arg;
     return *this;
   }
-  Type & set__q_offset(
-    const std::array<float, 4> & _arg)
-  {
-    this->q_offset = _arg;
-    return *this;
-  }
-  Type & set__pose_covariance(
-    const std::array<float, 21> & _arg)
-  {
-    this->pose_covariance = _arg;
-    return *this;
-  }
   Type & set__velocity_frame(
     const uint8_t & _arg)
   {
     this->velocity_frame = _arg;
     return *this;
   }
-  Type & set__vx(
-    const float & _arg)
+  Type & set__velocity(
+    const std::array<float, 3> & _arg)
   {
-    this->vx = _arg;
+    this->velocity = _arg;
     return *this;
   }
-  Type & set__vy(
-    const float & _arg)
+  Type & set__angular_velocity(
+    const std::array<float, 3> & _arg)
   {
-    this->vy = _arg;
+    this->angular_velocity = _arg;
     return *this;
   }
-  Type & set__vz(
-    const float & _arg)
+  Type & set__position_variance(
+    const std::array<float, 3> & _arg)
   {
-    this->vz = _arg;
+    this->position_variance = _arg;
     return *this;
   }
-  Type & set__rollspeed(
-    const float & _arg)
+  Type & set__orientation_variance(
+    const std::array<float, 3> & _arg)
   {
-    this->rollspeed = _arg;
+    this->orientation_variance = _arg;
     return *this;
   }
-  Type & set__pitchspeed(
-    const float & _arg)
+  Type & set__velocity_variance(
+    const std::array<float, 3> & _arg)
   {
-    this->pitchspeed = _arg;
-    return *this;
-  }
-  Type & set__yawspeed(
-    const float & _arg)
-  {
-    this->yawspeed = _arg;
-    return *this;
-  }
-  Type & set__velocity_covariance(
-    const std::array<float, 21> & _arg)
-  {
-    this->velocity_covariance = _arg;
+    this->velocity_variance = _arg;
     return *this;
   }
   Type & set__reset_counter(
@@ -253,39 +195,27 @@ struct VehicleOdometry_
     this->reset_counter = _arg;
     return *this;
   }
+  Type & set__quality(
+    const int8_t & _arg)
+  {
+    this->quality = _arg;
+    return *this;
+  }
 
   // constant declarations
-  static constexpr uint8_t COVARIANCE_MATRIX_X_VARIANCE =
+  static constexpr uint8_t POSE_FRAME_UNKNOWN =
     0u;
-  static constexpr uint8_t COVARIANCE_MATRIX_Y_VARIANCE =
-    6u;
-  static constexpr uint8_t COVARIANCE_MATRIX_Z_VARIANCE =
-    11u;
-  static constexpr uint8_t COVARIANCE_MATRIX_ROLL_VARIANCE =
-    15u;
-  static constexpr uint8_t COVARIANCE_MATRIX_PITCH_VARIANCE =
-    18u;
-  static constexpr uint8_t COVARIANCE_MATRIX_YAW_VARIANCE =
-    20u;
-  static constexpr uint8_t COVARIANCE_MATRIX_VX_VARIANCE =
-    0u;
-  static constexpr uint8_t COVARIANCE_MATRIX_VY_VARIANCE =
-    6u;
-  static constexpr uint8_t COVARIANCE_MATRIX_VZ_VARIANCE =
-    11u;
-  static constexpr uint8_t COVARIANCE_MATRIX_ROLLRATE_VARIANCE =
-    15u;
-  static constexpr uint8_t COVARIANCE_MATRIX_PITCHRATE_VARIANCE =
-    18u;
-  static constexpr uint8_t COVARIANCE_MATRIX_YAWRATE_VARIANCE =
-    20u;
-  static constexpr uint8_t LOCAL_FRAME_NED =
-    0u;
-  static constexpr uint8_t LOCAL_FRAME_FRD =
+  static constexpr uint8_t POSE_FRAME_NED =
     1u;
-  static constexpr uint8_t LOCAL_FRAME_OTHER =
+  static constexpr uint8_t POSE_FRAME_FRD =
     2u;
-  static constexpr uint8_t BODY_FRAME_FRD =
+  static constexpr uint8_t VELOCITY_FRAME_UNKNOWN =
+    0u;
+  static constexpr uint8_t VELOCITY_FRAME_NED =
+    1u;
+  static constexpr uint8_t VELOCITY_FRAME_FRD =
+    2u;
+  static constexpr uint8_t VELOCITY_FRAME_BODY_FRD =
     3u;
 
   // pointer types
@@ -334,52 +264,37 @@ struct VehicleOdometry_
     if (this->timestamp_sample != other.timestamp_sample) {
       return false;
     }
-    if (this->local_frame != other.local_frame) {
+    if (this->pose_frame != other.pose_frame) {
       return false;
     }
-    if (this->x != other.x) {
-      return false;
-    }
-    if (this->y != other.y) {
-      return false;
-    }
-    if (this->z != other.z) {
+    if (this->position != other.position) {
       return false;
     }
     if (this->q != other.q) {
       return false;
     }
-    if (this->q_offset != other.q_offset) {
-      return false;
-    }
-    if (this->pose_covariance != other.pose_covariance) {
-      return false;
-    }
     if (this->velocity_frame != other.velocity_frame) {
       return false;
     }
-    if (this->vx != other.vx) {
+    if (this->velocity != other.velocity) {
       return false;
     }
-    if (this->vy != other.vy) {
+    if (this->angular_velocity != other.angular_velocity) {
       return false;
     }
-    if (this->vz != other.vz) {
+    if (this->position_variance != other.position_variance) {
       return false;
     }
-    if (this->rollspeed != other.rollspeed) {
+    if (this->orientation_variance != other.orientation_variance) {
       return false;
     }
-    if (this->pitchspeed != other.pitchspeed) {
-      return false;
-    }
-    if (this->yawspeed != other.yawspeed) {
-      return false;
-    }
-    if (this->velocity_covariance != other.velocity_covariance) {
+    if (this->velocity_variance != other.velocity_variance) {
       return false;
     }
     if (this->reset_counter != other.reset_counter) {
+      return false;
+    }
+    if (this->quality != other.quality) {
       return false;
     }
     return true;
@@ -396,37 +311,19 @@ using VehicleOdometry =
 
 // constant definitions
 template<typename ContainerAllocator>
-constexpr uint8_t VehicleOdometry_<ContainerAllocator>::COVARIANCE_MATRIX_X_VARIANCE;
+constexpr uint8_t VehicleOdometry_<ContainerAllocator>::POSE_FRAME_UNKNOWN;
 template<typename ContainerAllocator>
-constexpr uint8_t VehicleOdometry_<ContainerAllocator>::COVARIANCE_MATRIX_Y_VARIANCE;
+constexpr uint8_t VehicleOdometry_<ContainerAllocator>::POSE_FRAME_NED;
 template<typename ContainerAllocator>
-constexpr uint8_t VehicleOdometry_<ContainerAllocator>::COVARIANCE_MATRIX_Z_VARIANCE;
+constexpr uint8_t VehicleOdometry_<ContainerAllocator>::POSE_FRAME_FRD;
 template<typename ContainerAllocator>
-constexpr uint8_t VehicleOdometry_<ContainerAllocator>::COVARIANCE_MATRIX_ROLL_VARIANCE;
+constexpr uint8_t VehicleOdometry_<ContainerAllocator>::VELOCITY_FRAME_UNKNOWN;
 template<typename ContainerAllocator>
-constexpr uint8_t VehicleOdometry_<ContainerAllocator>::COVARIANCE_MATRIX_PITCH_VARIANCE;
+constexpr uint8_t VehicleOdometry_<ContainerAllocator>::VELOCITY_FRAME_NED;
 template<typename ContainerAllocator>
-constexpr uint8_t VehicleOdometry_<ContainerAllocator>::COVARIANCE_MATRIX_YAW_VARIANCE;
+constexpr uint8_t VehicleOdometry_<ContainerAllocator>::VELOCITY_FRAME_FRD;
 template<typename ContainerAllocator>
-constexpr uint8_t VehicleOdometry_<ContainerAllocator>::COVARIANCE_MATRIX_VX_VARIANCE;
-template<typename ContainerAllocator>
-constexpr uint8_t VehicleOdometry_<ContainerAllocator>::COVARIANCE_MATRIX_VY_VARIANCE;
-template<typename ContainerAllocator>
-constexpr uint8_t VehicleOdometry_<ContainerAllocator>::COVARIANCE_MATRIX_VZ_VARIANCE;
-template<typename ContainerAllocator>
-constexpr uint8_t VehicleOdometry_<ContainerAllocator>::COVARIANCE_MATRIX_ROLLRATE_VARIANCE;
-template<typename ContainerAllocator>
-constexpr uint8_t VehicleOdometry_<ContainerAllocator>::COVARIANCE_MATRIX_PITCHRATE_VARIANCE;
-template<typename ContainerAllocator>
-constexpr uint8_t VehicleOdometry_<ContainerAllocator>::COVARIANCE_MATRIX_YAWRATE_VARIANCE;
-template<typename ContainerAllocator>
-constexpr uint8_t VehicleOdometry_<ContainerAllocator>::LOCAL_FRAME_NED;
-template<typename ContainerAllocator>
-constexpr uint8_t VehicleOdometry_<ContainerAllocator>::LOCAL_FRAME_FRD;
-template<typename ContainerAllocator>
-constexpr uint8_t VehicleOdometry_<ContainerAllocator>::LOCAL_FRAME_OTHER;
-template<typename ContainerAllocator>
-constexpr uint8_t VehicleOdometry_<ContainerAllocator>::BODY_FRAME_FRD;
+constexpr uint8_t VehicleOdometry_<ContainerAllocator>::VELOCITY_FRAME_BODY_FRD;
 
 }  // namespace msg
 

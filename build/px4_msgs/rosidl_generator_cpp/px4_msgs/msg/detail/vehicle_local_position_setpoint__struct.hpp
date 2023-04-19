@@ -41,20 +41,18 @@ struct VehicleLocalPositionSetpoint_
       this->x = 0.0f;
       this->y = 0.0f;
       this->z = 0.0f;
-      this->yaw = 0.0f;
-      this->yawspeed = 0.0f;
       this->vx = 0.0f;
       this->vy = 0.0f;
       this->vz = 0.0f;
       std::fill<typename std::array<float, 3>::iterator, float>(this->acceleration.begin(), this->acceleration.end(), 0.0f);
-      std::fill<typename std::array<float, 3>::iterator, float>(this->jerk.begin(), this->jerk.end(), 0.0f);
       std::fill<typename std::array<float, 3>::iterator, float>(this->thrust.begin(), this->thrust.end(), 0.0f);
+      this->yaw = 0.0f;
+      this->yawspeed = 0.0f;
     }
   }
 
   explicit VehicleLocalPositionSetpoint_(const ContainerAllocator & _alloc, rosidl_runtime_cpp::MessageInitialization _init = rosidl_runtime_cpp::MessageInitialization::ALL)
   : acceleration(_alloc),
-    jerk(_alloc),
     thrust(_alloc)
   {
     if (rosidl_runtime_cpp::MessageInitialization::ALL == _init ||
@@ -64,14 +62,13 @@ struct VehicleLocalPositionSetpoint_
       this->x = 0.0f;
       this->y = 0.0f;
       this->z = 0.0f;
-      this->yaw = 0.0f;
-      this->yawspeed = 0.0f;
       this->vx = 0.0f;
       this->vy = 0.0f;
       this->vz = 0.0f;
       std::fill<typename std::array<float, 3>::iterator, float>(this->acceleration.begin(), this->acceleration.end(), 0.0f);
-      std::fill<typename std::array<float, 3>::iterator, float>(this->jerk.begin(), this->jerk.end(), 0.0f);
       std::fill<typename std::array<float, 3>::iterator, float>(this->thrust.begin(), this->thrust.end(), 0.0f);
+      this->yaw = 0.0f;
+      this->yawspeed = 0.0f;
     }
   }
 
@@ -88,12 +85,6 @@ struct VehicleLocalPositionSetpoint_
   using _z_type =
     float;
   _z_type z;
-  using _yaw_type =
-    float;
-  _yaw_type yaw;
-  using _yawspeed_type =
-    float;
-  _yawspeed_type yawspeed;
   using _vx_type =
     float;
   _vx_type vx;
@@ -106,12 +97,15 @@ struct VehicleLocalPositionSetpoint_
   using _acceleration_type =
     std::array<float, 3>;
   _acceleration_type acceleration;
-  using _jerk_type =
-    std::array<float, 3>;
-  _jerk_type jerk;
   using _thrust_type =
     std::array<float, 3>;
   _thrust_type thrust;
+  using _yaw_type =
+    float;
+  _yaw_type yaw;
+  using _yawspeed_type =
+    float;
+  _yawspeed_type yawspeed;
 
   // setters for named parameter idiom
   Type & set__timestamp(
@@ -138,18 +132,6 @@ struct VehicleLocalPositionSetpoint_
     this->z = _arg;
     return *this;
   }
-  Type & set__yaw(
-    const float & _arg)
-  {
-    this->yaw = _arg;
-    return *this;
-  }
-  Type & set__yawspeed(
-    const float & _arg)
-  {
-    this->yawspeed = _arg;
-    return *this;
-  }
   Type & set__vx(
     const float & _arg)
   {
@@ -174,16 +156,22 @@ struct VehicleLocalPositionSetpoint_
     this->acceleration = _arg;
     return *this;
   }
-  Type & set__jerk(
-    const std::array<float, 3> & _arg)
-  {
-    this->jerk = _arg;
-    return *this;
-  }
   Type & set__thrust(
     const std::array<float, 3> & _arg)
   {
     this->thrust = _arg;
+    return *this;
+  }
+  Type & set__yaw(
+    const float & _arg)
+  {
+    this->yaw = _arg;
+    return *this;
+  }
+  Type & set__yawspeed(
+    const float & _arg)
+  {
+    this->yawspeed = _arg;
     return *this;
   }
 
@@ -241,12 +229,6 @@ struct VehicleLocalPositionSetpoint_
     if (this->z != other.z) {
       return false;
     }
-    if (this->yaw != other.yaw) {
-      return false;
-    }
-    if (this->yawspeed != other.yawspeed) {
-      return false;
-    }
     if (this->vx != other.vx) {
       return false;
     }
@@ -259,10 +241,13 @@ struct VehicleLocalPositionSetpoint_
     if (this->acceleration != other.acceleration) {
       return false;
     }
-    if (this->jerk != other.jerk) {
+    if (this->thrust != other.thrust) {
       return false;
     }
-    if (this->thrust != other.thrust) {
+    if (this->yaw != other.yaw) {
+      return false;
+    }
+    if (this->yawspeed != other.yawspeed) {
       return false;
     }
     return true;

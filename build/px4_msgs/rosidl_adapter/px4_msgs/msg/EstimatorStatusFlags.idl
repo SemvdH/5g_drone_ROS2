@@ -40,7 +40,7 @@ module px4_msgs {
       boolean cs_mag_hdg;
 
       @verbatim (language="comment", text=
-        "  5 - true if 3-axis magnetometer measurement fusion is inteded")
+        "  5 - true if 3-axis magnetometer measurement fusion is intended")
       boolean cs_mag_3d;
 
       @verbatim (language="comment", text=
@@ -148,6 +148,18 @@ module px4_msgs {
       boolean cs_rng_kin_consistent;
 
       @verbatim (language="comment", text=
+        " 32 - true when fake position measurements are being fused")
+      boolean cs_fake_pos;
+
+      @verbatim (language="comment", text=
+        " 33 - true when fake height measurements are being fused")
+      boolean cs_fake_hgt;
+
+      @verbatim (language="comment", text=
+        " 34 - true when gravity vector measurements are being fused")
+      boolean cs_gravity_vector;
+
+      @verbatim (language="comment", text=
         " fault status" "\n"
         " number of filter fault status (fs) changes")
       uint32 fault_status_changes;
@@ -244,18 +256,6 @@ module px4_msgs {
       @verbatim (language="comment", text=
         "  3 - true if vertical position observations have been rejected")
       boolean reject_ver_pos;
-
-      @verbatim (language="comment", text=
-        "  4 - true if the X magnetometer observation has been rejected")
-      boolean reject_mag_x;
-
-      @verbatim (language="comment", text=
-        "  5 - true if the Y magnetometer observation has been rejected")
-      boolean reject_mag_y;
-
-      @verbatim (language="comment", text=
-        "  6 - true if the Z magnetometer observation has been rejected")
-      boolean reject_mag_z;
 
       @verbatim (language="comment", text=
         "  7 - true if the yaw observation has been rejected")

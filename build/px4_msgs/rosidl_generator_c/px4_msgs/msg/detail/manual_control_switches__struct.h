@@ -104,6 +104,7 @@ typedef struct px4_msgs__msg__ManualControlSwitches
   uint8_t transition_switch;
   uint8_t photo_switch;
   uint8_t video_switch;
+  uint8_t engage_main_motor_switch;
   uint32_t switch_changes;
 } px4_msgs__msg__ManualControlSwitches;
 

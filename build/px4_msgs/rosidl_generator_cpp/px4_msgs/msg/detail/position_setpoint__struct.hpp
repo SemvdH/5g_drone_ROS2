@@ -43,9 +43,6 @@ struct PositionSetpoint_
       this->vx = 0.0f;
       this->vy = 0.0f;
       this->vz = 0.0f;
-      this->velocity_valid = false;
-      this->velocity_frame = 0;
-      this->alt_valid = false;
       this->lat = 0.0;
       this->lon = 0.0;
       this->alt = 0.0f;
@@ -53,11 +50,11 @@ struct PositionSetpoint_
       this->yaw_valid = false;
       this->yawspeed = 0.0f;
       this->yawspeed_valid = false;
-      this->landing_gear = 0;
       this->loiter_radius = 0.0f;
-      this->loiter_direction = 0;
+      this->loiter_direction_counter_clockwise = false;
       this->acceptance_radius = 0.0f;
       this->cruising_speed = 0.0f;
+      this->gliding_enabled = false;
       this->cruising_throttle = 0.0f;
       this->disable_weather_vane = false;
     }
@@ -75,9 +72,6 @@ struct PositionSetpoint_
       this->vx = 0.0f;
       this->vy = 0.0f;
       this->vz = 0.0f;
-      this->velocity_valid = false;
-      this->velocity_frame = 0;
-      this->alt_valid = false;
       this->lat = 0.0;
       this->lon = 0.0;
       this->alt = 0.0f;
@@ -85,11 +79,11 @@ struct PositionSetpoint_
       this->yaw_valid = false;
       this->yawspeed = 0.0f;
       this->yawspeed_valid = false;
-      this->landing_gear = 0;
       this->loiter_radius = 0.0f;
-      this->loiter_direction = 0;
+      this->loiter_direction_counter_clockwise = false;
       this->acceptance_radius = 0.0f;
       this->cruising_speed = 0.0f;
+      this->gliding_enabled = false;
       this->cruising_throttle = 0.0f;
       this->disable_weather_vane = false;
     }
@@ -114,15 +108,6 @@ struct PositionSetpoint_
   using _vz_type =
     float;
   _vz_type vz;
-  using _velocity_valid_type =
-    bool;
-  _velocity_valid_type velocity_valid;
-  using _velocity_frame_type =
-    uint8_t;
-  _velocity_frame_type velocity_frame;
-  using _alt_valid_type =
-    bool;
-  _alt_valid_type alt_valid;
   using _lat_type =
     double;
   _lat_type lat;
@@ -144,21 +129,21 @@ struct PositionSetpoint_
   using _yawspeed_valid_type =
     bool;
   _yawspeed_valid_type yawspeed_valid;
-  using _landing_gear_type =
-    int8_t;
-  _landing_gear_type landing_gear;
   using _loiter_radius_type =
     float;
   _loiter_radius_type loiter_radius;
-  using _loiter_direction_type =
-    int8_t;
-  _loiter_direction_type loiter_direction;
+  using _loiter_direction_counter_clockwise_type =
+    bool;
+  _loiter_direction_counter_clockwise_type loiter_direction_counter_clockwise;
   using _acceptance_radius_type =
     float;
   _acceptance_radius_type acceptance_radius;
   using _cruising_speed_type =
     float;
   _cruising_speed_type cruising_speed;
+  using _gliding_enabled_type =
+    bool;
+  _gliding_enabled_type gliding_enabled;
   using _cruising_throttle_type =
     float;
   _cruising_throttle_type cruising_throttle;
@@ -203,24 +188,6 @@ struct PositionSetpoint_
     this->vz = _arg;
     return *this;
   }
-  Type & set__velocity_valid(
-    const bool & _arg)
-  {
-    this->velocity_valid = _arg;
-    return *this;
-  }
-  Type & set__velocity_frame(
-    const uint8_t & _arg)
-  {
-    this->velocity_frame = _arg;
-    return *this;
-  }
-  Type & set__alt_valid(
-    const bool & _arg)
-  {
-    this->alt_valid = _arg;
-    return *this;
-  }
   Type & set__lat(
     const double & _arg)
   {
@@ -263,22 +230,16 @@ struct PositionSetpoint_
     this->yawspeed_valid = _arg;
     return *this;
   }
-  Type & set__landing_gear(
-    const int8_t & _arg)
-  {
-    this->landing_gear = _arg;
-    return *this;
-  }
   Type & set__loiter_radius(
     const float & _arg)
   {
     this->loiter_radius = _arg;
     return *this;
   }
-  Type & set__loiter_direction(
-    const int8_t & _arg)
+  Type & set__loiter_direction_counter_clockwise(
+    const bool & _arg)
   {
-    this->loiter_direction = _arg;
+    this->loiter_direction_counter_clockwise = _arg;
     return *this;
   }
   Type & set__acceptance_radius(
@@ -291,6 +252,12 @@ struct PositionSetpoint_
     const float & _arg)
   {
     this->cruising_speed = _arg;
+    return *this;
+  }
+  Type & set__gliding_enabled(
+    const bool & _arg)
+  {
+    this->gliding_enabled = _arg;
     return *this;
   }
   Type & set__cruising_throttle(
@@ -319,12 +286,6 @@ struct PositionSetpoint_
     4u;
   static constexpr uint8_t SETPOINT_TYPE_IDLE =
     5u;
-  static constexpr uint8_t SETPOINT_TYPE_FOLLOW_TARGET =
-    6u;
-  static constexpr uint8_t VELOCITY_FRAME_LOCAL_NED =
-    1u;
-  static constexpr uint8_t VELOCITY_FRAME_BODY_NED =
-    8u;
 
   // pointer types
   using RawPtr =
@@ -384,15 +345,6 @@ struct PositionSetpoint_
     if (this->vz != other.vz) {
       return false;
     }
-    if (this->velocity_valid != other.velocity_valid) {
-      return false;
-    }
-    if (this->velocity_frame != other.velocity_frame) {
-      return false;
-    }
-    if (this->alt_valid != other.alt_valid) {
-      return false;
-    }
     if (this->lat != other.lat) {
       return false;
     }
@@ -414,19 +366,19 @@ struct PositionSetpoint_
     if (this->yawspeed_valid != other.yawspeed_valid) {
       return false;
     }
-    if (this->landing_gear != other.landing_gear) {
-      return false;
-    }
     if (this->loiter_radius != other.loiter_radius) {
       return false;
     }
-    if (this->loiter_direction != other.loiter_direction) {
+    if (this->loiter_direction_counter_clockwise != other.loiter_direction_counter_clockwise) {
       return false;
     }
     if (this->acceptance_radius != other.acceptance_radius) {
       return false;
     }
     if (this->cruising_speed != other.cruising_speed) {
+      return false;
+    }
+    if (this->gliding_enabled != other.gliding_enabled) {
       return false;
     }
     if (this->cruising_throttle != other.cruising_throttle) {
@@ -460,12 +412,6 @@ template<typename ContainerAllocator>
 constexpr uint8_t PositionSetpoint_<ContainerAllocator>::SETPOINT_TYPE_LAND;
 template<typename ContainerAllocator>
 constexpr uint8_t PositionSetpoint_<ContainerAllocator>::SETPOINT_TYPE_IDLE;
-template<typename ContainerAllocator>
-constexpr uint8_t PositionSetpoint_<ContainerAllocator>::SETPOINT_TYPE_FOLLOW_TARGET;
-template<typename ContainerAllocator>
-constexpr uint8_t PositionSetpoint_<ContainerAllocator>::VELOCITY_FRAME_LOCAL_NED;
-template<typename ContainerAllocator>
-constexpr uint8_t PositionSetpoint_<ContainerAllocator>::VELOCITY_FRAME_BODY_NED;
 
 }  // namespace msg
 

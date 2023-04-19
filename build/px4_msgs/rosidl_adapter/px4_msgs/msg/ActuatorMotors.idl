@@ -5,9 +5,10 @@
 
 module px4_msgs {
   module msg {
-    typedef float float__8[8];
+    typedef float float__12[12];
     module ActuatorMotors_Constants {
-      const uint8 NUM_CONTROLS = 8;
+      const uint8 ACTUATOR_FUNCTION_MOTOR1 = 101;
+      const uint8 NUM_CONTROLS = 12;
     };
     @verbatim (language="comment", text=
       " Motor control message")
@@ -28,7 +29,7 @@ module px4_msgs {
         " range: [-1, 1], where 1 means maximum positive thrust," "\n"
         " -1 maximum negative (if not supported by the output, <0 maps to NaN)," "\n"
         " and NaN maps to disarmed (stop the motors)")
-      float__8 control;
+      float__12 control;
     };
   };
 };

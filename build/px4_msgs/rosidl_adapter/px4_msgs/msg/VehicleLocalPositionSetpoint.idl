@@ -8,7 +8,8 @@ module px4_msgs {
     typedef float float__3[3];
     @verbatim (language="comment", text=
       " Local position setpoint in NED frame" "\n"
-      " setting something to NaN means the state should not be controlled")
+      " Telemetry of PID position controller to monitor tracking." "\n"
+      " NaN means the state was not controlled")
     struct VehicleLocalPositionSetpoint {
       @verbatim (language="comment", text=
         " time since system start (microseconds)")
@@ -27,14 +28,6 @@ module px4_msgs {
       float z;
 
       @verbatim (language="comment", text=
-        " in radians NED -PI..+PI")
-      float yaw;
-
-      @verbatim (language="comment", text=
-        " in radians/sec")
-      float yawspeed;
-
-      @verbatim (language="comment", text=
         " in meters/sec")
       float vx;
 
@@ -51,12 +44,16 @@ module px4_msgs {
       float__3 acceleration;
 
       @verbatim (language="comment", text=
-        " in meters/sec^3")
-      float__3 jerk;
-
-      @verbatim (language="comment", text=
         " normalized thrust vector in NED")
       float__3 thrust;
+
+      @verbatim (language="comment", text=
+        " in radians NED -PI..+PI")
+      float yaw;
+
+      @verbatim (language="comment", text=
+        " in radians/sec")
+      float yawspeed;
     };
   };
 };

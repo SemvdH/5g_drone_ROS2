@@ -1,0 +1,126 @@
+[0.072s] Invoking command in '/home/ubuntu/ros2_ws/build/px4_ros_com': CMAKE_PREFIX_PATH=/home/ubuntu/ros2_ws/install/px4_msgs:/home/ubuntu/ros2_ws/install/px4_ros_com:/home/ubuntu/ros2_ws/install/drone_sensors:/home/ubuntu/ros2_ws/install/beacon_positioning:/opt/ros/foxy LD_LIBRARY_PATH=/home/ubuntu/ros2_ws/install/px4_msgs/lib:/home/ubuntu/ros2_ws/install/px4_ros_com/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib /usr/bin/cmake /home/ubuntu/ros2_ws/src/px4_ros_com -DCMAKE_INSTALL_PREFIX=/home/ubuntu/ros2_ws/install/px4_ros_com
+[0.306s] -- The C compiler identification is GNU 9.4.0
+[0.524s] -- The CXX compiler identification is GNU 9.4.0
+[0.541s] -- Check for working C compiler: /usr/bin/cc
+[0.811s] -- Check for working C compiler: /usr/bin/cc -- works
+[0.814s] -- Detecting C compiler ABI info
+[1.093s] -- Detecting C compiler ABI info - done
+[1.130s] -- Detecting C compile features
+[1.131s] -- Detecting C compile features - done
+[1.139s] -- Check for working CXX compiler: /usr/bin/c++
+[1.458s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[1.464s] -- Detecting CXX compiler ABI info
+[1.773s] -- Detecting CXX compiler ABI info - done
+[1.812s] -- Detecting CXX compile features
+[1.814s] -- Detecting CXX compile features - done
+[1.831s] -- Found ament_cmake: 0.9.11 (/opt/ros/foxy/share/ament_cmake/cmake)
+[1.940s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[1.941s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[2.752s] -- Found builtin_interfaces: 1.0.0 (/opt/ros/foxy/share/builtin_interfaces/cmake)
+[2.894s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[2.934s] -- Found rosidl_adapter: 1.3.0 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[3.279s] -- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "1.1.1f")  
+[3.391s] -- Found FastRTPS: /opt/ros/foxy/include  
+[3.727s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[3.845s] -- Found eigen3_cmake_module: 0.1.1 (/opt/ros/foxy/share/eigen3_cmake_module/cmake)
+[3.872s] -- Found Eigen3: TRUE (found version "3.3.7") 
+[3.890s] -- Found geometry_msgs: 2.0.5 (/opt/ros/foxy/share/geometry_msgs/cmake)
+[4.116s] -- Found px4_msgs: 2.0.1 (/home/ubuntu/ros2_ws/install/px4_msgs/share/px4_msgs/cmake)
+[4.187s] -- Found rclcpp: 2.4.2 (/opt/ros/foxy/share/rclcpp/cmake)
+[4.379s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[4.385s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[4.388s] -- Looking for pthread.h
+[4.678s] -- Looking for pthread.h - found
+[4.678s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[4.980s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+[4.981s] -- Looking for pthread_create in pthreads
+[5.231s] -- Looking for pthread_create in pthreads - not found
+[5.232s] -- Looking for pthread_create in pthread
+[5.518s] -- Looking for pthread_create in pthread - found
+[5.522s] -- Found Threads: TRUE  
+[6.053s] -- Found sensor_msgs: 2.0.5 (/opt/ros/foxy/share/sensor_msgs/cmake)
+[6.355s] -- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+[6.765s] -- Added test 'copyright' to check source files copyright and LICENSE
+[6.805s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[6.806s] -- Configured cppcheck include dirs: /home/ubuntu/ros2_ws/src/px4_ros_com/include;$<BUILD_INTERFACE:/home/ubuntu/ros2_ws/src/px4_ros_com/include/px4_ros_com>
+[6.807s] -- Configured cppcheck exclude dirs and/or files: 
+[6.846s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[6.846s] -- Configured cpplint exclude dirs and/or files: 
+[6.853s] -- Added test 'flake8' to check Python code syntax and style conventions
+[6.864s] -- Added test 'lint_cmake' to check CMake code style
+[6.870s] -- Added test 'pep257' to check Python code against some of the style conventions in PEP 257
+[6.909s] -- Added test 'uncrustify' to check C / C++ code style
+[6.910s] -- Configured uncrustify additional arguments: 
+[6.916s] -- Added test 'xmllint' to check XML markup files
+[6.944s] -- Configuring done
+[7.023s] -- Generating done
+[7.029s] -- Build files have been written to: /home/ubuntu/ros2_ws/build/px4_ros_com
+[7.057s] Invoked command in '/home/ubuntu/ros2_ws/build/px4_ros_com' returned '0': CMAKE_PREFIX_PATH=/home/ubuntu/ros2_ws/install/px4_msgs:/home/ubuntu/ros2_ws/install/px4_ros_com:/home/ubuntu/ros2_ws/install/drone_sensors:/home/ubuntu/ros2_ws/install/beacon_positioning:/opt/ros/foxy LD_LIBRARY_PATH=/home/ubuntu/ros2_ws/install/px4_msgs/lib:/home/ubuntu/ros2_ws/install/px4_ros_com/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib /usr/bin/cmake /home/ubuntu/ros2_ws/src/px4_ros_com -DCMAKE_INSTALL_PREFIX=/home/ubuntu/ros2_ws/install/px4_ros_com
+[7.066s] Invoking command in '/home/ubuntu/ros2_ws/build/px4_ros_com': CMAKE_PREFIX_PATH=/home/ubuntu/ros2_ws/install/px4_msgs:/home/ubuntu/ros2_ws/install/px4_ros_com:/home/ubuntu/ros2_ws/install/drone_sensors:/home/ubuntu/ros2_ws/install/beacon_positioning:/opt/ros/foxy LD_LIBRARY_PATH=/home/ubuntu/ros2_ws/install/px4_msgs/lib:/home/ubuntu/ros2_ws/install/px4_ros_com/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib /usr/bin/cmake --build /home/ubuntu/ros2_ws/build/px4_ros_com -- -j4 -l4
+[7.237s] [35m[1mScanning dependencies of target offboard_control[0m
+[7.238s] [35m[1mScanning dependencies of target vehicle_gps_position_listener[0m
+[7.238s] [35m[1mScanning dependencies of target frame_transforms[0m
+[7.239s] [35m[1mScanning dependencies of target debug_vect_advertiser[0m
+[7.489s] [ 10%] [32mBuilding CXX object CMakeFiles/vehicle_gps_position_listener.dir/src/examples/listeners/vehicle_gps_position_listener.cpp.o[0m
+[7.491s] [ 20%] [32mBuilding CXX object CMakeFiles/debug_vect_advertiser.dir/src/examples/advertisers/debug_vect_advertiser.cpp.o[0m
+[7.492s] [ 30%] [32mBuilding CXX object CMakeFiles/offboard_control.dir/src/examples/offboard/offboard_control.cpp.o[0m
+[9.215s] [ 40%] [32mBuilding CXX object CMakeFiles/frame_transforms.dir/src/lib/frame_transforms.cpp.o[0m
+[23.247s] [ 50%] [32m[1mLinking CXX executable debug_vect_advertiser[0m
+[24.400s] [ 50%] Built target debug_vect_advertiser
+[24.457s] [35m[1mScanning dependencies of target sensor_combined_listener[0m
+[24.716s] [ 60%] [32mBuilding CXX object CMakeFiles/sensor_combined_listener.dir/src/examples/listeners/sensor_combined_listener.cpp.o[0m
+[27.691s] [ 70%] [32m[1mLinking CXX executable offboard_control[0m
+[28.842s] [ 70%] Built target offboard_control
+[32.967s] [ 80%] [32m[1mLinking CXX executable vehicle_gps_position_listener[0m
+[34.169s] [ 80%] Built target vehicle_gps_position_listener
+[41.554s] [ 90%] [32m[1mLinking CXX shared library libframe_transforms.so[0m
+[42.497s] [ 90%] Built target frame_transforms
+[46.838s] [100%] [32m[1mLinking CXX executable sensor_combined_listener[0m
+[47.858s] [100%] Built target sensor_combined_listener
+[47.898s] Invoked command in '/home/ubuntu/ros2_ws/build/px4_ros_com' returned '0': CMAKE_PREFIX_PATH=/home/ubuntu/ros2_ws/install/px4_msgs:/home/ubuntu/ros2_ws/install/px4_ros_com:/home/ubuntu/ros2_ws/install/drone_sensors:/home/ubuntu/ros2_ws/install/beacon_positioning:/opt/ros/foxy LD_LIBRARY_PATH=/home/ubuntu/ros2_ws/install/px4_msgs/lib:/home/ubuntu/ros2_ws/install/px4_ros_com/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib /usr/bin/cmake --build /home/ubuntu/ros2_ws/build/px4_ros_com -- -j4 -l4
+[48.084s] Invoking command in '/home/ubuntu/ros2_ws/build/px4_ros_com': CMAKE_PREFIX_PATH=/home/ubuntu/ros2_ws/install/px4_msgs:/home/ubuntu/ros2_ws/install/px4_ros_com:/home/ubuntu/ros2_ws/install/drone_sensors:/home/ubuntu/ros2_ws/install/beacon_positioning:/opt/ros/foxy LD_LIBRARY_PATH=/home/ubuntu/ros2_ws/install/px4_msgs/lib:/home/ubuntu/ros2_ws/install/px4_ros_com/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib /usr/bin/cmake --install /home/ubuntu/ros2_ws/build/px4_ros_com
+[48.118s] -- Install configuration: ""
+[48.119s] -- Installing: /home/ubuntu/ros2_ws/install/px4_ros_com/lib/px4_ros_com/sensor_combined_listener
+[48.130s] -- Set runtime path of "/home/ubuntu/ros2_ws/install/px4_ros_com/lib/px4_ros_com/sensor_combined_listener" to ""
+[48.131s] -- Installing: /home/ubuntu/ros2_ws/install/px4_ros_com/lib/px4_ros_com/vehicle_gps_position_listener
+[48.142s] -- Set runtime path of "/home/ubuntu/ros2_ws/install/px4_ros_com/lib/px4_ros_com/vehicle_gps_position_listener" to ""
+[48.142s] -- Installing: /home/ubuntu/ros2_ws/install/px4_ros_com/lib/px4_ros_com/debug_vect_advertiser
+[48.148s] -- Set runtime path of "/home/ubuntu/ros2_ws/install/px4_ros_com/lib/px4_ros_com/debug_vect_advertiser" to ""
+[48.148s] -- Installing: /home/ubuntu/ros2_ws/install/px4_ros_com/lib/px4_ros_com/offboard_control
+[48.156s] -- Set runtime path of "/home/ubuntu/ros2_ws/install/px4_ros_com/lib/px4_ros_com/offboard_control" to ""
+[48.157s] -- Installing: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/environment/library_path.sh
+[48.158s] -- Installing: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/environment/library_path.dsv
+[48.159s] -- Installing: /home/ubuntu/ros2_ws/install/px4_ros_com/include/px4_ros_com
+[48.159s] -- Installing: /home/ubuntu/ros2_ws/install/px4_ros_com/include/px4_ros_com/frame_transforms.h
+[48.160s] -- Installing: /home/ubuntu/ros2_ws/install/px4_ros_com/lib/libframe_transforms.so
+[48.179s] -- Set runtime path of "/home/ubuntu/ros2_ws/install/px4_ros_com/lib/libframe_transforms.so" to ""
+[48.179s] -- Installing: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com//launch
+[48.180s] -- Installing: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com//launch/offboard_control_launch.yaml
+[48.185s] -- Installing: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com//launch/sensor_combined_listener.launch.py
+[48.186s] -- Installing: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com//test
+[48.187s] -- Installing: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com//test/pipeline_io_test.py
+[48.188s] -- Installing: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com//test/test_input.py
+[48.189s] -- Installing: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com//test/__init__.py
+[48.190s] -- Installing: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com//test/test_output.py
+[48.192s] -- Installing: /home/ubuntu/ros2_ws/install/px4_ros_com/share/ament_index/resource_index/package_run_dependencies/px4_ros_com
+[48.194s] -- Installing: /home/ubuntu/ros2_ws/install/px4_ros_com/share/ament_index/resource_index/parent_prefix_path/px4_ros_com
+[48.196s] -- Installing: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/environment/ament_prefix_path.sh
+[48.197s] -- Installing: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/environment/ament_prefix_path.dsv
+[48.199s] -- Installing: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/environment/path.sh
+[48.200s] -- Installing: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/environment/path.dsv
+[48.201s] -- Installing: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/local_setup.bash
+[48.203s] -- Installing: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/local_setup.sh
+[48.204s] -- Installing: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/local_setup.zsh
+[48.205s] -- Installing: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/local_setup.dsv
+[48.205s] -- Installing: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/package.dsv
+[48.207s] -- Installing: /home/ubuntu/ros2_ws/install/px4_ros_com/share/ament_index/resource_index/packages/px4_ros_com
+[48.208s] -- Installing: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/cmake/export_frame_transformsExport.cmake
+[48.209s] -- Installing: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/cmake/export_frame_transformsExport-noconfig.cmake
+[48.210s] -- Installing: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/cmake/ament_cmake_export_dependencies-extras.cmake
+[48.211s] -- Installing: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/cmake/ament_cmake_export_targets-extras.cmake
+[48.212s] -- Installing: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/cmake/ament_cmake_export_include_directories-extras.cmake
+[48.213s] -- Installing: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/cmake/ament_cmake_export_libraries-extras.cmake
+[48.214s] -- Installing: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/cmake/px4_ros_comConfig.cmake
+[48.215s] -- Installing: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/cmake/px4_ros_comConfig-version.cmake
+[48.216s] -- Installing: /home/ubuntu/ros2_ws/install/px4_ros_com/share/px4_ros_com/package.xml
+[48.232s] Invoked command in '/home/ubuntu/ros2_ws/build/px4_ros_com' returned '0': CMAKE_PREFIX_PATH=/home/ubuntu/ros2_ws/install/px4_msgs:/home/ubuntu/ros2_ws/install/px4_ros_com:/home/ubuntu/ros2_ws/install/drone_sensors:/home/ubuntu/ros2_ws/install/beacon_positioning:/opt/ros/foxy LD_LIBRARY_PATH=/home/ubuntu/ros2_ws/install/px4_msgs/lib:/home/ubuntu/ros2_ws/install/px4_ros_com/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib /usr/bin/cmake --install /home/ubuntu/ros2_ws/build/px4_ros_com

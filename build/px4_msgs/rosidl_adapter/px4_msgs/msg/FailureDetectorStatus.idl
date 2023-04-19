@@ -22,15 +22,19 @@ module px4_msgs {
 
       boolean fd_arm_escs;
 
-      boolean fd_high_wind;
-
       boolean fd_battery;
 
       boolean fd_imbalanced_prop;
 
+      boolean fd_motor;
+
       @verbatim (language="comment", text=
         " Metric of the imbalanced propeller check (low-passed)")
       float imbalanced_prop_metric;
+
+      @verbatim (language="comment", text=
+        " Bit-mask with motor indices, indicating critical motor failures")
+      uint16 motor_failure_mask;
     };
   };
 };

@@ -69,16 +69,6 @@ static bool _VehicleLocalPositionSetpoint__cdr_serialize(
     cdr << ros_message->z;
   }
 
-  // Field name: yaw
-  {
-    cdr << ros_message->yaw;
-  }
-
-  // Field name: yawspeed
-  {
-    cdr << ros_message->yawspeed;
-  }
-
   // Field name: vx
   {
     cdr << ros_message->vx;
@@ -101,18 +91,21 @@ static bool _VehicleLocalPositionSetpoint__cdr_serialize(
     cdr.serializeArray(array_ptr, size);
   }
 
-  // Field name: jerk
-  {
-    size_t size = 3;
-    auto array_ptr = ros_message->jerk;
-    cdr.serializeArray(array_ptr, size);
-  }
-
   // Field name: thrust
   {
     size_t size = 3;
     auto array_ptr = ros_message->thrust;
     cdr.serializeArray(array_ptr, size);
+  }
+
+  // Field name: yaw
+  {
+    cdr << ros_message->yaw;
+  }
+
+  // Field name: yawspeed
+  {
+    cdr << ros_message->yawspeed;
   }
 
   return true;
@@ -147,16 +140,6 @@ static bool _VehicleLocalPositionSetpoint__cdr_deserialize(
     cdr >> ros_message->z;
   }
 
-  // Field name: yaw
-  {
-    cdr >> ros_message->yaw;
-  }
-
-  // Field name: yawspeed
-  {
-    cdr >> ros_message->yawspeed;
-  }
-
   // Field name: vx
   {
     cdr >> ros_message->vx;
@@ -179,18 +162,21 @@ static bool _VehicleLocalPositionSetpoint__cdr_deserialize(
     cdr.deserializeArray(array_ptr, size);
   }
 
-  // Field name: jerk
-  {
-    size_t size = 3;
-    auto array_ptr = ros_message->jerk;
-    cdr.deserializeArray(array_ptr, size);
-  }
-
   // Field name: thrust
   {
     size_t size = 3;
     auto array_ptr = ros_message->thrust;
     cdr.deserializeArray(array_ptr, size);
+  }
+
+  // Field name: yaw
+  {
+    cdr >> ros_message->yaw;
+  }
+
+  // Field name: yawspeed
+  {
+    cdr >> ros_message->yawspeed;
   }
 
   return true;
@@ -234,18 +220,6 @@ size_t get_serialized_size_px4_msgs__msg__VehicleLocalPositionSetpoint(
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // field.name yaw
-  {
-    size_t item_size = sizeof(ros_message->yaw);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // field.name yawspeed
-  {
-    size_t item_size = sizeof(ros_message->yawspeed);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
   // field.name vx
   {
     size_t item_size = sizeof(ros_message->vx);
@@ -273,15 +247,6 @@ size_t get_serialized_size_px4_msgs__msg__VehicleLocalPositionSetpoint(
     current_alignment += array_size * item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // field.name jerk
-  {
-    size_t array_size = 3;
-    auto array_ptr = ros_message->jerk;
-    (void)array_ptr;
-    size_t item_size = sizeof(array_ptr[0]);
-    current_alignment += array_size * item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
   // field.name thrust
   {
     size_t array_size = 3;
@@ -289,6 +254,18 @@ size_t get_serialized_size_px4_msgs__msg__VehicleLocalPositionSetpoint(
     (void)array_ptr;
     size_t item_size = sizeof(array_ptr[0]);
     current_alignment += array_size * item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // field.name yaw
+  {
+    size_t item_size = sizeof(ros_message->yaw);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // field.name yawspeed
+  {
+    size_t item_size = sizeof(ros_message->yawspeed);
+    current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
 
@@ -343,20 +320,6 @@ size_t max_serialized_size_px4_msgs__msg__VehicleLocalPositionSetpoint(
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
-  // member: yaw
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint32_t) +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
-  }
-  // member: yawspeed
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint32_t) +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
-  }
   // member: vx
   {
     size_t array_size = 1;
@@ -385,16 +348,23 @@ size_t max_serialized_size_px4_msgs__msg__VehicleLocalPositionSetpoint(
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
-  // member: jerk
+  // member: thrust
   {
     size_t array_size = 3;
 
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
-  // member: thrust
+  // member: yaw
   {
-    size_t array_size = 3;
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint32_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
+  }
+  // member: yawspeed
+  {
+    size_t array_size = 1;
 
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));

@@ -68,16 +68,32 @@ private:
   ::px4_msgs::msg::VehicleImu msg_;
 };
 
+class Init_VehicleImu_delta_angle_clipping
+{
+public:
+  explicit Init_VehicleImu_delta_angle_clipping(::px4_msgs::msg::VehicleImu & msg)
+  : msg_(msg)
+  {}
+  Init_VehicleImu_delta_velocity_clipping delta_angle_clipping(::px4_msgs::msg::VehicleImu::_delta_angle_clipping_type arg)
+  {
+    msg_.delta_angle_clipping = std::move(arg);
+    return Init_VehicleImu_delta_velocity_clipping(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::VehicleImu msg_;
+};
+
 class Init_VehicleImu_delta_velocity_dt
 {
 public:
   explicit Init_VehicleImu_delta_velocity_dt(::px4_msgs::msg::VehicleImu & msg)
   : msg_(msg)
   {}
-  Init_VehicleImu_delta_velocity_clipping delta_velocity_dt(::px4_msgs::msg::VehicleImu::_delta_velocity_dt_type arg)
+  Init_VehicleImu_delta_angle_clipping delta_velocity_dt(::px4_msgs::msg::VehicleImu::_delta_velocity_dt_type arg)
   {
     msg_.delta_velocity_dt = std::move(arg);
-    return Init_VehicleImu_delta_velocity_clipping(msg_);
+    return Init_VehicleImu_delta_angle_clipping(msg_);
   }
 
 private:

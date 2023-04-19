@@ -88,6 +88,8 @@ cdr_serialize(
   cdr << (ros_message.heartbeat_type_camera ? true : false);
   // Member: heartbeat_type_parachute
   cdr << (ros_message.heartbeat_type_parachute ? true : false);
+  // Member: heartbeat_type_open_drone_id
+  cdr << (ros_message.heartbeat_type_open_drone_id ? true : false);
   // Member: heartbeat_component_telemetry_radio
   cdr << (ros_message.heartbeat_component_telemetry_radio ? true : false);
   // Member: heartbeat_component_log
@@ -106,6 +108,8 @@ cdr_serialize(
   cdr << (ros_message.heartbeat_component_uart_bridge ? true : false);
   // Member: avoidance_system_healthy
   cdr << (ros_message.avoidance_system_healthy ? true : false);
+  // Member: open_drone_id_system_healthy
+  cdr << (ros_message.open_drone_id_system_healthy ? true : false);
   // Member: parachute_system_healthy
   cdr << (ros_message.parachute_system_healthy ? true : false);
   return true;
@@ -245,6 +249,13 @@ cdr_deserialize(
     ros_message.heartbeat_type_parachute = tmp ? true : false;
   }
 
+  // Member: heartbeat_type_open_drone_id
+  {
+    uint8_t tmp;
+    cdr >> tmp;
+    ros_message.heartbeat_type_open_drone_id = tmp ? true : false;
+  }
+
   // Member: heartbeat_component_telemetry_radio
   {
     uint8_t tmp;
@@ -306,6 +317,13 @@ cdr_deserialize(
     uint8_t tmp;
     cdr >> tmp;
     ros_message.avoidance_system_healthy = tmp ? true : false;
+  }
+
+  // Member: open_drone_id_system_healthy
+  {
+    uint8_t tmp;
+    cdr >> tmp;
+    ros_message.open_drone_id_system_healthy = tmp ? true : false;
   }
 
   // Member: parachute_system_healthy
@@ -499,6 +517,12 @@ get_serialized_size(
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
+  // Member: heartbeat_type_open_drone_id
+  {
+    size_t item_size = sizeof(ros_message.heartbeat_type_open_drone_id);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
   // Member: heartbeat_component_telemetry_radio
   {
     size_t item_size = sizeof(ros_message.heartbeat_component_telemetry_radio);
@@ -550,6 +574,12 @@ get_serialized_size(
   // Member: avoidance_system_healthy
   {
     size_t item_size = sizeof(ros_message.avoidance_system_healthy);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // Member: open_drone_id_system_healthy
+  {
+    size_t item_size = sizeof(ros_message.open_drone_id_system_healthy);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -788,6 +818,13 @@ max_serialized_size_TelemetryStatus(
     current_alignment += array_size * sizeof(uint8_t);
   }
 
+  // Member: heartbeat_type_open_drone_id
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
+  }
+
   // Member: heartbeat_component_telemetry_radio
   {
     size_t array_size = 1;
@@ -845,6 +882,13 @@ max_serialized_size_TelemetryStatus(
   }
 
   // Member: avoidance_system_healthy
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
+  }
+
+  // Member: open_drone_id_system_healthy
   {
     size_t array_size = 1;
 

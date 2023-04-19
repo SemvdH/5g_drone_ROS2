@@ -23,6 +23,7 @@ typedef struct px4_msgs__msg__VehicleAngularVelocity
   uint64_t timestamp;
   uint64_t timestamp_sample;
   float xyz[3];
+  float xyz_derivative[3];
 } px4_msgs__msg__VehicleAngularVelocity;
 
 // Struct for a sequence of px4_msgs__msg__VehicleAngularVelocity.

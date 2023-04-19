@@ -43,10 +43,11 @@ struct FailureDetectorStatus_
       this->fd_alt = false;
       this->fd_ext = false;
       this->fd_arm_escs = false;
-      this->fd_high_wind = false;
       this->fd_battery = false;
       this->fd_imbalanced_prop = false;
+      this->fd_motor = false;
       this->imbalanced_prop_metric = 0.0f;
+      this->motor_failure_mask = 0;
     }
   }
 
@@ -62,10 +63,11 @@ struct FailureDetectorStatus_
       this->fd_alt = false;
       this->fd_ext = false;
       this->fd_arm_escs = false;
-      this->fd_high_wind = false;
       this->fd_battery = false;
       this->fd_imbalanced_prop = false;
+      this->fd_motor = false;
       this->imbalanced_prop_metric = 0.0f;
+      this->motor_failure_mask = 0;
     }
   }
 
@@ -88,18 +90,21 @@ struct FailureDetectorStatus_
   using _fd_arm_escs_type =
     bool;
   _fd_arm_escs_type fd_arm_escs;
-  using _fd_high_wind_type =
-    bool;
-  _fd_high_wind_type fd_high_wind;
   using _fd_battery_type =
     bool;
   _fd_battery_type fd_battery;
   using _fd_imbalanced_prop_type =
     bool;
   _fd_imbalanced_prop_type fd_imbalanced_prop;
+  using _fd_motor_type =
+    bool;
+  _fd_motor_type fd_motor;
   using _imbalanced_prop_metric_type =
     float;
   _imbalanced_prop_metric_type imbalanced_prop_metric;
+  using _motor_failure_mask_type =
+    uint16_t;
+  _motor_failure_mask_type motor_failure_mask;
 
   // setters for named parameter idiom
   Type & set__timestamp(
@@ -138,12 +143,6 @@ struct FailureDetectorStatus_
     this->fd_arm_escs = _arg;
     return *this;
   }
-  Type & set__fd_high_wind(
-    const bool & _arg)
-  {
-    this->fd_high_wind = _arg;
-    return *this;
-  }
   Type & set__fd_battery(
     const bool & _arg)
   {
@@ -156,10 +155,22 @@ struct FailureDetectorStatus_
     this->fd_imbalanced_prop = _arg;
     return *this;
   }
+  Type & set__fd_motor(
+    const bool & _arg)
+  {
+    this->fd_motor = _arg;
+    return *this;
+  }
   Type & set__imbalanced_prop_metric(
     const float & _arg)
   {
     this->imbalanced_prop_metric = _arg;
+    return *this;
+  }
+  Type & set__motor_failure_mask(
+    const uint16_t & _arg)
+  {
+    this->motor_failure_mask = _arg;
     return *this;
   }
 
@@ -223,16 +234,19 @@ struct FailureDetectorStatus_
     if (this->fd_arm_escs != other.fd_arm_escs) {
       return false;
     }
-    if (this->fd_high_wind != other.fd_high_wind) {
-      return false;
-    }
     if (this->fd_battery != other.fd_battery) {
       return false;
     }
     if (this->fd_imbalanced_prop != other.fd_imbalanced_prop) {
       return false;
     }
+    if (this->fd_motor != other.fd_motor) {
+      return false;
+    }
     if (this->imbalanced_prop_metric != other.imbalanced_prop_metric) {
+      return false;
+    }
+    if (this->motor_failure_mask != other.motor_failure_mask) {
       return false;
     }
     return true;

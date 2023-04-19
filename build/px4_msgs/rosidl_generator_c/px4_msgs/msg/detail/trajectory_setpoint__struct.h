@@ -21,17 +21,12 @@ extern "C"
 typedef struct px4_msgs__msg__TrajectorySetpoint
 {
   uint64_t timestamp;
-  float x;
-  float y;
-  float z;
-  float yaw;
-  float yawspeed;
-  float vx;
-  float vy;
-  float vz;
+  float position[3];
+  float velocity[3];
   float acceleration[3];
   float jerk[3];
-  float thrust[3];
+  float yaw;
+  float yawspeed;
 } px4_msgs__msg__TrajectorySetpoint;
 
 // Struct for a sequence of px4_msgs__msg__TrajectorySetpoint.

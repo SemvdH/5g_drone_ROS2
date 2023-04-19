@@ -89,6 +89,13 @@ static bool _SensorGyro__cdr_serialize(
     cdr << ros_message->error_count;
   }
 
+  // Field name: clip_counter
+  {
+    size_t size = 3;
+    auto array_ptr = ros_message->clip_counter;
+    cdr.serializeArray(array_ptr, size);
+  }
+
   // Field name: samples
   {
     cdr << ros_message->samples;
@@ -144,6 +151,13 @@ static bool _SensorGyro__cdr_deserialize(
   // Field name: error_count
   {
     cdr >> ros_message->error_count;
+  }
+
+  // Field name: clip_counter
+  {
+    size_t size = 3;
+    auto array_ptr = ros_message->clip_counter;
+    cdr.deserializeArray(array_ptr, size);
   }
 
   // Field name: samples
@@ -214,6 +228,15 @@ size_t get_serialized_size_px4_msgs__msg__SensorGyro(
   {
     size_t item_size = sizeof(ros_message->error_count);
     current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // field.name clip_counter
+  {
+    size_t array_size = 3;
+    auto array_ptr = ros_message->clip_counter;
+    (void)array_ptr;
+    size_t item_size = sizeof(array_ptr[0]);
+    current_alignment += array_size * item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
   // field.name samples
@@ -301,6 +324,12 @@ size_t max_serialized_size_px4_msgs__msg__SensorGyro(
 
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
+  }
+  // member: clip_counter
+  {
+    size_t array_size = 3;
+
+    current_alignment += array_size * sizeof(uint8_t);
   }
   // member: samples
   {

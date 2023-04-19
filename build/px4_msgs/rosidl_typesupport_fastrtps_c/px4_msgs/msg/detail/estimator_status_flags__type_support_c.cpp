@@ -224,6 +224,21 @@ static bool _EstimatorStatusFlags__cdr_serialize(
     cdr << (ros_message->cs_rng_kin_consistent ? true : false);
   }
 
+  // Field name: cs_fake_pos
+  {
+    cdr << (ros_message->cs_fake_pos ? true : false);
+  }
+
+  // Field name: cs_fake_hgt
+  {
+    cdr << (ros_message->cs_fake_hgt ? true : false);
+  }
+
+  // Field name: cs_gravity_vector
+  {
+    cdr << (ros_message->cs_gravity_vector ? true : false);
+  }
+
   // Field name: fault_status_changes
   {
     cdr << ros_message->fault_status_changes;
@@ -342,21 +357,6 @@ static bool _EstimatorStatusFlags__cdr_serialize(
   // Field name: reject_ver_pos
   {
     cdr << (ros_message->reject_ver_pos ? true : false);
-  }
-
-  // Field name: reject_mag_x
-  {
-    cdr << (ros_message->reject_mag_x ? true : false);
-  }
-
-  // Field name: reject_mag_y
-  {
-    cdr << (ros_message->reject_mag_y ? true : false);
-  }
-
-  // Field name: reject_mag_z
-  {
-    cdr << (ros_message->reject_mag_z ? true : false);
   }
 
   // Field name: reject_yaw
@@ -640,6 +640,27 @@ static bool _EstimatorStatusFlags__cdr_deserialize(
     ros_message->cs_rng_kin_consistent = tmp ? true : false;
   }
 
+  // Field name: cs_fake_pos
+  {
+    uint8_t tmp;
+    cdr >> tmp;
+    ros_message->cs_fake_pos = tmp ? true : false;
+  }
+
+  // Field name: cs_fake_hgt
+  {
+    uint8_t tmp;
+    cdr >> tmp;
+    ros_message->cs_fake_hgt = tmp ? true : false;
+  }
+
+  // Field name: cs_gravity_vector
+  {
+    uint8_t tmp;
+    cdr >> tmp;
+    ros_message->cs_gravity_vector = tmp ? true : false;
+  }
+
   // Field name: fault_status_changes
   {
     cdr >> ros_message->fault_status_changes;
@@ -802,27 +823,6 @@ static bool _EstimatorStatusFlags__cdr_deserialize(
     uint8_t tmp;
     cdr >> tmp;
     ros_message->reject_ver_pos = tmp ? true : false;
-  }
-
-  // Field name: reject_mag_x
-  {
-    uint8_t tmp;
-    cdr >> tmp;
-    ros_message->reject_mag_x = tmp ? true : false;
-  }
-
-  // Field name: reject_mag_y
-  {
-    uint8_t tmp;
-    cdr >> tmp;
-    ros_message->reject_mag_y = tmp ? true : false;
-  }
-
-  // Field name: reject_mag_z
-  {
-    uint8_t tmp;
-    cdr >> tmp;
-    ros_message->reject_mag_z = tmp ? true : false;
   }
 
   // Field name: reject_yaw
@@ -1094,6 +1094,24 @@ size_t get_serialized_size_px4_msgs__msg__EstimatorStatusFlags(
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
+  // field.name cs_fake_pos
+  {
+    size_t item_size = sizeof(ros_message->cs_fake_pos);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // field.name cs_fake_hgt
+  {
+    size_t item_size = sizeof(ros_message->cs_fake_hgt);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // field.name cs_gravity_vector
+  {
+    size_t item_size = sizeof(ros_message->cs_gravity_vector);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
   // field.name fault_status_changes
   {
     size_t item_size = sizeof(ros_message->fault_status_changes);
@@ -1235,24 +1253,6 @@ size_t get_serialized_size_px4_msgs__msg__EstimatorStatusFlags(
   // field.name reject_ver_pos
   {
     size_t item_size = sizeof(ros_message->reject_ver_pos);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // field.name reject_mag_x
-  {
-    size_t item_size = sizeof(ros_message->reject_mag_x);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // field.name reject_mag_y
-  {
-    size_t item_size = sizeof(ros_message->reject_mag_y);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // field.name reject_mag_z
-  {
-    size_t item_size = sizeof(ros_message->reject_mag_z);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -1529,6 +1529,24 @@ size_t max_serialized_size_px4_msgs__msg__EstimatorStatusFlags(
 
     current_alignment += array_size * sizeof(uint8_t);
   }
+  // member: cs_fake_pos
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
+  }
+  // member: cs_fake_hgt
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
+  }
+  // member: cs_gravity_vector
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
+  }
   // member: fault_status_changes
   {
     size_t array_size = 1;
@@ -1670,24 +1688,6 @@ size_t max_serialized_size_px4_msgs__msg__EstimatorStatusFlags(
     current_alignment += array_size * sizeof(uint8_t);
   }
   // member: reject_ver_pos
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint8_t);
-  }
-  // member: reject_mag_x
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint8_t);
-  }
-  // member: reject_mag_y
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint8_t);
-  }
-  // member: reject_mag_z
   {
     size_t array_size = 1;
 

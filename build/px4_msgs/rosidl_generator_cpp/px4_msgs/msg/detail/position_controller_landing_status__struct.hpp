@@ -38,10 +38,9 @@ struct PositionControllerLandingStatus_
       rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
     {
       this->timestamp = 0ull;
-      this->horizontal_slope_displacement = 0.0f;
-      this->slope_angle_rad = 0.0f;
-      this->flare_length = 0.0f;
-      this->abort_landing = false;
+      this->lateral_touchdown_offset = 0.0f;
+      this->flaring = false;
+      this->abort_status = 0;
     }
   }
 
@@ -52,10 +51,9 @@ struct PositionControllerLandingStatus_
       rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
     {
       this->timestamp = 0ull;
-      this->horizontal_slope_displacement = 0.0f;
-      this->slope_angle_rad = 0.0f;
-      this->flare_length = 0.0f;
-      this->abort_landing = false;
+      this->lateral_touchdown_offset = 0.0f;
+      this->flaring = false;
+      this->abort_status = 0;
     }
   }
 
@@ -63,18 +61,15 @@ struct PositionControllerLandingStatus_
   using _timestamp_type =
     uint64_t;
   _timestamp_type timestamp;
-  using _horizontal_slope_displacement_type =
+  using _lateral_touchdown_offset_type =
     float;
-  _horizontal_slope_displacement_type horizontal_slope_displacement;
-  using _slope_angle_rad_type =
-    float;
-  _slope_angle_rad_type slope_angle_rad;
-  using _flare_length_type =
-    float;
-  _flare_length_type flare_length;
-  using _abort_landing_type =
+  _lateral_touchdown_offset_type lateral_touchdown_offset;
+  using _flaring_type =
     bool;
-  _abort_landing_type abort_landing;
+  _flaring_type flaring;
+  using _abort_status_type =
+    uint8_t;
+  _abort_status_type abort_status;
 
   // setters for named parameter idiom
   Type & set__timestamp(
@@ -83,32 +78,36 @@ struct PositionControllerLandingStatus_
     this->timestamp = _arg;
     return *this;
   }
-  Type & set__horizontal_slope_displacement(
+  Type & set__lateral_touchdown_offset(
     const float & _arg)
   {
-    this->horizontal_slope_displacement = _arg;
+    this->lateral_touchdown_offset = _arg;
     return *this;
   }
-  Type & set__slope_angle_rad(
-    const float & _arg)
-  {
-    this->slope_angle_rad = _arg;
-    return *this;
-  }
-  Type & set__flare_length(
-    const float & _arg)
-  {
-    this->flare_length = _arg;
-    return *this;
-  }
-  Type & set__abort_landing(
+  Type & set__flaring(
     const bool & _arg)
   {
-    this->abort_landing = _arg;
+    this->flaring = _arg;
+    return *this;
+  }
+  Type & set__abort_status(
+    const uint8_t & _arg)
+  {
+    this->abort_status = _arg;
     return *this;
   }
 
   // constant declarations
+  static constexpr uint8_t NOT_ABORTED =
+    0u;
+  static constexpr uint8_t ABORTED_BY_OPERATOR =
+    1u;
+  static constexpr uint8_t TERRAIN_NOT_FOUND =
+    2u;
+  static constexpr uint8_t TERRAIN_TIMEOUT =
+    3u;
+  static constexpr uint8_t UNKNOWN_ABORT_CRITERION =
+    4u;
 
   // pointer types
   using RawPtr =
@@ -153,16 +152,13 @@ struct PositionControllerLandingStatus_
     if (this->timestamp != other.timestamp) {
       return false;
     }
-    if (this->horizontal_slope_displacement != other.horizontal_slope_displacement) {
+    if (this->lateral_touchdown_offset != other.lateral_touchdown_offset) {
       return false;
     }
-    if (this->slope_angle_rad != other.slope_angle_rad) {
+    if (this->flaring != other.flaring) {
       return false;
     }
-    if (this->flare_length != other.flare_length) {
-      return false;
-    }
-    if (this->abort_landing != other.abort_landing) {
+    if (this->abort_status != other.abort_status) {
       return false;
     }
     return true;
@@ -178,6 +174,16 @@ using PositionControllerLandingStatus =
   px4_msgs::msg::PositionControllerLandingStatus_<std::allocator<void>>;
 
 // constant definitions
+template<typename ContainerAllocator>
+constexpr uint8_t PositionControllerLandingStatus_<ContainerAllocator>::NOT_ABORTED;
+template<typename ContainerAllocator>
+constexpr uint8_t PositionControllerLandingStatus_<ContainerAllocator>::ABORTED_BY_OPERATOR;
+template<typename ContainerAllocator>
+constexpr uint8_t PositionControllerLandingStatus_<ContainerAllocator>::TERRAIN_NOT_FOUND;
+template<typename ContainerAllocator>
+constexpr uint8_t PositionControllerLandingStatus_<ContainerAllocator>::TERRAIN_TIMEOUT;
+template<typename ContainerAllocator>
+constexpr uint8_t PositionControllerLandingStatus_<ContainerAllocator>::UNKNOWN_ABORT_CRITERION;
 
 }  // namespace msg
 

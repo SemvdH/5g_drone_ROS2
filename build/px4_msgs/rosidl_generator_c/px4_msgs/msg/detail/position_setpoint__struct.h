@@ -53,24 +53,6 @@ enum
   px4_msgs__msg__PositionSetpoint__SETPOINT_TYPE_IDLE = 5
 };
 
-/// Constant 'SETPOINT_TYPE_FOLLOW_TARGET'.
-enum
-{
-  px4_msgs__msg__PositionSetpoint__SETPOINT_TYPE_FOLLOW_TARGET = 6
-};
-
-/// Constant 'VELOCITY_FRAME_LOCAL_NED'.
-enum
-{
-  px4_msgs__msg__PositionSetpoint__VELOCITY_FRAME_LOCAL_NED = 1
-};
-
-/// Constant 'VELOCITY_FRAME_BODY_NED'.
-enum
-{
-  px4_msgs__msg__PositionSetpoint__VELOCITY_FRAME_BODY_NED = 8
-};
-
 // Struct defined in msg/PositionSetpoint in the package px4_msgs.
 typedef struct px4_msgs__msg__PositionSetpoint
 {
@@ -80,9 +62,6 @@ typedef struct px4_msgs__msg__PositionSetpoint
   float vx;
   float vy;
   float vz;
-  bool velocity_valid;
-  uint8_t velocity_frame;
-  bool alt_valid;
   double lat;
   double lon;
   float alt;
@@ -90,11 +69,11 @@ typedef struct px4_msgs__msg__PositionSetpoint
   bool yaw_valid;
   float yawspeed;
   bool yawspeed_valid;
-  int8_t landing_gear;
   float loiter_radius;
-  int8_t loiter_direction;
+  bool loiter_direction_counter_clockwise;
   float acceptance_radius;
   float cruising_speed;
+  bool gliding_enabled;
   float cruising_throttle;
   bool disable_weather_vane;
 } px4_msgs__msg__PositionSetpoint;

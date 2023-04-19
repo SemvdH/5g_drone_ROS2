@@ -24,6 +24,7 @@ typedef struct px4_msgs__msg__YawEstimatorStatus
   uint64_t timestamp_sample;
   float yaw_composite;
   float yaw_variance;
+  bool yaw_composite_valid;
   float yaw[5];
   float innov_vn[5];
   float innov_ve[5];

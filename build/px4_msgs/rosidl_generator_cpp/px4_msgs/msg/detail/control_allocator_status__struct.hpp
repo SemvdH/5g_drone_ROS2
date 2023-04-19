@@ -39,19 +39,16 @@ struct ControlAllocatorStatus_
     {
       this->timestamp = 0ull;
       this->torque_setpoint_achieved = false;
-      std::fill<typename std::array<float, 3>::iterator, float>(this->allocated_torque.begin(), this->allocated_torque.end(), 0.0f);
       std::fill<typename std::array<float, 3>::iterator, float>(this->unallocated_torque.begin(), this->unallocated_torque.end(), 0.0f);
       this->thrust_setpoint_achieved = false;
-      std::fill<typename std::array<float, 3>::iterator, float>(this->allocated_thrust.begin(), this->allocated_thrust.end(), 0.0f);
       std::fill<typename std::array<float, 3>::iterator, float>(this->unallocated_thrust.begin(), this->unallocated_thrust.end(), 0.0f);
       std::fill<typename std::array<int8_t, 16>::iterator, int8_t>(this->actuator_saturation.begin(), this->actuator_saturation.end(), 0);
+      this->handled_motor_failure_mask = 0;
     }
   }
 
   explicit ControlAllocatorStatus_(const ContainerAllocator & _alloc, rosidl_runtime_cpp::MessageInitialization _init = rosidl_runtime_cpp::MessageInitialization::ALL)
-  : allocated_torque(_alloc),
-    unallocated_torque(_alloc),
-    allocated_thrust(_alloc),
+  : unallocated_torque(_alloc),
     unallocated_thrust(_alloc),
     actuator_saturation(_alloc)
   {
@@ -60,12 +57,11 @@ struct ControlAllocatorStatus_
     {
       this->timestamp = 0ull;
       this->torque_setpoint_achieved = false;
-      std::fill<typename std::array<float, 3>::iterator, float>(this->allocated_torque.begin(), this->allocated_torque.end(), 0.0f);
       std::fill<typename std::array<float, 3>::iterator, float>(this->unallocated_torque.begin(), this->unallocated_torque.end(), 0.0f);
       this->thrust_setpoint_achieved = false;
-      std::fill<typename std::array<float, 3>::iterator, float>(this->allocated_thrust.begin(), this->allocated_thrust.end(), 0.0f);
       std::fill<typename std::array<float, 3>::iterator, float>(this->unallocated_thrust.begin(), this->unallocated_thrust.end(), 0.0f);
       std::fill<typename std::array<int8_t, 16>::iterator, int8_t>(this->actuator_saturation.begin(), this->actuator_saturation.end(), 0);
+      this->handled_motor_failure_mask = 0;
     }
   }
 
@@ -76,24 +72,21 @@ struct ControlAllocatorStatus_
   using _torque_setpoint_achieved_type =
     bool;
   _torque_setpoint_achieved_type torque_setpoint_achieved;
-  using _allocated_torque_type =
-    std::array<float, 3>;
-  _allocated_torque_type allocated_torque;
   using _unallocated_torque_type =
     std::array<float, 3>;
   _unallocated_torque_type unallocated_torque;
   using _thrust_setpoint_achieved_type =
     bool;
   _thrust_setpoint_achieved_type thrust_setpoint_achieved;
-  using _allocated_thrust_type =
-    std::array<float, 3>;
-  _allocated_thrust_type allocated_thrust;
   using _unallocated_thrust_type =
     std::array<float, 3>;
   _unallocated_thrust_type unallocated_thrust;
   using _actuator_saturation_type =
     std::array<int8_t, 16>;
   _actuator_saturation_type actuator_saturation;
+  using _handled_motor_failure_mask_type =
+    uint16_t;
+  _handled_motor_failure_mask_type handled_motor_failure_mask;
 
   // setters for named parameter idiom
   Type & set__timestamp(
@@ -108,12 +101,6 @@ struct ControlAllocatorStatus_
     this->torque_setpoint_achieved = _arg;
     return *this;
   }
-  Type & set__allocated_torque(
-    const std::array<float, 3> & _arg)
-  {
-    this->allocated_torque = _arg;
-    return *this;
-  }
   Type & set__unallocated_torque(
     const std::array<float, 3> & _arg)
   {
@@ -126,12 +113,6 @@ struct ControlAllocatorStatus_
     this->thrust_setpoint_achieved = _arg;
     return *this;
   }
-  Type & set__allocated_thrust(
-    const std::array<float, 3> & _arg)
-  {
-    this->allocated_thrust = _arg;
-    return *this;
-  }
   Type & set__unallocated_thrust(
     const std::array<float, 3> & _arg)
   {
@@ -142,6 +123,12 @@ struct ControlAllocatorStatus_
     const std::array<int8_t, 16> & _arg)
   {
     this->actuator_saturation = _arg;
+    return *this;
+  }
+  Type & set__handled_motor_failure_mask(
+    const uint16_t & _arg)
+  {
+    this->handled_motor_failure_mask = _arg;
     return *this;
   }
 
@@ -203,22 +190,19 @@ struct ControlAllocatorStatus_
     if (this->torque_setpoint_achieved != other.torque_setpoint_achieved) {
       return false;
     }
-    if (this->allocated_torque != other.allocated_torque) {
-      return false;
-    }
     if (this->unallocated_torque != other.unallocated_torque) {
       return false;
     }
     if (this->thrust_setpoint_achieved != other.thrust_setpoint_achieved) {
       return false;
     }
-    if (this->allocated_thrust != other.allocated_thrust) {
-      return false;
-    }
     if (this->unallocated_thrust != other.unallocated_thrust) {
       return false;
     }
     if (this->actuator_saturation != other.actuator_saturation) {
+      return false;
+    }
+    if (this->handled_motor_failure_mask != other.handled_motor_failure_mask) {
       return false;
     }
     return true;

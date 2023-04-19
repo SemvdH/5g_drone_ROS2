@@ -17,16 +17,22 @@ extern "C"
 
 // Constants defined in the message
 
+/// Constant 'SOURCE_PROTOCOL_UNKNOWN'.
+enum
+{
+  px4_msgs__msg__TimesyncStatus__SOURCE_PROTOCOL_UNKNOWN = 0
+};
+
 /// Constant 'SOURCE_PROTOCOL_MAVLINK'.
 enum
 {
-  px4_msgs__msg__TimesyncStatus__SOURCE_PROTOCOL_MAVLINK = 0
+  px4_msgs__msg__TimesyncStatus__SOURCE_PROTOCOL_MAVLINK = 1
 };
 
-/// Constant 'SOURCE_PROTOCOL_RTPS'.
+/// Constant 'SOURCE_PROTOCOL_DDS'.
 enum
 {
-  px4_msgs__msg__TimesyncStatus__SOURCE_PROTOCOL_RTPS = 1
+  px4_msgs__msg__TimesyncStatus__SOURCE_PROTOCOL_DDS = 2
 };
 
 // Struct defined in msg/TimesyncStatus in the package px4_msgs.

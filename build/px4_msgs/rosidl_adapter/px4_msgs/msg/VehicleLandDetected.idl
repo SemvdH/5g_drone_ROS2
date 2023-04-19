@@ -38,6 +38,8 @@ module px4_msgs {
 
       boolean horizontal_movement;
 
+      boolean rotational_movement;
+
       boolean close_to_ground_or_skipped_check;
 
       boolean at_rest;

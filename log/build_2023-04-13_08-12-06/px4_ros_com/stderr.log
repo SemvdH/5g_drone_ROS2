@@ -1,6 +1,0 @@
-c++: fatal error: Killed signal terminated program cc1plus
-compilation terminated.
-make[2]: *** [CMakeFiles/offboard_control.dir/build.make:63: CMakeFiles/offboard_control.dir/src/examples/offboard/offboard_control.cpp.o] Error 1
-make[1]: *** [CMakeFiles/Makefile2:115: CMakeFiles/offboard_control.dir/all] Error 2
-make[1]: *** Waiting for unfinished jobs....
-make: *** [Makefile:141: all] Error 2

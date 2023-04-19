@@ -84,48 +84,16 @@ private:
   ::px4_msgs::msg::MissionResult msg_;
 };
 
-class Init_MissionResult_flight_termination
-{
-public:
-  explicit Init_MissionResult_flight_termination(::px4_msgs::msg::MissionResult & msg)
-  : msg_(msg)
-  {}
-  Init_MissionResult_item_do_jump_changed flight_termination(::px4_msgs::msg::MissionResult::_flight_termination_type arg)
-  {
-    msg_.flight_termination = std::move(arg);
-    return Init_MissionResult_item_do_jump_changed(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::MissionResult msg_;
-};
-
-class Init_MissionResult_stay_in_failsafe
-{
-public:
-  explicit Init_MissionResult_stay_in_failsafe(::px4_msgs::msg::MissionResult & msg)
-  : msg_(msg)
-  {}
-  Init_MissionResult_flight_termination stay_in_failsafe(::px4_msgs::msg::MissionResult::_stay_in_failsafe_type arg)
-  {
-    msg_.stay_in_failsafe = std::move(arg);
-    return Init_MissionResult_flight_termination(msg_);
-  }
-
-private:
-  ::px4_msgs::msg::MissionResult msg_;
-};
-
 class Init_MissionResult_failure
 {
 public:
   explicit Init_MissionResult_failure(::px4_msgs::msg::MissionResult & msg)
   : msg_(msg)
   {}
-  Init_MissionResult_stay_in_failsafe failure(::px4_msgs::msg::MissionResult::_failure_type arg)
+  Init_MissionResult_item_do_jump_changed failure(::px4_msgs::msg::MissionResult::_failure_type arg)
   {
     msg_.failure = std::move(arg);
-    return Init_MissionResult_stay_in_failsafe(msg_);
+    return Init_MissionResult_item_do_jump_changed(msg_);
   }
 
 private:

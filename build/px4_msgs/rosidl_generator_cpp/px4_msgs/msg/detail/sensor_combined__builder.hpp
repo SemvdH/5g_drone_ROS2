@@ -52,16 +52,32 @@ private:
   ::px4_msgs::msg::SensorCombined msg_;
 };
 
+class Init_SensorCombined_gyro_clipping
+{
+public:
+  explicit Init_SensorCombined_gyro_clipping(::px4_msgs::msg::SensorCombined & msg)
+  : msg_(msg)
+  {}
+  Init_SensorCombined_accel_calibration_count gyro_clipping(::px4_msgs::msg::SensorCombined::_gyro_clipping_type arg)
+  {
+    msg_.gyro_clipping = std::move(arg);
+    return Init_SensorCombined_accel_calibration_count(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::SensorCombined msg_;
+};
+
 class Init_SensorCombined_accelerometer_clipping
 {
 public:
   explicit Init_SensorCombined_accelerometer_clipping(::px4_msgs::msg::SensorCombined & msg)
   : msg_(msg)
   {}
-  Init_SensorCombined_accel_calibration_count accelerometer_clipping(::px4_msgs::msg::SensorCombined::_accelerometer_clipping_type arg)
+  Init_SensorCombined_gyro_clipping accelerometer_clipping(::px4_msgs::msg::SensorCombined::_accelerometer_clipping_type arg)
   {
     msg_.accelerometer_clipping = std::move(arg);
-    return Init_SensorCombined_accel_calibration_count(msg_);
+    return Init_SensorCombined_gyro_clipping(msg_);
   }
 
 private:

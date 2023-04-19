@@ -51,11 +51,8 @@ enum
 typedef struct px4_msgs__msg__VtolVehicleStatus
 {
   uint64_t timestamp;
-  bool vtol_in_rw_mode;
-  bool vtol_in_trans_mode;
-  bool in_transition_to_fw;
-  bool vtol_transition_failsafe;
-  bool fw_permanent_stab;
+  uint8_t vehicle_vtol_state;
+  bool fixed_wing_system_failure;
 } px4_msgs__msg__VtolVehicleStatus;
 
 // Struct for a sequence of px4_msgs__msg__VtolVehicleStatus.

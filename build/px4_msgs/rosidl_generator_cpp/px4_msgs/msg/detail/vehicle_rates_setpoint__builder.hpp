@@ -20,16 +20,32 @@ namespace msg
 namespace builder
 {
 
+class Init_VehicleRatesSetpoint_reset_integral
+{
+public:
+  explicit Init_VehicleRatesSetpoint_reset_integral(::px4_msgs::msg::VehicleRatesSetpoint & msg)
+  : msg_(msg)
+  {}
+  ::px4_msgs::msg::VehicleRatesSetpoint reset_integral(::px4_msgs::msg::VehicleRatesSetpoint::_reset_integral_type arg)
+  {
+    msg_.reset_integral = std::move(arg);
+    return std::move(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::VehicleRatesSetpoint msg_;
+};
+
 class Init_VehicleRatesSetpoint_thrust_body
 {
 public:
   explicit Init_VehicleRatesSetpoint_thrust_body(::px4_msgs::msg::VehicleRatesSetpoint & msg)
   : msg_(msg)
   {}
-  ::px4_msgs::msg::VehicleRatesSetpoint thrust_body(::px4_msgs::msg::VehicleRatesSetpoint::_thrust_body_type arg)
+  Init_VehicleRatesSetpoint_reset_integral thrust_body(::px4_msgs::msg::VehicleRatesSetpoint::_thrust_body_type arg)
   {
     msg_.thrust_body = std::move(arg);
-    return std::move(msg_);
+    return Init_VehicleRatesSetpoint_reset_integral(msg_);
   }
 
 private:

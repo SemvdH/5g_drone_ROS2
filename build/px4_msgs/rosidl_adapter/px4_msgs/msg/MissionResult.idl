@@ -48,14 +48,6 @@ module px4_msgs {
       boolean failure;
 
       @verbatim (language="comment", text=
-        " true if the commander should not switch out of the failsafe mode")
-      boolean stay_in_failsafe;
-
-      @verbatim (language="comment", text=
-        " true if the navigator demands a flight termination from the commander app")
-      boolean flight_termination;
-
-      @verbatim (language="comment", text=
         " true if the number of do jumps remaining has changed")
       boolean item_do_jump_changed;
 

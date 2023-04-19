@@ -36,8 +36,12 @@ cdr_serialize(
   cdr << ros_message.timestamp;
   // Member: altitude_sp
   cdr << ros_message.altitude_sp;
-  // Member: altitude_filtered
-  cdr << ros_message.altitude_filtered;
+  // Member: altitude_reference
+  cdr << ros_message.altitude_reference;
+  // Member: height_rate_reference
+  cdr << ros_message.height_rate_reference;
+  // Member: height_rate_direct
+  cdr << ros_message.height_rate_direct;
   // Member: height_rate_setpoint
   cdr << ros_message.height_rate_setpoint;
   // Member: height_rate
@@ -54,32 +58,14 @@ cdr_serialize(
   cdr << ros_message.true_airspeed_derivative;
   // Member: true_airspeed_derivative_raw
   cdr << ros_message.true_airspeed_derivative_raw;
-  // Member: true_airspeed_innovation
-  cdr << ros_message.true_airspeed_innovation;
-  // Member: total_energy_error
-  cdr << ros_message.total_energy_error;
-  // Member: energy_distribution_error
-  cdr << ros_message.energy_distribution_error;
-  // Member: total_energy_rate_error
-  cdr << ros_message.total_energy_rate_error;
-  // Member: energy_distribution_rate_error
-  cdr << ros_message.energy_distribution_rate_error;
-  // Member: total_energy
-  cdr << ros_message.total_energy;
-  // Member: total_energy_rate
-  cdr << ros_message.total_energy_rate;
-  // Member: total_energy_balance
-  cdr << ros_message.total_energy_balance;
-  // Member: total_energy_balance_rate
-  cdr << ros_message.total_energy_balance_rate;
-  // Member: total_energy_sp
-  cdr << ros_message.total_energy_sp;
   // Member: total_energy_rate_sp
   cdr << ros_message.total_energy_rate_sp;
-  // Member: total_energy_balance_sp
-  cdr << ros_message.total_energy_balance_sp;
+  // Member: total_energy_rate
+  cdr << ros_message.total_energy_rate;
   // Member: total_energy_balance_rate_sp
   cdr << ros_message.total_energy_balance_rate_sp;
+  // Member: total_energy_balance_rate
+  cdr << ros_message.total_energy_balance_rate;
   // Member: throttle_integ
   cdr << ros_message.throttle_integ;
   // Member: pitch_integ
@@ -88,6 +74,8 @@ cdr_serialize(
   cdr << ros_message.throttle_sp;
   // Member: pitch_sp_rad
   cdr << ros_message.pitch_sp_rad;
+  // Member: throttle_trim
+  cdr << ros_message.throttle_trim;
   // Member: mode
   cdr << ros_message.mode;
   return true;
@@ -105,8 +93,14 @@ cdr_deserialize(
   // Member: altitude_sp
   cdr >> ros_message.altitude_sp;
 
-  // Member: altitude_filtered
-  cdr >> ros_message.altitude_filtered;
+  // Member: altitude_reference
+  cdr >> ros_message.altitude_reference;
+
+  // Member: height_rate_reference
+  cdr >> ros_message.height_rate_reference;
+
+  // Member: height_rate_direct
+  cdr >> ros_message.height_rate_direct;
 
   // Member: height_rate_setpoint
   cdr >> ros_message.height_rate_setpoint;
@@ -132,44 +126,17 @@ cdr_deserialize(
   // Member: true_airspeed_derivative_raw
   cdr >> ros_message.true_airspeed_derivative_raw;
 
-  // Member: true_airspeed_innovation
-  cdr >> ros_message.true_airspeed_innovation;
-
-  // Member: total_energy_error
-  cdr >> ros_message.total_energy_error;
-
-  // Member: energy_distribution_error
-  cdr >> ros_message.energy_distribution_error;
-
-  // Member: total_energy_rate_error
-  cdr >> ros_message.total_energy_rate_error;
-
-  // Member: energy_distribution_rate_error
-  cdr >> ros_message.energy_distribution_rate_error;
-
-  // Member: total_energy
-  cdr >> ros_message.total_energy;
+  // Member: total_energy_rate_sp
+  cdr >> ros_message.total_energy_rate_sp;
 
   // Member: total_energy_rate
   cdr >> ros_message.total_energy_rate;
 
-  // Member: total_energy_balance
-  cdr >> ros_message.total_energy_balance;
+  // Member: total_energy_balance_rate_sp
+  cdr >> ros_message.total_energy_balance_rate_sp;
 
   // Member: total_energy_balance_rate
   cdr >> ros_message.total_energy_balance_rate;
-
-  // Member: total_energy_sp
-  cdr >> ros_message.total_energy_sp;
-
-  // Member: total_energy_rate_sp
-  cdr >> ros_message.total_energy_rate_sp;
-
-  // Member: total_energy_balance_sp
-  cdr >> ros_message.total_energy_balance_sp;
-
-  // Member: total_energy_balance_rate_sp
-  cdr >> ros_message.total_energy_balance_rate_sp;
 
   // Member: throttle_integ
   cdr >> ros_message.throttle_integ;
@@ -182,6 +149,9 @@ cdr_deserialize(
 
   // Member: pitch_sp_rad
   cdr >> ros_message.pitch_sp_rad;
+
+  // Member: throttle_trim
+  cdr >> ros_message.throttle_trim;
 
   // Member: mode
   cdr >> ros_message.mode;
@@ -214,9 +184,21 @@ get_serialized_size(
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // Member: altitude_filtered
+  // Member: altitude_reference
   {
-    size_t item_size = sizeof(ros_message.altitude_filtered);
+    size_t item_size = sizeof(ros_message.altitude_reference);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // Member: height_rate_reference
+  {
+    size_t item_size = sizeof(ros_message.height_rate_reference);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // Member: height_rate_direct
+  {
+    size_t item_size = sizeof(ros_message.height_rate_direct);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -268,39 +250,9 @@ get_serialized_size(
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // Member: true_airspeed_innovation
+  // Member: total_energy_rate_sp
   {
-    size_t item_size = sizeof(ros_message.true_airspeed_innovation);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // Member: total_energy_error
-  {
-    size_t item_size = sizeof(ros_message.total_energy_error);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // Member: energy_distribution_error
-  {
-    size_t item_size = sizeof(ros_message.energy_distribution_error);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // Member: total_energy_rate_error
-  {
-    size_t item_size = sizeof(ros_message.total_energy_rate_error);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // Member: energy_distribution_rate_error
-  {
-    size_t item_size = sizeof(ros_message.energy_distribution_rate_error);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // Member: total_energy
-  {
-    size_t item_size = sizeof(ros_message.total_energy);
+    size_t item_size = sizeof(ros_message.total_energy_rate_sp);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -310,39 +262,15 @@ get_serialized_size(
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // Member: total_energy_balance
+  // Member: total_energy_balance_rate_sp
   {
-    size_t item_size = sizeof(ros_message.total_energy_balance);
+    size_t item_size = sizeof(ros_message.total_energy_balance_rate_sp);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
   // Member: total_energy_balance_rate
   {
     size_t item_size = sizeof(ros_message.total_energy_balance_rate);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // Member: total_energy_sp
-  {
-    size_t item_size = sizeof(ros_message.total_energy_sp);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // Member: total_energy_rate_sp
-  {
-    size_t item_size = sizeof(ros_message.total_energy_rate_sp);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // Member: total_energy_balance_sp
-  {
-    size_t item_size = sizeof(ros_message.total_energy_balance_sp);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // Member: total_energy_balance_rate_sp
-  {
-    size_t item_size = sizeof(ros_message.total_energy_balance_rate_sp);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -367,6 +295,12 @@ get_serialized_size(
   // Member: pitch_sp_rad
   {
     size_t item_size = sizeof(ros_message.pitch_sp_rad);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // Member: throttle_trim
+  {
+    size_t item_size = sizeof(ros_message.throttle_trim);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -411,7 +345,23 @@ max_serialized_size_TecsStatus(
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
 
-  // Member: altitude_filtered
+  // Member: altitude_reference
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint32_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
+  }
+
+  // Member: height_rate_reference
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint32_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
+  }
+
+  // Member: height_rate_direct
   {
     size_t array_size = 1;
 
@@ -483,47 +433,7 @@ max_serialized_size_TecsStatus(
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
 
-  // Member: true_airspeed_innovation
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint32_t) +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
-  }
-
-  // Member: total_energy_error
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint32_t) +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
-  }
-
-  // Member: energy_distribution_error
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint32_t) +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
-  }
-
-  // Member: total_energy_rate_error
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint32_t) +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
-  }
-
-  // Member: energy_distribution_rate_error
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint32_t) +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
-  }
-
-  // Member: total_energy
+  // Member: total_energy_rate_sp
   {
     size_t array_size = 1;
 
@@ -539,7 +449,7 @@ max_serialized_size_TecsStatus(
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
 
-  // Member: total_energy_balance
+  // Member: total_energy_balance_rate_sp
   {
     size_t array_size = 1;
 
@@ -548,38 +458,6 @@ max_serialized_size_TecsStatus(
   }
 
   // Member: total_energy_balance_rate
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint32_t) +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
-  }
-
-  // Member: total_energy_sp
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint32_t) +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
-  }
-
-  // Member: total_energy_rate_sp
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint32_t) +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
-  }
-
-  // Member: total_energy_balance_sp
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint32_t) +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
-  }
-
-  // Member: total_energy_balance_rate_sp
   {
     size_t array_size = 1;
 
@@ -612,6 +490,14 @@ max_serialized_size_TecsStatus(
   }
 
   // Member: pitch_sp_rad
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint32_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
+  }
+
+  // Member: throttle_trim
   {
     size_t array_size = 1;
 

@@ -258,7 +258,7 @@ typedef struct px4_msgs__msg__EstimatorStatus
   uint64_t timestamp_sample;
   float output_tracking_error[3];
   uint16_t gps_check_fail_flags;
-  uint32_t control_mode_flags;
+  uint64_t control_mode_flags;
   uint32_t filter_fault_flags;
   float pos_horiz_accuracy;
   float pos_vert_accuracy;

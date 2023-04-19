@@ -215,6 +215,8 @@ class InputRc(metaclass=Metaclass_InputRc):
         '_rc_ppm_frame_length',
         '_input_source',
         '_values',
+        '_link_quality',
+        '_rssi_dbm',
     ]
 
     _fields_and_field_types = {
@@ -229,6 +231,8 @@ class InputRc(metaclass=Metaclass_InputRc):
         'rc_ppm_frame_length': 'uint16',
         'input_source': 'uint8',
         'values': 'uint16[18]',
+        'link_quality': 'int8',
+        'rssi_dbm': 'float',
     }
 
     SLOT_TYPES = (
@@ -243,6 +247,8 @@ class InputRc(metaclass=Metaclass_InputRc):
         rosidl_parser.definition.BasicType('uint16'),  # noqa: E501
         rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
         rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('uint16'), 18),  # noqa: E501
+        rosidl_parser.definition.BasicType('int8'),  # noqa: E501
+        rosidl_parser.definition.BasicType('float'),  # noqa: E501
     )
 
     def __init__(self, **kwargs):
@@ -264,6 +270,8 @@ class InputRc(metaclass=Metaclass_InputRc):
         else:
             self.values = numpy.array(kwargs.get('values'), dtype=numpy.uint16)
             assert self.values.shape == (18, )
+        self.link_quality = kwargs.get('link_quality', int())
+        self.rssi_dbm = kwargs.get('rssi_dbm', float())
 
     def __repr__(self):
         typename = self.__class__.__module__.split('.')
@@ -315,6 +323,10 @@ class InputRc(metaclass=Metaclass_InputRc):
         if self.input_source != other.input_source:
             return False
         if all(self.values != other.values):
+            return False
+        if self.link_quality != other.link_quality:
+            return False
+        if self.rssi_dbm != other.rssi_dbm:
             return False
         return True
 
@@ -499,3 +511,31 @@ class InputRc(metaclass=Metaclass_InputRc):
                  all(val >= 0 and val < 65536 for val in value)), \
                 "The 'values' field must be a set or sequence with length 18 and each value of type 'int' and each unsigned integer in [0, 65535]"
         self._values = numpy.array(value, dtype=numpy.uint16)
+
+    @property
+    def link_quality(self):
+        """Message field 'link_quality'."""
+        return self._link_quality
+
+    @link_quality.setter
+    def link_quality(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, int), \
+                "The 'link_quality' field must be of type 'int'"
+            assert value >= -128 and value < 128, \
+                "The 'link_quality' field must be an integer in [-128, 127]"
+        self._link_quality = value
+
+    @property
+    def rssi_dbm(self):
+        """Message field 'rssi_dbm'."""
+        return self._rssi_dbm
+
+    @rssi_dbm.setter
+    def rssi_dbm(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, float), \
+                "The 'rssi_dbm' field must be of type 'float'"
+        self._rssi_dbm = value

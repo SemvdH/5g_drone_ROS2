@@ -98,28 +98,19 @@ class VtolVehicleStatus(metaclass=Metaclass_VtolVehicleStatus):
 
     __slots__ = [
         '_timestamp',
-        '_vtol_in_rw_mode',
-        '_vtol_in_trans_mode',
-        '_in_transition_to_fw',
-        '_vtol_transition_failsafe',
-        '_fw_permanent_stab',
+        '_vehicle_vtol_state',
+        '_fixed_wing_system_failure',
     ]
 
     _fields_and_field_types = {
         'timestamp': 'uint64',
-        'vtol_in_rw_mode': 'boolean',
-        'vtol_in_trans_mode': 'boolean',
-        'in_transition_to_fw': 'boolean',
-        'vtol_transition_failsafe': 'boolean',
-        'fw_permanent_stab': 'boolean',
+        'vehicle_vtol_state': 'uint8',
+        'fixed_wing_system_failure': 'boolean',
     }
 
     SLOT_TYPES = (
         rosidl_parser.definition.BasicType('uint64'),  # noqa: E501
-        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
-        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
-        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
-        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
+        rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
         rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
     )
 
@@ -128,11 +119,8 @@ class VtolVehicleStatus(metaclass=Metaclass_VtolVehicleStatus):
             'Invalid arguments passed to constructor: %s' % \
             ', '.join(sorted(k for k in kwargs.keys() if '_' + k not in self.__slots__))
         self.timestamp = kwargs.get('timestamp', int())
-        self.vtol_in_rw_mode = kwargs.get('vtol_in_rw_mode', bool())
-        self.vtol_in_trans_mode = kwargs.get('vtol_in_trans_mode', bool())
-        self.in_transition_to_fw = kwargs.get('in_transition_to_fw', bool())
-        self.vtol_transition_failsafe = kwargs.get('vtol_transition_failsafe', bool())
-        self.fw_permanent_stab = kwargs.get('fw_permanent_stab', bool())
+        self.vehicle_vtol_state = kwargs.get('vehicle_vtol_state', int())
+        self.fixed_wing_system_failure = kwargs.get('fixed_wing_system_failure', bool())
 
     def __repr__(self):
         typename = self.__class__.__module__.split('.')
@@ -165,15 +153,9 @@ class VtolVehicleStatus(metaclass=Metaclass_VtolVehicleStatus):
             return False
         if self.timestamp != other.timestamp:
             return False
-        if self.vtol_in_rw_mode != other.vtol_in_rw_mode:
+        if self.vehicle_vtol_state != other.vehicle_vtol_state:
             return False
-        if self.vtol_in_trans_mode != other.vtol_in_trans_mode:
-            return False
-        if self.in_transition_to_fw != other.in_transition_to_fw:
-            return False
-        if self.vtol_transition_failsafe != other.vtol_transition_failsafe:
-            return False
-        if self.fw_permanent_stab != other.fw_permanent_stab:
+        if self.fixed_wing_system_failure != other.fixed_wing_system_failure:
             return False
         return True
 
@@ -198,66 +180,29 @@ class VtolVehicleStatus(metaclass=Metaclass_VtolVehicleStatus):
         self._timestamp = value
 
     @property
-    def vtol_in_rw_mode(self):
-        """Message field 'vtol_in_rw_mode'."""
-        return self._vtol_in_rw_mode
+    def vehicle_vtol_state(self):
+        """Message field 'vehicle_vtol_state'."""
+        return self._vehicle_vtol_state
 
-    @vtol_in_rw_mode.setter
-    def vtol_in_rw_mode(self, value):
+    @vehicle_vtol_state.setter
+    def vehicle_vtol_state(self, value):
         if __debug__:
             assert \
-                isinstance(value, bool), \
-                "The 'vtol_in_rw_mode' field must be of type 'bool'"
-        self._vtol_in_rw_mode = value
+                isinstance(value, int), \
+                "The 'vehicle_vtol_state' field must be of type 'int'"
+            assert value >= 0 and value < 256, \
+                "The 'vehicle_vtol_state' field must be an unsigned integer in [0, 255]"
+        self._vehicle_vtol_state = value
 
     @property
-    def vtol_in_trans_mode(self):
-        """Message field 'vtol_in_trans_mode'."""
-        return self._vtol_in_trans_mode
+    def fixed_wing_system_failure(self):
+        """Message field 'fixed_wing_system_failure'."""
+        return self._fixed_wing_system_failure
 
-    @vtol_in_trans_mode.setter
-    def vtol_in_trans_mode(self, value):
+    @fixed_wing_system_failure.setter
+    def fixed_wing_system_failure(self, value):
         if __debug__:
             assert \
                 isinstance(value, bool), \
-                "The 'vtol_in_trans_mode' field must be of type 'bool'"
-        self._vtol_in_trans_mode = value
-
-    @property
-    def in_transition_to_fw(self):
-        """Message field 'in_transition_to_fw'."""
-        return self._in_transition_to_fw
-
-    @in_transition_to_fw.setter
-    def in_transition_to_fw(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, bool), \
-                "The 'in_transition_to_fw' field must be of type 'bool'"
-        self._in_transition_to_fw = value
-
-    @property
-    def vtol_transition_failsafe(self):
-        """Message field 'vtol_transition_failsafe'."""
-        return self._vtol_transition_failsafe
-
-    @vtol_transition_failsafe.setter
-    def vtol_transition_failsafe(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, bool), \
-                "The 'vtol_transition_failsafe' field must be of type 'bool'"
-        self._vtol_transition_failsafe = value
-
-    @property
-    def fw_permanent_stab(self):
-        """Message field 'fw_permanent_stab'."""
-        return self._fw_permanent_stab
-
-    @fw_permanent_stab.setter
-    def fw_permanent_stab(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, bool), \
-                "The 'fw_permanent_stab' field must be of type 'bool'"
-        self._fw_permanent_stab = value
+                "The 'fixed_wing_system_failure' field must be of type 'bool'"
+        self._fixed_wing_system_failure = value

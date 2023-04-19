@@ -20,16 +20,48 @@ namespace msg
 namespace builder
 {
 
+class Init_InputRc_rssi_dbm
+{
+public:
+  explicit Init_InputRc_rssi_dbm(::px4_msgs::msg::InputRc & msg)
+  : msg_(msg)
+  {}
+  ::px4_msgs::msg::InputRc rssi_dbm(::px4_msgs::msg::InputRc::_rssi_dbm_type arg)
+  {
+    msg_.rssi_dbm = std::move(arg);
+    return std::move(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::InputRc msg_;
+};
+
+class Init_InputRc_link_quality
+{
+public:
+  explicit Init_InputRc_link_quality(::px4_msgs::msg::InputRc & msg)
+  : msg_(msg)
+  {}
+  Init_InputRc_rssi_dbm link_quality(::px4_msgs::msg::InputRc::_link_quality_type arg)
+  {
+    msg_.link_quality = std::move(arg);
+    return Init_InputRc_rssi_dbm(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::InputRc msg_;
+};
+
 class Init_InputRc_values
 {
 public:
   explicit Init_InputRc_values(::px4_msgs::msg::InputRc & msg)
   : msg_(msg)
   {}
-  ::px4_msgs::msg::InputRc values(::px4_msgs::msg::InputRc::_values_type arg)
+  Init_InputRc_link_quality values(::px4_msgs::msg::InputRc::_values_type arg)
   {
     msg_.values = std::move(arg);
-    return std::move(msg_);
+    return Init_InputRc_link_quality(msg_);
   }
 
 private:

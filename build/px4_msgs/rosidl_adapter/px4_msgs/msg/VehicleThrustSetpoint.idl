@@ -16,7 +16,7 @@ module px4_msgs {
       uint64 timestamp_sample;
 
       @verbatim (language="comment", text=
-        " thrust setpoint along X, Y, Z body axis (in N)")
+        " thrust setpoint along X, Y, Z body axis [-1, 1]")
       float__3 xyz;
     };
   };

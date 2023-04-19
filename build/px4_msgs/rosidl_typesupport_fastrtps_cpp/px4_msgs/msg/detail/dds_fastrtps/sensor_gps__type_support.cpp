@@ -34,6 +34,8 @@ cdr_serialize(
 {
   // Member: timestamp
   cdr << ros_message.timestamp;
+  // Member: timestamp_sample
+  cdr << ros_message.timestamp_sample;
   // Member: device_id
   cdr << ros_message.device_id;
   // Member: lat
@@ -62,10 +64,12 @@ cdr_serialize(
   cdr << ros_message.noise_per_ms;
   // Member: automatic_gain_control
   cdr << ros_message.automatic_gain_control;
-  // Member: jamming_indicator
-  cdr << ros_message.jamming_indicator;
   // Member: jamming_state
   cdr << ros_message.jamming_state;
+  // Member: jamming_indicator
+  cdr << ros_message.jamming_indicator;
+  // Member: spoofing_state
+  cdr << ros_message.spoofing_state;
   // Member: vel_m_s
   cdr << ros_message.vel_m_s;
   // Member: vel_n_m_s
@@ -90,6 +94,10 @@ cdr_serialize(
   cdr << ros_message.heading_offset;
   // Member: heading_accuracy
   cdr << ros_message.heading_accuracy;
+  // Member: rtcm_injection_rate
+  cdr << ros_message.rtcm_injection_rate;
+  // Member: selected_rtcm_instance
+  cdr << ros_message.selected_rtcm_instance;
   return true;
 }
 
@@ -101,6 +109,9 @@ cdr_deserialize(
 {
   // Member: timestamp
   cdr >> ros_message.timestamp;
+
+  // Member: timestamp_sample
+  cdr >> ros_message.timestamp_sample;
 
   // Member: device_id
   cdr >> ros_message.device_id;
@@ -144,11 +155,14 @@ cdr_deserialize(
   // Member: automatic_gain_control
   cdr >> ros_message.automatic_gain_control;
 
+  // Member: jamming_state
+  cdr >> ros_message.jamming_state;
+
   // Member: jamming_indicator
   cdr >> ros_message.jamming_indicator;
 
-  // Member: jamming_state
-  cdr >> ros_message.jamming_state;
+  // Member: spoofing_state
+  cdr >> ros_message.spoofing_state;
 
   // Member: vel_m_s
   cdr >> ros_message.vel_m_s;
@@ -190,6 +204,12 @@ cdr_deserialize(
   // Member: heading_accuracy
   cdr >> ros_message.heading_accuracy;
 
+  // Member: rtcm_injection_rate
+  cdr >> ros_message.rtcm_injection_rate;
+
+  // Member: selected_rtcm_instance
+  cdr >> ros_message.selected_rtcm_instance;
+
   return true;
 }
 
@@ -209,6 +229,12 @@ get_serialized_size(
   // Member: timestamp
   {
     size_t item_size = sizeof(ros_message.timestamp);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // Member: timestamp_sample
+  {
+    size_t item_size = sizeof(ros_message.timestamp_sample);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -296,15 +322,21 @@ get_serialized_size(
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
+  // Member: jamming_state
+  {
+    size_t item_size = sizeof(ros_message.jamming_state);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
   // Member: jamming_indicator
   {
     size_t item_size = sizeof(ros_message.jamming_indicator);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // Member: jamming_state
+  // Member: spoofing_state
   {
-    size_t item_size = sizeof(ros_message.jamming_state);
+    size_t item_size = sizeof(ros_message.spoofing_state);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -380,6 +412,18 @@ get_serialized_size(
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
+  // Member: rtcm_injection_rate
+  {
+    size_t item_size = sizeof(ros_message.rtcm_injection_rate);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // Member: selected_rtcm_instance
+  {
+    size_t item_size = sizeof(ros_message.selected_rtcm_instance);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
 
   return current_alignment - initial_alignment;
 }
@@ -400,6 +444,14 @@ max_serialized_size_SensorGps(
 
 
   // Member: timestamp
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint64_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
+  }
+
+  // Member: timestamp_sample
   {
     size_t array_size = 1;
 
@@ -518,6 +570,13 @@ max_serialized_size_SensorGps(
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint16_t));
   }
 
+  // Member: jamming_state
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
+  }
+
   // Member: jamming_indicator
   {
     size_t array_size = 1;
@@ -526,7 +585,7 @@ max_serialized_size_SensorGps(
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
 
-  // Member: jamming_state
+  // Member: spoofing_state
   {
     size_t array_size = 1;
 
@@ -625,6 +684,21 @@ max_serialized_size_SensorGps(
 
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
+  }
+
+  // Member: rtcm_injection_rate
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint32_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
+  }
+
+  // Member: selected_rtcm_instance
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
   }
 
   return current_alignment - initial_alignment;

@@ -17,35 +17,11 @@ extern "C"
 
 // Constants defined in the message
 
-/// Constant 'INDEX_ROLL'.
-enum
-{
-  px4_msgs__msg__ActuatorControlsStatus__INDEX_ROLL = 0
-};
-
-/// Constant 'INDEX_PITCH'.
-enum
-{
-  px4_msgs__msg__ActuatorControlsStatus__INDEX_PITCH = 1
-};
-
-/// Constant 'INDEX_YAW'.
-enum
-{
-  px4_msgs__msg__ActuatorControlsStatus__INDEX_YAW = 2
-};
-
-/// Constant 'INDEX_THROTTLE'.
-enum
-{
-  px4_msgs__msg__ActuatorControlsStatus__INDEX_THROTTLE = 3
-};
-
 // Struct defined in msg/ActuatorControlsStatus in the package px4_msgs.
 typedef struct px4_msgs__msg__ActuatorControlsStatus
 {
   uint64_t timestamp;
-  float control_power[4];
+  float control_power[3];
 } px4_msgs__msg__ActuatorControlsStatus;
 
 // Struct for a sequence of px4_msgs__msg__ActuatorControlsStatus.

@@ -36,15 +36,15 @@ private:
   ::px4_msgs::msg::GeofenceResult msg_;
 };
 
-class Init_GeofenceResult_geofence_action
+class Init_GeofenceResult_primary_geofence_action
 {
 public:
-  explicit Init_GeofenceResult_geofence_action(::px4_msgs::msg::GeofenceResult & msg)
+  explicit Init_GeofenceResult_primary_geofence_action(::px4_msgs::msg::GeofenceResult & msg)
   : msg_(msg)
   {}
-  Init_GeofenceResult_home_required geofence_action(::px4_msgs::msg::GeofenceResult::_geofence_action_type arg)
+  Init_GeofenceResult_home_required primary_geofence_action(::px4_msgs::msg::GeofenceResult::_primary_geofence_action_type arg)
   {
-    msg_.geofence_action = std::move(arg);
+    msg_.primary_geofence_action = std::move(arg);
     return Init_GeofenceResult_home_required(msg_);
   }
 
@@ -52,16 +52,32 @@ private:
   ::px4_msgs::msg::GeofenceResult msg_;
 };
 
-class Init_GeofenceResult_geofence_violated
+class Init_GeofenceResult_primary_geofence_breached
 {
 public:
-  explicit Init_GeofenceResult_geofence_violated(::px4_msgs::msg::GeofenceResult & msg)
+  explicit Init_GeofenceResult_primary_geofence_breached(::px4_msgs::msg::GeofenceResult & msg)
   : msg_(msg)
   {}
-  Init_GeofenceResult_geofence_action geofence_violated(::px4_msgs::msg::GeofenceResult::_geofence_violated_type arg)
+  Init_GeofenceResult_primary_geofence_action primary_geofence_breached(::px4_msgs::msg::GeofenceResult::_primary_geofence_breached_type arg)
   {
-    msg_.geofence_violated = std::move(arg);
-    return Init_GeofenceResult_geofence_action(msg_);
+    msg_.primary_geofence_breached = std::move(arg);
+    return Init_GeofenceResult_primary_geofence_action(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::GeofenceResult msg_;
+};
+
+class Init_GeofenceResult_geofence_violation_reason
+{
+public:
+  explicit Init_GeofenceResult_geofence_violation_reason(::px4_msgs::msg::GeofenceResult & msg)
+  : msg_(msg)
+  {}
+  Init_GeofenceResult_primary_geofence_breached geofence_violation_reason(::px4_msgs::msg::GeofenceResult::_geofence_violation_reason_type arg)
+  {
+    msg_.geofence_violation_reason = std::move(arg);
+    return Init_GeofenceResult_primary_geofence_breached(msg_);
   }
 
 private:
@@ -74,10 +90,10 @@ public:
   Init_GeofenceResult_timestamp()
   : msg_(::rosidl_runtime_cpp::MessageInitialization::SKIP)
   {}
-  Init_GeofenceResult_geofence_violated timestamp(::px4_msgs::msg::GeofenceResult::_timestamp_type arg)
+  Init_GeofenceResult_geofence_violation_reason timestamp(::px4_msgs::msg::GeofenceResult::_timestamp_type arg)
   {
     msg_.timestamp = std::move(arg);
-    return Init_GeofenceResult_geofence_violated(msg_);
+    return Init_GeofenceResult_geofence_violation_reason(msg_);
   }
 
 private:

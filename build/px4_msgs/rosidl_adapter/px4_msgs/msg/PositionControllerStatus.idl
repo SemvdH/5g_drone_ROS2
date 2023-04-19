@@ -10,36 +10,53 @@ module px4_msgs {
         " time since system start (microseconds)")
       uint64 timestamp;
 
+      @verbatim (language="comment", text=
+        " Roll setpoint")
+      @unit (value="rad")
       float nav_roll;
 
+      @verbatim (language="comment", text=
+        " Pitch setpoint")
+      @unit (value="rad")
       float nav_pitch;
 
       @verbatim (language="comment", text=
-        " set to NAN if not valid")
+        " Bearing angle")
+      @unit (value="rad")
       float nav_bearing;
 
       @verbatim (language="comment", text=
-        " set to NAN if not valid")
+        " Bearing angle from aircraft to current target")
+      @unit (value="rad")
       float target_bearing;
 
       @verbatim (language="comment", text=
-        " set to NAN if not valid")
+        " Signed track error")
+      @unit (value="m")
       float xtrack_error;
 
+      @verbatim (language="comment", text=
+        " Distance to active (next) waypoint")
+      @unit (value="m")
       float wp_dist;
 
       @verbatim (language="comment", text=
-        " the optimal distance to a waypoint to switch to the next")
+        " Current horizontal acceptance radius")
+      @unit (value="m")
       float acceptance_radius;
 
       @verbatim (language="comment", text=
-        " NaN if not set")
+        " Yaw acceptance error")
+      @unit (value="rad")
       float yaw_acceptance;
 
       @verbatim (language="comment", text=
-        " the optimal vertical distance to a waypoint to switch to the next")
+        " Current vertical acceptance error")
+      @unit (value="m")
       float altitude_acceptance;
 
+      @verbatim (language="comment", text=
+        " Current (applied) position setpoint type (see PositionSetpoint.msg)")
       uint8 type;
     };
   };

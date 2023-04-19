@@ -46,8 +46,6 @@ struct MissionResult_
       this->warning = false;
       this->finished = false;
       this->failure = false;
-      this->stay_in_failsafe = false;
-      this->flight_termination = false;
       this->item_do_jump_changed = false;
       this->item_changed_index = 0;
       this->item_do_jump_remaining = 0;
@@ -70,8 +68,6 @@ struct MissionResult_
       this->warning = false;
       this->finished = false;
       this->failure = false;
-      this->stay_in_failsafe = false;
-      this->flight_termination = false;
       this->item_do_jump_changed = false;
       this->item_changed_index = 0;
       this->item_do_jump_remaining = 0;
@@ -107,12 +103,6 @@ struct MissionResult_
   using _failure_type =
     bool;
   _failure_type failure;
-  using _stay_in_failsafe_type =
-    bool;
-  _stay_in_failsafe_type stay_in_failsafe;
-  using _flight_termination_type =
-    bool;
-  _flight_termination_type flight_termination;
   using _item_do_jump_changed_type =
     bool;
   _item_do_jump_changed_type item_do_jump_changed;
@@ -179,18 +169,6 @@ struct MissionResult_
     const bool & _arg)
   {
     this->failure = _arg;
-    return *this;
-  }
-  Type & set__stay_in_failsafe(
-    const bool & _arg)
-  {
-    this->stay_in_failsafe = _arg;
-    return *this;
-  }
-  Type & set__flight_termination(
-    const bool & _arg)
-  {
-    this->flight_termination = _arg;
     return *this;
   }
   Type & set__item_do_jump_changed(
@@ -291,12 +269,6 @@ struct MissionResult_
       return false;
     }
     if (this->failure != other.failure) {
-      return false;
-    }
-    if (this->stay_in_failsafe != other.stay_in_failsafe) {
-      return false;
-    }
-    if (this->flight_termination != other.flight_termination) {
       return false;
     }
     if (this->item_do_jump_changed != other.item_do_jump_changed) {

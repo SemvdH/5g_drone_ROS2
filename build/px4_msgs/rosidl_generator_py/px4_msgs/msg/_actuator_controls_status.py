@@ -21,10 +21,6 @@ class Metaclass_ActuatorControlsStatus(type):
     _TYPE_SUPPORT = None
 
     __constants = {
-        'INDEX_ROLL': 0,
-        'INDEX_PITCH': 1,
-        'INDEX_YAW': 2,
-        'INDEX_THROTTLE': 3,
     }
 
     @classmethod
@@ -53,43 +49,11 @@ class Metaclass_ActuatorControlsStatus(type):
         # the message class under "Data and other attributes defined here:"
         # as well as populate each message instance
         return {
-            'INDEX_ROLL': cls.__constants['INDEX_ROLL'],
-            'INDEX_PITCH': cls.__constants['INDEX_PITCH'],
-            'INDEX_YAW': cls.__constants['INDEX_YAW'],
-            'INDEX_THROTTLE': cls.__constants['INDEX_THROTTLE'],
         }
-
-    @property
-    def INDEX_ROLL(self):
-        """Message constant 'INDEX_ROLL'."""
-        return Metaclass_ActuatorControlsStatus.__constants['INDEX_ROLL']
-
-    @property
-    def INDEX_PITCH(self):
-        """Message constant 'INDEX_PITCH'."""
-        return Metaclass_ActuatorControlsStatus.__constants['INDEX_PITCH']
-
-    @property
-    def INDEX_YAW(self):
-        """Message constant 'INDEX_YAW'."""
-        return Metaclass_ActuatorControlsStatus.__constants['INDEX_YAW']
-
-    @property
-    def INDEX_THROTTLE(self):
-        """Message constant 'INDEX_THROTTLE'."""
-        return Metaclass_ActuatorControlsStatus.__constants['INDEX_THROTTLE']
 
 
 class ActuatorControlsStatus(metaclass=Metaclass_ActuatorControlsStatus):
-    """
-    Message class 'ActuatorControlsStatus'.
-
-    Constants:
-      INDEX_ROLL
-      INDEX_PITCH
-      INDEX_YAW
-      INDEX_THROTTLE
-    """
+    """Message class 'ActuatorControlsStatus'."""
 
     __slots__ = [
         '_timestamp',
@@ -98,12 +62,12 @@ class ActuatorControlsStatus(metaclass=Metaclass_ActuatorControlsStatus):
 
     _fields_and_field_types = {
         'timestamp': 'uint64',
-        'control_power': 'float[4]',
+        'control_power': 'float[3]',
     }
 
     SLOT_TYPES = (
         rosidl_parser.definition.BasicType('uint64'),  # noqa: E501
-        rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 4),  # noqa: E501
+        rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 3),  # noqa: E501
     )
 
     def __init__(self, **kwargs):
@@ -112,10 +76,10 @@ class ActuatorControlsStatus(metaclass=Metaclass_ActuatorControlsStatus):
             ', '.join(sorted(k for k in kwargs.keys() if '_' + k not in self.__slots__))
         self.timestamp = kwargs.get('timestamp', int())
         if 'control_power' not in kwargs:
-            self.control_power = numpy.zeros(4, dtype=numpy.float32)
+            self.control_power = numpy.zeros(3, dtype=numpy.float32)
         else:
             self.control_power = numpy.array(kwargs.get('control_power'), dtype=numpy.float32)
-            assert self.control_power.shape == (4, )
+            assert self.control_power.shape == (3, )
 
     def __repr__(self):
         typename = self.__class__.__module__.split('.')
@@ -182,8 +146,8 @@ class ActuatorControlsStatus(metaclass=Metaclass_ActuatorControlsStatus):
         if isinstance(value, numpy.ndarray):
             assert value.dtype == numpy.float32, \
                 "The 'control_power' numpy.ndarray() must have the dtype of 'numpy.float32'"
-            assert value.size == 4, \
-                "The 'control_power' numpy.ndarray() must have a size of 4"
+            assert value.size == 3, \
+                "The 'control_power' numpy.ndarray() must have a size of 3"
             self._control_power = value
             return
         if __debug__:
@@ -197,8 +161,8 @@ class ActuatorControlsStatus(metaclass=Metaclass_ActuatorControlsStatus):
                   isinstance(value, UserList)) and
                  not isinstance(value, str) and
                  not isinstance(value, UserString) and
-                 len(value) == 4 and
+                 len(value) == 3 and
                  all(isinstance(v, float) for v in value) and
                  True), \
-                "The 'control_power' field must be a set or sequence with length 4 and each value of type 'float'"
+                "The 'control_power' field must be a set or sequence with length 3 and each value of type 'float'"
         self._control_power = numpy.array(value, dtype=numpy.float32)

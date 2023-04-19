@@ -84,14 +84,29 @@ static bool _EscReport__cdr_serialize(
     cdr << ros_message->esc_address;
   }
 
+  // Field name: esc_cmdcount
+  {
+    cdr << ros_message->esc_cmdcount;
+  }
+
   // Field name: esc_state
   {
     cdr << ros_message->esc_state;
   }
 
+  // Field name: actuator_function
+  {
+    cdr << ros_message->actuator_function;
+  }
+
   // Field name: failures
   {
     cdr << ros_message->failures;
+  }
+
+  // Field name: esc_power
+  {
+    cdr << ros_message->esc_power;
   }
 
   return true;
@@ -141,14 +156,29 @@ static bool _EscReport__cdr_deserialize(
     cdr >> ros_message->esc_address;
   }
 
+  // Field name: esc_cmdcount
+  {
+    cdr >> ros_message->esc_cmdcount;
+  }
+
   // Field name: esc_state
   {
     cdr >> ros_message->esc_state;
   }
 
+  // Field name: actuator_function
+  {
+    cdr >> ros_message->actuator_function;
+  }
+
   // Field name: failures
   {
     cdr >> ros_message->failures;
+  }
+
+  // Field name: esc_power
+  {
+    cdr >> ros_message->esc_power;
   }
 
   return true;
@@ -210,15 +240,33 @@ size_t get_serialized_size_px4_msgs__msg__EscReport(
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
+  // field.name esc_cmdcount
+  {
+    size_t item_size = sizeof(ros_message->esc_cmdcount);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
   // field.name esc_state
   {
     size_t item_size = sizeof(ros_message->esc_state);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
+  // field.name actuator_function
+  {
+    size_t item_size = sizeof(ros_message->actuator_function);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
   // field.name failures
   {
     size_t item_size = sizeof(ros_message->failures);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // field.name esc_power
+  {
+    size_t item_size = sizeof(ros_message->esc_power);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -294,7 +342,19 @@ size_t max_serialized_size_px4_msgs__msg__EscReport(
 
     current_alignment += array_size * sizeof(uint8_t);
   }
+  // member: esc_cmdcount
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
+  }
   // member: esc_state
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
+  }
+  // member: actuator_function
   {
     size_t array_size = 1;
 
@@ -306,6 +366,12 @@ size_t max_serialized_size_px4_msgs__msg__EscReport(
 
     current_alignment += array_size * sizeof(uint16_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint16_t));
+  }
+  // member: esc_power
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
   }
 
   return current_alignment - initial_alignment;

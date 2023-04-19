@@ -40,10 +40,6 @@ cdr_serialize(
   cdr << ros_message.y;
   // Member: z
   cdr << ros_message.z;
-  // Member: yaw
-  cdr << ros_message.yaw;
-  // Member: yawspeed
-  cdr << ros_message.yawspeed;
   // Member: vx
   cdr << ros_message.vx;
   // Member: vy
@@ -54,14 +50,14 @@ cdr_serialize(
   {
     cdr << ros_message.acceleration;
   }
-  // Member: jerk
-  {
-    cdr << ros_message.jerk;
-  }
   // Member: thrust
   {
     cdr << ros_message.thrust;
   }
+  // Member: yaw
+  cdr << ros_message.yaw;
+  // Member: yawspeed
+  cdr << ros_message.yawspeed;
   return true;
 }
 
@@ -83,12 +79,6 @@ cdr_deserialize(
   // Member: z
   cdr >> ros_message.z;
 
-  // Member: yaw
-  cdr >> ros_message.yaw;
-
-  // Member: yawspeed
-  cdr >> ros_message.yawspeed;
-
   // Member: vx
   cdr >> ros_message.vx;
 
@@ -103,15 +93,16 @@ cdr_deserialize(
     cdr >> ros_message.acceleration;
   }
 
-  // Member: jerk
-  {
-    cdr >> ros_message.jerk;
-  }
-
   // Member: thrust
   {
     cdr >> ros_message.thrust;
   }
+
+  // Member: yaw
+  cdr >> ros_message.yaw;
+
+  // Member: yawspeed
+  cdr >> ros_message.yawspeed;
 
   return true;
 }
@@ -153,18 +144,6 @@ get_serialized_size(
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // Member: yaw
-  {
-    size_t item_size = sizeof(ros_message.yaw);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // Member: yawspeed
-  {
-    size_t item_size = sizeof(ros_message.yawspeed);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
   // Member: vx
   {
     size_t item_size = sizeof(ros_message.vx);
@@ -190,18 +169,23 @@ get_serialized_size(
     current_alignment += array_size * item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // Member: jerk
-  {
-    size_t array_size = 3;
-    size_t item_size = sizeof(ros_message.jerk[0]);
-    current_alignment += array_size * item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
   // Member: thrust
   {
     size_t array_size = 3;
     size_t item_size = sizeof(ros_message.thrust[0]);
     current_alignment += array_size * item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // Member: yaw
+  {
+    size_t item_size = sizeof(ros_message.yaw);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // Member: yawspeed
+  {
+    size_t item_size = sizeof(ros_message.yawspeed);
+    current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
 
@@ -255,22 +239,6 @@ max_serialized_size_VehicleLocalPositionSetpoint(
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
 
-  // Member: yaw
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint32_t) +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
-  }
-
-  // Member: yawspeed
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint32_t) +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
-  }
-
   // Member: vx
   {
     size_t array_size = 1;
@@ -303,7 +271,7 @@ max_serialized_size_VehicleLocalPositionSetpoint(
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
 
-  // Member: jerk
+  // Member: thrust
   {
     size_t array_size = 3;
 
@@ -311,9 +279,17 @@ max_serialized_size_VehicleLocalPositionSetpoint(
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
 
-  // Member: thrust
+  // Member: yaw
   {
-    size_t array_size = 3;
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint32_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
+  }
+
+  // Member: yawspeed
+  {
+    size_t array_size = 1;
 
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));

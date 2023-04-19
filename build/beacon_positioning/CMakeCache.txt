@@ -25,7 +25,7 @@ AMENT_CMAKE_ENVIRONMENT_PARENT_PREFIX_PATH_GENERATION:BOOL=ON
 
 //Replace the CMake install command with a custom implementation
 // using symlinks instead of copying resources
-AMENT_CMAKE_SYMLINK_INSTALL:BOOL=1
+AMENT_CMAKE_SYMLINK_INSTALL:BOOL=OFF
 
 //Generate an uninstall target to revert the effects of the install
 // step
@@ -45,7 +45,7 @@ CMAKE_AR:FILEPATH=/usr/bin/ar
 
 //Choose the type of build, options are: None Debug Release RelWithDebInfo
 // MinSizeRel ...
-CMAKE_BUILD_TYPE:STRING=RELWITHDEBINFO
+CMAKE_BUILD_TYPE:STRING=
 
 //Enable/Disable color output during build.
 CMAKE_COLOR_MAKEFILE:BOOL=ON
@@ -268,9 +268,6 @@ PYTHON_VERSION:STRING=
 //Name of the computer/site where compile is being run
 SITE:STRING=ubuntu
 
-//The directory containing a CMake configuration file for TerabeeApi.
-TerabeeApi_DIR:PATH=/usr/local/lib/cmake/TerabeeApi
-
 //The directory containing a CMake configuration file for TinyXML2.
 TinyXML2_DIR:PATH=TinyXML2_DIR-NOTFOUND
 
@@ -280,17 +277,8 @@ _lib:FILEPATH=/opt/ros/foxy/lib/librosgraph_msgs__rosidl_typesupport_fastrtps_cp
 //The directory containing a CMake configuration file for ament_cmake.
 ament_cmake_DIR:PATH=/opt/ros/foxy/share/ament_cmake/cmake
 
-//The directory containing a CMake configuration file for ament_cmake_copyright.
-ament_cmake_copyright_DIR:PATH=/opt/ros/foxy/share/ament_cmake_copyright/cmake
-
 //The directory containing a CMake configuration file for ament_cmake_core.
 ament_cmake_core_DIR:PATH=/opt/ros/foxy/share/ament_cmake_core/cmake
-
-//The directory containing a CMake configuration file for ament_cmake_cppcheck.
-ament_cmake_cppcheck_DIR:PATH=/opt/ros/foxy/share/ament_cmake_cppcheck/cmake
-
-//The directory containing a CMake configuration file for ament_cmake_cpplint.
-ament_cmake_cpplint_DIR:PATH=/opt/ros/foxy/share/ament_cmake_cpplint/cmake
 
 //The directory containing a CMake configuration file for ament_cmake_export_definitions.
 ament_cmake_export_definitions_DIR:PATH=/opt/ros/foxy/share/ament_cmake_export_definitions/cmake
@@ -313,20 +301,11 @@ ament_cmake_export_link_flags_DIR:PATH=/opt/ros/foxy/share/ament_cmake_export_li
 //The directory containing a CMake configuration file for ament_cmake_export_targets.
 ament_cmake_export_targets_DIR:PATH=/opt/ros/foxy/share/ament_cmake_export_targets/cmake
 
-//The directory containing a CMake configuration file for ament_cmake_flake8.
-ament_cmake_flake8_DIR:PATH=/opt/ros/foxy/share/ament_cmake_flake8/cmake
-
 //The directory containing a CMake configuration file for ament_cmake_include_directories.
 ament_cmake_include_directories_DIR:PATH=/opt/ros/foxy/share/ament_cmake_include_directories/cmake
 
 //The directory containing a CMake configuration file for ament_cmake_libraries.
 ament_cmake_libraries_DIR:PATH=/opt/ros/foxy/share/ament_cmake_libraries/cmake
-
-//The directory containing a CMake configuration file for ament_cmake_lint_cmake.
-ament_cmake_lint_cmake_DIR:PATH=/opt/ros/foxy/share/ament_cmake_lint_cmake/cmake
-
-//The directory containing a CMake configuration file for ament_cmake_pep257.
-ament_cmake_pep257_DIR:PATH=/opt/ros/foxy/share/ament_cmake_pep257/cmake
 
 //The directory containing a CMake configuration file for ament_cmake_python.
 ament_cmake_python_DIR:PATH=/opt/ros/foxy/share/ament_cmake_python/cmake
@@ -337,41 +316,14 @@ ament_cmake_target_dependencies_DIR:PATH=/opt/ros/foxy/share/ament_cmake_target_
 //The directory containing a CMake configuration file for ament_cmake_test.
 ament_cmake_test_DIR:PATH=/opt/ros/foxy/share/ament_cmake_test/cmake
 
-//The directory containing a CMake configuration file for ament_cmake_uncrustify.
-ament_cmake_uncrustify_DIR:PATH=/opt/ros/foxy/share/ament_cmake_uncrustify/cmake
-
 //The directory containing a CMake configuration file for ament_cmake_version.
 ament_cmake_version_DIR:PATH=/opt/ros/foxy/share/ament_cmake_version/cmake
 
-//The directory containing a CMake configuration file for ament_cmake_xmllint.
-ament_cmake_xmllint_DIR:PATH=/opt/ros/foxy/share/ament_cmake_xmllint/cmake
-
-//Path to a program.
-ament_copyright_BIN:FILEPATH=/opt/ros/foxy/bin/ament_copyright
-
-//Path to a program.
-ament_cppcheck_BIN:FILEPATH=/opt/ros/foxy/bin/ament_cppcheck
-
-//Path to a program.
-ament_cpplint_BIN:FILEPATH=/opt/ros/foxy/bin/ament_cpplint
-
-//The directory containing a CMake configuration file for ament_lint_auto.
-ament_lint_auto_DIR:PATH=/opt/ros/foxy/share/ament_lint_auto/cmake
-
-//Path to a program.
-ament_lint_cmake_BIN:FILEPATH=/opt/ros/foxy/bin/ament_lint_cmake
-
-//The directory containing a CMake configuration file for ament_lint_common.
-ament_lint_common_DIR:PATH=/opt/ros/foxy/share/ament_lint_common/cmake
-
-//Path to a program.
-ament_uncrustify_BIN:FILEPATH=/opt/ros/foxy/bin/ament_uncrustify
-
-//Path to a program.
-ament_xmllint_BIN:FILEPATH=/opt/ros/foxy/bin/ament_xmllint
-
 //Value Computed by CMake
 beacon_positioning_BINARY_DIR:STATIC=/home/ubuntu/ros2_ws/build/beacon_positioning
+
+//The directory containing a CMake configuration file for beacon_positioning.
+beacon_positioning_DIR:PATH=beacon_positioning_DIR-NOTFOUND
 
 //Value Computed by CMake
 beacon_positioning_SOURCE_DIR:STATIC=/home/ubuntu/ros2_ws/src/beacon_positioning
@@ -445,6 +397,9 @@ rosidl_adapter_DIR:PATH=/opt/ros/foxy/share/rosidl_adapter/cmake
 //The directory containing a CMake configuration file for rosidl_cmake.
 rosidl_cmake_DIR:PATH=/opt/ros/foxy/share/rosidl_cmake/cmake
 
+//The directory containing a CMake configuration file for rosidl_default_generators.
+rosidl_default_generators_DIR:PATH=/opt/ros/foxy/share/rosidl_default_generators/cmake
+
 //The directory containing a CMake configuration file for rosidl_default_runtime.
 rosidl_default_runtime_DIR:PATH=/opt/ros/foxy/share/rosidl_default_runtime/cmake
 
@@ -453,6 +408,9 @@ rosidl_generator_c_DIR:PATH=/opt/ros/foxy/share/rosidl_generator_c/cmake
 
 //The directory containing a CMake configuration file for rosidl_generator_cpp.
 rosidl_generator_cpp_DIR:PATH=/opt/ros/foxy/share/rosidl_generator_cpp/cmake
+
+//The directory containing a CMake configuration file for rosidl_generator_py.
+rosidl_generator_py_DIR:PATH=/opt/ros/foxy/share/rosidl_generator_py/cmake
 
 //The directory containing a CMake configuration file for rosidl_runtime_c.
 rosidl_runtime_c_DIR:PATH=/opt/ros/foxy/share/rosidl_runtime_c/cmake
@@ -495,9 +453,6 @@ std_msgs_DIR:PATH=/opt/ros/foxy/share/std_msgs/cmake
 
 //The directory containing a CMake configuration file for tracetools.
 tracetools_DIR:PATH=/opt/ros/foxy/share/tracetools/cmake
-
-//Path to a program.
-xmllint_BIN:FILEPATH=/usr/bin/xmllint
 
 //The directory containing a CMake configuration file for yaml.
 yaml_DIR:PATH=/opt/ros/foxy/cmake
@@ -664,8 +619,6 @@ FIND_PACKAGE_MESSAGE_DETAILS_FastRTPS:INTERNAL=[/opt/ros/foxy/include][/opt/ros/
 FIND_PACKAGE_MESSAGE_DETAILS_OpenSSL:INTERNAL=[/usr/lib/aarch64-linux-gnu/libcrypto.so][/usr/include][c ][v1.1.1f()]
 //Details about finding PythonInterp
 FIND_PACKAGE_MESSAGE_DETAILS_PythonInterp:INTERNAL=[/usr/bin/python3][v3.8.10(3)]
-//Details about finding TerabeeApi
-FIND_PACKAGE_MESSAGE_DETAILS_TerabeeApi:INTERNAL=[/usr/local/lib/libterabeeapi.so][/usr/local/lib/cmake/TerabeeApi/../../../include][v()]
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
 //ADVANCED property for variable: OPENSSL_CRYPTO_LIBRARY
@@ -713,8 +666,6 @@ _OPENSSL_openssl_INCLUDEDIR:INTERNAL=
 _OPENSSL_openssl_LIBDIR:INTERNAL=
 _OPENSSL_openssl_PREFIX:INTERNAL=
 _OPENSSL_openssl_VERSION:INTERNAL=
-//Index for unique symlink install targets
-__AMENT_CMAKE_SYMLINK_INSTALL_TARGETS_INDEX:INTERNAL=1
 __pkg_config_arguments__OPENSSL:INTERNAL=QUIET;openssl
 __pkg_config_checked__OPENSSL:INTERNAL=1
 //ADVANCED property for variable: pkgcfg_lib__OPENSSL_crypto

@@ -37,10 +37,6 @@ module px4_msgs {
       @verbatim (language="comment", text=
         " IO/FMU should ignore messages from the actuator controls topics")
       boolean in_esc_calibration_mode;
-
-      @verbatim (language="comment", text=
-        " Set to true if we need to ESCs to remove the idle constraint")
-      boolean soft_stop;
     };
   };
 };

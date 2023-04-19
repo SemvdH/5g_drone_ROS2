@@ -19,12 +19,16 @@ module px4_msgs {
       uint64 timestamp;
 
       @verbatim (language="comment", text=
-        " true if the geofence is violated")
-      boolean geofence_violated;
+        " one of geofence_violation_reason_t::*")
+      uint8 geofence_violation_reason;
 
       @verbatim (language="comment", text=
-        " action to take when geofence is violated")
-      uint8 geofence_action;
+        " true if the primary geofence is breached")
+      boolean primary_geofence_breached;
+
+      @verbatim (language="comment", text=
+        " action to take when the primary geofence is breached")
+      uint8 primary_geofence_action;
 
       @verbatim (language="comment", text=
         " true if the geofence requires a valid home position")

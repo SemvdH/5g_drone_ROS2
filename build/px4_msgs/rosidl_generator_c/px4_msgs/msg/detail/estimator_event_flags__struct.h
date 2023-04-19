@@ -36,6 +36,10 @@ typedef struct px4_msgs__msg__EstimatorEventFlags
   bool starting_vision_vel_fusion;
   bool starting_vision_yaw_fusion;
   bool yaw_aligned_to_imu_gps;
+  bool reset_hgt_to_baro;
+  bool reset_hgt_to_gps;
+  bool reset_hgt_to_rng;
+  bool reset_hgt_to_ev;
   uint32_t warning_event_changes;
   bool gps_quality_poor;
   bool gps_fusion_timout;

@@ -45,6 +45,10 @@ module px4_msgs {
       uint16 delta_velocity_dt;
 
       @verbatim (language="comment", text=
+        " bitfield indicating if there was any gyro clipping (per axis) during the integration time frame")
+      uint8 delta_angle_clipping;
+
+      @verbatim (language="comment", text=
         " bitfield indicating if there was any accelerometer clipping (per axis) during the integration time frame")
       uint8 delta_velocity_clipping;
 

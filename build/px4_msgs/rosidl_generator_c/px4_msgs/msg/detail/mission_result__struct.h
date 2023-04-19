@@ -47,8 +47,6 @@ typedef struct px4_msgs__msg__MissionResult
   bool warning;
   bool finished;
   bool failure;
-  bool stay_in_failsafe;
-  bool flight_termination;
   bool item_do_jump_changed;
   uint16_t item_changed_index;
   uint16_t item_do_jump_remaining;

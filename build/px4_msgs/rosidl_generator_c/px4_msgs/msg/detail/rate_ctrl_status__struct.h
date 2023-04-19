@@ -24,7 +24,7 @@ typedef struct px4_msgs__msg__RateCtrlStatus
   float rollspeed_integ;
   float pitchspeed_integ;
   float yawspeed_integ;
-  float additional_integ1;
+  float wheel_rate_integ;
 } px4_msgs__msg__RateCtrlStatus;
 
 // Struct for a sequence of px4_msgs__msg__RateCtrlStatus.

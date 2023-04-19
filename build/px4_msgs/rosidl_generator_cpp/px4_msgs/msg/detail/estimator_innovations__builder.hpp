@@ -100,16 +100,32 @@ private:
   ::px4_msgs::msg::EstimatorInnovations msg_;
 };
 
+class Init_EstimatorInnovations_gravity
+{
+public:
+  explicit Init_EstimatorInnovations_gravity(::px4_msgs::msg::EstimatorInnovations & msg)
+  : msg_(msg)
+  {}
+  Init_EstimatorInnovations_drag gravity(::px4_msgs::msg::EstimatorInnovations::_gravity_type arg)
+  {
+    msg_.gravity = std::move(arg);
+    return Init_EstimatorInnovations_drag(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::EstimatorInnovations msg_;
+};
+
 class Init_EstimatorInnovations_mag_field
 {
 public:
   explicit Init_EstimatorInnovations_mag_field(::px4_msgs::msg::EstimatorInnovations & msg)
   : msg_(msg)
   {}
-  Init_EstimatorInnovations_drag mag_field(::px4_msgs::msg::EstimatorInnovations::_mag_field_type arg)
+  Init_EstimatorInnovations_gravity mag_field(::px4_msgs::msg::EstimatorInnovations::_mag_field_type arg)
   {
     msg_.mag_field = std::move(arg);
-    return Init_EstimatorInnovations_drag(msg_);
+    return Init_EstimatorInnovations_gravity(msg_);
   }
 
 private:
@@ -132,16 +148,32 @@ private:
   ::px4_msgs::msg::EstimatorInnovations msg_;
 };
 
+class Init_EstimatorInnovations_terr_flow
+{
+public:
+  explicit Init_EstimatorInnovations_terr_flow(::px4_msgs::msg::EstimatorInnovations & msg)
+  : msg_(msg)
+  {}
+  Init_EstimatorInnovations_heading terr_flow(::px4_msgs::msg::EstimatorInnovations::_terr_flow_type arg)
+  {
+    msg_.terr_flow = std::move(arg);
+    return Init_EstimatorInnovations_heading(msg_);
+  }
+
+private:
+  ::px4_msgs::msg::EstimatorInnovations msg_;
+};
+
 class Init_EstimatorInnovations_flow
 {
 public:
   explicit Init_EstimatorInnovations_flow(::px4_msgs::msg::EstimatorInnovations & msg)
   : msg_(msg)
   {}
-  Init_EstimatorInnovations_heading flow(::px4_msgs::msg::EstimatorInnovations::_flow_type arg)
+  Init_EstimatorInnovations_terr_flow flow(::px4_msgs::msg::EstimatorInnovations::_flow_type arg)
   {
     msg_.flow = std::move(arg);
-    return Init_EstimatorInnovations_heading(msg_);
+    return Init_EstimatorInnovations_terr_flow(msg_);
   }
 
 private:

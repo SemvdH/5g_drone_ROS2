@@ -1,1 +1,4 @@
-/home/ubuntu/ros2_ws/build/px4_msgs/ament_cmake_environment_hooks/local_setup.dsv
+source;share/px4_msgs/environment/ament_prefix_path.sh
+source;share/px4_msgs/environment/library_path.sh
+source;share/px4_msgs/environment/path.sh
+source;share/px4_msgs/environment/pythonpath.sh

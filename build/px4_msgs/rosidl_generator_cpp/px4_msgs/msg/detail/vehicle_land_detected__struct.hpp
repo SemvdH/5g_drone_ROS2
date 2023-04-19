@@ -47,6 +47,7 @@ struct VehicleLandDetected_
       this->has_low_throttle = false;
       this->vertical_movement = false;
       this->horizontal_movement = false;
+      this->rotational_movement = false;
       this->close_to_ground_or_skipped_check = false;
       this->at_rest = false;
     }
@@ -68,6 +69,7 @@ struct VehicleLandDetected_
       this->has_low_throttle = false;
       this->vertical_movement = false;
       this->horizontal_movement = false;
+      this->rotational_movement = false;
       this->close_to_ground_or_skipped_check = false;
       this->at_rest = false;
     }
@@ -104,6 +106,9 @@ struct VehicleLandDetected_
   using _horizontal_movement_type =
     bool;
   _horizontal_movement_type horizontal_movement;
+  using _rotational_movement_type =
+    bool;
+  _rotational_movement_type rotational_movement;
   using _close_to_ground_or_skipped_check_type =
     bool;
   _close_to_ground_or_skipped_check_type close_to_ground_or_skipped_check;
@@ -170,6 +175,12 @@ struct VehicleLandDetected_
     const bool & _arg)
   {
     this->horizontal_movement = _arg;
+    return *this;
+  }
+  Type & set__rotational_movement(
+    const bool & _arg)
+  {
+    this->rotational_movement = _arg;
     return *this;
   }
   Type & set__close_to_ground_or_skipped_check(
@@ -255,6 +266,9 @@ struct VehicleLandDetected_
       return false;
     }
     if (this->horizontal_movement != other.horizontal_movement) {
+      return false;
+    }
+    if (this->rotational_movement != other.rotational_movement) {
       return false;
     }
     if (this->close_to_ground_or_skipped_check != other.close_to_ground_or_skipped_check) {

@@ -48,6 +48,8 @@ struct InputRc_
       this->rc_ppm_frame_length = 0;
       this->input_source = 0;
       std::fill<typename std::array<uint16_t, 18>::iterator, uint16_t>(this->values.begin(), this->values.end(), 0);
+      this->link_quality = 0;
+      this->rssi_dbm = 0.0f;
     }
   }
 
@@ -68,6 +70,8 @@ struct InputRc_
       this->rc_ppm_frame_length = 0;
       this->input_source = 0;
       std::fill<typename std::array<uint16_t, 18>::iterator, uint16_t>(this->values.begin(), this->values.end(), 0);
+      this->link_quality = 0;
+      this->rssi_dbm = 0.0f;
     }
   }
 
@@ -105,6 +109,12 @@ struct InputRc_
   using _values_type =
     std::array<uint16_t, 18>;
   _values_type values;
+  using _link_quality_type =
+    int8_t;
+  _link_quality_type link_quality;
+  using _rssi_dbm_type =
+    float;
+  _rssi_dbm_type rssi_dbm;
 
   // setters for named parameter idiom
   Type & set__timestamp(
@@ -171,6 +181,18 @@ struct InputRc_
     const std::array<uint16_t, 18> & _arg)
   {
     this->values = _arg;
+    return *this;
+  }
+  Type & set__link_quality(
+    const int8_t & _arg)
+  {
+    this->link_quality = _arg;
+    return *this;
+  }
+  Type & set__rssi_dbm(
+    const float & _arg)
+  {
+    this->rssi_dbm = _arg;
     return *this;
   }
 
@@ -283,6 +305,12 @@ struct InputRc_
       return false;
     }
     if (this->values != other.values) {
+      return false;
+    }
+    if (this->link_quality != other.link_quality) {
+      return false;
+    }
+    if (this->rssi_dbm != other.rssi_dbm) {
       return false;
     }
     return true;

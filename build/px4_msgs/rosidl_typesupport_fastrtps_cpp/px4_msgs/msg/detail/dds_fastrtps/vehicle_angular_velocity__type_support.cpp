@@ -40,6 +40,10 @@ cdr_serialize(
   {
     cdr << ros_message.xyz;
   }
+  // Member: xyz_derivative
+  {
+    cdr << ros_message.xyz_derivative;
+  }
   return true;
 }
 
@@ -58,6 +62,11 @@ cdr_deserialize(
   // Member: xyz
   {
     cdr >> ros_message.xyz;
+  }
+
+  // Member: xyz_derivative
+  {
+    cdr >> ros_message.xyz_derivative;
   }
 
   return true;
@@ -92,6 +101,13 @@ get_serialized_size(
   {
     size_t array_size = 3;
     size_t item_size = sizeof(ros_message.xyz[0]);
+    current_alignment += array_size * item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // Member: xyz_derivative
+  {
+    size_t array_size = 3;
+    size_t item_size = sizeof(ros_message.xyz_derivative[0]);
     current_alignment += array_size * item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -131,6 +147,14 @@ max_serialized_size_VehicleAngularVelocity(
   }
 
   // Member: xyz
+  {
+    size_t array_size = 3;
+
+    current_alignment += array_size * sizeof(uint32_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
+  }
+
+  // Member: xyz_derivative
   {
     size_t array_size = 3;
 

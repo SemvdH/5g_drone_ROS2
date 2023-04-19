@@ -57,7 +57,7 @@ class RateCtrlStatus(metaclass=Metaclass_RateCtrlStatus):
         '_rollspeed_integ',
         '_pitchspeed_integ',
         '_yawspeed_integ',
-        '_additional_integ1',
+        '_wheel_rate_integ',
     ]
 
     _fields_and_field_types = {
@@ -65,7 +65,7 @@ class RateCtrlStatus(metaclass=Metaclass_RateCtrlStatus):
         'rollspeed_integ': 'float',
         'pitchspeed_integ': 'float',
         'yawspeed_integ': 'float',
-        'additional_integ1': 'float',
+        'wheel_rate_integ': 'float',
     }
 
     SLOT_TYPES = (
@@ -84,7 +84,7 @@ class RateCtrlStatus(metaclass=Metaclass_RateCtrlStatus):
         self.rollspeed_integ = kwargs.get('rollspeed_integ', float())
         self.pitchspeed_integ = kwargs.get('pitchspeed_integ', float())
         self.yawspeed_integ = kwargs.get('yawspeed_integ', float())
-        self.additional_integ1 = kwargs.get('additional_integ1', float())
+        self.wheel_rate_integ = kwargs.get('wheel_rate_integ', float())
 
     def __repr__(self):
         typename = self.__class__.__module__.split('.')
@@ -123,7 +123,7 @@ class RateCtrlStatus(metaclass=Metaclass_RateCtrlStatus):
             return False
         if self.yawspeed_integ != other.yawspeed_integ:
             return False
-        if self.additional_integ1 != other.additional_integ1:
+        if self.wheel_rate_integ != other.wheel_rate_integ:
             return False
         return True
 
@@ -187,14 +187,14 @@ class RateCtrlStatus(metaclass=Metaclass_RateCtrlStatus):
         self._yawspeed_integ = value
 
     @property
-    def additional_integ1(self):
-        """Message field 'additional_integ1'."""
-        return self._additional_integ1
+    def wheel_rate_integ(self):
+        """Message field 'wheel_rate_integ'."""
+        return self._wheel_rate_integ
 
-    @additional_integ1.setter
-    def additional_integ1(self, value):
+    @wheel_rate_integ.setter
+    def wheel_rate_integ(self, value):
         if __debug__:
             assert \
                 isinstance(value, float), \
-                "The 'additional_integ1' field must be of type 'float'"
-        self._additional_integ1 = value
+                "The 'wheel_rate_integ' field must be of type 'float'"
+        self._wheel_rate_integ = value

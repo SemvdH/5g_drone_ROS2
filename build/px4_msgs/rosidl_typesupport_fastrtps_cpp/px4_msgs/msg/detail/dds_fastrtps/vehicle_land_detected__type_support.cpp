@@ -52,6 +52,8 @@ cdr_serialize(
   cdr << (ros_message.vertical_movement ? true : false);
   // Member: horizontal_movement
   cdr << (ros_message.horizontal_movement ? true : false);
+  // Member: rotational_movement
+  cdr << (ros_message.rotational_movement ? true : false);
   // Member: close_to_ground_or_skipped_check
   cdr << (ros_message.close_to_ground_or_skipped_check ? true : false);
   // Member: at_rest
@@ -129,6 +131,13 @@ cdr_deserialize(
     uint8_t tmp;
     cdr >> tmp;
     ros_message.horizontal_movement = tmp ? true : false;
+  }
+
+  // Member: rotational_movement
+  {
+    uint8_t tmp;
+    cdr >> tmp;
+    ros_message.rotational_movement = tmp ? true : false;
   }
 
   // Member: close_to_ground_or_skipped_check
@@ -218,6 +227,12 @@ get_serialized_size(
   // Member: horizontal_movement
   {
     size_t item_size = sizeof(ros_message.horizontal_movement);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // Member: rotational_movement
+  {
+    size_t item_size = sizeof(ros_message.rotational_movement);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -317,6 +332,13 @@ max_serialized_size_VehicleLandDetected(
   }
 
   // Member: horizontal_movement
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
+  }
+
+  // Member: rotational_movement
   {
     size_t array_size = 1;
 

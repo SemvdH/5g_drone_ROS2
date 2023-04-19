@@ -21,7 +21,7 @@ class Metaclass_Event(type):
     _TYPE_SUPPORT = None
 
     __constants = {
-        'ORB_QUEUE_LENGTH': 8,
+        'ORB_QUEUE_LENGTH': 16,
     }
 
     @classmethod

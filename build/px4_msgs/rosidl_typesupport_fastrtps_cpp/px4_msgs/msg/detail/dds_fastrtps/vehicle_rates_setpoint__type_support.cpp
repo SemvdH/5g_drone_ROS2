@@ -44,6 +44,8 @@ cdr_serialize(
   {
     cdr << ros_message.thrust_body;
   }
+  // Member: reset_integral
+  cdr << (ros_message.reset_integral ? true : false);
   return true;
 }
 
@@ -68,6 +70,13 @@ cdr_deserialize(
   // Member: thrust_body
   {
     cdr >> ros_message.thrust_body;
+  }
+
+  // Member: reset_integral
+  {
+    uint8_t tmp;
+    cdr >> tmp;
+    ros_message.reset_integral = tmp ? true : false;
   }
 
   return true;
@@ -115,6 +124,12 @@ get_serialized_size(
     size_t array_size = 3;
     size_t item_size = sizeof(ros_message.thrust_body[0]);
     current_alignment += array_size * item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // Member: reset_integral
+  {
+    size_t item_size = sizeof(ros_message.reset_integral);
+    current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
 
@@ -174,6 +189,13 @@ max_serialized_size_VehicleRatesSetpoint(
 
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
+  }
+
+  // Member: reset_integral
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
   }
 
   return current_alignment - initial_alignment;

@@ -23,6 +23,12 @@ enum
   px4_msgs__msg__GpsInjectData__ORB_QUEUE_LENGTH = 8
 };
 
+/// Constant 'MAX_INSTANCES'.
+enum
+{
+  px4_msgs__msg__GpsInjectData__MAX_INSTANCES = 2
+};
+
 // Struct defined in msg/GpsInjectData in the package px4_msgs.
 typedef struct px4_msgs__msg__GpsInjectData
 {

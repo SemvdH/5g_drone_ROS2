@@ -189,6 +189,11 @@ static bool _TelemetryStatus__cdr_serialize(
     cdr << (ros_message->heartbeat_type_parachute ? true : false);
   }
 
+  // Field name: heartbeat_type_open_drone_id
+  {
+    cdr << (ros_message->heartbeat_type_open_drone_id ? true : false);
+  }
+
   // Field name: heartbeat_component_telemetry_radio
   {
     cdr << (ros_message->heartbeat_component_telemetry_radio ? true : false);
@@ -232,6 +237,11 @@ static bool _TelemetryStatus__cdr_serialize(
   // Field name: avoidance_system_healthy
   {
     cdr << (ros_message->avoidance_system_healthy ? true : false);
+  }
+
+  // Field name: open_drone_id_system_healthy
+  {
+    cdr << (ros_message->open_drone_id_system_healthy ? true : false);
   }
 
   // Field name: parachute_system_healthy
@@ -413,6 +423,13 @@ static bool _TelemetryStatus__cdr_deserialize(
     ros_message->heartbeat_type_parachute = tmp ? true : false;
   }
 
+  // Field name: heartbeat_type_open_drone_id
+  {
+    uint8_t tmp;
+    cdr >> tmp;
+    ros_message->heartbeat_type_open_drone_id = tmp ? true : false;
+  }
+
   // Field name: heartbeat_component_telemetry_radio
   {
     uint8_t tmp;
@@ -474,6 +491,13 @@ static bool _TelemetryStatus__cdr_deserialize(
     uint8_t tmp;
     cdr >> tmp;
     ros_message->avoidance_system_healthy = tmp ? true : false;
+  }
+
+  // Field name: open_drone_id_system_healthy
+  {
+    uint8_t tmp;
+    cdr >> tmp;
+    ros_message->open_drone_id_system_healthy = tmp ? true : false;
   }
 
   // Field name: parachute_system_healthy
@@ -668,6 +692,12 @@ size_t get_serialized_size_px4_msgs__msg__TelemetryStatus(
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
+  // field.name heartbeat_type_open_drone_id
+  {
+    size_t item_size = sizeof(ros_message->heartbeat_type_open_drone_id);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
   // field.name heartbeat_component_telemetry_radio
   {
     size_t item_size = sizeof(ros_message->heartbeat_component_telemetry_radio);
@@ -719,6 +749,12 @@ size_t get_serialized_size_px4_msgs__msg__TelemetryStatus(
   // field.name avoidance_system_healthy
   {
     size_t item_size = sizeof(ros_message->avoidance_system_healthy);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // field.name open_drone_id_system_healthy
+  {
+    size_t item_size = sizeof(ros_message->open_drone_id_system_healthy);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -934,6 +970,12 @@ size_t max_serialized_size_px4_msgs__msg__TelemetryStatus(
 
     current_alignment += array_size * sizeof(uint8_t);
   }
+  // member: heartbeat_type_open_drone_id
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
+  }
   // member: heartbeat_component_telemetry_radio
   {
     size_t array_size = 1;
@@ -983,6 +1025,12 @@ size_t max_serialized_size_px4_msgs__msg__TelemetryStatus(
     current_alignment += array_size * sizeof(uint8_t);
   }
   // member: avoidance_system_healthy
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
+  }
+  // member: open_drone_id_system_healthy
   {
     size_t array_size = 1;
 

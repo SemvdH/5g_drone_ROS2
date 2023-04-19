@@ -69,6 +69,10 @@ module px4_msgs {
       uint8 video_switch;
 
       @verbatim (language="comment", text=
+        " Engage the main motor (for helicopters)")
+      uint8 engage_main_motor_switch;
+
+      @verbatim (language="comment", text=
         " number of switch changes")
       uint32 switch_changes;
     };

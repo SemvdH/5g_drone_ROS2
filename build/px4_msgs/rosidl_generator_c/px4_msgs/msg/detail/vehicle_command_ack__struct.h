@@ -17,40 +17,46 @@ extern "C"
 
 // Constants defined in the message
 
-/// Constant 'VEHICLE_RESULT_ACCEPTED'.
+/// Constant 'VEHICLE_CMD_RESULT_ACCEPTED'.
 enum
 {
-  px4_msgs__msg__VehicleCommandAck__VEHICLE_RESULT_ACCEPTED = 0
+  px4_msgs__msg__VehicleCommandAck__VEHICLE_CMD_RESULT_ACCEPTED = 0
 };
 
-/// Constant 'VEHICLE_RESULT_TEMPORARILY_REJECTED'.
+/// Constant 'VEHICLE_CMD_RESULT_TEMPORARILY_REJECTED'.
 enum
 {
-  px4_msgs__msg__VehicleCommandAck__VEHICLE_RESULT_TEMPORARILY_REJECTED = 1
+  px4_msgs__msg__VehicleCommandAck__VEHICLE_CMD_RESULT_TEMPORARILY_REJECTED = 1
 };
 
-/// Constant 'VEHICLE_RESULT_DENIED'.
+/// Constant 'VEHICLE_CMD_RESULT_DENIED'.
 enum
 {
-  px4_msgs__msg__VehicleCommandAck__VEHICLE_RESULT_DENIED = 2
+  px4_msgs__msg__VehicleCommandAck__VEHICLE_CMD_RESULT_DENIED = 2
 };
 
-/// Constant 'VEHICLE_RESULT_UNSUPPORTED'.
+/// Constant 'VEHICLE_CMD_RESULT_UNSUPPORTED'.
 enum
 {
-  px4_msgs__msg__VehicleCommandAck__VEHICLE_RESULT_UNSUPPORTED = 3
+  px4_msgs__msg__VehicleCommandAck__VEHICLE_CMD_RESULT_UNSUPPORTED = 3
 };
 
-/// Constant 'VEHICLE_RESULT_FAILED'.
+/// Constant 'VEHICLE_CMD_RESULT_FAILED'.
 enum
 {
-  px4_msgs__msg__VehicleCommandAck__VEHICLE_RESULT_FAILED = 4
+  px4_msgs__msg__VehicleCommandAck__VEHICLE_CMD_RESULT_FAILED = 4
 };
 
-/// Constant 'VEHICLE_RESULT_IN_PROGRESS'.
+/// Constant 'VEHICLE_CMD_RESULT_IN_PROGRESS'.
 enum
 {
-  px4_msgs__msg__VehicleCommandAck__VEHICLE_RESULT_IN_PROGRESS = 5
+  px4_msgs__msg__VehicleCommandAck__VEHICLE_CMD_RESULT_IN_PROGRESS = 5
+};
+
+/// Constant 'VEHICLE_CMD_RESULT_CANCELLED'.
+enum
+{
+  px4_msgs__msg__VehicleCommandAck__VEHICLE_CMD_RESULT_CANCELLED = 6
 };
 
 /// Constant 'ARM_AUTH_DENIED_REASON_GENERIC'.
@@ -101,11 +107,11 @@ typedef struct px4_msgs__msg__VehicleCommandAck
   uint64_t timestamp;
   uint32_t command;
   uint8_t result;
-  bool from_external;
   uint8_t result_param1;
   int32_t result_param2;
   uint8_t target_system;
   uint8_t target_component;
+  bool from_external;
 } px4_msgs__msg__VehicleCommandAck;
 
 // Struct for a sequence of px4_msgs__msg__VehicleCommandAck.

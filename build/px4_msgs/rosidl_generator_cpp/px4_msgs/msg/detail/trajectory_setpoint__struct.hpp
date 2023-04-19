@@ -38,40 +38,31 @@ struct TrajectorySetpoint_
       rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
     {
       this->timestamp = 0ull;
-      this->x = 0.0f;
-      this->y = 0.0f;
-      this->z = 0.0f;
-      this->yaw = 0.0f;
-      this->yawspeed = 0.0f;
-      this->vx = 0.0f;
-      this->vy = 0.0f;
-      this->vz = 0.0f;
+      std::fill<typename std::array<float, 3>::iterator, float>(this->position.begin(), this->position.end(), 0.0f);
+      std::fill<typename std::array<float, 3>::iterator, float>(this->velocity.begin(), this->velocity.end(), 0.0f);
       std::fill<typename std::array<float, 3>::iterator, float>(this->acceleration.begin(), this->acceleration.end(), 0.0f);
       std::fill<typename std::array<float, 3>::iterator, float>(this->jerk.begin(), this->jerk.end(), 0.0f);
-      std::fill<typename std::array<float, 3>::iterator, float>(this->thrust.begin(), this->thrust.end(), 0.0f);
+      this->yaw = 0.0f;
+      this->yawspeed = 0.0f;
     }
   }
 
   explicit TrajectorySetpoint_(const ContainerAllocator & _alloc, rosidl_runtime_cpp::MessageInitialization _init = rosidl_runtime_cpp::MessageInitialization::ALL)
-  : acceleration(_alloc),
-    jerk(_alloc),
-    thrust(_alloc)
+  : position(_alloc),
+    velocity(_alloc),
+    acceleration(_alloc),
+    jerk(_alloc)
   {
     if (rosidl_runtime_cpp::MessageInitialization::ALL == _init ||
       rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
     {
       this->timestamp = 0ull;
-      this->x = 0.0f;
-      this->y = 0.0f;
-      this->z = 0.0f;
-      this->yaw = 0.0f;
-      this->yawspeed = 0.0f;
-      this->vx = 0.0f;
-      this->vy = 0.0f;
-      this->vz = 0.0f;
+      std::fill<typename std::array<float, 3>::iterator, float>(this->position.begin(), this->position.end(), 0.0f);
+      std::fill<typename std::array<float, 3>::iterator, float>(this->velocity.begin(), this->velocity.end(), 0.0f);
       std::fill<typename std::array<float, 3>::iterator, float>(this->acceleration.begin(), this->acceleration.end(), 0.0f);
       std::fill<typename std::array<float, 3>::iterator, float>(this->jerk.begin(), this->jerk.end(), 0.0f);
-      std::fill<typename std::array<float, 3>::iterator, float>(this->thrust.begin(), this->thrust.end(), 0.0f);
+      this->yaw = 0.0f;
+      this->yawspeed = 0.0f;
     }
   }
 
@@ -79,39 +70,24 @@ struct TrajectorySetpoint_
   using _timestamp_type =
     uint64_t;
   _timestamp_type timestamp;
-  using _x_type =
-    float;
-  _x_type x;
-  using _y_type =
-    float;
-  _y_type y;
-  using _z_type =
-    float;
-  _z_type z;
-  using _yaw_type =
-    float;
-  _yaw_type yaw;
-  using _yawspeed_type =
-    float;
-  _yawspeed_type yawspeed;
-  using _vx_type =
-    float;
-  _vx_type vx;
-  using _vy_type =
-    float;
-  _vy_type vy;
-  using _vz_type =
-    float;
-  _vz_type vz;
+  using _position_type =
+    std::array<float, 3>;
+  _position_type position;
+  using _velocity_type =
+    std::array<float, 3>;
+  _velocity_type velocity;
   using _acceleration_type =
     std::array<float, 3>;
   _acceleration_type acceleration;
   using _jerk_type =
     std::array<float, 3>;
   _jerk_type jerk;
-  using _thrust_type =
-    std::array<float, 3>;
-  _thrust_type thrust;
+  using _yaw_type =
+    float;
+  _yaw_type yaw;
+  using _yawspeed_type =
+    float;
+  _yawspeed_type yawspeed;
 
   // setters for named parameter idiom
   Type & set__timestamp(
@@ -120,52 +96,16 @@ struct TrajectorySetpoint_
     this->timestamp = _arg;
     return *this;
   }
-  Type & set__x(
-    const float & _arg)
+  Type & set__position(
+    const std::array<float, 3> & _arg)
   {
-    this->x = _arg;
+    this->position = _arg;
     return *this;
   }
-  Type & set__y(
-    const float & _arg)
+  Type & set__velocity(
+    const std::array<float, 3> & _arg)
   {
-    this->y = _arg;
-    return *this;
-  }
-  Type & set__z(
-    const float & _arg)
-  {
-    this->z = _arg;
-    return *this;
-  }
-  Type & set__yaw(
-    const float & _arg)
-  {
-    this->yaw = _arg;
-    return *this;
-  }
-  Type & set__yawspeed(
-    const float & _arg)
-  {
-    this->yawspeed = _arg;
-    return *this;
-  }
-  Type & set__vx(
-    const float & _arg)
-  {
-    this->vx = _arg;
-    return *this;
-  }
-  Type & set__vy(
-    const float & _arg)
-  {
-    this->vy = _arg;
-    return *this;
-  }
-  Type & set__vz(
-    const float & _arg)
-  {
-    this->vz = _arg;
+    this->velocity = _arg;
     return *this;
   }
   Type & set__acceleration(
@@ -180,10 +120,16 @@ struct TrajectorySetpoint_
     this->jerk = _arg;
     return *this;
   }
-  Type & set__thrust(
-    const std::array<float, 3> & _arg)
+  Type & set__yaw(
+    const float & _arg)
   {
-    this->thrust = _arg;
+    this->yaw = _arg;
+    return *this;
+  }
+  Type & set__yawspeed(
+    const float & _arg)
+  {
+    this->yawspeed = _arg;
     return *this;
   }
 
@@ -232,28 +178,10 @@ struct TrajectorySetpoint_
     if (this->timestamp != other.timestamp) {
       return false;
     }
-    if (this->x != other.x) {
+    if (this->position != other.position) {
       return false;
     }
-    if (this->y != other.y) {
-      return false;
-    }
-    if (this->z != other.z) {
-      return false;
-    }
-    if (this->yaw != other.yaw) {
-      return false;
-    }
-    if (this->yawspeed != other.yawspeed) {
-      return false;
-    }
-    if (this->vx != other.vx) {
-      return false;
-    }
-    if (this->vy != other.vy) {
-      return false;
-    }
-    if (this->vz != other.vz) {
+    if (this->velocity != other.velocity) {
       return false;
     }
     if (this->acceleration != other.acceleration) {
@@ -262,7 +190,10 @@ struct TrajectorySetpoint_
     if (this->jerk != other.jerk) {
       return false;
     }
-    if (this->thrust != other.thrust) {
+    if (this->yaw != other.yaw) {
+      return false;
+    }
+    if (this->yawspeed != other.yawspeed) {
       return false;
     }
     return true;

@@ -35,8 +35,10 @@ typedef struct px4_msgs__msg__EstimatorInnovations
   float aux_hvel[2];
   float aux_vvel;
   float flow[2];
+  float terr_flow[2];
   float heading;
   float mag_field[3];
+  float gravity[3];
   float drag[2];
   float airspeed;
   float beta;

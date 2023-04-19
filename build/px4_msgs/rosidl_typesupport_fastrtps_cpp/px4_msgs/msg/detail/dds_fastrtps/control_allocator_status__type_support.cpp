@@ -36,20 +36,12 @@ cdr_serialize(
   cdr << ros_message.timestamp;
   // Member: torque_setpoint_achieved
   cdr << (ros_message.torque_setpoint_achieved ? true : false);
-  // Member: allocated_torque
-  {
-    cdr << ros_message.allocated_torque;
-  }
   // Member: unallocated_torque
   {
     cdr << ros_message.unallocated_torque;
   }
   // Member: thrust_setpoint_achieved
   cdr << (ros_message.thrust_setpoint_achieved ? true : false);
-  // Member: allocated_thrust
-  {
-    cdr << ros_message.allocated_thrust;
-  }
   // Member: unallocated_thrust
   {
     cdr << ros_message.unallocated_thrust;
@@ -58,6 +50,8 @@ cdr_serialize(
   {
     cdr << ros_message.actuator_saturation;
   }
+  // Member: handled_motor_failure_mask
+  cdr << ros_message.handled_motor_failure_mask;
   return true;
 }
 
@@ -77,11 +71,6 @@ cdr_deserialize(
     ros_message.torque_setpoint_achieved = tmp ? true : false;
   }
 
-  // Member: allocated_torque
-  {
-    cdr >> ros_message.allocated_torque;
-  }
-
   // Member: unallocated_torque
   {
     cdr >> ros_message.unallocated_torque;
@@ -94,11 +83,6 @@ cdr_deserialize(
     ros_message.thrust_setpoint_achieved = tmp ? true : false;
   }
 
-  // Member: allocated_thrust
-  {
-    cdr >> ros_message.allocated_thrust;
-  }
-
   // Member: unallocated_thrust
   {
     cdr >> ros_message.unallocated_thrust;
@@ -108,6 +92,9 @@ cdr_deserialize(
   {
     cdr >> ros_message.actuator_saturation;
   }
+
+  // Member: handled_motor_failure_mask
+  cdr >> ros_message.handled_motor_failure_mask;
 
   return true;
 }
@@ -137,13 +124,6 @@ get_serialized_size(
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // Member: allocated_torque
-  {
-    size_t array_size = 3;
-    size_t item_size = sizeof(ros_message.allocated_torque[0]);
-    current_alignment += array_size * item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
   // Member: unallocated_torque
   {
     size_t array_size = 3;
@@ -155,13 +135,6 @@ get_serialized_size(
   {
     size_t item_size = sizeof(ros_message.thrust_setpoint_achieved);
     current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // Member: allocated_thrust
-  {
-    size_t array_size = 3;
-    size_t item_size = sizeof(ros_message.allocated_thrust[0]);
-    current_alignment += array_size * item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
   // Member: unallocated_thrust
@@ -176,6 +149,12 @@ get_serialized_size(
     size_t array_size = 16;
     size_t item_size = sizeof(ros_message.actuator_saturation[0]);
     current_alignment += array_size * item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // Member: handled_motor_failure_mask
+  {
+    size_t item_size = sizeof(ros_message.handled_motor_failure_mask);
+    current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
 
@@ -212,14 +191,6 @@ max_serialized_size_ControlAllocatorStatus(
     current_alignment += array_size * sizeof(uint8_t);
   }
 
-  // Member: allocated_torque
-  {
-    size_t array_size = 3;
-
-    current_alignment += array_size * sizeof(uint32_t) +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
-  }
-
   // Member: unallocated_torque
   {
     size_t array_size = 3;
@@ -235,14 +206,6 @@ max_serialized_size_ControlAllocatorStatus(
     current_alignment += array_size * sizeof(uint8_t);
   }
 
-  // Member: allocated_thrust
-  {
-    size_t array_size = 3;
-
-    current_alignment += array_size * sizeof(uint32_t) +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
-  }
-
   // Member: unallocated_thrust
   {
     size_t array_size = 3;
@@ -256,6 +219,14 @@ max_serialized_size_ControlAllocatorStatus(
     size_t array_size = 16;
 
     current_alignment += array_size * sizeof(uint8_t);
+  }
+
+  // Member: handled_motor_failure_mask
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint16_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint16_t));
   }
 
   return current_alignment - initial_alignment;

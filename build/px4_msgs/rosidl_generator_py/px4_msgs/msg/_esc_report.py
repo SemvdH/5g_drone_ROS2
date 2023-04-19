@@ -152,8 +152,11 @@ class EscReport(metaclass=Metaclass_EscReport):
         '_esc_current',
         '_esc_temperature',
         '_esc_address',
+        '_esc_cmdcount',
         '_esc_state',
+        '_actuator_function',
         '_failures',
+        '_esc_power',
     ]
 
     _fields_and_field_types = {
@@ -164,8 +167,11 @@ class EscReport(metaclass=Metaclass_EscReport):
         'esc_current': 'float',
         'esc_temperature': 'float',
         'esc_address': 'uint8',
+        'esc_cmdcount': 'uint8',
         'esc_state': 'uint8',
+        'actuator_function': 'uint8',
         'failures': 'uint16',
+        'esc_power': 'int8',
     }
 
     SLOT_TYPES = (
@@ -177,7 +183,10 @@ class EscReport(metaclass=Metaclass_EscReport):
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
         rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
         rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
+        rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
+        rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
         rosidl_parser.definition.BasicType('uint16'),  # noqa: E501
+        rosidl_parser.definition.BasicType('int8'),  # noqa: E501
     )
 
     def __init__(self, **kwargs):
@@ -191,8 +200,11 @@ class EscReport(metaclass=Metaclass_EscReport):
         self.esc_current = kwargs.get('esc_current', float())
         self.esc_temperature = kwargs.get('esc_temperature', float())
         self.esc_address = kwargs.get('esc_address', int())
+        self.esc_cmdcount = kwargs.get('esc_cmdcount', int())
         self.esc_state = kwargs.get('esc_state', int())
+        self.actuator_function = kwargs.get('actuator_function', int())
         self.failures = kwargs.get('failures', int())
+        self.esc_power = kwargs.get('esc_power', int())
 
     def __repr__(self):
         typename = self.__class__.__module__.split('.')
@@ -237,9 +249,15 @@ class EscReport(metaclass=Metaclass_EscReport):
             return False
         if self.esc_address != other.esc_address:
             return False
+        if self.esc_cmdcount != other.esc_cmdcount:
+            return False
         if self.esc_state != other.esc_state:
             return False
+        if self.actuator_function != other.actuator_function:
+            return False
         if self.failures != other.failures:
+            return False
+        if self.esc_power != other.esc_power:
             return False
         return True
 
@@ -348,6 +366,21 @@ class EscReport(metaclass=Metaclass_EscReport):
         self._esc_address = value
 
     @property
+    def esc_cmdcount(self):
+        """Message field 'esc_cmdcount'."""
+        return self._esc_cmdcount
+
+    @esc_cmdcount.setter
+    def esc_cmdcount(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, int), \
+                "The 'esc_cmdcount' field must be of type 'int'"
+            assert value >= 0 and value < 256, \
+                "The 'esc_cmdcount' field must be an unsigned integer in [0, 255]"
+        self._esc_cmdcount = value
+
+    @property
     def esc_state(self):
         """Message field 'esc_state'."""
         return self._esc_state
@@ -363,6 +396,21 @@ class EscReport(metaclass=Metaclass_EscReport):
         self._esc_state = value
 
     @property
+    def actuator_function(self):
+        """Message field 'actuator_function'."""
+        return self._actuator_function
+
+    @actuator_function.setter
+    def actuator_function(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, int), \
+                "The 'actuator_function' field must be of type 'int'"
+            assert value >= 0 and value < 256, \
+                "The 'actuator_function' field must be an unsigned integer in [0, 255]"
+        self._actuator_function = value
+
+    @property
     def failures(self):
         """Message field 'failures'."""
         return self._failures
@@ -376,3 +424,18 @@ class EscReport(metaclass=Metaclass_EscReport):
             assert value >= 0 and value < 65536, \
                 "The 'failures' field must be an unsigned integer in [0, 65535]"
         self._failures = value
+
+    @property
+    def esc_power(self):
+        """Message field 'esc_power'."""
+        return self._esc_power
+
+    @esc_power.setter
+    def esc_power(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, int), \
+                "The 'esc_power' field must be of type 'int'"
+            assert value >= -128 and value < 128, \
+                "The 'esc_power' field must be an integer in [-128, 127]"
+        self._esc_power = value

@@ -7,7 +7,7 @@ module px4_msgs {
   module msg {
     typedef uint8 uint8__25[25];
     module Event_Constants {
-      const uint8 ORB_QUEUE_LENGTH = 8;
+      const uint8 ORB_QUEUE_LENGTH = 16;
     };
     @verbatim (language="comment", text=
       " Events interface")

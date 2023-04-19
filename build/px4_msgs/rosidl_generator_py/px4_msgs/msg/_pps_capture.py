@@ -55,16 +55,19 @@ class PpsCapture(metaclass=Metaclass_PpsCapture):
     __slots__ = [
         '_timestamp',
         '_rtc_timestamp',
+        '_pps_rate_exceeded_counter',
     ]
 
     _fields_and_field_types = {
         'timestamp': 'uint64',
         'rtc_timestamp': 'uint64',
+        'pps_rate_exceeded_counter': 'uint8',
     }
 
     SLOT_TYPES = (
         rosidl_parser.definition.BasicType('uint64'),  # noqa: E501
         rosidl_parser.definition.BasicType('uint64'),  # noqa: E501
+        rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
     )
 
     def __init__(self, **kwargs):
@@ -73,6 +76,7 @@ class PpsCapture(metaclass=Metaclass_PpsCapture):
             ', '.join(sorted(k for k in kwargs.keys() if '_' + k not in self.__slots__))
         self.timestamp = kwargs.get('timestamp', int())
         self.rtc_timestamp = kwargs.get('rtc_timestamp', int())
+        self.pps_rate_exceeded_counter = kwargs.get('pps_rate_exceeded_counter', int())
 
     def __repr__(self):
         typename = self.__class__.__module__.split('.')
@@ -106,6 +110,8 @@ class PpsCapture(metaclass=Metaclass_PpsCapture):
         if self.timestamp != other.timestamp:
             return False
         if self.rtc_timestamp != other.rtc_timestamp:
+            return False
+        if self.pps_rate_exceeded_counter != other.pps_rate_exceeded_counter:
             return False
         return True
 
@@ -143,3 +149,18 @@ class PpsCapture(metaclass=Metaclass_PpsCapture):
             assert value >= 0 and value < 18446744073709551616, \
                 "The 'rtc_timestamp' field must be an unsigned integer in [0, 18446744073709551615]"
         self._rtc_timestamp = value
+
+    @property
+    def pps_rate_exceeded_counter(self):
+        """Message field 'pps_rate_exceeded_counter'."""
+        return self._pps_rate_exceeded_counter
+
+    @pps_rate_exceeded_counter.setter
+    def pps_rate_exceeded_counter(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, int), \
+                "The 'pps_rate_exceeded_counter' field must be of type 'int'"
+            assert value >= 0 and value < 256, \
+                "The 'pps_rate_exceeded_counter' field must be an unsigned integer in [0, 255]"
+        self._pps_rate_exceeded_counter = value

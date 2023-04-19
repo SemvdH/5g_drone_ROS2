@@ -12,15 +12,19 @@ module px4_msgs {
       uint64 timestamp;
 
       @verbatim (language="comment", text=
-        " body angular rates in NED frame")
+        " body angular rates in NED frame" "\n"
+        " [rad/s] roll rate setpoint")
+      @unit (value="rad/s")
       float roll;
 
       @verbatim (language="comment", text=
-        " body angular rates in NED frame")
+        " pitch rate setpoint")
+      @unit (value="rad/s")
       float pitch;
 
       @verbatim (language="comment", text=
-        " body angular rates in NED frame")
+        " yaw rate setpoint")
+      @unit (value="rad/s")
       float yaw;
 
       @verbatim (language="comment", text=
@@ -28,6 +32,10 @@ module px4_msgs {
         " For fixed wings thrust_x is the throttle demand and thrust_y, thrust_z will usually be zero." "\n"
         " Normalized thrust command in body NED frame [-1,1]")
       float__3 thrust_body;
+
+      @verbatim (language="comment", text=
+        " Reset roll/pitch/yaw integrals (navigation logic change)")
+      boolean reset_integral;
     };
   };
 };

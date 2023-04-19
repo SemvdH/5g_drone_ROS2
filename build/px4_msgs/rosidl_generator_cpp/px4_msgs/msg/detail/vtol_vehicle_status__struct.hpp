@@ -38,11 +38,8 @@ struct VtolVehicleStatus_
       rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
     {
       this->timestamp = 0ull;
-      this->vtol_in_rw_mode = false;
-      this->vtol_in_trans_mode = false;
-      this->in_transition_to_fw = false;
-      this->vtol_transition_failsafe = false;
-      this->fw_permanent_stab = false;
+      this->vehicle_vtol_state = 0;
+      this->fixed_wing_system_failure = false;
     }
   }
 
@@ -53,11 +50,8 @@ struct VtolVehicleStatus_
       rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
     {
       this->timestamp = 0ull;
-      this->vtol_in_rw_mode = false;
-      this->vtol_in_trans_mode = false;
-      this->in_transition_to_fw = false;
-      this->vtol_transition_failsafe = false;
-      this->fw_permanent_stab = false;
+      this->vehicle_vtol_state = 0;
+      this->fixed_wing_system_failure = false;
     }
   }
 
@@ -65,21 +59,12 @@ struct VtolVehicleStatus_
   using _timestamp_type =
     uint64_t;
   _timestamp_type timestamp;
-  using _vtol_in_rw_mode_type =
+  using _vehicle_vtol_state_type =
+    uint8_t;
+  _vehicle_vtol_state_type vehicle_vtol_state;
+  using _fixed_wing_system_failure_type =
     bool;
-  _vtol_in_rw_mode_type vtol_in_rw_mode;
-  using _vtol_in_trans_mode_type =
-    bool;
-  _vtol_in_trans_mode_type vtol_in_trans_mode;
-  using _in_transition_to_fw_type =
-    bool;
-  _in_transition_to_fw_type in_transition_to_fw;
-  using _vtol_transition_failsafe_type =
-    bool;
-  _vtol_transition_failsafe_type vtol_transition_failsafe;
-  using _fw_permanent_stab_type =
-    bool;
-  _fw_permanent_stab_type fw_permanent_stab;
+  _fixed_wing_system_failure_type fixed_wing_system_failure;
 
   // setters for named parameter idiom
   Type & set__timestamp(
@@ -88,34 +73,16 @@ struct VtolVehicleStatus_
     this->timestamp = _arg;
     return *this;
   }
-  Type & set__vtol_in_rw_mode(
-    const bool & _arg)
+  Type & set__vehicle_vtol_state(
+    const uint8_t & _arg)
   {
-    this->vtol_in_rw_mode = _arg;
+    this->vehicle_vtol_state = _arg;
     return *this;
   }
-  Type & set__vtol_in_trans_mode(
+  Type & set__fixed_wing_system_failure(
     const bool & _arg)
   {
-    this->vtol_in_trans_mode = _arg;
-    return *this;
-  }
-  Type & set__in_transition_to_fw(
-    const bool & _arg)
-  {
-    this->in_transition_to_fw = _arg;
-    return *this;
-  }
-  Type & set__vtol_transition_failsafe(
-    const bool & _arg)
-  {
-    this->vtol_transition_failsafe = _arg;
-    return *this;
-  }
-  Type & set__fw_permanent_stab(
-    const bool & _arg)
-  {
-    this->fw_permanent_stab = _arg;
+    this->fixed_wing_system_failure = _arg;
     return *this;
   }
 
@@ -174,19 +141,10 @@ struct VtolVehicleStatus_
     if (this->timestamp != other.timestamp) {
       return false;
     }
-    if (this->vtol_in_rw_mode != other.vtol_in_rw_mode) {
+    if (this->vehicle_vtol_state != other.vehicle_vtol_state) {
       return false;
     }
-    if (this->vtol_in_trans_mode != other.vtol_in_trans_mode) {
-      return false;
-    }
-    if (this->in_transition_to_fw != other.in_transition_to_fw) {
-      return false;
-    }
-    if (this->vtol_transition_failsafe != other.vtol_transition_failsafe) {
-      return false;
-    }
-    if (this->fw_permanent_stab != other.fw_permanent_stab) {
+    if (this->fixed_wing_system_failure != other.fixed_wing_system_failure) {
       return false;
     }
     return true;

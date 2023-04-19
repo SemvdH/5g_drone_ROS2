@@ -6,7 +6,7 @@
 module px4_msgs {
   module msg {
     typedef float float__18[18];
-    typedef int8 int8__27[27];
+    typedef int8 int8__28[28];
     module RcChannels_Constants {
       const uint8 FUNCTION_THROTTLE = 0;
       const uint8 FUNCTION_ROLL = 1;
@@ -35,6 +35,7 @@ module px4_msgs {
       const uint8 FUNCTION_FLTBTN_SLOT_4 = 24;
       const uint8 FUNCTION_FLTBTN_SLOT_5 = 25;
       const uint8 FUNCTION_FLTBTN_SLOT_6 = 26;
+      const uint8 FUNCTION_ENGAGE_MAIN_MOTOR = 27;
       const uint8 FUNCTION_FLTBTN_SLOT_COUNT = 6;
     };
     struct RcChannels {
@@ -56,7 +57,7 @@ module px4_msgs {
 
       @verbatim (language="comment", text=
         " Functions mapping")
-      int8__27 function;
+      int8__28 function;
 
       @verbatim (language="comment", text=
         " Receive signal strength index")

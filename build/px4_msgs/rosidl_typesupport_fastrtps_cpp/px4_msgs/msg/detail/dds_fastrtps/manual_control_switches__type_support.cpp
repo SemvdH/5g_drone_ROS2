@@ -56,6 +56,8 @@ cdr_serialize(
   cdr << ros_message.photo_switch;
   // Member: video_switch
   cdr << ros_message.video_switch;
+  // Member: engage_main_motor_switch
+  cdr << ros_message.engage_main_motor_switch;
   // Member: switch_changes
   cdr << ros_message.switch_changes;
   return true;
@@ -102,6 +104,9 @@ cdr_deserialize(
 
   // Member: video_switch
   cdr >> ros_message.video_switch;
+
+  // Member: engage_main_motor_switch
+  cdr >> ros_message.engage_main_motor_switch;
 
   // Member: switch_changes
   cdr >> ros_message.switch_changes;
@@ -191,6 +196,12 @@ get_serialized_size(
   // Member: video_switch
   {
     size_t item_size = sizeof(ros_message.video_switch);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // Member: engage_main_motor_switch
+  {
+    size_t item_size = sizeof(ros_message.engage_main_motor_switch);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -299,6 +310,13 @@ max_serialized_size_ManualControlSwitches(
   }
 
   // Member: video_switch
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
+  }
+
+  // Member: engage_main_motor_switch
   {
     size_t array_size = 1;
 

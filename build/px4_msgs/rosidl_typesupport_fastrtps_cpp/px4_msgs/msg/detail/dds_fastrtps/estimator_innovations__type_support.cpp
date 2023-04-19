@@ -74,11 +74,19 @@ cdr_serialize(
   {
     cdr << ros_message.flow;
   }
+  // Member: terr_flow
+  {
+    cdr << ros_message.terr_flow;
+  }
   // Member: heading
   cdr << ros_message.heading;
   // Member: mag_field
   {
     cdr << ros_message.mag_field;
+  }
+  // Member: gravity
+  {
+    cdr << ros_message.gravity;
   }
   // Member: drag
   {
@@ -158,12 +166,22 @@ cdr_deserialize(
     cdr >> ros_message.flow;
   }
 
+  // Member: terr_flow
+  {
+    cdr >> ros_message.terr_flow;
+  }
+
   // Member: heading
   cdr >> ros_message.heading;
 
   // Member: mag_field
   {
     cdr >> ros_message.mag_field;
+  }
+
+  // Member: gravity
+  {
+    cdr >> ros_message.gravity;
   }
 
   // Member: drag
@@ -295,6 +313,13 @@ get_serialized_size(
     current_alignment += array_size * item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
+  // Member: terr_flow
+  {
+    size_t array_size = 2;
+    size_t item_size = sizeof(ros_message.terr_flow[0]);
+    current_alignment += array_size * item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
   // Member: heading
   {
     size_t item_size = sizeof(ros_message.heading);
@@ -305,6 +330,13 @@ get_serialized_size(
   {
     size_t array_size = 3;
     size_t item_size = sizeof(ros_message.mag_field[0]);
+    current_alignment += array_size * item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // Member: gravity
+  {
+    size_t array_size = 3;
+    size_t item_size = sizeof(ros_message.gravity[0]);
     current_alignment += array_size * item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -478,6 +510,14 @@ max_serialized_size_EstimatorInnovations(
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
 
+  // Member: terr_flow
+  {
+    size_t array_size = 2;
+
+    current_alignment += array_size * sizeof(uint32_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
+  }
+
   // Member: heading
   {
     size_t array_size = 1;
@@ -487,6 +527,14 @@ max_serialized_size_EstimatorInnovations(
   }
 
   // Member: mag_field
+  {
+    size_t array_size = 3;
+
+    current_alignment += array_size * sizeof(uint32_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
+  }
+
+  // Member: gravity
   {
     size_t array_size = 3;
 

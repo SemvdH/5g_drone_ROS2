@@ -21,7 +21,8 @@ class Metaclass_ActuatorMotors(type):
     _TYPE_SUPPORT = None
 
     __constants = {
-        'NUM_CONTROLS': 8,
+        'ACTUATOR_FUNCTION_MOTOR1': 101,
+        'NUM_CONTROLS': 12,
     }
 
     @classmethod
@@ -50,8 +51,14 @@ class Metaclass_ActuatorMotors(type):
         # the message class under "Data and other attributes defined here:"
         # as well as populate each message instance
         return {
+            'ACTUATOR_FUNCTION_MOTOR1': cls.__constants['ACTUATOR_FUNCTION_MOTOR1'],
             'NUM_CONTROLS': cls.__constants['NUM_CONTROLS'],
         }
+
+    @property
+    def ACTUATOR_FUNCTION_MOTOR1(self):
+        """Message constant 'ACTUATOR_FUNCTION_MOTOR1'."""
+        return Metaclass_ActuatorMotors.__constants['ACTUATOR_FUNCTION_MOTOR1']
 
     @property
     def NUM_CONTROLS(self):
@@ -64,6 +71,7 @@ class ActuatorMotors(metaclass=Metaclass_ActuatorMotors):
     Message class 'ActuatorMotors'.
 
     Constants:
+      ACTUATOR_FUNCTION_MOTOR1
       NUM_CONTROLS
     """
 
@@ -78,14 +86,14 @@ class ActuatorMotors(metaclass=Metaclass_ActuatorMotors):
         'timestamp': 'uint64',
         'timestamp_sample': 'uint64',
         'reversible_flags': 'uint16',
-        'control': 'float[8]',
+        'control': 'float[12]',
     }
 
     SLOT_TYPES = (
         rosidl_parser.definition.BasicType('uint64'),  # noqa: E501
         rosidl_parser.definition.BasicType('uint64'),  # noqa: E501
         rosidl_parser.definition.BasicType('uint16'),  # noqa: E501
-        rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 8),  # noqa: E501
+        rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 12),  # noqa: E501
     )
 
     def __init__(self, **kwargs):
@@ -96,10 +104,10 @@ class ActuatorMotors(metaclass=Metaclass_ActuatorMotors):
         self.timestamp_sample = kwargs.get('timestamp_sample', int())
         self.reversible_flags = kwargs.get('reversible_flags', int())
         if 'control' not in kwargs:
-            self.control = numpy.zeros(8, dtype=numpy.float32)
+            self.control = numpy.zeros(12, dtype=numpy.float32)
         else:
             self.control = numpy.array(kwargs.get('control'), dtype=numpy.float32)
-            assert self.control.shape == (8, )
+            assert self.control.shape == (12, )
 
     def __repr__(self):
         typename = self.__class__.__module__.split('.')
@@ -200,8 +208,8 @@ class ActuatorMotors(metaclass=Metaclass_ActuatorMotors):
         if isinstance(value, numpy.ndarray):
             assert value.dtype == numpy.float32, \
                 "The 'control' numpy.ndarray() must have the dtype of 'numpy.float32'"
-            assert value.size == 8, \
-                "The 'control' numpy.ndarray() must have a size of 8"
+            assert value.size == 12, \
+                "The 'control' numpy.ndarray() must have a size of 12"
             self._control = value
             return
         if __debug__:
@@ -215,8 +223,8 @@ class ActuatorMotors(metaclass=Metaclass_ActuatorMotors):
                   isinstance(value, UserList)) and
                  not isinstance(value, str) and
                  not isinstance(value, UserString) and
-                 len(value) == 8 and
+                 len(value) == 12 and
                  all(isinstance(v, float) for v in value) and
                  True), \
-                "The 'control' field must be a set or sequence with length 8 and each value of type 'float'"
+                "The 'control' field must be a set or sequence with length 12 and each value of type 'float'"
         self._control = numpy.array(value, dtype=numpy.float32)

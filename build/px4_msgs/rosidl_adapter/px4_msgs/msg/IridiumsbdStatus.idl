@@ -31,7 +31,7 @@ module px4_msgs {
       uint16 failed_sbd_sessions;
 
       @verbatim (language="comment", text=
-        " number of successfull sbd sessions")
+        " number of successful sbd sessions")
       uint16 successful_sbd_sessions;
 
       @verbatim (language="comment", text=

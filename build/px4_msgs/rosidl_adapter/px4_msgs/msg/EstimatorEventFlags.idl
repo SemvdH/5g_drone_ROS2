@@ -72,6 +72,22 @@ module px4_msgs {
       boolean yaw_aligned_to_imu_gps;
 
       @verbatim (language="comment", text=
+        " 13 - true when the vertical position state is reset to the baro measurement")
+      boolean reset_hgt_to_baro;
+
+      @verbatim (language="comment", text=
+        " 14 - true when the vertical position state is reset to the gps measurement")
+      boolean reset_hgt_to_gps;
+
+      @verbatim (language="comment", text=
+        " 15 - true when the vertical position state is reset to the rng measurement")
+      boolean reset_hgt_to_rng;
+
+      @verbatim (language="comment", text=
+        " 16 - true when the vertical position state is reset to the ev measurement")
+      boolean reset_hgt_to_ev;
+
+      @verbatim (language="comment", text=
         " warning events" "\n"
         " number of warning event changes")
       uint32 warning_event_changes;
@@ -105,11 +121,11 @@ module px4_msgs {
       boolean invalid_accel_bias_cov_reset;
 
       @verbatim (language="comment", text=
-        "  7 - true when the fiter has detected an invalid yaw esitmate and has reset the yaw angle to the GPS ground course")
+        "  7 - true when the filter has detected an invalid yaw estimate and has reset the yaw angle to the GPS ground course")
       boolean bad_yaw_using_gps_course;
 
       @verbatim (language="comment", text=
-        "  8 - true when the filter has detected bad magnetometer data and is stopping further use of the magnetomer data")
+        "  8 - true when the filter has detected bad magnetometer data and is stopping further use of the magnetometer data")
       boolean stopping_mag_use;
 
       @verbatim (language="comment", text=
@@ -117,7 +133,7 @@ module px4_msgs {
       boolean vision_data_stopped;
 
       @verbatim (language="comment", text=
-        " 10 - true when the filter has detected bad magnetometer data, has reset the yaw to anothter source of data and has stopped further use of the magnetomer data")
+        " 10 - true when the filter has detected bad magnetometer data, has reset the yaw to anothter source of data and has stopped further use of the magnetometer data")
       boolean emergency_yaw_reset_mag_stopped;
 
       @verbatim (language="comment", text=

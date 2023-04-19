@@ -17,10 +17,59 @@ extern "C"
 
 // Constants defined in the message
 
+/// Constant 'JAMMING_STATE_UNKNOWN'.
+enum
+{
+  px4_msgs__msg__SensorGps__JAMMING_STATE_UNKNOWN = 0
+};
+
+/// Constant 'JAMMING_STATE_OK'.
+enum
+{
+  px4_msgs__msg__SensorGps__JAMMING_STATE_OK = 1
+};
+
+/// Constant 'JAMMING_STATE_WARNING'.
+enum
+{
+  px4_msgs__msg__SensorGps__JAMMING_STATE_WARNING = 2
+};
+
+/// Constant 'JAMMING_STATE_CRITICAL'.
+enum
+{
+  px4_msgs__msg__SensorGps__JAMMING_STATE_CRITICAL = 3
+};
+
+/// Constant 'SPOOFING_STATE_UNKNOWN'.
+enum
+{
+  px4_msgs__msg__SensorGps__SPOOFING_STATE_UNKNOWN = 0
+};
+
+/// Constant 'SPOOFING_STATE_NONE'.
+enum
+{
+  px4_msgs__msg__SensorGps__SPOOFING_STATE_NONE = 1
+};
+
+/// Constant 'SPOOFING_STATE_INDICATED'.
+enum
+{
+  px4_msgs__msg__SensorGps__SPOOFING_STATE_INDICATED = 2
+};
+
+/// Constant 'SPOOFING_STATE_MULTIPLE'.
+enum
+{
+  px4_msgs__msg__SensorGps__SPOOFING_STATE_MULTIPLE = 3
+};
+
 // Struct defined in msg/SensorGps in the package px4_msgs.
 typedef struct px4_msgs__msg__SensorGps
 {
   uint64_t timestamp;
+  uint64_t timestamp_sample;
   uint32_t device_id;
   int32_t lat;
   int32_t lon;
@@ -35,8 +84,9 @@ typedef struct px4_msgs__msg__SensorGps
   float vdop;
   int32_t noise_per_ms;
   uint16_t automatic_gain_control;
-  int32_t jamming_indicator;
   uint8_t jamming_state;
+  int32_t jamming_indicator;
+  uint8_t spoofing_state;
   float vel_m_s;
   float vel_n_m_s;
   float vel_e_m_s;
@@ -49,6 +99,8 @@ typedef struct px4_msgs__msg__SensorGps
   float heading;
   float heading_offset;
   float heading_accuracy;
+  float rtcm_injection_rate;
+  uint8_t selected_rtcm_instance;
 } px4_msgs__msg__SensorGps;
 
 // Struct for a sequence of px4_msgs__msg__SensorGps.

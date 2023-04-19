@@ -16,7 +16,7 @@ module px4_msgs {
       uint64 timestamp_sample;
 
       @verbatim (language="comment", text=
-        " torque setpoint about X, Y, Z body axis (in N.m)")
+        " torque setpoint about X, Y, Z body axis (normalized)")
       float__3 xyz;
     };
   };

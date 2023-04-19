@@ -40,7 +40,7 @@ struct ActuatorMotors_
       this->timestamp = 0ull;
       this->timestamp_sample = 0ull;
       this->reversible_flags = 0;
-      std::fill<typename std::array<float, 8>::iterator, float>(this->control.begin(), this->control.end(), 0.0f);
+      std::fill<typename std::array<float, 12>::iterator, float>(this->control.begin(), this->control.end(), 0.0f);
     }
   }
 
@@ -53,7 +53,7 @@ struct ActuatorMotors_
       this->timestamp = 0ull;
       this->timestamp_sample = 0ull;
       this->reversible_flags = 0;
-      std::fill<typename std::array<float, 8>::iterator, float>(this->control.begin(), this->control.end(), 0.0f);
+      std::fill<typename std::array<float, 12>::iterator, float>(this->control.begin(), this->control.end(), 0.0f);
     }
   }
 
@@ -68,7 +68,7 @@ struct ActuatorMotors_
     uint16_t;
   _reversible_flags_type reversible_flags;
   using _control_type =
-    std::array<float, 8>;
+    std::array<float, 12>;
   _control_type control;
 
   // setters for named parameter idiom
@@ -91,15 +91,17 @@ struct ActuatorMotors_
     return *this;
   }
   Type & set__control(
-    const std::array<float, 8> & _arg)
+    const std::array<float, 12> & _arg)
   {
     this->control = _arg;
     return *this;
   }
 
   // constant declarations
+  static constexpr uint8_t ACTUATOR_FUNCTION_MOTOR1 =
+    101u;
   static constexpr uint8_t NUM_CONTROLS =
-    8u;
+    12u;
 
   // pointer types
   using RawPtr =
@@ -166,6 +168,8 @@ using ActuatorMotors =
   px4_msgs::msg::ActuatorMotors_<std::allocator<void>>;
 
 // constant definitions
+template<typename ContainerAllocator>
+constexpr uint8_t ActuatorMotors_<ContainerAllocator>::ACTUATOR_FUNCTION_MOTOR1;
 template<typename ContainerAllocator>
 constexpr uint8_t ActuatorMotors_<ContainerAllocator>::NUM_CONTROLS;
 

@@ -88,6 +88,9 @@ class EstimatorStatusFlags(metaclass=Metaclass_EstimatorStatusFlags):
         '_cs_inertial_dead_reckoning',
         '_cs_wind_dead_reckoning',
         '_cs_rng_kin_consistent',
+        '_cs_fake_pos',
+        '_cs_fake_hgt',
+        '_cs_gravity_vector',
         '_fault_status_changes',
         '_fs_bad_mag_x',
         '_fs_bad_mag_y',
@@ -112,9 +115,6 @@ class EstimatorStatusFlags(metaclass=Metaclass_EstimatorStatusFlags):
         '_reject_ver_vel',
         '_reject_hor_pos',
         '_reject_ver_pos',
-        '_reject_mag_x',
-        '_reject_mag_y',
-        '_reject_mag_z',
         '_reject_yaw',
         '_reject_airspeed',
         '_reject_sideslip',
@@ -159,6 +159,9 @@ class EstimatorStatusFlags(metaclass=Metaclass_EstimatorStatusFlags):
         'cs_inertial_dead_reckoning': 'boolean',
         'cs_wind_dead_reckoning': 'boolean',
         'cs_rng_kin_consistent': 'boolean',
+        'cs_fake_pos': 'boolean',
+        'cs_fake_hgt': 'boolean',
+        'cs_gravity_vector': 'boolean',
         'fault_status_changes': 'uint32',
         'fs_bad_mag_x': 'boolean',
         'fs_bad_mag_y': 'boolean',
@@ -183,9 +186,6 @@ class EstimatorStatusFlags(metaclass=Metaclass_EstimatorStatusFlags):
         'reject_ver_vel': 'boolean',
         'reject_hor_pos': 'boolean',
         'reject_ver_pos': 'boolean',
-        'reject_mag_x': 'boolean',
-        'reject_mag_y': 'boolean',
-        'reject_mag_z': 'boolean',
         'reject_yaw': 'boolean',
         'reject_airspeed': 'boolean',
         'reject_sideslip': 'boolean',
@@ -230,22 +230,6 @@ class EstimatorStatusFlags(metaclass=Metaclass_EstimatorStatusFlags):
         rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
         rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
         rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
-        rosidl_parser.definition.BasicType('uint32'),  # noqa: E501
-        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
-        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
-        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
-        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
-        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
-        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
-        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
-        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
-        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
-        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
-        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
-        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
-        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
-        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
-        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
         rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
         rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
         rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
@@ -253,6 +237,22 @@ class EstimatorStatusFlags(metaclass=Metaclass_EstimatorStatusFlags):
         rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
         rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
         rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
+        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
+        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
+        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
+        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
+        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
+        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
+        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
+        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
+        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
+        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
+        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
+        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
+        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
+        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
+        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
+        rosidl_parser.definition.BasicType('uint32'),  # noqa: E501
         rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
         rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
         rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
@@ -304,6 +304,9 @@ class EstimatorStatusFlags(metaclass=Metaclass_EstimatorStatusFlags):
         self.cs_inertial_dead_reckoning = kwargs.get('cs_inertial_dead_reckoning', bool())
         self.cs_wind_dead_reckoning = kwargs.get('cs_wind_dead_reckoning', bool())
         self.cs_rng_kin_consistent = kwargs.get('cs_rng_kin_consistent', bool())
+        self.cs_fake_pos = kwargs.get('cs_fake_pos', bool())
+        self.cs_fake_hgt = kwargs.get('cs_fake_hgt', bool())
+        self.cs_gravity_vector = kwargs.get('cs_gravity_vector', bool())
         self.fault_status_changes = kwargs.get('fault_status_changes', int())
         self.fs_bad_mag_x = kwargs.get('fs_bad_mag_x', bool())
         self.fs_bad_mag_y = kwargs.get('fs_bad_mag_y', bool())
@@ -328,9 +331,6 @@ class EstimatorStatusFlags(metaclass=Metaclass_EstimatorStatusFlags):
         self.reject_ver_vel = kwargs.get('reject_ver_vel', bool())
         self.reject_hor_pos = kwargs.get('reject_hor_pos', bool())
         self.reject_ver_pos = kwargs.get('reject_ver_pos', bool())
-        self.reject_mag_x = kwargs.get('reject_mag_x', bool())
-        self.reject_mag_y = kwargs.get('reject_mag_y', bool())
-        self.reject_mag_z = kwargs.get('reject_mag_z', bool())
         self.reject_yaw = kwargs.get('reject_yaw', bool())
         self.reject_airspeed = kwargs.get('reject_airspeed', bool())
         self.reject_sideslip = kwargs.get('reject_sideslip', bool())
@@ -437,6 +437,12 @@ class EstimatorStatusFlags(metaclass=Metaclass_EstimatorStatusFlags):
             return False
         if self.cs_rng_kin_consistent != other.cs_rng_kin_consistent:
             return False
+        if self.cs_fake_pos != other.cs_fake_pos:
+            return False
+        if self.cs_fake_hgt != other.cs_fake_hgt:
+            return False
+        if self.cs_gravity_vector != other.cs_gravity_vector:
+            return False
         if self.fault_status_changes != other.fault_status_changes:
             return False
         if self.fs_bad_mag_x != other.fs_bad_mag_x:
@@ -484,12 +490,6 @@ class EstimatorStatusFlags(metaclass=Metaclass_EstimatorStatusFlags):
         if self.reject_hor_pos != other.reject_hor_pos:
             return False
         if self.reject_ver_pos != other.reject_ver_pos:
-            return False
-        if self.reject_mag_x != other.reject_mag_x:
-            return False
-        if self.reject_mag_y != other.reject_mag_y:
-            return False
-        if self.reject_mag_z != other.reject_mag_z:
             return False
         if self.reject_yaw != other.reject_yaw:
             return False
@@ -972,6 +972,45 @@ class EstimatorStatusFlags(metaclass=Metaclass_EstimatorStatusFlags):
         self._cs_rng_kin_consistent = value
 
     @property
+    def cs_fake_pos(self):
+        """Message field 'cs_fake_pos'."""
+        return self._cs_fake_pos
+
+    @cs_fake_pos.setter
+    def cs_fake_pos(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, bool), \
+                "The 'cs_fake_pos' field must be of type 'bool'"
+        self._cs_fake_pos = value
+
+    @property
+    def cs_fake_hgt(self):
+        """Message field 'cs_fake_hgt'."""
+        return self._cs_fake_hgt
+
+    @cs_fake_hgt.setter
+    def cs_fake_hgt(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, bool), \
+                "The 'cs_fake_hgt' field must be of type 'bool'"
+        self._cs_fake_hgt = value
+
+    @property
+    def cs_gravity_vector(self):
+        """Message field 'cs_gravity_vector'."""
+        return self._cs_gravity_vector
+
+    @cs_gravity_vector.setter
+    def cs_gravity_vector(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, bool), \
+                "The 'cs_gravity_vector' field must be of type 'bool'"
+        self._cs_gravity_vector = value
+
+    @property
     def fault_status_changes(self):
         """Message field 'fault_status_changes'."""
         return self._fault_status_changes
@@ -1286,45 +1325,6 @@ class EstimatorStatusFlags(metaclass=Metaclass_EstimatorStatusFlags):
                 isinstance(value, bool), \
                 "The 'reject_ver_pos' field must be of type 'bool'"
         self._reject_ver_pos = value
-
-    @property
-    def reject_mag_x(self):
-        """Message field 'reject_mag_x'."""
-        return self._reject_mag_x
-
-    @reject_mag_x.setter
-    def reject_mag_x(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, bool), \
-                "The 'reject_mag_x' field must be of type 'bool'"
-        self._reject_mag_x = value
-
-    @property
-    def reject_mag_y(self):
-        """Message field 'reject_mag_y'."""
-        return self._reject_mag_y
-
-    @reject_mag_y.setter
-    def reject_mag_y(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, bool), \
-                "The 'reject_mag_y' field must be of type 'bool'"
-        self._reject_mag_y = value
-
-    @property
-    def reject_mag_z(self):
-        """Message field 'reject_mag_z'."""
-        return self._reject_mag_z
-
-    @reject_mag_z.setter
-    def reject_mag_z(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, bool), \
-                "The 'reject_mag_z' field must be of type 'bool'"
-        self._reject_mag_z = value
 
     @property
     def reject_yaw(self):

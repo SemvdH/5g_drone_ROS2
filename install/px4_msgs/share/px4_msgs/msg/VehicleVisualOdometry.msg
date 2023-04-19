@@ -1,1 +1,0 @@
-/home/ubuntu/ros2_ws/src/px4_msgs/msg/VehicleVisualOdometry.msg

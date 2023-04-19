@@ -44,8 +44,11 @@ struct EscReport_
       this->esc_current = 0.0f;
       this->esc_temperature = 0.0f;
       this->esc_address = 0;
+      this->esc_cmdcount = 0;
       this->esc_state = 0;
+      this->actuator_function = 0;
       this->failures = 0;
+      this->esc_power = 0;
     }
   }
 
@@ -62,8 +65,11 @@ struct EscReport_
       this->esc_current = 0.0f;
       this->esc_temperature = 0.0f;
       this->esc_address = 0;
+      this->esc_cmdcount = 0;
       this->esc_state = 0;
+      this->actuator_function = 0;
       this->failures = 0;
+      this->esc_power = 0;
     }
   }
 
@@ -89,12 +95,21 @@ struct EscReport_
   using _esc_address_type =
     uint8_t;
   _esc_address_type esc_address;
+  using _esc_cmdcount_type =
+    uint8_t;
+  _esc_cmdcount_type esc_cmdcount;
   using _esc_state_type =
     uint8_t;
   _esc_state_type esc_state;
+  using _actuator_function_type =
+    uint8_t;
+  _actuator_function_type actuator_function;
   using _failures_type =
     uint16_t;
   _failures_type failures;
+  using _esc_power_type =
+    int8_t;
+  _esc_power_type esc_power;
 
   // setters for named parameter idiom
   Type & set__timestamp(
@@ -139,16 +154,34 @@ struct EscReport_
     this->esc_address = _arg;
     return *this;
   }
+  Type & set__esc_cmdcount(
+    const uint8_t & _arg)
+  {
+    this->esc_cmdcount = _arg;
+    return *this;
+  }
   Type & set__esc_state(
     const uint8_t & _arg)
   {
     this->esc_state = _arg;
     return *this;
   }
+  Type & set__actuator_function(
+    const uint8_t & _arg)
+  {
+    this->actuator_function = _arg;
+    return *this;
+  }
   Type & set__failures(
     const uint16_t & _arg)
   {
     this->failures = _arg;
+    return *this;
+  }
+  Type & set__esc_power(
+    const int8_t & _arg)
+  {
+    this->esc_power = _arg;
     return *this;
   }
 
@@ -237,10 +270,19 @@ struct EscReport_
     if (this->esc_address != other.esc_address) {
       return false;
     }
+    if (this->esc_cmdcount != other.esc_cmdcount) {
+      return false;
+    }
     if (this->esc_state != other.esc_state) {
       return false;
     }
+    if (this->actuator_function != other.actuator_function) {
+      return false;
+    }
     if (this->failures != other.failures) {
+      return false;
+    }
+    if (this->esc_power != other.esc_power) {
       return false;
     }
     return true;

@@ -36,6 +36,8 @@ cdr_serialize(
   cdr << ros_message.timestamp;
   // Member: rtc_timestamp
   cdr << ros_message.rtc_timestamp;
+  // Member: pps_rate_exceeded_counter
+  cdr << ros_message.pps_rate_exceeded_counter;
   return true;
 }
 
@@ -50,6 +52,9 @@ cdr_deserialize(
 
   // Member: rtc_timestamp
   cdr >> ros_message.rtc_timestamp;
+
+  // Member: pps_rate_exceeded_counter
+  cdr >> ros_message.pps_rate_exceeded_counter;
 
   return true;
 }
@@ -76,6 +81,12 @@ get_serialized_size(
   // Member: rtc_timestamp
   {
     size_t item_size = sizeof(ros_message.rtc_timestamp);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // Member: pps_rate_exceeded_counter
+  {
+    size_t item_size = sizeof(ros_message.pps_rate_exceeded_counter);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -112,6 +123,13 @@ max_serialized_size_PpsCapture(
 
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
+  }
+
+  // Member: pps_rate_exceeded_counter
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
   }
 
   return current_alignment - initial_alignment;

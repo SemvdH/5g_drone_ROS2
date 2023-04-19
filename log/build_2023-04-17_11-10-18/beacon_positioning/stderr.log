@@ -1,7 +1,0 @@
-[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:[m[K In member function ‘[01m[Kvoid BeaconPositioningPublisher::setup_rtlsdevice(int, int, int, int, bool)[m[K’:
-[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:58:5:[m[K [01;31m[Kerror: [m[K‘[01m[Krtls_device[m[K’ was not declared in this scope
-   58 |     [01;31m[Krtls_device[m[K.disableTrackerStream();
-      |     [01;31m[K^~~~~~~~~~~[m[K
-make[2]: *** [CMakeFiles/tracker_position.dir/build.make:63: CMakeFiles/tracker_position.dir/src/tracker_position.cpp.o] Error 1
-make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/tracker_position.dir/all] Error 2
-make: *** [Makefile:141: all] Error 2

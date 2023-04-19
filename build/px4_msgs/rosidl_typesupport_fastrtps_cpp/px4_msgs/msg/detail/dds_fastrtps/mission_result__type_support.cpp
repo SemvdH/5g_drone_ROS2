@@ -50,10 +50,6 @@ cdr_serialize(
   cdr << (ros_message.finished ? true : false);
   // Member: failure
   cdr << (ros_message.failure ? true : false);
-  // Member: stay_in_failsafe
-  cdr << (ros_message.stay_in_failsafe ? true : false);
-  // Member: flight_termination
-  cdr << (ros_message.flight_termination ? true : false);
   // Member: item_do_jump_changed
   cdr << (ros_message.item_do_jump_changed ? true : false);
   // Member: item_changed_index
@@ -112,20 +108,6 @@ cdr_deserialize(
     uint8_t tmp;
     cdr >> tmp;
     ros_message.failure = tmp ? true : false;
-  }
-
-  // Member: stay_in_failsafe
-  {
-    uint8_t tmp;
-    cdr >> tmp;
-    ros_message.stay_in_failsafe = tmp ? true : false;
-  }
-
-  // Member: flight_termination
-  {
-    uint8_t tmp;
-    cdr >> tmp;
-    ros_message.flight_termination = tmp ? true : false;
   }
 
   // Member: item_do_jump_changed
@@ -211,18 +193,6 @@ get_serialized_size(
   // Member: failure
   {
     size_t item_size = sizeof(ros_message.failure);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // Member: stay_in_failsafe
-  {
-    size_t item_size = sizeof(ros_message.stay_in_failsafe);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // Member: flight_termination
-  {
-    size_t item_size = sizeof(ros_message.flight_termination);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -331,20 +301,6 @@ max_serialized_size_MissionResult(
   }
 
   // Member: failure
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint8_t);
-  }
-
-  // Member: stay_in_failsafe
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint8_t);
-  }
-
-  // Member: flight_termination
   {
     size_t array_size = 1;
 

@@ -20,15 +20,15 @@ namespace msg
 namespace builder
 {
 
-class Init_RateCtrlStatus_additional_integ1
+class Init_RateCtrlStatus_wheel_rate_integ
 {
 public:
-  explicit Init_RateCtrlStatus_additional_integ1(::px4_msgs::msg::RateCtrlStatus & msg)
+  explicit Init_RateCtrlStatus_wheel_rate_integ(::px4_msgs::msg::RateCtrlStatus & msg)
   : msg_(msg)
   {}
-  ::px4_msgs::msg::RateCtrlStatus additional_integ1(::px4_msgs::msg::RateCtrlStatus::_additional_integ1_type arg)
+  ::px4_msgs::msg::RateCtrlStatus wheel_rate_integ(::px4_msgs::msg::RateCtrlStatus::_wheel_rate_integ_type arg)
   {
-    msg_.additional_integ1 = std::move(arg);
+    msg_.wheel_rate_integ = std::move(arg);
     return std::move(msg_);
   }
 
@@ -42,10 +42,10 @@ public:
   explicit Init_RateCtrlStatus_yawspeed_integ(::px4_msgs::msg::RateCtrlStatus & msg)
   : msg_(msg)
   {}
-  Init_RateCtrlStatus_additional_integ1 yawspeed_integ(::px4_msgs::msg::RateCtrlStatus::_yawspeed_integ_type arg)
+  Init_RateCtrlStatus_wheel_rate_integ yawspeed_integ(::px4_msgs::msg::RateCtrlStatus::_yawspeed_integ_type arg)
   {
     msg_.yawspeed_integ = std::move(arg);
-    return Init_RateCtrlStatus_additional_integ1(msg_);
+    return Init_RateCtrlStatus_wheel_rate_integ(msg_);
   }
 
 private:

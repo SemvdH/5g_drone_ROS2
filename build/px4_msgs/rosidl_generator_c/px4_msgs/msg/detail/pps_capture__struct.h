@@ -22,6 +22,7 @@ typedef struct px4_msgs__msg__PpsCapture
 {
   uint64_t timestamp;
   uint64_t rtc_timestamp;
+  uint8_t pps_rate_exceeded_counter;
 } px4_msgs__msg__PpsCapture;
 
 // Struct for a sequence of px4_msgs__msg__PpsCapture.

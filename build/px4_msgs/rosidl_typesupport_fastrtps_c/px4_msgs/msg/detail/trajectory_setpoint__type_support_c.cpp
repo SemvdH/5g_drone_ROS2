@@ -54,44 +54,18 @@ static bool _TrajectorySetpoint__cdr_serialize(
     cdr << ros_message->timestamp;
   }
 
-  // Field name: x
+  // Field name: position
   {
-    cdr << ros_message->x;
+    size_t size = 3;
+    auto array_ptr = ros_message->position;
+    cdr.serializeArray(array_ptr, size);
   }
 
-  // Field name: y
+  // Field name: velocity
   {
-    cdr << ros_message->y;
-  }
-
-  // Field name: z
-  {
-    cdr << ros_message->z;
-  }
-
-  // Field name: yaw
-  {
-    cdr << ros_message->yaw;
-  }
-
-  // Field name: yawspeed
-  {
-    cdr << ros_message->yawspeed;
-  }
-
-  // Field name: vx
-  {
-    cdr << ros_message->vx;
-  }
-
-  // Field name: vy
-  {
-    cdr << ros_message->vy;
-  }
-
-  // Field name: vz
-  {
-    cdr << ros_message->vz;
+    size_t size = 3;
+    auto array_ptr = ros_message->velocity;
+    cdr.serializeArray(array_ptr, size);
   }
 
   // Field name: acceleration
@@ -108,11 +82,14 @@ static bool _TrajectorySetpoint__cdr_serialize(
     cdr.serializeArray(array_ptr, size);
   }
 
-  // Field name: thrust
+  // Field name: yaw
   {
-    size_t size = 3;
-    auto array_ptr = ros_message->thrust;
-    cdr.serializeArray(array_ptr, size);
+    cdr << ros_message->yaw;
+  }
+
+  // Field name: yawspeed
+  {
+    cdr << ros_message->yawspeed;
   }
 
   return true;
@@ -132,44 +109,18 @@ static bool _TrajectorySetpoint__cdr_deserialize(
     cdr >> ros_message->timestamp;
   }
 
-  // Field name: x
+  // Field name: position
   {
-    cdr >> ros_message->x;
+    size_t size = 3;
+    auto array_ptr = ros_message->position;
+    cdr.deserializeArray(array_ptr, size);
   }
 
-  // Field name: y
+  // Field name: velocity
   {
-    cdr >> ros_message->y;
-  }
-
-  // Field name: z
-  {
-    cdr >> ros_message->z;
-  }
-
-  // Field name: yaw
-  {
-    cdr >> ros_message->yaw;
-  }
-
-  // Field name: yawspeed
-  {
-    cdr >> ros_message->yawspeed;
-  }
-
-  // Field name: vx
-  {
-    cdr >> ros_message->vx;
-  }
-
-  // Field name: vy
-  {
-    cdr >> ros_message->vy;
-  }
-
-  // Field name: vz
-  {
-    cdr >> ros_message->vz;
+    size_t size = 3;
+    auto array_ptr = ros_message->velocity;
+    cdr.deserializeArray(array_ptr, size);
   }
 
   // Field name: acceleration
@@ -186,11 +137,14 @@ static bool _TrajectorySetpoint__cdr_deserialize(
     cdr.deserializeArray(array_ptr, size);
   }
 
-  // Field name: thrust
+  // Field name: yaw
   {
-    size_t size = 3;
-    auto array_ptr = ros_message->thrust;
-    cdr.deserializeArray(array_ptr, size);
+    cdr >> ros_message->yaw;
+  }
+
+  // Field name: yawspeed
+  {
+    cdr >> ros_message->yawspeed;
   }
 
   return true;
@@ -216,52 +170,22 @@ size_t get_serialized_size_px4_msgs__msg__TrajectorySetpoint(
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // field.name x
+  // field.name position
   {
-    size_t item_size = sizeof(ros_message->x);
-    current_alignment += item_size +
+    size_t array_size = 3;
+    auto array_ptr = ros_message->position;
+    (void)array_ptr;
+    size_t item_size = sizeof(array_ptr[0]);
+    current_alignment += array_size * item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // field.name y
+  // field.name velocity
   {
-    size_t item_size = sizeof(ros_message->y);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // field.name z
-  {
-    size_t item_size = sizeof(ros_message->z);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // field.name yaw
-  {
-    size_t item_size = sizeof(ros_message->yaw);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // field.name yawspeed
-  {
-    size_t item_size = sizeof(ros_message->yawspeed);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // field.name vx
-  {
-    size_t item_size = sizeof(ros_message->vx);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // field.name vy
-  {
-    size_t item_size = sizeof(ros_message->vy);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // field.name vz
-  {
-    size_t item_size = sizeof(ros_message->vz);
-    current_alignment += item_size +
+    size_t array_size = 3;
+    auto array_ptr = ros_message->velocity;
+    (void)array_ptr;
+    size_t item_size = sizeof(array_ptr[0]);
+    current_alignment += array_size * item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
   // field.name acceleration
@@ -282,13 +206,16 @@ size_t get_serialized_size_px4_msgs__msg__TrajectorySetpoint(
     current_alignment += array_size * item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // field.name thrust
+  // field.name yaw
   {
-    size_t array_size = 3;
-    auto array_ptr = ros_message->thrust;
-    (void)array_ptr;
-    size_t item_size = sizeof(array_ptr[0]);
-    current_alignment += array_size * item_size +
+    size_t item_size = sizeof(ros_message->yaw);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // field.name yawspeed
+  {
+    size_t item_size = sizeof(ros_message->yawspeed);
+    current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
 
@@ -322,58 +249,16 @@ size_t max_serialized_size_px4_msgs__msg__TrajectorySetpoint(
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
-  // member: x
+  // member: position
   {
-    size_t array_size = 1;
+    size_t array_size = 3;
 
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
-  // member: y
+  // member: velocity
   {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint32_t) +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
-  }
-  // member: z
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint32_t) +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
-  }
-  // member: yaw
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint32_t) +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
-  }
-  // member: yawspeed
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint32_t) +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
-  }
-  // member: vx
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint32_t) +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
-  }
-  // member: vy
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint32_t) +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
-  }
-  // member: vz
-  {
-    size_t array_size = 1;
+    size_t array_size = 3;
 
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
@@ -392,9 +277,16 @@ size_t max_serialized_size_px4_msgs__msg__TrajectorySetpoint(
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
-  // member: thrust
+  // member: yaw
   {
-    size_t array_size = 3;
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint32_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
+  }
+  // member: yawspeed
+  {
+    size_t array_size = 1;
 
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));

@@ -22,9 +22,6 @@ class Metaclass_VehicleAttitudeSetpoint(type):
     _TYPE_SUPPORT = None
 
     __constants = {
-        'FLAPS_OFF': 0,
-        'FLAPS_LAND': 1,
-        'FLAPS_TAKEOFF': 2,
     }
 
     @classmethod
@@ -53,36 +50,11 @@ class Metaclass_VehicleAttitudeSetpoint(type):
         # the message class under "Data and other attributes defined here:"
         # as well as populate each message instance
         return {
-            'FLAPS_OFF': cls.__constants['FLAPS_OFF'],
-            'FLAPS_LAND': cls.__constants['FLAPS_LAND'],
-            'FLAPS_TAKEOFF': cls.__constants['FLAPS_TAKEOFF'],
         }
-
-    @property
-    def FLAPS_OFF(self):
-        """Message constant 'FLAPS_OFF'."""
-        return Metaclass_VehicleAttitudeSetpoint.__constants['FLAPS_OFF']
-
-    @property
-    def FLAPS_LAND(self):
-        """Message constant 'FLAPS_LAND'."""
-        return Metaclass_VehicleAttitudeSetpoint.__constants['FLAPS_LAND']
-
-    @property
-    def FLAPS_TAKEOFF(self):
-        """Message constant 'FLAPS_TAKEOFF'."""
-        return Metaclass_VehicleAttitudeSetpoint.__constants['FLAPS_TAKEOFF']
 
 
 class VehicleAttitudeSetpoint(metaclass=Metaclass_VehicleAttitudeSetpoint):
-    """
-    Message class 'VehicleAttitudeSetpoint'.
-
-    Constants:
-      FLAPS_OFF
-      FLAPS_LAND
-      FLAPS_TAKEOFF
-    """
+    """Message class 'VehicleAttitudeSetpoint'."""
 
     __slots__ = [
         '_timestamp',
@@ -92,11 +64,8 @@ class VehicleAttitudeSetpoint(metaclass=Metaclass_VehicleAttitudeSetpoint):
         '_yaw_sp_move_rate',
         '_q_d',
         '_thrust_body',
-        '_roll_reset_integral',
-        '_pitch_reset_integral',
-        '_yaw_reset_integral',
-        '_fw_control_yaw',
-        '_apply_flaps',
+        '_reset_integral',
+        '_fw_control_yaw_wheel',
     ]
 
     _fields_and_field_types = {
@@ -107,11 +76,8 @@ class VehicleAttitudeSetpoint(metaclass=Metaclass_VehicleAttitudeSetpoint):
         'yaw_sp_move_rate': 'float',
         'q_d': 'float[4]',
         'thrust_body': 'float[3]',
-        'roll_reset_integral': 'boolean',
-        'pitch_reset_integral': 'boolean',
-        'yaw_reset_integral': 'boolean',
-        'fw_control_yaw': 'boolean',
-        'apply_flaps': 'uint8',
+        'reset_integral': 'boolean',
+        'fw_control_yaw_wheel': 'boolean',
     }
 
     SLOT_TYPES = (
@@ -124,9 +90,6 @@ class VehicleAttitudeSetpoint(metaclass=Metaclass_VehicleAttitudeSetpoint):
         rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 3),  # noqa: E501
         rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
         rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
-        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
-        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
-        rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
     )
 
     def __init__(self, **kwargs):
@@ -148,11 +111,8 @@ class VehicleAttitudeSetpoint(metaclass=Metaclass_VehicleAttitudeSetpoint):
         else:
             self.thrust_body = numpy.array(kwargs.get('thrust_body'), dtype=numpy.float32)
             assert self.thrust_body.shape == (3, )
-        self.roll_reset_integral = kwargs.get('roll_reset_integral', bool())
-        self.pitch_reset_integral = kwargs.get('pitch_reset_integral', bool())
-        self.yaw_reset_integral = kwargs.get('yaw_reset_integral', bool())
-        self.fw_control_yaw = kwargs.get('fw_control_yaw', bool())
-        self.apply_flaps = kwargs.get('apply_flaps', int())
+        self.reset_integral = kwargs.get('reset_integral', bool())
+        self.fw_control_yaw_wheel = kwargs.get('fw_control_yaw_wheel', bool())
 
     def __repr__(self):
         typename = self.__class__.__module__.split('.')
@@ -197,15 +157,9 @@ class VehicleAttitudeSetpoint(metaclass=Metaclass_VehicleAttitudeSetpoint):
             return False
         if all(self.thrust_body != other.thrust_body):
             return False
-        if self.roll_reset_integral != other.roll_reset_integral:
+        if self.reset_integral != other.reset_integral:
             return False
-        if self.pitch_reset_integral != other.pitch_reset_integral:
-            return False
-        if self.yaw_reset_integral != other.yaw_reset_integral:
-            return False
-        if self.fw_control_yaw != other.fw_control_yaw:
-            return False
-        if self.apply_flaps != other.apply_flaps:
+        if self.fw_control_yaw_wheel != other.fw_control_yaw_wheel:
             return False
         return True
 
@@ -344,68 +298,27 @@ class VehicleAttitudeSetpoint(metaclass=Metaclass_VehicleAttitudeSetpoint):
         self._thrust_body = numpy.array(value, dtype=numpy.float32)
 
     @property
-    def roll_reset_integral(self):
-        """Message field 'roll_reset_integral'."""
-        return self._roll_reset_integral
+    def reset_integral(self):
+        """Message field 'reset_integral'."""
+        return self._reset_integral
 
-    @roll_reset_integral.setter
-    def roll_reset_integral(self, value):
+    @reset_integral.setter
+    def reset_integral(self, value):
         if __debug__:
             assert \
                 isinstance(value, bool), \
-                "The 'roll_reset_integral' field must be of type 'bool'"
-        self._roll_reset_integral = value
+                "The 'reset_integral' field must be of type 'bool'"
+        self._reset_integral = value
 
     @property
-    def pitch_reset_integral(self):
-        """Message field 'pitch_reset_integral'."""
-        return self._pitch_reset_integral
+    def fw_control_yaw_wheel(self):
+        """Message field 'fw_control_yaw_wheel'."""
+        return self._fw_control_yaw_wheel
 
-    @pitch_reset_integral.setter
-    def pitch_reset_integral(self, value):
+    @fw_control_yaw_wheel.setter
+    def fw_control_yaw_wheel(self, value):
         if __debug__:
             assert \
                 isinstance(value, bool), \
-                "The 'pitch_reset_integral' field must be of type 'bool'"
-        self._pitch_reset_integral = value
-
-    @property
-    def yaw_reset_integral(self):
-        """Message field 'yaw_reset_integral'."""
-        return self._yaw_reset_integral
-
-    @yaw_reset_integral.setter
-    def yaw_reset_integral(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, bool), \
-                "The 'yaw_reset_integral' field must be of type 'bool'"
-        self._yaw_reset_integral = value
-
-    @property
-    def fw_control_yaw(self):
-        """Message field 'fw_control_yaw'."""
-        return self._fw_control_yaw
-
-    @fw_control_yaw.setter
-    def fw_control_yaw(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, bool), \
-                "The 'fw_control_yaw' field must be of type 'bool'"
-        self._fw_control_yaw = value
-
-    @property
-    def apply_flaps(self):
-        """Message field 'apply_flaps'."""
-        return self._apply_flaps
-
-    @apply_flaps.setter
-    def apply_flaps(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, int), \
-                "The 'apply_flaps' field must be of type 'int'"
-            assert value >= 0 and value < 256, \
-                "The 'apply_flaps' field must be an unsigned integer in [0, 255]"
-        self._apply_flaps = value
+                "The 'fw_control_yaw_wheel' field must be of type 'bool'"
+        self._fw_control_yaw_wheel = value

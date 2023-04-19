@@ -24,9 +24,6 @@ class Metaclass_PositionSetpoint(type):
         'SETPOINT_TYPE_TAKEOFF': 3,
         'SETPOINT_TYPE_LAND': 4,
         'SETPOINT_TYPE_IDLE': 5,
-        'SETPOINT_TYPE_FOLLOW_TARGET': 6,
-        'VELOCITY_FRAME_LOCAL_NED': 1,
-        'VELOCITY_FRAME_BODY_NED': 8,
     }
 
     @classmethod
@@ -61,9 +58,6 @@ class Metaclass_PositionSetpoint(type):
             'SETPOINT_TYPE_TAKEOFF': cls.__constants['SETPOINT_TYPE_TAKEOFF'],
             'SETPOINT_TYPE_LAND': cls.__constants['SETPOINT_TYPE_LAND'],
             'SETPOINT_TYPE_IDLE': cls.__constants['SETPOINT_TYPE_IDLE'],
-            'SETPOINT_TYPE_FOLLOW_TARGET': cls.__constants['SETPOINT_TYPE_FOLLOW_TARGET'],
-            'VELOCITY_FRAME_LOCAL_NED': cls.__constants['VELOCITY_FRAME_LOCAL_NED'],
-            'VELOCITY_FRAME_BODY_NED': cls.__constants['VELOCITY_FRAME_BODY_NED'],
         }
 
     @property
@@ -96,21 +90,6 @@ class Metaclass_PositionSetpoint(type):
         """Message constant 'SETPOINT_TYPE_IDLE'."""
         return Metaclass_PositionSetpoint.__constants['SETPOINT_TYPE_IDLE']
 
-    @property
-    def SETPOINT_TYPE_FOLLOW_TARGET(self):
-        """Message constant 'SETPOINT_TYPE_FOLLOW_TARGET'."""
-        return Metaclass_PositionSetpoint.__constants['SETPOINT_TYPE_FOLLOW_TARGET']
-
-    @property
-    def VELOCITY_FRAME_LOCAL_NED(self):
-        """Message constant 'VELOCITY_FRAME_LOCAL_NED'."""
-        return Metaclass_PositionSetpoint.__constants['VELOCITY_FRAME_LOCAL_NED']
-
-    @property
-    def VELOCITY_FRAME_BODY_NED(self):
-        """Message constant 'VELOCITY_FRAME_BODY_NED'."""
-        return Metaclass_PositionSetpoint.__constants['VELOCITY_FRAME_BODY_NED']
-
 
 class PositionSetpoint(metaclass=Metaclass_PositionSetpoint):
     """
@@ -123,9 +102,6 @@ class PositionSetpoint(metaclass=Metaclass_PositionSetpoint):
       SETPOINT_TYPE_TAKEOFF
       SETPOINT_TYPE_LAND
       SETPOINT_TYPE_IDLE
-      SETPOINT_TYPE_FOLLOW_TARGET
-      VELOCITY_FRAME_LOCAL_NED
-      VELOCITY_FRAME_BODY_NED
     """
 
     __slots__ = [
@@ -135,9 +111,6 @@ class PositionSetpoint(metaclass=Metaclass_PositionSetpoint):
         '_vx',
         '_vy',
         '_vz',
-        '_velocity_valid',
-        '_velocity_frame',
-        '_alt_valid',
         '_lat',
         '_lon',
         '_alt',
@@ -145,11 +118,11 @@ class PositionSetpoint(metaclass=Metaclass_PositionSetpoint):
         '_yaw_valid',
         '_yawspeed',
         '_yawspeed_valid',
-        '_landing_gear',
         '_loiter_radius',
-        '_loiter_direction',
+        '_loiter_direction_counter_clockwise',
         '_acceptance_radius',
         '_cruising_speed',
+        '_gliding_enabled',
         '_cruising_throttle',
         '_disable_weather_vane',
     ]
@@ -161,9 +134,6 @@ class PositionSetpoint(metaclass=Metaclass_PositionSetpoint):
         'vx': 'float',
         'vy': 'float',
         'vz': 'float',
-        'velocity_valid': 'boolean',
-        'velocity_frame': 'uint8',
-        'alt_valid': 'boolean',
         'lat': 'double',
         'lon': 'double',
         'alt': 'float',
@@ -171,11 +141,11 @@ class PositionSetpoint(metaclass=Metaclass_PositionSetpoint):
         'yaw_valid': 'boolean',
         'yawspeed': 'float',
         'yawspeed_valid': 'boolean',
-        'landing_gear': 'int8',
         'loiter_radius': 'float',
-        'loiter_direction': 'int8',
+        'loiter_direction_counter_clockwise': 'boolean',
         'acceptance_radius': 'float',
         'cruising_speed': 'float',
+        'gliding_enabled': 'boolean',
         'cruising_throttle': 'float',
         'disable_weather_vane': 'boolean',
     }
@@ -187,9 +157,6 @@ class PositionSetpoint(metaclass=Metaclass_PositionSetpoint):
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
-        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
-        rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
-        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
         rosidl_parser.definition.BasicType('double'),  # noqa: E501
         rosidl_parser.definition.BasicType('double'),  # noqa: E501
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
@@ -197,11 +164,11 @@ class PositionSetpoint(metaclass=Metaclass_PositionSetpoint):
         rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
         rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
-        rosidl_parser.definition.BasicType('int8'),  # noqa: E501
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
-        rosidl_parser.definition.BasicType('int8'),  # noqa: E501
+        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
+        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
         rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
     )
@@ -216,9 +183,6 @@ class PositionSetpoint(metaclass=Metaclass_PositionSetpoint):
         self.vx = kwargs.get('vx', float())
         self.vy = kwargs.get('vy', float())
         self.vz = kwargs.get('vz', float())
-        self.velocity_valid = kwargs.get('velocity_valid', bool())
-        self.velocity_frame = kwargs.get('velocity_frame', int())
-        self.alt_valid = kwargs.get('alt_valid', bool())
         self.lat = kwargs.get('lat', float())
         self.lon = kwargs.get('lon', float())
         self.alt = kwargs.get('alt', float())
@@ -226,11 +190,11 @@ class PositionSetpoint(metaclass=Metaclass_PositionSetpoint):
         self.yaw_valid = kwargs.get('yaw_valid', bool())
         self.yawspeed = kwargs.get('yawspeed', float())
         self.yawspeed_valid = kwargs.get('yawspeed_valid', bool())
-        self.landing_gear = kwargs.get('landing_gear', int())
         self.loiter_radius = kwargs.get('loiter_radius', float())
-        self.loiter_direction = kwargs.get('loiter_direction', int())
+        self.loiter_direction_counter_clockwise = kwargs.get('loiter_direction_counter_clockwise', bool())
         self.acceptance_radius = kwargs.get('acceptance_radius', float())
         self.cruising_speed = kwargs.get('cruising_speed', float())
+        self.gliding_enabled = kwargs.get('gliding_enabled', bool())
         self.cruising_throttle = kwargs.get('cruising_throttle', float())
         self.disable_weather_vane = kwargs.get('disable_weather_vane', bool())
 
@@ -275,12 +239,6 @@ class PositionSetpoint(metaclass=Metaclass_PositionSetpoint):
             return False
         if self.vz != other.vz:
             return False
-        if self.velocity_valid != other.velocity_valid:
-            return False
-        if self.velocity_frame != other.velocity_frame:
-            return False
-        if self.alt_valid != other.alt_valid:
-            return False
         if self.lat != other.lat:
             return False
         if self.lon != other.lon:
@@ -295,15 +253,15 @@ class PositionSetpoint(metaclass=Metaclass_PositionSetpoint):
             return False
         if self.yawspeed_valid != other.yawspeed_valid:
             return False
-        if self.landing_gear != other.landing_gear:
-            return False
         if self.loiter_radius != other.loiter_radius:
             return False
-        if self.loiter_direction != other.loiter_direction:
+        if self.loiter_direction_counter_clockwise != other.loiter_direction_counter_clockwise:
             return False
         if self.acceptance_radius != other.acceptance_radius:
             return False
         if self.cruising_speed != other.cruising_speed:
+            return False
+        if self.gliding_enabled != other.gliding_enabled:
             return False
         if self.cruising_throttle != other.cruising_throttle:
             return False
@@ -399,47 +357,6 @@ class PositionSetpoint(metaclass=Metaclass_PositionSetpoint):
         self._vz = value
 
     @property
-    def velocity_valid(self):
-        """Message field 'velocity_valid'."""
-        return self._velocity_valid
-
-    @velocity_valid.setter
-    def velocity_valid(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, bool), \
-                "The 'velocity_valid' field must be of type 'bool'"
-        self._velocity_valid = value
-
-    @property
-    def velocity_frame(self):
-        """Message field 'velocity_frame'."""
-        return self._velocity_frame
-
-    @velocity_frame.setter
-    def velocity_frame(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, int), \
-                "The 'velocity_frame' field must be of type 'int'"
-            assert value >= 0 and value < 256, \
-                "The 'velocity_frame' field must be an unsigned integer in [0, 255]"
-        self._velocity_frame = value
-
-    @property
-    def alt_valid(self):
-        """Message field 'alt_valid'."""
-        return self._alt_valid
-
-    @alt_valid.setter
-    def alt_valid(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, bool), \
-                "The 'alt_valid' field must be of type 'bool'"
-        self._alt_valid = value
-
-    @property
     def lat(self):
         """Message field 'lat'."""
         return self._lat
@@ -531,21 +448,6 @@ class PositionSetpoint(metaclass=Metaclass_PositionSetpoint):
         self._yawspeed_valid = value
 
     @property
-    def landing_gear(self):
-        """Message field 'landing_gear'."""
-        return self._landing_gear
-
-    @landing_gear.setter
-    def landing_gear(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, int), \
-                "The 'landing_gear' field must be of type 'int'"
-            assert value >= -128 and value < 128, \
-                "The 'landing_gear' field must be an integer in [-128, 127]"
-        self._landing_gear = value
-
-    @property
     def loiter_radius(self):
         """Message field 'loiter_radius'."""
         return self._loiter_radius
@@ -559,19 +461,17 @@ class PositionSetpoint(metaclass=Metaclass_PositionSetpoint):
         self._loiter_radius = value
 
     @property
-    def loiter_direction(self):
-        """Message field 'loiter_direction'."""
-        return self._loiter_direction
+    def loiter_direction_counter_clockwise(self):
+        """Message field 'loiter_direction_counter_clockwise'."""
+        return self._loiter_direction_counter_clockwise
 
-    @loiter_direction.setter
-    def loiter_direction(self, value):
+    @loiter_direction_counter_clockwise.setter
+    def loiter_direction_counter_clockwise(self, value):
         if __debug__:
             assert \
-                isinstance(value, int), \
-                "The 'loiter_direction' field must be of type 'int'"
-            assert value >= -128 and value < 128, \
-                "The 'loiter_direction' field must be an integer in [-128, 127]"
-        self._loiter_direction = value
+                isinstance(value, bool), \
+                "The 'loiter_direction_counter_clockwise' field must be of type 'bool'"
+        self._loiter_direction_counter_clockwise = value
 
     @property
     def acceptance_radius(self):
@@ -598,6 +498,19 @@ class PositionSetpoint(metaclass=Metaclass_PositionSetpoint):
                 isinstance(value, float), \
                 "The 'cruising_speed' field must be of type 'float'"
         self._cruising_speed = value
+
+    @property
+    def gliding_enabled(self):
+        """Message field 'gliding_enabled'."""
+        return self._gliding_enabled
+
+    @gliding_enabled.setter
+    def gliding_enabled(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, bool), \
+                "The 'gliding_enabled' field must be of type 'bool'"
+        self._gliding_enabled = value
 
     @property
     def cruising_throttle(self):

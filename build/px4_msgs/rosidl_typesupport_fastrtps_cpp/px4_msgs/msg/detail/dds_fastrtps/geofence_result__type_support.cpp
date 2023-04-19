@@ -34,10 +34,12 @@ cdr_serialize(
 {
   // Member: timestamp
   cdr << ros_message.timestamp;
-  // Member: geofence_violated
-  cdr << (ros_message.geofence_violated ? true : false);
-  // Member: geofence_action
-  cdr << ros_message.geofence_action;
+  // Member: geofence_violation_reason
+  cdr << ros_message.geofence_violation_reason;
+  // Member: primary_geofence_breached
+  cdr << (ros_message.primary_geofence_breached ? true : false);
+  // Member: primary_geofence_action
+  cdr << ros_message.primary_geofence_action;
   // Member: home_required
   cdr << (ros_message.home_required ? true : false);
   return true;
@@ -52,15 +54,18 @@ cdr_deserialize(
   // Member: timestamp
   cdr >> ros_message.timestamp;
 
-  // Member: geofence_violated
+  // Member: geofence_violation_reason
+  cdr >> ros_message.geofence_violation_reason;
+
+  // Member: primary_geofence_breached
   {
     uint8_t tmp;
     cdr >> tmp;
-    ros_message.geofence_violated = tmp ? true : false;
+    ros_message.primary_geofence_breached = tmp ? true : false;
   }
 
-  // Member: geofence_action
-  cdr >> ros_message.geofence_action;
+  // Member: primary_geofence_action
+  cdr >> ros_message.primary_geofence_action;
 
   // Member: home_required
   {
@@ -91,15 +96,21 @@ get_serialized_size(
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // Member: geofence_violated
+  // Member: geofence_violation_reason
   {
-    size_t item_size = sizeof(ros_message.geofence_violated);
+    size_t item_size = sizeof(ros_message.geofence_violation_reason);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // Member: geofence_action
+  // Member: primary_geofence_breached
   {
-    size_t item_size = sizeof(ros_message.geofence_action);
+    size_t item_size = sizeof(ros_message.primary_geofence_breached);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // Member: primary_geofence_action
+  {
+    size_t item_size = sizeof(ros_message.primary_geofence_action);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -136,14 +147,21 @@ max_serialized_size_GeofenceResult(
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
 
-  // Member: geofence_violated
+  // Member: geofence_violation_reason
   {
     size_t array_size = 1;
 
     current_alignment += array_size * sizeof(uint8_t);
   }
 
-  // Member: geofence_action
+  // Member: primary_geofence_breached
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
+  }
+
+  // Member: primary_geofence_action
   {
     size_t array_size = 1;
 

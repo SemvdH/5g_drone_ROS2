@@ -94,16 +94,6 @@ static bool _MissionResult__cdr_serialize(
     cdr << (ros_message->failure ? true : false);
   }
 
-  // Field name: stay_in_failsafe
-  {
-    cdr << (ros_message->stay_in_failsafe ? true : false);
-  }
-
-  // Field name: flight_termination
-  {
-    cdr << (ros_message->flight_termination ? true : false);
-  }
-
   // Field name: item_do_jump_changed
   {
     cdr << (ros_message->item_do_jump_changed ? true : false);
@@ -187,20 +177,6 @@ static bool _MissionResult__cdr_deserialize(
     uint8_t tmp;
     cdr >> tmp;
     ros_message->failure = tmp ? true : false;
-  }
-
-  // Field name: stay_in_failsafe
-  {
-    uint8_t tmp;
-    cdr >> tmp;
-    ros_message->stay_in_failsafe = tmp ? true : false;
-  }
-
-  // Field name: flight_termination
-  {
-    uint8_t tmp;
-    cdr >> tmp;
-    ros_message->flight_termination = tmp ? true : false;
   }
 
   // Field name: item_do_jump_changed
@@ -293,18 +269,6 @@ size_t get_serialized_size_px4_msgs__msg__MissionResult(
   // field.name failure
   {
     size_t item_size = sizeof(ros_message->failure);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // field.name stay_in_failsafe
-  {
-    size_t item_size = sizeof(ros_message->stay_in_failsafe);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // field.name flight_termination
-  {
-    size_t item_size = sizeof(ros_message->flight_termination);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -410,18 +374,6 @@ size_t max_serialized_size_px4_msgs__msg__MissionResult(
     current_alignment += array_size * sizeof(uint8_t);
   }
   // member: failure
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint8_t);
-  }
-  // member: stay_in_failsafe
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint8_t);
-  }
-  // member: flight_termination
   {
     size_t array_size = 1;
 

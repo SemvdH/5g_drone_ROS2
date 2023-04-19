@@ -15,7 +15,7 @@ module px4_msgs {
       float indicated_frequency_rpm;
 
       @verbatim (language="comment", text=
-        " estimated accurancy in Revolution per minute")
+        " estimated accuracy in Revolution per minute")
       float estimated_accurancy_rpm;
     };
   };

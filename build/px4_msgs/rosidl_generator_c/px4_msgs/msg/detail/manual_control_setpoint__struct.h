@@ -72,10 +72,10 @@ typedef struct px4_msgs__msg__ManualControlSetpoint
   uint64_t timestamp_sample;
   bool valid;
   uint8_t data_source;
-  float x;
-  float y;
-  float z;
-  float r;
+  float roll;
+  float pitch;
+  float yaw;
+  float throttle;
   float flaps;
   float aux1;
   float aux2;

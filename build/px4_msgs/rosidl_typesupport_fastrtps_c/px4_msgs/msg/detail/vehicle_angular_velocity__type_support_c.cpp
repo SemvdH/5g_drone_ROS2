@@ -66,6 +66,13 @@ static bool _VehicleAngularVelocity__cdr_serialize(
     cdr.serializeArray(array_ptr, size);
   }
 
+  // Field name: xyz_derivative
+  {
+    size_t size = 3;
+    auto array_ptr = ros_message->xyz_derivative;
+    cdr.serializeArray(array_ptr, size);
+  }
+
   return true;
 }
 
@@ -92,6 +99,13 @@ static bool _VehicleAngularVelocity__cdr_deserialize(
   {
     size_t size = 3;
     auto array_ptr = ros_message->xyz;
+    cdr.deserializeArray(array_ptr, size);
+  }
+
+  // Field name: xyz_derivative
+  {
+    size_t size = 3;
+    auto array_ptr = ros_message->xyz_derivative;
     cdr.deserializeArray(array_ptr, size);
   }
 
@@ -128,6 +142,15 @@ size_t get_serialized_size_px4_msgs__msg__VehicleAngularVelocity(
   {
     size_t array_size = 3;
     auto array_ptr = ros_message->xyz;
+    (void)array_ptr;
+    size_t item_size = sizeof(array_ptr[0]);
+    current_alignment += array_size * item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // field.name xyz_derivative
+  {
+    size_t array_size = 3;
+    auto array_ptr = ros_message->xyz_derivative;
     (void)array_ptr;
     size_t item_size = sizeof(array_ptr[0]);
     current_alignment += array_size * item_size +
@@ -172,6 +195,13 @@ size_t max_serialized_size_px4_msgs__msg__VehicleAngularVelocity(
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
   // member: xyz
+  {
+    size_t array_size = 3;
+
+    current_alignment += array_size * sizeof(uint32_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
+  }
+  // member: xyz_derivative
   {
     size_t array_size = 3;
 

@@ -106,6 +106,16 @@ static bool _InputRc__cdr_serialize(
     cdr.serializeArray(array_ptr, size);
   }
 
+  // Field name: link_quality
+  {
+    cdr << ros_message->link_quality;
+  }
+
+  // Field name: rssi_dbm
+  {
+    cdr << ros_message->rssi_dbm;
+  }
+
   return true;
 }
 
@@ -177,6 +187,16 @@ static bool _InputRc__cdr_deserialize(
     size_t size = 18;
     auto array_ptr = ros_message->values;
     cdr.deserializeArray(array_ptr, size);
+  }
+
+  // Field name: link_quality
+  {
+    cdr >> ros_message->link_quality;
+  }
+
+  // Field name: rssi_dbm
+  {
+    cdr >> ros_message->rssi_dbm;
   }
 
   return true;
@@ -263,6 +283,18 @@ size_t get_serialized_size_px4_msgs__msg__InputRc(
     (void)array_ptr;
     size_t item_size = sizeof(array_ptr[0]);
     current_alignment += array_size * item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // field.name link_quality
+  {
+    size_t item_size = sizeof(ros_message->link_quality);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // field.name rssi_dbm
+  {
+    size_t item_size = sizeof(ros_message->rssi_dbm);
+    current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
 
@@ -361,6 +393,19 @@ size_t max_serialized_size_px4_msgs__msg__InputRc(
 
     current_alignment += array_size * sizeof(uint16_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint16_t));
+  }
+  // member: link_quality
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
+  }
+  // member: rssi_dbm
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint32_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
 
   return current_alignment - initial_alignment;

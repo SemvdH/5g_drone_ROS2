@@ -1,1 +1,1 @@
-/home/ubuntu/ros2_ws/build/px4_msgs/ament_cmake_environment_hooks/pythonpath.dsv
+prepend-non-duplicate;PYTHONPATH;lib/python3.8/site-packages

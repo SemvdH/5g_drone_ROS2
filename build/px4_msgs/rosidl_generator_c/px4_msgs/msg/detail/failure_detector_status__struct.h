@@ -26,10 +26,11 @@ typedef struct px4_msgs__msg__FailureDetectorStatus
   bool fd_alt;
   bool fd_ext;
   bool fd_arm_escs;
-  bool fd_high_wind;
   bool fd_battery;
   bool fd_imbalanced_prop;
+  bool fd_motor;
   float imbalanced_prop_metric;
+  uint16_t motor_failure_mask;
 } px4_msgs__msg__FailureDetectorStatus;
 
 // Struct for a sequence of px4_msgs__msg__FailureDetectorStatus.

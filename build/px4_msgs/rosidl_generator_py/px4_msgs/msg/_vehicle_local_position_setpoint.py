@@ -6,7 +6,6 @@
 # Import statements for member types
 
 # Member 'acceleration'
-# Member 'jerk'
 # Member 'thrust'
 import numpy  # noqa: E402, I100
 
@@ -62,14 +61,13 @@ class VehicleLocalPositionSetpoint(metaclass=Metaclass_VehicleLocalPositionSetpo
         '_x',
         '_y',
         '_z',
-        '_yaw',
-        '_yawspeed',
         '_vx',
         '_vy',
         '_vz',
         '_acceleration',
-        '_jerk',
         '_thrust',
+        '_yaw',
+        '_yawspeed',
     ]
 
     _fields_and_field_types = {
@@ -77,14 +75,13 @@ class VehicleLocalPositionSetpoint(metaclass=Metaclass_VehicleLocalPositionSetpo
         'x': 'float',
         'y': 'float',
         'z': 'float',
-        'yaw': 'float',
-        'yawspeed': 'float',
         'vx': 'float',
         'vy': 'float',
         'vz': 'float',
         'acceleration': 'float[3]',
-        'jerk': 'float[3]',
         'thrust': 'float[3]',
+        'yaw': 'float',
+        'yawspeed': 'float',
     }
 
     SLOT_TYPES = (
@@ -95,11 +92,10 @@ class VehicleLocalPositionSetpoint(metaclass=Metaclass_VehicleLocalPositionSetpo
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
+        rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 3),  # noqa: E501
+        rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 3),  # noqa: E501
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
-        rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 3),  # noqa: E501
-        rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 3),  # noqa: E501
-        rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 3),  # noqa: E501
     )
 
     def __init__(self, **kwargs):
@@ -110,8 +106,6 @@ class VehicleLocalPositionSetpoint(metaclass=Metaclass_VehicleLocalPositionSetpo
         self.x = kwargs.get('x', float())
         self.y = kwargs.get('y', float())
         self.z = kwargs.get('z', float())
-        self.yaw = kwargs.get('yaw', float())
-        self.yawspeed = kwargs.get('yawspeed', float())
         self.vx = kwargs.get('vx', float())
         self.vy = kwargs.get('vy', float())
         self.vz = kwargs.get('vz', float())
@@ -120,16 +114,13 @@ class VehicleLocalPositionSetpoint(metaclass=Metaclass_VehicleLocalPositionSetpo
         else:
             self.acceleration = numpy.array(kwargs.get('acceleration'), dtype=numpy.float32)
             assert self.acceleration.shape == (3, )
-        if 'jerk' not in kwargs:
-            self.jerk = numpy.zeros(3, dtype=numpy.float32)
-        else:
-            self.jerk = numpy.array(kwargs.get('jerk'), dtype=numpy.float32)
-            assert self.jerk.shape == (3, )
         if 'thrust' not in kwargs:
             self.thrust = numpy.zeros(3, dtype=numpy.float32)
         else:
             self.thrust = numpy.array(kwargs.get('thrust'), dtype=numpy.float32)
             assert self.thrust.shape == (3, )
+        self.yaw = kwargs.get('yaw', float())
+        self.yawspeed = kwargs.get('yawspeed', float())
 
     def __repr__(self):
         typename = self.__class__.__module__.split('.')
@@ -168,10 +159,6 @@ class VehicleLocalPositionSetpoint(metaclass=Metaclass_VehicleLocalPositionSetpo
             return False
         if self.z != other.z:
             return False
-        if self.yaw != other.yaw:
-            return False
-        if self.yawspeed != other.yawspeed:
-            return False
         if self.vx != other.vx:
             return False
         if self.vy != other.vy:
@@ -180,9 +167,11 @@ class VehicleLocalPositionSetpoint(metaclass=Metaclass_VehicleLocalPositionSetpo
             return False
         if all(self.acceleration != other.acceleration):
             return False
-        if all(self.jerk != other.jerk):
-            return False
         if all(self.thrust != other.thrust):
+            return False
+        if self.yaw != other.yaw:
+            return False
+        if self.yawspeed != other.yawspeed:
             return False
         return True
 
@@ -244,32 +233,6 @@ class VehicleLocalPositionSetpoint(metaclass=Metaclass_VehicleLocalPositionSetpo
                 isinstance(value, float), \
                 "The 'z' field must be of type 'float'"
         self._z = value
-
-    @property
-    def yaw(self):
-        """Message field 'yaw'."""
-        return self._yaw
-
-    @yaw.setter
-    def yaw(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, float), \
-                "The 'yaw' field must be of type 'float'"
-        self._yaw = value
-
-    @property
-    def yawspeed(self):
-        """Message field 'yawspeed'."""
-        return self._yawspeed
-
-    @yawspeed.setter
-    def yawspeed(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, float), \
-                "The 'yawspeed' field must be of type 'float'"
-        self._yawspeed = value
 
     @property
     def vx(self):
@@ -342,37 +305,6 @@ class VehicleLocalPositionSetpoint(metaclass=Metaclass_VehicleLocalPositionSetpo
         self._acceleration = numpy.array(value, dtype=numpy.float32)
 
     @property
-    def jerk(self):
-        """Message field 'jerk'."""
-        return self._jerk
-
-    @jerk.setter
-    def jerk(self, value):
-        if isinstance(value, numpy.ndarray):
-            assert value.dtype == numpy.float32, \
-                "The 'jerk' numpy.ndarray() must have the dtype of 'numpy.float32'"
-            assert value.size == 3, \
-                "The 'jerk' numpy.ndarray() must have a size of 3"
-            self._jerk = value
-            return
-        if __debug__:
-            from collections.abc import Sequence
-            from collections.abc import Set
-            from collections import UserList
-            from collections import UserString
-            assert \
-                ((isinstance(value, Sequence) or
-                  isinstance(value, Set) or
-                  isinstance(value, UserList)) and
-                 not isinstance(value, str) and
-                 not isinstance(value, UserString) and
-                 len(value) == 3 and
-                 all(isinstance(v, float) for v in value) and
-                 True), \
-                "The 'jerk' field must be a set or sequence with length 3 and each value of type 'float'"
-        self._jerk = numpy.array(value, dtype=numpy.float32)
-
-    @property
     def thrust(self):
         """Message field 'thrust'."""
         return self._thrust
@@ -402,3 +334,29 @@ class VehicleLocalPositionSetpoint(metaclass=Metaclass_VehicleLocalPositionSetpo
                  True), \
                 "The 'thrust' field must be a set or sequence with length 3 and each value of type 'float'"
         self._thrust = numpy.array(value, dtype=numpy.float32)
+
+    @property
+    def yaw(self):
+        """Message field 'yaw'."""
+        return self._yaw
+
+    @yaw.setter
+    def yaw(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, float), \
+                "The 'yaw' field must be of type 'float'"
+        self._yaw = value
+
+    @property
+    def yawspeed(self):
+        """Message field 'yawspeed'."""
+        return self._yawspeed
+
+    @yawspeed.setter
+    def yawspeed(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, float), \
+                "The 'yawspeed' field must be of type 'float'"
+        self._yawspeed = value

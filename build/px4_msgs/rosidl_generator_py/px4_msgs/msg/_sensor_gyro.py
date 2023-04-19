@@ -5,6 +5,9 @@
 
 # Import statements for member types
 
+# Member 'clip_counter'
+import numpy  # noqa: E402, I100
+
 import rosidl_parser.definition  # noqa: E402, I100
 
 
@@ -73,6 +76,7 @@ class SensorGyro(metaclass=Metaclass_SensorGyro):
         '_z',
         '_temperature',
         '_error_count',
+        '_clip_counter',
         '_samples',
     ]
 
@@ -85,6 +89,7 @@ class SensorGyro(metaclass=Metaclass_SensorGyro):
         'z': 'float',
         'temperature': 'float',
         'error_count': 'uint32',
+        'clip_counter': 'uint8[3]',
         'samples': 'uint8',
     }
 
@@ -97,6 +102,7 @@ class SensorGyro(metaclass=Metaclass_SensorGyro):
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
         rosidl_parser.definition.BasicType('uint32'),  # noqa: E501
+        rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('uint8'), 3),  # noqa: E501
         rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
     )
 
@@ -112,6 +118,11 @@ class SensorGyro(metaclass=Metaclass_SensorGyro):
         self.z = kwargs.get('z', float())
         self.temperature = kwargs.get('temperature', float())
         self.error_count = kwargs.get('error_count', int())
+        if 'clip_counter' not in kwargs:
+            self.clip_counter = numpy.zeros(3, dtype=numpy.uint8)
+        else:
+            self.clip_counter = numpy.array(kwargs.get('clip_counter'), dtype=numpy.uint8)
+            assert self.clip_counter.shape == (3, )
         self.samples = kwargs.get('samples', int())
 
     def __repr__(self):
@@ -158,6 +169,8 @@ class SensorGyro(metaclass=Metaclass_SensorGyro):
         if self.temperature != other.temperature:
             return False
         if self.error_count != other.error_count:
+            return False
+        if all(self.clip_counter != other.clip_counter):
             return False
         if self.samples != other.samples:
             return False
@@ -279,6 +292,37 @@ class SensorGyro(metaclass=Metaclass_SensorGyro):
             assert value >= 0 and value < 4294967296, \
                 "The 'error_count' field must be an unsigned integer in [0, 4294967295]"
         self._error_count = value
+
+    @property
+    def clip_counter(self):
+        """Message field 'clip_counter'."""
+        return self._clip_counter
+
+    @clip_counter.setter
+    def clip_counter(self, value):
+        if isinstance(value, numpy.ndarray):
+            assert value.dtype == numpy.uint8, \
+                "The 'clip_counter' numpy.ndarray() must have the dtype of 'numpy.uint8'"
+            assert value.size == 3, \
+                "The 'clip_counter' numpy.ndarray() must have a size of 3"
+            self._clip_counter = value
+            return
+        if __debug__:
+            from collections.abc import Sequence
+            from collections.abc import Set
+            from collections import UserList
+            from collections import UserString
+            assert \
+                ((isinstance(value, Sequence) or
+                  isinstance(value, Set) or
+                  isinstance(value, UserList)) and
+                 not isinstance(value, str) and
+                 not isinstance(value, UserString) and
+                 len(value) == 3 and
+                 all(isinstance(v, int) for v in value) and
+                 all(val >= 0 and val < 256 for val in value)), \
+                "The 'clip_counter' field must be a set or sequence with length 3 and each value of type 'int' and each unsigned integer in [0, 255]"
+        self._clip_counter = numpy.array(value, dtype=numpy.uint8)
 
     @property
     def samples(self):

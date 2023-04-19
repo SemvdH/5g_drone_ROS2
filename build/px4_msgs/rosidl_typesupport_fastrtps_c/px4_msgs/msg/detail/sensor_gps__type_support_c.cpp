@@ -54,6 +54,11 @@ static bool _SensorGps__cdr_serialize(
     cdr << ros_message->timestamp;
   }
 
+  // Field name: timestamp_sample
+  {
+    cdr << ros_message->timestamp_sample;
+  }
+
   // Field name: device_id
   {
     cdr << ros_message->device_id;
@@ -124,14 +129,19 @@ static bool _SensorGps__cdr_serialize(
     cdr << ros_message->automatic_gain_control;
   }
 
+  // Field name: jamming_state
+  {
+    cdr << ros_message->jamming_state;
+  }
+
   // Field name: jamming_indicator
   {
     cdr << ros_message->jamming_indicator;
   }
 
-  // Field name: jamming_state
+  // Field name: spoofing_state
   {
-    cdr << ros_message->jamming_state;
+    cdr << ros_message->spoofing_state;
   }
 
   // Field name: vel_m_s
@@ -194,6 +204,16 @@ static bool _SensorGps__cdr_serialize(
     cdr << ros_message->heading_accuracy;
   }
 
+  // Field name: rtcm_injection_rate
+  {
+    cdr << ros_message->rtcm_injection_rate;
+  }
+
+  // Field name: selected_rtcm_instance
+  {
+    cdr << ros_message->selected_rtcm_instance;
+  }
+
   return true;
 }
 
@@ -209,6 +229,11 @@ static bool _SensorGps__cdr_deserialize(
   // Field name: timestamp
   {
     cdr >> ros_message->timestamp;
+  }
+
+  // Field name: timestamp_sample
+  {
+    cdr >> ros_message->timestamp_sample;
   }
 
   // Field name: device_id
@@ -281,14 +306,19 @@ static bool _SensorGps__cdr_deserialize(
     cdr >> ros_message->automatic_gain_control;
   }
 
+  // Field name: jamming_state
+  {
+    cdr >> ros_message->jamming_state;
+  }
+
   // Field name: jamming_indicator
   {
     cdr >> ros_message->jamming_indicator;
   }
 
-  // Field name: jamming_state
+  // Field name: spoofing_state
   {
-    cdr >> ros_message->jamming_state;
+    cdr >> ros_message->spoofing_state;
   }
 
   // Field name: vel_m_s
@@ -353,6 +383,16 @@ static bool _SensorGps__cdr_deserialize(
     cdr >> ros_message->heading_accuracy;
   }
 
+  // Field name: rtcm_injection_rate
+  {
+    cdr >> ros_message->rtcm_injection_rate;
+  }
+
+  // Field name: selected_rtcm_instance
+  {
+    cdr >> ros_message->selected_rtcm_instance;
+  }
+
   return true;
 }
 
@@ -373,6 +413,12 @@ size_t get_serialized_size_px4_msgs__msg__SensorGps(
   // field.name timestamp
   {
     size_t item_size = sizeof(ros_message->timestamp);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // field.name timestamp_sample
+  {
+    size_t item_size = sizeof(ros_message->timestamp_sample);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -460,15 +506,21 @@ size_t get_serialized_size_px4_msgs__msg__SensorGps(
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
+  // field.name jamming_state
+  {
+    size_t item_size = sizeof(ros_message->jamming_state);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
   // field.name jamming_indicator
   {
     size_t item_size = sizeof(ros_message->jamming_indicator);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // field.name jamming_state
+  // field.name spoofing_state
   {
-    size_t item_size = sizeof(ros_message->jamming_state);
+    size_t item_size = sizeof(ros_message->spoofing_state);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -544,6 +596,18 @@ size_t get_serialized_size_px4_msgs__msg__SensorGps(
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
+  // field.name rtcm_injection_rate
+  {
+    size_t item_size = sizeof(ros_message->rtcm_injection_rate);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // field.name selected_rtcm_instance
+  {
+    size_t item_size = sizeof(ros_message->selected_rtcm_instance);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
 
   return current_alignment - initial_alignment;
 }
@@ -569,6 +633,13 @@ size_t max_serialized_size_px4_msgs__msg__SensorGps(
   (void)full_bounded;
 
   // member: timestamp
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint64_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
+  }
+  // member: timestamp_sample
   {
     size_t array_size = 1;
 
@@ -672,6 +743,12 @@ size_t max_serialized_size_px4_msgs__msg__SensorGps(
     current_alignment += array_size * sizeof(uint16_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint16_t));
   }
+  // member: jamming_state
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
+  }
   // member: jamming_indicator
   {
     size_t array_size = 1;
@@ -679,7 +756,7 @@ size_t max_serialized_size_px4_msgs__msg__SensorGps(
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
-  // member: jamming_state
+  // member: spoofing_state
   {
     size_t array_size = 1;
 
@@ -766,6 +843,19 @@ size_t max_serialized_size_px4_msgs__msg__SensorGps(
 
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
+  }
+  // member: rtcm_injection_rate
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint32_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
+  }
+  // member: selected_rtcm_instance
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
   }
 
   return current_alignment - initial_alignment;

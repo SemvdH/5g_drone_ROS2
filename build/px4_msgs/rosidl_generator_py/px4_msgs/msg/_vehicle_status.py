@@ -25,24 +25,27 @@ class Metaclass_VehicleStatus(type):
         'ARMING_STATE_SHUTDOWN': 4,
         'ARMING_STATE_IN_AIR_RESTORE': 5,
         'ARMING_STATE_MAX': 6,
-        'FAILURE_NONE': 0,
-        'FAILURE_ROLL': 1,
-        'FAILURE_PITCH': 2,
-        'FAILURE_ALT': 4,
-        'FAILURE_EXT': 8,
-        'FAILURE_ARM_ESC': 16,
-        'FAILURE_HIGH_WIND': 32,
-        'FAILURE_BATTERY': 64,
-        'FAILURE_IMBALANCED_PROP': 128,
-        'HIL_STATE_OFF': 0,
-        'HIL_STATE_ON': 1,
+        'ARM_DISARM_REASON_TRANSITION_TO_STANDBY': 0,
+        'ARM_DISARM_REASON_RC_STICK': 1,
+        'ARM_DISARM_REASON_RC_SWITCH': 2,
+        'ARM_DISARM_REASON_COMMAND_INTERNAL': 3,
+        'ARM_DISARM_REASON_COMMAND_EXTERNAL': 4,
+        'ARM_DISARM_REASON_MISSION_START': 5,
+        'ARM_DISARM_REASON_SAFETY_BUTTON': 6,
+        'ARM_DISARM_REASON_AUTO_DISARM_LAND': 7,
+        'ARM_DISARM_REASON_AUTO_DISARM_PREFLIGHT': 8,
+        'ARM_DISARM_REASON_KILL_SWITCH': 9,
+        'ARM_DISARM_REASON_LOCKDOWN': 10,
+        'ARM_DISARM_REASON_FAILURE_DETECTOR': 11,
+        'ARM_DISARM_REASON_SHUTDOWN': 12,
+        'ARM_DISARM_REASON_UNIT_TEST': 13,
         'NAVIGATION_STATE_MANUAL': 0,
         'NAVIGATION_STATE_ALTCTL': 1,
         'NAVIGATION_STATE_POSCTL': 2,
         'NAVIGATION_STATE_AUTO_MISSION': 3,
         'NAVIGATION_STATE_AUTO_LOITER': 4,
         'NAVIGATION_STATE_AUTO_RTL': 5,
-        'NAVIGATION_STATE_AUTO_LANDENGFAIL': 8,
+        'NAVIGATION_STATE_UNUSED3': 8,
         'NAVIGATION_STATE_UNUSED': 9,
         'NAVIGATION_STATE_ACRO': 10,
         'NAVIGATION_STATE_UNUSED1': 11,
@@ -58,25 +61,22 @@ class Metaclass_VehicleStatus(type):
         'NAVIGATION_STATE_ORBIT': 21,
         'NAVIGATION_STATE_AUTO_VTOL_TAKEOFF': 22,
         'NAVIGATION_STATE_MAX': 23,
+        'FAILURE_NONE': 0,
+        'FAILURE_ROLL': 1,
+        'FAILURE_PITCH': 2,
+        'FAILURE_ALT': 4,
+        'FAILURE_EXT': 8,
+        'FAILURE_ARM_ESC': 16,
+        'FAILURE_BATTERY': 32,
+        'FAILURE_IMBALANCED_PROP': 64,
+        'FAILURE_MOTOR': 128,
+        'HIL_STATE_OFF': 0,
+        'HIL_STATE_ON': 1,
         'VEHICLE_TYPE_UNKNOWN': 0,
         'VEHICLE_TYPE_ROTARY_WING': 1,
         'VEHICLE_TYPE_FIXED_WING': 2,
         'VEHICLE_TYPE_ROVER': 3,
         'VEHICLE_TYPE_AIRSHIP': 4,
-        'ARM_DISARM_REASON_TRANSITION_TO_STANDBY': 0,
-        'ARM_DISARM_REASON_RC_STICK': 1,
-        'ARM_DISARM_REASON_RC_SWITCH': 2,
-        'ARM_DISARM_REASON_COMMAND_INTERNAL': 3,
-        'ARM_DISARM_REASON_COMMAND_EXTERNAL': 4,
-        'ARM_DISARM_REASON_MISSION_START': 5,
-        'ARM_DISARM_REASON_SAFETY_BUTTON': 6,
-        'ARM_DISARM_REASON_AUTO_DISARM_LAND': 7,
-        'ARM_DISARM_REASON_AUTO_DISARM_PREFLIGHT': 8,
-        'ARM_DISARM_REASON_KILL_SWITCH': 9,
-        'ARM_DISARM_REASON_LOCKDOWN': 10,
-        'ARM_DISARM_REASON_FAILURE_DETECTOR': 11,
-        'ARM_DISARM_REASON_SHUTDOWN': 12,
-        'ARM_DISARM_REASON_UNIT_TEST': 13,
     }
 
     @classmethod
@@ -112,24 +112,27 @@ class Metaclass_VehicleStatus(type):
             'ARMING_STATE_SHUTDOWN': cls.__constants['ARMING_STATE_SHUTDOWN'],
             'ARMING_STATE_IN_AIR_RESTORE': cls.__constants['ARMING_STATE_IN_AIR_RESTORE'],
             'ARMING_STATE_MAX': cls.__constants['ARMING_STATE_MAX'],
-            'FAILURE_NONE': cls.__constants['FAILURE_NONE'],
-            'FAILURE_ROLL': cls.__constants['FAILURE_ROLL'],
-            'FAILURE_PITCH': cls.__constants['FAILURE_PITCH'],
-            'FAILURE_ALT': cls.__constants['FAILURE_ALT'],
-            'FAILURE_EXT': cls.__constants['FAILURE_EXT'],
-            'FAILURE_ARM_ESC': cls.__constants['FAILURE_ARM_ESC'],
-            'FAILURE_HIGH_WIND': cls.__constants['FAILURE_HIGH_WIND'],
-            'FAILURE_BATTERY': cls.__constants['FAILURE_BATTERY'],
-            'FAILURE_IMBALANCED_PROP': cls.__constants['FAILURE_IMBALANCED_PROP'],
-            'HIL_STATE_OFF': cls.__constants['HIL_STATE_OFF'],
-            'HIL_STATE_ON': cls.__constants['HIL_STATE_ON'],
+            'ARM_DISARM_REASON_TRANSITION_TO_STANDBY': cls.__constants['ARM_DISARM_REASON_TRANSITION_TO_STANDBY'],
+            'ARM_DISARM_REASON_RC_STICK': cls.__constants['ARM_DISARM_REASON_RC_STICK'],
+            'ARM_DISARM_REASON_RC_SWITCH': cls.__constants['ARM_DISARM_REASON_RC_SWITCH'],
+            'ARM_DISARM_REASON_COMMAND_INTERNAL': cls.__constants['ARM_DISARM_REASON_COMMAND_INTERNAL'],
+            'ARM_DISARM_REASON_COMMAND_EXTERNAL': cls.__constants['ARM_DISARM_REASON_COMMAND_EXTERNAL'],
+            'ARM_DISARM_REASON_MISSION_START': cls.__constants['ARM_DISARM_REASON_MISSION_START'],
+            'ARM_DISARM_REASON_SAFETY_BUTTON': cls.__constants['ARM_DISARM_REASON_SAFETY_BUTTON'],
+            'ARM_DISARM_REASON_AUTO_DISARM_LAND': cls.__constants['ARM_DISARM_REASON_AUTO_DISARM_LAND'],
+            'ARM_DISARM_REASON_AUTO_DISARM_PREFLIGHT': cls.__constants['ARM_DISARM_REASON_AUTO_DISARM_PREFLIGHT'],
+            'ARM_DISARM_REASON_KILL_SWITCH': cls.__constants['ARM_DISARM_REASON_KILL_SWITCH'],
+            'ARM_DISARM_REASON_LOCKDOWN': cls.__constants['ARM_DISARM_REASON_LOCKDOWN'],
+            'ARM_DISARM_REASON_FAILURE_DETECTOR': cls.__constants['ARM_DISARM_REASON_FAILURE_DETECTOR'],
+            'ARM_DISARM_REASON_SHUTDOWN': cls.__constants['ARM_DISARM_REASON_SHUTDOWN'],
+            'ARM_DISARM_REASON_UNIT_TEST': cls.__constants['ARM_DISARM_REASON_UNIT_TEST'],
             'NAVIGATION_STATE_MANUAL': cls.__constants['NAVIGATION_STATE_MANUAL'],
             'NAVIGATION_STATE_ALTCTL': cls.__constants['NAVIGATION_STATE_ALTCTL'],
             'NAVIGATION_STATE_POSCTL': cls.__constants['NAVIGATION_STATE_POSCTL'],
             'NAVIGATION_STATE_AUTO_MISSION': cls.__constants['NAVIGATION_STATE_AUTO_MISSION'],
             'NAVIGATION_STATE_AUTO_LOITER': cls.__constants['NAVIGATION_STATE_AUTO_LOITER'],
             'NAVIGATION_STATE_AUTO_RTL': cls.__constants['NAVIGATION_STATE_AUTO_RTL'],
-            'NAVIGATION_STATE_AUTO_LANDENGFAIL': cls.__constants['NAVIGATION_STATE_AUTO_LANDENGFAIL'],
+            'NAVIGATION_STATE_UNUSED3': cls.__constants['NAVIGATION_STATE_UNUSED3'],
             'NAVIGATION_STATE_UNUSED': cls.__constants['NAVIGATION_STATE_UNUSED'],
             'NAVIGATION_STATE_ACRO': cls.__constants['NAVIGATION_STATE_ACRO'],
             'NAVIGATION_STATE_UNUSED1': cls.__constants['NAVIGATION_STATE_UNUSED1'],
@@ -145,25 +148,22 @@ class Metaclass_VehicleStatus(type):
             'NAVIGATION_STATE_ORBIT': cls.__constants['NAVIGATION_STATE_ORBIT'],
             'NAVIGATION_STATE_AUTO_VTOL_TAKEOFF': cls.__constants['NAVIGATION_STATE_AUTO_VTOL_TAKEOFF'],
             'NAVIGATION_STATE_MAX': cls.__constants['NAVIGATION_STATE_MAX'],
+            'FAILURE_NONE': cls.__constants['FAILURE_NONE'],
+            'FAILURE_ROLL': cls.__constants['FAILURE_ROLL'],
+            'FAILURE_PITCH': cls.__constants['FAILURE_PITCH'],
+            'FAILURE_ALT': cls.__constants['FAILURE_ALT'],
+            'FAILURE_EXT': cls.__constants['FAILURE_EXT'],
+            'FAILURE_ARM_ESC': cls.__constants['FAILURE_ARM_ESC'],
+            'FAILURE_BATTERY': cls.__constants['FAILURE_BATTERY'],
+            'FAILURE_IMBALANCED_PROP': cls.__constants['FAILURE_IMBALANCED_PROP'],
+            'FAILURE_MOTOR': cls.__constants['FAILURE_MOTOR'],
+            'HIL_STATE_OFF': cls.__constants['HIL_STATE_OFF'],
+            'HIL_STATE_ON': cls.__constants['HIL_STATE_ON'],
             'VEHICLE_TYPE_UNKNOWN': cls.__constants['VEHICLE_TYPE_UNKNOWN'],
             'VEHICLE_TYPE_ROTARY_WING': cls.__constants['VEHICLE_TYPE_ROTARY_WING'],
             'VEHICLE_TYPE_FIXED_WING': cls.__constants['VEHICLE_TYPE_FIXED_WING'],
             'VEHICLE_TYPE_ROVER': cls.__constants['VEHICLE_TYPE_ROVER'],
             'VEHICLE_TYPE_AIRSHIP': cls.__constants['VEHICLE_TYPE_AIRSHIP'],
-            'ARM_DISARM_REASON_TRANSITION_TO_STANDBY': cls.__constants['ARM_DISARM_REASON_TRANSITION_TO_STANDBY'],
-            'ARM_DISARM_REASON_RC_STICK': cls.__constants['ARM_DISARM_REASON_RC_STICK'],
-            'ARM_DISARM_REASON_RC_SWITCH': cls.__constants['ARM_DISARM_REASON_RC_SWITCH'],
-            'ARM_DISARM_REASON_COMMAND_INTERNAL': cls.__constants['ARM_DISARM_REASON_COMMAND_INTERNAL'],
-            'ARM_DISARM_REASON_COMMAND_EXTERNAL': cls.__constants['ARM_DISARM_REASON_COMMAND_EXTERNAL'],
-            'ARM_DISARM_REASON_MISSION_START': cls.__constants['ARM_DISARM_REASON_MISSION_START'],
-            'ARM_DISARM_REASON_SAFETY_BUTTON': cls.__constants['ARM_DISARM_REASON_SAFETY_BUTTON'],
-            'ARM_DISARM_REASON_AUTO_DISARM_LAND': cls.__constants['ARM_DISARM_REASON_AUTO_DISARM_LAND'],
-            'ARM_DISARM_REASON_AUTO_DISARM_PREFLIGHT': cls.__constants['ARM_DISARM_REASON_AUTO_DISARM_PREFLIGHT'],
-            'ARM_DISARM_REASON_KILL_SWITCH': cls.__constants['ARM_DISARM_REASON_KILL_SWITCH'],
-            'ARM_DISARM_REASON_LOCKDOWN': cls.__constants['ARM_DISARM_REASON_LOCKDOWN'],
-            'ARM_DISARM_REASON_FAILURE_DETECTOR': cls.__constants['ARM_DISARM_REASON_FAILURE_DETECTOR'],
-            'ARM_DISARM_REASON_SHUTDOWN': cls.__constants['ARM_DISARM_REASON_SHUTDOWN'],
-            'ARM_DISARM_REASON_UNIT_TEST': cls.__constants['ARM_DISARM_REASON_UNIT_TEST'],
         }
 
     @property
@@ -202,59 +202,74 @@ class Metaclass_VehicleStatus(type):
         return Metaclass_VehicleStatus.__constants['ARMING_STATE_MAX']
 
     @property
-    def FAILURE_NONE(self):
-        """Message constant 'FAILURE_NONE'."""
-        return Metaclass_VehicleStatus.__constants['FAILURE_NONE']
+    def ARM_DISARM_REASON_TRANSITION_TO_STANDBY(self):
+        """Message constant 'ARM_DISARM_REASON_TRANSITION_TO_STANDBY'."""
+        return Metaclass_VehicleStatus.__constants['ARM_DISARM_REASON_TRANSITION_TO_STANDBY']
 
     @property
-    def FAILURE_ROLL(self):
-        """Message constant 'FAILURE_ROLL'."""
-        return Metaclass_VehicleStatus.__constants['FAILURE_ROLL']
+    def ARM_DISARM_REASON_RC_STICK(self):
+        """Message constant 'ARM_DISARM_REASON_RC_STICK'."""
+        return Metaclass_VehicleStatus.__constants['ARM_DISARM_REASON_RC_STICK']
 
     @property
-    def FAILURE_PITCH(self):
-        """Message constant 'FAILURE_PITCH'."""
-        return Metaclass_VehicleStatus.__constants['FAILURE_PITCH']
+    def ARM_DISARM_REASON_RC_SWITCH(self):
+        """Message constant 'ARM_DISARM_REASON_RC_SWITCH'."""
+        return Metaclass_VehicleStatus.__constants['ARM_DISARM_REASON_RC_SWITCH']
 
     @property
-    def FAILURE_ALT(self):
-        """Message constant 'FAILURE_ALT'."""
-        return Metaclass_VehicleStatus.__constants['FAILURE_ALT']
+    def ARM_DISARM_REASON_COMMAND_INTERNAL(self):
+        """Message constant 'ARM_DISARM_REASON_COMMAND_INTERNAL'."""
+        return Metaclass_VehicleStatus.__constants['ARM_DISARM_REASON_COMMAND_INTERNAL']
 
     @property
-    def FAILURE_EXT(self):
-        """Message constant 'FAILURE_EXT'."""
-        return Metaclass_VehicleStatus.__constants['FAILURE_EXT']
+    def ARM_DISARM_REASON_COMMAND_EXTERNAL(self):
+        """Message constant 'ARM_DISARM_REASON_COMMAND_EXTERNAL'."""
+        return Metaclass_VehicleStatus.__constants['ARM_DISARM_REASON_COMMAND_EXTERNAL']
 
     @property
-    def FAILURE_ARM_ESC(self):
-        """Message constant 'FAILURE_ARM_ESC'."""
-        return Metaclass_VehicleStatus.__constants['FAILURE_ARM_ESC']
+    def ARM_DISARM_REASON_MISSION_START(self):
+        """Message constant 'ARM_DISARM_REASON_MISSION_START'."""
+        return Metaclass_VehicleStatus.__constants['ARM_DISARM_REASON_MISSION_START']
 
     @property
-    def FAILURE_HIGH_WIND(self):
-        """Message constant 'FAILURE_HIGH_WIND'."""
-        return Metaclass_VehicleStatus.__constants['FAILURE_HIGH_WIND']
+    def ARM_DISARM_REASON_SAFETY_BUTTON(self):
+        """Message constant 'ARM_DISARM_REASON_SAFETY_BUTTON'."""
+        return Metaclass_VehicleStatus.__constants['ARM_DISARM_REASON_SAFETY_BUTTON']
 
     @property
-    def FAILURE_BATTERY(self):
-        """Message constant 'FAILURE_BATTERY'."""
-        return Metaclass_VehicleStatus.__constants['FAILURE_BATTERY']
+    def ARM_DISARM_REASON_AUTO_DISARM_LAND(self):
+        """Message constant 'ARM_DISARM_REASON_AUTO_DISARM_LAND'."""
+        return Metaclass_VehicleStatus.__constants['ARM_DISARM_REASON_AUTO_DISARM_LAND']
 
     @property
-    def FAILURE_IMBALANCED_PROP(self):
-        """Message constant 'FAILURE_IMBALANCED_PROP'."""
-        return Metaclass_VehicleStatus.__constants['FAILURE_IMBALANCED_PROP']
+    def ARM_DISARM_REASON_AUTO_DISARM_PREFLIGHT(self):
+        """Message constant 'ARM_DISARM_REASON_AUTO_DISARM_PREFLIGHT'."""
+        return Metaclass_VehicleStatus.__constants['ARM_DISARM_REASON_AUTO_DISARM_PREFLIGHT']
 
     @property
-    def HIL_STATE_OFF(self):
-        """Message constant 'HIL_STATE_OFF'."""
-        return Metaclass_VehicleStatus.__constants['HIL_STATE_OFF']
+    def ARM_DISARM_REASON_KILL_SWITCH(self):
+        """Message constant 'ARM_DISARM_REASON_KILL_SWITCH'."""
+        return Metaclass_VehicleStatus.__constants['ARM_DISARM_REASON_KILL_SWITCH']
 
     @property
-    def HIL_STATE_ON(self):
-        """Message constant 'HIL_STATE_ON'."""
-        return Metaclass_VehicleStatus.__constants['HIL_STATE_ON']
+    def ARM_DISARM_REASON_LOCKDOWN(self):
+        """Message constant 'ARM_DISARM_REASON_LOCKDOWN'."""
+        return Metaclass_VehicleStatus.__constants['ARM_DISARM_REASON_LOCKDOWN']
+
+    @property
+    def ARM_DISARM_REASON_FAILURE_DETECTOR(self):
+        """Message constant 'ARM_DISARM_REASON_FAILURE_DETECTOR'."""
+        return Metaclass_VehicleStatus.__constants['ARM_DISARM_REASON_FAILURE_DETECTOR']
+
+    @property
+    def ARM_DISARM_REASON_SHUTDOWN(self):
+        """Message constant 'ARM_DISARM_REASON_SHUTDOWN'."""
+        return Metaclass_VehicleStatus.__constants['ARM_DISARM_REASON_SHUTDOWN']
+
+    @property
+    def ARM_DISARM_REASON_UNIT_TEST(self):
+        """Message constant 'ARM_DISARM_REASON_UNIT_TEST'."""
+        return Metaclass_VehicleStatus.__constants['ARM_DISARM_REASON_UNIT_TEST']
 
     @property
     def NAVIGATION_STATE_MANUAL(self):
@@ -287,9 +302,9 @@ class Metaclass_VehicleStatus(type):
         return Metaclass_VehicleStatus.__constants['NAVIGATION_STATE_AUTO_RTL']
 
     @property
-    def NAVIGATION_STATE_AUTO_LANDENGFAIL(self):
-        """Message constant 'NAVIGATION_STATE_AUTO_LANDENGFAIL'."""
-        return Metaclass_VehicleStatus.__constants['NAVIGATION_STATE_AUTO_LANDENGFAIL']
+    def NAVIGATION_STATE_UNUSED3(self):
+        """Message constant 'NAVIGATION_STATE_UNUSED3'."""
+        return Metaclass_VehicleStatus.__constants['NAVIGATION_STATE_UNUSED3']
 
     @property
     def NAVIGATION_STATE_UNUSED(self):
@@ -367,6 +382,61 @@ class Metaclass_VehicleStatus(type):
         return Metaclass_VehicleStatus.__constants['NAVIGATION_STATE_MAX']
 
     @property
+    def FAILURE_NONE(self):
+        """Message constant 'FAILURE_NONE'."""
+        return Metaclass_VehicleStatus.__constants['FAILURE_NONE']
+
+    @property
+    def FAILURE_ROLL(self):
+        """Message constant 'FAILURE_ROLL'."""
+        return Metaclass_VehicleStatus.__constants['FAILURE_ROLL']
+
+    @property
+    def FAILURE_PITCH(self):
+        """Message constant 'FAILURE_PITCH'."""
+        return Metaclass_VehicleStatus.__constants['FAILURE_PITCH']
+
+    @property
+    def FAILURE_ALT(self):
+        """Message constant 'FAILURE_ALT'."""
+        return Metaclass_VehicleStatus.__constants['FAILURE_ALT']
+
+    @property
+    def FAILURE_EXT(self):
+        """Message constant 'FAILURE_EXT'."""
+        return Metaclass_VehicleStatus.__constants['FAILURE_EXT']
+
+    @property
+    def FAILURE_ARM_ESC(self):
+        """Message constant 'FAILURE_ARM_ESC'."""
+        return Metaclass_VehicleStatus.__constants['FAILURE_ARM_ESC']
+
+    @property
+    def FAILURE_BATTERY(self):
+        """Message constant 'FAILURE_BATTERY'."""
+        return Metaclass_VehicleStatus.__constants['FAILURE_BATTERY']
+
+    @property
+    def FAILURE_IMBALANCED_PROP(self):
+        """Message constant 'FAILURE_IMBALANCED_PROP'."""
+        return Metaclass_VehicleStatus.__constants['FAILURE_IMBALANCED_PROP']
+
+    @property
+    def FAILURE_MOTOR(self):
+        """Message constant 'FAILURE_MOTOR'."""
+        return Metaclass_VehicleStatus.__constants['FAILURE_MOTOR']
+
+    @property
+    def HIL_STATE_OFF(self):
+        """Message constant 'HIL_STATE_OFF'."""
+        return Metaclass_VehicleStatus.__constants['HIL_STATE_OFF']
+
+    @property
+    def HIL_STATE_ON(self):
+        """Message constant 'HIL_STATE_ON'."""
+        return Metaclass_VehicleStatus.__constants['HIL_STATE_ON']
+
+    @property
     def VEHICLE_TYPE_UNKNOWN(self):
         """Message constant 'VEHICLE_TYPE_UNKNOWN'."""
         return Metaclass_VehicleStatus.__constants['VEHICLE_TYPE_UNKNOWN']
@@ -391,76 +461,6 @@ class Metaclass_VehicleStatus(type):
         """Message constant 'VEHICLE_TYPE_AIRSHIP'."""
         return Metaclass_VehicleStatus.__constants['VEHICLE_TYPE_AIRSHIP']
 
-    @property
-    def ARM_DISARM_REASON_TRANSITION_TO_STANDBY(self):
-        """Message constant 'ARM_DISARM_REASON_TRANSITION_TO_STANDBY'."""
-        return Metaclass_VehicleStatus.__constants['ARM_DISARM_REASON_TRANSITION_TO_STANDBY']
-
-    @property
-    def ARM_DISARM_REASON_RC_STICK(self):
-        """Message constant 'ARM_DISARM_REASON_RC_STICK'."""
-        return Metaclass_VehicleStatus.__constants['ARM_DISARM_REASON_RC_STICK']
-
-    @property
-    def ARM_DISARM_REASON_RC_SWITCH(self):
-        """Message constant 'ARM_DISARM_REASON_RC_SWITCH'."""
-        return Metaclass_VehicleStatus.__constants['ARM_DISARM_REASON_RC_SWITCH']
-
-    @property
-    def ARM_DISARM_REASON_COMMAND_INTERNAL(self):
-        """Message constant 'ARM_DISARM_REASON_COMMAND_INTERNAL'."""
-        return Metaclass_VehicleStatus.__constants['ARM_DISARM_REASON_COMMAND_INTERNAL']
-
-    @property
-    def ARM_DISARM_REASON_COMMAND_EXTERNAL(self):
-        """Message constant 'ARM_DISARM_REASON_COMMAND_EXTERNAL'."""
-        return Metaclass_VehicleStatus.__constants['ARM_DISARM_REASON_COMMAND_EXTERNAL']
-
-    @property
-    def ARM_DISARM_REASON_MISSION_START(self):
-        """Message constant 'ARM_DISARM_REASON_MISSION_START'."""
-        return Metaclass_VehicleStatus.__constants['ARM_DISARM_REASON_MISSION_START']
-
-    @property
-    def ARM_DISARM_REASON_SAFETY_BUTTON(self):
-        """Message constant 'ARM_DISARM_REASON_SAFETY_BUTTON'."""
-        return Metaclass_VehicleStatus.__constants['ARM_DISARM_REASON_SAFETY_BUTTON']
-
-    @property
-    def ARM_DISARM_REASON_AUTO_DISARM_LAND(self):
-        """Message constant 'ARM_DISARM_REASON_AUTO_DISARM_LAND'."""
-        return Metaclass_VehicleStatus.__constants['ARM_DISARM_REASON_AUTO_DISARM_LAND']
-
-    @property
-    def ARM_DISARM_REASON_AUTO_DISARM_PREFLIGHT(self):
-        """Message constant 'ARM_DISARM_REASON_AUTO_DISARM_PREFLIGHT'."""
-        return Metaclass_VehicleStatus.__constants['ARM_DISARM_REASON_AUTO_DISARM_PREFLIGHT']
-
-    @property
-    def ARM_DISARM_REASON_KILL_SWITCH(self):
-        """Message constant 'ARM_DISARM_REASON_KILL_SWITCH'."""
-        return Metaclass_VehicleStatus.__constants['ARM_DISARM_REASON_KILL_SWITCH']
-
-    @property
-    def ARM_DISARM_REASON_LOCKDOWN(self):
-        """Message constant 'ARM_DISARM_REASON_LOCKDOWN'."""
-        return Metaclass_VehicleStatus.__constants['ARM_DISARM_REASON_LOCKDOWN']
-
-    @property
-    def ARM_DISARM_REASON_FAILURE_DETECTOR(self):
-        """Message constant 'ARM_DISARM_REASON_FAILURE_DETECTOR'."""
-        return Metaclass_VehicleStatus.__constants['ARM_DISARM_REASON_FAILURE_DETECTOR']
-
-    @property
-    def ARM_DISARM_REASON_SHUTDOWN(self):
-        """Message constant 'ARM_DISARM_REASON_SHUTDOWN'."""
-        return Metaclass_VehicleStatus.__constants['ARM_DISARM_REASON_SHUTDOWN']
-
-    @property
-    def ARM_DISARM_REASON_UNIT_TEST(self):
-        """Message constant 'ARM_DISARM_REASON_UNIT_TEST'."""
-        return Metaclass_VehicleStatus.__constants['ARM_DISARM_REASON_UNIT_TEST']
-
 
 class VehicleStatus(metaclass=Metaclass_VehicleStatus):
     """
@@ -474,24 +474,27 @@ class VehicleStatus(metaclass=Metaclass_VehicleStatus):
       ARMING_STATE_SHUTDOWN
       ARMING_STATE_IN_AIR_RESTORE
       ARMING_STATE_MAX
-      FAILURE_NONE
-      FAILURE_ROLL
-      FAILURE_PITCH
-      FAILURE_ALT
-      FAILURE_EXT
-      FAILURE_ARM_ESC
-      FAILURE_HIGH_WIND
-      FAILURE_BATTERY
-      FAILURE_IMBALANCED_PROP
-      HIL_STATE_OFF
-      HIL_STATE_ON
+      ARM_DISARM_REASON_TRANSITION_TO_STANDBY
+      ARM_DISARM_REASON_RC_STICK
+      ARM_DISARM_REASON_RC_SWITCH
+      ARM_DISARM_REASON_COMMAND_INTERNAL
+      ARM_DISARM_REASON_COMMAND_EXTERNAL
+      ARM_DISARM_REASON_MISSION_START
+      ARM_DISARM_REASON_SAFETY_BUTTON
+      ARM_DISARM_REASON_AUTO_DISARM_LAND
+      ARM_DISARM_REASON_AUTO_DISARM_PREFLIGHT
+      ARM_DISARM_REASON_KILL_SWITCH
+      ARM_DISARM_REASON_LOCKDOWN
+      ARM_DISARM_REASON_FAILURE_DETECTOR
+      ARM_DISARM_REASON_SHUTDOWN
+      ARM_DISARM_REASON_UNIT_TEST
       NAVIGATION_STATE_MANUAL
       NAVIGATION_STATE_ALTCTL
       NAVIGATION_STATE_POSCTL
       NAVIGATION_STATE_AUTO_MISSION
       NAVIGATION_STATE_AUTO_LOITER
       NAVIGATION_STATE_AUTO_RTL
-      NAVIGATION_STATE_AUTO_LANDENGFAIL
+      NAVIGATION_STATE_UNUSED3
       NAVIGATION_STATE_UNUSED
       NAVIGATION_STATE_ACRO
       NAVIGATION_STATE_UNUSED1
@@ -507,127 +510,142 @@ class VehicleStatus(metaclass=Metaclass_VehicleStatus):
       NAVIGATION_STATE_ORBIT
       NAVIGATION_STATE_AUTO_VTOL_TAKEOFF
       NAVIGATION_STATE_MAX
+      FAILURE_NONE
+      FAILURE_ROLL
+      FAILURE_PITCH
+      FAILURE_ALT
+      FAILURE_EXT
+      FAILURE_ARM_ESC
+      FAILURE_BATTERY
+      FAILURE_IMBALANCED_PROP
+      FAILURE_MOTOR
+      HIL_STATE_OFF
+      HIL_STATE_ON
       VEHICLE_TYPE_UNKNOWN
       VEHICLE_TYPE_ROTARY_WING
       VEHICLE_TYPE_FIXED_WING
       VEHICLE_TYPE_ROVER
       VEHICLE_TYPE_AIRSHIP
-      ARM_DISARM_REASON_TRANSITION_TO_STANDBY
-      ARM_DISARM_REASON_RC_STICK
-      ARM_DISARM_REASON_RC_SWITCH
-      ARM_DISARM_REASON_COMMAND_INTERNAL
-      ARM_DISARM_REASON_COMMAND_EXTERNAL
-      ARM_DISARM_REASON_MISSION_START
-      ARM_DISARM_REASON_SAFETY_BUTTON
-      ARM_DISARM_REASON_AUTO_DISARM_LAND
-      ARM_DISARM_REASON_AUTO_DISARM_PREFLIGHT
-      ARM_DISARM_REASON_KILL_SWITCH
-      ARM_DISARM_REASON_LOCKDOWN
-      ARM_DISARM_REASON_FAILURE_DETECTOR
-      ARM_DISARM_REASON_SHUTDOWN
-      ARM_DISARM_REASON_UNIT_TEST
     """
 
     __slots__ = [
         '_timestamp',
-        '_nav_state',
-        '_nav_state_timestamp',
+        '_armed_time',
+        '_takeoff_time',
         '_arming_state',
+        '_latest_arming_reason',
+        '_latest_disarming_reason',
+        '_nav_state_timestamp',
+        '_nav_state_user_intention',
+        '_nav_state',
+        '_failure_detector_status',
         '_hil_state',
+        '_vehicle_type',
         '_failsafe',
-        '_failsafe_timestamp',
+        '_failsafe_and_user_took_over',
+        '_gcs_connection_lost',
+        '_gcs_connection_lost_counter',
+        '_high_latency_data_link_lost',
+        '_is_vtol',
+        '_is_vtol_tailsitter',
+        '_in_transition_mode',
+        '_in_transition_to_fw',
         '_system_type',
         '_system_id',
         '_component_id',
-        '_vehicle_type',
-        '_is_vtol',
-        '_is_vtol_tailsitter',
-        '_vtol_fw_permanent_stab',
-        '_in_transition_mode',
-        '_in_transition_to_fw',
-        '_rc_signal_lost',
-        '_data_link_lost',
-        '_data_link_lost_counter',
-        '_high_latency_data_link_lost',
-        '_engine_failure',
-        '_mission_failure',
-        '_geofence_violated',
-        '_failure_detector_status',
-        '_onboard_control_sensors_present',
-        '_onboard_control_sensors_enabled',
-        '_onboard_control_sensors_health',
-        '_latest_arming_reason',
-        '_latest_disarming_reason',
-        '_armed_time',
-        '_takeoff_time',
+        '_safety_button_available',
+        '_safety_off',
+        '_power_input_valid',
+        '_usb_connected',
+        '_open_drone_id_system_present',
+        '_open_drone_id_system_healthy',
+        '_parachute_system_present',
+        '_parachute_system_healthy',
+        '_avoidance_system_required',
+        '_avoidance_system_valid',
+        '_rc_calibration_in_progress',
+        '_calibration_enabled',
+        '_pre_flight_checks_pass',
     ]
 
     _fields_and_field_types = {
         'timestamp': 'uint64',
-        'nav_state': 'uint8',
-        'nav_state_timestamp': 'uint64',
+        'armed_time': 'uint64',
+        'takeoff_time': 'uint64',
         'arming_state': 'uint8',
+        'latest_arming_reason': 'uint8',
+        'latest_disarming_reason': 'uint8',
+        'nav_state_timestamp': 'uint64',
+        'nav_state_user_intention': 'uint8',
+        'nav_state': 'uint8',
+        'failure_detector_status': 'uint16',
         'hil_state': 'uint8',
+        'vehicle_type': 'uint8',
         'failsafe': 'boolean',
-        'failsafe_timestamp': 'uint64',
+        'failsafe_and_user_took_over': 'boolean',
+        'gcs_connection_lost': 'boolean',
+        'gcs_connection_lost_counter': 'uint8',
+        'high_latency_data_link_lost': 'boolean',
+        'is_vtol': 'boolean',
+        'is_vtol_tailsitter': 'boolean',
+        'in_transition_mode': 'boolean',
+        'in_transition_to_fw': 'boolean',
         'system_type': 'uint8',
         'system_id': 'uint8',
         'component_id': 'uint8',
-        'vehicle_type': 'uint8',
-        'is_vtol': 'boolean',
-        'is_vtol_tailsitter': 'boolean',
-        'vtol_fw_permanent_stab': 'boolean',
-        'in_transition_mode': 'boolean',
-        'in_transition_to_fw': 'boolean',
-        'rc_signal_lost': 'boolean',
-        'data_link_lost': 'boolean',
-        'data_link_lost_counter': 'uint8',
-        'high_latency_data_link_lost': 'boolean',
-        'engine_failure': 'boolean',
-        'mission_failure': 'boolean',
-        'geofence_violated': 'boolean',
-        'failure_detector_status': 'uint8',
-        'onboard_control_sensors_present': 'uint64',
-        'onboard_control_sensors_enabled': 'uint64',
-        'onboard_control_sensors_health': 'uint64',
-        'latest_arming_reason': 'uint8',
-        'latest_disarming_reason': 'uint8',
-        'armed_time': 'uint64',
-        'takeoff_time': 'uint64',
+        'safety_button_available': 'boolean',
+        'safety_off': 'boolean',
+        'power_input_valid': 'boolean',
+        'usb_connected': 'boolean',
+        'open_drone_id_system_present': 'boolean',
+        'open_drone_id_system_healthy': 'boolean',
+        'parachute_system_present': 'boolean',
+        'parachute_system_healthy': 'boolean',
+        'avoidance_system_required': 'boolean',
+        'avoidance_system_valid': 'boolean',
+        'rc_calibration_in_progress': 'boolean',
+        'calibration_enabled': 'boolean',
+        'pre_flight_checks_pass': 'boolean',
     }
 
     SLOT_TYPES = (
         rosidl_parser.definition.BasicType('uint64'),  # noqa: E501
-        rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
-        rosidl_parser.definition.BasicType('uint64'),  # noqa: E501
-        rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
-        rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
-        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
-        rosidl_parser.definition.BasicType('uint64'),  # noqa: E501
-        rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
-        rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
-        rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
-        rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
-        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
-        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
-        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
-        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
-        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
-        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
-        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
-        rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
-        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
-        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
-        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
-        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
-        rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
-        rosidl_parser.definition.BasicType('uint64'),  # noqa: E501
         rosidl_parser.definition.BasicType('uint64'),  # noqa: E501
         rosidl_parser.definition.BasicType('uint64'),  # noqa: E501
         rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
         rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
+        rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
         rosidl_parser.definition.BasicType('uint64'),  # noqa: E501
-        rosidl_parser.definition.BasicType('uint64'),  # noqa: E501
+        rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
+        rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
+        rosidl_parser.definition.BasicType('uint16'),  # noqa: E501
+        rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
+        rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
+        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
+        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
+        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
+        rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
+        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
+        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
+        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
+        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
+        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
+        rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
+        rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
+        rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
+        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
+        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
+        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
+        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
+        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
+        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
+        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
+        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
+        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
+        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
+        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
+        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
+        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
     )
 
     def __init__(self, **kwargs):
@@ -635,36 +653,42 @@ class VehicleStatus(metaclass=Metaclass_VehicleStatus):
             'Invalid arguments passed to constructor: %s' % \
             ', '.join(sorted(k for k in kwargs.keys() if '_' + k not in self.__slots__))
         self.timestamp = kwargs.get('timestamp', int())
-        self.nav_state = kwargs.get('nav_state', int())
-        self.nav_state_timestamp = kwargs.get('nav_state_timestamp', int())
+        self.armed_time = kwargs.get('armed_time', int())
+        self.takeoff_time = kwargs.get('takeoff_time', int())
         self.arming_state = kwargs.get('arming_state', int())
+        self.latest_arming_reason = kwargs.get('latest_arming_reason', int())
+        self.latest_disarming_reason = kwargs.get('latest_disarming_reason', int())
+        self.nav_state_timestamp = kwargs.get('nav_state_timestamp', int())
+        self.nav_state_user_intention = kwargs.get('nav_state_user_intention', int())
+        self.nav_state = kwargs.get('nav_state', int())
+        self.failure_detector_status = kwargs.get('failure_detector_status', int())
         self.hil_state = kwargs.get('hil_state', int())
+        self.vehicle_type = kwargs.get('vehicle_type', int())
         self.failsafe = kwargs.get('failsafe', bool())
-        self.failsafe_timestamp = kwargs.get('failsafe_timestamp', int())
+        self.failsafe_and_user_took_over = kwargs.get('failsafe_and_user_took_over', bool())
+        self.gcs_connection_lost = kwargs.get('gcs_connection_lost', bool())
+        self.gcs_connection_lost_counter = kwargs.get('gcs_connection_lost_counter', int())
+        self.high_latency_data_link_lost = kwargs.get('high_latency_data_link_lost', bool())
+        self.is_vtol = kwargs.get('is_vtol', bool())
+        self.is_vtol_tailsitter = kwargs.get('is_vtol_tailsitter', bool())
+        self.in_transition_mode = kwargs.get('in_transition_mode', bool())
+        self.in_transition_to_fw = kwargs.get('in_transition_to_fw', bool())
         self.system_type = kwargs.get('system_type', int())
         self.system_id = kwargs.get('system_id', int())
         self.component_id = kwargs.get('component_id', int())
-        self.vehicle_type = kwargs.get('vehicle_type', int())
-        self.is_vtol = kwargs.get('is_vtol', bool())
-        self.is_vtol_tailsitter = kwargs.get('is_vtol_tailsitter', bool())
-        self.vtol_fw_permanent_stab = kwargs.get('vtol_fw_permanent_stab', bool())
-        self.in_transition_mode = kwargs.get('in_transition_mode', bool())
-        self.in_transition_to_fw = kwargs.get('in_transition_to_fw', bool())
-        self.rc_signal_lost = kwargs.get('rc_signal_lost', bool())
-        self.data_link_lost = kwargs.get('data_link_lost', bool())
-        self.data_link_lost_counter = kwargs.get('data_link_lost_counter', int())
-        self.high_latency_data_link_lost = kwargs.get('high_latency_data_link_lost', bool())
-        self.engine_failure = kwargs.get('engine_failure', bool())
-        self.mission_failure = kwargs.get('mission_failure', bool())
-        self.geofence_violated = kwargs.get('geofence_violated', bool())
-        self.failure_detector_status = kwargs.get('failure_detector_status', int())
-        self.onboard_control_sensors_present = kwargs.get('onboard_control_sensors_present', int())
-        self.onboard_control_sensors_enabled = kwargs.get('onboard_control_sensors_enabled', int())
-        self.onboard_control_sensors_health = kwargs.get('onboard_control_sensors_health', int())
-        self.latest_arming_reason = kwargs.get('latest_arming_reason', int())
-        self.latest_disarming_reason = kwargs.get('latest_disarming_reason', int())
-        self.armed_time = kwargs.get('armed_time', int())
-        self.takeoff_time = kwargs.get('takeoff_time', int())
+        self.safety_button_available = kwargs.get('safety_button_available', bool())
+        self.safety_off = kwargs.get('safety_off', bool())
+        self.power_input_valid = kwargs.get('power_input_valid', bool())
+        self.usb_connected = kwargs.get('usb_connected', bool())
+        self.open_drone_id_system_present = kwargs.get('open_drone_id_system_present', bool())
+        self.open_drone_id_system_healthy = kwargs.get('open_drone_id_system_healthy', bool())
+        self.parachute_system_present = kwargs.get('parachute_system_present', bool())
+        self.parachute_system_healthy = kwargs.get('parachute_system_healthy', bool())
+        self.avoidance_system_required = kwargs.get('avoidance_system_required', bool())
+        self.avoidance_system_valid = kwargs.get('avoidance_system_valid', bool())
+        self.rc_calibration_in_progress = kwargs.get('rc_calibration_in_progress', bool())
+        self.calibration_enabled = kwargs.get('calibration_enabled', bool())
+        self.pre_flight_checks_pass = kwargs.get('pre_flight_checks_pass', bool())
 
     def __repr__(self):
         typename = self.__class__.__module__.split('.')
@@ -697,17 +721,45 @@ class VehicleStatus(metaclass=Metaclass_VehicleStatus):
             return False
         if self.timestamp != other.timestamp:
             return False
-        if self.nav_state != other.nav_state:
+        if self.armed_time != other.armed_time:
             return False
-        if self.nav_state_timestamp != other.nav_state_timestamp:
+        if self.takeoff_time != other.takeoff_time:
             return False
         if self.arming_state != other.arming_state:
             return False
+        if self.latest_arming_reason != other.latest_arming_reason:
+            return False
+        if self.latest_disarming_reason != other.latest_disarming_reason:
+            return False
+        if self.nav_state_timestamp != other.nav_state_timestamp:
+            return False
+        if self.nav_state_user_intention != other.nav_state_user_intention:
+            return False
+        if self.nav_state != other.nav_state:
+            return False
+        if self.failure_detector_status != other.failure_detector_status:
+            return False
         if self.hil_state != other.hil_state:
+            return False
+        if self.vehicle_type != other.vehicle_type:
             return False
         if self.failsafe != other.failsafe:
             return False
-        if self.failsafe_timestamp != other.failsafe_timestamp:
+        if self.failsafe_and_user_took_over != other.failsafe_and_user_took_over:
+            return False
+        if self.gcs_connection_lost != other.gcs_connection_lost:
+            return False
+        if self.gcs_connection_lost_counter != other.gcs_connection_lost_counter:
+            return False
+        if self.high_latency_data_link_lost != other.high_latency_data_link_lost:
+            return False
+        if self.is_vtol != other.is_vtol:
+            return False
+        if self.is_vtol_tailsitter != other.is_vtol_tailsitter:
+            return False
+        if self.in_transition_mode != other.in_transition_mode:
+            return False
+        if self.in_transition_to_fw != other.in_transition_to_fw:
             return False
         if self.system_type != other.system_type:
             return False
@@ -715,47 +767,31 @@ class VehicleStatus(metaclass=Metaclass_VehicleStatus):
             return False
         if self.component_id != other.component_id:
             return False
-        if self.vehicle_type != other.vehicle_type:
+        if self.safety_button_available != other.safety_button_available:
             return False
-        if self.is_vtol != other.is_vtol:
+        if self.safety_off != other.safety_off:
             return False
-        if self.is_vtol_tailsitter != other.is_vtol_tailsitter:
+        if self.power_input_valid != other.power_input_valid:
             return False
-        if self.vtol_fw_permanent_stab != other.vtol_fw_permanent_stab:
+        if self.usb_connected != other.usb_connected:
             return False
-        if self.in_transition_mode != other.in_transition_mode:
+        if self.open_drone_id_system_present != other.open_drone_id_system_present:
             return False
-        if self.in_transition_to_fw != other.in_transition_to_fw:
+        if self.open_drone_id_system_healthy != other.open_drone_id_system_healthy:
             return False
-        if self.rc_signal_lost != other.rc_signal_lost:
+        if self.parachute_system_present != other.parachute_system_present:
             return False
-        if self.data_link_lost != other.data_link_lost:
+        if self.parachute_system_healthy != other.parachute_system_healthy:
             return False
-        if self.data_link_lost_counter != other.data_link_lost_counter:
+        if self.avoidance_system_required != other.avoidance_system_required:
             return False
-        if self.high_latency_data_link_lost != other.high_latency_data_link_lost:
+        if self.avoidance_system_valid != other.avoidance_system_valid:
             return False
-        if self.engine_failure != other.engine_failure:
+        if self.rc_calibration_in_progress != other.rc_calibration_in_progress:
             return False
-        if self.mission_failure != other.mission_failure:
+        if self.calibration_enabled != other.calibration_enabled:
             return False
-        if self.geofence_violated != other.geofence_violated:
-            return False
-        if self.failure_detector_status != other.failure_detector_status:
-            return False
-        if self.onboard_control_sensors_present != other.onboard_control_sensors_present:
-            return False
-        if self.onboard_control_sensors_enabled != other.onboard_control_sensors_enabled:
-            return False
-        if self.onboard_control_sensors_health != other.onboard_control_sensors_health:
-            return False
-        if self.latest_arming_reason != other.latest_arming_reason:
-            return False
-        if self.latest_disarming_reason != other.latest_disarming_reason:
-            return False
-        if self.armed_time != other.armed_time:
-            return False
-        if self.takeoff_time != other.takeoff_time:
+        if self.pre_flight_checks_pass != other.pre_flight_checks_pass:
             return False
         return True
 
@@ -780,34 +816,34 @@ class VehicleStatus(metaclass=Metaclass_VehicleStatus):
         self._timestamp = value
 
     @property
-    def nav_state(self):
-        """Message field 'nav_state'."""
-        return self._nav_state
+    def armed_time(self):
+        """Message field 'armed_time'."""
+        return self._armed_time
 
-    @nav_state.setter
-    def nav_state(self, value):
+    @armed_time.setter
+    def armed_time(self, value):
         if __debug__:
             assert \
                 isinstance(value, int), \
-                "The 'nav_state' field must be of type 'int'"
-            assert value >= 0 and value < 256, \
-                "The 'nav_state' field must be an unsigned integer in [0, 255]"
-        self._nav_state = value
+                "The 'armed_time' field must be of type 'int'"
+            assert value >= 0 and value < 18446744073709551616, \
+                "The 'armed_time' field must be an unsigned integer in [0, 18446744073709551615]"
+        self._armed_time = value
 
     @property
-    def nav_state_timestamp(self):
-        """Message field 'nav_state_timestamp'."""
-        return self._nav_state_timestamp
+    def takeoff_time(self):
+        """Message field 'takeoff_time'."""
+        return self._takeoff_time
 
-    @nav_state_timestamp.setter
-    def nav_state_timestamp(self, value):
+    @takeoff_time.setter
+    def takeoff_time(self, value):
         if __debug__:
             assert \
                 isinstance(value, int), \
-                "The 'nav_state_timestamp' field must be of type 'int'"
+                "The 'takeoff_time' field must be of type 'int'"
             assert value >= 0 and value < 18446744073709551616, \
-                "The 'nav_state_timestamp' field must be an unsigned integer in [0, 18446744073709551615]"
-        self._nav_state_timestamp = value
+                "The 'takeoff_time' field must be an unsigned integer in [0, 18446744073709551615]"
+        self._takeoff_time = value
 
     @property
     def arming_state(self):
@@ -825,6 +861,96 @@ class VehicleStatus(metaclass=Metaclass_VehicleStatus):
         self._arming_state = value
 
     @property
+    def latest_arming_reason(self):
+        """Message field 'latest_arming_reason'."""
+        return self._latest_arming_reason
+
+    @latest_arming_reason.setter
+    def latest_arming_reason(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, int), \
+                "The 'latest_arming_reason' field must be of type 'int'"
+            assert value >= 0 and value < 256, \
+                "The 'latest_arming_reason' field must be an unsigned integer in [0, 255]"
+        self._latest_arming_reason = value
+
+    @property
+    def latest_disarming_reason(self):
+        """Message field 'latest_disarming_reason'."""
+        return self._latest_disarming_reason
+
+    @latest_disarming_reason.setter
+    def latest_disarming_reason(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, int), \
+                "The 'latest_disarming_reason' field must be of type 'int'"
+            assert value >= 0 and value < 256, \
+                "The 'latest_disarming_reason' field must be an unsigned integer in [0, 255]"
+        self._latest_disarming_reason = value
+
+    @property
+    def nav_state_timestamp(self):
+        """Message field 'nav_state_timestamp'."""
+        return self._nav_state_timestamp
+
+    @nav_state_timestamp.setter
+    def nav_state_timestamp(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, int), \
+                "The 'nav_state_timestamp' field must be of type 'int'"
+            assert value >= 0 and value < 18446744073709551616, \
+                "The 'nav_state_timestamp' field must be an unsigned integer in [0, 18446744073709551615]"
+        self._nav_state_timestamp = value
+
+    @property
+    def nav_state_user_intention(self):
+        """Message field 'nav_state_user_intention'."""
+        return self._nav_state_user_intention
+
+    @nav_state_user_intention.setter
+    def nav_state_user_intention(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, int), \
+                "The 'nav_state_user_intention' field must be of type 'int'"
+            assert value >= 0 and value < 256, \
+                "The 'nav_state_user_intention' field must be an unsigned integer in [0, 255]"
+        self._nav_state_user_intention = value
+
+    @property
+    def nav_state(self):
+        """Message field 'nav_state'."""
+        return self._nav_state
+
+    @nav_state.setter
+    def nav_state(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, int), \
+                "The 'nav_state' field must be of type 'int'"
+            assert value >= 0 and value < 256, \
+                "The 'nav_state' field must be an unsigned integer in [0, 255]"
+        self._nav_state = value
+
+    @property
+    def failure_detector_status(self):
+        """Message field 'failure_detector_status'."""
+        return self._failure_detector_status
+
+    @failure_detector_status.setter
+    def failure_detector_status(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, int), \
+                "The 'failure_detector_status' field must be of type 'int'"
+            assert value >= 0 and value < 65536, \
+                "The 'failure_detector_status' field must be an unsigned integer in [0, 65535]"
+        self._failure_detector_status = value
+
+    @property
     def hil_state(self):
         """Message field 'hil_state'."""
         return self._hil_state
@@ -840,6 +966,21 @@ class VehicleStatus(metaclass=Metaclass_VehicleStatus):
         self._hil_state = value
 
     @property
+    def vehicle_type(self):
+        """Message field 'vehicle_type'."""
+        return self._vehicle_type
+
+    @vehicle_type.setter
+    def vehicle_type(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, int), \
+                "The 'vehicle_type' field must be of type 'int'"
+            assert value >= 0 and value < 256, \
+                "The 'vehicle_type' field must be an unsigned integer in [0, 255]"
+        self._vehicle_type = value
+
+    @property
     def failsafe(self):
         """Message field 'failsafe'."""
         return self._failsafe
@@ -853,19 +994,110 @@ class VehicleStatus(metaclass=Metaclass_VehicleStatus):
         self._failsafe = value
 
     @property
-    def failsafe_timestamp(self):
-        """Message field 'failsafe_timestamp'."""
-        return self._failsafe_timestamp
+    def failsafe_and_user_took_over(self):
+        """Message field 'failsafe_and_user_took_over'."""
+        return self._failsafe_and_user_took_over
 
-    @failsafe_timestamp.setter
-    def failsafe_timestamp(self, value):
+    @failsafe_and_user_took_over.setter
+    def failsafe_and_user_took_over(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, bool), \
+                "The 'failsafe_and_user_took_over' field must be of type 'bool'"
+        self._failsafe_and_user_took_over = value
+
+    @property
+    def gcs_connection_lost(self):
+        """Message field 'gcs_connection_lost'."""
+        return self._gcs_connection_lost
+
+    @gcs_connection_lost.setter
+    def gcs_connection_lost(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, bool), \
+                "The 'gcs_connection_lost' field must be of type 'bool'"
+        self._gcs_connection_lost = value
+
+    @property
+    def gcs_connection_lost_counter(self):
+        """Message field 'gcs_connection_lost_counter'."""
+        return self._gcs_connection_lost_counter
+
+    @gcs_connection_lost_counter.setter
+    def gcs_connection_lost_counter(self, value):
         if __debug__:
             assert \
                 isinstance(value, int), \
-                "The 'failsafe_timestamp' field must be of type 'int'"
-            assert value >= 0 and value < 18446744073709551616, \
-                "The 'failsafe_timestamp' field must be an unsigned integer in [0, 18446744073709551615]"
-        self._failsafe_timestamp = value
+                "The 'gcs_connection_lost_counter' field must be of type 'int'"
+            assert value >= 0 and value < 256, \
+                "The 'gcs_connection_lost_counter' field must be an unsigned integer in [0, 255]"
+        self._gcs_connection_lost_counter = value
+
+    @property
+    def high_latency_data_link_lost(self):
+        """Message field 'high_latency_data_link_lost'."""
+        return self._high_latency_data_link_lost
+
+    @high_latency_data_link_lost.setter
+    def high_latency_data_link_lost(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, bool), \
+                "The 'high_latency_data_link_lost' field must be of type 'bool'"
+        self._high_latency_data_link_lost = value
+
+    @property
+    def is_vtol(self):
+        """Message field 'is_vtol'."""
+        return self._is_vtol
+
+    @is_vtol.setter
+    def is_vtol(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, bool), \
+                "The 'is_vtol' field must be of type 'bool'"
+        self._is_vtol = value
+
+    @property
+    def is_vtol_tailsitter(self):
+        """Message field 'is_vtol_tailsitter'."""
+        return self._is_vtol_tailsitter
+
+    @is_vtol_tailsitter.setter
+    def is_vtol_tailsitter(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, bool), \
+                "The 'is_vtol_tailsitter' field must be of type 'bool'"
+        self._is_vtol_tailsitter = value
+
+    @property
+    def in_transition_mode(self):
+        """Message field 'in_transition_mode'."""
+        return self._in_transition_mode
+
+    @in_transition_mode.setter
+    def in_transition_mode(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, bool), \
+                "The 'in_transition_mode' field must be of type 'bool'"
+        self._in_transition_mode = value
+
+    @property
+    def in_transition_to_fw(self):
+        """Message field 'in_transition_to_fw'."""
+        return self._in_transition_to_fw
+
+    @in_transition_to_fw.setter
+    def in_transition_to_fw(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, bool), \
+                "The 'in_transition_to_fw' field must be of type 'bool'"
+        self._in_transition_to_fw = value
 
     @property
     def system_type(self):
@@ -913,294 +1145,170 @@ class VehicleStatus(metaclass=Metaclass_VehicleStatus):
         self._component_id = value
 
     @property
-    def vehicle_type(self):
-        """Message field 'vehicle_type'."""
-        return self._vehicle_type
+    def safety_button_available(self):
+        """Message field 'safety_button_available'."""
+        return self._safety_button_available
 
-    @vehicle_type.setter
-    def vehicle_type(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, int), \
-                "The 'vehicle_type' field must be of type 'int'"
-            assert value >= 0 and value < 256, \
-                "The 'vehicle_type' field must be an unsigned integer in [0, 255]"
-        self._vehicle_type = value
-
-    @property
-    def is_vtol(self):
-        """Message field 'is_vtol'."""
-        return self._is_vtol
-
-    @is_vtol.setter
-    def is_vtol(self, value):
+    @safety_button_available.setter
+    def safety_button_available(self, value):
         if __debug__:
             assert \
                 isinstance(value, bool), \
-                "The 'is_vtol' field must be of type 'bool'"
-        self._is_vtol = value
+                "The 'safety_button_available' field must be of type 'bool'"
+        self._safety_button_available = value
 
     @property
-    def is_vtol_tailsitter(self):
-        """Message field 'is_vtol_tailsitter'."""
-        return self._is_vtol_tailsitter
+    def safety_off(self):
+        """Message field 'safety_off'."""
+        return self._safety_off
 
-    @is_vtol_tailsitter.setter
-    def is_vtol_tailsitter(self, value):
+    @safety_off.setter
+    def safety_off(self, value):
         if __debug__:
             assert \
                 isinstance(value, bool), \
-                "The 'is_vtol_tailsitter' field must be of type 'bool'"
-        self._is_vtol_tailsitter = value
+                "The 'safety_off' field must be of type 'bool'"
+        self._safety_off = value
 
     @property
-    def vtol_fw_permanent_stab(self):
-        """Message field 'vtol_fw_permanent_stab'."""
-        return self._vtol_fw_permanent_stab
+    def power_input_valid(self):
+        """Message field 'power_input_valid'."""
+        return self._power_input_valid
 
-    @vtol_fw_permanent_stab.setter
-    def vtol_fw_permanent_stab(self, value):
+    @power_input_valid.setter
+    def power_input_valid(self, value):
         if __debug__:
             assert \
                 isinstance(value, bool), \
-                "The 'vtol_fw_permanent_stab' field must be of type 'bool'"
-        self._vtol_fw_permanent_stab = value
+                "The 'power_input_valid' field must be of type 'bool'"
+        self._power_input_valid = value
 
     @property
-    def in_transition_mode(self):
-        """Message field 'in_transition_mode'."""
-        return self._in_transition_mode
+    def usb_connected(self):
+        """Message field 'usb_connected'."""
+        return self._usb_connected
 
-    @in_transition_mode.setter
-    def in_transition_mode(self, value):
+    @usb_connected.setter
+    def usb_connected(self, value):
         if __debug__:
             assert \
                 isinstance(value, bool), \
-                "The 'in_transition_mode' field must be of type 'bool'"
-        self._in_transition_mode = value
+                "The 'usb_connected' field must be of type 'bool'"
+        self._usb_connected = value
 
     @property
-    def in_transition_to_fw(self):
-        """Message field 'in_transition_to_fw'."""
-        return self._in_transition_to_fw
+    def open_drone_id_system_present(self):
+        """Message field 'open_drone_id_system_present'."""
+        return self._open_drone_id_system_present
 
-    @in_transition_to_fw.setter
-    def in_transition_to_fw(self, value):
+    @open_drone_id_system_present.setter
+    def open_drone_id_system_present(self, value):
         if __debug__:
             assert \
                 isinstance(value, bool), \
-                "The 'in_transition_to_fw' field must be of type 'bool'"
-        self._in_transition_to_fw = value
+                "The 'open_drone_id_system_present' field must be of type 'bool'"
+        self._open_drone_id_system_present = value
 
     @property
-    def rc_signal_lost(self):
-        """Message field 'rc_signal_lost'."""
-        return self._rc_signal_lost
+    def open_drone_id_system_healthy(self):
+        """Message field 'open_drone_id_system_healthy'."""
+        return self._open_drone_id_system_healthy
 
-    @rc_signal_lost.setter
-    def rc_signal_lost(self, value):
+    @open_drone_id_system_healthy.setter
+    def open_drone_id_system_healthy(self, value):
         if __debug__:
             assert \
                 isinstance(value, bool), \
-                "The 'rc_signal_lost' field must be of type 'bool'"
-        self._rc_signal_lost = value
+                "The 'open_drone_id_system_healthy' field must be of type 'bool'"
+        self._open_drone_id_system_healthy = value
 
     @property
-    def data_link_lost(self):
-        """Message field 'data_link_lost'."""
-        return self._data_link_lost
+    def parachute_system_present(self):
+        """Message field 'parachute_system_present'."""
+        return self._parachute_system_present
 
-    @data_link_lost.setter
-    def data_link_lost(self, value):
+    @parachute_system_present.setter
+    def parachute_system_present(self, value):
         if __debug__:
             assert \
                 isinstance(value, bool), \
-                "The 'data_link_lost' field must be of type 'bool'"
-        self._data_link_lost = value
+                "The 'parachute_system_present' field must be of type 'bool'"
+        self._parachute_system_present = value
 
     @property
-    def data_link_lost_counter(self):
-        """Message field 'data_link_lost_counter'."""
-        return self._data_link_lost_counter
+    def parachute_system_healthy(self):
+        """Message field 'parachute_system_healthy'."""
+        return self._parachute_system_healthy
 
-    @data_link_lost_counter.setter
-    def data_link_lost_counter(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, int), \
-                "The 'data_link_lost_counter' field must be of type 'int'"
-            assert value >= 0 and value < 256, \
-                "The 'data_link_lost_counter' field must be an unsigned integer in [0, 255]"
-        self._data_link_lost_counter = value
-
-    @property
-    def high_latency_data_link_lost(self):
-        """Message field 'high_latency_data_link_lost'."""
-        return self._high_latency_data_link_lost
-
-    @high_latency_data_link_lost.setter
-    def high_latency_data_link_lost(self, value):
+    @parachute_system_healthy.setter
+    def parachute_system_healthy(self, value):
         if __debug__:
             assert \
                 isinstance(value, bool), \
-                "The 'high_latency_data_link_lost' field must be of type 'bool'"
-        self._high_latency_data_link_lost = value
+                "The 'parachute_system_healthy' field must be of type 'bool'"
+        self._parachute_system_healthy = value
 
     @property
-    def engine_failure(self):
-        """Message field 'engine_failure'."""
-        return self._engine_failure
+    def avoidance_system_required(self):
+        """Message field 'avoidance_system_required'."""
+        return self._avoidance_system_required
 
-    @engine_failure.setter
-    def engine_failure(self, value):
+    @avoidance_system_required.setter
+    def avoidance_system_required(self, value):
         if __debug__:
             assert \
                 isinstance(value, bool), \
-                "The 'engine_failure' field must be of type 'bool'"
-        self._engine_failure = value
+                "The 'avoidance_system_required' field must be of type 'bool'"
+        self._avoidance_system_required = value
 
     @property
-    def mission_failure(self):
-        """Message field 'mission_failure'."""
-        return self._mission_failure
+    def avoidance_system_valid(self):
+        """Message field 'avoidance_system_valid'."""
+        return self._avoidance_system_valid
 
-    @mission_failure.setter
-    def mission_failure(self, value):
+    @avoidance_system_valid.setter
+    def avoidance_system_valid(self, value):
         if __debug__:
             assert \
                 isinstance(value, bool), \
-                "The 'mission_failure' field must be of type 'bool'"
-        self._mission_failure = value
+                "The 'avoidance_system_valid' field must be of type 'bool'"
+        self._avoidance_system_valid = value
 
     @property
-    def geofence_violated(self):
-        """Message field 'geofence_violated'."""
-        return self._geofence_violated
+    def rc_calibration_in_progress(self):
+        """Message field 'rc_calibration_in_progress'."""
+        return self._rc_calibration_in_progress
 
-    @geofence_violated.setter
-    def geofence_violated(self, value):
+    @rc_calibration_in_progress.setter
+    def rc_calibration_in_progress(self, value):
         if __debug__:
             assert \
                 isinstance(value, bool), \
-                "The 'geofence_violated' field must be of type 'bool'"
-        self._geofence_violated = value
+                "The 'rc_calibration_in_progress' field must be of type 'bool'"
+        self._rc_calibration_in_progress = value
 
     @property
-    def failure_detector_status(self):
-        """Message field 'failure_detector_status'."""
-        return self._failure_detector_status
+    def calibration_enabled(self):
+        """Message field 'calibration_enabled'."""
+        return self._calibration_enabled
 
-    @failure_detector_status.setter
-    def failure_detector_status(self, value):
+    @calibration_enabled.setter
+    def calibration_enabled(self, value):
         if __debug__:
             assert \
-                isinstance(value, int), \
-                "The 'failure_detector_status' field must be of type 'int'"
-            assert value >= 0 and value < 256, \
-                "The 'failure_detector_status' field must be an unsigned integer in [0, 255]"
-        self._failure_detector_status = value
+                isinstance(value, bool), \
+                "The 'calibration_enabled' field must be of type 'bool'"
+        self._calibration_enabled = value
 
     @property
-    def onboard_control_sensors_present(self):
-        """Message field 'onboard_control_sensors_present'."""
-        return self._onboard_control_sensors_present
+    def pre_flight_checks_pass(self):
+        """Message field 'pre_flight_checks_pass'."""
+        return self._pre_flight_checks_pass
 
-    @onboard_control_sensors_present.setter
-    def onboard_control_sensors_present(self, value):
+    @pre_flight_checks_pass.setter
+    def pre_flight_checks_pass(self, value):
         if __debug__:
             assert \
-                isinstance(value, int), \
-                "The 'onboard_control_sensors_present' field must be of type 'int'"
-            assert value >= 0 and value < 18446744073709551616, \
-                "The 'onboard_control_sensors_present' field must be an unsigned integer in [0, 18446744073709551615]"
-        self._onboard_control_sensors_present = value
-
-    @property
-    def onboard_control_sensors_enabled(self):
-        """Message field 'onboard_control_sensors_enabled'."""
-        return self._onboard_control_sensors_enabled
-
-    @onboard_control_sensors_enabled.setter
-    def onboard_control_sensors_enabled(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, int), \
-                "The 'onboard_control_sensors_enabled' field must be of type 'int'"
-            assert value >= 0 and value < 18446744073709551616, \
-                "The 'onboard_control_sensors_enabled' field must be an unsigned integer in [0, 18446744073709551615]"
-        self._onboard_control_sensors_enabled = value
-
-    @property
-    def onboard_control_sensors_health(self):
-        """Message field 'onboard_control_sensors_health'."""
-        return self._onboard_control_sensors_health
-
-    @onboard_control_sensors_health.setter
-    def onboard_control_sensors_health(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, int), \
-                "The 'onboard_control_sensors_health' field must be of type 'int'"
-            assert value >= 0 and value < 18446744073709551616, \
-                "The 'onboard_control_sensors_health' field must be an unsigned integer in [0, 18446744073709551615]"
-        self._onboard_control_sensors_health = value
-
-    @property
-    def latest_arming_reason(self):
-        """Message field 'latest_arming_reason'."""
-        return self._latest_arming_reason
-
-    @latest_arming_reason.setter
-    def latest_arming_reason(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, int), \
-                "The 'latest_arming_reason' field must be of type 'int'"
-            assert value >= 0 and value < 256, \
-                "The 'latest_arming_reason' field must be an unsigned integer in [0, 255]"
-        self._latest_arming_reason = value
-
-    @property
-    def latest_disarming_reason(self):
-        """Message field 'latest_disarming_reason'."""
-        return self._latest_disarming_reason
-
-    @latest_disarming_reason.setter
-    def latest_disarming_reason(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, int), \
-                "The 'latest_disarming_reason' field must be of type 'int'"
-            assert value >= 0 and value < 256, \
-                "The 'latest_disarming_reason' field must be an unsigned integer in [0, 255]"
-        self._latest_disarming_reason = value
-
-    @property
-    def armed_time(self):
-        """Message field 'armed_time'."""
-        return self._armed_time
-
-    @armed_time.setter
-    def armed_time(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, int), \
-                "The 'armed_time' field must be of type 'int'"
-            assert value >= 0 and value < 18446744073709551616, \
-                "The 'armed_time' field must be an unsigned integer in [0, 18446744073709551615]"
-        self._armed_time = value
-
-    @property
-    def takeoff_time(self):
-        """Message field 'takeoff_time'."""
-        return self._takeoff_time
-
-    @takeoff_time.setter
-    def takeoff_time(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, int), \
-                "The 'takeoff_time' field must be of type 'int'"
-            assert value >= 0 and value < 18446744073709551616, \
-                "The 'takeoff_time' field must be an unsigned integer in [0, 18446744073709551615]"
-        self._takeoff_time = value
+                isinstance(value, bool), \
+                "The 'pre_flight_checks_pass' field must be of type 'bool'"
+        self._pre_flight_checks_pass = value

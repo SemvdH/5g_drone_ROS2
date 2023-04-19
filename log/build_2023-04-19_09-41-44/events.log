@@ -1,0 +1,249 @@
+[0.000000] (-) TimerEvent: {}
+[0.000870] (beacon_positioning) JobQueued: {'identifier': 'beacon_positioning', 'dependencies': OrderedDict()}
+[0.001142] (px4_msgs) JobQueued: {'identifier': 'px4_msgs', 'dependencies': OrderedDict()}
+[0.001890] (px4_ros_com) JobQueued: {'identifier': 'px4_ros_com', 'dependencies': OrderedDict([('px4_msgs', '/home/ubuntu/ros2_ws/install/px4_msgs')])}
+[0.002377] (px4_msgs) JobStarted: {'identifier': 'px4_msgs'}
+[0.099713] (-) TimerEvent: {}
+[0.101543] (beacon_positioning) JobStarted: {'identifier': 'beacon_positioning'}
+[0.197469] (px4_msgs) JobProgress: {'identifier': 'px4_msgs', 'progress': 'cmake'}
+[0.198498] (px4_msgs) Command: {'cmd': ['/usr/bin/cmake', '/home/ubuntu/ros2_ws/src/px4_msgs', '-DCMAKE_INSTALL_PREFIX=/home/ubuntu/ros2_ws/install/px4_msgs'], 'cwd': '/home/ubuntu/ros2_ws/build/px4_msgs', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'ubuntu'), ('SSH_CLIENT', '10.10.10.31 43340 22'), ('LC_TIME', 'nl_NL.UTF-8'), ('XDG_SESSION_TYPE', 'tty'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/ubuntu/ros2_ws/install/px4_ros_com/lib:/home/ubuntu/ros2_ws/install/px4_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/ubuntu'), ('OLDPWD', '/home/ubuntu/ros2_ws/src/beacon_positioning'), ('SSH_TTY', '/dev/pts/0'), ('ROS_PYTHON_VERSION', '3'), ('LC_MONETARY', 'nl_NL.UTF-8'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('_colcon_cd_root', '/opt/ros/foxy/'), ('COLCON_PREFIX_PATH', '/home/ubuntu/ros2_ws/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'ubuntu'), ('_', '/home/ubuntu/.local/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '1'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/ubuntu/.local/bin:/home/ubuntu/ros2_ws/install/px4_ros_com/bin:/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('LC_ADDRESS', 'nl_NL.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('LANG', 'en_US.UTF-8'), ('LC_TELEPHONE', 'nl_NL.UTF-8'), ('RMW_IMPLEMENTATION', 'rmw_fastrtps_cpp'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/home/ubuntu/ros2_ws/install/px4_ros_com:/home/ubuntu/ros2_ws/install/px4_msgs:/home/ubuntu/ros2_ws/install/drone_sensors:/home/ubuntu/ros2_ws/install/beacon_positioning:/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('LC_NAME', 'nl_NL.UTF-8'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'nl_NL.UTF-8'), ('LC_IDENTIFICATION', 'nl_NL.UTF-8'), ('PWD', '/home/ubuntu/ros2_ws/build/px4_msgs'), ('LC_ALL', 'en_US.UTF-8'), ('SSH_CONNECTION', '10.10.10.31 43340 10.10.10.33 22'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/ubuntu/ros2_ws/install/px4_msgs/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('LC_NUMERIC', 'nl_NL.UTF-8'), ('LC_PAPER', 'nl_NL.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/ubuntu/ros2_ws/install/px4_ros_com:/home/ubuntu/ros2_ws/install/px4_msgs:/home/ubuntu/ros2_ws/install/drone_sensors:/home/ubuntu/ros2_ws/install/beacon_positioning:/opt/ros/foxy')]), 'shell': False}
+[0.203143] (-) TimerEvent: {}
+[0.226132] (beacon_positioning) JobProgress: {'identifier': 'beacon_positioning', 'progress': 'cmake'}
+[0.227468] (beacon_positioning) Command: {'cmd': ['/usr/bin/cmake', '/home/ubuntu/ros2_ws/src/beacon_positioning', '-DCMAKE_INSTALL_PREFIX=/home/ubuntu/ros2_ws/install/beacon_positioning'], 'cwd': '/home/ubuntu/ros2_ws/build/beacon_positioning', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'ubuntu'), ('SSH_CLIENT', '10.10.10.31 43340 22'), ('LC_TIME', 'nl_NL.UTF-8'), ('XDG_SESSION_TYPE', 'tty'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/ubuntu/ros2_ws/install/px4_ros_com/lib:/home/ubuntu/ros2_ws/install/px4_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/ubuntu'), ('OLDPWD', '/home/ubuntu/ros2_ws/src/beacon_positioning'), ('SSH_TTY', '/dev/pts/0'), ('ROS_PYTHON_VERSION', '3'), ('LC_MONETARY', 'nl_NL.UTF-8'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('_colcon_cd_root', '/opt/ros/foxy/'), ('COLCON_PREFIX_PATH', '/home/ubuntu/ros2_ws/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'ubuntu'), ('_', '/home/ubuntu/.local/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '1'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/ubuntu/.local/bin:/home/ubuntu/ros2_ws/install/px4_ros_com/bin:/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('LC_ADDRESS', 'nl_NL.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('LANG', 'en_US.UTF-8'), ('LC_TELEPHONE', 'nl_NL.UTF-8'), ('RMW_IMPLEMENTATION', 'rmw_fastrtps_cpp'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/home/ubuntu/ros2_ws/install/px4_ros_com:/home/ubuntu/ros2_ws/install/px4_msgs:/home/ubuntu/ros2_ws/install/drone_sensors:/home/ubuntu/ros2_ws/install/beacon_positioning:/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('LC_NAME', 'nl_NL.UTF-8'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'nl_NL.UTF-8'), ('LC_IDENTIFICATION', 'nl_NL.UTF-8'), ('PWD', '/home/ubuntu/ros2_ws/build/beacon_positioning'), ('LC_ALL', 'en_US.UTF-8'), ('SSH_CONNECTION', '10.10.10.31 43340 10.10.10.33 22'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/ubuntu/ros2_ws/install/px4_msgs/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('LC_NUMERIC', 'nl_NL.UTF-8'), ('LC_PAPER', 'nl_NL.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/ubuntu/ros2_ws/install/px4_ros_com:/home/ubuntu/ros2_ws/install/px4_msgs:/home/ubuntu/ros2_ws/install/drone_sensors:/home/ubuntu/ros2_ws/install/beacon_positioning:/opt/ros/foxy')]), 'shell': False}
+[0.303394] (-) TimerEvent: {}
+[0.404501] (-) TimerEvent: {}
+[0.505748] (-) TimerEvent: {}
+[0.509154] (beacon_positioning) StdoutLine: {'line': b'-- The C compiler identification is GNU 9.4.0\n'}
+[0.509886] (px4_msgs) StdoutLine: {'line': b'-- The C compiler identification is GNU 9.4.0\n'}
+[0.605980] (-) TimerEvent: {}
+[0.706797] (-) TimerEvent: {}
+[0.776246] (beacon_positioning) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 9.4.0\n'}
+[0.776967] (px4_msgs) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 9.4.0\n'}
+[0.802455] (px4_msgs) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc\n'}
+[0.803118] (beacon_positioning) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc\n'}
+[0.806946] (-) TimerEvent: {}
+[0.907761] (-) TimerEvent: {}
+[1.008886] (-) TimerEvent: {}
+[1.098057] (beacon_positioning) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc -- works\n'}
+[1.098594] (px4_msgs) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc -- works\n'}
+[1.106970] (px4_msgs) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[1.107672] (beacon_positioning) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[1.109016] (-) TimerEvent: {}
+[1.210023] (-) TimerEvent: {}
+[1.311451] (-) TimerEvent: {}
+[1.412351] (-) TimerEvent: {}
+[1.420695] (beacon_positioning) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[1.421341] (px4_msgs) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[1.462127] (px4_msgs) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[1.462674] (beacon_positioning) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[1.464024] (beacon_positioning) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[1.464552] (px4_msgs) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[1.476538] (px4_msgs) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++\n'}
+[1.477182] (beacon_positioning) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++\n'}
+[1.512545] (-) TimerEvent: {}
+[1.613555] (-) TimerEvent: {}
+[1.715185] (-) TimerEvent: {}
+[1.810545] (px4_msgs) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ -- works\n'}
+[1.811198] (beacon_positioning) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ -- works\n'}
+[1.814248] (beacon_positioning) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[1.814899] (px4_msgs) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[1.815290] (-) TimerEvent: {}
+[1.915979] (-) TimerEvent: {}
+[2.016922] (-) TimerEvent: {}
+[2.118011] (-) TimerEvent: {}
+[2.152744] (px4_msgs) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[2.153517] (beacon_positioning) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[2.191381] (px4_msgs) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[2.192071] (beacon_positioning) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[2.193177] (beacon_positioning) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[2.193806] (px4_msgs) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[2.209833] (px4_msgs) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.11 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[2.210469] (beacon_positioning) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.11 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[2.218046] (-) TimerEvent: {}
+[2.318968] (-) TimerEvent: {}
+[2.339404] (beacon_positioning) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") \n'}
+[2.341553] (px4_msgs) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") \n'}
+[2.342604] (px4_msgs) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[2.343321] (beacon_positioning) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[2.419108] (-) TimerEvent: {}
+[2.519833] (-) TimerEvent: {}
+[2.620533] (-) TimerEvent: {}
+[2.721342] (-) TimerEvent: {}
+[2.822015] (-) TimerEvent: {}
+[2.922789] (-) TimerEvent: {}
+[3.023458] (-) TimerEvent: {}
+[3.124222] (-) TimerEvent: {}
+[3.225108] (-) TimerEvent: {}
+[3.268191] (px4_msgs) StdoutLine: {'line': b'-- Found builtin_interfaces: 1.0.0 (/opt/ros/foxy/share/builtin_interfaces/cmake)\n'}
+[3.268997] (beacon_positioning) StdoutLine: {'line': b'-- Found rclcpp: 2.4.2 (/opt/ros/foxy/share/rclcpp/cmake)\n'}
+[3.325278] (-) TimerEvent: {}
+[3.399328] (px4_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[3.425462] (-) TimerEvent: {}
+[3.435583] (px4_msgs) StdoutLine: {'line': b'-- Found rosidl_adapter: 1.3.0 (/opt/ros/foxy/share/rosidl_adapter/cmake)\n'}
+[3.484927] (beacon_positioning) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[3.521937] (beacon_positioning) StdoutLine: {'line': b'-- Found rosidl_adapter: 1.3.0 (/opt/ros/foxy/share/rosidl_adapter/cmake)\n'}
+[3.525660] (-) TimerEvent: {}
+[3.626447] (-) TimerEvent: {}
+[3.727206] (-) TimerEvent: {}
+[3.747389] (px4_msgs) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "1.1.1f")  \n'}
+[3.827440] (-) TimerEvent: {}
+[3.839052] (beacon_positioning) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "1.1.1f")  \n'}
+[3.860921] (px4_msgs) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/foxy/include  \n'}
+[3.927575] (-) TimerEvent: {}
+[3.949841] (beacon_positioning) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/foxy/include  \n'}
+[4.027761] (-) TimerEvent: {}
+[4.128476] (-) TimerEvent: {}
+[4.184700] (px4_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[4.228681] (-) TimerEvent: {}
+[4.284175] (beacon_positioning) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[4.298297] (px4_msgs) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.0.1 (/opt/ros/foxy/share/rosidl_default_generators/cmake)\n'}
+[4.328850] (-) TimerEvent: {}
+[4.429609] (-) TimerEvent: {}
+[4.520007] (beacon_positioning) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)\n'}
+[4.525851] (beacon_positioning) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[4.529774] (beacon_positioning) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[4.530420] (-) TimerEvent: {}
+[4.631052] (-) TimerEvent: {}
+[4.703322] (px4_msgs) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found version "3.8.10") \n'}
+[4.731193] (-) TimerEvent: {}
+[4.831859] (-) TimerEvent: {}
+[4.932506] (-) TimerEvent: {}
+[5.033146] (-) TimerEvent: {}
+[5.133770] (-) TimerEvent: {}
+[5.234361] (-) TimerEvent: {}
+[5.335155] (-) TimerEvent: {}
+[5.436293] (-) TimerEvent: {}
+[5.492453] (beacon_positioning) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[5.493655] (beacon_positioning) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[5.536473] (-) TimerEvent: {}
+[5.637269] (-) TimerEvent: {}
+[5.738129] (-) TimerEvent: {}
+[5.785475] (beacon_positioning) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed\n'}
+[5.786216] (beacon_positioning) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads\n'}
+[5.838302] (-) TimerEvent: {}
+[5.939065] (-) TimerEvent: {}
+[6.026333] (beacon_positioning) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads - not found\n'}
+[6.027106] (beacon_positioning) StdoutLine: {'line': b'-- Looking for pthread_create in pthread\n'}
+[6.039206] (-) TimerEvent: {}
+[6.139970] (-) TimerEvent: {}
+[6.240780] (-) TimerEvent: {}
+[6.304294] (beacon_positioning) StdoutLine: {'line': b'-- Looking for pthread_create in pthread - found\n'}
+[6.307944] (beacon_positioning) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[6.340911] (-) TimerEvent: {}
+[6.441613] (-) TimerEvent: {}
+[6.542296] (-) TimerEvent: {}
+[6.642909] (-) TimerEvent: {}
+[6.743562] (-) TimerEvent: {}
+[6.844231] (-) TimerEvent: {}
+[6.940384] (beacon_positioning) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.0.1 (/opt/ros/foxy/share/rosidl_default_generators/cmake)\n'}
+[6.944407] (-) TimerEvent: {}
+[7.044502] (beacon_positioning) StderrLine: {'line': b'CMake Error at CMakeLists.txt:27 (find_package):\n'}
+[7.045167] (-) TimerEvent: {}
+[7.045560] (beacon_positioning) StderrLine: {'line': b'  By not providing "Findbeacon_positioning.cmake" in CMAKE_MODULE_PATH this\n'}
+[7.046041] (beacon_positioning) StderrLine: {'line': b'  project has asked CMake to find a package configuration file provided by\n'}
+[7.046392] (beacon_positioning) StderrLine: {'line': b'  "beacon_positioning", but CMake did not find one.\n'}
+[7.046807] (beacon_positioning) StderrLine: {'line': b'\n'}
+[7.047129] (beacon_positioning) StderrLine: {'line': b'  Could not find a package configuration file provided by\n'}
+[7.047398] (beacon_positioning) StderrLine: {'line': b'  "beacon_positioning" with any of the following names:\n'}
+[7.047654] (beacon_positioning) StderrLine: {'line': b'\n'}
+[7.047912] (beacon_positioning) StderrLine: {'line': b'    beacon_positioningConfig.cmake\n'}
+[7.048189] (beacon_positioning) StderrLine: {'line': b'    beacon_positioning-config.cmake\n'}
+[7.048474] (beacon_positioning) StderrLine: {'line': b'\n'}
+[7.048744] (beacon_positioning) StderrLine: {'line': b'  Add the installation prefix of "beacon_positioning" to CMAKE_PREFIX_PATH or\n'}
+[7.049005] (beacon_positioning) StderrLine: {'line': b'  set "beacon_positioning_DIR" to a directory containing one of the above\n'}
+[7.049257] (beacon_positioning) StderrLine: {'line': b'  files.  If "beacon_positioning" provides a separate development package or\n'}
+[7.049506] (beacon_positioning) StderrLine: {'line': b'  SDK, be sure it has been installed.\n'}
+[7.049842] (beacon_positioning) StderrLine: {'line': b'\n'}
+[7.050107] (beacon_positioning) StderrLine: {'line': b'\n'}
+[7.059106] (beacon_positioning) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[7.059671] (beacon_positioning) StdoutLine: {'line': b'See also "/home/ubuntu/ros2_ws/build/beacon_positioning/CMakeFiles/CMakeOutput.log".\n'}
+[7.060114] (beacon_positioning) StdoutLine: {'line': b'See also "/home/ubuntu/ros2_ws/build/beacon_positioning/CMakeFiles/CMakeError.log".\n'}
+[7.079639] (beacon_positioning) CommandEnded: {'returncode': 1}
+[7.145502] (-) TimerEvent: {}
+[7.215004] (beacon_positioning) JobEnded: {'identifier': 'beacon_positioning', 'rc': 1}
+[7.245717] (-) TimerEvent: {}
+[7.346307] (-) TimerEvent: {}
+[7.446883] (-) TimerEvent: {}
+[7.547469] (-) TimerEvent: {}
+[7.648069] (-) TimerEvent: {}
+[7.748663] (-) TimerEvent: {}
+[7.849237] (-) TimerEvent: {}
+[7.949826] (-) TimerEvent: {}
+[8.050425] (-) TimerEvent: {}
+[8.150991] (-) TimerEvent: {}
+[8.251564] (-) TimerEvent: {}
+[8.352137] (-) TimerEvent: {}
+[8.452726] (-) TimerEvent: {}
+[8.553280] (-) TimerEvent: {}
+[8.653870] (-) TimerEvent: {}
+[8.754449] (-) TimerEvent: {}
+[8.855045] (-) TimerEvent: {}
+[8.955624] (-) TimerEvent: {}
+[9.056229] (-) TimerEvent: {}
+[9.156786] (-) TimerEvent: {}
+[9.257345] (-) TimerEvent: {}
+[9.359141] (-) TimerEvent: {}
+[9.459888] (-) TimerEvent: {}
+[9.560511] (-) TimerEvent: {}
+[9.661162] (-) TimerEvent: {}
+[9.761909] (-) TimerEvent: {}
+[9.799313] (px4_msgs) StdoutLine: {'line': b'-- Found ament_cmake_cppcheck: 0.9.8 (/opt/ros/foxy/share/ament_cmake_cppcheck/cmake)\n'}
+[9.811506] (px4_msgs) StdoutLine: {'line': b'-- Found ament_cmake_cpplint: 0.9.8 (/opt/ros/foxy/share/ament_cmake_cpplint/cmake)\n'}
+[9.823861] (px4_msgs) StdoutLine: {'line': b'-- Found ament_cmake_uncrustify: 0.9.8 (/opt/ros/foxy/share/ament_cmake_uncrustify/cmake)\n'}
+[9.836796] (px4_msgs) StdoutLine: {'line': b'-- Found ament_cmake_ros: 0.9.2 (/opt/ros/foxy/share/ament_cmake_ros/cmake)\n'}
+[9.862039] (-) TimerEvent: {}
+[9.962665] (-) TimerEvent: {}
+[10.063353] (-) TimerEvent: {}
+[10.164082] (-) TimerEvent: {}
+[10.264910] (-) TimerEvent: {}
+[10.365689] (-) TimerEvent: {}
+[10.466352] (-) TimerEvent: {}
+[10.566998] (-) TimerEvent: {}
+[10.667630] (-) TimerEvent: {}
+[10.689788] (px4_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[10.767798] (-) TimerEvent: {}
+[10.868444] (-) TimerEvent: {}
+[10.969075] (-) TimerEvent: {}
+[11.006449] (px4_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[11.069229] (-) TimerEvent: {}
+[11.116174] (px4_msgs) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3.5") \n'}
+[11.128647] (px4_msgs) StdoutLine: {'line': b'-- Found python_cmake_module: 0.8.1 (/opt/ros/foxy/share/python_cmake_module/cmake)\n'}
+[11.169382] (-) TimerEvent: {}
+[11.231714] (px4_msgs) StdoutLine: {'line': b'-- Found PythonLibs: /usr/lib/aarch64-linux-gnu/libpython3.8.so (found suitable version "3.8.10", minimum required is "3.5") \n'}
+[11.232553] (px4_msgs) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[11.233022] (px4_msgs) StdoutLine: {'line': b'-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.8\n'}
+[11.233423] (px4_msgs) StdoutLine: {'line': b'-- Using PYTHON_LIBRARIES: /usr/lib/aarch64-linux-gnu/libpython3.8.so\n'}
+[11.269520] (-) TimerEvent: {}
+[11.323239] (px4_msgs) StdoutLine: {'line': b'-- Found PythonExtra: .so  \n'}
+[11.369704] (-) TimerEvent: {}
+[11.470327] (-) TimerEvent: {}
+[11.570923] (-) TimerEvent: {}
+[11.671500] (-) TimerEvent: {}
+[11.772101] (-) TimerEvent: {}
+[11.872837] (-) TimerEvent: {}
+[11.973781] (-) TimerEvent: {}
+[11.983588] (px4_msgs) StdoutLine: {'line': b'-- Found ament_cmake_flake8: 0.9.8 (/opt/ros/foxy/share/ament_cmake_flake8/cmake)\n'}
+[11.995912] (px4_msgs) StdoutLine: {'line': b'-- Found ament_cmake_pep257: 0.9.8 (/opt/ros/foxy/share/ament_cmake_pep257/cmake)\n'}
+[12.073929] (-) TimerEvent: {}
+[12.084346] (px4_msgs) StdoutLine: {'line': b'-- Configuring done\n'}
+[12.174085] (-) TimerEvent: {}
+[12.274750] (-) TimerEvent: {}
+[12.375433] (-) TimerEvent: {}
+[12.476108] (-) TimerEvent: {}
+[12.576765] (-) TimerEvent: {}
+[12.677379] (-) TimerEvent: {}
+[12.778011] (-) TimerEvent: {}
+[12.878639] (-) TimerEvent: {}
+[12.979301] (-) TimerEvent: {}
+[13.079966] (-) TimerEvent: {}
+[13.180700] (-) TimerEvent: {}
+[13.281308] (-) TimerEvent: {}
+[13.381968] (-) TimerEvent: {}
+[13.482564] (-) TimerEvent: {}
+[13.583166] (-) TimerEvent: {}
+[13.663847] (px4_msgs) StdoutLine: {'line': b'-- Generating done\n'}
+[13.676611] (px4_msgs) StdoutLine: {'line': b'-- Build files have been written to: /home/ubuntu/ros2_ws/build/px4_msgs\n'}
+[13.683452] (-) TimerEvent: {}
+[13.738770] (px4_msgs) JobEnded: {'identifier': 'px4_msgs', 'rc': 'SIGINT'}
+[13.750448] (px4_ros_com) JobSkipped: {'identifier': 'px4_ros_com'}
+[13.750644] (-) EventReactorShutdown: {}

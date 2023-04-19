@@ -38,36 +38,42 @@ struct VehicleStatus_
       rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
     {
       this->timestamp = 0ull;
-      this->nav_state = 0;
-      this->nav_state_timestamp = 0ull;
+      this->armed_time = 0ull;
+      this->takeoff_time = 0ull;
       this->arming_state = 0;
+      this->latest_arming_reason = 0;
+      this->latest_disarming_reason = 0;
+      this->nav_state_timestamp = 0ull;
+      this->nav_state_user_intention = 0;
+      this->nav_state = 0;
+      this->failure_detector_status = 0;
       this->hil_state = 0;
+      this->vehicle_type = 0;
       this->failsafe = false;
-      this->failsafe_timestamp = 0ull;
+      this->failsafe_and_user_took_over = false;
+      this->gcs_connection_lost = false;
+      this->gcs_connection_lost_counter = 0;
+      this->high_latency_data_link_lost = false;
+      this->is_vtol = false;
+      this->is_vtol_tailsitter = false;
+      this->in_transition_mode = false;
+      this->in_transition_to_fw = false;
       this->system_type = 0;
       this->system_id = 0;
       this->component_id = 0;
-      this->vehicle_type = 0;
-      this->is_vtol = false;
-      this->is_vtol_tailsitter = false;
-      this->vtol_fw_permanent_stab = false;
-      this->in_transition_mode = false;
-      this->in_transition_to_fw = false;
-      this->rc_signal_lost = false;
-      this->data_link_lost = false;
-      this->data_link_lost_counter = 0;
-      this->high_latency_data_link_lost = false;
-      this->engine_failure = false;
-      this->mission_failure = false;
-      this->geofence_violated = false;
-      this->failure_detector_status = 0;
-      this->onboard_control_sensors_present = 0ull;
-      this->onboard_control_sensors_enabled = 0ull;
-      this->onboard_control_sensors_health = 0ull;
-      this->latest_arming_reason = 0;
-      this->latest_disarming_reason = 0;
-      this->armed_time = 0ull;
-      this->takeoff_time = 0ull;
+      this->safety_button_available = false;
+      this->safety_off = false;
+      this->power_input_valid = false;
+      this->usb_connected = false;
+      this->open_drone_id_system_present = false;
+      this->open_drone_id_system_healthy = false;
+      this->parachute_system_present = false;
+      this->parachute_system_healthy = false;
+      this->avoidance_system_required = false;
+      this->avoidance_system_valid = false;
+      this->rc_calibration_in_progress = false;
+      this->calibration_enabled = false;
+      this->pre_flight_checks_pass = false;
     }
   }
 
@@ -78,36 +84,42 @@ struct VehicleStatus_
       rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
     {
       this->timestamp = 0ull;
-      this->nav_state = 0;
-      this->nav_state_timestamp = 0ull;
+      this->armed_time = 0ull;
+      this->takeoff_time = 0ull;
       this->arming_state = 0;
+      this->latest_arming_reason = 0;
+      this->latest_disarming_reason = 0;
+      this->nav_state_timestamp = 0ull;
+      this->nav_state_user_intention = 0;
+      this->nav_state = 0;
+      this->failure_detector_status = 0;
       this->hil_state = 0;
+      this->vehicle_type = 0;
       this->failsafe = false;
-      this->failsafe_timestamp = 0ull;
+      this->failsafe_and_user_took_over = false;
+      this->gcs_connection_lost = false;
+      this->gcs_connection_lost_counter = 0;
+      this->high_latency_data_link_lost = false;
+      this->is_vtol = false;
+      this->is_vtol_tailsitter = false;
+      this->in_transition_mode = false;
+      this->in_transition_to_fw = false;
       this->system_type = 0;
       this->system_id = 0;
       this->component_id = 0;
-      this->vehicle_type = 0;
-      this->is_vtol = false;
-      this->is_vtol_tailsitter = false;
-      this->vtol_fw_permanent_stab = false;
-      this->in_transition_mode = false;
-      this->in_transition_to_fw = false;
-      this->rc_signal_lost = false;
-      this->data_link_lost = false;
-      this->data_link_lost_counter = 0;
-      this->high_latency_data_link_lost = false;
-      this->engine_failure = false;
-      this->mission_failure = false;
-      this->geofence_violated = false;
-      this->failure_detector_status = 0;
-      this->onboard_control_sensors_present = 0ull;
-      this->onboard_control_sensors_enabled = 0ull;
-      this->onboard_control_sensors_health = 0ull;
-      this->latest_arming_reason = 0;
-      this->latest_disarming_reason = 0;
-      this->armed_time = 0ull;
-      this->takeoff_time = 0ull;
+      this->safety_button_available = false;
+      this->safety_off = false;
+      this->power_input_valid = false;
+      this->usb_connected = false;
+      this->open_drone_id_system_present = false;
+      this->open_drone_id_system_healthy = false;
+      this->parachute_system_present = false;
+      this->parachute_system_healthy = false;
+      this->avoidance_system_required = false;
+      this->avoidance_system_valid = false;
+      this->rc_calibration_in_progress = false;
+      this->calibration_enabled = false;
+      this->pre_flight_checks_pass = false;
     }
   }
 
@@ -115,24 +127,66 @@ struct VehicleStatus_
   using _timestamp_type =
     uint64_t;
   _timestamp_type timestamp;
-  using _nav_state_type =
-    uint8_t;
-  _nav_state_type nav_state;
-  using _nav_state_timestamp_type =
+  using _armed_time_type =
     uint64_t;
-  _nav_state_timestamp_type nav_state_timestamp;
+  _armed_time_type armed_time;
+  using _takeoff_time_type =
+    uint64_t;
+  _takeoff_time_type takeoff_time;
   using _arming_state_type =
     uint8_t;
   _arming_state_type arming_state;
+  using _latest_arming_reason_type =
+    uint8_t;
+  _latest_arming_reason_type latest_arming_reason;
+  using _latest_disarming_reason_type =
+    uint8_t;
+  _latest_disarming_reason_type latest_disarming_reason;
+  using _nav_state_timestamp_type =
+    uint64_t;
+  _nav_state_timestamp_type nav_state_timestamp;
+  using _nav_state_user_intention_type =
+    uint8_t;
+  _nav_state_user_intention_type nav_state_user_intention;
+  using _nav_state_type =
+    uint8_t;
+  _nav_state_type nav_state;
+  using _failure_detector_status_type =
+    uint16_t;
+  _failure_detector_status_type failure_detector_status;
   using _hil_state_type =
     uint8_t;
   _hil_state_type hil_state;
+  using _vehicle_type_type =
+    uint8_t;
+  _vehicle_type_type vehicle_type;
   using _failsafe_type =
     bool;
   _failsafe_type failsafe;
-  using _failsafe_timestamp_type =
-    uint64_t;
-  _failsafe_timestamp_type failsafe_timestamp;
+  using _failsafe_and_user_took_over_type =
+    bool;
+  _failsafe_and_user_took_over_type failsafe_and_user_took_over;
+  using _gcs_connection_lost_type =
+    bool;
+  _gcs_connection_lost_type gcs_connection_lost;
+  using _gcs_connection_lost_counter_type =
+    uint8_t;
+  _gcs_connection_lost_counter_type gcs_connection_lost_counter;
+  using _high_latency_data_link_lost_type =
+    bool;
+  _high_latency_data_link_lost_type high_latency_data_link_lost;
+  using _is_vtol_type =
+    bool;
+  _is_vtol_type is_vtol;
+  using _is_vtol_tailsitter_type =
+    bool;
+  _is_vtol_tailsitter_type is_vtol_tailsitter;
+  using _in_transition_mode_type =
+    bool;
+  _in_transition_mode_type in_transition_mode;
+  using _in_transition_to_fw_type =
+    bool;
+  _in_transition_to_fw_type in_transition_to_fw;
   using _system_type_type =
     uint8_t;
   _system_type_type system_type;
@@ -142,69 +196,45 @@ struct VehicleStatus_
   using _component_id_type =
     uint8_t;
   _component_id_type component_id;
-  using _vehicle_type_type =
-    uint8_t;
-  _vehicle_type_type vehicle_type;
-  using _is_vtol_type =
+  using _safety_button_available_type =
     bool;
-  _is_vtol_type is_vtol;
-  using _is_vtol_tailsitter_type =
+  _safety_button_available_type safety_button_available;
+  using _safety_off_type =
     bool;
-  _is_vtol_tailsitter_type is_vtol_tailsitter;
-  using _vtol_fw_permanent_stab_type =
+  _safety_off_type safety_off;
+  using _power_input_valid_type =
     bool;
-  _vtol_fw_permanent_stab_type vtol_fw_permanent_stab;
-  using _in_transition_mode_type =
+  _power_input_valid_type power_input_valid;
+  using _usb_connected_type =
     bool;
-  _in_transition_mode_type in_transition_mode;
-  using _in_transition_to_fw_type =
+  _usb_connected_type usb_connected;
+  using _open_drone_id_system_present_type =
     bool;
-  _in_transition_to_fw_type in_transition_to_fw;
-  using _rc_signal_lost_type =
+  _open_drone_id_system_present_type open_drone_id_system_present;
+  using _open_drone_id_system_healthy_type =
     bool;
-  _rc_signal_lost_type rc_signal_lost;
-  using _data_link_lost_type =
+  _open_drone_id_system_healthy_type open_drone_id_system_healthy;
+  using _parachute_system_present_type =
     bool;
-  _data_link_lost_type data_link_lost;
-  using _data_link_lost_counter_type =
-    uint8_t;
-  _data_link_lost_counter_type data_link_lost_counter;
-  using _high_latency_data_link_lost_type =
+  _parachute_system_present_type parachute_system_present;
+  using _parachute_system_healthy_type =
     bool;
-  _high_latency_data_link_lost_type high_latency_data_link_lost;
-  using _engine_failure_type =
+  _parachute_system_healthy_type parachute_system_healthy;
+  using _avoidance_system_required_type =
     bool;
-  _engine_failure_type engine_failure;
-  using _mission_failure_type =
+  _avoidance_system_required_type avoidance_system_required;
+  using _avoidance_system_valid_type =
     bool;
-  _mission_failure_type mission_failure;
-  using _geofence_violated_type =
+  _avoidance_system_valid_type avoidance_system_valid;
+  using _rc_calibration_in_progress_type =
     bool;
-  _geofence_violated_type geofence_violated;
-  using _failure_detector_status_type =
-    uint8_t;
-  _failure_detector_status_type failure_detector_status;
-  using _onboard_control_sensors_present_type =
-    uint64_t;
-  _onboard_control_sensors_present_type onboard_control_sensors_present;
-  using _onboard_control_sensors_enabled_type =
-    uint64_t;
-  _onboard_control_sensors_enabled_type onboard_control_sensors_enabled;
-  using _onboard_control_sensors_health_type =
-    uint64_t;
-  _onboard_control_sensors_health_type onboard_control_sensors_health;
-  using _latest_arming_reason_type =
-    uint8_t;
-  _latest_arming_reason_type latest_arming_reason;
-  using _latest_disarming_reason_type =
-    uint8_t;
-  _latest_disarming_reason_type latest_disarming_reason;
-  using _armed_time_type =
-    uint64_t;
-  _armed_time_type armed_time;
-  using _takeoff_time_type =
-    uint64_t;
-  _takeoff_time_type takeoff_time;
+  _rc_calibration_in_progress_type rc_calibration_in_progress;
+  using _calibration_enabled_type =
+    bool;
+  _calibration_enabled_type calibration_enabled;
+  using _pre_flight_checks_pass_type =
+    bool;
+  _pre_flight_checks_pass_type pre_flight_checks_pass;
 
   // setters for named parameter idiom
   Type & set__timestamp(
@@ -213,16 +243,16 @@ struct VehicleStatus_
     this->timestamp = _arg;
     return *this;
   }
-  Type & set__nav_state(
-    const uint8_t & _arg)
-  {
-    this->nav_state = _arg;
-    return *this;
-  }
-  Type & set__nav_state_timestamp(
+  Type & set__armed_time(
     const uint64_t & _arg)
   {
-    this->nav_state_timestamp = _arg;
+    this->armed_time = _arg;
+    return *this;
+  }
+  Type & set__takeoff_time(
+    const uint64_t & _arg)
+  {
+    this->takeoff_time = _arg;
     return *this;
   }
   Type & set__arming_state(
@@ -231,10 +261,52 @@ struct VehicleStatus_
     this->arming_state = _arg;
     return *this;
   }
+  Type & set__latest_arming_reason(
+    const uint8_t & _arg)
+  {
+    this->latest_arming_reason = _arg;
+    return *this;
+  }
+  Type & set__latest_disarming_reason(
+    const uint8_t & _arg)
+  {
+    this->latest_disarming_reason = _arg;
+    return *this;
+  }
+  Type & set__nav_state_timestamp(
+    const uint64_t & _arg)
+  {
+    this->nav_state_timestamp = _arg;
+    return *this;
+  }
+  Type & set__nav_state_user_intention(
+    const uint8_t & _arg)
+  {
+    this->nav_state_user_intention = _arg;
+    return *this;
+  }
+  Type & set__nav_state(
+    const uint8_t & _arg)
+  {
+    this->nav_state = _arg;
+    return *this;
+  }
+  Type & set__failure_detector_status(
+    const uint16_t & _arg)
+  {
+    this->failure_detector_status = _arg;
+    return *this;
+  }
   Type & set__hil_state(
     const uint8_t & _arg)
   {
     this->hil_state = _arg;
+    return *this;
+  }
+  Type & set__vehicle_type(
+    const uint8_t & _arg)
+  {
+    this->vehicle_type = _arg;
     return *this;
   }
   Type & set__failsafe(
@@ -243,10 +315,52 @@ struct VehicleStatus_
     this->failsafe = _arg;
     return *this;
   }
-  Type & set__failsafe_timestamp(
-    const uint64_t & _arg)
+  Type & set__failsafe_and_user_took_over(
+    const bool & _arg)
   {
-    this->failsafe_timestamp = _arg;
+    this->failsafe_and_user_took_over = _arg;
+    return *this;
+  }
+  Type & set__gcs_connection_lost(
+    const bool & _arg)
+  {
+    this->gcs_connection_lost = _arg;
+    return *this;
+  }
+  Type & set__gcs_connection_lost_counter(
+    const uint8_t & _arg)
+  {
+    this->gcs_connection_lost_counter = _arg;
+    return *this;
+  }
+  Type & set__high_latency_data_link_lost(
+    const bool & _arg)
+  {
+    this->high_latency_data_link_lost = _arg;
+    return *this;
+  }
+  Type & set__is_vtol(
+    const bool & _arg)
+  {
+    this->is_vtol = _arg;
+    return *this;
+  }
+  Type & set__is_vtol_tailsitter(
+    const bool & _arg)
+  {
+    this->is_vtol_tailsitter = _arg;
+    return *this;
+  }
+  Type & set__in_transition_mode(
+    const bool & _arg)
+  {
+    this->in_transition_mode = _arg;
+    return *this;
+  }
+  Type & set__in_transition_to_fw(
+    const bool & _arg)
+  {
+    this->in_transition_to_fw = _arg;
     return *this;
   }
   Type & set__system_type(
@@ -267,130 +381,82 @@ struct VehicleStatus_
     this->component_id = _arg;
     return *this;
   }
-  Type & set__vehicle_type(
-    const uint8_t & _arg)
-  {
-    this->vehicle_type = _arg;
-    return *this;
-  }
-  Type & set__is_vtol(
+  Type & set__safety_button_available(
     const bool & _arg)
   {
-    this->is_vtol = _arg;
+    this->safety_button_available = _arg;
     return *this;
   }
-  Type & set__is_vtol_tailsitter(
+  Type & set__safety_off(
     const bool & _arg)
   {
-    this->is_vtol_tailsitter = _arg;
+    this->safety_off = _arg;
     return *this;
   }
-  Type & set__vtol_fw_permanent_stab(
+  Type & set__power_input_valid(
     const bool & _arg)
   {
-    this->vtol_fw_permanent_stab = _arg;
+    this->power_input_valid = _arg;
     return *this;
   }
-  Type & set__in_transition_mode(
+  Type & set__usb_connected(
     const bool & _arg)
   {
-    this->in_transition_mode = _arg;
+    this->usb_connected = _arg;
     return *this;
   }
-  Type & set__in_transition_to_fw(
+  Type & set__open_drone_id_system_present(
     const bool & _arg)
   {
-    this->in_transition_to_fw = _arg;
+    this->open_drone_id_system_present = _arg;
     return *this;
   }
-  Type & set__rc_signal_lost(
+  Type & set__open_drone_id_system_healthy(
     const bool & _arg)
   {
-    this->rc_signal_lost = _arg;
+    this->open_drone_id_system_healthy = _arg;
     return *this;
   }
-  Type & set__data_link_lost(
+  Type & set__parachute_system_present(
     const bool & _arg)
   {
-    this->data_link_lost = _arg;
+    this->parachute_system_present = _arg;
     return *this;
   }
-  Type & set__data_link_lost_counter(
-    const uint8_t & _arg)
-  {
-    this->data_link_lost_counter = _arg;
-    return *this;
-  }
-  Type & set__high_latency_data_link_lost(
+  Type & set__parachute_system_healthy(
     const bool & _arg)
   {
-    this->high_latency_data_link_lost = _arg;
+    this->parachute_system_healthy = _arg;
     return *this;
   }
-  Type & set__engine_failure(
+  Type & set__avoidance_system_required(
     const bool & _arg)
   {
-    this->engine_failure = _arg;
+    this->avoidance_system_required = _arg;
     return *this;
   }
-  Type & set__mission_failure(
+  Type & set__avoidance_system_valid(
     const bool & _arg)
   {
-    this->mission_failure = _arg;
+    this->avoidance_system_valid = _arg;
     return *this;
   }
-  Type & set__geofence_violated(
+  Type & set__rc_calibration_in_progress(
     const bool & _arg)
   {
-    this->geofence_violated = _arg;
+    this->rc_calibration_in_progress = _arg;
     return *this;
   }
-  Type & set__failure_detector_status(
-    const uint8_t & _arg)
+  Type & set__calibration_enabled(
+    const bool & _arg)
   {
-    this->failure_detector_status = _arg;
+    this->calibration_enabled = _arg;
     return *this;
   }
-  Type & set__onboard_control_sensors_present(
-    const uint64_t & _arg)
+  Type & set__pre_flight_checks_pass(
+    const bool & _arg)
   {
-    this->onboard_control_sensors_present = _arg;
-    return *this;
-  }
-  Type & set__onboard_control_sensors_enabled(
-    const uint64_t & _arg)
-  {
-    this->onboard_control_sensors_enabled = _arg;
-    return *this;
-  }
-  Type & set__onboard_control_sensors_health(
-    const uint64_t & _arg)
-  {
-    this->onboard_control_sensors_health = _arg;
-    return *this;
-  }
-  Type & set__latest_arming_reason(
-    const uint8_t & _arg)
-  {
-    this->latest_arming_reason = _arg;
-    return *this;
-  }
-  Type & set__latest_disarming_reason(
-    const uint8_t & _arg)
-  {
-    this->latest_disarming_reason = _arg;
-    return *this;
-  }
-  Type & set__armed_time(
-    const uint64_t & _arg)
-  {
-    this->armed_time = _arg;
-    return *this;
-  }
-  Type & set__takeoff_time(
-    const uint64_t & _arg)
-  {
-    this->takeoff_time = _arg;
+    this->pre_flight_checks_pass = _arg;
     return *this;
   }
 
@@ -409,28 +475,34 @@ struct VehicleStatus_
     5u;
   static constexpr uint8_t ARMING_STATE_MAX =
     6u;
-  static constexpr uint8_t FAILURE_NONE =
+  static constexpr uint8_t ARM_DISARM_REASON_TRANSITION_TO_STANDBY =
     0u;
-  static constexpr uint8_t FAILURE_ROLL =
+  static constexpr uint8_t ARM_DISARM_REASON_RC_STICK =
     1u;
-  static constexpr uint8_t FAILURE_PITCH =
+  static constexpr uint8_t ARM_DISARM_REASON_RC_SWITCH =
     2u;
-  static constexpr uint8_t FAILURE_ALT =
+  static constexpr uint8_t ARM_DISARM_REASON_COMMAND_INTERNAL =
+    3u;
+  static constexpr uint8_t ARM_DISARM_REASON_COMMAND_EXTERNAL =
     4u;
-  static constexpr uint8_t FAILURE_EXT =
+  static constexpr uint8_t ARM_DISARM_REASON_MISSION_START =
+    5u;
+  static constexpr uint8_t ARM_DISARM_REASON_SAFETY_BUTTON =
+    6u;
+  static constexpr uint8_t ARM_DISARM_REASON_AUTO_DISARM_LAND =
+    7u;
+  static constexpr uint8_t ARM_DISARM_REASON_AUTO_DISARM_PREFLIGHT =
     8u;
-  static constexpr uint8_t FAILURE_ARM_ESC =
-    16u;
-  static constexpr uint8_t FAILURE_HIGH_WIND =
-    32u;
-  static constexpr uint8_t FAILURE_BATTERY =
-    64u;
-  static constexpr uint8_t FAILURE_IMBALANCED_PROP =
-    128u;
-  static constexpr uint8_t HIL_STATE_OFF =
-    0u;
-  static constexpr uint8_t HIL_STATE_ON =
-    1u;
+  static constexpr uint8_t ARM_DISARM_REASON_KILL_SWITCH =
+    9u;
+  static constexpr uint8_t ARM_DISARM_REASON_LOCKDOWN =
+    10u;
+  static constexpr uint8_t ARM_DISARM_REASON_FAILURE_DETECTOR =
+    11u;
+  static constexpr uint8_t ARM_DISARM_REASON_SHUTDOWN =
+    12u;
+  static constexpr uint8_t ARM_DISARM_REASON_UNIT_TEST =
+    13u;
   static constexpr uint8_t NAVIGATION_STATE_MANUAL =
     0u;
   static constexpr uint8_t NAVIGATION_STATE_ALTCTL =
@@ -443,7 +515,7 @@ struct VehicleStatus_
     4u;
   static constexpr uint8_t NAVIGATION_STATE_AUTO_RTL =
     5u;
-  static constexpr uint8_t NAVIGATION_STATE_AUTO_LANDENGFAIL =
+  static constexpr uint8_t NAVIGATION_STATE_UNUSED3 =
     8u;
   static constexpr uint8_t NAVIGATION_STATE_UNUSED =
     9u;
@@ -475,6 +547,28 @@ struct VehicleStatus_
     22u;
   static constexpr uint8_t NAVIGATION_STATE_MAX =
     23u;
+  static constexpr uint16_t FAILURE_NONE =
+    0u;
+  static constexpr uint16_t FAILURE_ROLL =
+    1u;
+  static constexpr uint16_t FAILURE_PITCH =
+    2u;
+  static constexpr uint16_t FAILURE_ALT =
+    4u;
+  static constexpr uint16_t FAILURE_EXT =
+    8u;
+  static constexpr uint16_t FAILURE_ARM_ESC =
+    16u;
+  static constexpr uint16_t FAILURE_BATTERY =
+    32u;
+  static constexpr uint16_t FAILURE_IMBALANCED_PROP =
+    64u;
+  static constexpr uint16_t FAILURE_MOTOR =
+    128u;
+  static constexpr uint8_t HIL_STATE_OFF =
+    0u;
+  static constexpr uint8_t HIL_STATE_ON =
+    1u;
   static constexpr uint8_t VEHICLE_TYPE_UNKNOWN =
     0u;
   static constexpr uint8_t VEHICLE_TYPE_ROTARY_WING =
@@ -485,34 +579,6 @@ struct VehicleStatus_
     3u;
   static constexpr uint8_t VEHICLE_TYPE_AIRSHIP =
     4u;
-  static constexpr uint8_t ARM_DISARM_REASON_TRANSITION_TO_STANDBY =
-    0u;
-  static constexpr uint8_t ARM_DISARM_REASON_RC_STICK =
-    1u;
-  static constexpr uint8_t ARM_DISARM_REASON_RC_SWITCH =
-    2u;
-  static constexpr uint8_t ARM_DISARM_REASON_COMMAND_INTERNAL =
-    3u;
-  static constexpr uint8_t ARM_DISARM_REASON_COMMAND_EXTERNAL =
-    4u;
-  static constexpr uint8_t ARM_DISARM_REASON_MISSION_START =
-    5u;
-  static constexpr uint8_t ARM_DISARM_REASON_SAFETY_BUTTON =
-    6u;
-  static constexpr uint8_t ARM_DISARM_REASON_AUTO_DISARM_LAND =
-    7u;
-  static constexpr uint8_t ARM_DISARM_REASON_AUTO_DISARM_PREFLIGHT =
-    8u;
-  static constexpr uint8_t ARM_DISARM_REASON_KILL_SWITCH =
-    9u;
-  static constexpr uint8_t ARM_DISARM_REASON_LOCKDOWN =
-    10u;
-  static constexpr uint8_t ARM_DISARM_REASON_FAILURE_DETECTOR =
-    11u;
-  static constexpr uint8_t ARM_DISARM_REASON_SHUTDOWN =
-    12u;
-  static constexpr uint8_t ARM_DISARM_REASON_UNIT_TEST =
-    13u;
 
   // pointer types
   using RawPtr =
@@ -557,22 +623,64 @@ struct VehicleStatus_
     if (this->timestamp != other.timestamp) {
       return false;
     }
-    if (this->nav_state != other.nav_state) {
+    if (this->armed_time != other.armed_time) {
       return false;
     }
-    if (this->nav_state_timestamp != other.nav_state_timestamp) {
+    if (this->takeoff_time != other.takeoff_time) {
       return false;
     }
     if (this->arming_state != other.arming_state) {
       return false;
     }
+    if (this->latest_arming_reason != other.latest_arming_reason) {
+      return false;
+    }
+    if (this->latest_disarming_reason != other.latest_disarming_reason) {
+      return false;
+    }
+    if (this->nav_state_timestamp != other.nav_state_timestamp) {
+      return false;
+    }
+    if (this->nav_state_user_intention != other.nav_state_user_intention) {
+      return false;
+    }
+    if (this->nav_state != other.nav_state) {
+      return false;
+    }
+    if (this->failure_detector_status != other.failure_detector_status) {
+      return false;
+    }
     if (this->hil_state != other.hil_state) {
+      return false;
+    }
+    if (this->vehicle_type != other.vehicle_type) {
       return false;
     }
     if (this->failsafe != other.failsafe) {
       return false;
     }
-    if (this->failsafe_timestamp != other.failsafe_timestamp) {
+    if (this->failsafe_and_user_took_over != other.failsafe_and_user_took_over) {
+      return false;
+    }
+    if (this->gcs_connection_lost != other.gcs_connection_lost) {
+      return false;
+    }
+    if (this->gcs_connection_lost_counter != other.gcs_connection_lost_counter) {
+      return false;
+    }
+    if (this->high_latency_data_link_lost != other.high_latency_data_link_lost) {
+      return false;
+    }
+    if (this->is_vtol != other.is_vtol) {
+      return false;
+    }
+    if (this->is_vtol_tailsitter != other.is_vtol_tailsitter) {
+      return false;
+    }
+    if (this->in_transition_mode != other.in_transition_mode) {
+      return false;
+    }
+    if (this->in_transition_to_fw != other.in_transition_to_fw) {
       return false;
     }
     if (this->system_type != other.system_type) {
@@ -584,67 +692,43 @@ struct VehicleStatus_
     if (this->component_id != other.component_id) {
       return false;
     }
-    if (this->vehicle_type != other.vehicle_type) {
+    if (this->safety_button_available != other.safety_button_available) {
       return false;
     }
-    if (this->is_vtol != other.is_vtol) {
+    if (this->safety_off != other.safety_off) {
       return false;
     }
-    if (this->is_vtol_tailsitter != other.is_vtol_tailsitter) {
+    if (this->power_input_valid != other.power_input_valid) {
       return false;
     }
-    if (this->vtol_fw_permanent_stab != other.vtol_fw_permanent_stab) {
+    if (this->usb_connected != other.usb_connected) {
       return false;
     }
-    if (this->in_transition_mode != other.in_transition_mode) {
+    if (this->open_drone_id_system_present != other.open_drone_id_system_present) {
       return false;
     }
-    if (this->in_transition_to_fw != other.in_transition_to_fw) {
+    if (this->open_drone_id_system_healthy != other.open_drone_id_system_healthy) {
       return false;
     }
-    if (this->rc_signal_lost != other.rc_signal_lost) {
+    if (this->parachute_system_present != other.parachute_system_present) {
       return false;
     }
-    if (this->data_link_lost != other.data_link_lost) {
+    if (this->parachute_system_healthy != other.parachute_system_healthy) {
       return false;
     }
-    if (this->data_link_lost_counter != other.data_link_lost_counter) {
+    if (this->avoidance_system_required != other.avoidance_system_required) {
       return false;
     }
-    if (this->high_latency_data_link_lost != other.high_latency_data_link_lost) {
+    if (this->avoidance_system_valid != other.avoidance_system_valid) {
       return false;
     }
-    if (this->engine_failure != other.engine_failure) {
+    if (this->rc_calibration_in_progress != other.rc_calibration_in_progress) {
       return false;
     }
-    if (this->mission_failure != other.mission_failure) {
+    if (this->calibration_enabled != other.calibration_enabled) {
       return false;
     }
-    if (this->geofence_violated != other.geofence_violated) {
-      return false;
-    }
-    if (this->failure_detector_status != other.failure_detector_status) {
-      return false;
-    }
-    if (this->onboard_control_sensors_present != other.onboard_control_sensors_present) {
-      return false;
-    }
-    if (this->onboard_control_sensors_enabled != other.onboard_control_sensors_enabled) {
-      return false;
-    }
-    if (this->onboard_control_sensors_health != other.onboard_control_sensors_health) {
-      return false;
-    }
-    if (this->latest_arming_reason != other.latest_arming_reason) {
-      return false;
-    }
-    if (this->latest_disarming_reason != other.latest_disarming_reason) {
-      return false;
-    }
-    if (this->armed_time != other.armed_time) {
-      return false;
-    }
-    if (this->takeoff_time != other.takeoff_time) {
+    if (this->pre_flight_checks_pass != other.pre_flight_checks_pass) {
       return false;
     }
     return true;
@@ -675,27 +759,33 @@ constexpr uint8_t VehicleStatus_<ContainerAllocator>::ARMING_STATE_IN_AIR_RESTOR
 template<typename ContainerAllocator>
 constexpr uint8_t VehicleStatus_<ContainerAllocator>::ARMING_STATE_MAX;
 template<typename ContainerAllocator>
-constexpr uint8_t VehicleStatus_<ContainerAllocator>::FAILURE_NONE;
+constexpr uint8_t VehicleStatus_<ContainerAllocator>::ARM_DISARM_REASON_TRANSITION_TO_STANDBY;
 template<typename ContainerAllocator>
-constexpr uint8_t VehicleStatus_<ContainerAllocator>::FAILURE_ROLL;
+constexpr uint8_t VehicleStatus_<ContainerAllocator>::ARM_DISARM_REASON_RC_STICK;
 template<typename ContainerAllocator>
-constexpr uint8_t VehicleStatus_<ContainerAllocator>::FAILURE_PITCH;
+constexpr uint8_t VehicleStatus_<ContainerAllocator>::ARM_DISARM_REASON_RC_SWITCH;
 template<typename ContainerAllocator>
-constexpr uint8_t VehicleStatus_<ContainerAllocator>::FAILURE_ALT;
+constexpr uint8_t VehicleStatus_<ContainerAllocator>::ARM_DISARM_REASON_COMMAND_INTERNAL;
 template<typename ContainerAllocator>
-constexpr uint8_t VehicleStatus_<ContainerAllocator>::FAILURE_EXT;
+constexpr uint8_t VehicleStatus_<ContainerAllocator>::ARM_DISARM_REASON_COMMAND_EXTERNAL;
 template<typename ContainerAllocator>
-constexpr uint8_t VehicleStatus_<ContainerAllocator>::FAILURE_ARM_ESC;
+constexpr uint8_t VehicleStatus_<ContainerAllocator>::ARM_DISARM_REASON_MISSION_START;
 template<typename ContainerAllocator>
-constexpr uint8_t VehicleStatus_<ContainerAllocator>::FAILURE_HIGH_WIND;
+constexpr uint8_t VehicleStatus_<ContainerAllocator>::ARM_DISARM_REASON_SAFETY_BUTTON;
 template<typename ContainerAllocator>
-constexpr uint8_t VehicleStatus_<ContainerAllocator>::FAILURE_BATTERY;
+constexpr uint8_t VehicleStatus_<ContainerAllocator>::ARM_DISARM_REASON_AUTO_DISARM_LAND;
 template<typename ContainerAllocator>
-constexpr uint8_t VehicleStatus_<ContainerAllocator>::FAILURE_IMBALANCED_PROP;
+constexpr uint8_t VehicleStatus_<ContainerAllocator>::ARM_DISARM_REASON_AUTO_DISARM_PREFLIGHT;
 template<typename ContainerAllocator>
-constexpr uint8_t VehicleStatus_<ContainerAllocator>::HIL_STATE_OFF;
+constexpr uint8_t VehicleStatus_<ContainerAllocator>::ARM_DISARM_REASON_KILL_SWITCH;
 template<typename ContainerAllocator>
-constexpr uint8_t VehicleStatus_<ContainerAllocator>::HIL_STATE_ON;
+constexpr uint8_t VehicleStatus_<ContainerAllocator>::ARM_DISARM_REASON_LOCKDOWN;
+template<typename ContainerAllocator>
+constexpr uint8_t VehicleStatus_<ContainerAllocator>::ARM_DISARM_REASON_FAILURE_DETECTOR;
+template<typename ContainerAllocator>
+constexpr uint8_t VehicleStatus_<ContainerAllocator>::ARM_DISARM_REASON_SHUTDOWN;
+template<typename ContainerAllocator>
+constexpr uint8_t VehicleStatus_<ContainerAllocator>::ARM_DISARM_REASON_UNIT_TEST;
 template<typename ContainerAllocator>
 constexpr uint8_t VehicleStatus_<ContainerAllocator>::NAVIGATION_STATE_MANUAL;
 template<typename ContainerAllocator>
@@ -709,7 +799,7 @@ constexpr uint8_t VehicleStatus_<ContainerAllocator>::NAVIGATION_STATE_AUTO_LOIT
 template<typename ContainerAllocator>
 constexpr uint8_t VehicleStatus_<ContainerAllocator>::NAVIGATION_STATE_AUTO_RTL;
 template<typename ContainerAllocator>
-constexpr uint8_t VehicleStatus_<ContainerAllocator>::NAVIGATION_STATE_AUTO_LANDENGFAIL;
+constexpr uint8_t VehicleStatus_<ContainerAllocator>::NAVIGATION_STATE_UNUSED3;
 template<typename ContainerAllocator>
 constexpr uint8_t VehicleStatus_<ContainerAllocator>::NAVIGATION_STATE_UNUSED;
 template<typename ContainerAllocator>
@@ -741,6 +831,28 @@ constexpr uint8_t VehicleStatus_<ContainerAllocator>::NAVIGATION_STATE_AUTO_VTOL
 template<typename ContainerAllocator>
 constexpr uint8_t VehicleStatus_<ContainerAllocator>::NAVIGATION_STATE_MAX;
 template<typename ContainerAllocator>
+constexpr uint16_t VehicleStatus_<ContainerAllocator>::FAILURE_NONE;
+template<typename ContainerAllocator>
+constexpr uint16_t VehicleStatus_<ContainerAllocator>::FAILURE_ROLL;
+template<typename ContainerAllocator>
+constexpr uint16_t VehicleStatus_<ContainerAllocator>::FAILURE_PITCH;
+template<typename ContainerAllocator>
+constexpr uint16_t VehicleStatus_<ContainerAllocator>::FAILURE_ALT;
+template<typename ContainerAllocator>
+constexpr uint16_t VehicleStatus_<ContainerAllocator>::FAILURE_EXT;
+template<typename ContainerAllocator>
+constexpr uint16_t VehicleStatus_<ContainerAllocator>::FAILURE_ARM_ESC;
+template<typename ContainerAllocator>
+constexpr uint16_t VehicleStatus_<ContainerAllocator>::FAILURE_BATTERY;
+template<typename ContainerAllocator>
+constexpr uint16_t VehicleStatus_<ContainerAllocator>::FAILURE_IMBALANCED_PROP;
+template<typename ContainerAllocator>
+constexpr uint16_t VehicleStatus_<ContainerAllocator>::FAILURE_MOTOR;
+template<typename ContainerAllocator>
+constexpr uint8_t VehicleStatus_<ContainerAllocator>::HIL_STATE_OFF;
+template<typename ContainerAllocator>
+constexpr uint8_t VehicleStatus_<ContainerAllocator>::HIL_STATE_ON;
+template<typename ContainerAllocator>
 constexpr uint8_t VehicleStatus_<ContainerAllocator>::VEHICLE_TYPE_UNKNOWN;
 template<typename ContainerAllocator>
 constexpr uint8_t VehicleStatus_<ContainerAllocator>::VEHICLE_TYPE_ROTARY_WING;
@@ -750,34 +862,6 @@ template<typename ContainerAllocator>
 constexpr uint8_t VehicleStatus_<ContainerAllocator>::VEHICLE_TYPE_ROVER;
 template<typename ContainerAllocator>
 constexpr uint8_t VehicleStatus_<ContainerAllocator>::VEHICLE_TYPE_AIRSHIP;
-template<typename ContainerAllocator>
-constexpr uint8_t VehicleStatus_<ContainerAllocator>::ARM_DISARM_REASON_TRANSITION_TO_STANDBY;
-template<typename ContainerAllocator>
-constexpr uint8_t VehicleStatus_<ContainerAllocator>::ARM_DISARM_REASON_RC_STICK;
-template<typename ContainerAllocator>
-constexpr uint8_t VehicleStatus_<ContainerAllocator>::ARM_DISARM_REASON_RC_SWITCH;
-template<typename ContainerAllocator>
-constexpr uint8_t VehicleStatus_<ContainerAllocator>::ARM_DISARM_REASON_COMMAND_INTERNAL;
-template<typename ContainerAllocator>
-constexpr uint8_t VehicleStatus_<ContainerAllocator>::ARM_DISARM_REASON_COMMAND_EXTERNAL;
-template<typename ContainerAllocator>
-constexpr uint8_t VehicleStatus_<ContainerAllocator>::ARM_DISARM_REASON_MISSION_START;
-template<typename ContainerAllocator>
-constexpr uint8_t VehicleStatus_<ContainerAllocator>::ARM_DISARM_REASON_SAFETY_BUTTON;
-template<typename ContainerAllocator>
-constexpr uint8_t VehicleStatus_<ContainerAllocator>::ARM_DISARM_REASON_AUTO_DISARM_LAND;
-template<typename ContainerAllocator>
-constexpr uint8_t VehicleStatus_<ContainerAllocator>::ARM_DISARM_REASON_AUTO_DISARM_PREFLIGHT;
-template<typename ContainerAllocator>
-constexpr uint8_t VehicleStatus_<ContainerAllocator>::ARM_DISARM_REASON_KILL_SWITCH;
-template<typename ContainerAllocator>
-constexpr uint8_t VehicleStatus_<ContainerAllocator>::ARM_DISARM_REASON_LOCKDOWN;
-template<typename ContainerAllocator>
-constexpr uint8_t VehicleStatus_<ContainerAllocator>::ARM_DISARM_REASON_FAILURE_DETECTOR;
-template<typename ContainerAllocator>
-constexpr uint8_t VehicleStatus_<ContainerAllocator>::ARM_DISARM_REASON_SHUTDOWN;
-template<typename ContainerAllocator>
-constexpr uint8_t VehicleStatus_<ContainerAllocator>::ARM_DISARM_REASON_UNIT_TEST;
 
 }  // namespace msg
 
