@@ -77,6 +77,7 @@ public:
 private:
   void timer_callback()
   {
+    //TODO publish message with all data from lidar
     std::cout << "Distance = " << tower->getDistance() << std::endl;
     std::cout << "IMU = " << tower->getImuData() << std::endl;
   }
