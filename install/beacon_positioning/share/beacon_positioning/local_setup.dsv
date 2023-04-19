@@ -1,4 +1,0 @@
-source;share/beacon_positioning/environment/ament_prefix_path.sh
-source;share/beacon_positioning/environment/library_path.sh
-source;share/beacon_positioning/environment/path.sh
-source;share/beacon_positioning/environment/pythonpath.sh
