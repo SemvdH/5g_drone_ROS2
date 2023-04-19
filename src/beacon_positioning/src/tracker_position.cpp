@@ -3,7 +3,7 @@
 
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
-#include "beacon_positioning/msg/trackerposition.hpp"
+#include "beacon_positioning/msg/tracker_position.hpp"
 
 #include "rtls_driver/rtls_driver.hpp"
 
