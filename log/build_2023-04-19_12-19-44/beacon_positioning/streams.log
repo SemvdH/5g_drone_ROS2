@@ -1,0 +1,84 @@
+[0.116s] Invoking command in '/home/ubuntu/ros2_ws/build/beacon_positioning': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/ubuntu/ros2_ws/build/beacon_positioning -- -j4 -l4
+[0.305s] [35m[1mScanning dependencies of target tracker_position[0m
+[0.341s] [  3%] Built target beacon_positioning__cpp
+[0.346s] [ 12%] Built target beacon_positioning__rosidl_generator_c
+[0.441s] [ 21%] Built target beacon_positioning__rosidl_typesupport_introspection_cpp
+[0.443s] [ 30%] Built target beacon_positioning__rosidl_typesupport_cpp
+[0.452s] [ 39%] Built target beacon_positioning__rosidl_typesupport_fastrtps_cpp
+[0.467s] [ 42%] [32mBuilding CXX object CMakeFiles/tracker_position.dir/src/tracker_position.cpp.o[0m
+[0.555s] [ 60%] Built target beacon_positioning__rosidl_typesupport_introspection_c
+[0.556s] [ 60%] Built target beacon_positioning__rosidl_typesupport_c
+[0.566s] [ 69%] Built target beacon_positioning__rosidl_typesupport_fastrtps_c
+[0.645s] [ 69%] Built target beacon_positioning
+[0.728s] [ 72%] Built target beacon_positioning__py
+[0.829s] [ 78%] Built target beacon_positioning__python
+[0.940s] [ 84%] Built target beacon_positioning__rosidl_typesupport_introspection_c__pyext
+[0.945s] [ 90%] Built target beacon_positioning__rosidl_typesupport_c__pyext
+[0.947s] [ 96%] Built target beacon_positioning__rosidl_typesupport_fastrtps_c__pyext
+[5.933s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:[m[K In constructor ‘[01m[KBeaconPositioningPublisher::BeaconPositioningPublisher()[m[K’:
+[5.934s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:25:59:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Kterabee::RtlsDevice::RtlsDevice()[m[K’
+[5.934s]    25 |   BeaconPositioningPublisher() : Node("beacon_positioning"[01;31m[K)[m[K
+[5.934s]       |                                                           [01;31m[K^[m[K
+[5.935s] In file included from [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:8[m[K:
+[5.935s] [01m[K/usr/local/include/rtls_driver/rtls_driver.hpp:114:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kterabee::RtlsDevice::RtlsDevice(std::shared_ptr<terabee::serial_communication::ISerial>, int)[m[K’
+[5.935s]   114 |   [01;36m[KRtlsDevice[m[K(std::shared_ptr<serial_communication::ISerial> serialIf,
+[5.936s]       |   [01;36m[K^~~~~~~~~~[m[K
+[5.936s] [01m[K/usr/local/include/rtls_driver/rtls_driver.hpp:114:3:[m[K [01;36m[Knote: [m[K  candidate expects 2 arguments, 0 provided
+[5.974s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:38:50:[m[K [01;31m[Kerror: [m[Kuse of deleted function ‘[01m[Kterabee::RtlsDevice& terabee::RtlsDevice::operator=(const terabee::RtlsDevice&)[m[K’
+[5.975s]    38 |     rtls_device = terabee::RtlsDevice(serial_port[01;31m[K)[m[K;
+[5.976s]       |                                                  [01;31m[K^[m[K
+[5.976s] In file included from [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:8[m[K:
+[5.977s] [01m[K/usr/local/include/rtls_driver/rtls_driver.hpp:13:7:[m[K [01;36m[Knote: [m[K‘[01m[Kterabee::RtlsDevice& terabee::RtlsDevice::operator=(const terabee::RtlsDevice&)[m[K’ is implicitly deleted because the default definition would be ill-formed:
+[5.977s]    13 | class [01;36m[KRtlsDevice[m[K
+[5.977s]       |       [01;36m[K^~~~~~~~~~[m[K
+[5.978s] [01m[K/usr/local/include/rtls_driver/rtls_driver.hpp:13:7:[m[K [01;31m[Kerror: [m[Kuse of deleted function ‘[01m[Kstd::thread& std::thread::operator=(const std::thread&)[m[K’
+[5.978s] In file included from [01m[K/usr/include/c++/9/future:39[m[K,
+[5.979s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:18[m[K,
+[5.979s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+[5.979s]                  from [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:4[m[K:
+[5.980s] [01m[K/usr/include/c++/9/thread:147:13:[m[K [01;36m[Knote: [m[Kdeclared here
+[5.980s]   147 |     thread& [01;36m[Koperator[m[K=(const thread&) = delete;
+[5.980s]       |             [01;36m[K^~~~~~~~[m[K
+[5.981s] In file included from [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:8[m[K:
+[5.981s] [01m[K/usr/local/include/rtls_driver/rtls_driver.hpp:13:7:[m[K [01;31m[Kerror: [m[Kuse of deleted function ‘[01m[Kstd::atomic<bool>& std::atomic<bool>::operator=(const std::atomic<bool>&)[m[K’
+[5.982s]    13 | class [01;31m[KRtlsDevice[m[K
+[5.982s]       |       [01;31m[K^~~~~~~~~~[m[K
+[5.982s] In file included from [01m[K/usr/include/c++/9/future:42[m[K,
+[5.983s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:18[m[K,
+[5.983s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+[5.983s]                  from [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:4[m[K:
+[5.984s] [01m[K/usr/include/c++/9/atomic:74:13:[m[K [01;36m[Knote: [m[Kdeclared here
+[5.984s]    74 |     atomic& [01;36m[Koperator[m[K=(const atomic&) = delete;
+[5.984s]       |             [01;36m[K^~~~~~~~[m[K
+[5.985s] In file included from [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:8[m[K:
+[5.985s] [01m[K/usr/local/include/rtls_driver/rtls_driver.hpp:13:7:[m[K [01;31m[Kerror: [m[Knon-static const member ‘[01m[Kconst float terabee::RtlsDevice::MM_TO_M_FACTOR[m[K’, can’t use default assignment operator
+[5.985s]    13 | class [01;31m[KRtlsDevice[m[K
+[5.986s]       |       [01;31m[K^~~~~~~~~~[m[K
+[5.986s] [01m[K/usr/local/include/rtls_driver/rtls_driver.hpp:13:7:[m[K [01;31m[Kerror: [m[Knon-static const member ‘[01m[Kconst float terabee::RtlsDevice::DEG_TO_RAD_FACTOR[m[K’, can’t use default assignment operator
+[5.987s] [01m[K/usr/local/include/rtls_driver/rtls_driver.hpp:13:7:[m[K [01;31m[Kerror: [m[Kpassing ‘[01m[Kconst std::map<terabee::RtlsDevice::device_params, std::__cxx11::basic_string<char> >[m[K’ as ‘[01m[Kthis[m[K’ argument discards qualifiers [[01;31m[K-fpermissive[m[K]
+[5.987s] In file included from [01m[K/usr/include/c++/9/map:61[m[K,
+[5.987s]                  from [01m[K/opt/ros/foxy/include/rclcpp/client.hpp:20[m[K,
+[5.988s]                  from [01m[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:23[m[K,
+[5.988s]                  from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20[m[K,
+[5.988s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+[5.989s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+[5.989s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20[m[K,
+[5.989s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+[5.989s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+[5.990s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+[5.990s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+[5.991s]                  from [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:4[m[K:
+[5.991s] [01m[K/usr/include/c++/9/bits/stl_map.h:317:7:[m[K [01;36m[Knote: [m[K  in call to ‘[01m[Kstd::map<_Key, _Tp, _Compare, _Alloc>& std::map<_Key, _Tp, _Compare, _Alloc>::operator=(const std::map<_Key, _Tp, _Compare, _Alloc>&) [with _Key = terabee::RtlsDevice::device_params; _Tp = std::__cxx11::basic_string<char>; _Compare = std::less<terabee::RtlsDevice::device_params>; _Alloc = std::allocator<std::pair<const terabee::RtlsDevice::device_params, std::__cxx11::basic_string<char> > >][m[K’
+[5.991s]   317 |       [01;36m[Koperator[m[K=(const map&) = default;
+[5.992s]       |       [01;36m[K^~~~~~~~[m[K
+[6.076s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:[m[K In lambda function:
+[6.076s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:152:25:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<terabee::RtlsDevice::anchor_data_t>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+[6.077s]   152 |       for (int i = 0; [01;35m[Ki < tracker_msg.anchors_data.size()[m[K; i++)
+[6.077s]       |                       [01;35m[K~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[6.081s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:163:25:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<terabee::RtlsDevice::anchor_data_t>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+[6.081s]   163 |       for (int i = 0; [01;35m[Ki < tracker_msg.anchors_data.size()[m[K; i++)
+[6.082s]       |                       [01;35m[K~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[9.745s] make[2]: *** [CMakeFiles/tracker_position.dir/build.make:63: CMakeFiles/tracker_position.dir/src/tracker_position.cpp.o] Error 1
+[9.746s] make[1]: *** [CMakeFiles/Makefile2:123: CMakeFiles/tracker_position.dir/all] Error 2
+[9.747s] make: *** [Makefile:141: all] Error 2
+[9.752s] Invoked command in '/home/ubuntu/ros2_ws/build/beacon_positioning' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/ubuntu/ros2_ws/build/beacon_positioning -- -j4 -l4
