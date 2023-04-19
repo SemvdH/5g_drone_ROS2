@@ -10,7 +10,8 @@
                 "/home/ubuntu/ros2_ws/src/beacon_positioning/include/**",
                 "/usr/include/**",
                 "/mnt/Homework/Avans/AFSTUDEERSTAGE/positioning_systems_api/rtls_driver/include/**",
-                "/mnt/Homework/Avans/AFSTUDEERSTAGE/positioning_systems_api/serial_communication/include/**"
+                "/mnt/Homework/Avans/AFSTUDEERSTAGE/positioning_systems_api/serial_communication/include/**",
+                "/mnt/Homework/Avans/AFSTUDEERSTAGE/terabee_api/include/**"
             ],
             "name": "ROS",
             "intelliSenseMode": "gcc-x64",
