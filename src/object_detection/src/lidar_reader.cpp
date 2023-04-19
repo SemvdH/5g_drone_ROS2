@@ -4,6 +4,7 @@
 #include <string>
 
 #include "rclcpp/rclcpp.hpp"
+#include "object_detection/msg/lidar_reading.hpp"
 
 #include <terabee/ITerarangerFactory.hpp>
 #include <terabee/ITerarangerTowerEvo.hpp>
@@ -25,6 +26,7 @@ class LidarReader : public rclcpp::Node
     LidarReader()
     : Node("lidar_reader")
     { 
+      publisher_ = this->create_publisher<object_detection::msg::LidarReading>("drone/object_detection", 10);
     }
 
   private:
@@ -32,6 +34,8 @@ class LidarReader : public rclcpp::Node
     {
       RCLCPP_INFO(this->get_logger(), "yeet");
     }
+
+    rclcpp::Publisher<object_detection::msg::LidarReading>::SharedPtr publisher_;
 };
 
 int main(int argc, char * argv[])
