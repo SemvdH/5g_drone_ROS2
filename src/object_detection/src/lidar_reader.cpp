@@ -57,7 +57,7 @@ public:
     ITerarangerTowerEvo::ImuMode mode(ITerarangerTowerEvo::QuaternionLinearAcc);
 
     factory = terabee::ITerarangerFactory::getFactory();
-    tower = factory.createTerarangerTowerEvo("/dev/ttyACM0");
+    tower = factory->createTerarangerTowerEvo("/dev/ttyACM0");
 
     if (!tower)
     {
