@@ -85,8 +85,8 @@ private:
   rclcpp::TimerBase::SharedPtr timer_;
 
   // terabee tower evo variables
-  terabee::ITerarangerTowerEvo tower;
-  terabee::ITerarangerFactory factory;
+  std::unique_ptr<terabee::ITerarangerTowerEvo> tower;
+  std::unique_ptr<terabee::ITerarangerFactory> factory;
 };
 
 int main(int argc, char *argv[])
