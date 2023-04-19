@@ -1,0 +1,21 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from beacon_positioning/msg/TrackerPosition.msg
+// generated code does not contain a copyright notice
+
+
+module beacon_positioning {
+  module msg {
+    typedef int64 int64__4[4];
+    struct TrackerPosition {
+      int32 id;
+
+      int64 x_pos;
+
+      int64 y_pos;
+
+      int64 z_pos;
+
+      int64__4 anchor_distances;
+    };
+  };
+};

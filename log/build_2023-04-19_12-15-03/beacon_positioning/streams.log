@@ -1,0 +1,38 @@
+[0.117s] Invoking command in '/home/ubuntu/ros2_ws/build/beacon_positioning': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/ubuntu/ros2_ws/build/beacon_positioning -- -j4 -l4
+[0.307s] [35m[1mScanning dependencies of target tracker_position[0m
+[0.344s] [  3%] Built target beacon_positioning__cpp
+[0.351s] [ 12%] Built target beacon_positioning__rosidl_generator_c
+[0.446s] [ 30%] Built target beacon_positioning__rosidl_typesupport_introspection_cpp
+[0.447s] [ 30%] Built target beacon_positioning__rosidl_typesupport_cpp
+[0.459s] [ 39%] Built target beacon_positioning__rosidl_typesupport_fastrtps_cpp
+[0.489s] [ 42%] [32mBuilding CXX object CMakeFiles/tracker_position.dir/src/tracker_position.cpp.o[0m
+[0.551s] [ 51%] Built target beacon_positioning__rosidl_typesupport_c
+[0.556s] [ 60%] Built target beacon_positioning__rosidl_typesupport_introspection_c
+[0.580s] [ 69%] Built target beacon_positioning__rosidl_typesupport_fastrtps_c
+[0.660s] [ 69%] Built target beacon_positioning
+[0.743s] [ 72%] Built target beacon_positioning__py
+[0.844s] [ 78%] Built target beacon_positioning__python
+[0.955s] [ 84%] Built target beacon_positioning__rosidl_typesupport_c__pyext
+[0.957s] [ 90%] Built target beacon_positioning__rosidl_typesupport_introspection_c__pyext
+[0.963s] [ 96%] Built target beacon_positioning__rosidl_typesupport_fastrtps_c__pyext
+[5.968s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:[m[K In constructor ‘[01m[KBeaconPositioningPublisher::BeaconPositioningPublisher()[m[K’:
+[5.968s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:49:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kpublisher_[m[K’ was not declared in this scope; did you mean ‘[01m[Kpublish[m[K’?
+[5.969s]    49 |     [01;31m[Kpublisher_[m[K = this->create_publisher<beacon_positioning::msg::TrackerPosition>("beacon_positioning", 10);
+[5.969s]       |     [01;31m[K^~~~~~~~~~[m[K
+[5.970s]       |     [32m[Kpublish[m[K
+[6.034s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:[m[K In member function ‘[01m[Kvoid BeaconPositioningPublisher::publish(beacon_positioning::msg::TrackerPosition)[m[K’:
+[6.034s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:86:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kpublisher_[m[K’ was not declared in this scope; did you mean ‘[01m[Kpublish[m[K’?
+[6.035s]    86 |     [01;31m[Kpublisher_[m[K->publish(msg);
+[6.036s]       |     [01;31m[K^~~~~~~~~~[m[K
+[6.036s]       |     [32m[Kpublish[m[K
+[6.056s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:[m[K In lambda function:
+[6.056s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:152:25:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<terabee::RtlsDevice::anchor_data_t>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+[6.057s]   152 |       for (int i = 0; [01;35m[Ki < tracker_msg.anchors_data.size()[m[K; i++)
+[6.057s]       |                       [01;35m[K~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[6.061s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:163:25:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<terabee::RtlsDevice::anchor_data_t>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+[6.061s]   163 |       for (int i = 0; [01;35m[Ki < tracker_msg.anchors_data.size()[m[K; i++)
+[6.062s]       |                       [01;35m[K~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[9.634s] make[2]: *** [CMakeFiles/tracker_position.dir/build.make:63: CMakeFiles/tracker_position.dir/src/tracker_position.cpp.o] Error 1
+[9.635s] make[1]: *** [CMakeFiles/Makefile2:123: CMakeFiles/tracker_position.dir/all] Error 2
+[9.635s] make: *** [Makefile:141: all] Error 2
+[9.641s] Invoked command in '/home/ubuntu/ros2_ws/build/beacon_positioning' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/ubuntu/ros2_ws/build/beacon_positioning -- -j4 -l4

@@ -35,7 +35,7 @@ public:
     serial_port->setBaudrate(115200);
     serial_port->setTimeout(800ms);
 
-    rtls_device = terabee::RtlsDevice(serial_port);
+    //rtls_device = terabee::RtlsDevice(serial_port);
 
     RCLCPP_INFO(this->get_logger(), "Opening serial port of tracker!");
     serial_port->open();
@@ -117,7 +117,7 @@ private:
   terabee::RtlsDevice::config_t device_configuration;
   terabee::RtlsDevice::OnTrackerDataCallback tracker_data_callback_;
   terabee::RtlsDevice::tracker_msg_t tracker_msg;
-  terabee::RtlsDevice rtls_device;
+  //terabee::RtlsDevice rtls_device;
 };
 
 int main(int argc, char **argv)

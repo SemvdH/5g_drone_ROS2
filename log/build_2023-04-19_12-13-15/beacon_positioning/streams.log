@@ -1,0 +1,25 @@
+[0.160s] Invoking command in '/home/ubuntu/ros2_ws/build/beacon_positioning': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/ubuntu/ros2_ws/build/beacon_positioning -- -j4 -l4
+[0.909s] [35m[1mScanning dependencies of target tracker_position[0m
+[0.917s] [  3%] Built target beacon_positioning__cpp
+[0.934s] [ 12%] Built target beacon_positioning__rosidl_generator_c
+[1.039s] [ 21%] Built target beacon_positioning__rosidl_typesupport_introspection_cpp
+[1.050s] [ 30%] Built target beacon_positioning__rosidl_typesupport_cpp
+[1.061s] [ 39%] Built target beacon_positioning__rosidl_typesupport_fastrtps_cpp
+[1.075s] [ 42%] [32mBuilding CXX object CMakeFiles/tracker_position.dir/src/tracker_position.cpp.o[0m
+[1.160s] [ 51%] Built target beacon_positioning__rosidl_typesupport_introspection_c
+[1.170s] [ 60%] Built target beacon_positioning__rosidl_typesupport_c
+[1.192s] [ 69%] Built target beacon_positioning__rosidl_typesupport_fastrtps_c
+[1.302s] [ 69%] Built target beacon_positioning
+[1.441s] [ 72%] Built target beacon_positioning__py
+[1.600s] [ 78%] Built target beacon_positioning__python
+[1.732s] [ 84%] Built target beacon_positioning__rosidl_typesupport_c__pyext
+[1.735s] [ 90%] Built target beacon_positioning__rosidl_typesupport_fastrtps_c__pyext
+[1.737s] [ 96%] Built target beacon_positioning__rosidl_typesupport_introspection_c__pyext
+[2.548s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:6:10:[m[K [01;31m[Kfatal error: [m[Kbeacon_positioning/msg/tracker_position.hpp: No such file or directory
+[2.548s]     6 | #include [01;31m[K"beacon_positioning/msg/tracker_position.hpp"[m[K
+[2.548s]       |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.549s] compilation terminated.
+[2.572s] make[2]: *** [CMakeFiles/tracker_position.dir/build.make:63: CMakeFiles/tracker_position.dir/src/tracker_position.cpp.o] Error 1
+[2.572s] make[1]: *** [CMakeFiles/Makefile2:123: CMakeFiles/tracker_position.dir/all] Error 2
+[2.573s] make: *** [Makefile:141: all] Error 2
+[2.579s] Invoked command in '/home/ubuntu/ros2_ws/build/beacon_positioning' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/ubuntu/ros2_ws/build/beacon_positioning -- -j4 -l4

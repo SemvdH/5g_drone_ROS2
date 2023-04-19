@@ -1,0 +1,162 @@
+[0.117s] Invoking command in '/home/ubuntu/ros2_ws/build/beacon_positioning': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/ubuntu/ros2_ws/build/beacon_positioning -- -j4 -l4
+[0.260s] -- Found ament_cmake: 0.9.11 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.372s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[0.372s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[1.113s] -- Found rclcpp: 2.4.2 (/opt/ros/foxy/share/rclcpp/cmake)
+[1.302s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.324s] -- Found rosidl_adapter: 1.3.0 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[1.953s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[2.206s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[2.216s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[2.836s] -- Found rosidl_default_generators: 1.0.1 (/opt/ros/foxy/share/rosidl_default_generators/cmake)
+[2.896s] -- Found beacon_positioning: 0.0.0 (/home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/cmake)
+[3.027s] -- Found PythonInterp: /usr/bin/python3 (found version "3.8.10") 
+[3.606s] -- Found ament_cmake_ros: 0.9.2 (/opt/ros/foxy/share/ament_cmake_ros/cmake)
+[4.044s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[4.081s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[4.184s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3.5") 
+[4.189s] -- Found python_cmake_module: 0.8.1 (/opt/ros/foxy/share/python_cmake_module/cmake)
+[4.298s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[4.298s] -- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.8
+[4.299s] -- Using PYTHON_LIBRARIES: /usr/lib/aarch64-linux-gnu/libpython3.8.so
+[4.361s] -- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+[4.444s] -- Added test 'copyright' to check source files copyright and LICENSE
+[4.456s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[4.460s] -- Configured cppcheck include dirs: 
+[4.460s] -- Configured cppcheck exclude dirs and/or files: 
+[4.470s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[4.471s] -- Configured cpplint exclude dirs and/or files: 
+[4.476s] -- Added test 'flake8' to check Python code syntax and style conventions
+[4.480s] -- Added test 'lint_cmake' to check CMake code style
+[4.482s] -- Added test 'pep257' to check Python code against some of the style conventions in PEP 257
+[4.491s] -- Added test 'uncrustify' to check C / C++ code style
+[4.491s] -- Configured uncrustify additional arguments: 
+[4.496s] -- Added test 'xmllint' to check XML markup files
+[4.536s] -- Configuring done
+[4.775s] -- Generating done
+[4.792s] -- Build files have been written to: /home/ubuntu/ros2_ws/build/beacon_positioning
+[4.909s] [35m[1mScanning dependencies of target tracker_position[0m
+[4.949s] [  3%] Built target beacon_positioning__cpp
+[4.954s] [ 12%] Built target beacon_positioning__rosidl_generator_c
+[4.996s] [ 15%] [32mBuilding CXX object CMakeFiles/tracker_position.dir/src/tracker_position.cpp.o[0m
+[5.059s] [ 24%] Built target beacon_positioning__rosidl_typesupport_introspection_cpp
+[5.063s] [ 33%] Built target beacon_positioning__rosidl_typesupport_cpp
+[5.071s] [ 42%] Built target beacon_positioning__rosidl_typesupport_fastrtps_cpp
+[5.164s] [ 51%] Built target beacon_positioning__rosidl_typesupport_c
+[5.173s] [ 60%] Built target beacon_positioning__rosidl_typesupport_introspection_c
+[5.181s] [ 69%] Built target beacon_positioning__rosidl_typesupport_fastrtps_c
+[5.262s] [ 69%] Built target beacon_positioning
+[5.346s] [ 72%] Built target beacon_positioning__py
+[5.446s] [ 78%] Built target beacon_positioning__python
+[5.556s] [ 84%] Built target beacon_positioning__rosidl_typesupport_introspection_c__pyext
+[5.559s] [ 90%] Built target beacon_positioning__rosidl_typesupport_c__pyext
+[5.563s] [ 96%] Built target beacon_positioning__rosidl_typesupport_fastrtps_c__pyext
+[10.672s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:[m[K In lambda function:
+[10.672s] [01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:152:25:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<terabee::RtlsDevice::anchor_data_t>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+[10.673s]   152 |       for (int i = 0; [01;35m[Ki < tracker_msg.anchors_data.size()[m[K; i++)
+[10.673s]       |                       [01;35m[K~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[14.782s] [100%] [32m[1mLinking CXX executable tracker_position[0m
+[15.634s] [100%] Built target tracker_position
+[15.677s] Invoked command in '/home/ubuntu/ros2_ws/build/beacon_positioning' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/ubuntu/ros2_ws/build/beacon_positioning -- -j4 -l4
+[16.034s] Invoking command in '/home/ubuntu/ros2_ws/build/beacon_positioning': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /home/ubuntu/ros2_ws/build/beacon_positioning
+[16.070s] -- Install configuration: ""
+[16.071s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/share/ament_index/resource_index/rosidl_interfaces/beacon_positioning
+[16.071s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/include/beacon_positioning
+[16.071s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/include/beacon_positioning/msg
+[16.072s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/include/beacon_positioning/msg/detail
+[16.072s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/include/beacon_positioning/msg/detail/tracker_position__functions.c
+[16.073s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/include/beacon_positioning/msg/detail/tracker_position__struct.h
+[16.073s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/include/beacon_positioning/msg/detail/tracker_position__functions.h
+[16.073s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/include/beacon_positioning/msg/detail/tracker_position__type_support.h
+[16.074s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/include/beacon_positioning/msg/rosidl_generator_c__visibility_control.h
+[16.074s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/include/beacon_positioning/msg/tracker_position.h
+[16.074s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/environment/library_path.sh
+[16.075s] -- Installing: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/environment/library_path.dsv
+[16.076s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/lib/libbeacon_positioning__rosidl_generator_c.so
+[16.077s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/include/beacon_positioning
+[16.077s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/include/beacon_positioning/msg
+[16.078s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/include/beacon_positioning/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[16.078s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/include/beacon_positioning/msg/detail
+[16.078s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/include/beacon_positioning/msg/detail/tracker_position__rosidl_typesupport_fastrtps_c.h
+[16.083s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/lib/libbeacon_positioning__rosidl_typesupport_fastrtps_c.so
+[16.084s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/include/beacon_positioning
+[16.085s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/include/beacon_positioning/msg
+[16.085s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/include/beacon_positioning/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[16.086s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/include/beacon_positioning/msg/detail
+[16.086s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/include/beacon_positioning/msg/detail/dds_fastrtps
+[16.086s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/include/beacon_positioning/msg/detail/tracker_position__rosidl_typesupport_fastrtps_cpp.hpp
+[16.089s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/lib/libbeacon_positioning__rosidl_typesupport_fastrtps_cpp.so
+[16.091s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/include/beacon_positioning
+[16.091s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/include/beacon_positioning/msg
+[16.092s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/include/beacon_positioning/msg/detail
+[16.092s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/include/beacon_positioning/msg/detail/tracker_position__type_support.c
+[16.093s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/include/beacon_positioning/msg/detail/tracker_position__rosidl_typesupport_introspection_c.h
+[16.093s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/include/beacon_positioning/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[16.094s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/lib/libbeacon_positioning__rosidl_typesupport_introspection_c.so
+[16.096s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/lib/libbeacon_positioning__rosidl_typesupport_c.so
+[16.098s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/include/beacon_positioning
+[16.098s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/include/beacon_positioning/msg
+[16.099s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/include/beacon_positioning/msg/tracker_position.hpp
+[16.099s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/include/beacon_positioning/msg/detail
+[16.099s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/include/beacon_positioning/msg/detail/tracker_position__traits.hpp
+[16.100s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/include/beacon_positioning/msg/detail/tracker_position__builder.hpp
+[16.100s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/include/beacon_positioning/msg/detail/tracker_position__struct.hpp
+[16.101s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/include/beacon_positioning
+[16.101s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/include/beacon_positioning/msg
+[16.101s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/include/beacon_positioning/msg/detail
+[16.101s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/include/beacon_positioning/msg/detail/tracker_position__type_support.cpp
+[16.102s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/include/beacon_positioning/msg/detail/tracker_position__rosidl_typesupport_introspection_cpp.hpp
+[16.102s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/lib/libbeacon_positioning__rosidl_typesupport_introspection_cpp.so
+[16.104s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/lib/libbeacon_positioning__rosidl_typesupport_cpp.so
+[16.105s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/environment/pythonpath.sh
+[16.106s] -- Installing: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/environment/pythonpath.dsv
+[16.107s] -- Installing: /home/ubuntu/ros2_ws/install/beacon_positioning/lib/python3.8/site-packages/beacon_positioning/__init__.py
+[16.242s] Compiling '/home/ubuntu/ros2_ws/install/beacon_positioning/lib/python3.8/site-packages/beacon_positioning/__init__.py'...
+[16.265s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/lib/python3.8/site-packages/beacon_positioning/msg
+[16.265s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/lib/python3.8/site-packages/beacon_positioning/msg/_tracker_position_s.c
+[16.265s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/lib/python3.8/site-packages/beacon_positioning/msg/_tracker_position.py
+[16.266s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/lib/python3.8/site-packages/beacon_positioning/msg/__init__.py
+[16.271s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/lib/python3.8/site-packages/beacon_positioning/beacon_positioning_s__rosidl_typesupport_fastrtps_c.cpython-38-aarch64-linux-gnu.so
+[16.276s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/lib/python3.8/site-packages/beacon_positioning/beacon_positioning_s__rosidl_typesupport_introspection_c.cpython-38-aarch64-linux-gnu.so
+[16.281s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/lib/python3.8/site-packages/beacon_positioning/beacon_positioning_s__rosidl_typesupport_c.cpython-38-aarch64-linux-gnu.so
+[16.285s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/lib/libbeacon_positioning__python.so
+[16.286s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/msg/TrackerPosition.idl
+[16.287s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/msg/TrackerPosition.msg
+[16.290s] -- Installing: /home/ubuntu/ros2_ws/install/beacon_positioning/lib/beacon_positioning/tracker_position
+[16.294s] -- Set runtime path of "/home/ubuntu/ros2_ws/install/beacon_positioning/lib/beacon_positioning/tracker_position" to ""
+[16.295s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/launch
+[16.295s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/launch/beacon_positioning_launch.py
+[16.296s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/share/ament_index/resource_index/package_run_dependencies/beacon_positioning
+[16.296s] -- Installing: /home/ubuntu/ros2_ws/install/beacon_positioning/share/ament_index/resource_index/parent_prefix_path/beacon_positioning
+[16.298s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/environment/ament_prefix_path.sh
+[16.298s] -- Installing: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/environment/ament_prefix_path.dsv
+[16.300s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/environment/path.sh
+[16.300s] -- Installing: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/environment/path.dsv
+[16.301s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/local_setup.bash
+[16.302s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/local_setup.sh
+[16.302s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/local_setup.zsh
+[16.303s] -- Installing: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/local_setup.dsv
+[16.304s] -- Installing: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/package.dsv
+[16.305s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/share/ament_index/resource_index/packages/beacon_positioning
+[16.306s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/cmake/beacon_positioning__rosidl_generator_cExport.cmake
+[16.306s] -- Installing: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/cmake/beacon_positioning__rosidl_generator_cExport-noconfig.cmake
+[16.308s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/cmake/beacon_positioning__rosidl_typesupport_introspection_cExport.cmake
+[16.309s] -- Installing: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/cmake/beacon_positioning__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[16.310s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/cmake/beacon_positioning__rosidl_typesupport_cExport.cmake
+[16.311s] -- Installing: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/cmake/beacon_positioning__rosidl_typesupport_cExport-noconfig.cmake
+[16.313s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/cmake/beacon_positioning__rosidl_generator_cppExport.cmake
+[16.313s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/cmake/beacon_positioning__rosidl_typesupport_introspection_cppExport.cmake
+[16.314s] -- Installing: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/cmake/beacon_positioning__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[16.316s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/cmake/beacon_positioning__rosidl_typesupport_cppExport.cmake
+[16.316s] -- Installing: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/cmake/beacon_positioning__rosidl_typesupport_cppExport-noconfig.cmake
+[16.317s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/cmake/rosidl_cmake-extras.cmake
+[16.318s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/cmake/ament_cmake_export_dependencies-extras.cmake
+[16.318s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/cmake/ament_cmake_export_libraries-extras.cmake
+[16.319s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/cmake/ament_cmake_export_targets-extras.cmake
+[16.319s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/cmake/ament_cmake_export_include_directories-extras.cmake
+[16.319s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[16.320s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[16.320s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/cmake/beacon_positioningConfig.cmake
+[16.321s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/cmake/beacon_positioningConfig-version.cmake
+[16.321s] -- Up-to-date: /home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/package.xml
+[16.333s] Invoked command in '/home/ubuntu/ros2_ws/build/beacon_positioning' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /home/ubuntu/ros2_ws/build/beacon_positioning

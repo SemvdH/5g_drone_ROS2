@@ -1,0 +1,36 @@
+[35m[1mScanning dependencies of target tracker_position[0m
+[  3%] Built target beacon_positioning__cpp
+[ 12%] Built target beacon_positioning__rosidl_generator_c
+[ 30%] Built target beacon_positioning__rosidl_typesupport_introspection_cpp
+[ 30%] Built target beacon_positioning__rosidl_typesupport_cpp
+[ 39%] Built target beacon_positioning__rosidl_typesupport_fastrtps_cpp
+[ 42%] [32mBuilding CXX object CMakeFiles/tracker_position.dir/src/tracker_position.cpp.o[0m
+[ 51%] Built target beacon_positioning__rosidl_typesupport_c
+[ 60%] Built target beacon_positioning__rosidl_typesupport_introspection_c
+[ 69%] Built target beacon_positioning__rosidl_typesupport_fastrtps_c
+[ 69%] Built target beacon_positioning
+[ 72%] Built target beacon_positioning__py
+[ 78%] Built target beacon_positioning__python
+[ 84%] Built target beacon_positioning__rosidl_typesupport_c__pyext
+[ 90%] Built target beacon_positioning__rosidl_typesupport_introspection_c__pyext
+[ 96%] Built target beacon_positioning__rosidl_typesupport_fastrtps_c__pyext
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:[m[K In constructor ‘[01m[KBeaconPositioningPublisher::BeaconPositioningPublisher()[m[K’:
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:49:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kpublisher_[m[K’ was not declared in this scope; did you mean ‘[01m[Kpublish[m[K’?
+   49 |     [01;31m[Kpublisher_[m[K = this->create_publisher<beacon_positioning::msg::TrackerPosition>("beacon_positioning", 10);
+      |     [01;31m[K^~~~~~~~~~[m[K
+      |     [32m[Kpublish[m[K
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:[m[K In member function ‘[01m[Kvoid BeaconPositioningPublisher::publish(beacon_positioning::msg::TrackerPosition)[m[K’:
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:86:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kpublisher_[m[K’ was not declared in this scope; did you mean ‘[01m[Kpublish[m[K’?
+   86 |     [01;31m[Kpublisher_[m[K->publish(msg);
+      |     [01;31m[K^~~~~~~~~~[m[K
+      |     [32m[Kpublish[m[K
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:[m[K In lambda function:
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:152:25:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<terabee::RtlsDevice::anchor_data_t>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+  152 |       for (int i = 0; [01;35m[Ki < tracker_msg.anchors_data.size()[m[K; i++)
+      |                       [01;35m[K~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:163:25:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::vector<terabee::RtlsDevice::anchor_data_t>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+  163 |       for (int i = 0; [01;35m[Ki < tracker_msg.anchors_data.size()[m[K; i++)
+      |                       [01;35m[K~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+make[2]: *** [CMakeFiles/tracker_position.dir/build.make:63: CMakeFiles/tracker_position.dir/src/tracker_position.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:123: CMakeFiles/tracker_position.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

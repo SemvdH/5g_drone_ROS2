@@ -1,0 +1,48 @@
+[0.204s] Invoking command in '/home/ubuntu/ros2_ws/build/px4_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /home/ubuntu/ros2_ws/src/px4_msgs -DCMAKE_INSTALL_PREFIX=/home/ubuntu/ros2_ws/install/px4_msgs
+[0.458s] -- The C compiler identification is GNU 9.4.0
+[0.693s] -- The CXX compiler identification is GNU 9.4.0
+[0.711s] -- Check for working C compiler: /usr/bin/cc
+[1.010s] -- Check for working C compiler: /usr/bin/cc -- works
+[1.014s] -- Detecting C compiler ABI info
+[1.306s] -- Detecting C compiler ABI info - done
+[1.342s] -- Detecting C compile features
+[1.343s] -- Detecting C compile features - done
+[1.352s] -- Check for working CXX compiler: /usr/bin/c++
+[1.678s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[1.682s] -- Detecting CXX compiler ABI info
+[2.011s] -- Detecting CXX compiler ABI info - done
+[2.050s] -- Detecting CXX compile features
+[2.052s] -- Detecting CXX compile features - done
+[2.068s] -- Found ament_cmake: 0.9.11 (/opt/ros/foxy/share/ament_cmake/cmake)
+[2.189s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[2.190s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[3.092s] Invoked command in '/home/ubuntu/ros2_ws/build/px4_msgs' returned '-2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /home/ubuntu/ros2_ws/src/px4_msgs -DCMAKE_INSTALL_PREFIX=/home/ubuntu/ros2_ws/install/px4_msgs
+[3.093s] Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python3.8/site-packages/colcon_parallel_executor/executor/parallel.py", line 67, in execute
+    loop.run_until_complete(future)
+  File "/usr/lib/python3.8/asyncio/base_events.py", line 603, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.8/asyncio/base_events.py", line 570, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.8/asyncio/base_events.py", line 1823, in _run_once
+    event_list = self._selector.select(timeout)
+  File "/usr/lib/python3.8/selectors.py", line 468, in select
+    fd_event_list = self._selector.poll(timeout, max_ev)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python3.8/site-packages/colcon_core/executor/__init__.py", line 91, in __call__
+    rc = await self.task(*args, **kwargs)
+  File "/home/ubuntu/.local/lib/python3.8/site-packages/colcon_core/task/__init__.py", line 93, in __call__
+    return await task_method(*args, **kwargs)
+  File "/home/ubuntu/.local/lib/python3.8/site-packages/colcon_ros/task/ament_cmake/build.py", line 59, in build
+    rc = await extension.build(
+  File "/home/ubuntu/.local/lib/python3.8/site-packages/colcon_cmake/task/cmake/build.py", line 87, in build
+    rc = await self._reconfigure(args, env)
+  File "/home/ubuntu/.local/lib/python3.8/site-packages/colcon_cmake/task/cmake/build.py", line 182, in _reconfigure
+    buildfile = get_buildfile(cmake_cache)
+  File "/home/ubuntu/.local/lib/python3.8/site-packages/colcon_cmake/task/cmake/__init__.py", line 112, in get_buildfile
+    if 'Ninja' in generator:
+TypeError: argument of type 'NoneType' is not iterable

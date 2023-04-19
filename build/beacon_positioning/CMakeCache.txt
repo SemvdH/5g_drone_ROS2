@@ -286,7 +286,7 @@ SITE:STRING=ubuntu
 TinyXML2_DIR:PATH=TinyXML2_DIR-NOTFOUND
 
 //Path to a library.
-_lib:FILEPATH=/opt/ros/foxy/lib/librosgraph_msgs__rosidl_typesupport_fastrtps_cpp.so
+_lib:FILEPATH=/home/ubuntu/ros2_ws/install/beacon_positioning/lib/libbeacon_positioning__rosidl_typesupport_fastrtps_cpp.so
 
 //Path to a file.
 _numpy_h:FILEPATH=/usr/include/python3.8/numpy/numpyconfig.h
@@ -406,7 +406,7 @@ ament_xmllint_BIN:FILEPATH=/opt/ros/foxy/bin/ament_xmllint
 beacon_positioning_BINARY_DIR:STATIC=/home/ubuntu/ros2_ws/build/beacon_positioning
 
 //The directory containing a CMake configuration file for beacon_positioning.
-beacon_positioning_DIR:PATH=beacon_positioning_DIR-NOTFOUND
+beacon_positioning_DIR:PATH=/home/ubuntu/ros2_ws/install/beacon_positioning/share/beacon_positioning/cmake
 
 //Value Computed by CMake
 beacon_positioning_SOURCE_DIR:STATIC=/home/ubuntu/ros2_ws/src/beacon_positioning

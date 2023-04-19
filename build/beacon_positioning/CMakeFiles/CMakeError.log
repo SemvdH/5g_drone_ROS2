@@ -1,21 +1,21 @@
 Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
 Change Dir: /home/ubuntu/ros2_ws/build/beacon_positioning/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_b9fda/fast && /usr/bin/make -f CMakeFiles/cmTC_b9fda.dir/build.make CMakeFiles/cmTC_b9fda.dir/build
+Run Build Command(s):/usr/bin/make cmTC_51788/fast && /usr/bin/make -f CMakeFiles/cmTC_51788.dir/build.make CMakeFiles/cmTC_51788.dir/build
 make[1]: Entering directory '/home/ubuntu/ros2_ws/build/beacon_positioning/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_b9fda.dir/src.c.o
-/usr/bin/cc   -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_b9fda.dir/src.c.o   -c /home/ubuntu/ros2_ws/build/beacon_positioning/CMakeFiles/CMakeTmp/src.c
-Linking C executable cmTC_b9fda
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b9fda.dir/link.txt --verbose=1
-/usr/bin/cc  -DCMAKE_HAVE_LIBC_PTHREAD    CMakeFiles/cmTC_b9fda.dir/src.c.o  -o cmTC_b9fda 
-/usr/bin/ld: CMakeFiles/cmTC_b9fda.dir/src.c.o: in function `main':
+Building C object CMakeFiles/cmTC_51788.dir/src.c.o
+/usr/bin/cc   -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_51788.dir/src.c.o   -c /home/ubuntu/ros2_ws/build/beacon_positioning/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_51788
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_51788.dir/link.txt --verbose=1
+/usr/bin/cc  -DCMAKE_HAVE_LIBC_PTHREAD    CMakeFiles/cmTC_51788.dir/src.c.o  -o cmTC_51788 
+/usr/bin/ld: CMakeFiles/cmTC_51788.dir/src.c.o: in function `main':
 src.c:(.text+0x48): undefined reference to `pthread_create'
 /usr/bin/ld: src.c:(.text+0x50): undefined reference to `pthread_detach'
 /usr/bin/ld: src.c:(.text+0x5c): undefined reference to `pthread_join'
 collect2: error: ld returned 1 exit status
-make[1]: *** [CMakeFiles/cmTC_b9fda.dir/build.make:87: cmTC_b9fda] Error 1
+make[1]: *** [CMakeFiles/cmTC_51788.dir/build.make:87: cmTC_51788] Error 1
 make[1]: Leaving directory '/home/ubuntu/ros2_ws/build/beacon_positioning/CMakeFiles/CMakeTmp'
-make: *** [Makefile:121: cmTC_b9fda/fast] Error 2
+make: *** [Makefile:121: cmTC_51788/fast] Error 2
 
 
 Source file was:
@@ -41,18 +41,18 @@ int main(void)
 Determining if the function pthread_create exists in the pthreads failed with the following output:
 Change Dir: /home/ubuntu/ros2_ws/build/beacon_positioning/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_29db1/fast && /usr/bin/make -f CMakeFiles/cmTC_29db1.dir/build.make CMakeFiles/cmTC_29db1.dir/build
+Run Build Command(s):/usr/bin/make cmTC_e9a57/fast && /usr/bin/make -f CMakeFiles/cmTC_e9a57.dir/build.make CMakeFiles/cmTC_e9a57.dir/build
 make[1]: Entering directory '/home/ubuntu/ros2_ws/build/beacon_positioning/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_29db1.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_29db1.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
-Linking C executable cmTC_29db1
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_29db1.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_29db1.dir/CheckFunctionExists.c.o  -o cmTC_29db1  -lpthreads 
+Building C object CMakeFiles/cmTC_e9a57.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_e9a57.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_e9a57
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e9a57.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_e9a57.dir/CheckFunctionExists.c.o  -o cmTC_e9a57  -lpthreads 
 /usr/bin/ld: cannot find -lpthreads
 collect2: error: ld returned 1 exit status
-make[1]: *** [CMakeFiles/cmTC_29db1.dir/build.make:87: cmTC_29db1] Error 1
+make[1]: *** [CMakeFiles/cmTC_e9a57.dir/build.make:87: cmTC_e9a57] Error 1
 make[1]: Leaving directory '/home/ubuntu/ros2_ws/build/beacon_positioning/CMakeFiles/CMakeTmp'
-make: *** [Makefile:121: cmTC_29db1/fast] Error 2
+make: *** [Makefile:121: cmTC_e9a57/fast] Error 2
 
 
 

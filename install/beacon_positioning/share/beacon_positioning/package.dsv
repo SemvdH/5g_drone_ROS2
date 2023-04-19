@@ -1,3 +1,12 @@
+source;share/beacon_positioning/hook/cmake_prefix_path.ps1
+source;share/beacon_positioning/hook/cmake_prefix_path.dsv
+source;share/beacon_positioning/hook/cmake_prefix_path.sh
+source;share/beacon_positioning/hook/ld_library_path_lib.ps1
+source;share/beacon_positioning/hook/ld_library_path_lib.dsv
+source;share/beacon_positioning/hook/ld_library_path_lib.sh
+source;share/beacon_positioning/hook/pythonpath.ps1
+source;share/beacon_positioning/hook/pythonpath.dsv
+source;share/beacon_positioning/hook/pythonpath.sh
 source;share/beacon_positioning/local_setup.bash
 source;share/beacon_positioning/local_setup.dsv
 source;share/beacon_positioning/local_setup.ps1

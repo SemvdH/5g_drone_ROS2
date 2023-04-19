@@ -1,0 +1,111 @@
+-- The C compiler identification is GNU 9.4.0
+-- The CXX compiler identification is GNU 9.4.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ament_cmake: 0.9.11 (/opt/ros/foxy/share/ament_cmake/cmake)
+-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+-- Using PYTHON_EXECUTABLE: /usr/bin/python3
+-- Found builtin_interfaces: 1.0.0 (/opt/ros/foxy/share/builtin_interfaces/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Found rosidl_adapter: 1.3.0 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+-- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "1.1.1f")  
+-- Found FastRTPS: /opt/ros/foxy/include  
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rosidl_default_generators: 1.0.1 (/opt/ros/foxy/share/rosidl_default_generators/cmake)
+-- Found PythonInterp: /usr/bin/python3 (found version "3.8.10") 
+-- Found ament_cmake_cppcheck: 0.9.8 (/opt/ros/foxy/share/ament_cmake_cppcheck/cmake)
+-- Found ament_cmake_cpplint: 0.9.8 (/opt/ros/foxy/share/ament_cmake_cpplint/cmake)
+-- Found ament_cmake_uncrustify: 0.9.8 (/opt/ros/foxy/share/ament_cmake_uncrustify/cmake)
+-- Found ament_cmake_ros: 0.9.2 (/opt/ros/foxy/share/ament_cmake_ros/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3.5") 
+-- Found python_cmake_module: 0.8.1 (/opt/ros/foxy/share/python_cmake_module/cmake)
+-- Found PythonLibs: /usr/lib/aarch64-linux-gnu/libpython3.8.so (found suitable version "3.8.10", minimum required is "3.5") 
+-- Using PYTHON_EXECUTABLE: /usr/bin/python3
+-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.8
+-- Using PYTHON_LIBRARIES: /usr/lib/aarch64-linux-gnu/libpython3.8.so
+-- Found PythonExtra: .so  
+-- Found ament_cmake_flake8: 0.9.8 (/opt/ros/foxy/share/ament_cmake_flake8/cmake)
+-- Found ament_cmake_pep257: 0.9.8 (/opt/ros/foxy/share/ament_cmake_pep257/cmake)
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/ubuntu/ros2_ws/build/px4_msgs
+[35m[1mScanning dependencies of target px4_msgs__cpp[0m
+[  0%] [34m[1mGenerating C code for ROS interfaces[0m
+[  0%] [34m[1mGenerating C++ code for ROS interfaces[0m
+Traceback (most recent call last):
+  File "/opt/ros/foxy/share/rosidl_generator_c/cmake/../../../lib/rosidl_generator_c/rosidl_generator_c", line 40, in <module>
+make[2]: *** Deleting file 'rosidl_generator_c/px4_msgs/msg/action_request.h'
+make[2]: *** Deleting file 'rosidl_generator_cpp/px4_msgs/msg/action_request.hpp'
+    sys.exit(main())
+  File "/opt/ros/foxy/share/rosidl_generator_c/cmake/../../../lib/rosidl_generator_c/rosidl_generator_c", line 34, in main
+Traceback (most recent call last):
+    return generate_c(
+  File "/opt/ros/foxy/share/rosidl_generator_cpp/cmake/../../../lib/rosidl_generator_cpp/rosidl_generator_cpp", line 40, in <module>
+  File "/opt/ros/foxy/lib/python3.8/site-packages/rosidl_generator_c/__init__.py", line 37, in generate_c
+    generate_files(
+    sys.exit(main())
+  File "/opt/ros/foxy/lib/python3.8/site-packages/rosidl_cmake/__init__.py", line 74, in generate_files
+  File "/opt/ros/foxy/share/rosidl_generator_cpp/cmake/../../../lib/rosidl_generator_cpp/rosidl_generator_cpp", line 34, in main
+    return generate_cpp(
+    idl_file = parse_idl_file(locator)
+  File "/opt/ros/foxy/lib/python3.8/site-packages/rosidl_generator_cpp/__init__.py", line 38, in generate_cpp
+  File "/opt/ros/foxy/lib/python3.8/site-packages/rosidl_parser/parser.py", line 64, in parse_idl_file
+    content = parse_idl_string(string, png_file=png_file)
+    generate_files(
+  File "/opt/ros/foxy/lib/python3.8/site-packages/rosidl_parser/parser.py", line 72, in parse_idl_string
+  File "/opt/ros/foxy/lib/python3.8/site-packages/rosidl_cmake/__init__.py", line 74, in generate_files
+    tree = get_ast_from_idl_string(idl_string)
+    idl_file = parse_idl_file(locator)
+  File "/opt/ros/foxy/lib/python3.8/site-packages/rosidl_parser/parser.py", line 89, in get_ast_from_idl_string
+  File "/opt/ros/foxy/lib/python3.8/site-packages/rosidl_parser/parser.py", line 64, in parse_idl_file
+    return _parser.parse(idl_string)
+    content = parse_idl_string(string, png_file=png_file)
+  File "/usr/lib/python3/dist-packages/lark/lark.py", line 293, in parse
+  File "/opt/ros/foxy/lib/python3.8/site-packages/rosidl_parser/parser.py", line 72, in parse_idl_string
+    tree = get_ast_from_idl_string(idl_string)
+  File "/opt/ros/foxy/lib/python3.8/site-packages/rosidl_parser/parser.py", line 89, in get_ast_from_idl_string
+    return _parser.parse(idl_string)
+  File "/usr/lib/python3/dist-packages/lark/lark.py", line 293, in parse
+    return self.parser.parse(text, start=start)
+    return self.parser.parse(text, start=start)
+  File "/usr/lib/python3/dist-packages/lark/parser_frontends.py", line 193, in parse
+  File "/usr/lib/python3/dist-packages/lark/parser_frontends.py", line 193, in parse
+    return self._parse(text, start)
+    return self._parse(text, start)
+  File "/usr/lib/python3/dist-packages/lark/parser_frontends.py", line 54, in _parse
+  File "/usr/lib/python3/dist-packages/lark/parser_frontends.py", line 54, in _parse
+    return self.parser.parse(input, start, *args)
+    return self.parser.parse(input, start, *args)
+  File "/usr/lib/python3/dist-packages/lark/parsers/earley.py", line 292, in parse
+  File "/usr/lib/python3/dist-packages/lark/parsers/earley.py", line 292, in parse
+    to_scan = self._parse(stream, columns, to_scan, start_symbol)
+    to_scan = self._parse(stream, columns, to_scan, start_symbol)
+  File "/usr/lib/python3/dist-packages/lark/parsers/xearley.py", line 135, in _parse
+  File "/usr/lib/python3/dist-packages/lark/parsers/xearley.py", line 137, in _parse
+    to_scan = scan(i, to_scan)
+    self.predict_and_complete(i, to_scan, columns, transitives)
+  File "/usr/lib/python3/dist-packages/lark/parsers/xearley.py", line 77, in scan
+  File "/usr/lib/python3/dist-packages/lark/parsers/earley.py", line 129, in predict_and_complete
+    delayed_matches[m.end()].extend([(item, i, None) for item in to_scan ])
+    new_item = Item(rule, 0, i)
+KeyboardInterrupt
+  File "/usr/lib/python3/dist-packages/lark/parsers/earley_common.py", line 36, in __init__
+    self._hash = hash((self.s, self.start))
+KeyboardInterrupt
+make[2]: *** [CMakeFiles/px4_msgs__rosidl_generator_c.dir/build.make:261: rosidl_generator_c/px4_msgs/msg/action_request.h] Interrupt
+make[1]: *** [CMakeFiles/Makefile2:333: CMakeFiles/px4_msgs__rosidl_generator_c.dir/all] Interrupt
+make[2]: *** [CMakeFiles/px4_msgs__cpp.dir/build.make:1001: rosidl_generator_cpp/px4_msgs/msg/action_request.hpp] Interrupt
+make[1]: *** [CMakeFiles/Makefile2:499: CMakeFiles/px4_msgs__cpp.dir/all] Interrupt
+make: *** [Makefile:141: all] Interrupt
