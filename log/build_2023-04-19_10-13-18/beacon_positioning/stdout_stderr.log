@@ -1,0 +1,54 @@
+-- Found ament_cmake: 0.9.11 (/opt/ros/foxy/share/ament_cmake/cmake)
+-- Using PYTHON_EXECUTABLE: /usr/bin/python3
+-- Found rclcpp: 2.4.2 (/opt/ros/foxy/share/rclcpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Found rosidl_adapter: 1.3.0 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+-- Using RMW implementation 'rmw_fastrtps_cpp' as default
+-- Found rosidl_default_generators: 1.0.1 (/opt/ros/foxy/share/rosidl_default_generators/cmake)
+-- Found PythonInterp: /usr/bin/python3 (found version "3.8.10") 
+-- Found ament_cmake_ros: 0.9.2 (/opt/ros/foxy/share/ament_cmake_ros/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3.5") 
+-- Found python_cmake_module: 0.8.1 (/opt/ros/foxy/share/python_cmake_module/cmake)
+-- Found PythonLibs: /usr/lib/aarch64-linux-gnu/libpython3.8.so (found suitable version "3.8.10", minimum required is "3.5") 
+-- Using PYTHON_EXECUTABLE: /usr/bin/python3
+-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.8
+-- Using PYTHON_LIBRARIES: /usr/lib/aarch64-linux-gnu/libpython3.8.so
+-- Found PythonExtra: .so  
+-- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+-- Added test 'copyright' to check source files copyright and LICENSE
+-- Added test 'cppcheck' to perform static code analysis on C / C++ code
+-- Configured cppcheck include dirs: 
+-- Configured cppcheck exclude dirs and/or files: 
+-- Added test 'cpplint' to check C / C++ code against the Google style
+-- Configured cpplint exclude dirs and/or files: 
+-- Added test 'flake8' to check Python code syntax and style conventions
+-- Added test 'lint_cmake' to check CMake code style
+-- Added test 'pep257' to check Python code against some of the style conventions in PEP 257
+-- Added test 'uncrustify' to check C / C++ code style
+-- Configured uncrustify additional arguments: 
+-- Added test 'xmllint' to check XML markup files
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/ubuntu/ros2_ws/build/beacon_positioning
+[35m[1mScanning dependencies of target beacon_positioning__cpp[0m
+[35m[1mScanning dependencies of target tracker_position[0m
+[  3%] [34m[1mGenerating C code for ROS interfaces[0m
+[  6%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[  9%] [32mBuilding CXX object CMakeFiles/tracker_position.dir/src/tracker_position.cpp.o[0m
+[01m[K/home/ubuntu/ros2_ws/src/beacon_positioning/src/tracker_position.cpp:6:10:[m[K [01;31m[Kfatal error: [m[Kbeacon_positioning/msg/tracker_position.hpp: No such file or directory
+    6 | #include [01;31m[K"beacon_positioning/msg/tracker_position.hpp"[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+make[2]: *** [CMakeFiles/tracker_position.dir/build.make:63: CMakeFiles/tracker_position.dir/src/tracker_position.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:123: CMakeFiles/tracker_position.dir/all] Error 2
+make[1]: *** Waiting for unfinished jobs....
+[  9%] Built target beacon_positioning__cpp
+[35m[1mScanning dependencies of target beacon_positioning__rosidl_generator_c[0m
+[ 12%] [32mBuilding C object CMakeFiles/beacon_positioning__rosidl_generator_c.dir/rosidl_generator_c/beacon_positioning/msg/detail/tracker_position__functions.c.o[0m
+[ 15%] [32m[1mLinking C shared library libbeacon_positioning__rosidl_generator_c.so[0m
+[ 15%] Built target beacon_positioning__rosidl_generator_c
+make: *** [Makefile:141: all] Error 2

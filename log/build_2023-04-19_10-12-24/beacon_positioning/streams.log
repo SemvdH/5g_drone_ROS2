@@ -1,0 +1,31 @@
+[0.114s] Invoking command in '/home/ubuntu/ros2_ws/build/beacon_positioning': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /home/ubuntu/ros2_ws/src/beacon_positioning -DCMAKE_INSTALL_PREFIX=/home/ubuntu/ros2_ws/install/beacon_positioning
+[0.172s] -- Found ament_cmake: 0.9.11 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.264s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.950s] -- Found rclcpp: 2.4.2 (/opt/ros/foxy/share/rclcpp/cmake)
+[1.081s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.093s] -- Found rosidl_adapter: 1.3.0 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[1.582s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.754s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[1.760s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[2.264s] -- Found rosidl_default_generators: 1.0.1 (/opt/ros/foxy/share/rosidl_default_generators/cmake)
+[2.356s] CMake Error at CMakeLists.txt:27 (find_package):
+[2.356s]   By not providing "Findbeacon_positioning.cmake" in CMAKE_MODULE_PATH this
+[2.356s]   project has asked CMake to find a package configuration file provided by
+[2.357s]   "beacon_positioning", but CMake did not find one.
+[2.357s] 
+[2.357s]   Could not find a package configuration file provided by
+[2.357s]   "beacon_positioning" with any of the following names:
+[2.358s] 
+[2.358s]     beacon_positioningConfig.cmake
+[2.358s]     beacon_positioning-config.cmake
+[2.358s] 
+[2.359s]   Add the installation prefix of "beacon_positioning" to CMAKE_PREFIX_PATH or
+[2.359s]   set "beacon_positioning_DIR" to a directory containing one of the above
+[2.359s]   files.  If "beacon_positioning" provides a separate development package or
+[2.359s]   SDK, be sure it has been installed.
+[2.360s] 
+[2.360s] 
+[2.368s] -- Configuring incomplete, errors occurred!
+[2.369s] See also "/home/ubuntu/ros2_ws/build/beacon_positioning/CMakeFiles/CMakeOutput.log".
+[2.369s] See also "/home/ubuntu/ros2_ws/build/beacon_positioning/CMakeFiles/CMakeError.log".
+[2.388s] Invoked command in '/home/ubuntu/ros2_ws/build/beacon_positioning' returned '1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /home/ubuntu/ros2_ws/src/beacon_positioning -DCMAKE_INSTALL_PREFIX=/home/ubuntu/ros2_ws/install/beacon_positioning

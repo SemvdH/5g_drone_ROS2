@@ -106,3 +106,10 @@ function colcon_package_source_powershell_script {
 }
 
 
+# a powershell script is able to determine its own path
+# the prefix is two levels up from the package specific share directory
+$env:COLCON_CURRENT_PREFIX=(Get-Item $PSCommandPath).Directory.Parent.Parent.FullName
+
+colcon_package_source_powershell_script "$env:COLCON_CURRENT_PREFIX\share/beacon_positioning/local_setup.ps1"
+
+Remove-Item Env:\COLCON_CURRENT_PREFIX
