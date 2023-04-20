@@ -26,7 +26,7 @@ std::ostream &operator<<(std::ostream &os, const TowerDistanceData &d)
   os << "[";
   for (size_t i = 0; i < d.distance.size(); i++)
   {
-    os << d.distance[i] << (d.mask[i] ? " <new>, " : " <old>, ");
+    os << i  << " " << d.distance[i] << (d.mask[i] ? " <new>, " : " <old>, ");
   }
   os << "\b\b"
      << " ]";
