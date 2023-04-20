@@ -81,7 +81,7 @@ private:
     std::cout << "Distance = " << tower->getDistance() << std::endl;
     std::cout << "IMU = " << tower->getImuData() << std::endl;
 
-    auto message = object_detection::msg::LidarReading msg;
+    auto msg = object_detection::msg::LidarReading();
 
     ImuData imu_data = tower->getImuData();
 
