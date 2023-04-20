@@ -23,6 +23,13 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(px4_ros_com REQUIRED)
 
+add_executable(send_setpoints src/send_setpoints.cpp)
+ament_target_dependencies(send_setpoints rclcpp px4_ros_com)
+
+install(TARGETS
+  send_setpoints
+  DESTINATION lib/${PROJECT_NAME}
+
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
