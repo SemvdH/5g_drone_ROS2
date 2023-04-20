@@ -24,10 +24,10 @@ find_package(rclcpp REQUIRED)
 find_package(px4_ros_com REQUIRED)
 
 add_executable(send_setpoint src/send_setpoint.cpp)
-ament_target_dependencies(send_setpoints rclcpp px4_ros_com)
+ament_target_dependencies(send_setpoint rclcpp px4_ros_com)
 
 install(TARGETS
-  send_setpoints
+  send_setpoint
   DESTINATION lib/${PROJECT_NAME}
 )
 
