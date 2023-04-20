@@ -78,10 +78,15 @@ private:
   void read_lidar_data()
   {
     //TODO publish message with all data from lidar
-    std::cout << "Distance = " << tower->getDistance() << std::endl;
-    std::cout << "IMU = " << tower->getImuData() << std::endl;
+    // std::cout << "Distance = " << tower->getDistance() << std::endl;
+    // std::cout << "IMU = " << tower->getImuData() << std::endl;
 
     auto msg = object_detection::msg::LidarReading();
+
+    msg.sensor_1 = tower->getDistance().distance.at(0);
+    msg.sensor_2 = tower->getDistance().distance.at(2);
+    msg.sensor_3 = tower->getDistance().distance.at(4);
+    msg.sensor_4 = tower->getDistance().distance.at(6);
 
     ImuData imu_data = tower->getImuData();
 
@@ -89,6 +94,8 @@ private:
     {
       msg.imu_data.push_back(imu_data.data[i]);
     }
+    publisher_->publish(msg);
+    RCLCPP_INFO(this->get_logger(), "Publishing message");
   }
 
   rclcpp::Publisher<object_detection::msg::LidarReading>::SharedPtr publisher_;
