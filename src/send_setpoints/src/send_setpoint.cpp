@@ -1,3 +1,12 @@
+/*
+
+We need to send attitude setpoints to be able to arm the drone:
+https://mavlink.io/en/messages/common.html#SET_ATTITUDE_TARGET
+We need attitude setpoints because we don't have a GPS:
+https://discuss.px4.io/t/cannot-arm-drone-with-companion-computer-arming-denied-manual-control-lost/31565/9
+
+*/
+
 #include "rclcpp/rclcpp.hpp"
 
 #include <px4_msgs/msg/offboard_control_mode.hpp>
