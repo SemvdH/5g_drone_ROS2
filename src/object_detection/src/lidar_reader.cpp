@@ -52,7 +52,7 @@ public:
       : Node("lidar_reader")
   {
     publisher_ = this->create_publisher<object_detection::msg::LidarReading>("drone/object_detection", 10);
-    timer_ = this->create_wall_timer(500ms, std::bind(&LidarReader::timer_callback, this));
+    timer_ = this->create_wall_timer(500ms, std::bind(&LidarReader::read_lidar_data, this));
 
     ITerarangerTowerEvo::ImuMode mode(ITerarangerTowerEvo::QuaternionLinearAcc);
 
@@ -75,11 +75,20 @@ public:
   }
 
 private:
-  void timer_callback()
+  void read_lidar_data()
   {
     //TODO publish message with all data from lidar
     std::cout << "Distance = " << tower->getDistance() << std::endl;
     std::cout << "IMU = " << tower->getImuData() << std::endl;
+
+    auto message = object_detection::msg::LidarReading msg;
+
+    ImuData imu_data = tower->getImuData();
+
+    for (size_t i = 0; i < imu_data.data.size(); i++)
+    {
+      msg.imu_data.push_back(imu_data.data[i]);
+    }
   }
 
   rclcpp::Publisher<object_detection::msg::LidarReading>::SharedPtr publisher_;
