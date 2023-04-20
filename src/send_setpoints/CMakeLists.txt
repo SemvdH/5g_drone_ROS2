@@ -29,6 +29,7 @@ ament_target_dependencies(send_setpoints rclcpp px4_ros_com)
 install(TARGETS
   send_setpoints
   DESTINATION lib/${PROJECT_NAME}
+)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
