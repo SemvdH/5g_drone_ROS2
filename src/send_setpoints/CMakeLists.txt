@@ -23,7 +23,7 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(px4_ros_com REQUIRED)
 
-add_executable(send_setpoints src/send_setpoints.cpp)
+add_executable(send_setpoint src/send_setpoint.cpp)
 ament_target_dependencies(send_setpoints rclcpp px4_ros_com)
 
 install(TARGETS
