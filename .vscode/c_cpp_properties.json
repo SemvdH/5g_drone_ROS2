@@ -1,0 +1,25 @@
+{
+    "configurations": [
+        {
+            "browse": {
+                "databaseFilename": "",
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "includePath": [
+                "/opt/ros/humble/include/**",
+                "/home/ubuntu/ros2_ws/src/beacon_positioning/include/**",
+                "/usr/include/**",
+                "/mnt/Homework/Avans/AFSTUDEERSTAGE/positioning_systems_api/rtls_driver/include/**",
+                "/mnt/Homework/Avans/AFSTUDEERSTAGE/positioning_systems_api/serial_communication/include/**",
+                "/mnt/Homework/Avans/AFSTUDEERSTAGE/terabee_api/include/**"
+            ],
+            "name": "ROS",
+            "intelliSenseMode": "gcc-x64",
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++14",
+            "configurationProvider": "ms-vscode.cmake-tools"
+        }
+    ],
+    "version": 4
+}

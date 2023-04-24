@@ -1,0 +1,16 @@
+/home/ubuntu/ros2_ws/src/install/beacon_positioning/lib/beacon_positioning/tracker_position
+/home/ubuntu/ros2_ws/src/install/beacon_positioning/share/ament_index/resource_index/package_run_dependencies/beacon_positioning
+/home/ubuntu/ros2_ws/src/install/beacon_positioning/share/ament_index/resource_index/parent_prefix_path/beacon_positioning
+/home/ubuntu/ros2_ws/src/install/beacon_positioning/share/beacon_positioning/environment/ament_prefix_path.sh
+/home/ubuntu/ros2_ws/src/install/beacon_positioning/share/beacon_positioning/environment/ament_prefix_path.dsv
+/home/ubuntu/ros2_ws/src/install/beacon_positioning/share/beacon_positioning/environment/path.sh
+/home/ubuntu/ros2_ws/src/install/beacon_positioning/share/beacon_positioning/environment/path.dsv
+/home/ubuntu/ros2_ws/src/install/beacon_positioning/share/beacon_positioning/local_setup.bash
+/home/ubuntu/ros2_ws/src/install/beacon_positioning/share/beacon_positioning/local_setup.sh
+/home/ubuntu/ros2_ws/src/install/beacon_positioning/share/beacon_positioning/local_setup.zsh
+/home/ubuntu/ros2_ws/src/install/beacon_positioning/share/beacon_positioning/local_setup.dsv
+/home/ubuntu/ros2_ws/src/install/beacon_positioning/share/beacon_positioning/package.dsv
+/home/ubuntu/ros2_ws/src/install/beacon_positioning/share/ament_index/resource_index/packages/beacon_positioning
+/home/ubuntu/ros2_ws/src/install/beacon_positioning/share/beacon_positioning/cmake/beacon_positioningConfig.cmake
+/home/ubuntu/ros2_ws/src/install/beacon_positioning/share/beacon_positioning/cmake/beacon_positioningConfig-version.cmake
+/home/ubuntu/ros2_ws/src/install/beacon_positioning/share/beacon_positioning/package.xml
