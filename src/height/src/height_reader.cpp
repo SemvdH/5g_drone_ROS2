@@ -63,18 +63,20 @@ private:
   {
     auto msg = height::msg::HeightData();
 
-    float min = 10000000;
+    float min = 255;
     terabee::DistanceData distance_data = evo_mini->getDistance();
     for (size_t i = 0; i < distance_data.size(); i++)
     {
       msg.heights[i] = distance_data.distance[i];
-      if (distance_data.distance[i] < min)
+      if (distance_data.distance[i] < min && distance_data.distance[i] >= 0)
       {
         min = distance_data.distance[i];
       }
     }
     msg.min_height = min;
     publisher_->publish(msg);
+
+    RCLCPP_INFO(this->get_logger(),"publishing message with min distance %f",msg.min_height);
   }
 
   rclcpp::TimerBase::SharedPtr timer_;
