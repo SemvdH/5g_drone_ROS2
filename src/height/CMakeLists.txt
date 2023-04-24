@@ -20,6 +20,7 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(TerabeeApi REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
+find_package(height REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/HeightData.msg"
@@ -37,6 +38,7 @@ ament_target_dependencies(
   height_reader
   rclcpp
   TerabeeApi
+  height
 )
 
 install(TARGETS height_reader
