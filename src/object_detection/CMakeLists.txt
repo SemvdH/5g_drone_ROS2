@@ -35,8 +35,15 @@ ament_target_dependencies(lidar_reader rclcpp object_detection)
 target_link_libraries(lidar_reader ${TerabeeApi_LIBRARIES})
 target_include_directories(lidar_reader PUBLIC ${TerabeeApi_INCLUDE_DIRS})
 
+add_executable(multiflex_reader src/multiflex_reader.cpp)
+ament_target_dependencies(multiflex_reader rclcpp object_detection)
+
+target_link_libraries(multiflex_reader ${TerabeeApi_LIBRARIES})
+target_include_directories(multiflex_reader PUBLIC ${TerabeeApi_INCLUDE_DIRS})
+
 install(TARGETS
   lidar_reader
+  multiflex_reader
   DESTINATION lib/${PROJECT_NAME}
 )
 
