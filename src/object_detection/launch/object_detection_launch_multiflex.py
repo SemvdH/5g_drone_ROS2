@@ -8,7 +8,7 @@ def generate_launch_description():
             executable="multiflex_reader",
             name="multiflex_reader",
             parameters=[
-                {"serial_port": "/dev/ttyACM0"}
+                {"multiflex_serial_port": "/dev/ttyACM0"}
             ]
         )
 

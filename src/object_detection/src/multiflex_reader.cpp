@@ -23,10 +23,10 @@ public:
   {
     rcl_interfaces::msg::ParameterDescriptor serial_port_descriptor = rcl_interfaces::msg::ParameterDescriptor{};
     serial_port_descriptor.description = "Serial port of the USB port that the multiflex PCB is connected to.";
-    this->declare_parameter("serial_port", "/dev/ttyACM0", serial_port_descriptor);
+    this->declare_parameter("multiflex_serial_port", "/dev/ttyACM0", serial_port_descriptor);
 
     factory = terabee::ITerarangerFactory::getFactory();
-    multiflex = factory->createTerarangerMultiflex(this->get_parameter("serial_port").as_string());
+    multiflex = factory->createTerarangerMultiflex(this->get_parameter("multiflex_serial_port").as_string());
 
     if (!multiflex)
     {

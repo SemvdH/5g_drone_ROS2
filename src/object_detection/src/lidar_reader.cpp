@@ -51,13 +51,19 @@ public:
   LidarReader()
       : Node("lidar_reader")
   {
+
+    rcl_interfaces::msg::ParameterDescriptor descriptor = rcl_interfaces::msg::ParameterDescriptor{};
+    descriptor.description = "serial port for the USB port of the LIDAR";
+
+    this->declare_parameter("lidar_serial_port", "/dev/ttyACM0", descriptor);
+
     publisher_ = this->create_publisher<object_detection::msg::LidarReading>("drone/object_detection", 10);
     timer_ = this->create_wall_timer(500ms, std::bind(&LidarReader::read_lidar_data, this));
 
     ITerarangerTowerEvo::ImuMode mode(ITerarangerTowerEvo::QuaternionLinearAcc);
 
     factory = terabee::ITerarangerFactory::getFactory();
-    tower = factory->createTerarangerTowerEvo("/dev/ttyACM0");
+    tower = factory->createTerarangerTowerEvo(this->get_parameter("lidar_serial_port"));
 
     if (!tower)
     {
