@@ -19,7 +19,6 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(TerabeeApi REQUIRED)
-find_package(height REQUIRED)
 
 add_executable(height_reader src/height_reader.cpp)
 target_include_directories(height_reader PUBLIC
@@ -32,7 +31,7 @@ target_include_directories(height_reader PUBLIC
 ament_target_dependencies(
   height_reader
   rclcpp
-  height
+  TerabeeApi
 )
 
 install(TARGETS height_reader
