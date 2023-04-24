@@ -27,6 +27,7 @@ find_package(object_detection REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/LidarReading.msg"
+  "msg/MultiflexReading.msg"
  )
 
 add_executable(lidar_reader src/lidar_reader.cpp)
