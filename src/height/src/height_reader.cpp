@@ -2,6 +2,7 @@
 #include <iostream>
 
 #include "rclcpp/rclcpp.hpp"
+#include "height/msg/height_data.hpp"
 
 #include <terabee/ITerarangerFactory.hpp>
 #include <terabee/ITerarangerEvoMini.hpp>
@@ -54,15 +55,30 @@ public:
     RCLCPP_INFO(this->get_logger(), "Succesfully initialized Evo mini!");
 
     timer_ = this->create_wall_timer(500ms, std::bind(&HeightReader::read_height, this));
+    publisher_ = this->create_publisher<height::msg::HeightData>("drone/height", 10);
   }
 
 private:
   void read_height()
   {
-    std::cout << "Distance = " << evo_mini->getDistance() << std::endl;
+    auto msg = height::msg::HeightData();
+
+    float min = 10000000;
+    terabee::DistanceData distance_data = evo_mini->getDistance();
+    for (size_t i = 0; i < distance_data.size(); i++)
+    {
+      msg.heights[i] = distance_data.distance[i];
+      if (distance_data.distance[i] < min)
+      {
+        min = distance_data.distance[i];
+      }
+    }
+    msg.min_height = min;
+    publisher_->publish(msg);
   }
 
   rclcpp::TimerBase::SharedPtr timer_;
+  rclcpp::Publisher<height::msg::HeightData>::SharedPtr publisher_;
 
   std::unique_ptr<terabee::ITerarangerFactory> factory;
   std::unique_ptr<terabee::ITerarangerEvoMini> evo_mini;
