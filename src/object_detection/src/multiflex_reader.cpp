@@ -5,7 +5,7 @@
 #include <iostream>
 
 #include "rclcpp/rclcpp.hpp"
-#include "object_detection/msg/detail/multiflex_reading.hpp"
+#include "object_detection/msg/multiflex_reading.hpp"
 
 #include <terabee/ITerarangerFactory.hpp>
 #include <terabee/ITerarangerMultiflex.hpp>
