@@ -20,6 +20,10 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(TerabeeApi REQUIRED)
 
+rosidl_generate_interfaces(${PROJECT_NAME}
+  "msg/HeightData.msg"
+ )
+
 add_executable(height_reader src/height_reader.cpp)
 target_include_directories(height_reader PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
