@@ -63,7 +63,7 @@ public:
     ITerarangerTowerEvo::ImuMode mode(ITerarangerTowerEvo::QuaternionLinearAcc);
 
     factory = terabee::ITerarangerFactory::getFactory();
-    tower = factory->createTerarangerTowerEvo(this->get_parameter("lidar_serial_port"));
+    tower = factory->createTerarangerTowerEvo(this->get_parameter("lidar_serial_port").as_string());
 
     if (!tower)
     {
