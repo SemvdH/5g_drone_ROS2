@@ -18,14 +18,21 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
+find_package(TerabeeApi REQUIRED)
+find_package(height REQUIRED)
 
 add_executable(height_reader src/height_reader.cpp)
 target_include_directories(height_reader PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
+
+  target_link_libraries(height_reader ${TerabeeApi_LIBRARIES})
+  target_include_directories(height_reader PUBLIC ${TerabeeApi_INCLUDE_DIRS})
+
 ament_target_dependencies(
   height_reader
-  "rclcpp"
+  rclcpp
+  height
 )
 
 install(TARGETS height_reader
