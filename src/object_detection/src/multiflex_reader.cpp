@@ -21,8 +21,12 @@ public:
   MultiflexReader()
       : Node("multiflex_reader")
   {
+    rcl_interfaces::msg::ParameterDescriptor serial_port_descriptor = rcl_interfaces::msg::ParameterDescriptor{};
+    serial_port_descriptor.description = "Serial port of the USB port that the multiflex PCB is connected to.";
+    this->declare_parameter("serial_port", "/dev/ttyACM0", serial_port_descriptor);
+
     factory = terabee::ITerarangerFactory::getFactory();
-    multiflex = factory->createTerarangerMultiflex("/dev/ttyACM0");
+    multiflex = factory->createTerarangerMultiflex(this->get_parameter("serial_port").as_string());
 
     if (!multiflex)
     {
@@ -54,7 +58,7 @@ private:
   {
     terabee::DistanceData data = multiflex->getDistance();
     auto msg = object_detection::msg::MultiflexReading();
-    for (int i = 0; i < data.size(); i++)
+    for (size_t i = 0; i < data.size(); i++)
     {
       msg.distance_data[i] = data.distance[i];
     }
