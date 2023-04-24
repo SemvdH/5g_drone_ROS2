@@ -22,12 +22,12 @@ class SetpointSender : public rclcpp::Node
     {
 
     }
-}
+};
 
 int main(int argc, char *argv[])
 {
   rclcpp::init(argc, argv);
-  rclcpp::spin(std::make_shared<LidarReader>());
+//  rclcpp::spin(std::make_shared<LidarReader>());
   rclcpp::shutdown();
   return 0;
 }

@@ -22,9 +22,10 @@ find_package(ament_cmake REQUIRED)
 # find_package(<dependency> REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(px4_ros_com REQUIRED)
+find_package(px4_msgs REQUIRED)
 
 add_executable(send_setpoint src/send_setpoint.cpp)
-ament_target_dependencies(send_setpoint rclcpp px4_ros_com)
+ament_target_dependencies(send_setpoint rclcpp px4_ros_com px4_msgs)
 
 install(TARGETS
   send_setpoint
