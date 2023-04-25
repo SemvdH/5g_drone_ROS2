@@ -40,10 +40,29 @@ private:
         auto msg = px4_msgs::msg::VehicleAttitudeSetpoint();
 
         // get timestamp and publish message
+
+        //https://github.com/PX4/px4_msgs/blob/main/msg/VehicleAttitudeSetpoint.msg
+        msg.roll_body = 1;
+        msg.pitch_body = 1;
+        msg.yaw_body = 1;
+
+        msg.yaw_sp_move_rate = 1;
+
+        for (int i = 0; i < 4; i++)
+        {
+            msg.q_d[i] = 1;
+        }
+
+        msg.thrust_body[0] = 0;
+        msg.thrust_body[1] = 0;
+        msg.thrust_body[2] = -10; // negative throttle amount
+        msg.reset_integral = false;
+        msg.fw_control_yaw_wheel = false;
+
         msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
+        publisher_->publish(msg);
 
-
-        
+        RCLCPP_INFO(this->get_logger(), "published message");
     }
     rclcpp::Publisher<px4_msgs::msg::VehicleAttitudeSetpoint>::SharedPtr offboard_control_mode_publisher_;
     rclcpp::TimerBase::SharedPtr timer_;
