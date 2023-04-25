@@ -15,17 +15,26 @@ https://discuss.px4.io/t/cannot-arm-drone-with-companion-computer-arming-denied-
 
 class SetpointSender : public rclcpp::Node
 {
-    public:
+public:
     SetpointSender() : Node("setpoint_sender")
     {
-
+        offboard_control_mode_publisher_ = this->create_publisher<OffboardControlMode>("/fmu/in/offboard_control_mode", 10);
     }
+
+private:
+
+    void send_heartbeat()
+    {
+        
+    }
+    rclcpp::Publisher<px4_msgs::msg::OffboardControlMode>::SharedPtr offboard_control_mode_publisher_;
+    rclcpp::TimerBase::SharedPtr timer_;
 };
 
 int main(int argc, char *argv[])
 {
-  rclcpp::init(argc, argv);
-//  rclcpp::spin(std::make_shared<LidarReader>());
-  rclcpp::shutdown();
-  return 0;
+    rclcpp::init(argc, argv);
+    //  rclcpp::spin(std::make_shared<LidarReader>());
+    rclcpp::shutdown();
+    return 0;
 }
