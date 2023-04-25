@@ -22,9 +22,16 @@ find_package(px4_ros_com REQUIRED)
 find_package(px4_msgs REQUIRED)
 
 add_executable(heartbeat src/heartbeat.cpp)
+add_executable(px4_controller src/px4_controller.cpp)
+
 target_include_directories(heartbeat PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
+
+target_include_directories(px4_controller PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>)
+
 ament_target_dependencies(
   heartbeat
   rclcpp
@@ -32,7 +39,7 @@ ament_target_dependencies(
   px4_msgs
 )
 
-install(TARGETS heartbeat
+install(TARGETS heartbeat px4_controller
   DESTINATION lib/${PROJECT_NAME})
 
 if(BUILD_TESTING)
