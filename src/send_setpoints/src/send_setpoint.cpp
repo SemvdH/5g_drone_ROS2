@@ -26,6 +26,7 @@ public:
         offboard_control_mode_publisher_ = this->create_publisher<px4_msgs::msg::OffboardControlMode>("/fmu/in/offboard_control_mode", 10);
         // create timer to send heartbeat messages (offboard control) every 100ms
         timer_ = this->create_wall_timer(100ms, std::bind(&SetpointSender::send_heartbeat, this));
+        start_time = this->get_clock()->now().seconds();
     }
 
 private:
@@ -37,6 +38,7 @@ private:
  */
     void send_heartbeat()
     {
+        // set message to enable attitude
         auto msg = px4_msgs::msg::OffboardControlMode();
         msg.position = false;
         msg.velocity = false;
@@ -45,12 +47,23 @@ private:
         msg.body_rate = false;
         msg.actuator = false;
 
+        // get timestamp and publish message
         msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
         offboard_control_mode_publisher_->publish(msg);
         RCLCPP_INFO(this->get_logger(), "sent offboard control mode message!");
+
+        // check if 5 seconds have elapsed
+        if (this->get_clock()->now().seconds() - start_time > 5)
+        {
+            RCLCPP_INFO(this->get_logger(), "5 seconds elapsed!");
+        }
+
+
+        
     }
     rclcpp::Publisher<px4_msgs::msg::OffboardControlMode>::SharedPtr offboard_control_mode_publisher_;
     rclcpp::TimerBase::SharedPtr timer_;
+    double start_time;
 };
 
 int main(int argc, char *argv[])
