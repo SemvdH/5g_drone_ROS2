@@ -25,13 +25,13 @@ public:
     {
         // create a publisher on the vehicle attitude setpoint topic
         vehicle_setpoint_publisher_ = this->create_publisher<px4_msgs::msg::VehicleAttitudeSetpoint>("/fmu/in/vehicle_attitude_setpoint", 10);
-        vehicle_command_publisher_ = this->create_publisher<px4::msgs::msg::VehicleCommand>("/fmu/in/vehicle_command", 10);
+        vehicle_command_publisher_ = this->create_publisher<px4_msgs::msgs::msg::VehicleCommand>("/fmu/in/vehicle_command", 10);
 
         // set to offboard mode
         this->publish_vehicle_command(px4_msgs::msg::VehicleCommand::VEHICLE_CMD_DO_SET_MODE, 1, 6);
         RCLCPP_INFO(this->get_logger(), "Set to offboard mode");
         // arm the drone
-        publish_vehicle_command(VehicleCommand::VEHICLE_CMD_COMPONENT_ARM_DISARM, 1.0);
+        publish_vehicle_command(px4_msgs::msg::VehicleCommand::VEHICLE_CMD_COMPONENT_ARM_DISARM, 1.0);
 
         RCLCPP_INFO(this->get_logger(), "Arm command sent");
 
