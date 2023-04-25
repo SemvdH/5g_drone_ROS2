@@ -31,7 +31,7 @@ public:
         this->publish_vehicle_command(px4_msgs::msg::VehicleCommand::VEHICLE_CMD_DO_SET_MODE, 1, 6);
         RCLCPP_INFO(this->get_logger(), "Set to offboard mode");
         // arm the drone
-        publish_vehicle_command(px4_msgs::msg::VehicleCommand::VEHICLE_CMD_COMPONENT_ARM_DISARM, 1.0);
+        this->publish_vehicle_command(px4_msgs::msg::VehicleCommand::VEHICLE_CMD_COMPONENT_ARM_DISARM, 1.0,0);
 
         RCLCPP_INFO(this->get_logger(), "Arm command sent");
 
