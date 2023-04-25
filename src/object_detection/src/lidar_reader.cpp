@@ -51,13 +51,19 @@ public:
   LidarReader()
       : Node("lidar_reader")
   {
-    publisher_ = this->create_publisher<object_detection::msg::LidarReading>("drone/object_detection", 10);
+
+    rcl_interfaces::msg::ParameterDescriptor descriptor = rcl_interfaces::msg::ParameterDescriptor{};
+    descriptor.description = "serial port for the USB port of the LIDAR";
+
+    this->declare_parameter("lidar_serial_port", "/dev/ttyACM0", descriptor);
+
+    // publisher_ = this->create_publisher<object_detection::msg::LidarReading>("drone/object_detection", 10);
     timer_ = this->create_wall_timer(500ms, std::bind(&LidarReader::read_lidar_data, this));
 
     ITerarangerTowerEvo::ImuMode mode(ITerarangerTowerEvo::QuaternionLinearAcc);
 
     factory = terabee::ITerarangerFactory::getFactory();
-    tower = factory->createTerarangerTowerEvo("/dev/ttyACM0");
+    tower = factory->createTerarangerTowerEvo(this->get_parameter("lidar_serial_port").as_string());
 
     if (!tower)
     {
@@ -81,24 +87,24 @@ private:
     // std::cout << "Distance = " << tower->getDistance() << std::endl;
     // std::cout << "IMU = " << tower->getImuData() << std::endl;
 
-    auto msg = object_detection::msg::LidarReading();
+    // auto msg = object_detection::msg::LidarReading();
 
-    msg.sensor_1 = tower->getDistance().distance.at(0);
-    msg.sensor_2 = tower->getDistance().distance.at(2);
-    msg.sensor_3 = tower->getDistance().distance.at(4);
-    msg.sensor_4 = tower->getDistance().distance.at(6);
+    // msg.sensor_1 = tower->getDistance().distance.at(0);
+    // msg.sensor_2 = tower->getDistance().distance.at(2);
+    // msg.sensor_3 = tower->getDistance().distance.at(4);
+    // msg.sensor_4 = tower->getDistance().distance.at(6);
 
-    ImuData imu_data = tower->getImuData();
+    // ImuData imu_data = tower->getImuData();
 
-    for (size_t i = 0; i < imu_data.data.size(); i++)
-    {
-      msg.imu_data.push_back(imu_data.data[i]);
-    }
-    publisher_->publish(msg);
-    RCLCPP_INFO(this->get_logger(), "Publishing message");
+    // for (size_t i = 0; i < imu_data.data.size(); i++)
+    // {
+    //   msg.imu_data.push_back(imu_data.data[i]);
+    // }
+    // // publisher_->publish(msg);
+    // RCLCPP_INFO(this->get_logger(), "Publishing message");
   }
 
-  rclcpp::Publisher<object_detection::msg::LidarReading>::SharedPtr publisher_;
+  // rclcpp::Publisher<object_detection::msg::LidarReading>::SharedPtr publisher_;
   rclcpp::TimerBase::SharedPtr timer_;
 
   // terabee tower evo variables
