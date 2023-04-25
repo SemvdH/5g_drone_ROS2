@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(beacon_positioning)
+project(height)
 
 # Default to C99
 if(NOT CMAKE_C_STANDARD)
@@ -17,37 +17,32 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
-# uncomment the following section in order to fill in
-# further dependencies manually.
-# find_package(<dependency> REQUIRED)
 find_package(rclcpp REQUIRED)
-find_package(std_msgs REQUIRED)
-find_package(positioning_systems_api REQUIRED)
+find_package(TerabeeApi REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
-find_package(beacon_positioning REQUIRED)
+find_package(height REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
-  "msg/TrackerPosition.msg" # message for tracker position
+  "msg/HeightData.msg"
+ )
+
+add_executable(height_reader src/height_reader.cpp)
+target_include_directories(height_reader PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>)
+
+  target_link_libraries(height_reader ${TerabeeApi_LIBRARIES})
+  target_include_directories(height_reader PUBLIC ${TerabeeApi_INCLUDE_DIRS})
+
+ament_target_dependencies(
+  height_reader
+  rclcpp
+  TerabeeApi
+  height
 )
 
-add_executable(tracker_position src/tracker_position.cpp)
-ament_target_dependencies(tracker_position rclcpp std_msgs
-	beacon_positioning
-)
-
-target_link_libraries(tracker_position
-  positioning_systems_api::serial_communication
-  positioning_systems_api::rtls_driver
-)
-
-install(TARGETS tracker_position
+install(TARGETS height_reader
   DESTINATION lib/${PROJECT_NAME})
-
-install(
-  DIRECTORY launch
-  DESTINATION share/${PROJECT_NAME}
-)
-
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

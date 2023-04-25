@@ -149,7 +149,7 @@ int main(int argc, char **argv)
     if (tracker_msg.is_valid_position) 
     {
       RCLCPP_INFO(node->get_logger(), "x = %f, y = %f, z = %f", tracker_msg.tracker_position_xyz.at(0), tracker_msg.tracker_position_xyz.at(1), tracker_msg.tracker_position_xyz.at(2));
-      for (int i = 0; i < tracker_msg.anchors_data.size(); i++)
+      for (size_t i = 0; i < tracker_msg.anchors_data.size(); i++)
       {
         RCLCPP_INFO(node->get_logger(), "anchor number= %d, distance = %d, x = %d, y = %d, z = %d", tracker_msg.anchors_data[i].number, tracker_msg.anchors_data[i].distance, tracker_msg.anchors_data[i].pos_x, tracker_msg.anchors_data[i].pos_y, tracker_msg.anchors_data[i].pos_z);
       }
@@ -160,7 +160,7 @@ int main(int argc, char **argv)
       message.y_pos = tracker_msg.tracker_position_xyz.at(1);
       message.z_pos = tracker_msg.tracker_position_xyz.at(2);
       message.anchor_distances = {0, 0, 0, 0};
-      for (int i = 0; i < tracker_msg.anchors_data.size(); i++)
+      for (size_t i = 0; i < tracker_msg.anchors_data.size(); i++)
       {
         message.anchor_distances[i] = tracker_msg.anchors_data[i].distance;
       }
