@@ -22,7 +22,7 @@ public:
     PX4Controller() : Node("px4_controller")
     {
         // create a publisher on the vehicle attitude setpoint topic
-        offboard_control_mode_publisher_ = this->create_publisher<px4_msgs::msg::VehicleAttitudeSetpoint>("/fmu/in/vehicle_attitude_setpoint", 10);
+        vehicle_setpoint_publisher_ = this->create_publisher<px4_msgs::msg::VehicleAttitudeSetpoint>("/fmu/in/vehicle_attitude_setpoint", 10);
         // create timer to send vehicle attitude setpoints every second
         timer_ = this->create_wall_timer(1000ms, std::bind(&PX4Controller::send_setpoint, this));
     }
@@ -60,11 +60,11 @@ private:
         msg.fw_control_yaw_wheel = false;
 
         msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
-        publisher_->publish(msg);
+        vehicle_setpoint_publisher_->publish(msg);
 
         RCLCPP_INFO(this->get_logger(), "published message");
     }
-    rclcpp::Publisher<px4_msgs::msg::VehicleAttitudeSetpoint>::SharedPtr offboard_control_mode_publisher_;
+    rclcpp::Publisher<px4_msgs::msg::VehicleAttitudeSetpoint>::SharedPtr vehicle_setpoint_publisher_;
     rclcpp::TimerBase::SharedPtr timer_;
 };
 
