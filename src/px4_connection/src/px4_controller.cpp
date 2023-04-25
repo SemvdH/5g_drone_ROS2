@@ -69,7 +69,7 @@ private:
 
         msg.thrust_body[0] = 0;
         msg.thrust_body[1] = 0;
-        msg.thrust_body[2] = -10; // negative throttle amount
+        msg.thrust_body[2] = -1; // negative throttle amount
         msg.reset_integral = false;
         msg.fw_control_yaw_wheel = false;
 
