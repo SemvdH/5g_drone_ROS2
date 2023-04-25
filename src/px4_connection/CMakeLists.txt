@@ -18,6 +18,8 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
+find_package(px4_ros_com REQUIRED)
+find_package(px4_msgs REQUIRED)
 
 add_executable(heartbeat src/heartbeat.cpp)
 target_include_directories(heartbeat PUBLIC
@@ -25,7 +27,9 @@ target_include_directories(heartbeat PUBLIC
   $<INSTALL_INTERFACE:include>)
 ament_target_dependencies(
   heartbeat
-  "rclcpp"
+  rclcpp
+  px4_ros_com
+  px4_msgs
 )
 
 install(TARGETS heartbeat
