@@ -1,0 +1,1120 @@
+[INFO] [launch]: All log files can be found below /home/ubuntu/.ros/log/2023-04-25-11-09-56-565077-ubuntu-28309
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [sensor_combined_listener-1]: process started with pid [28312]
+[sensor_combined_listener-1] Starting sensor_combined listener node...
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] RECEIVED SENSOR COMBINED DATA
+[sensor_combined_listener-1] =============================
+[sensor_combined_listener-1] ts: 199976682
+[sensor_combined_listener-1] gyro_rad[0]: 0.00875026
+[sensor_combined_listener-1] gyro_rad[1]: -0.0015206
+[sensor_combined_listener-1] gyro_rad[2]: 0.000281371
+[sensor_combined_listener-1] gyro_integral_dt: 5000
+[sensor_combined_listener-1] accelerometer_timestamp_relative: 0
+[sensor_combined_listener-1] accelerometer_m_s2[0]: -0.184349
+[sensor_combined_listener-1] accelerometer_m_s2[1]: 0.149122
+[sensor_combined_listener-1] accelerometer_m_s2[2]: -9.79902
+[sensor_combined_listener-1] accelerometer_integral_dt: 5000
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] RECEIVED SENSOR COMBINED DATA
+[sensor_combined_listener-1] =============================
+[sensor_combined_listener-1] ts: 200081687
+[sensor_combined_listener-1] gyro_rad[0]: 0.00672832
+[sensor_combined_listener-1] gyro_rad[1]: -0.00338754
+[sensor_combined_listener-1] gyro_rad[2]: 0.00124216
+[sensor_combined_listener-1] gyro_integral_dt: 5000
+[sensor_combined_listener-1] accelerometer_timestamp_relative: 0
+[sensor_combined_listener-1] accelerometer_m_s2[0]: -0.170145
+[sensor_combined_listener-1] accelerometer_m_s2[1]: 0.114423
+[sensor_combined_listener-1] accelerometer_m_s2[2]: -9.79472
+[sensor_combined_listener-1] accelerometer_integral_dt: 5000
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] RECEIVED SENSOR COMBINED DATA
+[sensor_combined_listener-1] =============================
+[sensor_combined_listener-1] ts: 200146690
+[sensor_combined_listener-1] gyro_rad[0]: 0.00756296
+[sensor_combined_listener-1] gyro_rad[1]: -0.00198176
+[sensor_combined_listener-1] gyro_rad[2]: 0.000903494
+[sensor_combined_listener-1] gyro_integral_dt: 4999
+[sensor_combined_listener-1] accelerometer_timestamp_relative: 0
+[sensor_combined_listener-1] accelerometer_m_s2[0]: -0.179271
+[sensor_combined_listener-1] accelerometer_m_s2[1]: 0.119098
+[sensor_combined_listener-1] accelerometer_m_s2[2]: -9.79889
+[sensor_combined_listener-1] accelerometer_integral_dt: 4999
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] RECEIVED SENSOR COMBINED DATA
+[sensor_combined_listener-1] =============================
+[sensor_combined_listener-1] ts: 201246738
+[sensor_combined_listener-1] gyro_rad[0]: 0.00774825
+[sensor_combined_listener-1] gyro_rad[1]: -0.00175783
+[sensor_combined_listener-1] gyro_rad[2]: 0.0020969
+[sensor_combined_listener-1] gyro_integral_dt: 5001
+[sensor_combined_listener-1] accelerometer_timestamp_relative: 0
+[sensor_combined_listener-1] accelerometer_m_s2[0]: -0.181561
+[sensor_combined_listener-1] accelerometer_m_s2[1]: 0.119632
+[sensor_combined_listener-1] accelerometer_m_s2[2]: -9.79637
+[sensor_combined_listener-1] accelerometer_integral_dt: 5001
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] RECEIVED SENSOR COMBINED DATA
+[sensor_combined_listener-1] =============================
+[sensor_combined_listener-1] ts: 201351742
+[sensor_combined_listener-1] gyro_rad[0]: 0.00887268
+[sensor_combined_listener-1] gyro_rad[1]: -0.000612836
+[sensor_combined_listener-1] gyro_rad[2]: 0.00222588
+[sensor_combined_listener-1] gyro_integral_dt: 5000
+[sensor_combined_listener-1] accelerometer_timestamp_relative: 0
+[sensor_combined_listener-1] accelerometer_m_s2[0]: -0.18117
+[sensor_combined_listener-1] accelerometer_m_s2[1]: 0.117277
+[sensor_combined_listener-1] accelerometer_m_s2[2]: -9.78277
+[sensor_combined_listener-1] accelerometer_integral_dt: 5000
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] RECEIVED SENSOR COMBINED DATA
+[sensor_combined_listener-1] =============================
+[sensor_combined_listener-1] ts: 201451747
+[sensor_combined_listener-1] gyro_rad[0]: 0.00648519
+[sensor_combined_listener-1] gyro_rad[1]: -0.00232808
+[sensor_combined_listener-1] gyro_rad[2]: 0.000729879
+[sensor_combined_listener-1] gyro_integral_dt: 5000
+[sensor_combined_listener-1] accelerometer_timestamp_relative: 0
+[sensor_combined_listener-1] accelerometer_m_s2[0]: -0.171285
+[sensor_combined_listener-1] accelerometer_m_s2[1]: 0.133586
+[sensor_combined_listener-1] accelerometer_m_s2[2]: -9.79428
+[sensor_combined_listener-1] accelerometer_integral_dt: 5000
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] RECEIVED SENSOR COMBINED DATA
+[sensor_combined_listener-1] =============================
+[sensor_combined_listener-1] ts: 201506749
+[sensor_combined_listener-1] gyro_rad[0]: 0.00733013
+[sensor_combined_listener-1] gyro_rad[1]: -0.00295892
+[sensor_combined_listener-1] gyro_rad[2]: -0.000231369
+[sensor_combined_listener-1] gyro_integral_dt: 5000
+[sensor_combined_listener-1] accelerometer_timestamp_relative: 0
+[sensor_combined_listener-1] accelerometer_m_s2[0]: -0.167055
+[sensor_combined_listener-1] accelerometer_m_s2[1]: 0.145292
+[sensor_combined_listener-1] accelerometer_m_s2[2]: -9.81049
+[sensor_combined_listener-1] accelerometer_integral_dt: 5000
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] RECEIVED SENSOR COMBINED DATA
+[sensor_combined_listener-1] =============================
+[sensor_combined_listener-1] ts: 202606798
+[sensor_combined_listener-1] gyro_rad[0]: 0.00732097
+[sensor_combined_listener-1] gyro_rad[1]: -0.00298795
+[sensor_combined_listener-1] gyro_rad[2]: 0.00125327
+[sensor_combined_listener-1] gyro_integral_dt: 5001
+[sensor_combined_listener-1] accelerometer_timestamp_relative: 0
+[sensor_combined_listener-1] accelerometer_m_s2[0]: -0.178109
+[sensor_combined_listener-1] accelerometer_m_s2[1]: 0.134256
+[sensor_combined_listener-1] accelerometer_m_s2[2]: -9.80322
+[sensor_combined_listener-1] accelerometer_integral_dt: 5001
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] RECEIVED SENSOR COMBINED DATA
+[sensor_combined_listener-1] =============================
+[sensor_combined_listener-1] ts: 202711801
+[sensor_combined_listener-1] gyro_rad[0]: 0.00672999
+[sensor_combined_listener-1] gyro_rad[1]: -0.0021649
+[sensor_combined_listener-1] gyro_rad[2]: -0.00115257
+[sensor_combined_listener-1] gyro_integral_dt: 5000
+[sensor_combined_listener-1] accelerometer_timestamp_relative: 0
+[sensor_combined_listener-1] accelerometer_m_s2[0]: -0.204476
+[sensor_combined_listener-1] accelerometer_m_s2[1]: 0.146439
+[sensor_combined_listener-1] accelerometer_m_s2[2]: -9.81585
+[sensor_combined_listener-1] accelerometer_integral_dt: 5000
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] RECEIVED SENSOR COMBINED DATA
+[sensor_combined_listener-1] =============================
+[sensor_combined_listener-1] ts: 202816809
+[sensor_combined_listener-1] gyro_rad[0]: 0.00949142
+[sensor_combined_listener-1] gyro_rad[1]: -0.00161052
+[sensor_combined_listener-1] gyro_rad[2]: 0.00133513
+[sensor_combined_listener-1] gyro_integral_dt: 5003
+[sensor_combined_listener-1] accelerometer_timestamp_relative: 0
+[sensor_combined_listener-1] accelerometer_m_s2[0]: -0.204131
+[sensor_combined_listener-1] accelerometer_m_s2[1]: 0.121536
+[sensor_combined_listener-1] accelerometer_m_s2[2]: -9.78427
+[sensor_combined_listener-1] accelerometer_integral_dt: 5003
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] RECEIVED SENSOR COMBINED DATA
+[sensor_combined_listener-1] =============================
+[sensor_combined_listener-1] ts: 202861808
+[sensor_combined_listener-1] gyro_rad[0]: 0.00681877
+[sensor_combined_listener-1] gyro_rad[1]: -0.00157553
+[sensor_combined_listener-1] gyro_rad[2]: 0.000498945
+[sensor_combined_listener-1] gyro_integral_dt: 5000
+[sensor_combined_listener-1] accelerometer_timestamp_relative: 0
+[sensor_combined_listener-1] accelerometer_m_s2[0]: -0.20552
+[sensor_combined_listener-1] accelerometer_m_s2[1]: 0.137501
+[sensor_combined_listener-1] accelerometer_m_s2[2]: -9.80921
+[sensor_combined_listener-1] accelerometer_integral_dt: 5000
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] RECEIVED SENSOR COMBINED DATA
+[sensor_combined_listener-1] =============================
+[sensor_combined_listener-1] ts: 203966856
+[sensor_combined_listener-1] gyro_rad[0]: 0.00660161
+[sensor_combined_listener-1] gyro_rad[1]: -0.00194763
+[sensor_combined_listener-1] gyro_rad[2]: 0.000211916
+[sensor_combined_listener-1] gyro_integral_dt: 5000
+[sensor_combined_listener-1] accelerometer_timestamp_relative: 0
+[sensor_combined_listener-1] accelerometer_m_s2[0]: -0.173373
+[sensor_combined_listener-1] accelerometer_m_s2[1]: 0.118659
+[sensor_combined_listener-1] accelerometer_m_s2[2]: -9.78578
+[sensor_combined_listener-1] accelerometer_integral_dt: 5000
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] RECEIVED SENSOR COMBINED DATA
+[sensor_combined_listener-1] =============================
+[sensor_combined_listener-1] ts: 204071860
+[sensor_combined_listener-1] gyro_rad[0]: 0.00698993
+[sensor_combined_listener-1] gyro_rad[1]: -0.0019593
+[sensor_combined_listener-1] gyro_rad[2]: 0.00305732
+[sensor_combined_listener-1] gyro_integral_dt: 5000
+[sensor_combined_listener-1] accelerometer_timestamp_relative: 0
+[sensor_combined_listener-1] accelerometer_m_s2[0]: -0.16915
+[sensor_combined_listener-1] accelerometer_m_s2[1]: 0.0997192
+[sensor_combined_listener-1] accelerometer_m_s2[2]: -9.8104
+[sensor_combined_listener-1] accelerometer_integral_dt: 5000
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] RECEIVED SENSOR COMBINED DATA
+[sensor_combined_listener-1] =============================
+[sensor_combined_listener-1] ts: 204171865
+[sensor_combined_listener-1] gyro_rad[0]: 0.00847576
+[sensor_combined_listener-1] gyro_rad[1]: -0.00210139
+[sensor_combined_listener-1] gyro_rad[2]: 0.000735452
+[sensor_combined_listener-1] gyro_integral_dt: 4998
+[sensor_combined_listener-1] accelerometer_timestamp_relative: 0
+[sensor_combined_listener-1] accelerometer_m_s2[0]: -0.206295
+[sensor_combined_listener-1] accelerometer_m_s2[1]: 0.122916
+[sensor_combined_listener-1] accelerometer_m_s2[2]: -9.7828
+[sensor_combined_listener-1] accelerometer_integral_dt: 4998
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] RECEIVED SENSOR COMBINED DATA
+[sensor_combined_listener-1] =============================
+[sensor_combined_listener-1] ts: 204276869
+[sensor_combined_listener-1] gyro_rad[0]: 0.00825013
+[sensor_combined_listener-1] gyro_rad[1]: -0.00154239
+[sensor_combined_listener-1] gyro_rad[2]: 0.000715818
+[sensor_combined_listener-1] gyro_integral_dt: 4998
+[sensor_combined_listener-1] accelerometer_timestamp_relative: 0
+[sensor_combined_listener-1] accelerometer_m_s2[0]: -0.165784
+[sensor_combined_listener-1] accelerometer_m_s2[1]: 0.110971
+[sensor_combined_listener-1] accelerometer_m_s2[2]: -9.77285
+[sensor_combined_listener-1] accelerometer_integral_dt: 4998
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] RECEIVED SENSOR COMBINED DATA
+[sensor_combined_listener-1] =============================
+[sensor_combined_listener-1] ts: 204326872
+[sensor_combined_listener-1] gyro_rad[0]: 0.00712276
+[sensor_combined_listener-1] gyro_rad[1]: -0.00198533
+[sensor_combined_listener-1] gyro_rad[2]: -0.00111001
+[sensor_combined_listener-1] gyro_integral_dt: 5001
+[sensor_combined_listener-1] accelerometer_timestamp_relative: 0
+[sensor_combined_listener-1] accelerometer_m_s2[0]: -0.183167
+[sensor_combined_listener-1] accelerometer_m_s2[1]: 0.127268
+[sensor_combined_listener-1] accelerometer_m_s2[2]: -9.77888
+[sensor_combined_listener-1] accelerometer_integral_dt: 5001
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] RECEIVED SENSOR COMBINED DATA
+[sensor_combined_listener-1] =============================
+[sensor_combined_listener-1] ts: 205426919
+[sensor_combined_listener-1] gyro_rad[0]: 0.00981003
+[sensor_combined_listener-1] gyro_rad[1]: -0.000887072
+[sensor_combined_listener-1] gyro_rad[2]: -0.000705149
+[sensor_combined_listener-1] gyro_integral_dt: 5000
+[sensor_combined_listener-1] accelerometer_timestamp_relative: 0
+[sensor_combined_listener-1] accelerometer_m_s2[0]: -0.217849
+[sensor_combined_listener-1] accelerometer_m_s2[1]: 0.153967
+[sensor_combined_listener-1] accelerometer_m_s2[2]: -9.77234
+[sensor_combined_listener-1] accelerometer_integral_dt: 5000
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] RECEIVED SENSOR COMBINED DATA
+[sensor_combined_listener-1] =============================
+[sensor_combined_listener-1] ts: 205531924
+[sensor_combined_listener-1] gyro_rad[0]: 0.00897771
+[sensor_combined_listener-1] gyro_rad[1]: -0.00221602
+[sensor_combined_listener-1] gyro_rad[2]: 0.00140484
+[sensor_combined_listener-1] gyro_integral_dt: 5000
+[sensor_combined_listener-1] accelerometer_timestamp_relative: 0
+[sensor_combined_listener-1] accelerometer_m_s2[0]: -0.168975
+[sensor_combined_listener-1] accelerometer_m_s2[1]: 0.135941
+[sensor_combined_listener-1] accelerometer_m_s2[2]: -9.77141
+[sensor_combined_listener-1] accelerometer_integral_dt: 5000
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] RECEIVED SENSOR COMBINED DATA
+[sensor_combined_listener-1] =============================
+[sensor_combined_listener-1] ts: 205741933
+[sensor_combined_listener-1] gyro_rad[0]: 0.00836378
+[sensor_combined_listener-1] gyro_rad[1]: -0.00271203
+[sensor_combined_listener-1] gyro_rad[2]: -0.000497457
+[sensor_combined_listener-1] gyro_integral_dt: 5000
+[sensor_combined_listener-1] accelerometer_timestamp_relative: 0
+[sensor_combined_listener-1] accelerometer_m_s2[0]: -0.205916
+[sensor_combined_listener-1] accelerometer_m_s2[1]: 0.133136
+[sensor_combined_listener-1] accelerometer_m_s2[2]: -9.77707
+[sensor_combined_listener-1] accelerometer_integral_dt: 5000
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] RECEIVED SENSOR COMBINED DATA
+[sensor_combined_listener-1] =============================
+[sensor_combined_listener-1] ts: 205846937
+[sensor_combined_listener-1] gyro_rad[0]: 0.00812172
+[sensor_combined_listener-1] gyro_rad[1]: -0.0023269
+[sensor_combined_listener-1] gyro_rad[2]: -3.94626e-05
+[sensor_combined_listener-1] gyro_integral_dt: 5000
+[sensor_combined_listener-1] accelerometer_timestamp_relative: 0
+[sensor_combined_listener-1] accelerometer_m_s2[0]: -0.210579
+[sensor_combined_listener-1] accelerometer_m_s2[1]: 0.13945
+[sensor_combined_listener-1] accelerometer_m_s2[2]: -9.75883
+[sensor_combined_listener-1] accelerometer_integral_dt: 5000
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] RECEIVED SENSOR COMBINED DATA
+[sensor_combined_listener-1] =============================
+[sensor_combined_listener-1] ts: 205891939
+[sensor_combined_listener-1] gyro_rad[0]: 0.00713434
+[sensor_combined_listener-1] gyro_rad[1]: -0.000336795
+[sensor_combined_listener-1] gyro_rad[2]: 0.000144738
+[sensor_combined_listener-1] gyro_integral_dt: 5000
+[sensor_combined_listener-1] accelerometer_timestamp_relative: 0
+[sensor_combined_listener-1] accelerometer_m_s2[0]: -0.162721
+[sensor_combined_listener-1] accelerometer_m_s2[1]: 0.103982
+[sensor_combined_listener-1] accelerometer_m_s2[2]: -9.81436
+[sensor_combined_listener-1] accelerometer_integral_dt: 5000
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] RECEIVED SENSOR COMBINED DATA
+[sensor_combined_listener-1] =============================
+[sensor_combined_listener-1] ts: 206991987
+[sensor_combined_listener-1] gyro_rad[0]: 0.00814041
+[sensor_combined_listener-1] gyro_rad[1]: -0.00234204
+[sensor_combined_listener-1] gyro_rad[2]: 0.00114638
+[sensor_combined_listener-1] gyro_integral_dt: 5000
+[sensor_combined_listener-1] accelerometer_timestamp_relative: 0
+[sensor_combined_listener-1] accelerometer_m_s2[0]: -0.182447
+[sensor_combined_listener-1] accelerometer_m_s2[1]: 0.148727
+[sensor_combined_listener-1] accelerometer_m_s2[2]: -9.78891
+[sensor_combined_listener-1] accelerometer_integral_dt: 5000
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] RECEIVED SENSOR COMBINED DATA
+[sensor_combined_listener-1] =============================
+[sensor_combined_listener-1] ts: 207096992
+[sensor_combined_listener-1] gyro_rad[0]: 0.00906464
+[sensor_combined_listener-1] gyro_rad[1]: -0.00271257
+[sensor_combined_listener-1] gyro_rad[2]: 0.000818824
+[sensor_combined_listener-1] gyro_integral_dt: 5000
+[sensor_combined_listener-1] accelerometer_timestamp_relative: 0
+[sensor_combined_listener-1] accelerometer_m_s2[0]: -0.188475
+[sensor_combined_listener-1] accelerometer_m_s2[1]: 0.126062
+[sensor_combined_listener-1] accelerometer_m_s2[2]: -9.77967
+[sensor_combined_listener-1] accelerometer_integral_dt: 5000
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] RECEIVED SENSOR COMBINED DATA
+[sensor_combined_listener-1] =============================
+[sensor_combined_listener-1] ts: 207201996
+[sensor_combined_listener-1] gyro_rad[0]: 0.00772601
+[sensor_combined_listener-1] gyro_rad[1]: -0.00158369
+[sensor_combined_listener-1] gyro_rad[2]: 0.00141789
+[sensor_combined_listener-1] gyro_integral_dt: 5000
+[sensor_combined_listener-1] accelerometer_timestamp_relative: 0
+[sensor_combined_listener-1] accelerometer_m_s2[0]: -0.184584
+[sensor_combined_listener-1] accelerometer_m_s2[1]: 0.101657
+[sensor_combined_listener-1] accelerometer_m_s2[2]: -9.79253
+[sensor_combined_listener-1] accelerometer_integral_dt: 5000
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] RECEIVED SENSOR COMBINED DATA
+[sensor_combined_listener-1] =============================
+[sensor_combined_listener-1] ts: 207307001
+[sensor_combined_listener-1] gyro_rad[0]: 0.00748396
+[sensor_combined_listener-1] gyro_rad[1]: -0.00156525
+[sensor_combined_listener-1] gyro_rad[2]: 0.000280738
+[sensor_combined_listener-1] gyro_integral_dt: 5000
+[sensor_combined_listener-1] accelerometer_timestamp_relative: 0
+[sensor_combined_listener-1] accelerometer_m_s2[0]: -0.216317
+[sensor_combined_listener-1] accelerometer_m_s2[1]: 0.145748
+[sensor_combined_listener-1] accelerometer_m_s2[2]: -9.78095
+[sensor_combined_listener-1] accelerometer_integral_dt: 5000
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] RECEIVED SENSOR COMBINED DATA
+[sensor_combined_listener-1] =============================
+[sensor_combined_listener-1] ts: 207407006
+[sensor_combined_listener-1] gyro_rad[0]: 0.0071113
+[sensor_combined_listener-1] gyro_rad[1]: -0.00186176
+[sensor_combined_listener-1] gyro_rad[2]: 0.000727882
+[sensor_combined_listener-1] gyro_integral_dt: 5001
+[sensor_combined_listener-1] accelerometer_timestamp_relative: 0
+[sensor_combined_listener-1] accelerometer_m_s2[0]: -0.1675
+[sensor_combined_listener-1] accelerometer_m_s2[1]: 0.155029
+[sensor_combined_listener-1] accelerometer_m_s2[2]: -9.79698
+[sensor_combined_listener-1] accelerometer_integral_dt: 5001
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] RECEIVED SENSOR COMBINED DATA
+[sensor_combined_listener-1] =============================
+[sensor_combined_listener-1] ts: 207457008
+[sensor_combined_listener-1] gyro_rad[0]: 0.00712563
+[sensor_combined_listener-1] gyro_rad[1]: -0.00283841
+[sensor_combined_listener-1] gyro_rad[2]: -0.000572565
+[sensor_combined_listener-1] gyro_integral_dt: 5000
+[sensor_combined_listener-1] accelerometer_timestamp_relative: 0
+[sensor_combined_listener-1] accelerometer_m_s2[0]: -0.171598
+[sensor_combined_listener-1] accelerometer_m_s2[1]: 0.143464
+[sensor_combined_listener-1] accelerometer_m_s2[2]: -9.83054
+[sensor_combined_listener-1] accelerometer_integral_dt: 5000
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] RECEIVED SENSOR COMBINED DATA
+[sensor_combined_listener-1] =============================
+[sensor_combined_listener-1] ts: 208557060
+[sensor_combined_listener-1] gyro_rad[0]: 0.00921011
+[sensor_combined_listener-1] gyro_rad[1]: -0.00209982
+[sensor_combined_listener-1] gyro_rad[2]: 0.000223127
+[sensor_combined_listener-1] gyro_integral_dt: 5005
+[sensor_combined_listener-1] accelerometer_timestamp_relative: 0
+[sensor_combined_listener-1] accelerometer_m_s2[0]: -0.182007
+[sensor_combined_listener-1] accelerometer_m_s2[1]: 0.111156
+[sensor_combined_listener-1] accelerometer_m_s2[2]: -9.79815
+[sensor_combined_listener-1] accelerometer_integral_dt: 5005
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] RECEIVED SENSOR COMBINED DATA
+[sensor_combined_listener-1] =============================
+[sensor_combined_listener-1] ts: 208662060
+[sensor_combined_listener-1] gyro_rad[0]: 0.00837813
+[sensor_combined_listener-1] gyro_rad[1]: -0.000381411
+[sensor_combined_listener-1] gyro_rad[2]: -0.000619475
+[sensor_combined_listener-1] gyro_integral_dt: 5000
+[sensor_combined_listener-1] accelerometer_timestamp_relative: 0
+[sensor_combined_listener-1] accelerometer_m_s2[0]: -0.21376
+[sensor_combined_listener-1] accelerometer_m_s2[1]: 0.11847
+[sensor_combined_listener-1] accelerometer_m_s2[2]: -9.78562
+[sensor_combined_listener-1] accelerometer_integral_dt: 5000
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] RECEIVED SENSOR COMBINED DATA
+[sensor_combined_listener-1] =============================
+[sensor_combined_listener-1] ts: 208767066
+[sensor_combined_listener-1] gyro_rad[0]: 0.00978638
+[sensor_combined_listener-1] gyro_rad[1]: -0.00132488
+[sensor_combined_listener-1] gyro_rad[2]: 0.0020777
+[sensor_combined_listener-1] gyro_integral_dt: 5002
+[sensor_combined_listener-1] accelerometer_timestamp_relative: 0
+[sensor_combined_listener-1] accelerometer_m_s2[0]: -0.163553
+[sensor_combined_listener-1] accelerometer_m_s2[1]: 0.111745
+[sensor_combined_listener-1] accelerometer_m_s2[2]: -9.80646
+[sensor_combined_listener-1] accelerometer_integral_dt: 5002
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] 
+[sensor_combined_listener-1] RECEIVED SENSOR COMBINED DATA
+[sensor_combined_listener-1] =============================
+[sensor_combined_listener-1] ts: 208822067
+[sensor_combined_listener-1] gyro_rad[0]: 0.0101544
+[sensor_combined_listener-1] gyro_rad[1]: -0.00254576
+[sensor_combined_listener-1] gyro_rad[2]: -0.000352573
+[sensor_combined_listener-1] gyro_integral_dt: 5000
+[sensor_combined_listener-1] accelerometer_timestamp_relative: 0
+[sensor_combined_listener-1] accelerometer_m_s2[0]: -0.200916
+[sensor_combined_listener-1] accelerometer_m_s2[1]: 0.124692
+[sensor_combined_listener-1] accelerometer_m_s2[2]: -9.77275
+[sensor_combined_listener-1] accelerometer_integral_dt: 5000
