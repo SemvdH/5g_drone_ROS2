@@ -50,6 +50,7 @@ private:
     bool has_sent_status = false;
     bool flying = false;
     int setpoint_count = 0;
+    float thrust = 0;
 
     /**
      * @brief Only the attitude is enabled, because that is how the drone will be controlled.
@@ -57,9 +58,12 @@ private:
      */
     void send_setpoint()
     {
-        
-        if (setpoint_count < 21)
-            setpoint_count++;
+
+        setpoint_count++;
+
+        if (setpoint_count % 20 == 0 && thrust <= 1) {
+            thrust += 0.1;
+        }
 
         if (setpoint_count == 20)
         {
@@ -79,12 +83,12 @@ private:
         // result quaternion
         std::array<float, 4> q = {0, 0, 0, 0};
 
-        if (this->get_clock()->now().seconds() - start_time_ < 20)
+        if (this->get_clock()->now().seconds() - start_time_ < 30)
         {
             // move up?
             msg.thrust_body[0] = 0; // north
             msg.thrust_body[1] = 0; // east
-            msg.thrust_body[2] = 1; // down, 100% thrust up
+            msg.thrust_body[2] = thrust; // down, 100% thrust up
 
             calculate_quaternion(q, 0, degrees_to_radians(20), 0);
         }
