@@ -59,7 +59,7 @@ private:
 
         msg.thrust_body[0] = 0; // north
         msg.thrust_body[1] = 0; // east
-        msg.thrust_body[2] = -0.1; // down, 10% thrust up
+        msg.thrust_body[2] = -1; // down, 100% thrust up
 
         msg.q_d[0] = 0;
         msg.q_d[1] = 0.1;
