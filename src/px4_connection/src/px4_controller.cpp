@@ -36,7 +36,7 @@ public:
         timer_ = this->create_wall_timer(100ms, std::bind(&PX4Controller::send_setpoint, this));
 
         start_time_ = this->get_clock()->now().seconds();
-        RCLCPP_INFO(this->get_logger(), "finished initializing at %d seconds.", start_time_);
+        RCLCPP_INFO(this->get_logger(), "finished initializing at %f seconds.", start_time_);
     }
 
 private:
@@ -64,7 +64,7 @@ private:
 
         if (setpoint_count % 20 == 0 && thrust <= 1) {
             thrust += 0.1;
-            RCLCPP_INFO(this->get_logger(), "increasing thrust to %d", thrust);
+            RCLCPP_INFO(this->get_logger(), "increasing thrust to %f", thrust);
         }
 
         if (setpoint_count == 20)
