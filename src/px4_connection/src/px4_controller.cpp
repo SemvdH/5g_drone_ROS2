@@ -74,11 +74,11 @@ private:
             msg.thrust_body[2] = 1; // down, 100% thrust up
 
             calculate_quaternion(q, 0, -3.14, 0);
-        } else if (this->get_clock()->now().seconds() - start_time > 20)
+        } else if (this->get_clock()->now().seconds() - start_time_ > 20)
         {
             if (armed)
             {
-                publish_vehicle_command(VehicleCommand::VEHICLE_CMD_COMPONENT_ARM_DISARM, 0.0);
+                publish_vehicle_command(px4_msgs::msg::VehicleCommand::VEHICLE_CMD_COMPONENT_ARM_DISARM, 0.0);
                 armed = false;
                 RCLCPP_INFO(this->get_logger(), "Disarm command sent after 20 seconds");
             }
