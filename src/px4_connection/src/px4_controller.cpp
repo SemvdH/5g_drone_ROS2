@@ -61,7 +61,7 @@ private:
         msg.thrust_body[1] = 0;  // east
         msg.thrust_body[2] = 1; // down, 100% thrust up
 
-        auto array = std::make_unique<float[]>(4);
+        std::array<float, 3> array = {0, 0, 0, 0};
         calculate_quaternion(array, 0, degrees_to_radians(20), 0);
 
         msg.q_d[0] = array[0];
@@ -100,18 +100,13 @@ private:
     /**
      * @brief calculates a quaternion based on the given input values
      * 
-     * @param ptr pointer to result quaternion. Must be of size 4.
+     * @param ptr array of result quaternion. Must be of size 4.
      * @param heading desired heading (yaw) in radians.
      * @param attitude desired attitude (pitch) in radians.
      * @param bank desired bank (roll) in radians.
-     * @return -1 if the size of the quaternion was not correct, 1 if success.
      */
-    static char calculate_quaternion(std::unique_ptr<float[]> ptr, float heading, float attitude, float bank)
+    static void calculate_quaternion(std::array<float, 4> ptr, float heading, float attitude, float bank)
     {
-        if (sizeof(ptr.get()) / sizeof(float) != 4)
-        {
-            return -1;
-        }
 
         float c1 = cos(heading / 2);
         float c2 = cos(attitude / 2);
@@ -123,12 +118,10 @@ private:
         float c1c2 = c1 * c2;
         float s1s2 = s1 * s2;
 
-        ptr[0] = c1c2 * c3 - s1s2 * s3;       // w
-        ptr[1] = c1c2 * s3 + s1s2 * c3;       // x
-        ptr[2] = s1 * c2 * c3 + c1 * s2 * s3; // y
-        ptr[3] = c1 * s2 * c3 - s1 * c2 * s3; // z
-
-        return 1;
+        ptr.at(0) = c1c2 * c3 - s1s2 * s3;       // w
+        ptr.at(1) = c1c2 * s3 + s1s2 * c3;       // x
+        ptr.at(2) = s1 * c2 * c3 + c1 * s2 * s3; // y
+        ptr.at(3) = c1 * s2 * c3 - s1 * c2 * s3; // z
     }
 
     /**
