@@ -68,10 +68,10 @@ private:
         {
             // move up?
             msg.thrust_body[0] = 0;   // north
-            msg.thrust_body[1] = 0.1;   // east
+            msg.thrust_body[1] = 0;   // east
             msg.thrust_body[2] = 1; // down, 100% thrust up
 
-            calculate_quaternion(q, degrees_to_radians(10), 0, 0);
+            calculate_quaternion(q, 0, degrees_to_radians(10), 0);
         }
         else
         {
@@ -85,7 +85,7 @@ private:
             msg.thrust_body[1] = 0; // east
             msg.thrust_body[2] = 0; // down
 
-            calculate_quaternion(q, degrees_to_radians(10), 0, 0);
+            calculate_quaternion(q, 0, degrees_to_radians(10), 0);
         }
 
         msg.q_d[0] = q.at(0);
