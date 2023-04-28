@@ -59,6 +59,7 @@ private:
     {
         // set message to enable attitude
         auto msg = px4_msgs::msg::VehicleAttitudeSetpoint();
+        // result quaternion
         std::array<float, 4> q = {0, 0, 0, 0};
 
         if (this->get_clock()->now().seconds() - start_time_ < 5)
@@ -68,7 +69,7 @@ private:
             msg.thrust_body[1] = 0;   // east
             msg.thrust_body[2] = 0.5; // down, 50% thrust up
 
-            calculate_quaternion(array, degrees_to_radians(40), 0, 0);
+            calculate_quaternion(q, degrees_to_radians(40), 0, 0);
         }
         else
         {
