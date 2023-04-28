@@ -64,6 +64,12 @@ private:
         std::array<float, 4> array = {0, 0, 0, 0};
         calculate_quaternion(array, 0, degrees_to_radians(20), 0);
 
+        std::string elements = "";
+        for (float f : array)
+        {
+            elements += std::to_string(f) + " ";
+        }
+        RCLCPP_INFO(this->get_logger(), "q_d: %s", elements);
         msg.q_d[0] = array[0];
         msg.q_d[1] = array[1];
         msg.q_d[2] = array[2];
