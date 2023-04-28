@@ -76,14 +76,14 @@ private:
             msg.thrust_body[1] = 0; // east
             msg.thrust_body[2] = 0; // down
 
-            std::array<float, 4> array = {0, 0, 0, 0};
-            calculate_quaternion(array, degrees_to_radians(270), 0, 0);
+            std::array<float, 4> q = {0, 0, 0, 0};
+            calculate_quaternion(q, degrees_to_radians(270), 0, 0);
         }
 
-        msg.q_d[0] = array[0];
-        msg.q_d[1] = array[1];
-        msg.q_d[2] = array[2];
-        msg.q_d[3] = array[3];
+        msg.q_d[0] = q[0];
+        msg.q_d[1] = q[1];
+        msg.q_d[2] = q[2];
+        msg.q_d[3] = q[3];
 
         msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
         vehicle_setpoint_publisher_->publish(msg);
