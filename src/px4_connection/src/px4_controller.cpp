@@ -89,7 +89,7 @@ private:
             // move up?
             msg.thrust_body[0] = 0; // north
             msg.thrust_body[1] = 0; // east
-            msg.thrust_body[2] = 1; // down, 100% thrust up
+            msg.thrust_body[2] = -1; // down, 100% thrust up
 
             calculate_quaternion(q, 0, degrees_to_radians(20), 0);
         }
@@ -126,7 +126,7 @@ private:
         msg.yaw_sp_move_rate = 0;
         msg.reset_integral = false;
         msg.fw_control_yaw_wheel = false;
-        
+
         msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
         // send heartbeat together with attitude setpoint
         send_heartbeat();
