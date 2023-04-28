@@ -50,7 +50,7 @@ private:
     bool has_sent_status = false;
     bool flying = false;
     int setpoint_count = 0;
-    float thrust = 0;
+    float thrust = 0.5;
 
     /**
      * @brief Only the attitude is enabled, because that is how the drone will be controlled.
@@ -87,11 +87,11 @@ private:
         if (this->get_clock()->now().seconds() - start_time_ < 30)
         {
             // move up?
-            msg.thrust_body[0] = 0; // north
-            msg.thrust_body[1] = 0; // east
+            msg.thrust_body[0] = thrust; // north
+            msg.thrust_body[1] = thrust; // east
             msg.thrust_body[2] = thrust; // down, 100% thrust up
 
-            calculate_quaternion(q, 0, degrees_to_radians(20), 0);
+            calculate_quaternion(q, 0.1, degrees_to_radians(20), 0.1);
         }
 
         else
