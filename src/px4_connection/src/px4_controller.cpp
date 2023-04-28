@@ -73,7 +73,7 @@ private:
             msg.thrust_body[1] = 0;   // east
             msg.thrust_body[2] = 1; // down, 100% thrust up
 
-            calculate_quaternion(q, 0, degrees_to_radians(10), 0);
+            calculate_quaternion(q, 0, -3.14, 0);
         } else if (this->get_clock()->now().seconds() - start_time > 20)
         {
             if (armed)
