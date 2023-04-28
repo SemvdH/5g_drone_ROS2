@@ -78,7 +78,7 @@ private:
         {
             if (armed)
             {
-                publish_vehicle_command(px4_msgs::msg::VehicleCommand::VEHICLE_CMD_COMPONENT_ARM_DISARM, 0.0);
+                publish_vehicle_command(px4_msgs::msg::VehicleCommand::VEHICLE_CMD_COMPONENT_ARM_DISARM, 0.0,0);
                 armed = false;
                 RCLCPP_INFO(this->get_logger(), "Disarm command sent after 20 seconds");
             }
