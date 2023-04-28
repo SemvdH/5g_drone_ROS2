@@ -64,7 +64,7 @@ private:
         msg.velocity[1] = 0; // east
         msg.velocity[2] = 1.0; // down (1 m/s -> TODO test if this accounts for 9.81 m/s earth gravity)
 
-        msg.yaw = (0f * M_PI) / 180f; // 0 degrees rotation of yaw
+        msg.yaw = (0.0 * M_PI) / 180.0; // 0 degrees rotation of yaw
         msg.yawspeed = 0; // 0 rotation speed
 
         msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
