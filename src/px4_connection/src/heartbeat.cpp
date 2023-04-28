@@ -26,6 +26,7 @@ public:
         // create timer to send heartbeat messages (offboard control) every 100ms
         timer_ = this->create_wall_timer(100ms, std::bind(&HeartBeat::send_heartbeat, this));
         start_time = this->get_clock()->now().seconds();
+        RCLCPP_INFO(this->get_logger(), "done initializing after %d seconds. Sending heartbeat...", start_time);
     }
 
 private:
@@ -49,13 +50,13 @@ private:
         // get timestamp and publish message
         msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
         offboard_control_mode_publisher_->publish(msg);
-        RCLCPP_INFO(this->get_logger(), "sent offboard control mode message!");
+        // RCLCPP_INFO(this->get_logger(), "sent offboard control mode message!");
 
         // check if 5 seconds have elapsed
-        if (this->get_clock()->now().seconds() - start_time > 5)
-        {
-            RCLCPP_INFO(this->get_logger(), "5 seconds elapsed!");
-        }
+        // if (this->get_clock()->now().seconds() - start_time > 5)
+        // {
+        //     RCLCPP_INFO(this->get_logger(), "5 seconds elapsed!");
+        // }
 
 
         

@@ -42,6 +42,7 @@ public:
         timer_ = this->create_wall_timer(1000ms, std::bind(&PX4Controller::send_setpoint, this));
 
         start_time_ = this->get_clock()->now().seconds();
+        RCLCPP_INFO(this->get_logger(), "finished initializing after %d seconds.", start_time_);
     }
 
 private:
@@ -50,6 +51,7 @@ private:
     rclcpp::Publisher<px4_msgs::msg::VehicleCommand>::SharedPtr vehicle_command_publisher_;
     rclcpp::TimerBase::SharedPtr timer_;
     double start_time_;
+    bool has_sent_status = false;
 
     /**
      * @brief Only the attitude is enabled, because that is how the drone will be controlled.
@@ -67,12 +69,17 @@ private:
             // move up?
             msg.thrust_body[0] = 0;   // north
             msg.thrust_body[1] = 0;   // east
-            msg.thrust_body[2] = 0.5; // down, 50% thrust up
+            msg.thrust_body[2] = 0.8; // down, 80% thrust up
 
             calculate_quaternion(q, degrees_to_radians(40), 0, 0);
         }
         else
         {
+            if (!has_sent_status)
+            {
+                has_sent_status = true;
+                RCLCPP_INFO(this->get_logger(), "changing down thrust to 0");
+            }
             // no thrust
             msg.thrust_body[0] = 0; // north
             msg.thrust_body[1] = 0; // east
@@ -88,8 +95,6 @@ private:
 
         msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
         vehicle_setpoint_publisher_->publish(msg);
-
-        RCLCPP_INFO(this->get_logger(), "published message");
     }
 
     /**
