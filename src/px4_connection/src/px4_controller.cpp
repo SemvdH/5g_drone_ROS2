@@ -49,6 +49,7 @@ private:
     double start_time_;
     bool has_sent_status = false;
     bool flying = false;
+    bool has_swithed = false;
     int setpoint_count = 0;
     float thrust = 0.5;
 
@@ -84,7 +85,7 @@ private:
         // result quaternion
         std::array<float, 4> q = {0, 0, 0, 0};
 
-        if (this->get_clock()->now().seconds() - start_time_ < 30)
+        if (this->get_clock()->now().seconds() - start_time_ < 15)
         {
             // move up?
             msg.thrust_body[0] = 0; // north
@@ -94,7 +95,21 @@ private:
             calculate_quaternion(q, 0, 0, 0);
         }
 
-        else
+        else if (this->get_clock()->now().seconds() - start_time_ < 30)
+        {
+            if (!has_swithed) 
+            {
+                RCLCPP_INFO(this->get_logger(),"changing to 0.5 thrust");
+                has_swithed = true;
+            }
+
+            msg.thrust_body[0] = 0; // north
+            msg.thrust_body[1] = 0; // east
+            msg.thrust_body[2] = -0.5; // down, 100% thrust up
+
+            calculate_quaternion(q, 0, 0, 0);
+        }
+        else 
         {
             if (flying)
             {
@@ -103,20 +118,6 @@ private:
                 RCLCPP_INFO(this->get_logger(), "Disarm command sent after 30 seconds");
             }
         }
-        // else
-        // {
-        //     if (!has_sent_status)
-        //     {
-        //         has_sent_status = true;
-        //         RCLCPP_INFO(this->get_logger(), "changing down thrust to 0.5 and east to 1");
-        //     }
-        //     // no thrust
-        //     msg.thrust_body[0] = 0;   // north
-        //     msg.thrust_body[1] = 1;   // east
-        //     msg.thrust_body[2] = 0.5; // down
-
-        //     calculate_quaternion(q, 0, degrees_to_radians(10), 0);
-        // }
 
         msg.q_d[0] = q.at(0);
         msg.q_d[1] = q.at(1);
@@ -128,27 +129,8 @@ private:
         msg.fw_control_yaw_wheel = false;
 
         msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
-        // send heartbeat together with attitude setpoint
-        // send_heartbeat();
         vehicle_setpoint_publisher_->publish(msg);
     }
-
-    // void send_heartbeat()
-    // {
-    //     // set message to enable attitude
-    //     auto msg = px4_msgs::msg::OffboardControlMode();
-    //     msg.position = false;
-    //     msg.velocity = false;
-    //     msg.acceleration = false;
-    //     msg.attitude = true;
-    //     msg.body_rate = false;
-    //     msg.actuator = false;
-
-    //     // get timestamp and publish message
-    //     msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
-    //     offboard_control_mode_publisher_->publish(msg);
-    //     // RCLCPP_INFO(this->get_logger(), "sent offboard control mode message!");
-    // }
 
     /**
      * @brief Publish vehicle commands
