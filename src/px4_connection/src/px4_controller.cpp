@@ -133,22 +133,22 @@ private:
         vehicle_setpoint_publisher_->publish(msg);
     }
 
-    void send_heartbeat()
-    {
-        // set message to enable attitude
-        auto msg = px4_msgs::msg::OffboardControlMode();
-        msg.position = false;
-        msg.velocity = false;
-        msg.acceleration = false;
-        msg.attitude = true;
-        msg.body_rate = false;
-        msg.actuator = false;
+    // void send_heartbeat()
+    // {
+    //     // set message to enable attitude
+    //     auto msg = px4_msgs::msg::OffboardControlMode();
+    //     msg.position = false;
+    //     msg.velocity = false;
+    //     msg.acceleration = false;
+    //     msg.attitude = true;
+    //     msg.body_rate = false;
+    //     msg.actuator = false;
 
-        // get timestamp and publish message
-        msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
-        offboard_control_mode_publisher_->publish(msg);
-        // RCLCPP_INFO(this->get_logger(), "sent offboard control mode message!");
-    }
+    //     // get timestamp and publish message
+    //     msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
+    //     offboard_control_mode_publisher_->publish(msg);
+    //     // RCLCPP_INFO(this->get_logger(), "sent offboard control mode message!");
+    // }
 
     /**
      * @brief Publish vehicle commands
