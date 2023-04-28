@@ -79,16 +79,17 @@ private:
         // result quaternion
         std::array<float, 4> q = {0, 0, 0, 0};
 
-        if (this->get_clock()->now().seconds() - start_time_ < 10)
+        if (this->get_clock()->now().seconds() - start_time_ < 20)
         {
             // move up?
             msg.thrust_body[0] = 0; // north
             msg.thrust_body[1] = 0; // east
             msg.thrust_body[2] = 1; // down, 100% thrust up
 
-            calculate_quaternion(q, 0, 1, 1);
+            calculate_quaternion(q, 0, degrees_to_radians(20), 0);
         }
-        else if (this->get_clock()->now().seconds() - start_time_ > 20)
+
+        else
         {
             if (flying)
             {
@@ -97,20 +98,20 @@ private:
                 RCLCPP_INFO(this->get_logger(), "Disarm command sent after 20 seconds");
             }
         }
-        else
-        {
-            if (!has_sent_status)
-            {
-                has_sent_status = true;
-                RCLCPP_INFO(this->get_logger(), "changing down thrust to 0.5 and east to 1");
-            }
-            // no thrust
-            msg.thrust_body[0] = 0;   // north
-            msg.thrust_body[1] = 1;   // east
-            msg.thrust_body[2] = 0.5; // down
+        // else
+        // {
+        //     if (!has_sent_status)
+        //     {
+        //         has_sent_status = true;
+        //         RCLCPP_INFO(this->get_logger(), "changing down thrust to 0.5 and east to 1");
+        //     }
+        //     // no thrust
+        //     msg.thrust_body[0] = 0;   // north
+        //     msg.thrust_body[1] = 1;   // east
+        //     msg.thrust_body[2] = 0.5; // down
 
-            calculate_quaternion(q, 0, degrees_to_radians(10), 0);
-        }
+        //     calculate_quaternion(q, 0, degrees_to_radians(10), 0);
+        // }
 
         msg.q_d[0] = q.at(0);
         msg.q_d[1] = q.at(1);
