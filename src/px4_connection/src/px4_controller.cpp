@@ -63,6 +63,7 @@ private:
 
         if (setpoint_count % 20 == 0 && thrust <= 1) {
             thrust += 0.1;
+            RCLCPP_INFO(this->get_logger(), "increasing thrust");
         }
 
         if (setpoint_count == 20)
