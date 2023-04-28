@@ -67,7 +67,7 @@ private:
         msg.q_d[3] = 0;
 
         msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
-        trajectory_setpoint_publisher->publish(msg);
+        vehicle_setpoint_publisher_->publish(msg);
 
         RCLCPP_INFO(this->get_logger(), "published message");
     }
