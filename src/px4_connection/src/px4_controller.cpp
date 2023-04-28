@@ -40,6 +40,8 @@ public:
 
         // create timer to send vehicle attitude setpoints every second
         timer_ = this->create_wall_timer(1000ms, std::bind(&PX4Controller::send_setpoint, this));
+
+        start_time_ = this->get_clock()->now().seconds();
     }
 
 private:
@@ -47,6 +49,7 @@ private:
     rclcpp::Publisher<px4_msgs::msg::TrajectorySetpoint>::SharedPtr trajectory_setpoint_publisher;
     rclcpp::Publisher<px4_msgs::msg::VehicleCommand>::SharedPtr vehicle_command_publisher_;
     rclcpp::TimerBase::SharedPtr timer_;
+    double start_time_;
 
     /**
      * @brief Only the attitude is enabled, because that is how the drone will be controlled.
@@ -56,20 +59,27 @@ private:
     {
         // set message to enable attitude
         auto msg = px4_msgs::msg::VehicleAttitudeSetpoint();
-
-        msg.thrust_body[0] = 0;  // north
-        msg.thrust_body[1] = 0;  // east
-        msg.thrust_body[2] = 1; // down, 100% thrust up
-
-        std::array<float, 4> array = {0, 0, 0, 0};
-        calculate_quaternion(array, 0, degrees_to_radians(20), 0);
-
-        std::string elements = "";
-        for (float f : array)
+        if (this->get_clock()->now().seconds() - start_time_ < 5)
         {
-            elements += std::to_string(f) + " ";
+            // move up?
+            msg.thrust_body[0] = 0;   // north
+            msg.thrust_body[1] = 0;   // east
+            msg.thrust_body[2] = 0.5; // down, 50% thrust up
+
+            std::array<float, 4> array = {0, 0, 0, 0};
+            calculate_quaternion(array, degrees_to_radians(40), 0, 0);
         }
-        RCLCPP_INFO(this->get_logger(), "q_d: %s", elements);
+        else
+        {
+            // no thrust
+            msg.thrust_body[0] = 0; // north
+            msg.thrust_body[1] = 0; // east
+            msg.thrust_body[2] = 0; // down
+
+            std::array<float, 4> array = {0, 0, 0, 0};
+            calculate_quaternion(array, degrees_to_radians(270), 0, 0);
+        }
+
         msg.q_d[0] = array[0];
         msg.q_d[1] = array[1];
         msg.q_d[2] = array[2];
@@ -102,10 +112,9 @@ private:
         vehicle_command_publisher_->publish(msg);
     }
 
-
     /**
      * @brief calculates a quaternion based on the given input values
-     * 
+     *
      * @param ptr array of result quaternion. Must be of size 4.
      * @param heading desired heading (yaw) in radians.
      * @param attitude desired attitude (pitch) in radians.
@@ -132,7 +141,7 @@ private:
 
     /**
      * @brief converts degrees to radians
-     * 
+     *
      * @param deg angle in degrees
      * @return float new angle in radians
      */
