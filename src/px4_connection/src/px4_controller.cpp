@@ -85,12 +85,12 @@ private:
         // result quaternion
         std::array<float, 4> q = {0, 0, 0, 0};
 
-        if (this->get_clock()->now().seconds() - start_time_ < 15)
+        if (this->get_clock()->now().seconds() - start_time_ < 10)
         {
             // move up?
             msg.thrust_body[0] = 0; // north
             msg.thrust_body[1] = 0; // east
-            msg.thrust_body[2] = -thrust; // down, 100% thrust up
+            msg.thrust_body[2] = -0.8; // down, 100% thrust up
 
             calculate_quaternion(q, 0, 0, 0);
         }
