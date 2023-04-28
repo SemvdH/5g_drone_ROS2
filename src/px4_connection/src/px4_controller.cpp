@@ -62,9 +62,9 @@ private:
         msg.thrust_body[2] = -0.1; // down, 10% thrust up
 
         msg.q_d[0] = 0;
-        msg.q_d[1] = 0;
-        msg.q_d[2] = 0;
-        msg.q_d[3] = 0;
+        msg.q_d[1] = 0.1;
+        msg.q_d[2] = 0.1;
+        msg.q_d[3] = 0.1;
 
         msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
         vehicle_setpoint_publisher_->publish(msg);
