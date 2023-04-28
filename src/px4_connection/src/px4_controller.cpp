@@ -17,7 +17,7 @@ https://discuss.px4.io/t/cannot-arm-drone-with-companion-computer-arming-denied-
 // #include <px4_msgs/msg/timesync.hpp>
 #include <px4_msgs/msg/vehicle_command.hpp>
 #include <px4_msgs/msg/vehicle_control_mode.hpp>
-#include <px4_msgs/msg/offboard_control_mode.hpp>
+// #include <px4_msgs/msg/offboard_control_mode.hpp>
 
 using namespace std::chrono_literals;
 
@@ -30,7 +30,7 @@ public:
         vehicle_setpoint_publisher_ = this->create_publisher<px4_msgs::msg::VehicleAttitudeSetpoint>("/fmu/in/vehicle_attitude_setpoint", 10);
         vehicle_command_publisher_ = this->create_publisher<px4_msgs::msg::VehicleCommand>("/fmu/in/vehicle_command", 10);
         trajectory_setpoint_publisher = this->create_publisher<px4_msgs::msg::TrajectorySetpoint>("/fmu/in/trajectory_setpoint", 10);
-        offboard_control_mode_publisher_ = this->create_publisher<px4_msgs::msg::OffboardControlMode>("/fmu/in/offboard_control_mode", 10);
+        // offboard_control_mode_publisher_ = this->create_publisher<px4_msgs::msg::OffboardControlMode>("/fmu/in/offboard_control_mode", 10);
 
         // create timer to send vehicle attitude setpoints every second
         timer_ = this->create_wall_timer(100ms, std::bind(&PX4Controller::send_setpoint, this));
@@ -43,7 +43,7 @@ private:
     rclcpp::Publisher<px4_msgs::msg::VehicleAttitudeSetpoint>::SharedPtr vehicle_setpoint_publisher_;
     rclcpp::Publisher<px4_msgs::msg::TrajectorySetpoint>::SharedPtr trajectory_setpoint_publisher;
     rclcpp::Publisher<px4_msgs::msg::VehicleCommand>::SharedPtr vehicle_command_publisher_;
-    rclcpp::Publisher<px4_msgs::msg::OffboardControlMode>::SharedPtr offboard_control_mode_publisher_;
+    // rclcpp::Publisher<px4_msgs::msg::OffboardControlMode>::SharedPtr offboard_control_mode_publisher_;
 
     rclcpp::TimerBase::SharedPtr timer_;
     double start_time_;
@@ -61,10 +61,10 @@ private:
 
         setpoint_count++;
 
-        // if (setpoint_count % 20 == 0 && thrust <= 1) {
-        //     thrust += 0.1;
-        //     RCLCPP_INFO(this->get_logger(), "increasing thrust");
-        // }
+        if (setpoint_count % 20 == 0 && thrust <= 1) {
+            thrust += 0.1;
+            RCLCPP_INFO(this->get_logger(), "increasing thrust to %d", thrust);
+        }
 
         if (setpoint_count == 20)
         {
@@ -89,9 +89,9 @@ private:
             // move up?
             msg.thrust_body[0] = 0; // north
             msg.thrust_body[1] = 0; // east
-            msg.thrust_body[2] = -0.6; // down, 100% thrust up
+            msg.thrust_body[2] = -thrust; // down, 100% thrust up
 
-            calculate_quaternion(q, 0, degrees_to_radians(20), 0);
+            calculate_quaternion(q, 0, 0, 0);
         }
 
         else
@@ -129,7 +129,7 @@ private:
 
         msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
         // send heartbeat together with attitude setpoint
-        send_heartbeat();
+        // send_heartbeat();
         vehicle_setpoint_publisher_->publish(msg);
     }
 
