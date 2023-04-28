@@ -26,7 +26,7 @@ public:
         // create timer to send heartbeat messages (offboard control) every 100ms
         timer_ = this->create_wall_timer(100ms, std::bind(&HeartBeat::send_heartbeat, this));
         start_time = this->get_clock()->now().seconds();
-        RCLCPP_INFO(this->get_logger(), "done initializing after %d seconds. Sending heartbeat...", start_time);
+        RCLCPP_INFO(this->get_logger(), "done initializing at %d seconds. Sending heartbeat...", start_time);
     }
 
 private:

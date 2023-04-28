@@ -42,7 +42,7 @@ public:
         timer_ = this->create_wall_timer(1000ms, std::bind(&PX4Controller::send_setpoint, this));
 
         start_time_ = this->get_clock()->now().seconds();
-        RCLCPP_INFO(this->get_logger(), "finished initializing after %d seconds.", start_time_);
+        RCLCPP_INFO(this->get_logger(), "finished initializing at %d seconds.", start_time_);
     }
 
 private:
@@ -64,14 +64,14 @@ private:
         // result quaternion
         std::array<float, 4> q = {0, 0, 0, 0};
 
-        if (this->get_clock()->now().seconds() - start_time_ < 5)
+        if (this->get_clock()->now().seconds() - start_time_ < 10)
         {
             // move up?
             msg.thrust_body[0] = 0;   // north
-            msg.thrust_body[1] = 0;   // east
+            msg.thrust_body[1] = 0.1;   // east
             msg.thrust_body[2] = 1; // down, 100% thrust up
 
-            calculate_quaternion(q, degrees_to_radians(40), 0, 0);
+            calculate_quaternion(q, degrees_to_radians(10), 0, 0);
         }
         else
         {
@@ -85,7 +85,7 @@ private:
             msg.thrust_body[1] = 0; // east
             msg.thrust_body[2] = 0; // down
 
-            calculate_quaternion(q, degrees_to_radians(270), 0, 0);
+            calculate_quaternion(q, degrees_to_radians(10), 0, 0);
         }
 
         msg.q_d[0] = q.at(0);
