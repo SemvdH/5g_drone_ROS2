@@ -61,7 +61,7 @@ private:
         msg.thrust_body[1] = 0;  // east
         msg.thrust_body[2] = 1; // down, 100% thrust up
 
-        std::array<float, 3> array = {0, 0, 0, 0};
+        std::array<float, 4> array = {0, 0, 0, 0};
         calculate_quaternion(array, 0, degrees_to_radians(20), 0);
 
         msg.q_d[0] = array[0];
