@@ -100,7 +100,7 @@ private:
             {
                 publish_vehicle_command(px4_msgs::msg::VehicleCommand::VEHICLE_CMD_COMPONENT_ARM_DISARM, 0.0, 0);
                 flying = false;
-                RCLCPP_INFO(this->get_logger(), "Disarm command sent after 20 seconds");
+                RCLCPP_INFO(this->get_logger(), "Disarm command sent after 30 seconds");
             }
         }
         // else
@@ -123,6 +123,10 @@ private:
         msg.q_d[2] = q.at(2);
         msg.q_d[3] = q.at(3);
 
+        msg.yaw_sp_move_rate = 0;
+        msg.reset_integral = false;
+        msg.fw_control_yaw_wheel = false;
+        
         msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
         // send heartbeat together with attitude setpoint
         send_heartbeat();
