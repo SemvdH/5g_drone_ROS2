@@ -58,10 +58,10 @@ private:
     void send_setpoint()
     {
         
-        if (setpoint_count < 11)
+        if (setpoint_count < 21)
             setpoint_count++;
 
-        if (setpoint_count == 10)
+        if (setpoint_count == 20)
         {
             // switch to offboard mode and arm
 
