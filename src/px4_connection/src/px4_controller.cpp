@@ -55,17 +55,16 @@ private:
     void send_setpoint()
     {
         // set message to enable attitude
-        auto msg = px4_msgs::msg::TrajectorySetpoint();
+        auto msg = px4_msgs::msg::VehicleAttitudeSetpoint();
 
-        // get timestamp and publish message
+        msg.thrust_body[0] = 0; // north
+        msg.thrust_body[1] = 0; // east
+        msg.thrust_body[2] = -0.1; // down, 10% thrust up
 
-        // https://github.com/PX4/px4_msgs/blob/main/msg/TrajectorySetpoint.msg
-        msg.velocity[0] = 0; // north
-        msg.velocity[1] = 0; // east
-        msg.velocity[2] = 1.0; // down (1 m/s -> TODO test if this accounts for 9.81 m/s earth gravity)
-
-        msg.yaw = (0.0 * M_PI) / 180.0; // 0 degrees rotation of yaw
-        msg.yawspeed = 0; // 0 rotation speed
+        msg.q_d[0] = 0;
+        msg.q_d[1] = 0;
+        msg.q_d[2] = 0;
+        msg.q_d[3] = 0;
 
         msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
         trajectory_setpoint_publisher->publish(msg);
