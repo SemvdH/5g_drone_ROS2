@@ -17,6 +17,7 @@ https://discuss.px4.io/t/cannot-arm-drone-with-companion-computer-arming-denied-
 // #include <px4_msgs/msg/timesync.hpp>
 #include <px4_msgs/msg/vehicle_command.hpp>
 #include <px4_msgs/msg/vehicle_control_mode.hpp>
+#include <px4_msgs/msg/offboard_control_mode.hpp>
 
 using namespace std::chrono_literals;
 
@@ -29,18 +30,10 @@ public:
         vehicle_setpoint_publisher_ = this->create_publisher<px4_msgs::msg::VehicleAttitudeSetpoint>("/fmu/in/vehicle_attitude_setpoint", 10);
         vehicle_command_publisher_ = this->create_publisher<px4_msgs::msg::VehicleCommand>("/fmu/in/vehicle_command", 10);
         trajectory_setpoint_publisher = this->create_publisher<px4_msgs::msg::TrajectorySetpoint>("/fmu/in/trajectory_setpoint", 10);
-
-        // set to offboard mode
-        this->publish_vehicle_command(px4_msgs::msg::VehicleCommand::VEHICLE_CMD_DO_SET_MODE, 1, 6);
-        RCLCPP_INFO(this->get_logger(), "Set to offboard mode");
-        // arm the drone
-        this->publish_vehicle_command(px4_msgs::msg::VehicleCommand::VEHICLE_CMD_COMPONENT_ARM_DISARM, 1.0, 0);
-
-        RCLCPP_INFO(this->get_logger(), "Arm command sent");
-        armed = true;
+        offboard_control_mode_publisher_ = this->create_publisher<px4_msgs::msg::OffboardControlMode>("/fmu/in/offboard_control_mode", 10);
 
         // create timer to send vehicle attitude setpoints every second
-        timer_ = this->create_wall_timer(1000ms, std::bind(&PX4Controller::send_setpoint, this));
+        timer_ = this->create_wall_timer(100ms, std::bind(&PX4Controller::send_setpoint, this));
 
         start_time_ = this->get_clock()->now().seconds();
         RCLCPP_INFO(this->get_logger(), "finished initializing at %d seconds.", start_time_);
@@ -50,10 +43,13 @@ private:
     rclcpp::Publisher<px4_msgs::msg::VehicleAttitudeSetpoint>::SharedPtr vehicle_setpoint_publisher_;
     rclcpp::Publisher<px4_msgs::msg::TrajectorySetpoint>::SharedPtr trajectory_setpoint_publisher;
     rclcpp::Publisher<px4_msgs::msg::VehicleCommand>::SharedPtr vehicle_command_publisher_;
+    rclcpp::Publisher<px4_msgs::msg::OffboardControlMode>::SharedPtr offboard_control_mode_publisher_;
+
     rclcpp::TimerBase::SharedPtr timer_;
     double start_time_;
     bool has_sent_status = false;
-    bool armed = false;
+    bool flying = false;
+    int setpoint_count = 0;
 
     /**
      * @brief Only the attitude is enabled, because that is how the drone will be controlled.
@@ -61,6 +57,23 @@ private:
      */
     void send_setpoint()
     {
+        
+        if (setpoint_count < 11)
+            setpoint_count++;
+
+        if (setpoint_count == 10)
+        {
+            // switch to offboard mode and arm
+
+            // set to offboard mode
+            this->publish_vehicle_command(px4_msgs::msg::VehicleCommand::VEHICLE_CMD_DO_SET_MODE, 1, 6);
+            RCLCPP_INFO(this->get_logger(), "Set to offboard mode");
+            // arm the drone
+            this->publish_vehicle_command(px4_msgs::msg::VehicleCommand::VEHICLE_CMD_COMPONENT_ARM_DISARM, 1.0, 0);
+
+            RCLCPP_INFO(this->get_logger(), "Arm command sent");
+            flying = true;
+        }
         // set message to enable attitude
         auto msg = px4_msgs::msg::VehicleAttitudeSetpoint();
         // result quaternion
@@ -69,17 +82,18 @@ private:
         if (this->get_clock()->now().seconds() - start_time_ < 10)
         {
             // move up?
-            msg.thrust_body[0] = 0;   // north
-            msg.thrust_body[1] = 0;   // east
+            msg.thrust_body[0] = 0; // north
+            msg.thrust_body[1] = 0; // east
             msg.thrust_body[2] = 1; // down, 100% thrust up
 
-            calculate_quaternion(q, 0, -3.14, 0);
-        } else if (this->get_clock()->now().seconds() - start_time_ > 20)
+            calculate_quaternion(q, 0, 1, 1);
+        }
+        else if (this->get_clock()->now().seconds() - start_time_ > 20)
         {
-            if (armed)
+            if (flying)
             {
-                publish_vehicle_command(px4_msgs::msg::VehicleCommand::VEHICLE_CMD_COMPONENT_ARM_DISARM, 0.0,0);
-                armed = false;
+                publish_vehicle_command(px4_msgs::msg::VehicleCommand::VEHICLE_CMD_COMPONENT_ARM_DISARM, 0.0, 0);
+                flying = false;
                 RCLCPP_INFO(this->get_logger(), "Disarm command sent after 20 seconds");
             }
         }
@@ -88,12 +102,12 @@ private:
             if (!has_sent_status)
             {
                 has_sent_status = true;
-                RCLCPP_INFO(this->get_logger(), "changing down thrust to 0");
+                RCLCPP_INFO(this->get_logger(), "changing down thrust to 0.5 and east to 1");
             }
             // no thrust
-            msg.thrust_body[0] = 0; // north
-            msg.thrust_body[1] = 0; // east
-            msg.thrust_body[2] = 0; // down
+            msg.thrust_body[0] = 0;   // north
+            msg.thrust_body[1] = 1;   // east
+            msg.thrust_body[2] = 0.5; // down
 
             calculate_quaternion(q, 0, degrees_to_radians(10), 0);
         }
@@ -104,7 +118,26 @@ private:
         msg.q_d[3] = q.at(3);
 
         msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
+        // send heartbeat together with attitude setpoint
+        send_heartbeat();
         vehicle_setpoint_publisher_->publish(msg);
+    }
+
+    void send_heartbeat()
+    {
+        // set message to enable attitude
+        auto msg = px4_msgs::msg::OffboardControlMode();
+        msg.position = false;
+        msg.velocity = false;
+        msg.acceleration = false;
+        msg.attitude = true;
+        msg.body_rate = false;
+        msg.actuator = false;
+
+        // get timestamp and publish message
+        msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
+        offboard_control_mode_publisher_->publish(msg);
+        // RCLCPP_INFO(this->get_logger(), "sent offboard control mode message!");
     }
 
     /**
