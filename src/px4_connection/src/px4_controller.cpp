@@ -61,10 +61,10 @@ private:
 
         setpoint_count++;
 
-        if (setpoint_count % 20 == 0 && thrust <= 1) {
-            thrust += 0.1;
-            RCLCPP_INFO(this->get_logger(), "increasing thrust");
-        }
+        // if (setpoint_count % 20 == 0 && thrust <= 1) {
+        //     thrust += 0.1;
+        //     RCLCPP_INFO(this->get_logger(), "increasing thrust");
+        // }
 
         if (setpoint_count == 20)
         {
@@ -87,11 +87,11 @@ private:
         if (this->get_clock()->now().seconds() - start_time_ < 30)
         {
             // move up?
-            msg.thrust_body[0] = thrust; // north
-            msg.thrust_body[1] = thrust; // east
-            msg.thrust_body[2] = thrust; // down, 100% thrust up
+            msg.thrust_body[0] = 0; // north
+            msg.thrust_body[1] = 0; // east
+            msg.thrust_body[2] = 1; // down, 100% thrust up
 
-            calculate_quaternion(q, 0.1, degrees_to_radians(20), 0.1);
+            calculate_quaternion(q, 0, degrees_to_radians(20), 0);
         }
 
         else
