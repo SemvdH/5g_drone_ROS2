@@ -8,10 +8,12 @@ https://discuss.px4.io/t/cannot-arm-drone-with-companion-computer-arming-denied-
 */
 
 #include <chrono>
+#include <math.h>
 
 #include "rclcpp/rclcpp.hpp"
 
 #include <px4_msgs/msg/vehicle_attitude_setpoint.hpp>
+#include <px4_msgs/msg/trajectory_setpoint.hpp>
 #include <px4_msgs/msg/timesync.hpp>
 #include <px4_msgs/msg/vehicle_command.hpp>
 #include <px4_msgs/msg/vehicle_control_mode.hpp>
@@ -26,6 +28,7 @@ public:
         // create a publisher on the vehicle attitude setpoint topic
         vehicle_setpoint_publisher_ = this->create_publisher<px4_msgs::msg::VehicleAttitudeSetpoint>("/fmu/in/vehicle_attitude_setpoint", 10);
         vehicle_command_publisher_ = this->create_publisher<px4_msgs::msg::VehicleCommand>("/fmu/in/vehicle_command", 10);
+        trajectory_setpoint_publisher = this->create_publisher<px4_msgs::msg::TrajectorySetpoint>("/fmu/in/trajectory_setpoint",10);
 
         // set to offboard mode
         this->publish_vehicle_command(px4_msgs::msg::VehicleCommand::VEHICLE_CMD_DO_SET_MODE, 1, 6);
@@ -41,6 +44,7 @@ public:
 
 private:
     rclcpp::Publisher<px4_msgs::msg::VehicleAttitudeSetpoint>::SharedPtr vehicle_setpoint_publisher_;
+    rclcpp::Publisher<px4_msgs::msg::TrajectorySetpoint>::SharedPtr trajectory_setpoint_publisher;
     rclcpp::Publisher<px4_msgs::msg::VehicleCommand>::SharedPtr vehicle_command_publisher_;
     rclcpp::TimerBase::SharedPtr timer_;
 
@@ -51,30 +55,20 @@ private:
     void send_setpoint()
     {
         // set message to enable attitude
-        auto msg = px4_msgs::msg::VehicleAttitudeSetpoint();
+        auto msg = px4_msgs::msg::TrajectorySetpoint();
 
         // get timestamp and publish message
 
-        // https://github.com/PX4/px4_msgs/blob/main/msg/VehicleAttitudeSetpoint.msg
-        msg.roll_body = 1;
-        msg.pitch_body = 1;
-        msg.yaw_body = 1;
+        // https://github.com/PX4/px4_msgs/blob/main/msg/TrajectorySetpoint.msg
+        msg.velocity[0] = 0; // north
+        msg.velocity[1] = 0; // east
+        msg.velocity[2] = 1.0; // down (1 m/s -> TODO test if this accounts for 9.81 m/s earth gravity)
 
-        msg.yaw_sp_move_rate = 1;
-
-        for (int i = 0; i < 4; i++)
-        {
-            msg.q_d[i] = 1;
-        }
-
-        msg.thrust_body[0] = 0;
-        msg.thrust_body[1] = 0;
-        msg.thrust_body[2] = -10; // negative throttle amount
-        msg.reset_integral = false;
-        msg.fw_control_yaw_wheel = false;
+        msg.yaw = (0f * M_PI) / 180f; // 0 degrees rotation of yaw
+        msg.yawspeed = 0; // 0 rotation speed
 
         msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
-        vehicle_setpoint_publisher_->publish(msg);
+        trajectory_setpoint_publisher->publish(msg);
 
         RCLCPP_INFO(this->get_logger(), "published message");
     }
