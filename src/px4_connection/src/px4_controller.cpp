@@ -58,11 +58,25 @@ private:
 
     void send_trajectory_setpoint()
     {
+
         auto msg = px4_msgs::msg::TrajectorySetpoint();
-        msg.velocity[0] = 0;
-        msg.velocity[1] = 0;
-        msg.velocity[2] = -15;
-        msg.yawspeed = 0;
+        if (start_time_ - this->get_clock().now().seconds() < 20)
+        {
+            msg.velocity[0] = 0;
+            msg.velocity[1] = 0;
+            msg.velocity[2] = -15;
+            msg.yawspeed = 0;
+        } else {
+            if (!has_swithed)
+            {
+                RCLCPP_INFO(this->get_logger(), "switching to 0 vel");
+                has_swithed = true;
+            }
+            msg.velocity[0] = 0;
+            msg.velocity[1] = 0;
+            msg.velocity[2] = 0;
+            msg.yawspeed = 0;
+        }
 
         // if (setpoint_count < 30)
         // {
