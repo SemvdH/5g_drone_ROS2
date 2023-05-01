@@ -27,6 +27,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/SetAttitude.srv"
 )
 
+include_directories(include)
 add_executable(heartbeat src/heartbeat.cpp)
 ament_target_dependencies(
     heartbeat

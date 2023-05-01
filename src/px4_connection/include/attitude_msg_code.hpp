@@ -1,0 +1,8 @@
+#ifndef ATTITUDE_MSG_CODE_HPP
+#define ATTITUDE_MSG_CODE_HPP
+
+#define ATTITUDE_STATUS_OK 0
+#define ATTITUDE_STATUS_ERROR 1
+
+
+#endif
