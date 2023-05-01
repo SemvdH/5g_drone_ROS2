@@ -37,7 +37,7 @@ public:
         trajectory_setpoint_publisher = this->create_publisher<px4_msgs::msg::TrajectorySetpoint>("/fmu/in/trajectory_setpoint", 10);
         // offboard_control_mode_publisher_ = this->create_publisher<px4_msgs::msg::OffboardControlMode>("/fmu/in/offboard_control_mode", 10);
 
-        set_attitude_service = this->create_service<px4_connection::srv::SetAttitude>("set_attitude", &set_setpoint);
+        set_attitude_service = this->create_service<px4_connection::srv::SetAttitude>("set_attitude", std::bind(&PX4Controller::set_setpoint, this));
 
         // create timer to send vehicle attitude setpoints every second
         timer_ = this->create_wall_timer(100ms, std::bind(&PX4Controller::send_setpoint, this));
