@@ -37,7 +37,12 @@ public:
         trajectory_setpoint_publisher = this->create_publisher<px4_msgs::msg::TrajectorySetpoint>("/fmu/in/trajectory_setpoint", 10);
         // offboard_control_mode_publisher_ = this->create_publisher<px4_msgs::msg::OffboardControlMode>("/fmu/in/offboard_control_mode", 10);
 
-        set_attitude_service_ = this->create_service<px4_connection::srv::SetAttitude>("set_attitude", &set_setpoint);
+        set_attitude_service_ = this->create_service<px4_connection::srv::SetAttitude>("set_attitude", std::bind(&PX4Controller::set_setpoint, this));
+
+        //         service_ptr_ = this->create_service<std_srvs::srv::Empty>(
+        //         "test_service",
+        //         std::bind(&ServiceNode::service_callback, this, _1, _2, _3)
+        // );
 
         // create timer to send vehicle attitude setpoints every second
         timer_ = this->create_wall_timer(100ms, std::bind(&PX4Controller::send_setpoint, this));
@@ -63,6 +68,14 @@ private:
     float thrust = 0.5;
     bool ready_to_fly = false;
     float cur_yaw = 0;
+
+    void set_setpoint(
+        // const std::shared_ptr<rmw_request_id_t> request_header,
+        const std::shared_ptr<px4_connection::srv::SetAttitude::Request> request,
+        const std::shared_ptr<px4_connection::srv::SetAttitude::Response> response)
+    {
+
+    }
 
     void send_trajectory_setpoint()
     {
@@ -244,16 +257,11 @@ private:
     }
 };
 
-void set_setpoint(const std::shared_ptr<px4_connection::srv::SetAttitude::Request> request, std::shared_ptr<px4_connection::srv::SetAttitude::Response> response)
-{
-}
-
 int main(int argc, char *argv[])
 {
     rclcpp::init(argc, argv);
 
-    rclcpp::Node node = PX4Controller();
-    node.create_service<px4_connection::srv::SetAttitude>("set_attitude", &set_setpoint);
+    rclcpp::Node::SharedPtr node = std::make_shared<PX4Controller>();
     rclcpp::spin(node);
     rclcpp::shutdown();
     return 0;
