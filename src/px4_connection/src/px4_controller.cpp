@@ -60,12 +60,22 @@ private:
     {
         auto msg = px4_msgs::msg::TrajectorySetpoint();
 
-        msg.velocity[0] = 5;
-        msg.velocity[1] = 5;
-        msg.velocity[2] = D_SPEED(1);
+        if (setpoint_count < 30)
+        {
+            msg.velocity[0] = 0;
+            msg.velocity[1] = 0;
+            msg.velocity[2] = D_SPEED(1);
+            msg.yawspeed = 0;
 
-        msg.yaw = -3.14;
-        msg.yawspeed = 0;
+        } else {
+            //try to hover
+            msg.velocity[0] = 0;
+            msg.velocity[1] = 0;
+            msg.velocity[2] = 0;
+            msg.yawspeed = 1;
+
+        }
+            msg.yaw = -3.14;
         msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
 
         trajectory_setpoint_publisher->publish(msg);
