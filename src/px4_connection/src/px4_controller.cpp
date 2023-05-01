@@ -70,12 +70,21 @@ private:
     bool ready_to_fly = false;
     float cur_yaw = 0;
 
+    float last_setpoint[3] = {0,0,0};
+    float last_angle = 0;
+
     void set_setpoint(
         const std::shared_ptr<rmw_request_id_t> request_header,
         const std::shared_ptr<px4_connection::srv::SetAttitude::Request> request,
         const std::shared_ptr<px4_connection::srv::SetAttitude::Response> response)
     {
+        last_setpoint[0] = request.x_speed;
+        last_setpoint[1] = request.y_speed;
+        last_setpoint[2] = request.x_speed;
 
+        last_angle = degrees_to_radians(request.angle);
+
+        response.status = ATTITUDE_STATUS_OK;
     }
 
     void send_trajectory_setpoint()
@@ -98,11 +107,11 @@ private:
                 has_swithed = true;
             }
 
-            msg.velocity[0] = 5;
-            msg.velocity[1] = 0;
-            msg.velocity[2] = D_SPEED(0);
+            msg.velocity[0] = last_setpoint[0];
+            msg.velocity[1] = last_setpoint[1];
+            msg.velocity[2] = D_SPEED(last_setpoint[2]);
             msg.yawspeed = 0.5;
-            msg.yaw = degrees_to_radians(80);
+            msg.yaw = last_angle;
         }
 
         msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
