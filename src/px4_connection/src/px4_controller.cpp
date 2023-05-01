@@ -72,10 +72,10 @@ private:
                 RCLCPP_INFO(this->get_logger(), "switching to 0 vel");
                 has_swithed = true;
             }
-            msg.velocity[0] = 0;
+            msg.velocity[0] = 1;
             msg.velocity[1] = 0;
             msg.velocity[2] = D_SPEED(0);
-            msg.yawspeed = 0;
+            msg.yawspeed = 1;
         }
 
         // if (setpoint_count < 30)
