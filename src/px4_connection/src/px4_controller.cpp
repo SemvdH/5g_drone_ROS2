@@ -19,7 +19,7 @@ https://discuss.px4.io/t/cannot-arm-drone-with-companion-computer-arming-denied-
 #include <px4_msgs/msg/vehicle_command.hpp>
 #include <px4_msgs/msg/vehicle_control_mode.hpp>
 
-#include <px4_connection/srv/set_attitude.hpp>
+
 // #include <px4_msgs/msg/offboard_control_mode.hpp>
 
 #define D_SPEED(x) -x - 9.81
@@ -37,7 +37,7 @@ public:
         trajectory_setpoint_publisher = this->create_publisher<px4_msgs::msg::TrajectorySetpoint>("/fmu/in/trajectory_setpoint", 10);
         // offboard_control_mode_publisher_ = this->create_publisher<px4_msgs::msg::OffboardControlMode>("/fmu/in/offboard_control_mode", 10);
 
-        set_attitude_service_ = this->create_service<px4_connection::srv::SetAttitude>("set_attitude", std::bind(&PX4Controller::set_setpoint, this, std::placeholders::_1,std::placeholders::_2,std::placeholders::_3));
+        // set_attitude_service_ = this->create_service<px4_connection::srv::SetAttitude>("set_attitude", std::bind(&PX4Controller::set_setpoint, this, std::placeholders::_1,std::placeholders::_2,std::placeholders::_3));
 
         //         service_ptr_ = this->create_service<std_srvs::srv::Empty>(
         //         "test_service",
@@ -55,7 +55,7 @@ private:
     rclcpp::Publisher<px4_msgs::msg::VehicleAttitudeSetpoint>::SharedPtr vehicle_setpoint_publisher_;
     rclcpp::Publisher<px4_msgs::msg::TrajectorySetpoint>::SharedPtr trajectory_setpoint_publisher;
     rclcpp::Publisher<px4_msgs::msg::VehicleCommand>::SharedPtr vehicle_command_publisher_;
-    rclcpp::Service<px4_connection::srv::SetAttitude>::SharedPtr set_attitude_service_;
+    // rclcpp::Service<px4_connection::srv::SetAttitude>::SharedPtr set_attitude_service_;
 
     // rclcpp::Publisher<px4_msgs::msg::OffboardControlMode>::SharedPtr offboard_control_mode_publisher_;
 
@@ -72,19 +72,19 @@ private:
     float last_setpoint[3] = {0,0,0};
     float last_angle = 0;
 
-    void set_setpoint(
-        const std::shared_ptr<rmw_request_id_t> request_header,
-        const std::shared_ptr<px4_connection::srv::SetAttitude::Request> request,
-        const std::shared_ptr<px4_connection::srv::SetAttitude::Response> response)
-    {
-        last_setpoint[0] = request->x_speed;
-        last_setpoint[1] = request->y_speed;
-        last_setpoint[2] = request->x_speed;
+    // void set_setpoint(
+    //     const std::shared_ptr<rmw_request_id_t> request_header,
+    //     const std::shared_ptr<px4_connection::srv::SetAttitude::Request> request,
+    //     const std::shared_ptr<px4_connection::srv::SetAttitude::Response> response)
+    // {
+    //     last_setpoint[0] = request->x_speed;
+    //     last_setpoint[1] = request->y_speed;
+    //     last_setpoint[2] = request->x_speed;
 
-        last_angle = degrees_to_radians(request->angle);
+    //     last_angle = degrees_to_radians(request->angle);
 
-        response->status = 0;
-    }
+    //     response->status = 0;
+    // }
 
     void send_trajectory_setpoint()
     {
