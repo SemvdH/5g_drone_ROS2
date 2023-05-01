@@ -60,11 +60,11 @@ private:
     {
 
         auto msg = px4_msgs::msg::TrajectorySetpoint();
-        if (this->get_clock()->now().seconds() - start_time_ < 20)
+        if (this->get_clock()->now().seconds() - start_time_ < 10)
         {
             msg.velocity[0] = 0;
             msg.velocity[1] = 0;
-            msg.velocity[2] = -15;
+            msg.velocity[2] = D_SPEED(10);
             msg.yawspeed = 0;
         } else {
             if (!has_swithed)
@@ -74,7 +74,7 @@ private:
             }
             msg.velocity[0] = 0;
             msg.velocity[1] = 0;
-            msg.velocity[2] = 0;
+            msg.velocity[2] = D_SPEED(0);
             msg.yawspeed = 0;
         }
 
