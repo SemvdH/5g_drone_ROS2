@@ -55,6 +55,7 @@ private:
     int setpoint_count = 0;
     float thrust = 0.5;
     bool ready_to_fly = false;
+    float cur_yaw = 0;
 
     void send_trajectory_setpoint()
     {
@@ -73,11 +74,13 @@ private:
                 RCLCPP_INFO(this->get_logger(), "switching to 0 vel");
                 has_swithed = true;
             }
-            msg.velocity[0] = 1;
+
+            cur_yaw += 1 % 360;
+            msg.velocity[0] = 0;
             msg.velocity[1] = 0;
             msg.velocity[2] = D_SPEED(0);
-            msg.yawspeed = 1;
-            msg.yaw = 3.14;
+            msg.yawspeed = 0.5;
+            msg.yaw = degrees_to_radians(cur_yaw);
         }
 
         // if (setpoint_count < 30)
