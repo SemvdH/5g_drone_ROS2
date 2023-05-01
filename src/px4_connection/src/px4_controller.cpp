@@ -52,7 +52,7 @@ private:
     bool has_swithed = false;
     int setpoint_count = 0;
     float thrust = 0.5;
-    bool ready_to_fly = setpoint_count == 20;
+    bool ready_to_fly = false;
 
     void send_trajectory_setpoint()
     {
@@ -138,6 +138,7 @@ private:
         // increase amount of setpoints sent
         setpoint_count++;
 
+        ready_to_fly = setpoint_count == 20;
         // after 20 setpoints, send arm command to make drone actually fly
         if (ready_to_fly)
         {
