@@ -71,7 +71,7 @@ private:
     float cur_yaw = 0;
 
     void set_setpoint(
-        // const std::shared_ptr<rmw_request_id_t> request_header,
+        const std::shared_ptr<rmw_request_id_t> request_header,
         const std::shared_ptr<px4_connection::srv::SetAttitude::Request> request,
         const std::shared_ptr<px4_connection::srv::SetAttitude::Response> response)
     {
