@@ -19,7 +19,7 @@ https://discuss.px4.io/t/cannot-arm-drone-with-companion-computer-arming-denied-
 #include <px4_msgs/msg/vehicle_control_mode.hpp>
 // #include <px4_msgs/msg/offboard_control_mode.hpp>
 
-#define D_SPEED(x) x + 9.81
+#define D_SPEED(x) -x - 9.81
 
 using namespace std::chrono_literals;
 
@@ -62,7 +62,7 @@ private:
 
         msg.velocity[0] = 5;
         msg.velocity[1] = 5;
-        msg.velocity[2] = D_SPEED(10);
+        msg.velocity[2] = D_SPEED(1);
 
         msg.yaw = -3.14;
         msg.yawspeed = 0;
