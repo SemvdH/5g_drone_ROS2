@@ -244,7 +244,7 @@ private:
     }
 };
 
-void set_setpoint(const px4_connection::srv::SetAttitude::Request request, px4_connection::srv::SetAttitude::Response response)
+void set_setpoint(const std::shared_ptr<px4_connection::srv::SetAttitude::Request> request, std::shared_ptr<px4_connection::srv::SetAttitude::Response> response)
 {
 }
 
