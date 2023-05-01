@@ -30,15 +30,6 @@ using namespace std::placeholders;
 class PX4Controller : public rclcpp::Node
 {
 public:
-
-    void yeet(
-        const std::shared_ptr<px4_connection::srv::SetAttitude::Request> request,
-        const std::shared_ptr<px4_connection::srv::SetAttitude::Response> response)
-    {
-
-
-    }
-
     PX4Controller() : Node("px4_controller")
     {
         // create a publisher on the vehicle attitude setpoint topic
@@ -47,8 +38,7 @@ public:
         trajectory_setpoint_publisher = this->create_publisher<px4_msgs::msg::TrajectorySetpoint>("/fmu/in/trajectory_setpoint", 10);
         // offboard_control_mode_publisher_ = this->create_publisher<px4_msgs::msg::OffboardControlMode>("/fmu/in/offboard_control_mode", 10);
 
-        set_attitude_service_ = this->create_service<px4_connection::srv::SetAttitude>("set_attitude", &yeet);
-        // set_attitude_service_ = this->create_service<px4_connection::srv::SetAttitude>("set_attitude", std::bind(&PX4Controller::set_setpoint, this, _1, _2, _3));
+        set_attitude_service_ = this->create_service<px4_connection::srv::SetAttitude>("set_attitude", std::bind(&PX4Controller::set_setpoint, this));
 
         //         service_ptr_ = this->create_service<std_srvs::srv::Empty>(
         //         "test_service",
