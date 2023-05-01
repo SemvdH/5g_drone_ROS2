@@ -11,7 +11,7 @@ https://discuss.px4.io/t/cannot-arm-drone-with-companion-computer-arming-denied-
 #include <math.h>
 
 #include "rclcpp/rclcpp.hpp"
-#include "attitude_msg_code.hpp"
+// #include "attitude_msg_code.hpp"
 
 #include <px4_msgs/msg/vehicle_attitude_setpoint.hpp>
 #include <px4_msgs/msg/trajectory_setpoint.hpp>
@@ -84,7 +84,7 @@ private:
 
         last_angle = degrees_to_radians(request->angle);
 
-        response->status = ATTITUDE_STATUS_OK;
+        response->status = 0;
     }
 
     void send_trajectory_setpoint()
