@@ -60,7 +60,7 @@ private:
     {
 
         auto msg = px4_msgs::msg::TrajectorySetpoint();
-        if (start_time_ - this->get_clock().now().seconds() < 20)
+        if (start_time_ - this->get_clock()->now().seconds() < 20)
         {
             msg.velocity[0] = 0;
             msg.velocity[1] = 0;
