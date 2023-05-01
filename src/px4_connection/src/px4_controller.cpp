@@ -60,7 +60,7 @@ private:
 
         msg.velocity[0] = 2;
         msg.velocity[1] = 0;
-        msg.velocity[2] = 0.5;
+        msg.velocity[2] = 1;
 
         msg.yaw = -3.14;
         msg.yawspeed = 0;
