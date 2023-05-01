@@ -99,7 +99,7 @@ private:
         {
             if (!has_swithed)
             {
-                RCLCPP_INFO(this->get_logger(), "switching to 0 vel");
+                RCLCPP_INFO(this->get_logger(), "waiting for service input...");
                 has_swithed = true;
             }
 
