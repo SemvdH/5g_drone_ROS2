@@ -19,6 +19,8 @@ https://discuss.px4.io/t/cannot-arm-drone-with-companion-computer-arming-denied-
 #include <px4_msgs/msg/vehicle_command.hpp>
 #include <px4_msgs/msg/vehicle_control_mode.hpp>
 
+#include <drone_services/srv/set_attitude.hpp>
+
 
 // #include <px4_msgs/msg/offboard_control_mode.hpp>
 
