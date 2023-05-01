@@ -75,12 +75,11 @@ private:
                 has_swithed = true;
             }
 
-            cur_yaw += 1 % 360;
-            msg.velocity[0] = 0;
+            msg.velocity[0] = 5;
             msg.velocity[1] = 0;
             msg.velocity[2] = D_SPEED(0);
             msg.yawspeed = 0.5;
-            msg.yaw = degrees_to_radians(cur_yaw);
+            msg.yaw = degrees_to_radians(80);
         }
 
         // if (setpoint_count < 30)

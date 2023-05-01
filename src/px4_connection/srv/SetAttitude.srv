@@ -1,0 +1,9 @@
+#all speeds are in meters/second
+float32 x_speed
+float32 y_speed
+float32 z_speed
+
+#angle is in degrees
+float32 angle
+---
+int status
