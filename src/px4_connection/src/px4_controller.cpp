@@ -66,7 +66,7 @@ private:
         msg.yawspeed = 0;
         msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
 
-        trajectory_setpoint_publisher->publush(msg);
+        trajectory_setpoint_publisher->publish(msg);
     }
 
     void send_attitude_setpoint()
