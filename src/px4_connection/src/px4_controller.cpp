@@ -64,7 +64,7 @@ private:
         {
             msg.velocity[0] = 5;
             msg.velocity[1] = 5;
-            msg.velocity[2] = -20;
+            msg.velocity[2] = 20;
             msg.yawspeed = 0;
 
         } else {
