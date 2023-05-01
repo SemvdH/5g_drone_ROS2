@@ -78,13 +78,13 @@ private:
         const std::shared_ptr<px4_connection::srv::SetAttitude::Request> request,
         const std::shared_ptr<px4_connection::srv::SetAttitude::Response> response)
     {
-        last_setpoint[0] = request.x_speed;
-        last_setpoint[1] = request.y_speed;
-        last_setpoint[2] = request.x_speed;
+        last_setpoint[0] = request->x_speed;
+        last_setpoint[1] = request->y_speed;
+        last_setpoint[2] = request->x_speed;
 
-        last_angle = degrees_to_radians(request.angle);
+        last_angle = degrees_to_radians(request->angle);
 
-        response.status = ATTITUDE_STATUS_OK;
+        response->status = ATTITUDE_STATUS_OK;
     }
 
     void send_trajectory_setpoint()
