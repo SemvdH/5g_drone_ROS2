@@ -66,6 +66,7 @@ private:
             msg.velocity[1] = 0;
             msg.velocity[2] = D_SPEED(10);
             msg.yawspeed = 0;
+            msg.yaw = -3.14;
         } else {
             if (!has_swithed)
             {
@@ -76,6 +77,7 @@ private:
             msg.velocity[1] = 0;
             msg.velocity[2] = D_SPEED(0);
             msg.yawspeed = 1;
+            msg.yaw = 3.14;
         }
 
         // if (setpoint_count < 30)
@@ -89,7 +91,7 @@ private:
         //     msg.yawspeed = 1;
 
         // }
-        msg.yaw = -3.14;
+        
         msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
 
         trajectory_setpoint_publisher->publish(msg);
