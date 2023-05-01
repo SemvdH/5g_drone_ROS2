@@ -26,10 +26,6 @@ https://discuss.px4.io/t/cannot-arm-drone-with-companion-computer-arming-denied-
 
 using namespace std::chrono_literals;
 
-void set_setpoint(const px4_connection::srv::SetAttitude::Request request, px4_connection::srv::SetAttitude::Response response)
-{
-}
-
 class PX4Controller : public rclcpp::Node
 {
 public:
@@ -94,18 +90,6 @@ private:
             msg.yawspeed = 0.5;
             msg.yaw = degrees_to_radians(80);
         }
-
-        // if (setpoint_count < 30)
-        // {
-
-        // } else {
-        //     //try to hover
-        //     msg.velocity[0] = 0;
-        //     msg.velocity[1] = 0;
-        //     msg.velocity[2] = 0;
-        //     msg.yawspeed = 1;
-
-        // }
 
         msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
 
@@ -260,10 +244,17 @@ private:
     }
 };
 
+void set_setpoint(const px4_connection::srv::SetAttitude::Request request, px4_connection::srv::SetAttitude::Response response)
+{
+}
+
 int main(int argc, char *argv[])
 {
     rclcpp::init(argc, argv);
-    rclcpp::spin(std::make_shared<PX4Controller>());
+
+    rclcpp::Node node = PX4Controller();
+    node.create_service<px4_connection::srv::SetAttitude>("set_attitude", &set_setpoint);
+    rclcpp::spin(node);
     rclcpp::shutdown();
     return 0;
 }
