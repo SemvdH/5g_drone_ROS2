@@ -6,4 +6,4 @@ float32 z_speed
 #angle is in degrees
 float32 angle
 ---
-int status
+int8 status
