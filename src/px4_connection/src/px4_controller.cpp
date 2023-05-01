@@ -60,9 +60,9 @@ private:
     {
         auto msg = px4_msgs::msg::TrajectorySetpoint();
 
-        msg.velocity[0] = 2;
-        msg.velocity[1] = 0;
-        msg.velocity[2] = D_SPEED(9.81);
+        msg.velocity[0] = 5;
+        msg.velocity[1] = 5;
+        msg.velocity[2] = D_SPEED(10);
 
         msg.yaw = -3.14;
         msg.yawspeed = 0;
