@@ -26,6 +26,10 @@ https://discuss.px4.io/t/cannot-arm-drone-with-companion-computer-arming-denied-
 
 using namespace std::chrono_literals;
 
+void set_setpoint(const px4_connection::srv::SetAttitude::Request request, px4_connection::srv::SetAttitude::Response response)
+{
+}
+
 class PX4Controller : public rclcpp::Node
 {
 public:
@@ -37,7 +41,7 @@ public:
         trajectory_setpoint_publisher = this->create_publisher<px4_msgs::msg::TrajectorySetpoint>("/fmu/in/trajectory_setpoint", 10);
         // offboard_control_mode_publisher_ = this->create_publisher<px4_msgs::msg::OffboardControlMode>("/fmu/in/offboard_control_mode", 10);
 
-        set_attitude_service_ = this->create_service<px4_connection::srv::SetAttitude>("set_attitude", std::bind(&PX4Controller::set_setpoint, this));
+        set_attitude_service_ = this->create_service<px4_connection::srv::SetAttitude>("set_attitude", &set_setpoint);
 
         // create timer to send vehicle attitude setpoints every second
         timer_ = this->create_wall_timer(100ms, std::bind(&PX4Controller::send_setpoint, this));
@@ -64,11 +68,6 @@ private:
     bool ready_to_fly = false;
     float cur_yaw = 0;
 
-    void set_setpoint(const px4_connection::srv::SetAttitude::Request request, px4_connection::srv::SetAttitude::Response response)
-    {
-
-    }
-
     void send_trajectory_setpoint()
     {
 
@@ -80,7 +79,9 @@ private:
             msg.velocity[2] = D_SPEED(10);
             msg.yawspeed = 0;
             msg.yaw = -3.14;
-        } else {
+        }
+        else
+        {
             if (!has_swithed)
             {
                 RCLCPP_INFO(this->get_logger(), "switching to 0 vel");
@@ -105,7 +106,7 @@ private:
         //     msg.yawspeed = 1;
 
         // }
-        
+
         msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
 
         trajectory_setpoint_publisher->publish(msg);
