@@ -52,34 +52,31 @@ private:
     bool has_swithed = false;
     int setpoint_count = 0;
     float thrust = 0.5;
+    bool ready_to_fly = setpoint_count == 20;
 
-    /**
-     * @brief Only the attitude is enabled, because that is how the drone will be controlled.
-     *
-     */
-    void send_setpoint()
+    void send_trajectory_setpoint()
     {
+        auto msg = px4_msgs::msg::TrajectorySetpoint();
 
-        setpoint_count++;
+        msg.velocity[0] = 2;
+        msg.velocity[1] = 0;
+        msg.velocity[2] = 0.5;
 
-        if (setpoint_count % 20 == 0 && thrust <= 1) {
+        msg.yaw = -3.14;
+        msg.yawspeed = 0;
+        msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
+
+        trajectory_setpoint_publisher->publush(msg);
+    }
+
+    void send_attitude_setpoint()
+    {
+        if (setpoint_count % 20 == 0 && thrust <= 1)
+        {
             thrust += 0.1;
             RCLCPP_INFO(this->get_logger(), "increasing thrust to %f", thrust);
         }
 
-        if (setpoint_count == 20)
-        {
-            // switch to offboard mode and arm
-
-            // set to offboard mode
-            this->publish_vehicle_command(px4_msgs::msg::VehicleCommand::VEHICLE_CMD_DO_SET_MODE, 1, 6);
-            RCLCPP_INFO(this->get_logger(), "Set to offboard mode");
-            // arm the drone
-            this->publish_vehicle_command(px4_msgs::msg::VehicleCommand::VEHICLE_CMD_COMPONENT_ARM_DISARM, 1.0, 0);
-
-            RCLCPP_INFO(this->get_logger(), "Arm command sent");
-            flying = true;
-        }
         // set message to enable attitude
         auto msg = px4_msgs::msg::VehicleAttitudeSetpoint();
         // result quaternion
@@ -88,8 +85,8 @@ private:
         if (this->get_clock()->now().seconds() - start_time_ < 10)
         {
             // move up?
-            msg.thrust_body[0] = 0; // north
-            msg.thrust_body[1] = 0; // east
+            msg.thrust_body[0] = 0;    // north
+            msg.thrust_body[1] = 0;    // east
             msg.thrust_body[2] = -0.8; // down, 100% thrust up
 
             calculate_quaternion(q, 0, 0, 0);
@@ -97,19 +94,19 @@ private:
 
         else if (this->get_clock()->now().seconds() - start_time_ < 30)
         {
-            if (!has_swithed) 
+            if (!has_swithed)
             {
-                RCLCPP_INFO(this->get_logger(),"changing to 0.5 thrust");
+                RCLCPP_INFO(this->get_logger(), "changing to 0.5 thrust");
                 has_swithed = true;
             }
 
-            msg.thrust_body[0] = 0; // north
-            msg.thrust_body[1] = 0; // east
+            msg.thrust_body[0] = 0;    // north
+            msg.thrust_body[1] = 0;    // east
             msg.thrust_body[2] = -0.5; // down, 100% thrust up
 
             calculate_quaternion(q, 0, 0, 0);
         }
-        else 
+        else
         {
             if (flying)
             {
@@ -130,6 +127,33 @@ private:
 
         msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
         vehicle_setpoint_publisher_->publish(msg);
+    }
+
+    /**
+     * @brief Send setpoints to PX4. First, 20 setpoints will be sent before offboard mode will be engaged and the drone will be armed.
+     *
+     */
+    void send_setpoint()
+    {
+        // increase amount of setpoints sent
+        setpoint_count++;
+
+        // after 20 setpoints, send arm command to make drone actually fly
+        if (ready_to_fly)
+        {
+            // switch to offboard mode and arm
+
+            // set to offboard mode
+            this->publish_vehicle_command(px4_msgs::msg::VehicleCommand::VEHICLE_CMD_DO_SET_MODE, 1, 6);
+            RCLCPP_INFO(this->get_logger(), "Set to offboard mode");
+            // arm the drone
+            this->publish_vehicle_command(px4_msgs::msg::VehicleCommand::VEHICLE_CMD_COMPONENT_ARM_DISARM, 1.0, 0);
+
+            RCLCPP_INFO(this->get_logger(), "Arm command sent");
+            flying = true;
+        }
+
+        send_trajectory_setpoint();
     }
 
     /**
