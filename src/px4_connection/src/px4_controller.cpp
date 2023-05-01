@@ -59,8 +59,8 @@ private:
     void send_trajectory_setpoint()
     {
         auto msg = px4_msgs::msg::TrajectorySetpoint();
-        msg.velocity[0] = 5;
-        msg.velocity[1] = 5;
+        msg.velocity[0] = 0;
+        msg.velocity[1] = 0;
         msg.velocity[2] = -15;
         msg.yawspeed = 0;
 
