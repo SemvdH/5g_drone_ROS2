@@ -17,6 +17,8 @@ https://discuss.px4.io/t/cannot-arm-drone-with-companion-computer-arming-denied-
 // #include <px4_msgs/msg/timesync.hpp>
 #include <px4_msgs/msg/vehicle_command.hpp>
 #include <px4_msgs/msg/vehicle_control_mode.hpp>
+
+#include <px4_connection/srv/set_attitude.hpp>
 // #include <px4_msgs/msg/offboard_control_mode.hpp>
 
 #define D_SPEED(x) -x - 9.81
