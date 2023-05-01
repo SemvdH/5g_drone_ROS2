@@ -20,12 +20,7 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(px4_ros_com REQUIRED)
 find_package(px4_msgs REQUIRED)
-find_package(px4_connection REQUIRED)
-find_package(rosidl_default_generators REQUIRED)
-
-rosidl_generate_interfaces(${PROJECT_NAME}
-  "srv/SetAttitude.srv"
-)
+find_package(drone_services REQUIRED)
 
 include_directories(include)
 add_executable(heartbeat src/heartbeat.cpp)
@@ -42,7 +37,7 @@ ament_target_dependencies(
     rclcpp
     px4_ros_com
     px4_msgs
-    px4_connection
+    drone_services
 )
 
 target_include_directories(heartbeat PUBLIC
