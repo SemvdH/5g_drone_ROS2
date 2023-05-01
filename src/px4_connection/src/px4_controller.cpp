@@ -19,6 +19,8 @@ https://discuss.px4.io/t/cannot-arm-drone-with-companion-computer-arming-denied-
 #include <px4_msgs/msg/vehicle_control_mode.hpp>
 // #include <px4_msgs/msg/offboard_control_mode.hpp>
 
+#define D_SPEED(x) x + 9.81
+
 using namespace std::chrono_literals;
 
 class PX4Controller : public rclcpp::Node
@@ -60,7 +62,7 @@ private:
 
         msg.velocity[0] = 2;
         msg.velocity[1] = 0;
-        msg.velocity[2] = 1;
+        msg.velocity[2] = D_SPEED(9.81);
 
         msg.yaw = -3.14;
         msg.yawspeed = 0;
