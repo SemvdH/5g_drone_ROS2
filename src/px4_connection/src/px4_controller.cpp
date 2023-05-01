@@ -62,7 +62,7 @@ private:
 
         if (setpoint_count < 30)
         {
-            msg.velocity[0] = 0;
+            msg.velocity[0] = 5;
             msg.velocity[1] = 1;
             msg.velocity[2] = D_SPEED(10);
             msg.yawspeed = 0;
