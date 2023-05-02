@@ -1,9 +1,9 @@
-#all speeds are in meters/second
-float32 x_speed
-float32 y_speed
-float32 z_speed
+#all angles are in degrees
+float32 yaw
+float32 pitch
+float32 roll
 
-#angle is in degrees
-float32 angle
+#thrust between -1 and 1
+float32 thrust
 ---
 int8 status
