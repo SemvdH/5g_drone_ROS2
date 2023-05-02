@@ -187,7 +187,7 @@ private:
             flying = true;
         }
 
-        send_attitude_setpoint();
+        send_trajectory_setpoint();
     }
 
     /**
