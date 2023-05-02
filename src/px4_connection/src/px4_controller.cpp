@@ -62,7 +62,7 @@ private:
     bool flying = false;
     bool has_swithed = false;
     int setpoint_count = 0;
-    float thrust = 0.5;
+    float thrust = 0.0;
     bool ready_to_fly = false;
     float cur_yaw = 0;
 
@@ -119,7 +119,7 @@ private:
     {
         if (setpoint_count % 20 == 0 && thrust <= 1)
         {
-            thrust += 0.1;
+            thrust += 0.05;
             RCLCPP_INFO(this->get_logger(), "increasing thrust to %f", thrust);
         }
 
@@ -133,7 +133,7 @@ private:
             // move up?
             msg.thrust_body[0] = 0;    // north
             msg.thrust_body[1] = 0;    // east
-            msg.thrust_body[2] = -0.8; // down, 100% thrust up
+            msg.thrust_body[2] = -thrust; // down, 100% thrust up
 
             calculate_quaternion(q, 0, 0, 0);
         }
