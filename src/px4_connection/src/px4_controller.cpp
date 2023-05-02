@@ -21,7 +21,6 @@ https://discuss.px4.io/t/cannot-arm-drone-with-companion-computer-arming-denied-
 
 #include <drone_services/srv/set_attitude.hpp>
 
-
 // #include <px4_msgs/msg/offboard_control_mode.hpp>
 
 #define D_SPEED(x) -x - 9.81
@@ -39,7 +38,7 @@ public:
         trajectory_setpoint_publisher = this->create_publisher<px4_msgs::msg::TrajectorySetpoint>("/fmu/in/trajectory_setpoint", 10);
         // offboard_control_mode_publisher_ = this->create_publisher<px4_msgs::msg::OffboardControlMode>("/fmu/in/offboard_control_mode", 10);
 
-        set_attitude_service_ = this->create_service<drone_services::srv::SetAttitude>("set_attitude", std::bind(&PX4Controller::set_setpoint, this, std::placeholders::_1,std::placeholders::_2,std::placeholders::_3));
+        set_attitude_service_ = this->create_service<drone_services::srv::SetAttitude>("set_attitude", std::bind(&PX4Controller::set_setpoint, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
 
         // create timer to send vehicle attitude setpoints every second
         timer_ = this->create_wall_timer(100ms, std::bind(&PX4Controller::send_setpoint, this));
@@ -66,9 +65,11 @@ private:
     bool ready_to_fly = false;
     float cur_yaw = 0;
 
-    float last_setpoint[3] = {0,0,0};
+    float last_setpoint[3] = {0, 0, 0};
     float last_angle = 0;
     float last_thrust = 0;
+    // result quaternion
+    std::array<float, 4> q = {0, 0, 0, 0};
 
     void set_setpoint(
         const std::shared_ptr<rmw_request_id_t> request_header,
@@ -122,21 +123,21 @@ private:
 
         // set message to enable attitude
         auto msg = px4_msgs::msg::VehicleAttitudeSetpoint();
-        // result quaternion
-        std::array<float, 4> q = {0, 0, 0, 0};
 
-        if (this->get_clock()->now().seconds() - start_time_ < 30)
-        {
-            // move up?
-            msg.thrust_body[0] = 0;    // north
-            msg.thrust_body[1] = 0;    // east
-            msg.thrust_body[2] = -last_thrust;
+        // if (this->get_clock()->now().seconds() - start_time_ < 30)
+        // {
+        msg.yaw_body = last_setpoint[0];
+        msg.pitch_body = last_setpoint[1];
+        msg.roll_body = last_setpoint[2];
+        // move up?
+        msg.thrust_body[0] = 0; // north
+        msg.thrust_body[1] = 0; // east
+        msg.thrust_body[2] = -last_thrust;
 
-             RCLCPP_INFO(this->get_logger(), "yaw:%f pitch:%f roll:%f thrust:%f",last_setpoint[0],last_setpoint[1],last_setpoint[2], last_thrust);
+        RCLCPP_INFO(this->get_logger(), "yaw:%f pitch:%f roll:%f thrust:%f", last_setpoint[0], last_setpoint[1], last_setpoint[2], last_thrust);
 
-            calculate_quaternion(q, last_setpoint[0], last_setpoint[1], last_setpoint[2]);
-
-        }
+        calculate_quaternion(q, last_setpoint[0], last_setpoint[1], last_setpoint[2]);
+        // }
         // else
         // {
         //     if (flying)
@@ -146,7 +147,6 @@ private:
         //         RCLCPP_INFO(this->get_logger(), "Disarm command sent after 30 seconds");
         //     }
         // }
-
 
         // set quaternion
         msg.q_d[0] = q.at(0);
