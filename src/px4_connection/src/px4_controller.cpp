@@ -52,7 +52,7 @@ private:
     rclcpp::Publisher<px4_msgs::msg::VehicleAttitudeSetpoint>::SharedPtr vehicle_setpoint_publisher_;
     rclcpp::Publisher<px4_msgs::msg::TrajectorySetpoint>::SharedPtr trajectory_setpoint_publisher;
     rclcpp::Publisher<px4_msgs::msg::VehicleCommand>::SharedPtr vehicle_command_publisher_;
-    rclcpp::Service<drone_services::srv::SetVelocity>::SharedPtr set_attitude_service_;
+    rclcpp::Service<drone_services::srv::SetAttitude>::SharedPtr set_attitude_service_;
 
     // rclcpp::Publisher<px4_msgs::msg::OffboardControlMode>::SharedPtr offboard_control_mode_publisher_;
 
