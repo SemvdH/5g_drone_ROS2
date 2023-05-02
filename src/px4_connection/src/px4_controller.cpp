@@ -131,7 +131,7 @@ private:
             msg.thrust_body[1] = 0;    // east
             msg.thrust_body[2] = -last_thrust;
 
-            RCLCPP_INFO(this->get_logger(), "Thrust: %f", msg.thrust_body[2]);
+             RCLCPP_INFO(this->get_logger(), "yaw:%f pitch:%f roll:%f thrust:%f",last_setpoint[0],last_setpoint[1],last_setpoint[2], last_thrust);
 
             calculate_quaternion(q, last_setpoint[0], last_setpoint[1], last_setpoint[2]);
 
