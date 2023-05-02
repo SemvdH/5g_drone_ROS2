@@ -22,7 +22,7 @@ public:
     HeartBeat() : Node("setpoint_sender")
     {
         // create a publisher on the offboard control mode topic
-        offboard_control_mode_publisher_ = this->create_publisher<px4_msgs::msg::OffboardControlMode>("/fmu/in/offboard_control_mode", 10);
+        // offboard_control_mode_publisher_ = this->create_publisher<px4_msgs::msg::OffboardControlMode>("/fmu/in/offboard_control_mode", 10);
         // create timer to send heartbeat messages (offboard control) every 100ms
         timer_ = this->create_wall_timer(100ms, std::bind(&HeartBeat::send_heartbeat, this));
         start_time = this->get_clock()->now().seconds();
