@@ -80,7 +80,7 @@ private:
 
         last_thrust = request->thrust;
 
-        RCLCPP_INFO(this->get_logger(), "New setpoint: yaw:%f pitch:%f roll:%f thrust:%f",last_setpoint[0],last_setpoint[1],last_setpoint[2] last_thrust);
+        RCLCPP_INFO(this->get_logger(), "New setpoint: yaw:%f pitch:%f roll:%f thrust:%f",last_setpoint[0],last_setpoint[1],last_setpoint[2], last_thrust);
 
         response->status = 0;
     }
@@ -109,7 +109,6 @@ private:
             msg.velocity[1] = last_setpoint[1];
             msg.velocity[2] = D_SPEED(last_setpoint[2]);
             msg.yawspeed = 0.5;
-            msg.yaw = last_angle;
         }
 
         msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
