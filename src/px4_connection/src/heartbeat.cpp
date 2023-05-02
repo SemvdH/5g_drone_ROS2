@@ -41,9 +41,9 @@ private:
         // set message to enable attitude
         auto msg = px4_msgs::msg::OffboardControlMode();
         msg.position = false;
-        msg.velocity = true;
+        msg.velocity = false;
         msg.acceleration = false;
-        msg.attitude = false;
+        msg.attitude = true;
         msg.body_rate = false;
         msg.actuator = false;
 
