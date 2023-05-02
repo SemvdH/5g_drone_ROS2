@@ -42,8 +42,8 @@ private:
         auto msg = px4_msgs::msg::OffboardControlMode();
         msg.position = false;
         msg.velocity = false;
-        msg.acceleration = true;
-        msg.attitude = false;
+        msg.acceleration = false;
+        msg.attitude = true;
         msg.body_rate = false;
         msg.actuator = false;
 
