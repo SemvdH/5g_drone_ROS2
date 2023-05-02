@@ -19,7 +19,7 @@ https://discuss.px4.io/t/cannot-arm-drone-with-companion-computer-arming-denied-
 #include <px4_msgs/msg/vehicle_command.hpp>
 #include <px4_msgs/msg/vehicle_control_mode.hpp>
 
-#include <drone_services/srv/set_velocity.hpp>
+#include <drone_services/srv/set_attitude.hpp>
 
 
 // #include <px4_msgs/msg/offboard_control_mode.hpp>
@@ -39,7 +39,7 @@ public:
         trajectory_setpoint_publisher = this->create_publisher<px4_msgs::msg::TrajectorySetpoint>("/fmu/in/trajectory_setpoint", 10);
         // offboard_control_mode_publisher_ = this->create_publisher<px4_msgs::msg::OffboardControlMode>("/fmu/in/offboard_control_mode", 10);
 
-        set_attitude_service_ = this->create_service<drone_services::srv::SetVelocity>("set_attitude", std::bind(&PX4Controller::set_setpoint, this, std::placeholders::_1,std::placeholders::_2,std::placeholders::_3));
+        set_attitude_service_ = this->create_service<drone_services::srv::SetAttitude>("set_attitude", std::bind(&PX4Controller::set_setpoint, this, std::placeholders::_1,std::placeholders::_2,std::placeholders::_3));
 
         // create timer to send vehicle attitude setpoints every second
         timer_ = this->create_wall_timer(100ms, std::bind(&PX4Controller::send_setpoint, this));
@@ -67,18 +67,20 @@ private:
     float cur_yaw = 0;
 
     float last_setpoint[3] = {0,0,0};
-    float last_angle = 0;
+    float last_thrust = 0;
 
     void set_setpoint(
         const std::shared_ptr<rmw_request_id_t> request_header,
-        const std::shared_ptr<drone_services::srv::SetVelocity::Request> request,
-        const std::shared_ptr<drone_services::srv::SetVelocity::Response> response)
+        const std::shared_ptr<drone_services::srv::SetAttitude::Request> request,
+        const std::shared_ptr<drone_services::srv::SetAttitude::Response> response)
     {
-        last_setpoint[0] = request->x_speed;
-        last_setpoint[1] = request->y_speed;
-        last_setpoint[2] = request->x_speed;
+        last_setpoint[0] = degrees_to_radians(request->yaw);
+        last_setpoint[1] = degrees_to_radians(request->pitch);
+        last_setpoint[2] = degrees_to_radians(request->roll);
 
-        last_angle = degrees_to_radians(request->angle);
+        last_thrust = request->thrust;
+
+        RCLCPP_INFO(this->get_logger(), "New setpoint: yaw:%f pitch:%f roll:%f thrust:%f",last_setpoint[0],last_setpoint[1],last_setpoint[2] last_thrust);
 
         response->status = 0;
     }
@@ -117,40 +119,23 @@ private:
 
     void send_attitude_setpoint()
     {
-        if (setpoint_count % 20 == 0 && thrust <= 1)
-        {
-            thrust += 0.05;
-            RCLCPP_INFO(this->get_logger(), "increasing thrust to %f", thrust);
-        }
 
         // set message to enable attitude
         auto msg = px4_msgs::msg::VehicleAttitudeSetpoint();
         // result quaternion
         std::array<float, 4> q = {0, 0, 0, 0};
 
-        if (this->get_clock()->now().seconds() - start_time_ < 10)
+        if (this->get_clock()->now().seconds() - start_time_ < 30)
         {
             // move up?
             msg.thrust_body[0] = 0;    // north
             msg.thrust_body[1] = 0;    // east
-            msg.thrust_body[2] = -thrust; // down, 100% thrust up
+            msg.thrust_body[2] = -last_thrust;
 
-            calculate_quaternion(q, 0, 0, 0);
-        }
+            RCLCPP_INFO(this->get_logger(), "Thrust: %f", msg.thrust_body[2]);
 
-        else if (this->get_clock()->now().seconds() - start_time_ < 30)
-        {
-            if (!has_swithed)
-            {
-                RCLCPP_INFO(this->get_logger(), "changing to 0.5 thrust");
-                has_swithed = true;
-            }
+            calculate_quaternion(q, last_setpoint[0], last_setpoint[1], last_setpoint[2]);
 
-            msg.thrust_body[0] = 0;    // north
-            msg.thrust_body[1] = 0;    // east
-            msg.thrust_body[2] = -0.5; // down, 100% thrust up
-
-            calculate_quaternion(q, 0, 0, 0);
         }
         else
         {
@@ -162,6 +147,8 @@ private:
             }
         }
 
+
+        // set quaternion
         msg.q_d[0] = q.at(0);
         msg.q_d[1] = q.at(1);
         msg.q_d[2] = q.at(2);
