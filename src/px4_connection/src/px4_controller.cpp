@@ -95,7 +95,9 @@ private:
         } else 
         {
             last_thrust = 0;
-            last_setpoint = {0, 0, 0};
+            last_setpoint[0] = 0;
+            last_setpoint[1] = 0;
+            last_setpoint[2] = 0;
             response->status = 1;
         }
     }
