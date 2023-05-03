@@ -83,8 +83,8 @@ private:
     {
         if (armed)
         {
-                last_setpoint[1] = degrees_to_radians(request->yaw);
-                last_setpoint[0] = degrees_to_radians(request->pitch);
+                last_setpoint[0] = degrees_to_radians(request->yaw);
+                last_setpoint[1] = degrees_to_radians(request->pitch);
                 last_setpoint[2] = degrees_to_radians(request->roll);
             // if (request->yaw == 0 && request->pitch = 0 && request->roll = 0)
             // {
