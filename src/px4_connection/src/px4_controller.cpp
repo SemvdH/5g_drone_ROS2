@@ -17,6 +17,7 @@ https://discuss.px4.io/t/cannot-arm-drone-with-companion-computer-arming-denied-
 #include <px4_msgs/msg/trajectory_setpoint.hpp>
 #include <px4_msgs/msg/vehicle_command.hpp>
 #include <px4_msgs/msg/vehicle_control_mode.hpp>
+#include <px4_msgs/msg/vehicle_attitude.hpp>
 
 #include <drone_services/srv/set_attitude.hpp>
 
@@ -33,11 +34,17 @@ class PX4Controller : public rclcpp::Node
 public:
     PX4Controller() : Node("px4_controller")
     {
+
+        rmw_qos_profile_t qos_profile = rmw_qos_profile_sensor_data;
+		auto qos = rclcpp::QoS(rclcpp::QoSInitialization(qos_profile.history, 5), qos_profile);
+
         // create a publisher on the vehicle attitude setpoint topic
         vehicle_setpoint_publisher_ = this->create_publisher<px4_msgs::msg::VehicleAttitudeSetpoint>("/fmu/in/vehicle_attitude_setpoint", 10);
         vehicle_command_publisher_ = this->create_publisher<px4_msgs::msg::VehicleCommand>("/fmu/in/vehicle_command", 10);
         trajectory_setpoint_publisher = this->create_publisher<px4_msgs::msg::TrajectorySetpoint>("/fmu/in/trajectory_setpoint", 10);
         // offboard_control_mode_publisher_ = this->create_publisher<px4_msgs::msg::OffboardControlMode>("/fmu/in/offboard_control_mode", 10);
+
+        vehicle_attitude_subscription_ = this->create_subscription<px4_msgs::msg::VehicleAttitude>("/fmu/out/vehicle_attitude", qos, std::bind(&PX4Controller::on_attitude_receive, this));
 
         set_attitude_service_ = this->create_service<drone_services::srv::SetAttitude>("drone/set_attitude", std::bind(&PX4Controller::set_setpoint, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
         disarm_service_ = this->create_service<std_srvs::srv::Empty>("drone/disarm", std::bind(&PX4Controller::handle_disarm_request, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
@@ -53,6 +60,8 @@ private:
     rclcpp::Publisher<px4_msgs::msg::VehicleAttitudeSetpoint>::SharedPtr vehicle_setpoint_publisher_;
     rclcpp::Publisher<px4_msgs::msg::TrajectorySetpoint>::SharedPtr trajectory_setpoint_publisher;
     rclcpp::Publisher<px4_msgs::msg::VehicleCommand>::SharedPtr vehicle_command_publisher_;
+    rclcpp::Subscription<px4_msgs::msg::VehicleAttitude>::SharedPtr vehicle_attitude_subscription_;
+
     rclcpp::Service<drone_services::srv::SetAttitude>::SharedPtr set_attitude_service_;
     rclcpp::Service<std_srvs::srv::Empty>::SharedPtr disarm_service_;
 
@@ -237,6 +246,11 @@ private:
         }
 
         send_attitude_setpoint();
+    }
+
+    void on_attitude_receive(const px4_msgs::msg::VehicleAttitude::SharedPtr msg)
+    {
+
     }
 
     /**
