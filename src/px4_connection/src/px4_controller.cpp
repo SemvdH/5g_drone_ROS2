@@ -15,11 +15,12 @@ https://discuss.px4.io/t/cannot-arm-drone-with-companion-computer-arming-denied-
 
 #include <px4_msgs/msg/vehicle_attitude_setpoint.hpp>
 #include <px4_msgs/msg/trajectory_setpoint.hpp>
-// #include <px4_msgs/msg/timesync.hpp>
 #include <px4_msgs/msg/vehicle_command.hpp>
 #include <px4_msgs/msg/vehicle_control_mode.hpp>
 
 #include <drone_services/srv/set_attitude.hpp>
+
+#include <std_srvs/srv/empty.hpp>
 
 // #include <px4_msgs/msg/offboard_control_mode.hpp>
 
@@ -38,7 +39,8 @@ public:
         trajectory_setpoint_publisher = this->create_publisher<px4_msgs::msg::TrajectorySetpoint>("/fmu/in/trajectory_setpoint", 10);
         // offboard_control_mode_publisher_ = this->create_publisher<px4_msgs::msg::OffboardControlMode>("/fmu/in/offboard_control_mode", 10);
 
-        set_attitude_service_ = this->create_service<drone_services::srv::SetAttitude>("set_attitude", std::bind(&PX4Controller::set_setpoint, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
+        set_attitude_service_ = this->create_service<drone_services::srv::SetAttitude>("drone/set_attitude", std::bind(&PX4Controller::set_setpoint, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
+        set_attitude_service_ = this->create_service<drone_services::srv::SetAttitude>("drone/disarm", std::bind(&PX4Controller::handle_disarm_request, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
 
         // create timer to send vehicle attitude setpoints every second
         timer_ = this->create_wall_timer(100ms, std::bind(&PX4Controller::send_setpoint, this));
@@ -52,6 +54,7 @@ private:
     rclcpp::Publisher<px4_msgs::msg::TrajectorySetpoint>::SharedPtr trajectory_setpoint_publisher;
     rclcpp::Publisher<px4_msgs::msg::VehicleCommand>::SharedPtr vehicle_command_publisher_;
     rclcpp::Service<drone_services::srv::SetAttitude>::SharedPtr set_attitude_service_;
+    rclcpp::Service<std_srvs::srv::Empty>::SharedPtr disarm_service_;
 
     // rclcpp::Publisher<px4_msgs::msg::OffboardControlMode>::SharedPtr offboard_control_mode_publisher_;
 
@@ -85,6 +88,21 @@ private:
         RCLCPP_INFO(this->get_logger(), "New setpoint: yaw:%f pitch:%f roll:%f thrust:%f", last_setpoint[0], last_setpoint[1], last_setpoint[2], last_thrust);
 
         response->status = 0;
+    }
+
+/**
+ * @brief disarms the drone when a call to the disarm service is made
+ * 
+ * @param request_header the header for the service request
+ * @param request the request (empty)
+ * @param response the response (empty)
+ */
+    void handle_disarm_request(
+        const std::shared_ptr<rmw_request_id_t> request_header,
+        const std::shared_ptr<std_srvs::srv::Empty::Request> request,
+        const std::shared_ptr<std_srvs::srv::Empty::Response> response)
+    {
+        publish_vehicle_command(px4_msgs::msg::VehicleCommand::VEHICLE_CMD_COMPONENT_ARM_DISARM, 0.0, 0);
     }
 
     void send_trajectory_setpoint()

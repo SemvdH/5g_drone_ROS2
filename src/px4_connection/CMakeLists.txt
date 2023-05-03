@@ -21,6 +21,7 @@ find_package(rclcpp REQUIRED)
 find_package(px4_ros_com REQUIRED)
 find_package(px4_msgs REQUIRED)
 find_package(drone_services REQUIRED)
+find_package(std_srvs REQUIRED)
 
 include_directories(include)
 add_executable(heartbeat src/heartbeat.cpp)
@@ -38,6 +39,7 @@ ament_target_dependencies(
     px4_ros_com
     px4_msgs
     drone_services
+    std_srvs
 )
 
 target_include_directories(heartbeat PUBLIC

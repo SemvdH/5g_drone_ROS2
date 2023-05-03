@@ -13,6 +13,7 @@
     <depend>px4_ros_com</depend>
     <depend>px4_msgs</depend>
     <depend>drone_services</depend>
+    <depend>std_srvs</depend>
 
     <test_depend>ament_lint_auto</test_depend>
     <test_depend>ament_lint_common</test_depend>
