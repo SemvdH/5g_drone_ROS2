@@ -11,10 +11,12 @@ class TestController(Node):
 
     def __init__(self):
         super().__init__('test_controller')
-        # self.cli = self.create_client(SetAttitude, 'drone/set_attitude')
-        # while not self.cli.wait_for_service(timeout_sec=1.0):
-        #     self.get_logger().info('service not available, waiting again...')
+        self.cli = self.create_client(SetAttitude, 'drone/set_attitude')
+        while not self.cli.wait_for_service(timeout_sec=1.0):
+            self.get_logger().info('service not available, waiting again...')
         self.req = SetAttitude.Request()
+
+        self.get_logger().info("Controls:\nW - forward\nS - backward\nA - left\nD - right\nQ - rotate left\nE - rotate right\nSpace - up\nShift - down\nEsc - exit")
 
     def spin(self):
         with keyboard.Listener(on_press=self.on_press, on_release=self.on_release) as listener:
