@@ -3,9 +3,9 @@
 <package format="3">
   <name>test_controls</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
+  <description>test controls</description>
   <maintainer email="semmer99@gmail.com">ubuntu</maintainer>
-  <license>TODO: License declaration</license>
+  <license>Apache License 2.0</license>
 
   <exec_depend>rclpy</exec_depend>
   <exec_depend>drone_services</exec_depend>
