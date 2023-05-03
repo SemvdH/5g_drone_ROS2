@@ -64,9 +64,9 @@ class TestController(Node):
                     name = 'UNKNOWN'
                     vk = key.vk
                 self.get_logger().info('pressed {} ({})'.format(name, vk))
-                if vk == Key.space:
+                if vk == 32:
                     self.get_logger().info('up')
-                if vk == Key.shift:
+                if vk == 65505:
                     self.get_logger().info('down')
         except Exception as e:
             self.get_logger().error(str(e))
