@@ -83,16 +83,16 @@ private:
     {
         if (armed)
         {
-            if (request->yaw == 0 && request->pitch = 0 && request->roll = 0)
-            {
                 last_setpoint[0] = degrees_to_radians(request->yaw);
                 last_setpoint[1] = degrees_to_radians(request->pitch);
                 last_setpoint[2] = degrees_to_radians(request->roll);
-            } else {
-                last_setpoint[0] += degrees_to_radians(request->yaw);
-                last_setpoint[1] += degrees_to_radians(request->pitch);
-                last_setpoint[2] += degrees_to_radians(request->roll);
-            }
+            // if (request->yaw == 0 && request->pitch = 0 && request->roll = 0)
+            // {
+            // } else {
+            //     last_setpoint[0] += degrees_to_radians(request->yaw);
+            //     last_setpoint[1] += degrees_to_radians(request->pitch);
+            //     last_setpoint[2] += degrees_to_radians(request->roll);
+            // }
             last_thrust = request->thrust;
 
 
@@ -169,9 +169,9 @@ private:
 
         // if (this->get_clock()->now().seconds() - start_time_ < 30)
         // {
-        msg.yaw_body = last_setpoint[0];
-        msg.pitch_body = last_setpoint[1];
-        msg.roll_body = last_setpoint[2];
+        // msg.yaw_body = last_setpoint[0];
+        // msg.pitch_body = last_setpoint[1];
+        // msg.roll_body = last_setpoint[2];
         // move up?
         msg.thrust_body[0] = 0; // north
         msg.thrust_body[1] = 0; // east
