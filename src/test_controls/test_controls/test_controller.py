@@ -32,6 +32,9 @@ class TestController(Node):
         self.get_logger().info('publishing message on service')
         return self.future.result()
 
+    def on_release(self, key):
+        self.get_logger().info('released ' + str(key))
+        
     def on_press(self, key):
         try:
             char = getattr(key, 'char', None)
