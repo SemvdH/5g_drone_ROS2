@@ -1,6 +1,6 @@
 #all angles are in degrees
-float32 yaw
 float32 pitch
+float32 yaw
 float32 roll
 
 #thrust between -1 and 1
