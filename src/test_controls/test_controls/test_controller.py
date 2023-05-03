@@ -1,7 +1,7 @@
 import rclpy
 from rclpy.node import Node
 
-from pynput.keyboard import KeyCode
+from pynput.keyboard import Key
 from pynput import keyboard
 
 from drone_services.srv import SetAttitude
@@ -41,7 +41,19 @@ class TestController(Node):
         try:
             char = getattr(key, 'char', None)
             if isinstance(char, str):
-                self.get_logger().info('pressed ' + char)
+                # self.get_logger().info('pressed ' + char)
+                if char == 'w':
+                    self.get_logger().info('forward')
+                if char == 's':
+                    self.get_logger().info('backward')
+                if char == 'a':
+                    self.get_logger().info('left')
+                if char == 'd':
+                    self.get_logger().info('right')
+                if char == 'q':
+                    self.get_logger().info('rotate left')
+                if char == 'e':
+                    self.get_logger().info('rotate right')
             else:
                 try:
                     # known keys like spacebar, ctrl
@@ -52,6 +64,10 @@ class TestController(Node):
                     name = 'UNKNOWN'
                     vk = key.vk
                 self.get_logger().info('pressed {} ({})'.format(name, vk))
+                if vk == Key.space:
+                    self.get_logger().info('up')
+                if vk == Key.shift:
+                    self.get_logger().info('down')
         except Exception as e:
             self.get_logger().error(str(e))
             raise
