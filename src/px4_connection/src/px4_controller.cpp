@@ -62,6 +62,7 @@ private:
     double start_time_;
     bool has_sent_status = false;
     bool flying = false;
+    bool armed = false;
     bool has_swithed = false;
     int setpoint_count = 0;
     float thrust = 0.0;
@@ -71,6 +72,7 @@ private:
     float last_setpoint[3] = {0, 0, 0};
     float last_angle = 0;
     float last_thrust = 0;
+
     // result quaternion
     std::array<float, 4> q = {0, 0, 0, 0};
 
@@ -79,30 +81,44 @@ private:
         const std::shared_ptr<drone_services::srv::SetAttitude::Request> request,
         const std::shared_ptr<drone_services::srv::SetAttitude::Response> response)
     {
-        last_setpoint[0] = degrees_to_radians(request->yaw);
-        last_setpoint[1] = degrees_to_radians(request->pitch);
-        last_setpoint[2] = degrees_to_radians(request->roll);
+        if (armed)
+        {
+            last_setpoint[0] = degrees_to_radians(request->yaw);
+            last_setpoint[1] = degrees_to_radians(request->pitch);
+            last_setpoint[2] = degrees_to_radians(request->roll);
 
-        last_thrust = request->thrust;
+            last_thrust = request->thrust;
 
-        RCLCPP_INFO(this->get_logger(), "New setpoint: yaw:%f pitch:%f roll:%f thrust:%f", last_setpoint[0], last_setpoint[1], last_setpoint[2], last_thrust);
+            RCLCPP_INFO(this->get_logger(), "New setpoint: yaw:%f pitch:%f roll:%f thrust:%f", last_setpoint[0], last_setpoint[1], last_setpoint[2], last_thrust);
 
-        response->status = 0;
+            response->status = 0;
+        } else 
+        {
+            last_thrust = 0;
+            last_setpoint = {0, 0, 0};
+            response->status = 1;
+        }
     }
 
-/**
- * @brief disarms the drone when a call to the disarm service is made
- * 
- * @param request_header the header for the service request
- * @param request the request (empty)
- * @param response the response (empty)
- */
+    /**
+     * @brief disarms the drone when a call to the disarm service is made
+     *
+     * @param request_header the header for the service request
+     * @param request the request (empty)
+     * @param response the response (empty)
+     */
     void handle_disarm_request(
         const std::shared_ptr<rmw_request_id_t> request_header,
         const std::shared_ptr<std_srvs::srv::Empty::Request> request,
         const std::shared_ptr<std_srvs::srv::Empty::Response> response)
     {
-        publish_vehicle_command(px4_msgs::msg::VehicleCommand::VEHICLE_CMD_COMPONENT_ARM_DISARM, 0.0, 0);
+        RCLCPP_INFO(this->get_logger(), "Got disarm request...");
+
+        if (armed)
+        {
+            armed = false;
+            publish_vehicle_command(px4_msgs::msg::VehicleCommand::VEHICLE_CMD_COMPONENT_ARM_DISARM, 0.0, 0);
+        }
     }
 
     void send_trajectory_setpoint()
@@ -203,6 +219,7 @@ private:
 
             RCLCPP_INFO(this->get_logger(), "Arm command sent");
             flying = true;
+            armed = true;
         }
 
         send_attitude_setpoint();
