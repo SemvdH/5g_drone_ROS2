@@ -11,9 +11,9 @@ class TestController(Node):
 
     def __init__(self):
         super().__init__('test_controller')
-        self.cli = self.create_client(SetAttitude, 'drone/set_attitude')
-        while not self.cli.wait_for_service(timeout_sec=1.0):
-            self.get_logger().info('service not available, waiting again...')
+        # self.cli = self.create_client(SetAttitude, 'drone/set_attitude')
+        # while not self.cli.wait_for_service(timeout_sec=1.0):
+        #     self.get_logger().info('service not available, waiting again...')
         self.req = SetAttitude.Request()
 
     def spin(self):
