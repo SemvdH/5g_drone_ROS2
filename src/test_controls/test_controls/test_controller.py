@@ -34,13 +34,12 @@ class TestController(Node):
 
     def on_release(self, key):
         self.get_logger().info('released ' + str(key))
-        
+
     def on_press(self, key):
         try:
             char = getattr(key, 'char', None)
             if isinstance(char, str):
-                self.logger.info('pressed ' + char)
-                self.pub_glyph.publish(self.pub_glyph.msg_type(data=char))
+                self.get_logger().info('pressed ' + char)
             else:
                 try:
                     # known keys like spacebar, ctrl
@@ -50,13 +49,13 @@ class TestController(Node):
                     # unknown keys like headphones skip song button
                     name = 'UNKNOWN'
                     vk = key.vk
-                self.logger.info('pressed {} ({})'.format(name, vk))
+                self.get_logger().info('pressed {} ({})'.format(name, vk))
         except Exception as e:
-            self.logger.error(str(e))
+            self.get_logger().error(str(e))
             raise
 
         if key == keyboard.Key.esc:
-            self.logger.info('stopping listener')
+            self.get_logger().info('stopping listener')
             raise keyboard.Listener.StopException
 
 
