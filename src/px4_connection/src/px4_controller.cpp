@@ -256,7 +256,7 @@ private:
      * @param attitude desired attitude (pitch) in radians.
      * @param bank desired bank (roll) in radians.
      */
-    static void calculate_quaternion(std::array<float, 4> ptr, float heading, float attitude, float bank)
+    static void calculate_quaternion(std::array<float, 4> &ptr, float heading, float attitude, float bank)
     {
 
         float c1 = cos(heading / 2);
