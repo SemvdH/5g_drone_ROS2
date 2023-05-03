@@ -82,6 +82,9 @@ private:
     float last_angle = 0;
     float last_thrust = 0;
 
+    float base_q[4] = {0, 0, 0, 0};
+    int base_q_amount = 0;
+
     // result quaternion
     std::array<float, 4> q = {0, 0, 0, 0};
 
@@ -250,7 +253,14 @@ private:
 
     void on_attitude_receive(const px4_msgs::msg::VehicleAttitude::SharedPtr msg)
     {
-
+        if (!ready_to_fly)
+        {
+            base_q_amount++;
+            base_q[0] = (base_q[0] + msg->q[0])/base_q_amount;
+            base_q[1] = (base_q[1] + msg->q[1])/base_q_amount;
+            base_q[2] = (base_q[2] + msg->q[2])/base_q_amount;
+            base_q[3] = (base_q[3] + msg->q[3])/base_q_amount;
+        }
     }
 
     /**
