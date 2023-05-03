@@ -100,6 +100,7 @@ private:
                     last_thrust = 0;
             }
 
+            RCLCPP_INFO(this->get_logger(), "got values: yaw:%f pitch:%f roll:%f thrust:%f", request->yaw, request->pitch, request->roll, request->thrust);
             RCLCPP_INFO(this->get_logger(), "New setpoint: yaw:%f pitch:%f roll:%f thrust:%f", last_setpoint[0], last_setpoint[1], last_setpoint[2], last_thrust);
 
             response->status = 0;
@@ -183,7 +184,7 @@ private:
 
 
         calculate_quaternion(q, last_setpoint[0], last_setpoint[1], last_setpoint[2]);
-        RCLCPP_INFO(this->get_logger(), "yaw:%f pitch:%f roll:%f thrust:%f", q.at(0), q.at(1), q.at(2), last_thrust);
+        // RCLCPP_INFO(this->get_logger(), "yaw:%f pitch:%f roll:%f thrust:%f", q.at(0), q.at(1), q.at(2), last_thrust);
         // }
         // else
         // {

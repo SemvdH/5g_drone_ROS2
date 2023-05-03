@@ -79,11 +79,11 @@ class TestController(Node):
                 # self.get_logger().info('pressed {} ({})'.format(name, vk))
                 if vk == 32:
                     self.get_logger().info('up')
-                    self.send_request(pitch=0.0, yaw=0.0, roll=0.0, thrust=0.1)
+                    self.send_request(pitch=0.0, yaw=0.0, roll=0.0, thrust=0.05)
                 if vk == 65505:
                     self.get_logger().info('down')
                     self.send_request(pitch=0.0, yaw=0.0,
-                                      roll=0.0, thrust=-0.1)
+                                      roll=0.0, thrust=-0.05)
 
         except Exception as e:
             self.get_logger().error(str(e))
