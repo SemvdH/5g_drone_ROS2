@@ -35,7 +35,8 @@ class TestController(Node):
         return self.future.result()
 
     def on_release(self, key):
-        self.get_logger().info('released ' + str(key))
+        # self.get_logger().info('released ' + str(key))
+        pass
 
     def on_press(self, key):
         try:
@@ -63,7 +64,7 @@ class TestController(Node):
                     # unknown keys like headphones skip song button
                     name = 'UNKNOWN'
                     vk = key.vk
-                self.get_logger().info('pressed {} ({})'.format(name, vk))
+                # self.get_logger().info('pressed {} ({})'.format(name, vk))
                 if vk == 32:
                     self.get_logger().info('up')
                 if vk == 65505:
