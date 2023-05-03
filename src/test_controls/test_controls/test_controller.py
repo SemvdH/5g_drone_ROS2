@@ -11,9 +11,9 @@ class TestController(Node):
 
     def __init__(self):
         super().__init__('test_controller')
-        # self.cli = self.create_client(SetAttitude, 'drone/set_attitude')
-        # while not self.cli.wait_for_service(timeout_sec=1.0):
-        #     self.get_logger().info('service not available, waiting again...')
+        self.cli = self.create_client(SetAttitude, 'drone/set_attitude')
+        while not self.cli.wait_for_service(timeout_sec=1.0):
+            self.get_logger().info('service not available, waiting again...')
         self.req = SetAttitude.Request()
 
         self.get_logger().info("Controls:\nW - forward\nS - backward\nA - left\nD - right\nQ - rotate left\nE - rotate right\nSpace - up\nShift - down\nEsc - exit")
@@ -45,16 +45,22 @@ class TestController(Node):
                 # self.get_logger().info('pressed ' + char)
                 if char == 'w':
                     self.get_logger().info('forward')
+                    self.send_request(pitch=-10, yaw=0,roll=0, thrust=0)
                 if char == 's':
                     self.get_logger().info('backward')
+                    self.send_request(pitch=10, yaw=0,roll=0, thrust=0)
                 if char == 'a':
                     self.get_logger().info('left')
+                    self.send_request(pitch=0, yaw=0,roll=-10, thrust=0)
                 if char == 'd':
                     self.get_logger().info('right')
+                    self.send_request(pitch=0, yaw=0,roll=10, thrust=0)
                 if char == 'q':
                     self.get_logger().info('rotate left')
+                    self.send_request(pitch=0, yaw=-10,roll=0, thrust=0)
                 if char == 'e':
                     self.get_logger().info('rotate right')
+                    self.send_request(pitch=0, yaw=10,roll=0, thrust=0)
             else:
                 try:
                     # known keys like spacebar, ctrl
@@ -67,8 +73,11 @@ class TestController(Node):
                 # self.get_logger().info('pressed {} ({})'.format(name, vk))
                 if vk == 32:
                     self.get_logger().info('up')
+                    self.send_request(pitch=0, yaw=0,roll=0, thrust=0.1)
                 if vk == 65505:
                     self.get_logger().info('down')
+                    self.send_request(pitch=0, yaw=0,roll=0, thrust=-0.1)
+
         except Exception as e:
             self.get_logger().error(str(e))
             raise

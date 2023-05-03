@@ -83,18 +83,22 @@ private:
     {
         if (armed)
         {
-            if (request->yaw == 0 && request->pitch = 0 && request->roll = 0)
+            if (request->yaw == 0 && request->pitch = 0 && request->roll = 0 && request->thrust = 0)
             {
                 last_setpoint[0] = degrees_to_radians(request->yaw);
                 last_setpoint[1] = degrees_to_radians(request->pitch);
                 last_setpoint[2] = degrees_to_radians(request->roll);
+                last_thrust = request->thrust;
             } else {
                 last_setpoint[0] += degrees_to_radians(request->yaw);
                 last_setpoint[1] += degrees_to_radians(request->pitch);
                 last_setpoint[2] += degrees_to_radians(request->roll);
+                last_thrust += request->thrust;
+                if (last_thrust > 1)
+                    last_thrust = 1;
+                else if (last_thrust < 0)
+                    last_thrust = 0;
             }
-            last_thrust = request->thrust;
-
 
             RCLCPP_INFO(this->get_logger(), "New setpoint: yaw:%f pitch:%f roll:%f thrust:%f", last_setpoint[0], last_setpoint[1], last_setpoint[2], last_thrust);
 
