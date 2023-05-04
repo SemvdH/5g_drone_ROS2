@@ -16,7 +16,7 @@ class TestController(Node):
             self.get_logger().info('service not available, waiting again...')
         self.req = SetAttitude.Request()
 
-        self.get_logger().info("Controls:\nW - forward\nS - backward\nA - left\nD - right\nQ - rotate left\nE - rotate right\nSpace - up\nShift - down\nEsc - exit")
+        self.get_logger().info("Controls:\nW - forward\nS - backward\nA - left\nD - right\nQ - rotate left\nE - rotate right\nSpace - up\nShift - down\nN - emergency stop\nEsc - exit")
 
     def spin(self):
         while rclpy.ok():
@@ -73,6 +73,10 @@ class TestController(Node):
                 self.get_logger().info('up')
                 self.send_request(pitch=0.0, yaw=0.0,
                                   roll=0.0, thrust=0.05)
+            if key == 'n':
+                self.get_logger().info('stop')
+                self.send_request(pitch=0.0, yaw=0.0,
+                                  roll=0.0, thrust=0.0)
             # else:
             #     try:
             #         # known keys like spacebar, ctrl

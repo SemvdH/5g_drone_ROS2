@@ -102,6 +102,7 @@ private:
                 last_setpoint[1] = degrees_to_radians(request->pitch);
                 last_setpoint[2] = degrees_to_radians(request->roll);
                 last_thrust = request->thrust;
+                RCLCPP_INFO(this->get_logger(), "STOPPING MOTORS");
             }
             else
             {
