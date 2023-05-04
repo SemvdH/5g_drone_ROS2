@@ -36,7 +36,7 @@ public:
     {
 
         rmw_qos_profile_t qos_profile = rmw_qos_profile_sensor_data;
-		auto qos = rclcpp::QoS(rclcpp::QoSInitialization(qos_profile.history, 5), qos_profile);
+        auto qos = rclcpp::QoS(rclcpp::QoSInitialization(qos_profile.history, 5), qos_profile);
 
         // create a publisher on the vehicle attitude setpoint topic
         vehicle_setpoint_publisher_ = this->create_publisher<px4_msgs::msg::VehicleAttitudeSetpoint>("/fmu/in/vehicle_attitude_setpoint", 10);
@@ -44,7 +44,7 @@ public:
         trajectory_setpoint_publisher = this->create_publisher<px4_msgs::msg::TrajectorySetpoint>("/fmu/in/trajectory_setpoint", 10);
         // offboard_control_mode_publisher_ = this->create_publisher<px4_msgs::msg::OffboardControlMode>("/fmu/in/offboard_control_mode", 10);
 
-        vehicle_attitude_subscription_ = this->create_subscription<px4_msgs::msg::VehicleAttitude>("/fmu/out/vehicle_attitude", qos, std::bind(&PX4Controller::on_attitude_receive, this,std::placeholders::_1));
+        vehicle_attitude_subscription_ = this->create_subscription<px4_msgs::msg::VehicleAttitude>("/fmu/out/vehicle_attitude", qos, std::bind(&PX4Controller::on_attitude_receive, this, std::placeholders::_1));
 
         set_attitude_service_ = this->create_service<drone_services::srv::SetAttitude>("drone/set_attitude", std::bind(&PX4Controller::set_setpoint, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
         disarm_service_ = this->create_service<std_srvs::srv::Empty>("drone/disarm", std::bind(&PX4Controller::handle_disarm_request, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
@@ -101,7 +101,9 @@ private:
                 last_setpoint[1] = degrees_to_radians(request->pitch);
                 last_setpoint[2] = degrees_to_radians(request->roll);
                 last_thrust = request->thrust;
-            } else {
+            }
+            else
+            {
                 last_setpoint[0] += degrees_to_radians(request->yaw);
                 last_setpoint[1] += degrees_to_radians(request->pitch);
                 last_setpoint[2] += degrees_to_radians(request->roll);
@@ -116,7 +118,8 @@ private:
             RCLCPP_INFO(this->get_logger(), "New setpoint: yaw:%f pitch:%f roll:%f thrust:%f", last_setpoint[0], last_setpoint[1], last_setpoint[2], last_thrust);
 
             response->status = 0;
-        } else 
+        }
+        else
         {
             last_thrust = 0;
             last_setpoint[0] = 0;
@@ -194,7 +197,6 @@ private:
         msg.thrust_body[1] = 0; // east
         msg.thrust_body[2] = -last_thrust;
 
-
         calculate_quaternion(q, last_setpoint[0], last_setpoint[1], last_setpoint[2]);
         // RCLCPP_INFO(this->get_logger(), "yaw:%f pitch:%f roll:%f thrust:%f", q.at(0), q.at(1), q.at(2), last_thrust);
         // }
@@ -209,7 +211,7 @@ private:
         // }
 
         // set quaternion
-        msg.q_d[0] = base_q[0] + q.at(0);
+        msg.q_d[0] = q.at(0);
         msg.q_d[1] = base_q[1] + q.at(1);
         msg.q_d[2] = base_q[2] + q.at(2);
         msg.q_d[3] = base_q[3] + q.at(3);
@@ -253,13 +255,19 @@ private:
 
     void on_attitude_receive(const px4_msgs::msg::VehicleAttitude::SharedPtr msg)
     {
-        if (!ready_to_fly)
+        if (!armed)
         {
-            base_q_amount++;
-            base_q[0] = (base_q[0] + msg->q[0])/base_q_amount;
-            base_q[1] = (base_q[1] + msg->q[1])/base_q_amount;
-            base_q[2] = (base_q[2] + msg->q[2])/base_q_amount;
-            base_q[3] = (base_q[3] + msg->q[3])/base_q_amount;
+            if (base_q_amount > 2)
+            {
+                base_q[1] = (base_q[1] + msg->q[1]) / 2;
+                base_q[2] = (base_q[2] + msg->q[2]) / 2;
+                base_q[3] = (base_q[3] + msg->q[3]) / 2;
+            } else {
+                base_q[1] = msg->q[1];
+                base_q[2] = msg->q[2];
+                base_q[3] = msg->q[3];
+                base_q_amount++;
+            }
 
             RCLCPP_INFO(this->get_logger(), "base_q: %f %f %f %f", base_q[0], base_q[1], base_q[2], base_q[3]);
         }
