@@ -209,10 +209,10 @@ private:
         // }
 
         // set quaternion
-        msg.q_d[0] = q.at(0);
-        msg.q_d[1] = q.at(1);
-        msg.q_d[2] = q.at(2);
-        msg.q_d[3] = q.at(3);
+        msg.q_d[0] = base_q[0] + q.at(0);
+        msg.q_d[1] = base_q[1] + q.at(1);
+        msg.q_d[2] = base_q[2] + q.at(2);
+        msg.q_d[3] = base_q[3] + q.at(3);
 
         msg.yaw_sp_move_rate = 0;
         msg.reset_integral = false;
