@@ -70,9 +70,9 @@ class TestController(Node):
                 self.send_request(pitch=0.0, yaw=0.0,
                                   roll=0.0, thrust=-0.05)
             if key == 'space':
-                self.get_logger().info('down')
+                self.get_logger().info('up')
                 self.send_request(pitch=0.0, yaw=0.0,
-                                  roll=0.0, thrust=-0.05)
+                                  roll=0.0, thrust=0.05)
             # else:
             #     try:
             #         # known keys like spacebar, ctrl
