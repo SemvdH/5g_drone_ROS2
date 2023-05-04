@@ -1,8 +1,8 @@
 import rclpy
 from rclpy.node import Node
 
-from pynput.keyboard import Key
-from pynput import keyboard
+from sshkeyboard import listen_keyboard_manual
+import asyncio
 
 from drone_services.srv import SetAttitude
 
@@ -12,15 +12,15 @@ class TestController(Node):
     def __init__(self):
         super().__init__('test_controller')
         self.cli = self.create_client(SetAttitude, 'drone/set_attitude')
-        while not self.cli.wait_for_service(timeout_sec=1.0):
-            self.get_logger().info('service not available, waiting again...')
+        # while not self.cli.wait_for_service(timeout_sec=1.0):
+        #     self.get_logger().info('service not available, waiting again...')
         self.req = SetAttitude.Request()
 
         self.get_logger().info("Controls:\nW - forward\nS - backward\nA - left\nD - right\nQ - rotate left\nE - rotate right\nSpace - up\nShift - down\nEsc - exit")
 
-    def spin(self):
-        with keyboard.Listener(on_press=self.on_press, on_release=self.on_release) as listener:
-            while rclpy.ok() and listener.running:
+    def spin(self):        
+            while rclpy.ok():
+                asyncio.run(listen_keyboard_manual(on_press=self.on_press))
                 rclpy.spin_once(self, timeout_sec=0.1)
 
     def send_request(self, yaw, pitch, roll, thrust):
