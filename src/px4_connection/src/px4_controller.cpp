@@ -216,6 +216,8 @@ private:
         msg.q_d[2] = base_q[2] + q.at(2);
         msg.q_d[3] = base_q[3] + q.at(3);
 
+        RCLCPP_INFO(this->get_logger(), "q_d: [%f, %f, %f, %f]", msg.q_d[0], msg.q_d[1], msg.q_d[2], msg.q_d[3]);
+
         msg.yaw_sp_move_rate = 0;
         msg.reset_integral = false;
         msg.fw_control_yaw_wheel = false;
@@ -255,6 +257,13 @@ private:
 
     void on_attitude_receive(const px4_msgs::msg::VehicleAttitude::SharedPtr msg)
     {
+        /*
+        average q:
+        - 0.7313786745071411
+        - 0.005042835604399443
+        - 0.0002370707516092807
+        - 0.6819528937339783
+        */
         if (!armed)
         {
             if (base_q_amount > 2)
