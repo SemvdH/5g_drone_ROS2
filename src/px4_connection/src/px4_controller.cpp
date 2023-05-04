@@ -77,6 +77,7 @@ private:
     float thrust = 0.0;
     bool ready_to_fly = false;
     float cur_yaw = 0;
+    bool new_setpoint = false; // for printing new q_d when a new setpoint has been received
 
     float last_setpoint[3] = {0, 0, 0};
     float last_angle = 0;
@@ -116,6 +117,7 @@ private:
 
             RCLCPP_INFO(this->get_logger(), "got values: yaw:%f pitch:%f roll:%f thrust:%f", request->yaw, request->pitch, request->roll, request->thrust);
             RCLCPP_INFO(this->get_logger(), "New setpoint: yaw:%f pitch:%f roll:%f thrust:%f", last_setpoint[0], last_setpoint[1], last_setpoint[2], last_thrust);
+            new_setpoint = true;
 
             response->status = 0;
         }
@@ -216,7 +218,11 @@ private:
         msg.q_d[2] = base_q[2] + q.at(2);
         msg.q_d[3] = base_q[3] + q.at(3);
 
-        RCLCPP_INFO(this->get_logger(), "q_d: [%f, %f, %f, %f]", msg.q_d[0], msg.q_d[1], msg.q_d[2], msg.q_d[3]);
+        if (new_setpoint)
+        {
+            RCLCPP_INFO(this->get_logger(), "q_d: [%f, %f, %f, %f]", msg.q_d[0], msg.q_d[1], msg.q_d[2], msg.q_d[3]);
+            new_setpoint = false;
+        }
 
         msg.yaw_sp_move_rate = 0;
         msg.reset_integral = false;
