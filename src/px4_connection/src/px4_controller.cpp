@@ -260,6 +260,8 @@ private:
             base_q[1] = (base_q[1] + msg->q[1])/base_q_amount;
             base_q[2] = (base_q[2] + msg->q[2])/base_q_amount;
             base_q[3] = (base_q[3] + msg->q[3])/base_q_amount;
+
+            RCLCPP_INFO(this->get_logger(), "base_q: %f %f %f %f", base_q[0], base_q[1], base_q[2], base_q[3]);
         }
     }
 
