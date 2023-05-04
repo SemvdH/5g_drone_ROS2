@@ -40,58 +40,52 @@ class TestController(Node):
 
     def on_press(self, key):
         try:
-            char = getattr(key, 'char', None)
-            if isinstance(char, str):
-                # self.get_logger().info('pressed ' + char)
-                if char == 'w':
-                    self.get_logger().info('forward')
-                    self.send_request(pitch=-10.0, yaw=0.0,
-                                      roll=0.0, thrust=0.0)
-                if char == 's':
-                    self.get_logger().info('backward')
-                    self.send_request(pitch=10.0, yaw=0.0,
-                                      roll=0.0, thrust=0.0)
-                if char == 'a':
-                    self.get_logger().info('left')
-                    self.send_request(pitch=0.0, yaw=0.0,
-                                      roll=-10.0, thrust=0.0)
-                if char == 'd':
-                    self.get_logger().info('right')
-                    self.send_request(pitch=0.0, yaw=0.0,
-                                      roll=10.0, thrust=0.0)
-                if char == 'q':
-                    self.get_logger().info('rotate left')
-                    self.send_request(pitch=0.0, yaw=-10.0,
-                                      roll=0.0, thrust=0.0)
-                if char == 'e':
-                    self.get_logger().info('rotate right')
-                    self.send_request(pitch=0.0, yaw=10.0,
-                                      roll=0.0, thrust=0.0)
-            else:
-                try:
-                    # known keys like spacebar, ctrl
-                    name = key.name
-                    vk = key.value.vk
-                except AttributeError:
-                    # unknown keys like headphones skip song button
-                    name = 'UNKNOWN'
-                    vk = key.vk
-                # self.get_logger().info('pressed {} ({})'.format(name, vk))
-                if vk == 32:
-                    self.get_logger().info('up')
-                    self.send_request(pitch=0.0, yaw=0.0, roll=0.0, thrust=0.05)
-                if vk == 65505:
-                    self.get_logger().info('down')
-                    self.send_request(pitch=0.0, yaw=0.0,
-                                      roll=0.0, thrust=-0.05)
+            # self.get_logger().info('pressed ' + char)
+            if key == 'w':
+                self.get_logger().info('forward')
+                self.send_request(pitch=-10.0, yaw=0.0,
+                                    roll=0.0, thrust=0.0)
+            if key == 's':
+                self.get_logger().info('backward')
+                self.send_request(pitch=10.0, yaw=0.0,
+                                    roll=0.0, thrust=0.0)
+            if key == 'a':
+                self.get_logger().info('left')
+                self.send_request(pitch=0.0, yaw=0.0,
+                                    roll=-10.0, thrust=0.0)
+            if key == 'd':
+                self.get_logger().info('right')
+                self.send_request(pitch=0.0, yaw=0.0,
+                                    roll=10.0, thrust=0.0)
+            if key == 'q':
+                self.get_logger().info('rotate left')
+                self.send_request(pitch=0.0, yaw=-10.0,
+                                    roll=0.0, thrust=0.0)
+            if key == 'e':
+                self.get_logger().info('rotate right')
+                self.send_request(pitch=0.0, yaw=10.0,
+                                    roll=0.0, thrust=0.0)
+            # else:
+            #     try:
+            #         # known keys like spacebar, ctrl
+            #         name = key.name
+            #         vk = key.value.vk
+            #     except AttributeError:
+            #         # unknown keys like headphones skip song button
+            #         name = 'UNKNOWN'
+            #         vk = key.vk
+            #     # self.get_logger().info('pressed {} ({})'.format(name, vk))
+            #     if vk == 32:
+            #         self.get_logger().info('up')
+            #         self.send_request(pitch=0.0, yaw=0.0, roll=0.0, thrust=0.05)
+            #     if vk == 65505:
+            #         self.get_logger().info('down')
+            #         self.send_request(pitch=0.0, yaw=0.0,
+            #                           roll=0.0, thrust=-0.05)
 
         except Exception as e:
             self.get_logger().error(str(e))
-            raise
-
-        if key == keyboard.Key.esc:
-            self.get_logger().info('stopping listener')
-            raise keyboard.Listener.StopException
+            raise e
 
 
 def main(args=None):
