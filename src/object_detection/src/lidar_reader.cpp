@@ -33,21 +33,19 @@ public:
         publisher_ = this->create_publisher<object_detection::msg::LidarReading>("drone/object_detection", 10);
         timer_ = this->create_wall_timer(500ms, std::bind(&LidarReader::read_lidar_data, this));
 
-        // set lidar to measure including IMU
-        ITerarangerTowerEvo::ImuMode mode(ITerarangerTowerEvo::QuaternionLinearAcc);
-
         factory = terabee::ITerarangerFactory::getFactory();
         tower = factory->createTerarangerTowerEvo(this->get_parameter("lidar_serial_port").as_string());
 
-        if (!tower)
+        if (!tower) // check if the object could be created
         {
             RCLCPP_ERROR(this->get_logger(), "Failed to create TerarangerTowerEvo");
             return;
         }
 
-        tower->setImuMode(mode);
+        // set lidar to measure including IMU
+        tower->setImuMode(ITerarangerTowerEvo::QuaternionLinearAcc);
 
-        if (!tower->initialize())
+        if (!tower->initialize()) // check if communication with the sensor works
         {
             RCLCPP_ERROR(this->get_logger(), "Failed to initialize TerarangerTowerEvo");
             return;
@@ -55,6 +53,19 @@ public:
     }
 
 private:
+    // publisher for lidar data
+    rclcpp::Publisher<object_detection::msg::LidarReading>::SharedPtr publisher_;
+    // timer for publishing readings
+    rclcpp::TimerBase::SharedPtr timer_;
+
+    // terabee tower evo variables
+    std::unique_ptr<terabee::ITerarangerTowerEvo> tower;
+    std::unique_ptr<terabee::ITerarangerFactory> factory;
+
+    /**
+     * @brief Reads the data from the LIDAR distance modules and the IMU, and publishes it onto the drone/object_detection topic
+     * 
+     */
     void read_lidar_data()
     {
         auto msg = object_detection::msg::LidarReading();
@@ -67,7 +78,6 @@ private:
 
         // read data from built-in IMU
         ImuData imu_data = tower->getImuData();
-
         for (size_t i = 0; i < imu_data.data.size(); i++)
         {
             msg.imu_data.push_back(imu_data.data[i]);
@@ -77,15 +87,6 @@ private:
         publisher_->publish(msg);
         RCLCPP_INFO(this->get_logger(), "Publishing message");
     }
-
-    // publisher for lidar data
-    rclcpp::Publisher<object_detection::msg::LidarReading>::SharedPtr publisher_;
-    // timer for publishing readings
-    rclcpp::TimerBase::SharedPtr timer_;
-
-    // terabee tower evo variables
-    std::unique_ptr<terabee::ITerarangerTowerEvo> tower;
-    std::unique_ptr<terabee::ITerarangerFactory> factory;
 };
 
 int main(int argc, char *argv[])
