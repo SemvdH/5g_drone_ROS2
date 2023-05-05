@@ -13,18 +13,6 @@ using namespace std::chrono_literals;
 using terabee::DistanceData;
 using terabee::ITerarangerEvoMini;
 
-std::ostream &operator<<(std::ostream &os, const DistanceData &d)
-{
-  os << "[";
-  for (size_t i = 0; i < d.distance.size(); i++)
-  {
-    os << d.distance[i] << ", ";
-  }
-  os << "\b\b"
-     << " ]";
-  return os;
-}
-
 class HeightReader : public rclcpp::Node
 {
 public:

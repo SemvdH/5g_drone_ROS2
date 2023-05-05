@@ -9,7 +9,7 @@ using namespace std::chrono_literals;
 class HeartBeat : public rclcpp::Node
 {
 public:
-    HeartBeat() : Node("setpoint_sender")
+    HeartBeat() : Node("heartbeat")
     {
         // create a publisher on the offboard control mode topic
         offboard_control_mode_publisher_ = this->create_publisher<px4_msgs::msg::OffboardControlMode>("/fmu/in/offboard_control_mode", 10);
