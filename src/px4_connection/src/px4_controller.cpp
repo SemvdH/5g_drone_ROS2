@@ -1,17 +1,14 @@
-/*
-
-We need to send attitude setpoints to be able to arm the drone:
-https://mavlink.io/en/messages/common.html#SET_ATTITUDE_TARGET
-We need attitude setpoints because we don't have a GPS:
-https://discuss.px4.io/t/cannot-arm-drone-with-companion-computer-arming-denied-manual-control-lost/31565/9
-
-*/
+/**
+ * @file px4_controller.cpp
+ * @author Sem van der Hoeven (sem.hoeven@gmail.com)
+ * @brief Controller node to contol the PX4 using attitude or trajectory setpoints. 
+ * It subscribes to the /drone/set_attitude topic to receive control commands
+ */
 
 #include <chrono>
 #include <math.h>
 
 #include "rclcpp/rclcpp.hpp"
-// #include "attitude_msg_code.hpp"
 
 #include <px4_msgs/msg/vehicle_attitude_setpoint.hpp>
 #include <px4_msgs/msg/trajectory_setpoint.hpp>
@@ -22,8 +19,6 @@ https://discuss.px4.io/t/cannot-arm-drone-with-companion-computer-arming-denied-
 #include <drone_services/srv/set_attitude.hpp>
 
 #include <std_srvs/srv/empty.hpp>
-
-// #include <px4_msgs/msg/offboard_control_mode.hpp>
 
 #define D_SPEED(x) -x - 9.81
 

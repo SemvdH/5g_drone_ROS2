@@ -1,3 +1,9 @@
+/**
+ * @file heartbeat.cpp
+ * @author Sem van der Hoeven (sem.hoeven@gmail.com)
+ * @brief Heartbeat node that keeps the connection between the flight computer 
+ * and PX4 flight controller alive by sending OffboardControl messages
+ */
 #include <chrono>
 
 #include "rclcpp/rclcpp.hpp"
@@ -27,11 +33,11 @@ private:
     // start time of node in seconds
     double start_time;
 
-/**
- * @brief Publish offboard control mode messages as a heartbeat.
- *        Only the attitude is enabled, because that is how the drone will be controlled.
- * 
- */
+    /**
+     * @brief Publish offboard control mode messages as a heartbeat.
+     *        Only the attitude is enabled, because that is how the drone will be controlled.
+     *
+     */
     void send_heartbeat()
     {
         // set message to enable attitude
@@ -46,7 +52,6 @@ private:
         // get timestamp and publish message
         msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
         offboard_control_mode_publisher_->publish(msg);
-
     }
 };
 
