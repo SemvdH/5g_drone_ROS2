@@ -18,104 +18,80 @@ using terabee::TowerDistanceData;
 
 using namespace std::chrono_literals;
 
-/* This example creates a subclass of Node and uses std::bind() to register a
- * member function as a callback from the timer. */
-
-std::ostream &operator<<(std::ostream &os, const TowerDistanceData &d)
-{
-  os << "[";
-  for (size_t i = 0; i < d.distance.size(); i++)
-  {
-    os << i  << " " << d.distance[i] << (d.mask[i] ? " <new>, " : " <old>, ");
-  }
-  os << "\b\b"
-     << " ]";
-  return os;
-}
-
-std::ostream &operator<<(std::ostream &os, const ImuData &d)
-{
-  os << "[";
-  for (size_t i = 0; i < d.data.size(); i++)
-  {
-    os << d.data[i] << ", ";
-  }
-  os << "\b\b"
-     << " ]";
-  return os;
-}
-
 class LidarReader : public rclcpp::Node
 {
 public:
-  LidarReader()
-      : Node("lidar_reader")
-  {
-
-    rcl_interfaces::msg::ParameterDescriptor descriptor = rcl_interfaces::msg::ParameterDescriptor{};
-    descriptor.description = "serial port for the USB port of the LIDAR";
-
-    this->declare_parameter("lidar_serial_port", "/dev/ttyACM0", descriptor);
-
-    // publisher_ = this->create_publisher<object_detection::msg::LidarReading>("drone/object_detection", 10);
-    timer_ = this->create_wall_timer(500ms, std::bind(&LidarReader::read_lidar_data, this));
-
-    ITerarangerTowerEvo::ImuMode mode(ITerarangerTowerEvo::QuaternionLinearAcc);
-
-    factory = terabee::ITerarangerFactory::getFactory();
-    tower = factory->createTerarangerTowerEvo(this->get_parameter("lidar_serial_port").as_string());
-
-    if (!tower)
+    LidarReader()
+        : Node("lidar_reader")
     {
-      RCLCPP_ERROR(this->get_logger(), "Failed to create TerarangerTowerEvo");
-      return;
-    }
+        // get serial port of sensor through parameter
+        rcl_interfaces::msg::ParameterDescriptor descriptor = rcl_interfaces::msg::ParameterDescriptor{};
+        descriptor.description = "serial port for the USB port of the LIDAR";
+        this->declare_parameter("lidar_serial_port", "/dev/ttyACM0", descriptor);
 
-    tower->setImuMode(mode);
+        // create publisher and bind timer to publish function
+        publisher_ = this->create_publisher<object_detection::msg::LidarReading>("drone/object_detection", 10);
+        timer_ = this->create_wall_timer(500ms, std::bind(&LidarReader::read_lidar_data, this));
 
-    if (!tower->initialize())
-    {
-      RCLCPP_ERROR(this->get_logger(), "Failed to initialize TerarangerTowerEvo");
-      return;
+        // set lidar to measure including IMU
+        ITerarangerTowerEvo::ImuMode mode(ITerarangerTowerEvo::QuaternionLinearAcc);
+
+        factory = terabee::ITerarangerFactory::getFactory();
+        tower = factory->createTerarangerTowerEvo(this->get_parameter("lidar_serial_port").as_string());
+
+        if (!tower)
+        {
+            RCLCPP_ERROR(this->get_logger(), "Failed to create TerarangerTowerEvo");
+            return;
+        }
+
+        tower->setImuMode(mode);
+
+        if (!tower->initialize())
+        {
+            RCLCPP_ERROR(this->get_logger(), "Failed to initialize TerarangerTowerEvo");
+            return;
+        }
     }
-  }
 
 private:
-  void read_lidar_data()
-  {
-    //TODO publish message with all data from lidar
-    // std::cout << "Distance = " << tower->getDistance() << std::endl;
-    // std::cout << "IMU = " << tower->getImuData() << std::endl;
+    void read_lidar_data()
+    {
+        auto msg = object_detection::msg::LidarReading();
 
-    // auto msg = object_detection::msg::LidarReading();
+        // read distance data from all sensors
+        msg.sensor_1 = tower->getDistance().distance.at(0);
+        msg.sensor_2 = tower->getDistance().distance.at(2);
+        msg.sensor_3 = tower->getDistance().distance.at(4);
+        msg.sensor_4 = tower->getDistance().distance.at(6);
 
-    // msg.sensor_1 = tower->getDistance().distance.at(0);
-    // msg.sensor_2 = tower->getDistance().distance.at(2);
-    // msg.sensor_3 = tower->getDistance().distance.at(4);
-    // msg.sensor_4 = tower->getDistance().distance.at(6);
+        // read data from built-in IMU
+        ImuData imu_data = tower->getImuData();
 
-    // ImuData imu_data = tower->getImuData();
+        for (size_t i = 0; i < imu_data.data.size(); i++)
+        {
+            msg.imu_data.push_back(imu_data.data[i]);
+        }
 
-    // for (size_t i = 0; i < imu_data.data.size(); i++)
-    // {
-    //   msg.imu_data.push_back(imu_data.data[i]);
-    // }
-    // // publisher_->publish(msg);
-    // RCLCPP_INFO(this->get_logger(), "Publishing message");
-  }
+        // publish message
+        publisher_->publish(msg);
+        RCLCPP_INFO(this->get_logger(), "Publishing message");
+    }
 
-  // rclcpp::Publisher<object_detection::msg::LidarReading>::SharedPtr publisher_;
-  rclcpp::TimerBase::SharedPtr timer_;
+    // publisher for lidar data
+    rclcpp::Publisher<object_detection::msg::LidarReading>::SharedPtr publisher_;
+    // timer for publishing readings
+    rclcpp::TimerBase::SharedPtr timer_;
 
-  // terabee tower evo variables
-  std::unique_ptr<terabee::ITerarangerTowerEvo> tower;
-  std::unique_ptr<terabee::ITerarangerFactory> factory;
+    // terabee tower evo variables
+    std::unique_ptr<terabee::ITerarangerTowerEvo> tower;
+    std::unique_ptr<terabee::ITerarangerFactory> factory;
 };
 
 int main(int argc, char *argv[])
 {
-  rclcpp::init(argc, argv);
-  rclcpp::spin(std::make_shared<LidarReader>());
-  rclcpp::shutdown();
-  return 0;
+    rclcpp::init(argc, argv);
+    rclcpp::spin(std::make_shared<LidarReader>());
+    rclcpp::shutdown();
+    return 0;
 }

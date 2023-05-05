@@ -5,9 +5,7 @@
  * and PX4 flight controller alive by sending OffboardControl messages
  */
 #include <chrono>
-
 #include "rclcpp/rclcpp.hpp"
-
 #include <px4_msgs/msg/offboard_control_mode.hpp>
 
 using namespace std::chrono_literals;
