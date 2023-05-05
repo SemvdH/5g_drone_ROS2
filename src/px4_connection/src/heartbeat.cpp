@@ -1,18 +1,8 @@
-/*
-
-We need to send attitude setpoints to be able to arm the drone:
-https://mavlink.io/en/messages/common.html#SET_ATTITUDE_TARGET
-We need attitude setpoints because we don't have a GPS:
-https://discuss.px4.io/t/cannot-arm-drone-with-companion-computer-arming-denied-manual-control-lost/31565/9
-
-*/
-
 #include <chrono>
 
 #include "rclcpp/rclcpp.hpp"
 
 #include <px4_msgs/msg/offboard_control_mode.hpp>
-// #include <px4_msgs/msg/timesync.hpp>
 
 using namespace std::chrono_literals;
 
@@ -30,6 +20,12 @@ public:
     }
 
 private:
+    // publisher for offboard control mode messages
+    rclcpp::Publisher<px4_msgs::msg::OffboardControlMode>::SharedPtr offboard_control_mode_publisher_;
+    // timer for sending the heartbeat
+    rclcpp::TimerBase::SharedPtr timer_;
+    // start time of node in seconds
+    double start_time;
 
 /**
  * @brief Publish offboard control mode messages as a heartbeat.
@@ -50,20 +46,8 @@ private:
         // get timestamp and publish message
         msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
         offboard_control_mode_publisher_->publish(msg);
-        // RCLCPP_INFO(this->get_logger(), "sent offboard control mode message!");
 
-        // check if 5 seconds have elapsed
-        // if (this->get_clock()->now().seconds() - start_time > 5)
-        // {
-        //     RCLCPP_INFO(this->get_logger(), "5 seconds elapsed!");
-        // }
-
-
-        
     }
-    rclcpp::Publisher<px4_msgs::msg::OffboardControlMode>::SharedPtr offboard_control_mode_publisher_;
-    rclcpp::TimerBase::SharedPtr timer_;
-    double start_time;
 };
 
 int main(int argc, char *argv[])
