@@ -10,12 +10,15 @@ from datetime import datetime
 class CameraController(Node):
     def __init__(self):
         super().__init__('camera_controller')
-        self.cam = cv2.VideoCapture(0)
+        self.capture = cv2.VideoCapture(0,cv2.CAP_DSHOW)
+        self.capture.set(cv2.CAP_PROP_FRAME_WIDTH, 4656)
+        self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT, 3496)
+
         self.get_logger().info("Camera controller started. Waiting for service call...")
         self.srv = self.create_service(TakePicture, 'drone/picture', self.take_picture_callback)
 
     def take_picture_callback(self, request, response):
-        result, image = self.cam.read()
+        result, image = self.capture.read()
         if (result):
             if (request.input_name == "default"):
                 self.get_logger().info("Taking picture with default filename")
