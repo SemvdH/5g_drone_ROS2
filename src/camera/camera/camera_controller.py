@@ -6,16 +6,24 @@ from drone_services.srv import TakePicture
 import cv2
 from datetime import datetime
 
+RES_4K_H = 3496
+RES_4K_W = 4656
+
 
 class CameraController(Node):
     def __init__(self):
         super().__init__('camera_controller')
         self.capture = cv2.VideoCapture(0,cv2.CAP_DSHOW)
-        self.capture.set(cv2.CAP_PROP_FRAME_WIDTH, 4656)
-        self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT, 3496)
+
+        self.get_logger().info(self.set_res(RES_4K_W,RES_4K_H))
 
         self.get_logger().info("Camera controller started. Waiting for service call...")
         self.srv = self.create_service(TakePicture, 'drone/picture', self.take_picture_callback)
+
+    def set_res(self, x,y):
+        self.capture.set(cv2.CV_CAP_PROP_FRAME_WIDTH, int(x))
+        self.capture.set(cv2.CV_CAP_PROP_FRAME_HEIGHT, int(y))
+        return str(self.capture.get(cv2.CV_CAP_PROP_FRAME_WIDTH)),str(self.capture.get(cv2.CV_CAP_PROP_FRAME_HEIGHT))
 
     def take_picture_callback(self, request, response):
         result, image = self.capture.read()
