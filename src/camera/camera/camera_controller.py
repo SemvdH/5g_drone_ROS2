@@ -3,13 +3,13 @@ from rclpy.node import Node
 
 from drone_services.srv import TakePicture
 
-from cv2 import *
+import cv2
 
 
 class CameraController(Node):
     def __init__(self):
         super().__init__('camera_controller')
-        self.cam = VideoCapture(0)
+        self.cam = cv2.VideoCapture(0)
 
         self.srv = self.create_service(TakePicture, 'drone/picture', self.take_picture_callback)
 
@@ -18,10 +18,10 @@ class CameraController(Node):
         if (result):
             if (request.input_name == "default"):
                 self.get_logger().info("Taking picture with default filename")
-                imwrite("/home/ubuntu/image.jpg", image)
+                cv2.imwrite("/home/ubuntu/image.jpg", image)
                 response.filename = "/home/ubuntu/image.jpg"
             else:
-                imwrite(request.input_name, image)
+                cv2.imwrite(request.input_name, image)
                 response.filename = request.input_name
             return response
 
