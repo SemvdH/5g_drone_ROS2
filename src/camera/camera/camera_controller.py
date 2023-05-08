@@ -6,8 +6,8 @@ from drone_services.srv import TakePicture
 import cv2
 from datetime import datetime
 
-RES_4K_H = 3496
-RES_4K_W = 4656
+RES_4K_H = 2160
+RES_4K_W = 3840
 
 
 class CameraController(Node):
