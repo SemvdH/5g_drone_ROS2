@@ -21,9 +21,9 @@ class CameraController(Node):
         self.srv = self.create_service(TakePicture, 'drone/picture', self.take_picture_callback)
 
     def set_res(self, x,y):
-        self.capture.set(cv2.CV_CAP_PROP_FRAME_WIDTH, int(x))
-        self.capture.set(cv2.CV_CAP_PROP_FRAME_HEIGHT, int(y))
-        return str(self.capture.get(cv2.CV_CAP_PROP_FRAME_WIDTH)),str(self.capture.get(cv2.CV_CAP_PROP_FRAME_HEIGHT))
+        self.capture.set(cv2.CAP_PROP_FRAME_WIDTH, int(x))
+        self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT, int(y))
+        return str(self.capture.get(cv2.CAP_PROP_FRAME_WIDTH)),str(self.capture.get(cv2.CAP_PROP_FRAME_HEIGHT))
 
     def take_picture_callback(self, request, response):
         result, image = self.capture.read()
