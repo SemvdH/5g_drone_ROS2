@@ -19,8 +19,8 @@ class CameraController(Node):
         if (result):
             if (request.input_name == "default"):
                 self.get_logger().info("Taking picture with default filename")
-                now = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-                imagename = "/home/ubuntu/" + now + ".jpg"
+                now = datetime.now().strftime("droneimage_%Y-%m-%d_%H-%M-%S")
+                imagename = "/home/ubuntu/drone_img" + now + ".jpg"
                 cv2.imwrite(imagename, image)
                 response.filename = imagename
             else:
