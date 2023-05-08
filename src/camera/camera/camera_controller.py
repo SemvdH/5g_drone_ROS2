@@ -15,7 +15,7 @@ class CameraController(Node):
         super().__init__('camera_controller')
         self.capture = cv2.VideoCapture(0,cv2.CAP_DSHOW)
 
-        self.get_logger().info(self.set_res(RES_4K_W,RES_4K_H))
+        self.get_logger().info(str(self.set_res(RES_4K_W,RES_4K_H)))
 
         self.get_logger().info("Camera controller started. Waiting for service call...")
         self.srv = self.create_service(TakePicture, 'drone/picture', self.take_picture_callback)
