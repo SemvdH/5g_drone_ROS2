@@ -18,8 +18,6 @@ class CameraController(Node):
         self.srv = self.create_service(TakePicture, 'drone/picture', self.take_picture_callback)
 
     def take_picture_callback(self, request, response):
-        result, image = self.capture.read()
-        if (result):
             if (request.input_name == "default"):
                 self.get_logger().info("Taking picture with default filename")
                 now = datetime.now().strftime("droneimage_%Y-%m-%d_%H-%M-%S")
@@ -29,12 +27,9 @@ class CameraController(Node):
             else:
                 self.camera.capture(request.input_name)
                 response.filename = request.input_name
+                
             self.get_logger().info("Picture saved as " + response.filename)
-        else:
-            self.get_logger().error("Could not take picture")
-            response.filename = "/dev/null"
-
-        return response
+            return response
 
 def main(args=None):
     rclpy.init(args=args)
