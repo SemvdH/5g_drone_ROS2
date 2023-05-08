@@ -15,11 +15,12 @@ setup(
     zip_safe=True,
     maintainer='ubuntu',
     maintainer_email='semmer99@gmail.com',
-    description='TODO: Package description',
-    license='TODO: License declaration',
+    description='Package for controlling the camera of the drone',
+    license='Apache License 2.0',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'camera_controller = camera.camera_controller:main'
         ],
     },
 )
