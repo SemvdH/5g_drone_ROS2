@@ -19,6 +19,7 @@ class CameraController(Node):
         CAMERA_PROP_HEIGHT = 4
         self.capture.set(CAMERA_PROP_WIDTH, RES_4K_W)
         self.capture.set(CAMERA_PROP_HEIGHT, RES_4K_H)
+        self.get_logger().info("Camera resolution set to " + str(self.capture.get(CAMERA_PROP_WIDTH)) + "x" + str(self.capture.get(CAMERA_PROP_HEIGHT)))
 
         self.get_logger().info("Camera controller started. Waiting for service call...")
         self.srv = self.create_service(TakePicture, 'drone/picture', self.take_picture_callback)
