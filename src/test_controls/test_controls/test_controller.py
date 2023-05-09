@@ -43,27 +43,27 @@ class TestController(Node):
             # self.get_logger().info('pressed ' + char)
             if key == 'w':
                 self.get_logger().info('forward')
-                self.send_request(pitch=-10.0, yaw=0.0,
+                self.send_request(pitch=-1.0, yaw=0.0,
                                   roll=0.0, thrust=0.0)
             if key == 's':
                 self.get_logger().info('backward')
-                self.send_request(pitch=10.0, yaw=0.0,
+                self.send_request(pitch=1.0, yaw=0.0,
                                   roll=0.0, thrust=0.0)
             if key == 'a':
                 self.get_logger().info('left')
                 self.send_request(pitch=0.0, yaw=0.0,
-                                  roll=-10.0, thrust=0.0)
+                                  roll=-1.0, thrust=0.0)
             if key == 'd':
                 self.get_logger().info('right')
                 self.send_request(pitch=0.0, yaw=0.0,
-                                  roll=10.0, thrust=0.0)
+                                  roll=1.0, thrust=0.0)
             if key == 'q':
                 self.get_logger().info('rotate left')
-                self.send_request(pitch=0.0, yaw=-10.0,
+                self.send_request(pitch=0.0, yaw=-1.0,
                                   roll=0.0, thrust=0.0)
             if key == 'e':
                 self.get_logger().info('rotate right')
-                self.send_request(pitch=0.0, yaw=10.0,
+                self.send_request(pitch=0.0, yaw=1.0,
                                   roll=0.0, thrust=0.0)
             if key == 'z':
                 self.get_logger().info('down')
