@@ -1,0 +1,12 @@
+[Unit]
+Description=Service to start the script that sets the serial ports for the USB sensors
+
+[Service]
+Type=simple
+Restart=on-failure
+User=ubuntu
+ExecStart=/home/ubuntu/drone_scripts/find_id.sh
+WorkingDirectory=/home/ubuntu
+
+[Install]
+WantedBy=multi-user.target
