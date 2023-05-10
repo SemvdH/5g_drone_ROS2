@@ -7,6 +7,8 @@
 #include <terabee/ITerarangerMultiflex.hpp>
 #include <terabee/DistanceData.hpp>
 
+#include <iostream>
+
 using terabee::DistanceData;
 
 using namespace std::chrono_literals;
@@ -72,8 +74,8 @@ private:
         auto msg = object_detection::msg::MultiflexReading();
         for (size_t i = 0; i < data.size(); i++)
         {
-	      RCLCPP_INFO(this->get_logger(), "distance: %f", data.distance[i]);
-//            msg.distance_data[i] = data.distance[i];
+            std::cout << "distance " << data.distance[i] < std::endl;
+            //            msg.distance_data[i] = data.distance[i];
         }
 
         // publish message
