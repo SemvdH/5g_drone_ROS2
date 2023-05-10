@@ -30,6 +30,7 @@ ament_target_dependencies(
     rclcpp
     px4_ros_com
     px4_msgs
+    drone_services
 )
 
 add_executable(px4_controller src/px4_controller.cpp)
