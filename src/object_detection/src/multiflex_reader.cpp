@@ -1,4 +1,4 @@
-#include <chrono>
+\#include <chrono>
 
 #include "rclcpp/rclcpp.hpp"
 #include "object_detection/msg/multiflex_reading.hpp"
@@ -38,9 +38,9 @@ public:
             return;
         }
 
-        if (!multiflex->configureNumberOfSensors(0x3f)) // check if all 6 distance sensors work
+        if (!multiflex->configureNumberOfSensors(0x1F)) // check if all 6 distance sensors work
         {
-            RCLCPP_ERROR(this->get_logger(), "Failed to set the number of sensors to 6!");
+            RCLCPP_ERROR(this->get_logger(), "Failed to set the number of sensors to 5!");
             return;
         }
 
@@ -72,11 +72,12 @@ private:
         auto msg = object_detection::msg::MultiflexReading();
         for (size_t i = 0; i < data.size(); i++)
         {
-            msg.distance_data[i] = data.distance[i];
+	      RCLCPP_INFO(this->get_logger(), "distance: %f", data.distance[i]);
+//            msg.distance_data[i] = data.distance[i];
         }
 
         // publish message
-        publisher_->publish(msg);
+//        publisher_->publish(msg);
     }
 };
 

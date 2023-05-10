@@ -80,7 +80,7 @@ class TestController(Node):
             if key == 'f':
                 self.get_logger().info('up a little')
                 self.send_request(pitch=0.0, yaw=0.0,
-                                  roll=0.0, thrust=-0.01)    
+                                  roll=0.0, thrust=0.01)
             if key == 'n':
                 self.get_logger().info('stop')
                 self.send_request(pitch=0.0, yaw=0.0,
