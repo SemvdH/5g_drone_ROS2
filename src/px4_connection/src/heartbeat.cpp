@@ -74,8 +74,8 @@ private:
         {
             response->status = 1;
         } else {
-            this->control_mode = request->control
-            RCLCPP_INFO(this->get_logger(), "set control mode to %d", this->control_mode)
+            this->control_mode = request->control;
+            RCLCPP_INFO(this->get_logger(), "set control mode to %d", this->control_mode);
             response->status = 0;
         }
 
