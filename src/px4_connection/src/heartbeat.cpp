@@ -7,6 +7,7 @@
 #include <chrono>
 #include "rclcpp/rclcpp.hpp"
 #include <px4_msgs/msg/offboard_control_mode.hpp>
+#include <drone_services/srv/set_vehicle_control.hpp>
 
 #define CONTROL_ACTUATOR_POS 0
 #define CONTROL_BODY_RATE_POS 1
