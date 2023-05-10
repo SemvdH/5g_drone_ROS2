@@ -26,8 +26,8 @@ class CameraController(Node):
         self.srv = self.create_service(TakePicture, 'drone/picture', self.take_picture_callback)
 
     def take_picture_callback(self, request, response):
-        result, image = self.capture.read()
-        if (result):
+        # result, image = self.capture.read()
+        # if (result):
             if (request.input_name == "default"):
                 self.get_logger().info("Taking picture with default filename")
                 now = datetime.now().strftime("droneimage_%Y-%m-%d_%H-%M-%S")
@@ -40,11 +40,11 @@ class CameraController(Node):
                 response.filename = request.input_name
             os.system('fswebcam -r 4656x3496 ' + response.filename)
             self.get_logger().info("Picture saved as " + response.filename)
-        else:
-            self.get_logger().error("Could not take picture")
-            response.filename = "/dev/null"
+        # else:
+        #     self.get_logger().error("Could not take picture")
+        #     response.filename = "/dev/null"
 
-        return response
+            return response
     
     # def maintain_aspect_ratio_resize(self, image, width=None, height=None, inter=cv2.INTER_AREA):
     #     # Grab the image size and initialize dimensions
