@@ -40,9 +40,9 @@ public:
             return;
         }
 
-        if (!multiflex->configureNumberOfSensors(0x1F)) // check if all 6 distance sensors work
+        if (!multiflex->configureNumberOfSensors(0x7)) // check if all 6 distance sensors work
         {
-            RCLCPP_ERROR(this->get_logger(), "Failed to set the number of sensors to 5!");
+            RCLCPP_ERROR(this->get_logger(), "Failed to set the number of sensors to 3!");
             return;
         }
 
