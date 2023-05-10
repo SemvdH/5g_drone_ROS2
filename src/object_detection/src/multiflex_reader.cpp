@@ -1,4 +1,4 @@
-\#include <chrono>
+\#include<chrono>
 
 #include "rclcpp/rclcpp.hpp"
 #include "object_detection/msg/multiflex_reading.hpp"
@@ -7,9 +7,9 @@
 #include <terabee/ITerarangerMultiflex.hpp>
 #include <terabee/DistanceData.hpp>
 
-#include <iostream>
+    // #include <iostream>
 
-using terabee::DistanceData;
+    using terabee::DistanceData;
 
 using namespace std::chrono_literals;
 
@@ -71,15 +71,15 @@ private:
         terabee::DistanceData data = multiflex->getDistance();
 
         // populate message with readings
-        auto msg = object_detection::msg::MultiflexReading();
+        // auto msg = object_detection::msg::MultiflexReading();
         for (size_t i = 0; i < data.size(); i++)
         {
-            std::cout << "distance " << data.distance[i] < std::endl;
+            // std::cout << "distance " << data.distance[i] < std::endl;
             //            msg.distance_data[i] = data.distance[i];
         }
 
         // publish message
-//        publisher_->publish(msg);
+        //        publisher_->publish(msg);
     }
 };
 
