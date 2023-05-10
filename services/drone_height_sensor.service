@@ -1,0 +1,14 @@
+[Unit]
+Description=Height sensor for drone running in ROS 2
+After=drone_find_usb_devices.service
+
+[Service]
+Type=simple
+Restart=on-failure
+User=ubuntu
+ExecStart=/home/ubuntu/drone_scripts/start_height_sensor.sh
+Environment="HOME=root"
+WorkingDirectory=/home/ubuntu
+
+[Install]
+WantedBy=multi-user.target

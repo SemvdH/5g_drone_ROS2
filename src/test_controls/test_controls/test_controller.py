@@ -16,7 +16,7 @@ class TestController(Node):
             self.get_logger().info('service not available, waiting again...')
         self.req = SetAttitude.Request()
 
-        self.get_logger().info("Controls:\nW - forward\nS - backward\nA - left\nD - right\nQ - rotate left\nE - rotate right\nSpace - up\nShift - down\nN - emergency stop\nEsc - exit")
+        self.get_logger().info("Controls:\nW - forward\nS - backward\nA - left\nD - right\nQ - rotate left\nE - rotate right\nSpace - up\nZ - down\nV - Down nudge\nF - Up nudge\nN - emergency stop\nEsc - exit")
 
     def spin(self):
         while rclpy.ok():
@@ -43,27 +43,27 @@ class TestController(Node):
             # self.get_logger().info('pressed ' + char)
             if key == 'w':
                 self.get_logger().info('forward')
-                self.send_request(pitch=-10.0, yaw=0.0,
+                self.send_request(pitch=-1.0, yaw=0.0,
                                   roll=0.0, thrust=0.0)
             if key == 's':
                 self.get_logger().info('backward')
-                self.send_request(pitch=10.0, yaw=0.0,
+                self.send_request(pitch=1.0, yaw=0.0,
                                   roll=0.0, thrust=0.0)
             if key == 'a':
                 self.get_logger().info('left')
                 self.send_request(pitch=0.0, yaw=0.0,
-                                  roll=-10.0, thrust=0.0)
+                                  roll=-1.0, thrust=0.0)
             if key == 'd':
                 self.get_logger().info('right')
                 self.send_request(pitch=0.0, yaw=0.0,
-                                  roll=10.0, thrust=0.0)
+                                  roll=1.0, thrust=0.0)
             if key == 'q':
                 self.get_logger().info('rotate left')
-                self.send_request(pitch=0.0, yaw=-10.0,
+                self.send_request(pitch=0.0, yaw=-1.0,
                                   roll=0.0, thrust=0.0)
             if key == 'e':
                 self.get_logger().info('rotate right')
-                self.send_request(pitch=0.0, yaw=10.0,
+                self.send_request(pitch=0.0, yaw=1.0,
                                   roll=0.0, thrust=0.0)
             if key == 'z':
                 self.get_logger().info('down')
@@ -73,10 +73,19 @@ class TestController(Node):
                 self.get_logger().info('up')
                 self.send_request(pitch=0.0, yaw=0.0,
                                   roll=0.0, thrust=0.05)
+            if key == 'v':
+                self.get_logger().info('down a little')
+                self.send_request(pitch=0.0, yaw=0.0,
+                                  roll=0.0, thrust=-0.01)
+            if key == 'f':
+                self.get_logger().info('up a little')
+                self.send_request(pitch=0.0, yaw=0.0,
+                                  roll=0.0, thrust=0.01)
             if key == 'n':
                 self.get_logger().info('stop')
                 self.send_request(pitch=0.0, yaw=0.0,
                                   roll=0.0, thrust=0.0)
+            
             # else:
             #     try:
             #         # known keys like spacebar, ctrl

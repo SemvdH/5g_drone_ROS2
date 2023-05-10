@@ -1,8 +1,4 @@
 #include <chrono>
-#include <functional>
-#include <memory>
-#include <string>
-#include <iostream>
 
 #include "rclcpp/rclcpp.hpp"
 #include "object_detection/msg/lidar_reading.hpp"
