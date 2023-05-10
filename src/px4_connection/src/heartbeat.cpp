@@ -24,7 +24,7 @@ public:
     HeartBeat() : Node("heartbeat")
     {
         // disarm_service_ = this->create_service<std_srvs::srv::Empty>("drone/disarm", std::bind(&PX4Controller::handle_disarm_request, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
-        vehicle_control_mode_service_ = this->create_service<drone_services::srv::SetVehicleControl>("drone/set_vehicle_control", std::bind(&Heartbeat::handle_vehicle_control_change, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
+        vehicle_control_mode_service_ = this->create_service<drone_services::srv::SetVehicleControl>("drone/set_vehicle_control", std::bind(&HeartBeat::handle_vehicle_control_change, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
         // create a publisher on the offboard control mode topic
         offboard_control_mode_publisher_ = this->create_publisher<px4_msgs::msg::OffboardControlMode>("/fmu/in/offboard_control_mode", 10);
         // create timer to send heartbeat messages (offboard control) every 100ms
@@ -70,14 +70,14 @@ private:
         const std::shared_ptr<drone_services::srv::SetVehicleControl::Request> request,
         const std::shared_ptr<drone_services::srv::SetVehicleControl::Response> response)
     {
-        // if (request->control < 0 || request->control > CONTROL_POSITION_POS)
-        // {
-        //     response->status = 1;
-        // } else {
-        //     this->control_mode = request->control
-        //     RCLCPP_INFO(this->get_logger(), "set control mode to %d", this->control_mode)
-        //     response->status = 0;
-        // }
+        if (request->control < 0 || request->control > CONTROL_POSITION_POS)
+        {
+            response->status = 1;
+        } else {
+            this->control_mode = request->control
+            RCLCPP_INFO(this->get_logger(), "set control mode to %d", this->control_mode)
+            response->status = 0;
+        }
 
     }
 };
