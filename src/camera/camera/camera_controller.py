@@ -31,7 +31,7 @@ class CameraController(Node):
             if (request.input_name == "default"):
                 self.get_logger().info("Taking picture with default filename")
                 now = datetime.now().strftime("droneimage_%Y-%m-%d_%H-%M-%S")
-                imagename = "/home/ubuntu/drone_img" + now + ".jpg"
+                imagename = "/home/ubuntu/drone_img/" + now + ".jpg"
                 # image = self.maintain_aspect_ratio_resize(image, width=RES_4K_W, height=RES_4K_H)
                 # cv2.imwrite(imagename, image)
                 response.filename = imagename
