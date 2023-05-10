@@ -69,14 +69,14 @@ private:
         const std::shared_ptr<drone_services::srv::SetVehicleControl::Request> request,
         const std::shared_ptr<drone_services::srv::SetVehicleControl::Response> response)
     {
-        if (request->control < 0 || request->control > CONTROL_POSITION_POS)
-        {
-            response->status = 1;
-        } else {
-            this->control_mode = request->control
-            RCLCPP_INFO(this->get_logger(), "set control mode to %d", this->control_mode)
-            response->status = 0;
-        }
+        // if (request->control < 0 || request->control > CONTROL_POSITION_POS)
+        // {
+        //     response->status = 1;
+        // } else {
+        //     this->control_mode = request->control
+        //     RCLCPP_INFO(this->get_logger(), "set control mode to %d", this->control_mode)
+        //     response->status = 0;
+        // }
 
     }
 };
