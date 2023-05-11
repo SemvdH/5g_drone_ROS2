@@ -25,6 +25,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/SetVelocity.srv"  
   "srv/TakePicture.srv"
   "srv/SetVehicleControl.srv"
+  "msg/DroneControlMode.msg"
 )
 
 if(BUILD_TESTING)

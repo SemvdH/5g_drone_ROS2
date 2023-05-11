@@ -5,6 +5,7 @@ from sshkeyboard import listen_keyboard_manual
 import asyncio
 
 from drone_services.srv import SetAttitude
+from drone_services.srv import SetVehicleControl
 
 
 class TestController(Node):
@@ -13,7 +14,8 @@ class TestController(Node):
         super().__init__('test_controller')
         self.cli = self.create_client(SetAttitude, 'drone/set_attitude')
         while not self.cli.wait_for_service(timeout_sec=1.0):
-            self.get_logger().info('service not available, waiting again...')
+            self.get_logger().info('set attitude service not available, waiting again...')
+        self.vehicle_control_cli = self.create_client(SetVehicleControl, 'drone/set_vehicle_control')
         self.req = SetAttitude.Request()
 
         self.get_logger().info("Controls:\nW - forward\nS - backward\nA - left\nD - right\nQ - rotate left\nE - rotate right\nSpace - up\nZ - down\nV - Down nudge\nF - Up nudge\nN - emergency stop\nEsc - exit")
