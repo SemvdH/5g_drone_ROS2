@@ -1,3 +1,4 @@
+# service to set control mode for heartbeat messages
 # bitmask for control:
 # bit 0: actuator
 # bit 1: body rate

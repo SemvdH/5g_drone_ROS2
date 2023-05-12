@@ -1,7 +1,7 @@
 /**
  * @file px4_controller.cpp
  * @author Sem van der Hoeven (sem.hoeven@gmail.com)
- * @brief Controller node to contol the PX4 using attitude or trajectory setpoints. 
+ * @brief Controller node to contol the PX4 using attitude or trajectory setpoints.
  * It subscribes to the /drone/set_attitude topic to receive control commands
  */
 
@@ -23,7 +23,8 @@
 
 #include "drone_control_modes.h"
 
-#define D_SPEED(x) -x - 9.81
+#define DEFAULT_YAW_SPEED 0.6 // default turning speed in radians per second
+#define D_SPEED(x) -x - 9.81  // a speed up of x m/s has to be ajusted for the earths gravity
 
 using namespace std::chrono_literals;
 
@@ -44,10 +45,10 @@ public:
 
         vehicle_attitude_subscription_ = this->create_subscription<px4_msgs::msg::VehicleAttitude>("/fmu/out/vehicle_attitude", qos, std::bind(&PX4Controller::on_attitude_receive, this, std::placeholders::_1));
         control_mode_subscription_ = this->create_subscription<drone_services::msg::DroneControlMode>("/drone/control_mode", qos, std::bind(&PX4Controller::on_control_mode_receive, this, std::placeholders::_1));
-        
-        set_attitude_service_ = this->create_service<drone_services::srv::SetAttitude>("drone/set_attitude", std::bind(&PX4Controller::set_setpoint, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
-        disarm_service_ = this->create_service<std_srvs::srv::Empty>("drone/disarm", std::bind(&PX4Controller::handle_disarm_request, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
 
+        set_attitude_service_ = this->create_service<drone_services::srv::SetAttitude>("/drone/set_attitude", std::bind(&PX4Controller::set_setpoint, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
+        disarm_service_ = this->create_service<std_srvs::srv::Empty>("/drone/disarm", std::bind(&PX4Controller::handle_disarm_request, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
+        arm_service = this->create_service<std_srvs::srv::Empty>("/drone/arm", std::bind(&PX4Controller::handle_arm_request, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
         // create timer to send vehicle attitude setpoints every second
         timer_ = this->create_wall_timer(100ms, std::bind(&PX4Controller::send_setpoint, this));
 
@@ -64,15 +65,14 @@ private:
 
     rclcpp::Service<drone_services::srv::SetAttitude>::SharedPtr set_attitude_service_;
     rclcpp::Service<std_srvs::srv::Empty>::SharedPtr disarm_service_;
-
-
+    rclcpp::Service<std_srvs::srv::Empty>::SharedPtr arm_service_;
 
     // rclcpp::Publisher<px4_msgs::msg::OffboardControlMode>::SharedPtr offboard_control_mode_publisher_;
 
     rclcpp::TimerBase::SharedPtr timer_;
     double start_time_;
     bool has_sent_status = false;
-    bool flying = false;
+    bool flying = false; // if user has taken over control
     bool armed = false;
     bool has_swithed = false;
     int setpoint_count = 0;
@@ -82,13 +82,16 @@ private:
     bool new_setpoint = false; // for printing new q_d when a new setpoint has been received
 
     float last_setpoint[3] = {0, 0, 0};
-    float last_angle = 0;
-    float last_thrust = 0;
+    float last_angle = 0;     // angle in radians (-PI .. PI)
+    float last_thrust = -0.1; // default 10% thrust for when the drone gets armed
+
+    float velocity[3] = {0, 0, 0};
+    float position[3] = {0, 0, 0};
 
     float base_q[4] = {0, 0, 0, 0};
     int base_q_amount = 0;
 
-    char current_control_mode = CONTROL_MODE_ATTITUDE;
+    char current_control_mode = CONTROL_MODE_ATTITUDE; // start with attitude control
 
     // result quaternion
     std::array<float, 4> q = {0, 0, 0, 0};
@@ -153,70 +156,58 @@ private:
         if (armed)
         {
             armed = false;
+            flying = false;
             publish_vehicle_command(px4_msgs::msg::VehicleCommand::VEHICLE_CMD_COMPONENT_ARM_DISARM, 0.0, 0);
         }
     }
 
-    void send_trajectory_setpoint()
+    /**
+     * @brief arms the drone when a call to the arm service is made
+     *
+     * @param request_header the header for the service request
+     * @param request the request (empty)
+     * @param response the response (empty)
+     */
+    void handle_arm_request(
+        const std::shared_ptr<rmw_request_id_t> request_header,
+        const std::shared_ptr<std_srvs::srv::Empty::Request> request,
+        const std::shared_ptr<std_srvs::srv::Empty::Response> response)
     {
+        RCLCPP_INFO(this->get_logger(), "Got arm request...");
 
-        auto msg = px4_msgs::msg::TrajectorySetpoint();
-        if (this->get_clock()->now().seconds() - start_time_ < 10)
+        if (!armed)
         {
-            msg.acceleration[0] = 0;
-            msg.acceleration[1] = 0;
-            msg.acceleration[2] = D_SPEED(10);
-            msg.yawspeed = 0;
-            msg.yaw = -3.14;
+            this->publish_vehicle_command(px4_msgs::msg::VehicleCommand::VEHICLE_CMD_DO_SET_MODE, 1, 6);
+            RCLCPP_INFO(this->get_logger(), "Set to offboard mode");
+            // arm the drone
+            this->publish_vehicle_command(px4_msgs::msg::VehicleCommand::VEHICLE_CMD_COMPONENT_ARM_DISARM, 1.0, 0);
+
+            RCLCPP_INFO(this->get_logger(), "Arm command sent");
+            armed = true;
         }
         else
         {
-            if (!has_swithed)
-            {
-                RCLCPP_INFO(this->get_logger(), "waiting for service input...");
-                has_swithed = true;
-            }
-
-            msg.acceleration[0] = last_setpoint[0];
-            msg.acceleration[1] = last_setpoint[1];
-            msg.acceleration[2] = D_SPEED(last_setpoint[2]);
-            msg.yawspeed = 0.5;
+            RCLCPP_ERROR(this->get_logger(), "Arm request received but the drone is already armed!");
         }
-
-        msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
-
-        trajectory_setpoint_publisher->publish(msg);
     }
 
-    void send_attitude_setpoint()
+    void send_idle_attitude_setpoint()
+    {
+        send_attitude_setpoint(false);
+    }
+
+    void send_attitude_setpoint(bool new_setpoint)
     {
 
         // set message to enable attitude
         auto msg = px4_msgs::msg::VehicleAttitudeSetpoint();
 
-        // if (this->get_clock()->now().seconds() - start_time_ < 30)
-        // {
-        // msg.yaw_body = last_setpoint[0];
-        // msg.pitch_body = last_setpoint[1];
-        // msg.roll_body = last_setpoint[2];
         // move up?
         msg.thrust_body[0] = 0; // north
         msg.thrust_body[1] = 0; // east
         msg.thrust_body[2] = -last_thrust;
 
         calculate_quaternion(q, last_setpoint[0], last_setpoint[1], last_setpoint[2]);
-        // RCLCPP_INFO(this->get_logger(), "yaw:%f pitch:%f roll:%f thrust:%f", q.at(0), q.at(1), q.at(2), last_thrust);
-        // }
-        // else
-        // {
-        //     if (flying)
-        //     {
-        //         publish_vehicle_command(px4_msgs::msg::VehicleCommand::VEHICLE_CMD_COMPONENT_ARM_DISARM, 0.0, 0);
-        //         flying = false;
-        //         RCLCPP_INFO(this->get_logger(), "Disarm command sent after 30 seconds");
-        //     }
-        // }
-
         // set quaternion
         msg.q_d[0] = q.at(0);
         msg.q_d[1] = base_q[1] + q.at(1);
@@ -237,33 +228,62 @@ private:
         vehicle_setpoint_publisher_->publish(msg);
     }
 
+    void send_velocity_setpoint()
+    {
+        auto msg = px4_msgs::msg::TrajectorySetpoint();
+
+        msg.velocity[0] = velocity[0];
+        msg.velocity[1] = velocity[1];
+        msg.velocity[2] = D_SPEED(velocity[2]);
+
+        publish_trajectory_setpoint(msg);
+    }
+
+    void send_position_setpoint()
+    {
+        auto msg = px4_msgs::msg::TrajectorySetpoint();
+
+        for (int i = 0; i < 3; i++)
+        {
+            msg.position[i] = position[i];
+        }
+
+        publish_trajectory_setpoint(msg);
+    }
+
+    void publish_trajectory_setpoint(px4_msgs::msg::TrajectorySetpoint msg)
+    {
+        msg.yaw = last_angle;
+
+        msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
+        trajectory_setpoint_publisher->publish(msg);
+    }
+
     /**
      * @brief Send setpoints to PX4. First, 20 setpoints will be sent before offboard mode will be engaged and the drone will be armed.
      *
      */
     void send_setpoint()
     {
-        // increase amount of setpoints sent
-        setpoint_count++;
-
-        ready_to_fly = setpoint_count == 20;
-        // after 20 setpoints, send arm command to make drone actually fly
-        if (ready_to_fly)
+        if (!flying)
         {
-            // switch to offboard mode and arm
-
-            // set to offboard mode
-            this->publish_vehicle_command(px4_msgs::msg::VehicleCommand::VEHICLE_CMD_DO_SET_MODE, 1, 6);
-            RCLCPP_INFO(this->get_logger(), "Set to offboard mode");
-            // arm the drone
-            this->publish_vehicle_command(px4_msgs::msg::VehicleCommand::VEHICLE_CMD_COMPONENT_ARM_DISARM, 1.0, 0);
-
-            RCLCPP_INFO(this->get_logger(), "Arm command sent");
-            flying = true;
-            armed = true;
+            send_idle_attitude_setpoint();
         }
-
-        send_attitude_setpoint();
+        else
+        {
+            if (current_control_mode == CONTROL_MODE_ATTITUDE)
+            {
+                send_attitude_setpoint(new_setpoint);
+            }
+            else if (current_control_mode == CONTROL_MODE_VELOCITY)
+            {
+                send_velocity_setpoint();
+            }
+            else if (current_control_mode == CONTROL_MODE_POSITION)
+            {
+                send_position_setpoint();
+            }
+        }
     }
 
     void on_attitude_receive(const px4_msgs::msg::VehicleAttitude::SharedPtr msg)
@@ -282,7 +302,9 @@ private:
                 base_q[1] = (base_q[1] + msg->q[1]) / 2;
                 base_q[2] = (base_q[2] + msg->q[2]) / 2;
                 base_q[3] = (base_q[3] + msg->q[3]) / 2;
-            } else {
+            }
+            else
+            {
                 base_q[1] = msg->q[1];
                 base_q[2] = msg->q[2];
                 base_q[3] = msg->q[3];
@@ -295,7 +317,16 @@ private:
 
     void on_control_mode_receive(const drone_services::msg::DroneControlMode::SharedPtr msg)
     {
-        
+        if (msg->control_mode >= CONTROL_MODE_MIN && msg->control_mode <= CONTROL_MODE_MAX)
+        {
+            current_control_mode = msg->control_mode;
+            flying = true; // user has taken over control
+            RCLCPP_INFO(this->get_logger(), "Control mode set to %d", current_control_mode);
+        }
+        else
+        {
+            RCLCPP_ERROR(this->get_logger(), "Received invalid control mode %d", msg->control_mode);
+        }
     }
 
     /**
