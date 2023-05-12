@@ -83,7 +83,7 @@ private:
 
     float last_setpoint[3] = {0, 0, 0};
     float last_angle = 0;     // angle in radians (-PI .. PI)
-    float last_thrust = -0.1; // default 10% thrust for when the drone gets armed
+    float last_thrust = 0; // default 10% thrust for when the drone gets armed
 
     float velocity[3] = {0, 0, 0};
     float position[3] = {0, 0, 0};
@@ -183,6 +183,7 @@ private:
             this->publish_vehicle_command(px4_msgs::msg::VehicleCommand::VEHICLE_CMD_COMPONENT_ARM_DISARM, 1.0, 0);
 
             RCLCPP_INFO(this->get_logger(), "Arm command sent");
+            this->last_thrust = -0.1; // spin motors at 10% thrust
             armed = true;
         }
         else
@@ -191,12 +192,7 @@ private:
         }
     }
 
-    void send_idle_attitude_setpoint()
-    {
-        send_attitude_setpoint(false);
-    }
-
-    void send_attitude_setpoint(bool new_setpoint)
+    void send_attitude_setpoint()
     {
 
         // set message to enable attitude
@@ -213,12 +209,6 @@ private:
         msg.q_d[1] = base_q[1] + q.at(1);
         msg.q_d[2] = base_q[2] + q.at(2);
         msg.q_d[3] = base_q[3] + q.at(3);
-
-        if (new_setpoint)
-        {
-            RCLCPP_INFO(this->get_logger(), "q_d: [%f, %f, %f, %f]", msg.q_d[0], msg.q_d[1], msg.q_d[2], msg.q_d[3]);
-            new_setpoint = false;
-        }
 
         msg.yaw_sp_move_rate = 0;
         msg.reset_integral = false;
@@ -265,10 +255,11 @@ private:
      */
     void send_setpoint()
     {
+        RCLCPP_INFO(this->get_logger(), "current values: %f %f %f %f", last_setpoint[0], last_setpoint[1], last_setpoint[2], last_thrust);
         if (!flying)
         {
             RCLCPP_INFO(this->get_logger(), "Sending idle attitude setpoint");
-            send_idle_attitude_setpoint();
+            send_attitude_setpoint();
         }
         else
         {
