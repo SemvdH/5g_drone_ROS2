@@ -17,6 +17,7 @@
 #include <px4_msgs/msg/vehicle_attitude.hpp>
 
 #include <drone_services/srv/set_attitude.hpp>
+#include <drone_services/srv/set_trajectory.hpp>
 #include <drone_services/msg/drone_control_mode.hpp>
 
 #include <std_srvs/srv/empty.hpp>
@@ -46,7 +47,8 @@ public:
         vehicle_attitude_subscription_ = this->create_subscription<px4_msgs::msg::VehicleAttitude>("/fmu/out/vehicle_attitude", qos, std::bind(&PX4Controller::on_attitude_receive, this, std::placeholders::_1));
         control_mode_subscription_ = this->create_subscription<drone_services::msg::DroneControlMode>("/drone/control_mode", qos, std::bind(&PX4Controller::on_control_mode_receive, this, std::placeholders::_1));
 
-        set_attitude_service_ = this->create_service<drone_services::srv::SetAttitude>("/drone/set_attitude", std::bind(&PX4Controller::set_setpoint, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
+        set_attitude_service_ = this->create_service<drone_services::srv::SetAttitude>("/drone/set_attitude", std::bind(&PX4Controller::handle_attitude_setpoint, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
+        set_trajectory_service_ = this->create_service<drone_services::srv::SetTrajectory>("/drone/set_trajectory", std::bind(&PX4Controller::handle_trajectory_setpoint, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
         disarm_service_ = this->create_service<std_srvs::srv::Empty>("/drone/disarm", std::bind(&PX4Controller::handle_disarm_request, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
         arm_service_ = this->create_service<std_srvs::srv::Empty>("/drone/arm", std::bind(&PX4Controller::handle_arm_request, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
         // create timer to send vehicle attitude setpoints every second
@@ -64,6 +66,7 @@ private:
     rclcpp::Subscription<drone_services::msg::DroneControlMode>::SharedPtr control_mode_subscription_;
 
     rclcpp::Service<drone_services::srv::SetAttitude>::SharedPtr set_attitude_service_;
+    rclcpp::Service<drone_services::srv::SetTrajectory>::SharedPtr set_trajectory_service_;
     rclcpp::Service<std_srvs::srv::Empty>::SharedPtr disarm_service_;
     rclcpp::Service<std_srvs::srv::Empty>::SharedPtr arm_service_;
 
@@ -96,7 +99,7 @@ private:
     // result quaternion
     std::array<float, 4> q = {0, 0, 0, 0};
 
-    void set_setpoint(
+    void handle_attitude_setpoint(
         const std::shared_ptr<rmw_request_id_t> request_header,
         const std::shared_ptr<drone_services::srv::SetAttitude::Request> request,
         const std::shared_ptr<drone_services::srv::SetAttitude::Response> response)
@@ -136,6 +139,38 @@ private:
             last_setpoint[1] = 0;
             last_setpoint[2] = 0;
             response->success = false;
+        }
+    }
+
+    void handle_trajectory_setpoint(
+        const std::shared_ptr<rmw_request_id_t> request_header,
+        const std::shared_ptr<drone_services::srv::SetTrajectory::Request> request,
+        const std::shared_ptr<drone_services::srv::SetTrajectory::Response> response)
+    {
+        if (request->control_mode != CONTROL_MODE_VELOCITY || request->control_mode != CONTROL_MODE_POSITION)
+        {
+            RCLCPP_INFO(this->get_logger(), "Got invalid control mode: %d", request->control_mode);
+            response->success = false;
+        }
+        else
+        {
+            if (request->control_mode == CONTROL_MODE_VELOCITY)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    velocity[i] = request->values[i];
+                }
+            }
+            else if (request->control_mode == CONTROL_MODE_POSITION)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    position[i] = request->values[i];
+                }
+            }
+
+            last_angle = request->yaw;
+            response->success = true;
         }
     }
 
@@ -256,6 +291,7 @@ private:
     void send_setpoint()
     {
 
+        /*
         setpoint_count++;
         if (setpoint_count == 20)
         {
@@ -270,7 +306,8 @@ private:
         }
 
         send_attitude_setpoint();
-        /*
+        */
+        
         RCLCPP_INFO(this->get_logger(), "current values: %f %f %f %f", last_setpoint[0], last_setpoint[1], last_setpoint[2], last_thrust);
         if (!flying)
         {
@@ -295,7 +332,7 @@ private:
                 send_position_setpoint();
             }
         }
-        */
+        
     }
 
     void on_attitude_receive(const px4_msgs::msg::VehicleAttitude::SharedPtr msg)
