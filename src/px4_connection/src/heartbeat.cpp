@@ -109,14 +109,14 @@ private:
     {
         if (request->control < 0 || request->control > (1 << CONTROL_POSITION_POS))
         {
-            response->status = 1;
+            response->success = false;
         }
         else
         {
             this->control_mode = request->control;
             RCLCPP_INFO(this->get_logger(), "set control mode to %d", this->control_mode);
             publish_new_control_mode();
-            response->status = 0;
+            response->success = true;
         }
     }
 };

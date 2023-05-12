@@ -12,4 +12,4 @@
 # 32: position
 int32 control # control bitmask
 ---
-int8 status # status of operation
+bool success # if operation succeeded

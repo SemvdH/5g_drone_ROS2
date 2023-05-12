@@ -17,6 +17,7 @@
 #include <px4_msgs/msg/vehicle_attitude.hpp>
 
 #include <drone_services/srv/set_attitude.hpp>
+#include <drone_services/msg/DroneControlMode.hpp>
 
 #include <std_srvs/srv/empty.hpp>
 
@@ -42,7 +43,8 @@ public:
         // offboard_control_mode_publisher_ = this->create_publisher<px4_msgs::msg::OffboardControlMode>("/fmu/in/offboard_control_mode", 10);
 
         vehicle_attitude_subscription_ = this->create_subscription<px4_msgs::msg::VehicleAttitude>("/fmu/out/vehicle_attitude", qos, std::bind(&PX4Controller::on_attitude_receive, this, std::placeholders::_1));
-
+        control_mode_subscription_ = this->create_subscription<drone_services::msg::DroneControlMode>("/drone/control_mode", qos, std::bind(&PX4Controller::on_control_mode_receive, this, std::placeholders::_1));
+        
         set_attitude_service_ = this->create_service<drone_services::srv::SetAttitude>("drone/set_attitude", std::bind(&PX4Controller::set_setpoint, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
         disarm_service_ = this->create_service<std_srvs::srv::Empty>("drone/disarm", std::bind(&PX4Controller::handle_disarm_request, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
 
@@ -58,9 +60,12 @@ private:
     rclcpp::Publisher<px4_msgs::msg::TrajectorySetpoint>::SharedPtr trajectory_setpoint_publisher;
     rclcpp::Publisher<px4_msgs::msg::VehicleCommand>::SharedPtr vehicle_command_publisher_;
     rclcpp::Subscription<px4_msgs::msg::VehicleAttitude>::SharedPtr vehicle_attitude_subscription_;
+    rclcpp::Subscription<drone_services::msg::DroneControlMode>::SharedPtr control_mode_subscription_;
 
     rclcpp::Service<drone_services::srv::SetAttitude>::SharedPtr set_attitude_service_;
     rclcpp::Service<std_srvs::srv::Empty>::SharedPtr disarm_service_;
+
+
 
     // rclcpp::Publisher<px4_msgs::msg::OffboardControlMode>::SharedPtr offboard_control_mode_publisher_;
 
@@ -82,6 +87,8 @@ private:
 
     float base_q[4] = {0, 0, 0, 0};
     int base_q_amount = 0;
+
+    char current_control_mode = CONTROL_MODE_ATTITUDE;
 
     // result quaternion
     std::array<float, 4> q = {0, 0, 0, 0};
@@ -117,7 +124,7 @@ private:
             RCLCPP_INFO(this->get_logger(), "New setpoint: yaw:%f pitch:%f roll:%f thrust:%f", last_setpoint[0], last_setpoint[1], last_setpoint[2], last_thrust);
             new_setpoint = true;
 
-            response->status = 0;
+            response->success = true;
         }
         else
         {
@@ -125,7 +132,7 @@ private:
             last_setpoint[0] = 0;
             last_setpoint[1] = 0;
             last_setpoint[2] = 0;
-            response->status = 1;
+            response->success = false;
         }
     }
 
@@ -284,6 +291,11 @@ private:
 
             RCLCPP_INFO(this->get_logger(), "base_q: %f %f %f %f", base_q[0], base_q[1], base_q[2], base_q[3]);
         }
+    }
+
+    void on_control_mode_receive(const drone_services::msg::DroneControlMode::SharedPtr msg)
+    {
+        
     }
 
     /**
