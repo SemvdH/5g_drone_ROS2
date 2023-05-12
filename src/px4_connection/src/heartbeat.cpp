@@ -10,16 +10,9 @@
 #include <drone_services/srv/set_vehicle_control.hpp>
 #include <drone_services/msg/drone_control_mode.hpp>
 
-#define CONTROL_MODE_ATTITUDE 1
-#define CONTROL_MODE_VELOCITY 2
-#define CONTROL_MODE_POSITION 3
+#include "drone_control_modes.h"
 
-#define CONTROL_ACTUATOR_POS 0
-#define CONTROL_BODY_RATE_POS 1
-#define CONTROL_ATTITUDE_POS 2
-#define CONTROL_ACCELERATION_POS 3
-#define CONTROL_VELOCITY_POS 4
-#define CONTROL_POSITION_POS 5
+
 
 using namespace std::chrono_literals;
 

@@ -20,6 +20,8 @@
 
 #include <std_srvs/srv/empty.hpp>
 
+#include "drone_control_modes.h"
+
 #define D_SPEED(x) -x - 9.81
 
 using namespace std::chrono_literals;
