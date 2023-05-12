@@ -31,7 +31,7 @@ class TestController(Node):
         self.attitude_req = SetAttitude.Request()
         self.vehicle_control_req = SetVehicleControl.Request()
         self.traj_req = SetTrajectory.Request()
-        self.arm_req = Empty.Request()
+        # self.arm_req = Empty.Request()
 
         self.arm_publisher = self.create_publisher(Empty, '/drone/arm', 10)
 
@@ -41,6 +41,7 @@ class TestController(Node):
         while rclpy.ok():
             asyncio.run(listen_keyboard_manual(on_press=self.on_press))
             rclpy.spin_once(self, timeout_sec=0.1)
+
     def send_arm(self):
         self.future = self.arm_cli.call_async(self.arm_req)
         rclpy.spin_until_future_complete(self, self.future)
