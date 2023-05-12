@@ -95,7 +95,7 @@ private:
         else if (this->control_mode & (1 << CONTROL_POSITION_POS))
         {
             msg.control_mode = CONTROL_MODE_POSITION;
-            RLCPP_INFO(this->get_logger(), "set control mode to position");
+            RCLCPP_INFO(this->get_logger(), "set control mode to position");
         }
         RCLCPP_INFO(this->get_logger(), "publishing new control mode %d", msg.control_mode);
         drone_control_mode_publisher_->publish(msg);
