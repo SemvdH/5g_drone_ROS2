@@ -114,7 +114,7 @@ private:
         const std::shared_ptr<drone_services::srv::SetVehicleControl::Request> request,
         const std::shared_ptr<drone_services::srv::SetVehicleControl::Response> response)
     {
-        if (request->control < 0 || request->control > CONTROL_POSITION_POS)
+        if (request->control < 0 || request->control > (1 << CONTROL_POSITION_POS))
         {
             response->status = 1;
         }
