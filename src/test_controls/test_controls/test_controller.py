@@ -7,7 +7,6 @@ import asyncio
 from drone_services.srv import SetAttitude
 from drone_services.srv import SetTrajectory
 from drone_services.srv import SetVehicleControl
-from std_msgs.msg import Empty
 
 
 class TestController(Node):
@@ -28,8 +27,6 @@ class TestController(Node):
         self.attitude_req = SetAttitude.Request()
         self.vehicle_control_req = SetVehicleControl.Request()
         self.traj_req = SetTrajectory.Request()
-
-        self.arm_publisher = self.create_publisher(Empty, '/drone/arm', 10)
 
         self.get_logger().info("\nControls:\n1 - Attitude control\n2 - Velocity control\n3 - Position control\n/ - Arm drone\nW - forward\nS - backward\nA - left\nD - right\nQ - rotate left\nE - rotate right\nSpace - up\nZ - down\nV - Down nudge\nF - Up nudge\nN - emergency stop\nEsc - exit")
 
@@ -230,7 +227,7 @@ class TestController(Node):
                 self.send_control_mode()
             if key == '/':
                 self.get_logger().info('arming')
-                self.arm_publisher.publish(Empty())
+                
 
         except Exception as e:
             self.get_logger().error(str(e))
