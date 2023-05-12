@@ -48,7 +48,7 @@ public:
 
         set_attitude_service_ = this->create_service<drone_services::srv::SetAttitude>("/drone/set_attitude", std::bind(&PX4Controller::set_setpoint, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
         disarm_service_ = this->create_service<std_srvs::srv::Empty>("/drone/disarm", std::bind(&PX4Controller::handle_disarm_request, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
-        arm_service = this->create_service<std_srvs::srv::Empty>("/drone/arm", std::bind(&PX4Controller::handle_arm_request, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
+        arm_service_ = this->create_service<std_srvs::srv::Empty>("/drone/arm", std::bind(&PX4Controller::handle_arm_request, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
         // create timer to send vehicle attitude setpoints every second
         timer_ = this->create_wall_timer(100ms, std::bind(&PX4Controller::send_setpoint, this));
 
