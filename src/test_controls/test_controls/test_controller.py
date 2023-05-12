@@ -7,7 +7,7 @@ import asyncio
 from drone_services.srv import SetAttitude
 from drone_services.srv import SetTrajectory
 from drone_services.srv import SetVehicleControl
-from std_srvs.srv import Empty
+from std_msgs.msg import Empty
 
 
 class TestController(Node):
