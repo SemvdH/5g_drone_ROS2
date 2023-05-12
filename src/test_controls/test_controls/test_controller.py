@@ -24,14 +24,10 @@ class TestController(Node):
         self.traj_cli = self.create_client(SetTrajectory, '/drone/set_trajectory')
         while not self.traj_cli.wait_for_service(timeout_sec=1.0):
             self.get_logger().info('set trajectory service not available, waiting again...')
-        self.arm_cli = self.create_client(Empty, '/drone/arm')
-        while not self.arm_cli.wait_for_service(timeout_sec=1.0):
-            self.get_logger().info('arm service not available, waiting again...')
         
         self.attitude_req = SetAttitude.Request()
         self.vehicle_control_req = SetVehicleControl.Request()
         self.traj_req = SetTrajectory.Request()
-        # self.arm_req = Empty.Request()
 
         self.arm_publisher = self.create_publisher(Empty, '/drone/arm', 10)
 
@@ -41,13 +37,7 @@ class TestController(Node):
         while rclpy.ok():
             asyncio.run(listen_keyboard_manual(on_press=self.on_press))
             rclpy.spin_once(self, timeout_sec=0.1)
-
-    def send_arm(self):
-        self.future = self.arm_cli.call_async(self.arm_req)
-        rclpy.spin_until_future_complete(self, self.future)
-        self.get_logger().info('publishing message on service')
-        return self.future.result()
-
+    
     def send_control_mode(self):
         self.vehicle_control_req.control = self.control_mode
         self.future = self.vehicle_control_cli.call_async(self.vehicle_control_req)
