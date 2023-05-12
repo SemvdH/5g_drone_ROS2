@@ -28,14 +28,12 @@ class TestController(Node):
         while not self.arm_cli.wait_for_service(timeout_sec=1.0):
             self.get_logger().info('arm service not available, waiting again...')
 
+        self.get_logger().info('all services available')
         self.control_mode = 1
         
         self.attitude_req = SetAttitude.Request()
         self.vehicle_control_req = SetVehicleControl.Request()
         self.traj_req = SetTrajectory.Request()
-        self.arm_req = Empty.Request()
-
-        self.arm_publisher = self.create_publisher(Empty, '/drone/arm', 10)
 
         self.get_logger().info("\nControls:\n1 - Attitude control\n2 - Velocity control\n3 - Position control\n/ - Arm drone\nW - forward\nS - backward\nA - left\nD - right\nQ - rotate left\nE - rotate right\nSpace - up\nZ - down\nV - Down nudge\nF - Up nudge\nN - emergency stop\nEsc - exit")
 
@@ -45,7 +43,8 @@ class TestController(Node):
             rclpy.spin_once(self, timeout_sec=0.1)
 
     def send_arm(self):
-        self.future = self.arm_cli.call_async(self.arm_req)
+        arm_req = Empty()
+        self.future = self.arm_cli.call_async(arm_req)
         rclpy.spin_until_future_complete(self, self.future)
         self.get_logger().info('publishing message arm msg on service')
         return self.future.result()
