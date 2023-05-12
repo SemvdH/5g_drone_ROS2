@@ -82,7 +82,7 @@ private:
     bool new_setpoint = false; // for printing new q_d when a new setpoint has been received
 
     float last_setpoint[3] = {0, 0, 0};
-    float last_angle = 0;     // angle in radians (-PI .. PI)
+    float last_angle = 0;  // angle in radians (-PI .. PI)
     float last_thrust = 0; // default 10% thrust for when the drone gets armed
 
     float velocity[3] = {0, 0, 0};
@@ -255,6 +255,20 @@ private:
      */
     void send_setpoint()
     {
+
+        setpoint_count++;
+        if (setpoint_count == 20)
+        {
+            this->publish_vehicle_command(px4_msgs::msg::VehicleCommand::VEHICLE_CMD_DO_SET_MODE, 1, 6);
+            RCLCPP_INFO(this->get_logger(), "Set to offboard mode");
+            // arm the drone
+            this->publish_vehicle_command(px4_msgs::msg::VehicleCommand::VEHICLE_CMD_COMPONENT_ARM_DISARM, 1.0, 0);
+
+            RCLCPP_INFO(this->get_logger(), "Arm command sent");
+            this->last_thrust = -0.1; // spin motors at 10% thrust
+            armed = true;
+        }
+
         RCLCPP_INFO(this->get_logger(), "current values: %f %f %f %f", last_setpoint[0], last_setpoint[1], last_setpoint[2], last_thrust);
         if (!flying)
         {
