@@ -218,15 +218,15 @@ class TestController(Node):
                 self.stop()
             if key == '1':
                 self.get_logger().info('attitude control')
-                self.control_mode = 1
+                self.control_mode = 4
                 self.send_control_mode()
             if key == '2':
                 self.get_logger().info('velocity control')
-                self.control_mode = 2
+                self.control_mode = 16
                 self.send_control_mode()
             if key == '3':
                 self.get_logger().info('position control')
-                self.control_mode = 3
+                self.control_mode = 32
                 self.send_control_mode()
             if key == '/':
                 self.get_logger().info('arming')
