@@ -82,17 +82,17 @@ private:
     void publish_new_control_mode()
     {
         auto msg = drone_services::msg::DroneControlMode();
-        if ((this->control_mode >> CONTROL_ATTITUDE_POS) & 1)
+        if (this->control_mode & (1 << CONTROL_ATTITUDE_POS))
         {
             msg.control_mode = CONTROL_MODE_ATTITUDE;
             RCLCPP_INFO(this->get_logger(), "set control mode to attitude");
         }
-        else if ((this->control_mode >> CONTROL_VELOCITY_POS) & 1)
+        else if (this->control_mode & (1 << CONTROL_VELOCITY_POS))
         {
             msg.control_mode = CONTROL_MODE_VELOCITY;
             RCLCPP_INFO(this->get_logger(), "set control mode to velocity");
         }
-        else if ((this->control_mode >> CONTROL_POSITION_POS) & 1)
+        else if (this->control_mode & (1 << CONTROL_POSITION_POS))
         {
             msg.control_mode = CONTROL_MODE_POSITION;
             RLCPP_INFO(this->get_logger(), "set control mode to position");
