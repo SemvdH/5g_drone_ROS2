@@ -320,13 +320,14 @@ private:
         if (msg->control_mode >= CONTROL_MODE_MIN && msg->control_mode <= CONTROL_MODE_MAX)
         {
             current_control_mode = msg->control_mode;
+            RCLCPP_INFO(this->get_logger(), "Got valid control mode");
             flying = true; // user has taken over control
-            RCLCPP_INFO(this->get_logger(), "Control mode set to %d", current_control_mode);
         }
         else
         {
             RCLCPP_ERROR(this->get_logger(), "Received invalid control mode %d", msg->control_mode);
         }
+        RCLCPP_INFO(this->get_logger(), "Control mode set to %d", current_control_mode);
     }
 
     /**
