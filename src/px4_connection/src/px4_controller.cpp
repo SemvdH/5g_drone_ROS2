@@ -266,7 +266,7 @@ private:
             if (current_control_mode == CONTROL_MODE_ATTITUDE)
             {
                 RCLCPP_INFO(this->get_logger(), "Sending attitude setpoint");
-                send_attitude_setpoint(new_setpoint);
+                send_attitude_setpoint();
             }
             else if (current_control_mode == CONTROL_MODE_VELOCITY)
             {
