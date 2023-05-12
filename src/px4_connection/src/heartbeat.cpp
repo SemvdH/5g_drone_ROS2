@@ -54,22 +54,23 @@ private:
      */
     void send_heartbeat()
     {
-        // set message to enable attitude based on control mode variable
         auto msg = px4_msgs::msg::OffboardControlMode();
-        /*
+        
         msg.position = (this->control_mode >> CONTROL_POSITION_POS) & 1 ? true : false;
         msg.velocity = (this->control_mode >> CONTROL_VELOCITY_POS) & 1 ? true : false;
         msg.acceleration = (this->control_mode >> CONTROL_ACCELERATION_POS) & 1 ? true : false;
         msg.attitude = (this->control_mode >> CONTROL_ATTITUDE_POS) & 1 ? true : false;
         msg.body_rate = (this->control_mode >> CONTROL_BODY_RATE_POS) & 1 ? true : false;
         msg.actuator = (this->control_mode >> CONTROL_ACTUATOR_POS) & 1 ? true : false;
-        */
+        
+        /*
         msg.position = false;
         msg.velocity = false;
         msg.acceleration = false;
         msg.attitude = true;
         msg.body_rate = false;
         msg.actuator = false;
+        */
         // get timestamp and publish message
         msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
         offboard_control_mode_publisher_->publish(msg);
