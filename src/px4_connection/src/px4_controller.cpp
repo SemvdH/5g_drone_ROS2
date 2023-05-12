@@ -269,6 +269,8 @@ private:
             armed = true;
         }
 
+        send_attitude_setpoint();
+        /*
         RCLCPP_INFO(this->get_logger(), "current values: %f %f %f %f", last_setpoint[0], last_setpoint[1], last_setpoint[2], last_thrust);
         if (!flying)
         {
@@ -293,6 +295,7 @@ private:
                 send_position_setpoint();
             }
         }
+        */
     }
 
     void on_attitude_receive(const px4_msgs::msg::VehicleAttitude::SharedPtr msg)
