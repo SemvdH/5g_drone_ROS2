@@ -7,7 +7,7 @@ import asyncio
 from drone_services.srv import SetAttitude
 from drone_services.srv import SetTrajectory
 from drone_services.srv import SetVehicleControl
-from std_msgs.msg import Empty
+from std_srvs.srv import Empty
 
 
 class TestController(Node):
@@ -24,10 +24,14 @@ class TestController(Node):
         self.traj_cli = self.create_client(SetTrajectory, '/drone/set_trajectory')
         while not self.traj_cli.wait_for_service(timeout_sec=1.0):
             self.get_logger().info('set trajectory service not available, waiting again...')
+        self.arm_cli = self.create_client(Empty, '/drone/arm')
+        while not self.arm_cli.wait_for_service(timeout_sec=1.0):
+            self.get_logger().info('arm service not available, waiting again...')
         
         self.attitude_req = SetAttitude.Request()
         self.vehicle_control_req = SetVehicleControl.Request()
         self.traj_req = SetTrajectory.Request()
+        self.arm_req = Empty.Request()
 
         self.arm_publisher = self.create_publisher(Empty, '/drone/arm', 10)
 
@@ -37,7 +41,12 @@ class TestController(Node):
         while rclpy.ok():
             asyncio.run(listen_keyboard_manual(on_press=self.on_press))
             rclpy.spin_once(self, timeout_sec=0.1)
-    
+    def send_arm(self):
+        self.future = self.arm_cli.call_async(self.arm_req)
+        rclpy.spin_until_future_complete(self, self.future)
+        self.get_logger().info('publishing message on service')
+        return self.future.result()
+
     def send_control_mode(self):
         self.vehicle_control_req.control = self.control_mode
         self.future = self.vehicle_control_cli.call_async(self.vehicle_control_req)
@@ -218,15 +227,15 @@ class TestController(Node):
                 self.stop()
             if key == '1':
                 self.get_logger().info('attitude control')
-                self.control_mode = 4
+                self.control_mode = 4 #bitmask of 100
                 self.send_control_mode()
             if key == '2':
                 self.get_logger().info('velocity control')
-                self.control_mode = 16
+                self.control_mode = 16 #bitmask of 10000
                 self.send_control_mode()
             if key == '3':
                 self.get_logger().info('position control')
-                self.control_mode = 32
+                self.control_mode = 32 #bitmask of 100000
                 self.send_control_mode()
             if key == '/':
                 self.get_logger().info('arming')
