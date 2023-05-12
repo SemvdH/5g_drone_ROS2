@@ -31,7 +31,7 @@ class TestController(Node):
 
         self.arm_publisher = self.create_publisher(Empty, '/drone/arm', 10)
 
-        self.get_logger().info("Controls:1 - Attitude control\n2 - Velocity control\n3 - Position control\n/ - Arm drone\nW - forward\nS - backward\nA - left\nD - right\nQ - rotate left\nE - rotate right\nSpace - up\nZ - down\nV - Down nudge\nF - Up nudge\nN - emergency stop\nEsc - exit")
+        self.get_logger().info("\nControls:\n1 - Attitude control\n2 - Velocity control\n3 - Position control\n/ - Arm drone\nW - forward\nS - backward\nA - left\nD - right\nQ - rotate left\nE - rotate right\nSpace - up\nZ - down\nV - Down nudge\nF - Up nudge\nN - emergency stop\nEsc - exit")
 
     def spin(self):
         while rclpy.ok():
@@ -219,12 +219,15 @@ class TestController(Node):
             if key == '1':
                 self.get_logger().info('attitude control')
                 self.control_mode = 1
+                self.send_control_mode()
             if key == '2':
                 self.get_logger().info('velocity control')
                 self.control_mode = 2
-            if key == '1':
+                self.send_control_mode()
+            if key == '3':
                 self.get_logger().info('position control')
                 self.control_mode = 3
+                self.send_control_mode()
             if key == '/':
                 self.get_logger().info('arming')
                 self.arm_publisher.publish(Empty())
