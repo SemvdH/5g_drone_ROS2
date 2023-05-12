@@ -267,6 +267,7 @@ private:
     {
         if (!flying)
         {
+            RCLCPP_INFO(this->get_logger(), "Sending idle attitude setpoint");
             send_idle_attitude_setpoint();
         }
         else
