@@ -26,6 +26,8 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/SetVelocity.srv"  
   "srv/TakePicture.srv"
   "srv/SetVehicleControl.srv"
+  "srv/ArmDrone.srv"
+  "srv/DisarmDrone.srv"
   "msg/DroneControlMode.msg"
 )
 
