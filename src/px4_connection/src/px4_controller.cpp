@@ -337,21 +337,21 @@ private:
             }
             else
             {
-                if (!new_setpoint)
-                {
-                    return;
-                }
+                // if (!new_setpoint)
+                // {
+                //     return;
+                // }
                 if (current_control_mode == CONTROL_MODE_VELOCITY)
                 {
-                    RCLCPP_INFO(this->get_logger(), "Sending velocity setpoint");
+                    RCLCPP_INFO(this->get_logger(), "velocity %f %f %f", velocity[0], velocity[1], velocity[2]);
                     send_velocity_setpoint();
                 }
                 else if (current_control_mode == CONTROL_MODE_POSITION)
                 {
-                    RCLCPP_INFO(this->get_logger(), "Sending position setpoint");
+                    RCLCPP_INFO(this->get_logger(), "position %f %f %f", position[0], position[1], position[2]);
                     send_position_setpoint();
                 }
-                new_setpoint = false;
+                // new_setpoint = false;
             }
         }
     }
