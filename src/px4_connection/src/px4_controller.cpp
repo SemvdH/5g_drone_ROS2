@@ -415,6 +415,13 @@ private:
 
     void on_local_position_receive(const px4_msgs::msg::VehicleLocalPosition::SharedPtr msg)
     {
+        // set start values to current position
+        if (!user_in_control)
+        {
+            // https://www.math.usm.edu/lambers/mat169/fall09/lecture33.pdf
+            rho_0 = pow(msg->x,2) + pow(msg->y,2);
+            theta_0 = atan2(msg->y, msg->x);
+        }
         X = msg->x;
         Y = msg->y;
         float Z = msg->z;
