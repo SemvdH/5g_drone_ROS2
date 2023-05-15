@@ -103,7 +103,7 @@ private:
 
     bool start_trajectory = false;
     const float omega = 0.3; // angular speed of the POLAR trajectory
-    const float K = 2;       // [m] gain that regulates the spiral pitch
+    const float K = 0;       // [m] gain that regulates the spiral pitch
 
     float rho_0 = 0;
     float theta_0 = 0;
