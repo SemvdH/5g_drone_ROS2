@@ -3,6 +3,7 @@ from rclpy.node import Node
 
 from sshkeyboard import listen_keyboard_manual
 import asyncio
+from numpy import NAN
 
 from drone_services.srv import SetAttitude
 from drone_services.srv import SetTrajectory
@@ -104,99 +105,99 @@ class TestController(Node):
             self.send_attitude_request(pitch=0.0, yaw=0.0,
                                        roll=0.0, thrust=0.05)
         elif (self.control_mode == CONTROL_MODE_VELOCITY):
-            self.send_velocity_request(x=0.0, y=0.0, z=1.0, angle=0.0)
+            self.send_velocity_request(x=NAN, y=NAN, z=1.0, angle=NAN)
         else:
-            self.send_position_request(x=0.0, y=0.0, z=1.0, angle=0.0)
+            self.send_position_request(x=NAN, y=NAN, z=1.0, angle=NAN)
 
     def move_right(self):
         if (self.control_mode == CONTROL_MODE_ATTITUDE):
             self.send_attitude_request(pitch=0.0, yaw=0.0,
                                        roll=1.0, thrust=0.0)
         elif (self.control_mode == CONTROL_MODE_VELOCITY):
-            self.send_velocity_request(x=1.0, y=0.0, z=0.0, angle=0.0)
+            self.send_velocity_request(x=1.0, y=NAN, z=NAN, angle=NAN)
         else:
-            self.send_position_request(x=1.0, y=0.0, z=0.0, angle=0.0)
+            self.send_position_request(x=1.0, y=NAN, z=NAN, angle=NAN)
 
     def move_down(self):
         if (self.control_mode == CONTROL_MODE_ATTITUDE):
             self.send_attitude_request(pitch=0.0, yaw=0.0,
                                        roll=0.0, thrust=-0.05)
         elif (self.control_mode == CONTROL_MODE_VELOCITY):
-            self.send_velocity_request(x=0.0, y=0.0, z=-1.0, angle=0.0)
+            self.send_velocity_request(x=NAN, y=NAN, z=-1.0, angle=NAN)
         else:
-            self.send_position_request(x=0.0, y=0.0, z=-1.0, angle=0.0)
+            self.send_position_request(x=NAN, y=NAN, z=-1.0, angle=NAN)
 
     def move_left(self):
         if (self.control_mode == CONTROL_MODE_ATTITUDE):
             self.send_attitude_request(pitch=0.0, yaw=0.0,
                                        roll=-1.0, thrust=0.0)
         elif (self.control_mode == CONTROL_MODE_VELOCITY):
-            self.send_velocity_request(x=-1.0, y=0.0, z=0.0, angle=0.0)
+            self.send_velocity_request(x=-1.0, y=NAN, z=NAN, angle=NAN)
         else:
-            self.send_position_request(x=-1.0, y=0.0, z=0.0, angle=0.0)
+            self.send_position_request(x=-1.0, y=NAN, z=NAN, angle=NAN)
 
     def rotate_right(self):
         if (self.control_mode == CONTROL_MODE_ATTITUDE):
             self.send_attitude_request(pitch=0.0, yaw=1.0,
                                        roll=0.0, thrust=0.0)
         elif (self.control_mode == CONTROL_MODE_VELOCITY):
-            self.send_velocity_request(x=0.0, y=0.0, z=0.0, angle=1.0)
+            self.send_velocity_request(x=NAN, y=NAN, z=NAN, angle=1.0)
         else:
-            self.send_position_request(x=0.0, y=0.0, z=0.0, angle=1.0)
+            self.send_position_request(x=NAN, y=NAN, z=NAN, angle=1.0)
 
     def rotate_left(self):
         if (self.control_mode == CONTROL_MODE_ATTITUDE):
             self.send_attitude_request(pitch=0.0, yaw=-1.0,
                                        roll=0.0, thrust=0.0)
         elif (self.control_mode == CONTROL_MODE_VELOCITY):
-            self.send_velocity_request(x=0.0, y=0.0, z=0.0, angle=-1.0)
+            self.send_velocity_request(x=NAN, y=NAN, z=NAN, angle=-1.0)
         else:
-            self.send_position_request(x=0.0, y=0.0, z=0.0, angle=-1.0)
+            self.send_position_request(x=NAN, y=NAN, z=NAN, angle=-1.0)
 
     def move_forward(self):
         if (self.control_mode == CONTROL_MODE_ATTITUDE):
             self.send_attitude_request(pitch=-1.0, yaw=0.0,
                                        roll=0.0, thrust=0.0)
         elif (self.control_mode == CONTROL_MODE_VELOCITY):
-            self.send_velocity_request(x=0.0, y=1.0, z=0.0, angle=0.0)
+            self.send_velocity_request(x=NAN, y=1.0, z=NAN, angle=NAN)
         else:
-            self.send_position_request(x=0.0, y=1.0, z=0.0, angle=0.0)
+            self.send_position_request(x=NAN, y=1.0, z=NAN, angle=NAN)
 
     def move_backward(self):
         if (self.control_mode == CONTROL_MODE_ATTITUDE):
             self.send_attitude_request(pitch=1.0, yaw=0.0,
                                        roll=0.0, thrust=0.0)
         elif (self.control_mode == CONTROL_MODE_VELOCITY):
-            self.send_velocity_request(x=0.0, y=-1.0, z=0.0, angle=0.0)
+            self.send_velocity_request(x=NAN, y=-1.0, z=NAN, angle=NAN)
         else:
-            self.send_position_request(x=0.0, y=-1.0, z=0.0, angle=0.0)
+            self.send_position_request(x=NAN, y=-1.0, z=NAN, angle=NAN)
 
     def stop(self):
         if (self.control_mode == CONTROL_MODE_ATTITUDE):
             self.send_attitude_request(pitch=0.0, yaw=0.0,
                                        roll=0.0, thrust=0.0)
         elif (self.control_mode == CONTROL_MODE_VELOCITY):
-            self.send_velocity_request(x=0.0, y=0.0, z=0.0, angle=0.0)
+            self.send_velocity_request(x=0.0, y=0.0, z=0.0, angle=NAN)
         else:
-            self.send_position_request(x=0.0, y=0.0, z=0.0, angle=0.0)
+            self.send_position_request(x=0.0, y=0.0, z=0.0, angle=NAN)
 
     def move_up_little(self):
         if (self.control_mode == CONTROL_MODE_ATTITUDE):
             self.send_attitude_request(pitch=0.0, yaw=0.0,
                                        roll=0.0, thrust=0.01)
         elif (self.control_mode == CONTROL_MODE_VELOCITY):
-            self.send_velocity_request(x=0.0, y=0.0, z=0.5, angle=0.0)
+            self.send_velocity_request(x=NAN, y=NAN, z=0.5, angle=NAN)
         else:
-            self.send_position_request(x=0.0, y=0.0, z=1.0, angle=0.0)
+            self.send_position_request(x=NAN, y=NAN, z=1.0, angle=NAN)
 
     def move_down_little(self):
         if (self.control_mode == CONTROL_MODE_ATTITUDE):
             self.send_attitude_request(pitch=0.0, yaw=0.0,
                                        roll=0.0, thrust=-0.01)
         elif (self.control_mode == CONTROL_MODE_VELOCITY):
-            self.send_velocity_request(x=0.0, y=0.0, z=-0.5, angle=0.0)
+            self.send_velocity_request(x=NAN, y=NAN, z=-0.5, angle=NAN)
         else:
-            self.send_position_request(x=0.0, y=0.0, z=-1.0, angle=0.0)
+            self.send_position_request(x=NAN, y=NAN, z=-1.0, angle=NAN)
 
     def on_press(self, key):
         try:

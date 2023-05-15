@@ -296,6 +296,7 @@ private:
         msg.yawspeed = DEFAULT_YAW_SPEED;
         msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
         trajectory_setpoint_publisher->publish(msg);
+
     }
 
     /**
