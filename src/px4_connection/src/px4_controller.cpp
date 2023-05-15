@@ -189,7 +189,7 @@ private:
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    position[i] = request->values[i];
+                    position[i] += request->values[i];
                 }
                 RCLCPP_INFO(this->get_logger(), "Got new position setpoint: %f %f %f", position[0], position[1], position[2]);
             }
@@ -338,6 +338,7 @@ private:
         // from polar to cartesian coordinates
         des_x = rho * cos(theta);
         des_y = rho * sin(theta);
+        des_z = position[3]; // the z position can be set to the received height
 
         // velocity computation
         float dot_rho = K * omega;
