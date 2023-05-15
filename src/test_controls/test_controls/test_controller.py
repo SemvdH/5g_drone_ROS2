@@ -17,16 +17,20 @@ class TestController(Node):
         self.cli = self.create_client(SetAttitude, 'drone/set_attitude')
         while not self.cli.wait_for_service(timeout_sec=1.0):
             self.get_logger().info('set attitude service not available, waiting again...')
+        self.get_logger().info('successfully connected to set attitude service')
         self.vehicle_control_cli = self.create_client(
             SetVehicleControl, '/drone/set_vehicle_control')
         while not self.vehicle_control_cli.wait_for_service(timeout_sec=1.0):
             self.get_logger().info('set vehicle control service not available, waiting again...')
+        self.get_logger().info('successfully connected to set vehicle control service')
         self.traj_cli = self.create_client(SetTrajectory, '/drone/set_trajectory')
         while not self.traj_cli.wait_for_service(timeout_sec=1.0):
             self.get_logger().info('set trajectory service not available, waiting again...')
+        self.get_logger().info('successfully connected to set trajectory service')
         self.arm_cli = self.create_client(Empty, '/drone/arm')
         while not self.arm_cli.wait_for_service(timeout_sec=1.0):
             self.get_logger().info('arm service not available, waiting again...')
+        self.get_logger().info('successfully connected to arm service')
 
         self.get_logger().info('all services available')
         self.control_mode = 1
