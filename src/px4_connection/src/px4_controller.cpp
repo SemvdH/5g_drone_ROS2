@@ -69,8 +69,8 @@ private:
 
     rclcpp::Service<drone_services::srv::SetAttitude>::SharedPtr set_attitude_service_;
     rclcpp::Service<drone_services::srv::SetTrajectory>::SharedPtr set_trajectory_service_;
-    rclcpp::Service<std_srvs::srv::Empty>::SharedPtr disarm_service_;
-    rclcpp::Service<std_srvs::srv::Empty>::SharedPtr arm_service_;
+    rclcpp::Service<drone_services::srv::DisrmDrone>::SharedPtr disarm_service_;
+    rclcpp::Service<drone_services::srv::ArmDrone>::SharedPtr arm_service_;
 
     // rclcpp::Publisher<px4_msgs::msg::OffboardControlMode>::SharedPtr offboard_control_mode_publisher_;
 
