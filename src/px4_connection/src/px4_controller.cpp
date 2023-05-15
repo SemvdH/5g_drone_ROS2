@@ -47,6 +47,7 @@ public:
         // offboard_control_mode_publisher_ = this->create_publisher<px4_msgs::msg::OffboardControlMode>("/fmu/in/offboard_control_mode", 10);
 
         vehicle_attitude_subscription_ = this->create_subscription<px4_msgs::msg::VehicleAttitude>("/fmu/out/vehicle_attitude", qos, std::bind(&PX4Controller::on_attitude_receive, this, std::placeholders::_1));
+        vehicle_local_position_subscription_ = this->create_subscription<px4_msgs::msg::VehicleLocalPosition>("/fmu/out/vehicle_local_position", qos, std::bind(&PX4Controller::on_local_position_receive, this, std::placeholders::_1));
         control_mode_subscription_ = this->create_subscription<drone_services::msg::DroneControlMode>("/drone/control_mode", qos, std::bind(&PX4Controller::on_control_mode_receive, this, std::placeholders::_1));
 
         set_attitude_service_ = this->create_service<drone_services::srv::SetAttitude>("/drone/set_attitude", std::bind(&PX4Controller::handle_attitude_setpoint, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
@@ -65,6 +66,7 @@ private:
     rclcpp::Publisher<px4_msgs::msg::TrajectorySetpoint>::SharedPtr trajectory_setpoint_publisher;
     rclcpp::Publisher<px4_msgs::msg::VehicleCommand>::SharedPtr vehicle_command_publisher_;
     rclcpp::Subscription<px4_msgs::msg::VehicleAttitude>::SharedPtr vehicle_attitude_subscription_;
+    rclcpp::Subscription<px4_msgs::msg::VehicleLocalPosition>::SharedPtr vehicle_local_position_subscription_;
     rclcpp::Subscription<drone_services::msg::DroneControlMode>::SharedPtr control_mode_subscription_;
 
     rclcpp::Service<drone_services::srv::SetAttitude>::SharedPtr set_attitude_service_;
@@ -97,6 +99,24 @@ private:
     int base_q_amount = 0;
 
     char current_control_mode = CONTROL_MODE_ATTITUDE; // start with attitude control
+
+    bool start_trajectory = false;
+    const float omega = 0.3; // angular speed of the POLAR trajectory
+    const float K = 2;       // [m] gain that regulates the spiral pitch
+
+    const float rho_0 = 2;
+    const float theta_0 = 0;
+    const float p0_z = -5.0;
+    float p0_x = rho_0 * cos(theta_0);
+    float p0_y = rho_0 * sin(theta_0);
+    float des_x = p0_x, des_y = p0_y, des_z = p0_z;
+    float dot_des_x = 0.0, dot_des_y = 0.0;
+    float gamma = M_PI_4;
+
+    float X;
+    float Y;
+
+    uint32_t discrete_time_index = 0;
 
     // result quaternion
     std::array<float, 4> q = {0, 0, 0, 0};
@@ -286,12 +306,12 @@ private:
     {
         auto msg = px4_msgs::msg::TrajectorySetpoint();
 
-        for (int i = 0; i < 3; i++)
-        {
-            msg.position[i] = position[i];
-        }
+        msg.position = {des_x, des_y, des_z};
+        msg.velocity = {dot_des_x, dot_des_y, 0.0};
+        msg.yaw = gamma; //-3.14; // [-PI:PI]
 
-        publish_trajectory_setpoint(msg);
+        msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
+        trajectory_setpoint_publisher->publish(msg);
     }
 
     void publish_trajectory_setpoint(px4_msgs::msg::TrajectorySetpoint msg)
@@ -308,25 +328,23 @@ private:
      */
     void send_setpoint()
     {
+        // the spiral, in polar coordinates (theta, rho), is given by
+        // theta = theta_0 + omega*t
+        // rho = rho_0 + K*theta
+        float theta = theta_0 + omega * 0.1 * discrete_time_index;
+        float rho = rho_0 + K * theta;
 
-        /*
-        setpoint_count++;
-        if (setpoint_count == 20)
-        {
-            this->publish_vehicle_command(px4_msgs::msg::VehicleCommand::VEHICLE_CMD_DO_SET_MODE, 1, 6);
-            RCLCPP_INFO(this->get_logger(), "Set to offboard mode");
-            // arm the drone
-            this->publish_vehicle_command(px4_msgs::msg::VehicleCommand::VEHICLE_CMD_COMPONENT_ARM_DISARM, 1.0, 0);
+        // from polar to cartesian coordinates
+        des_x = rho * cos(theta);
+        des_y = rho * sin(theta);
 
-            RCLCPP_INFO(this->get_logger(), "Arm command sent");
-            this->last_thrust = -0.1; // spin motors at 10% thrust
-            armed = true;
-        }
+        // velocity computation
+        float dot_rho = K * omega;
+        dot_des_x = dot_rho * cos(theta) - rho * sin(theta) * omega;
+        dot_des_y = dot_rho * sin(theta) + rho * cos(theta) * omega;
+        // desired heading direction
+        gamma = atan2(dot_des_y, dot_des_x);
 
-        send_attitude_setpoint();
-        */
-
-        // RCLCPP_INFO(this->get_logger(), "current values: %f %f %f %f", last_setpoint[0], last_setpoint[1], last_setpoint[2], last_thrust);
         if (!user_in_control)
         {
             // RCLCPP_INFO(this->get_logger(), "Sending idle attitude setpoint");
@@ -358,6 +376,10 @@ private:
                 new_setpoint = false;
             }
         }
+        if (start_trajectory)
+        {
+            discrete_time_index++;
+        }
     }
 
     void on_attitude_receive(const px4_msgs::msg::VehicleAttitude::SharedPtr msg)
@@ -386,6 +408,18 @@ private:
             }
 
             RCLCPP_INFO(this->get_logger(), "base_q: %f %f %f %f", base_q[0], base_q[1], base_q[2], base_q[3]);
+        }
+    }
+
+    void on_local_position_receive(const px4_msgs::msg::VehicleLocalPosition::SharedPtr msg)
+    {
+        X = msg->x;
+        Y = msg->y;
+        float Z = msg->z;
+        if (!start_trj && (p0_x + 1.0 > X && p0_x - 1.0 < X) && (p0_y + 1.0 > Y && p0_y - 1.0 < Y) && (p0_z + 1.0 > Z && p0_z - 1.0 < Z))
+        {
+            start_trj = true;
+            RCLCPP_INFO(this->get_logger(), "start trajectory");
         }
     }
 
