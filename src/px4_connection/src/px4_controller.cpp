@@ -273,7 +273,7 @@ private:
 
         msg.velocity[0] = velocity[0];
         msg.velocity[1] = velocity[1];
-        msg.velocity[2] = D_SPEED(velocity[2]);
+        msg.velocity[2] = velocity[2];
         for (int i = 0; i < 3; i++)
         {
             msg.position[i] = NAN;
