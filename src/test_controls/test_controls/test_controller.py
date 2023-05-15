@@ -9,6 +9,9 @@ from drone_services.srv import SetTrajectory
 from drone_services.srv import SetVehicleControl
 from drone_services.srv import ArmDrone
 
+CONTROL_MODE_ATTITUDE = 4
+CONTROL_MODE_VELOCITY = 16
+CONTROL_MODE_POSITION = 32
 
 class TestController(Node):
 
@@ -68,7 +71,7 @@ class TestController(Node):
         self.get_logger().info('set request to %f %f %f %f' % (yaw, pitch, roll, thrust))
         self.future = self.cli.call_async(self.attitude_req)
         rclpy.spin_until_future_complete(self, self.future)
-        self.get_logger().info('publishing message on service')
+        self.get_logger().info('publishing attitude message on service')
         return self.future.result()
 
     def send_velocity_request(self, x, y, z, angle):
@@ -78,7 +81,7 @@ class TestController(Node):
         self.get_logger().info('set request to %f %f %f %f' % (x, y, z, angle))
         self.future = self.traj_cli.call_async(self.traj_req)
         rclpy.spin_until_future_complete(self, self.future)
-        self.get_logger().info('publishing message on service')
+        self.get_logger().info('publishing velocity message on service')
         return self.future.result()
 
     def send_position_request(self, x, y, z, angle):
@@ -88,7 +91,7 @@ class TestController(Node):
         self.get_logger().info('set request to %f %f %f %f' % (x, y, z, angle))
         self.future = self.traj_cli.call_async(self.traj_req)
         rclpy.spin_until_future_complete(self, self.future)
-        self.get_logger().info('publishing message on service')
+        self.get_logger().info('publishing position message on service')
         return self.future.result()
 
     def on_release(self, key):
@@ -97,100 +100,100 @@ class TestController(Node):
 
     def move_up(self):
         pass
-        if (self.control_mode == 1):
+        if (self.control_mode == CONTROL_MODE_ATTITUDE):
             self.send_attitude_request(pitch=0.0, yaw=0.0,
                                        roll=0.0, thrust=0.05)
-        elif (self.control_mode == 2):
+        elif (self.control_mode == CONTROL_MODE_VELOCITY):
             self.send_velocity_request(x=0.0, y=0.0, z=1.0, angle=0.0)
         else:
             self.send_position_request(x=0.0, y=0.0, z=1.0, angle=0.0)
 
     def move_right(self):
-        if (self.control_mode == 1):
+        if (self.control_mode == CONTROL_MODE_ATTITUDE):
             self.send_attitude_request(pitch=0.0, yaw=0.0,
                                        roll=1.0, thrust=0.0)
-        elif (self.control_mode == 2):
+        elif (self.control_mode == CONTROL_MODE_VELOCITY):
             self.send_velocity_request(x=1.0, y=0.0, z=0.0, angle=0.0)
         else:
             self.send_position_request(x=1.0, y=0.0, z=0.0, angle=0.0)
 
     def move_down(self):
-        if (self.control_mode == 1):
+        if (self.control_mode == CONTROL_MODE_ATTITUDE):
             self.send_attitude_request(pitch=0.0, yaw=0.0,
                                        roll=0.0, thrust=-0.05)
-        elif (self.control_mode == 2):
+        elif (self.control_mode == CONTROL_MODE_VELOCITY):
             self.send_velocity_request(x=0.0, y=0.0, z=-1.0, angle=0.0)
         else:
             self.send_position_request(x=0.0, y=0.0, z=-1.0, angle=0.0)
 
     def move_left(self):
-        if (self.control_mode == 1):
+        if (self.control_mode == CONTROL_MODE_ATTITUDE):
             self.send_attitude_request(pitch=0.0, yaw=0.0,
                                        roll=-1.0, thrust=0.0)
-        elif (self.control_mode == 2):
+        elif (self.control_mode == CONTROL_MODE_VELOCITY):
             self.send_velocity_request(x=-1.0, y=0.0, z=0.0, angle=0.0)
         else:
             self.send_position_request(x=-1.0, y=0.0, z=0.0, angle=0.0)
 
     def rotate_right(self):
-        if (self.control_mode == 1):
+        if (self.control_mode == CONTROL_MODE_ATTITUDE):
             self.send_attitude_request(pitch=0.0, yaw=1.0,
                                        roll=0.0, thrust=0.0)
-        elif (self.control_mode == 2):
+        elif (self.control_mode == CONTROL_MODE_VELOCITY):
             self.send_velocity_request(x=0.0, y=0.0, z=0.0, angle=1.0)
         else:
             self.send_position_request(x=0.0, y=0.0, z=0.0, angle=1.0)
 
     def rotate_left(self):
-        if (self.control_mode == 1):
+        if (self.control_mode == CONTROL_MODE_ATTITUDE):
             self.send_attitude_request(pitch=0.0, yaw=-1.0,
                                        roll=0.0, thrust=0.0)
-        elif (self.control_mode == 2):
+        elif (self.control_mode == CONTROL_MODE_VELOCITY):
             self.send_velocity_request(x=0.0, y=0.0, z=0.0, angle=-1.0)
         else:
             self.send_position_request(x=0.0, y=0.0, z=0.0, angle=-1.0)
 
     def move_forward(self):
-        if (self.control_mode == 1):
+        if (self.control_mode == CONTROL_MODE_ATTITUDE):
             self.send_attitude_request(pitch=-1.0, yaw=0.0,
                                        roll=0.0, thrust=0.0)
-        elif (self.control_mode == 2):
+        elif (self.control_mode == CONTROL_MODE_VELOCITY):
             self.send_velocity_request(x=0.0, y=1.0, z=0.0, angle=0.0)
         else:
             self.send_position_request(x=0.0, y=1.0, z=0.0, angle=0.0)
 
     def move_backward(self):
-        if (self.control_mode == 1):
+        if (self.control_mode == CONTROL_MODE_ATTITUDE):
             self.send_attitude_request(pitch=1.0, yaw=0.0,
                                        roll=0.0, thrust=0.0)
-        elif (self.control_mode == 2):
+        elif (self.control_mode == CONTROL_MODE_VELOCITY):
             self.send_velocity_request(x=0.0, y=-1.0, z=0.0, angle=0.0)
         else:
             self.send_position_request(x=0.0, y=-1.0, z=0.0, angle=0.0)
 
     def stop(self):
-        if (self.control_mode == 1):
+        if (self.control_mode == CONTROL_MODE_ATTITUDE):
             self.send_attitude_request(pitch=0.0, yaw=0.0,
                                        roll=0.0, thrust=0.0)
-        elif (self.control_mode == 2):
+        elif (self.control_mode == CONTROL_MODE_VELOCITY):
             self.send_velocity_request(x=0.0, y=0.0, z=0.0, angle=0.0)
         else:
             self.send_position_request(x=0.0, y=0.0, z=0.0, angle=0.0)
 
     def move_up_little(self):
-        if (self.control_mode == 1):
+        if (self.control_mode == CONTROL_MODE_ATTITUDE):
             self.send_attitude_request(pitch=0.0, yaw=0.0,
                                        roll=0.0, thrust=0.01)
-        elif (self.control_mode == 2):
+        elif (self.control_mode == CONTROL_MODE_VELOCITY):
             self.send_velocity_request(x=0.0, y=0.0, z=0.5, angle=0.0)
         else:
             self.send_position_request(x=0.0, y=0.0, z=1.0, angle=0.0)
 
     def move_down_little(self):
-        if (self.control_mode == 1):
+        if (self.control_mode == CONTROL_MODE_ATTITUDE):
             self.send_attitude_request(pitch=0.0, yaw=0.0,
                                        roll=0.0, thrust=-0.01)
-        elif (self.control_mode == 2):
+        elif (self.control_mode == CONTROL_MODE_VELOCITY):
             self.send_velocity_request(x=0.0, y=0.0, z=-0.5, angle=0.0)
         else:
             self.send_position_request(x=0.0, y=0.0, z=-1.0, angle=0.0)
@@ -233,15 +236,15 @@ class TestController(Node):
                 self.stop()
             if key == '1':
                 self.get_logger().info('attitude control')
-                self.control_mode = 4
+                self.control_mode = CONTROL_MODE_ATTITUDE
                 self.send_control_mode()
             if key == '2':
                 self.get_logger().info('velocity control')
-                self.control_mode = 16
+                self.control_mode = CONTROL_MODE_VELOCITY
                 self.send_control_mode()
             if key == '3':
                 self.get_logger().info('position control')
-                self.control_mode = 32
+                self.control_mode = CONTROL_MODE_POSITION
                 self.send_control_mode()
             if key == '/':
                 self.get_logger().info('arming')

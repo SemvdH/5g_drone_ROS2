@@ -151,7 +151,7 @@ private:
     {
         if (request->control_mode != CONTROL_MODE_VELOCITY || request->control_mode != CONTROL_MODE_POSITION)
         {
-            RCLCPP_INFO(this->get_logger(), "Got invalid control mode: %d", request->control_mode);
+            RCLCPP_INFO(this->get_logger(), "Got invalid trajectory control mode: %d", request->control_mode);
             response->success = false;
         }
         else
