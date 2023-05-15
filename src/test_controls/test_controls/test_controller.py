@@ -7,7 +7,7 @@ import asyncio
 from drone_services.srv import SetAttitude
 from drone_services.srv import SetTrajectory
 from drone_services.srv import SetVehicleControl
-from std_msgs.msg import Empty
+from drone_services.srv import ArmDrone
 
 
 class TestController(Node):
@@ -27,7 +27,7 @@ class TestController(Node):
         while not self.traj_cli.wait_for_service(timeout_sec=1.0):
             self.get_logger().info('set trajectory service not available, waiting again...')
         self.get_logger().info('successfully connected to set trajectory service')
-        self.arm_cli = self.create_client(Empty, '/drone/arm')
+        self.arm_cli = self.create_client(ArmDrone, '/drone/arm')
         while not self.arm_cli.wait_for_service(timeout_sec=1.0):
             self.get_logger().info('arm service not available, waiting again...')
         self.get_logger().info('successfully connected to arm service')
@@ -38,6 +38,7 @@ class TestController(Node):
         self.attitude_req = SetAttitude.Request()
         self.vehicle_control_req = SetVehicleControl.Request()
         self.traj_req = SetTrajectory.Request()
+        self.arm_req = ArmDrone.Request()
 
         self.get_logger().info("\nControls:\n1 - Attitude control\n2 - Velocity control\n3 - Position control\n/ - Arm drone\nW - forward\nS - backward\nA - left\nD - right\nQ - rotate left\nE - rotate right\nSpace - up\nZ - down\nV - Down nudge\nF - Up nudge\nN - emergency stop\nEsc - exit")
 
@@ -47,8 +48,7 @@ class TestController(Node):
             rclpy.spin_once(self, timeout_sec=0.1)
 
     def send_arm(self):
-        arm_req = Empty()
-        self.future = self.arm_cli.call_async(arm_req)
+        self.future = self.arm_cli.call_async(self.arm_req)
         rclpy.spin_until_future_complete(self, self.future)
         self.get_logger().info('publishing message arm msg on service')
         return self.future.result()

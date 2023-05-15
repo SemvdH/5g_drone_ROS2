@@ -18,6 +18,8 @@
 
 #include <drone_services/srv/set_attitude.hpp>
 #include <drone_services/srv/set_trajectory.hpp>
+#include <drone_services/srv/arm_drone.hpp>
+#include <drone_services/srv/disarm_drone.hpp>
 #include <drone_services/msg/drone_control_mode.hpp>
 
 #include <std_srvs/srv/empty.hpp>
@@ -49,8 +51,8 @@ public:
 
         set_attitude_service_ = this->create_service<drone_services::srv::SetAttitude>("/drone/set_attitude", std::bind(&PX4Controller::handle_attitude_setpoint, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
         set_trajectory_service_ = this->create_service<drone_services::srv::SetTrajectory>("/drone/set_trajectory", std::bind(&PX4Controller::handle_trajectory_setpoint, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
-        disarm_service_ = this->create_service<std_srvs::srv::Empty>("/drone/disarm", std::bind(&PX4Controller::handle_disarm_request, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
-        arm_service_ = this->create_service<std_srvs::srv::Empty>("/drone/arm", std::bind(&PX4Controller::handle_arm_request, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
+        disarm_service_ = this->create_service<drone_services::srv::DisarmDrone>("/drone/disarm", std::bind(&PX4Controller::handle_disarm_request, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
+        arm_service_ = this->create_service<drone_services::srv::ArmDrone>("/drone/arm", std::bind(&PX4Controller::handle_arm_request, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
         // create timer to send vehicle attitude setpoints every second
         timer_ = this->create_wall_timer(100ms, std::bind(&PX4Controller::send_setpoint, this));
 
@@ -183,8 +185,8 @@ private:
      */
     void handle_disarm_request(
         const std::shared_ptr<rmw_request_id_t> request_header,
-        const std::shared_ptr<std_srvs::srv::Empty::Request> request,
-        const std::shared_ptr<std_srvs::srv::Empty::Response> response)
+        const std::shared_ptr<drone_services::srv::DisarmDrone::Request> request,
+        const std::shared_ptr<drone_services::srv::DisarmDrone::Response> response)
     {
         RCLCPP_INFO(this->get_logger(), "Got disarm request...");
 
@@ -193,6 +195,12 @@ private:
             armed = false;
             flying = false;
             publish_vehicle_command(px4_msgs::msg::VehicleCommand::VEHICLE_CMD_COMPONENT_ARM_DISARM, 0.0, 0);
+            response->success = true;
+        }
+        else
+        {
+            RCLCPP_ERROR(this->get_logger(), "Got disarm request but drone was not armed!");
+            response->success = false;
         }
     }
 
@@ -205,8 +213,8 @@ private:
      */
     void handle_arm_request(
         const std::shared_ptr<rmw_request_id_t> request_header,
-        const std::shared_ptr<std_srvs::srv::Empty::Request> request,
-        const std::shared_ptr<std_srvs::srv::Empty::Response> response)
+        const std::shared_ptr<drone_services::srv::ArmDrone::Request> request,
+        const std::shared_ptr<drone_services::srv::ArmDrone::Response> response)
     {
         RCLCPP_INFO(this->get_logger(), "Got arm request...");
 
@@ -220,10 +228,12 @@ private:
             RCLCPP_INFO(this->get_logger(), "Arm command sent");
             this->last_thrust = -0.1; // spin motors at 10% thrust
             armed = true;
+            response->success = true;
         }
         else
         {
             RCLCPP_ERROR(this->get_logger(), "Arm request received but the drone is already armed!");
+            response->success = false;
         }
     }
 
@@ -307,7 +317,7 @@ private:
 
         send_attitude_setpoint();
         */
-        
+
         RCLCPP_INFO(this->get_logger(), "current values: %f %f %f %f", last_setpoint[0], last_setpoint[1], last_setpoint[2], last_thrust);
         if (!flying)
         {
@@ -332,7 +342,6 @@ private:
                 send_position_setpoint();
             }
         }
-        
     }
 
     void on_attitude_receive(const px4_msgs::msg::VehicleAttitude::SharedPtr msg)
