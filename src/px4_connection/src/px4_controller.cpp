@@ -161,9 +161,9 @@ private:
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    velocity[i] = request->values[i];
+                    velocity[i] += request->values[i];
                 }
-                RCLCPP_INFO(this->get_logger(), "Got new velocity setpoint: %f %f %f", velocity[0], velocity[1], velocity[2]);
+                RCLCPP_INFO(this->get_logger(), "Got new velocity setpoint. %f %f %f", velocity[0], velocity[1], velocity[2]);
             }
             else if (request->control_mode == CONTROL_MODE_POSITION)
             {
@@ -175,6 +175,7 @@ private:
             }
 
             last_angle = request->yaw;
+            RCLCPP_INFO(this->get_logger(), "Yaw: %f", last_angle);
             response->success = true;
         }
     }
