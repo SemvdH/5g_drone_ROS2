@@ -312,32 +312,32 @@ private:
     {
         auto msg = px4_msgs::msg::TrajectorySetpoint();
 
-        if (trajectory_valid_x)
-        {
-            msg.position[0] = position[0];
-            trajectory_valid_x = false;
-        }
-        if (trajectory_valid_y)
-        {
-            msg.position[1] = position[1];
-            trajectory_valid_y = false;
-        }
-        if (trajectory_valid_z)
-        {
-            msg.position[2] = position[2];
-            trajectory_valid_z = false;
-        }
+        // if (trajectory_valid_x)
+        // {
+        msg.position[0] = position[0];
+        trajectory_valid_x = false;
+        // }
+        // if (trajectory_valid_y)
+        // {
+        msg.position[1] = position[1];
+        trajectory_valid_y = false;
+        // }
+        // if (trajectory_valid_z)
+        // {
+        msg.position[2] = position[2];
+        trajectory_valid_z = false;
+        // }
 
         publish_trajectory_setpoint(msg);
     }
 
     void publish_trajectory_setpoint(px4_msgs::msg::TrajectorySetpoint msg)
     {
-        if (trajectory_valid_yaw)
-        {
-            msg.yaw = last_angle;
-            trajectory_valid_yaw = false;
-        }
+        // if (trajectory_valid_yaw)
+        // {
+        msg.yaw = last_angle;
+        trajectory_valid_yaw = false;
+        // }
         msg.yawspeed = DEFAULT_YAW_SPEED;
         msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
         trajectory_setpoint_publisher->publish(msg);
