@@ -321,24 +321,24 @@ private:
         // RCLCPP_INFO(this->get_logger(), "current values: %f %f %f %f", last_setpoint[0], last_setpoint[1], last_setpoint[2], last_thrust);
         if (!user_in_control)
         {
-            RCLCPP_INFO(this->get_logger(), "Sending idle attitude setpoint");
+            // RCLCPP_INFO(this->get_logger(), "Sending idle attitude setpoint");
             send_attitude_setpoint();
         }
         else
         {
             if (current_control_mode == CONTROL_MODE_ATTITUDE)
             {
-                RCLCPP_INFO(this->get_logger(), "Sending attitude setpoint");
+                // RCLCPP_INFO(this->get_logger(), "Sending attitude setpoint");
                 send_attitude_setpoint();
             }
             else if (current_control_mode == CONTROL_MODE_VELOCITY)
             {
-                RCLCPP_INFO(this->get_logger(), "Sending velocity setpoint");
+                // RCLCPP_INFO(this->get_logger(), "Sending velocity setpoint");
                 send_velocity_setpoint();
             }
             else if (current_control_mode == CONTROL_MODE_POSITION)
             {
-                RCLCPP_INFO(this->get_logger(), "Sending position setpoint");
+                // RCLCPP_INFO(this->get_logger(), "Sending position setpoint");
                 send_position_setpoint();
             }
         }
