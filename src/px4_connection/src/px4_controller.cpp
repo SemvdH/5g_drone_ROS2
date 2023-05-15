@@ -156,12 +156,14 @@ private:
         }
         else
         {
+            RCLCPP_INFO(this->get_logger(), "Got new trajectory setpoint with control mode: %d", request->control_mode);
             if (request->control_mode == CONTROL_MODE_VELOCITY)
             {
                 for (int i = 0; i < 3; i++)
                 {
                     velocity[i] = request->values[i];
                 }
+                RCLCPP_INFO(this->get_logger(), "Got new velocity setpoint: %f %f %f", velocity[0], velocity[1], velocity[2]);
             }
             else if (request->control_mode == CONTROL_MODE_POSITION)
             {
@@ -169,6 +171,7 @@ private:
                 {
                     position[i] = request->values[i];
                 }
+                RCLCPP_INFO(this->get_logger(), "Got new position setpoint: %f %f %f", position[0], position[1], position[2]);
             }
 
             last_angle = request->yaw;
