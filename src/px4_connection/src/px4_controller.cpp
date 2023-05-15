@@ -130,7 +130,6 @@ private:
 
             RCLCPP_INFO(this->get_logger(), "got values: yaw:%f pitch:%f roll:%f thrust:%f", request->yaw, request->pitch, request->roll, request->thrust);
             RCLCPP_INFO(this->get_logger(), "New setpoint: yaw:%f pitch:%f roll:%f thrust:%f", last_setpoint[0], last_setpoint[1], last_setpoint[2], last_thrust);
-            new_setpoint = true;
 
             response->success = true;
         }
@@ -175,6 +174,7 @@ private:
             }
 
             last_angle = request->yaw;
+            new_setpoint = true;
             RCLCPP_INFO(this->get_logger(), "Yaw: %f", last_angle);
             response->success = true;
         }
@@ -335,15 +335,23 @@ private:
                 // RCLCPP_INFO(this->get_logger(), "Sending attitude setpoint");
                 send_attitude_setpoint();
             }
-            else if (current_control_mode == CONTROL_MODE_VELOCITY)
+            else
             {
-                // RCLCPP_INFO(this->get_logger(), "Sending velocity setpoint");
-                send_velocity_setpoint();
-            }
-            else if (current_control_mode == CONTROL_MODE_POSITION)
-            {
-                // RCLCPP_INFO(this->get_logger(), "Sending position setpoint");
-                send_position_setpoint();
+                if (!new_setpoint)
+                {
+                    return;
+                }
+                if (current_control_mode == CONTROL_MODE_VELOCITY)
+                {
+                    // RCLCPP_INFO(this->get_logger(), "Sending velocity setpoint");
+                    send_velocity_setpoint();
+                }
+                else if (current_control_mode == CONTROL_MODE_POSITION)
+                {
+                    // RCLCPP_INFO(this->get_logger(), "Sending position setpoint");
+                    send_position_setpoint();
+                }
+                new_setpoint = false;
             }
         }
     }
