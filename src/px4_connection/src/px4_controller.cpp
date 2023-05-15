@@ -187,10 +187,10 @@ private:
             }
             else if (request->control_mode == CONTROL_MODE_POSITION)
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    position[i] += request->values[i];
-                }
+                position[0] += position[0];
+                position[1] += position[1];
+                position[2] -= position[2]; // height is negative
+                
                 RCLCPP_INFO(this->get_logger(), "Got new position setpoint: %f %f %f", position[0], position[1], position[2]);
             }
 
