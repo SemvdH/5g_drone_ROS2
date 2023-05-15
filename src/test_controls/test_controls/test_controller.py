@@ -77,8 +77,14 @@ class TestController(Node):
 
     def send_velocity_request(self, x, y, z, angle):
         self.traj_req.control_mode = 2
-        self.traj_req.yaw = angle
-        self.traj_req.values = [x, y, z]
+        if (angle != NAN):
+            self.traj_req.yaw = angle
+        if (x != NAN):
+            self.traj_req.x = x
+        if (y != NAN):
+            self.traj_req.y = y
+        if (z != NAN):
+            self.traj_req.z = z
         self.get_logger().info('set request to %f %f %f %f' % (x, y, z, angle))
         self.future = self.traj_cli.call_async(self.traj_req)
         rclpy.spin_until_future_complete(self, self.future)
@@ -87,8 +93,14 @@ class TestController(Node):
 
     def send_position_request(self, x, y, z, angle):
         self.traj_req.control_mode = 3
-        self.traj_req.yaw = angle
-        self.traj_req.values = [x, y, z]
+        if (angle != NAN):
+            self.traj_req.yaw = angle
+        if (x != NAN):
+            self.traj_req.x = x
+        if (y != NAN):
+            self.traj_req.y = y
+        if (z != NAN):
+            self.traj_req.z = z
         self.get_logger().info('set request to %f %f %f %f' % (x, y, z, angle))
         self.future = self.traj_cli.call_async(self.traj_req)
         rclpy.spin_until_future_complete(self, self.future)

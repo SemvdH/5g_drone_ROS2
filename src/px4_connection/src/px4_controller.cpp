@@ -96,6 +96,11 @@ private:
     float base_q[4] = {0, 0, 0, 0};
     int base_q_amount = 0;
 
+    bool trajectory_valid_x = false;
+    bool trajectory_valid_y = false;
+    bool trajectory_valid_z = false;
+    bool trajectory_valid_yaw = false;
+
     char current_control_mode = CONTROL_MODE_ATTITUDE; // start with attitude control
 
     // result quaternion
@@ -156,29 +161,35 @@ private:
         else
         {
             RCLCPP_INFO(this->get_logger(), "Got new trajectory setpoint with control mode: %d", request->control_mode);
+            trajectory_valid_x = request->x != NAN;
+            trajectory_valid_y = request->y != NAN;
+            trajectory_valid_z = request->z != NAN;
+            trajectory_valid_yaw = request->yaw != NAN;
+
             if (request->control_mode == CONTROL_MODE_VELOCITY)
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    if (request->values[i] != NAN)
-                    {
-                        velocity[i] += request->values[i];
-                    } else {
-                        velocity[i] = request->values[i];
-                    }
-                }
+                if (trajectory_valid_x)
+                    velocity[0] += request->x;
+                if (trajectory_valid_y)
+                    velocity[1] += request->y;
+                if (trajectory_valid_z)
+                    velocity[2] += request->z;
+
                 RCLCPP_INFO(this->get_logger(), "Got new velocity setpoint. %f %f %f", velocity[0], velocity[1], velocity[2]);
             }
             else if (request->control_mode == CONTROL_MODE_POSITION)
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    position[i] = request->values[i];
-                }
+                if (trajectory_valid_x)
+                    position[0] = request->x;
+                if (trajectory_valid_y) 
+                    position[1] = request->y;
+                if (trajectory_valid_z)
+                    position[2] = request->z;
                 RCLCPP_INFO(this->get_logger(), "Got new position setpoint: %f %f %f", position[0], position[1], position[2]);
             }
 
-            last_angle = request->yaw;
+            if (trajectory_valid_yaw)
+                last_angle = request->yaw;
             new_setpoint = true;
             RCLCPP_INFO(this->get_logger(), "Yaw: %f", last_angle);
             response->success = true;
@@ -276,9 +287,21 @@ private:
     {
         auto msg = px4_msgs::msg::TrajectorySetpoint();
 
-        msg.velocity[0] = velocity[0];
-        msg.velocity[1] = velocity[1];
-        msg.velocity[2] = D_SPEED(velocity[2]);
+        if (trajectory_valid_x)
+        {
+            msg.velocity[0] = velocity[0];
+            trajectory_valid_x = false;
+        }
+        if (trajectory_valid_y)
+        {
+            msg.velocity[1] = velocity[1];
+            trajectory_valid_y = false;
+        }
+        if (trajectory_valid_z)
+        {
+            msg.velocity[2] = D_SPEED(velocity[2]);
+            trajectory_valid_z = false;
+        }
 
         publish_trajectory_setpoint(msg);
     }
@@ -287,9 +310,20 @@ private:
     {
         auto msg = px4_msgs::msg::TrajectorySetpoint();
 
-        for (int i = 0; i < 3; i++)
+        if (trajectory_valid_x)
         {
-            msg.position[i] = position[i];
+            msg.position[0] = position[0];
+            trajectory_valid_x = false;
+        }
+        if (trajectory_valid_y)
+        {
+            msg.position[1] = position[1];
+            trajectory_valid_y = false;
+        }
+        if (trajectory_valid_z)
+        {
+            msg.position[2] = position[2];
+            trajectory_valid_z = false;
         }
 
         publish_trajectory_setpoint(msg);
@@ -297,11 +331,14 @@ private:
 
     void publish_trajectory_setpoint(px4_msgs::msg::TrajectorySetpoint msg)
     {
-        msg.yaw = last_angle;
+        if (trajectory_valid_yaw)
+        {
+            msg.yaw = last_angle;
+            trajectory_valid_yaw = false;
+        }
         msg.yawspeed = DEFAULT_YAW_SPEED;
         msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
         trajectory_setpoint_publisher->publish(msg);
-
     }
 
     /**
