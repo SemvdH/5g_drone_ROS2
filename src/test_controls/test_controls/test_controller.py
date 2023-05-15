@@ -81,10 +81,16 @@ class TestController(Node):
             self.traj_req.yaw = angle
         if (x != NAN):
             self.traj_req.x = x
+        else:
+            self.traj_req.x = 0.0
         if (y != NAN):
             self.traj_req.y = y
+        else:
+            self.traj_req.y = 0.0
         if (z != NAN):
             self.traj_req.z = z
+        else:
+            self.traj_req.z = 0.0
         self.get_logger().info('set request to %f %f %f %f' % (x, y, z, angle))
         self.future = self.traj_cli.call_async(self.traj_req)
         rclpy.spin_until_future_complete(self, self.future)
@@ -97,10 +103,16 @@ class TestController(Node):
             self.traj_req.yaw = angle
         if (x != NAN):
             self.traj_req.x = x
+        else:
+            self.traj_req.x = 0.0
         if (y != NAN):
             self.traj_req.y = y
+        else:
+            self.traj_req.y = 0.0
         if (z != NAN):
             self.traj_req.z = z
+        else:
+            self.traj_req.z = 0.0
         self.get_logger().info('set request to %f %f %f %f' % (x, y, z, angle))
         self.future = self.traj_cli.call_async(self.traj_req)
         rclpy.spin_until_future_complete(self, self.future)
