@@ -338,7 +338,7 @@ private:
         // from polar to cartesian coordinates
         des_x = rho * cos(theta);
         des_y = rho * sin(theta);
-        des_z = position[3]; // the z position can be set to the received height
+        des_z = position[2]; // the z position can be set to the received height
 
         // velocity computation
         float dot_rho = K * omega;
