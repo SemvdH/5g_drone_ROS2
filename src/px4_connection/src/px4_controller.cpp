@@ -343,12 +343,12 @@ private:
                 }
                 if (current_control_mode == CONTROL_MODE_VELOCITY)
                 {
-                    // RCLCPP_INFO(this->get_logger(), "Sending velocity setpoint");
+                    RCLCPP_INFO(this->get_logger(), "Sending velocity setpoint");
                     send_velocity_setpoint();
                 }
                 else if (current_control_mode == CONTROL_MODE_POSITION)
                 {
-                    // RCLCPP_INFO(this->get_logger(), "Sending position setpoint");
+                    RCLCPP_INFO(this->get_logger(), "Sending position setpoint");
                     send_position_setpoint();
                 }
                 new_setpoint = false;
