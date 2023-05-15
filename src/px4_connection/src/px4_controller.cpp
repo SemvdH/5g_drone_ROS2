@@ -194,7 +194,7 @@ private:
                 RCLCPP_INFO(this->get_logger(), "Got new position setpoint: %f %f %f", position[0], position[1], position[2]);
             }
 
-            last_angle = request->yaw;
+            last_angle += request->yaw;
             new_setpoint = true;
             RCLCPP_INFO(this->get_logger(), "Yaw: %f", last_angle);
             response->success = true;
@@ -422,6 +422,7 @@ private:
             // https://www.math.usm.edu/lambers/mat169/fall09/lecture33.pdf
             rho_0 = pow(msg->x,2) + pow(msg->y,2);
             theta_0 = atan2(msg->y, msg->x);
+            last_angle = msg->heading;
         }
         X = msg->x;
         Y = msg->y;
