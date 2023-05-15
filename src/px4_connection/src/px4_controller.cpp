@@ -15,6 +15,7 @@
 #include <px4_msgs/msg/vehicle_command.hpp>
 #include <px4_msgs/msg/vehicle_control_mode.hpp>
 #include <px4_msgs/msg/vehicle_attitude.hpp>
+#include <px4_msgs/msg/vehicle_local_position.hpp>
 
 #include <drone_services/srv/set_attitude.hpp>
 #include <drone_services/srv/set_trajectory.hpp>
