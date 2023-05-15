@@ -161,32 +161,32 @@ private:
         else
         {
             RCLCPP_INFO(this->get_logger(), "Got new trajectory setpoint with control mode: %d", request->control_mode);
-            trajectory_valid_x = request->x != NAN;
-            trajectory_valid_y = request->y != NAN;
-            trajectory_valid_z = request->z != NAN;
-            trajectory_valid_yaw = request->yaw != NAN;
+            // trajectory_valid_x = request->x != NAN;
+            // trajectory_valid_y = request->y != NAN;
+            // trajectory_valid_z = request->z != NAN;
+            // trajectory_valid_yaw = request->yaw != NAN;
 
             if (request->control_mode == CONTROL_MODE_VELOCITY)
             {
                 RCLCPP_INFO(this->get_logger(), "Got new velocity setpoint. %f %f %f", request->x, request->y, request->z);
-                if (trajectory_valid_x)
-                    velocity[0] += request->x;
-                if (trajectory_valid_y)
-                    velocity[1] += request->y;
-                if (trajectory_valid_z)
-                    velocity[2] += request->z;
+                // if (trajectory_valid_x)
+                velocity[0] += request->x;
+                // if (trajectory_valid_y)
+                velocity[1] += request->y;
+                // if (trajectory_valid_z)
+                velocity[2] += request->z;
 
                 RCLCPP_INFO(this->get_logger(), "Set new velocity setpoint. %f %f %f", velocity[0], velocity[1], velocity[2]);
             }
             else if (request->control_mode == CONTROL_MODE_POSITION)
             {
                 RCLCPP_INFO(this->get_logger(), "Got new position setpoint. %f %f %f", request->x, request->y, request->z);
-                if (trajectory_valid_x)
-                    position[0] = request->x;
-                if (trajectory_valid_y) 
-                    position[1] = request->y;
-                if (trajectory_valid_z)
-                    position[2] = request->z;
+                // if (trajectory_valid_x)
+                position[0] = request->x;
+                // if (trajectory_valid_y)
+                position[1] = request->y;
+                // if (trajectory_valid_z)
+                position[2] = request->z;
                 RCLCPP_INFO(this->get_logger(), "Set new position setpoint: %f %f %f", position[0], position[1], position[2]);
             }
 
@@ -289,21 +289,21 @@ private:
     {
         auto msg = px4_msgs::msg::TrajectorySetpoint();
 
-        if (trajectory_valid_x)
-        {
-            msg.velocity[0] = velocity[0];
-            trajectory_valid_x = false;
-        }
-        if (trajectory_valid_y)
-        {
-            msg.velocity[1] = velocity[1];
-            trajectory_valid_y = false;
-        }
-        if (trajectory_valid_z)
-        {
-            msg.velocity[2] = D_SPEED(velocity[2]);
-            trajectory_valid_z = false;
-        }
+        // if (trajectory_valid_x)
+        // {
+        msg.velocity[0] = velocity[0];
+        trajectory_valid_x = false;
+        // }
+        // if (trajectory_valid_y)
+        // {
+        msg.velocity[1] = velocity[1];
+        trajectory_valid_y = false;
+        // }
+        // if (trajectory_valid_z)
+        // {
+        msg.velocity[2] = D_SPEED(velocity[2]);
+        trajectory_valid_z = false;
+        // }
 
         publish_trajectory_setpoint(msg);
     }
