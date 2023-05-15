@@ -77,7 +77,7 @@ private:
     rclcpp::TimerBase::SharedPtr timer_;
     double start_time_;
     bool has_sent_status = false;
-    bool flying = false; // if user has taken over control
+    bool user_in_control = false; // if user has taken over control
     bool armed = false;
     bool has_swithed = false;
     int setpoint_count = 0;
@@ -193,7 +193,7 @@ private:
         if (armed)
         {
             armed = false;
-            flying = false;
+            user_in_control = false;
             publish_vehicle_command(px4_msgs::msg::VehicleCommand::VEHICLE_CMD_COMPONENT_ARM_DISARM, 0.0, 0);
             response->success = true;
         }
@@ -318,8 +318,8 @@ private:
         send_attitude_setpoint();
         */
 
-        RCLCPP_INFO(this->get_logger(), "current values: %f %f %f %f", last_setpoint[0], last_setpoint[1], last_setpoint[2], last_thrust);
-        if (!flying)
+        // RCLCPP_INFO(this->get_logger(), "current values: %f %f %f %f", last_setpoint[0], last_setpoint[1], last_setpoint[2], last_thrust);
+        if (!user_in_control)
         {
             RCLCPP_INFO(this->get_logger(), "Sending idle attitude setpoint");
             send_attitude_setpoint();
@@ -379,7 +379,7 @@ private:
         {
             current_control_mode = msg->control_mode;
             RCLCPP_INFO(this->get_logger(), "Got valid control mode");
-            flying = true; // user has taken over control
+            user_in_control = true; // user has taken over control
         }
         else
         {
