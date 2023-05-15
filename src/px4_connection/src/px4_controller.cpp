@@ -417,9 +417,9 @@ private:
         X = msg->x;
         Y = msg->y;
         float Z = msg->z;
-        if (!start_trj && (p0_x + 1.0 > X && p0_x - 1.0 < X) && (p0_y + 1.0 > Y && p0_y - 1.0 < Y) && (p0_z + 1.0 > Z && p0_z - 1.0 < Z))
+        if (!start_trajectory && (p0_x + 1.0 > X && p0_x - 1.0 < X) && (p0_y + 1.0 > Y && p0_y - 1.0 < Y) && (p0_z + 1.0 > Z && p0_z - 1.0 < Z))
         {
-            start_trj = true;
+            start_trajectory = true;
             RCLCPP_INFO(this->get_logger(), "start trajectory");
         }
     }
