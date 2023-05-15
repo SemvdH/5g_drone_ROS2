@@ -105,9 +105,9 @@ private:
     const float omega = 0.3; // angular speed of the POLAR trajectory
     const float K = 2;       // [m] gain that regulates the spiral pitch
 
-    const float rho_0 = 2;
+    const float rho_0 = 0;
     const float theta_0 = 0;
-    const float p0_z = -5.0;
+    const float p0_z = -0.0;
     float p0_x = rho_0 * cos(theta_0);
     float p0_y = rho_0 * sin(theta_0);
     float des_x = p0_x, des_y = p0_y, des_z = p0_z;
