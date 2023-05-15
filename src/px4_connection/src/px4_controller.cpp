@@ -160,7 +160,12 @@ private:
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    velocity[i] += request->values[i];
+                    if (request->values[i] != NAN)
+                    {
+                        velocity[i] += request->values[i];
+                    } else {
+                        velocity[i] = request->values[i];
+                    }
                 }
                 RCLCPP_INFO(this->get_logger(), "Got new velocity setpoint. %f %f %f", velocity[0], velocity[1], velocity[2]);
             }
