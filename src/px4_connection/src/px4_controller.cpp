@@ -117,6 +117,9 @@ private:
     float X;
     float Y;
 
+    float local_x = 0;
+    float local_y = 0;
+
     uint32_t discrete_time_index = 0;
 
     // result quaternion
@@ -308,7 +311,8 @@ private:
         auto msg = px4_msgs::msg::TrajectorySetpoint();
 
         RCLCPP_INFO(this->get_logger(), "Sending position setpoint: %f %f %f", des_x, des_y, des_z);
-        msg.position = {des_x, des_y, des_z};
+        RCLCPP_INFO(this->get_logger("local position: %f %f", local_x, local_y));
+        msg.position = {local_x, local_y, des_z};
         msg.velocity = {dot_des_x, dot_des_y, 0.0};
         msg.yaw = gamma; //-3.14; // [-PI:PI]
 
@@ -423,6 +427,9 @@ private:
             rho_0 = pow(msg->x,2) + pow(msg->y,2);
             theta_0 = atan2(msg->y, msg->x);
             last_angle = msg->heading;
+
+            local_x = msg->x;
+            local_y = msg->y;
         }
         X = msg->x;
         Y = msg->y;
