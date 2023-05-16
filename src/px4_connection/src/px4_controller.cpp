@@ -311,7 +311,7 @@ private:
         auto msg = px4_msgs::msg::TrajectorySetpoint();
 
         RCLCPP_INFO(this->get_logger(), "Sending position setpoint: %f %f %f", des_x, des_y, des_z);
-        RCLCPP_INFO(this->get_logger("local position: %f %f", local_x, local_y));
+        RCLCPP_INFO(this->get_logger(),"local position: %f %f", local_x, local_y);
         msg.position = {local_x, local_y, des_z};
         msg.velocity = {dot_des_x, dot_des_y, 0.0};
         msg.yaw = gamma; //-3.14; // [-PI:PI]
