@@ -104,7 +104,7 @@ class TestController(Node):
             self.send_attitude_request(pitch=0.0, yaw=0.0,
                                        roll=0.0, thrust=0.05)
         elif (self.control_mode == CONTROL_MODE_VELOCITY):
-            self.send_velocity_request(x=0.0, y=0.0, z=0.5, angle=0.0)
+            self.send_velocity_request(x=0.0, y=0.0, z=0.1, angle=0.0)
         else:
             self.send_position_request(x=0.0, y=0.0, z=0.5, angle=0.0)
 
@@ -122,7 +122,7 @@ class TestController(Node):
             self.send_attitude_request(pitch=0.0, yaw=0.0,
                                        roll=0.0, thrust=-0.05)
         elif (self.control_mode == CONTROL_MODE_VELOCITY):
-            self.send_velocity_request(x=0.0, y=0.0, z=-0.5, angle=0.0)
+            self.send_velocity_request(x=0.0, y=0.0, z=-0.1, angle=0.0)
         else:
             self.send_position_request(x=0.0, y=0.0, z=-0.5, angle=0.0)
 
@@ -185,7 +185,7 @@ class TestController(Node):
             self.send_attitude_request(pitch=0.0, yaw=0.0,
                                        roll=0.0, thrust=0.01)
         elif (self.control_mode == CONTROL_MODE_VELOCITY):
-            self.send_velocity_request(x=0.0, y=0.0, z=0.2, angle=0.0)
+            self.send_velocity_request(x=0.0, y=0.0, z=0.05, angle=0.0)
         else:
             self.send_position_request(x=0.0, y=0.0, z=1.0, angle=0.0)
 
@@ -194,7 +194,7 @@ class TestController(Node):
             self.send_attitude_request(pitch=0.0, yaw=0.0,
                                        roll=0.0, thrust=-0.01)
         elif (self.control_mode == CONTROL_MODE_VELOCITY):
-            self.send_velocity_request(x=0.0, y=0.0, z=-0.2, angle=0.0)
+            self.send_velocity_request(x=0.0, y=0.0, z=-0.05, angle=0.0)
         else:
             self.send_position_request(x=0.0, y=0.0, z=-1.0, angle=0.0)
 
