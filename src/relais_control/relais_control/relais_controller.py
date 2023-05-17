@@ -16,7 +16,7 @@ class RelaisController(Node):
     def init_gpio(self):
         GPIO.setwarnings(False)
 
-        self.get_logger().info(GPIO.RPI_INFO)
+        self.get_logger().info(str(GPIO.RPI_INFO))
 
         GPIO.setmode(GPIO.BCM)
 
