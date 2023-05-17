@@ -10,7 +10,7 @@ from drone_services.srv import ControlRelais
 class RelaisController(Node):
     def __init__(self):
         super().__init__('relais_controller')
-        self.srv = self.create_service(ControlRelais, 'control_relais', self.control_relais_callback)
+        self.srv = self.create_service(ControlRelais, '/drone/control_relais', self.control_relais_callback)
 
         self.relais1_pin = 17
         self.relais2_pin = 27
