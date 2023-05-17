@@ -36,22 +36,16 @@ class RelaisController(Node):
     def control_relais_callback(self, request, response):
         if request.relais1_on:
             GPIO.output(self.relais1_pin, GPIO.HIGH)
+            response.bits = response.bits | 1
         else:
             GPIO.output(self.relais1_pin, GPIO.LOW)
+            response.bits = response.bits & ~(1 << 0)
         if request.relais2_on:
             GPIO.output(self.relais2_pin, GPIO.HIGH)
+            response.bits = response.bits | (1 << 1)
         else:
             GPIO.output(self.relais2_pin, GPIO.LOW)
-        
-        if GPIO.output(17) == GPIO.LOW:
-            response.bits = response.bits & 0
-        else:
-            response.bits = response.bits | 1
-
-        if GPIO.output(27) == GPIO.LOW:
             response.bits = response.bits & ~(1 << 1)
-        else:
-            response.bits = response.bits | (1 << 1)
         return response
 
 def main(args=None):
