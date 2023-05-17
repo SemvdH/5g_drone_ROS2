@@ -59,7 +59,7 @@ def main(args=None):
 
     relais_controller = RelaisController()
 
-    relais_controller.spin()
+    rclpy.spin(relais_controller)
 
     # Destroy the node explicitly
     # (optional - otherwise it will be done automatically
