@@ -34,11 +34,11 @@ class RelaisController(Node):
         self.get_logger().info("Relais turned on")
 
     def control_relais_callback(self, request, response):
-        if request.relais1:
+        if request.relais1_on:
             GPIO.output(self.relais1_pin, GPIO.HIGH)
         else:
             GPIO.output(self.relais1_pin, GPIO.LOW)
-        if request.relais2:
+        if request.relais2_on:
             GPIO.output(self.relais2_pin, GPIO.HIGH)
         else:
             GPIO.output(self.relais2_pin, GPIO.LOW)
