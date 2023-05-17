@@ -6,7 +6,7 @@ except RuntimeError:
     print("Error importing RPi.GPIO!  This is probably because you need superuser privileges.  You can achieve this by using 'sudo' to run your script")
 
 class RelaisController(Node):
-    def __init(self):
+    def __init__(self):
         super().__init__('relais_controller')
         self.relais1_pin = 17
         self.relais2_pin = 27
