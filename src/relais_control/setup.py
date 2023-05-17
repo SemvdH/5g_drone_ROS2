@@ -20,6 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'relais_controller = relais_control.relais_controller:main'
         ],
     },
 )
