@@ -22,6 +22,7 @@
 #include <drone_services/srv/arm_drone.hpp>
 #include <drone_services/srv/disarm_drone.hpp>
 #include <drone_services/msg/drone_control_mode.hpp>
+#include <drone_services/msg/drone_arm_status.hpp>
 
 #include <std_srvs/srv/empty.hpp>
 
@@ -45,11 +46,13 @@ public:
         vehicle_setpoint_publisher_ = this->create_publisher<px4_msgs::msg::VehicleAttitudeSetpoint>("/fmu/in/vehicle_attitude_setpoint", 10);
         vehicle_command_publisher_ = this->create_publisher<px4_msgs::msg::VehicleCommand>("/fmu/in/vehicle_command", 10);
         trajectory_setpoint_publisher = this->create_publisher<px4_msgs::msg::TrajectorySetpoint>("/fmu/in/trajectory_setpoint", 10);
+        arm_status_publisher_ = this->create_publisher<drone_services::msg::DroneArmStatus>("/drone/arm_status", 10);
         // offboard_control_mode_publisher_ = this->create_publisher<px4_msgs::msg::OffboardControlMode>("/fmu/in/offboard_control_mode", 10);
 
         vehicle_attitude_subscription_ = this->create_subscription<px4_msgs::msg::VehicleAttitude>("/fmu/out/vehicle_attitude", qos, std::bind(&PX4Controller::on_attitude_receive, this, std::placeholders::_1));
         vehicle_local_position_subscription_ = this->create_subscription<px4_msgs::msg::VehicleLocalPosition>("/fmu/out/vehicle_local_position", qos, std::bind(&PX4Controller::on_local_position_receive, this, std::placeholders::_1));
         control_mode_subscription_ = this->create_subscription<drone_services::msg::DroneControlMode>("/drone/control_mode", qos, std::bind(&PX4Controller::on_control_mode_receive, this, std::placeholders::_1));
+
 
         set_attitude_service_ = this->create_service<drone_services::srv::SetAttitude>("/drone/set_attitude", std::bind(&PX4Controller::handle_attitude_setpoint, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
         set_trajectory_service_ = this->create_service<drone_services::srv::SetTrajectory>("/drone/set_trajectory", std::bind(&PX4Controller::handle_trajectory_setpoint, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
@@ -66,6 +69,8 @@ private:
     rclcpp::Publisher<px4_msgs::msg::VehicleAttitudeSetpoint>::SharedPtr vehicle_setpoint_publisher_;
     rclcpp::Publisher<px4_msgs::msg::TrajectorySetpoint>::SharedPtr trajectory_setpoint_publisher;
     rclcpp::Publisher<px4_msgs::msg::VehicleCommand>::SharedPtr vehicle_command_publisher_;
+    rclcpp::Publisher<drone_services::msg::DroneArmStatus>::SharedPtr arm_status_publisher_;
+
     rclcpp::Subscription<px4_msgs::msg::VehicleAttitude>::SharedPtr vehicle_attitude_subscription_;
     rclcpp::Subscription<px4_msgs::msg::VehicleLocalPosition>::SharedPtr vehicle_local_position_subscription_;
     rclcpp::Subscription<drone_services::msg::DroneControlMode>::SharedPtr control_mode_subscription_;
@@ -223,6 +228,11 @@ private:
             armed = false;
             user_in_control = false;
             publish_vehicle_command(px4_msgs::msg::VehicleCommand::VEHICLE_CMD_COMPONENT_ARM_DISARM, 0.0, 0);
+
+            auto msg = drone_services::msg::DroneArmStatus();
+            msg.armed = false;
+            arm_status_publisher_->publish(msg);
+            
             response->success = true;
         }
         else
@@ -256,6 +266,11 @@ private:
             RCLCPP_INFO(this->get_logger(), "Arm command sent");
             this->last_thrust = -0.1; // spin motors at 10% thrust
             armed = true;
+
+            auto msg = drone_services::msg::DroneArmStatus();
+            msg.armed = true;
+            arm_status_publisher_->publish(msg);
+
             response->success = true;
         }
         else
