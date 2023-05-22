@@ -9,6 +9,7 @@ class ApiListener(Node):
     def __init__(self):
         super().__init__('api_listener')
         self.get_logger().info('ApiListener node started')
+        self.messages = 0
         self.server = None
     
     async def spin(self):
@@ -23,7 +24,8 @@ class ApiListener(Node):
                 rclpy.spin_once(self, timeout_sec=0.1)
                 message = await websocket.recv()
                 self.get_logger().info('Received message: {0}'.format(message))
-                await websocket.send("You sent " + str(message))
+                self.messages = self.messages + 1
+                await websocket.send("You sent " + str(self.messages) + " messages")
         except websockets.exceptions.ConnectionClosed:
             self.get_logger().info('Connection closed')
 
