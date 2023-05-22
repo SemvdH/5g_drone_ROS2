@@ -28,6 +28,7 @@ add_executable(heartbeat src/heartbeat.cpp)
 ament_target_dependencies(
     heartbeat
     rclcpp
+    drone_services
     px4_ros_com
     px4_msgs
     drone_services

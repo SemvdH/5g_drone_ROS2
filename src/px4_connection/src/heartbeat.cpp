@@ -1,3 +1,4 @@
+
 /**
  * @file heartbeat.cpp
  * @author Sem van der Hoeven (sem.hoeven@gmail.com)
@@ -62,15 +63,6 @@ private:
         msg.attitude = (this->control_mode >> CONTROL_ATTITUDE_POS) & 1 ? true : false;
         msg.body_rate = (this->control_mode >> CONTROL_BODY_RATE_POS) & 1 ? true : false;
         msg.actuator = (this->control_mode >> CONTROL_ACTUATOR_POS) & 1 ? true : false;
-        
-        /*
-        msg.position = false;
-        msg.velocity = false;
-        msg.acceleration = false;
-        msg.attitude = true;
-        msg.body_rate = false;
-        msg.actuator = false;
-        */
         // get timestamp and publish message
         msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
         offboard_control_mode_publisher_->publish(msg);
