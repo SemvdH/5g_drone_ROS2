@@ -8,7 +8,8 @@ class ApiListener(Node):
     def __init__(self):
         super().__init__('api_listener')
         self.get_logger().info('ApiListener node started')
-        asyncio.to_thread(self.run_api)
+        self.api_coro = asyncio.to_thread(self.run_api)
+        self.server_task = asyncio.create_task(self.api_coro)
     
     async def run_api(self):
         self.get_logger().info('Starting API')
