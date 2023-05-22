@@ -30,6 +30,9 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/DisarmDrone.srv"
   "srv/ControlRelais.srv"
   "msg/DroneControlMode.msg"
+  "msg/DroneArmStatus.msg"
+  "msg/DroneRouteStatus.msg"
+  "msg/DroneStatus.msg"
 )
 
 if(BUILD_TESTING)
