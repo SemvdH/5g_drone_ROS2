@@ -9,16 +9,18 @@ class ApiListener(Node):
     def __init__(self):
         super().__init__('api_listener')
         self.get_logger().info('ApiListener node started')
-        self.angle = 30
-        asyncio.async(self.run_api())
+        self.server = None
     
-    async def run_api(self):
+    async def spin(self):
         self.get_logger().info('Starting API')
         self.server = await websockets.serve(self.api_handler, 'localhost', 8765)
+        self.get_logger().info('API started')
+        await self.server.wait_closed()
     
     async def api_handler(self, websocket):
         try:
-            while True:
+            while rclpy.ok():
+                rclpy.spin_once(self, timeout_sec=0.1)
                 message = await websocket.recv()
                 self.get_logger().info('Received message: {0}'.format(message))
                 await websocket.send("You sent " + str(message))
@@ -26,15 +28,15 @@ class ApiListener(Node):
             self.get_logger().info('Connection closed')
 
 
-def main(args=None):
+async def main(args=None):
     rclpy.init(args=args)
 
     api_listener = ApiListener()
 
-    rclpy.spin(api_listener)
+    await api_listener.spin()
 
     api_listener.destroy_node()
     rclpy.shutdown()
 
 if __name__ == '__main__':
-    main()
+    asyncio.run(main())
