@@ -55,7 +55,7 @@ class ApiListener(Node):
         try:
             async for message in websocket:
                 self.get_logger().info(f"Received message: {message}")
-                await websocket.send(message)
+                await websocket.send(f"battery: {self.last_battery_percentage}, cpu: {self.last_cpu_usage}")
             # while True:
             #     if not self.checking_for_message:
             #         self.get_logger().info('Waiting for message')
