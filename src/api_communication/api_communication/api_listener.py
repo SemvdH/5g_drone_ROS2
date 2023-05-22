@@ -38,5 +38,4 @@ async def main(args=None):
     api_listener.destroy_node()
     rclpy.shutdown()
 
-if __name__ == '__main__':
-    asyncio.run(main())
+asyncio.run(main())
