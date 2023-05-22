@@ -14,6 +14,7 @@ class ApiListener(Node):
         super().__init__('api_listener')
         self.get_logger().info('ApiListener node started')
         self.drone_status_subscriber = self.create_subscription(DroneStatus, '/drone/status', self.drone_status_callback, 10)
+        self.timer = self.create_timer(1, self.publish_status)
 
         self.last_battery_percentage = 0
         self.last_cpu_usage = 0
@@ -22,6 +23,7 @@ class ApiListener(Node):
         self.message_queue = []
         self.checking_for_message = False
 
+        self.websocket = None
         self.server = None
         self.server_thread = threading.Thread(target=self.start_api_thread,daemon=True)
         self.server_thread.start()
@@ -29,6 +31,11 @@ class ApiListener(Node):
     def drone_status_callback(self, msg):
         self.last_battery_percentage = msg.battery_percentage
         self.last_cpu_usage = msg.cpu_usage
+    
+    def publish_status(self):
+        if self.websocket is not None:
+            self.get_logger().info(f"Publishing status: battery: {self.last_battery_percentage}, cpu: {self.last_cpu_usage}")
+            asyncio.run(self.websocket.send(f"battery: {self.last_battery_percentage}, cpu: {self.last_cpu_usage}"))
     
     def start_api_thread(self):
         asyncio.run(self.handle_api())
@@ -52,6 +59,7 @@ class ApiListener(Node):
     #     deserialized_msg = json.loads(message)
     
     async def api_handler(self, websocket):
+        self.websocket = websocket
         try:
             async for message in websocket:
                 self.get_logger().info(f"Received message: {message}")
