@@ -1,3 +1,4 @@
+# service to set control mode for heartbeat messages
 # bitmask for control:
 # bit 0: actuator
 # bit 1: body rate
@@ -6,6 +7,10 @@
 # bit 4: velocity
 # bit 5: position
 
+# used control modes:
+# 4: attitude and thrust
+# 16: velocity
+# 32: position
 int32 control # control bitmask
 ---
-int8 status # status of operation
+bool success # if operation succeeded
