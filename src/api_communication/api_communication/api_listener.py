@@ -13,10 +13,14 @@ class ApiListener(Node):
         super().__init__('api_listener')
         self.get_logger().info('ApiListener node started')
         self.drone_status_subscriber = self.create_subscription(DroneStatus, '/drone/status', self.drone_status_callback, 10)
+        self.last_battery_percentage = 0
+        self.last_cpu_usage = 0
         self.server = None
     
     def drone_status_callback(self, msg):
         self.get_logger().info('Received drone battery and cpu: {0} {1}'.format(msg.battery_percentage,msg.cpu_usage))
+        self.last_battery_percentage = msg.battery_percentage
+        self.last_cpu_usage = msg.cpu_usage
 
     async def spin(self):
         self.get_logger().info('Starting API')
@@ -31,8 +35,7 @@ class ApiListener(Node):
                 rclpy.spin_once(self, timeout_sec=0.1)
                 message = await websocket.recv()
                 self.get_logger().info('Received message: {0}'.format(message))
-                self.messages = self.messages + 1
-                await websocket.send("You sent " + str(self.messages) + " messages")
+                await websocket.send("Yeet ")
         except websockets.exceptions.ConnectionClosed:
             self.get_logger().info('Connection closed')
 
