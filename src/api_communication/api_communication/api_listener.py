@@ -36,7 +36,7 @@ class ApiListener(Node):
     
     def publish_status(self):
         if self.websocket is not None:
-            self.get_logger().info(f"Publishing status: battery: {self.last_battery_percentage}, cpu: {self.last_cpu_usage}")
+            self.get_logger().info(f"Publishing status: battery: {self.status_data['battery_percentage']}, cpu: {self.status_data['cpu_usage']}")
             self.publish_message(json.dumps(self.status_data))
     
     def start_api_thread(self):
