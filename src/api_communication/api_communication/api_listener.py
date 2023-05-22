@@ -1,22 +1,29 @@
 import rclpy
 from rclpy.node import Node
 
+from drone_services.msg import DroneStatus
+
 import asyncio
 import websockets.server
-import threading
+
+
 
 class ApiListener(Node):
     def __init__(self):
         super().__init__('api_listener')
         self.get_logger().info('ApiListener node started')
-        self.messages = 0
+        self.drone_status_subscriber = self.create_subscription(DroneStatus, '/drone/status', self.drone_status_callback, 10)
         self.server = None
     
+    def drone_status_callback(self, msg):
+        self.get_logger().info('Received drone battery and cpu: {0} {1}'.format(msg.battery_percentage,msg.cpu_usage))
+
     async def spin(self):
         self.get_logger().info('Starting API')
         self.server = await websockets.serve(self.api_handler, '0.0.0.0', 9001)
         self.get_logger().info('API started')
         await self.server.wait_closed()
+    
     
     async def api_handler(self, websocket):
         try:
