@@ -40,10 +40,12 @@ class ApiListener(Node):
         await self.server.wait_closed()
     
     async def handle_message_receive(self,websocket):
+        self.get_logger().info(f"Received message: {self.last_message}")
         self.last_message = await websocket.recv()
         
     def message_received_callback(self):
-        self.get_logger().info(f"Received message: {self.last_message}")
+        self.get_logger().info(f"Received message callback: {self.last_message}")
+        self.message_queue.append(self.last_message)
         self.checking_for_message = False
 
     # def handle_message(self, message):
@@ -53,9 +55,12 @@ class ApiListener(Node):
         try:
             while True:
                 if not self.checking_for_message:
+                    self.get_logger().info('Waiting for message')
                     self.checking_for_message = True
                     task = asyncio.create_task(self.handle_message_receive(websocket))
                     task.add_done_callback(self.message_received_callback)
+                if len(self.message_queue) > 0:
+                    websocket.send(self.message_queue.pop(0))
 
         except websockets.exceptions.ConnectionClosed:
             self.get_logger().info('Connection closed')
