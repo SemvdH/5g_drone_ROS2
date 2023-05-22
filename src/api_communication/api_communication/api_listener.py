@@ -6,6 +6,7 @@ from drone_services.msg import DroneStatus
 import asyncio
 import websockets.server
 import threading
+import json
 
 
 class ApiListener(Node):
@@ -13,14 +14,19 @@ class ApiListener(Node):
         super().__init__('api_listener')
         self.get_logger().info('ApiListener node started')
         self.drone_status_subscriber = self.create_subscription(DroneStatus, '/drone/status', self.drone_status_callback, 10)
+
         self.last_battery_percentage = 0
         self.last_cpu_usage = 0
+
+        self.last_message = ""
+        self.message_queue = []
+        self.checking_for_message = False
+
         self.server = None
         self.server_thread = threading.Thread(target=self.start_api_thread,daemon=True)
         self.server_thread.start()
     
     def drone_status_callback(self, msg):
-        self.get_logger().info('Received drone battery and cpu: {0} {1}'.format(msg.battery_percentage,msg.cpu_usage))
         self.last_battery_percentage = msg.battery_percentage
         self.last_cpu_usage = msg.cpu_usage
     
@@ -33,13 +39,24 @@ class ApiListener(Node):
         self.get_logger().info('API started')
         await self.server.wait_closed()
     
+    async def handle_message_receive(self,websocket):
+        self.last_message = await websocket.recv()
+        
+    def message_received_callback(self):
+        self.get_logger().info(f"Received message: {self.last_message}")
+        self.checking_for_message = False
+
+    # def handle_message(self, message):
+    #     deserialized_msg = json.loads(message)
     
     async def api_handler(self, websocket):
         try:
             while True:
-                message = await websocket.recv()
-                self.get_logger().info('Received message: {0}'.format(message))
-                await websocket.send("Yeet ")
+                if not self.checking_for_message:
+                    self.checking_for_message = True
+                    task = asyncio.create_task(self.handle_message_receive(websocket))
+                    task.add_done_callback(self.message_received_callback)
+
         except websockets.exceptions.ConnectionClosed:
             self.get_logger().info('Connection closed')
 
