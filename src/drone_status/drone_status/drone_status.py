@@ -45,7 +45,7 @@ class DroneStatusNode(Node):
         msg.cpu_usage = self.cpu_usage
         msg.route_setpoint = self.route_setpoint
         self.publisher.publish(msg)
-        self.get_logger().info('Publishing: "%s"' % msg.status)
+        self.get_logger().info('Publishing status message')
 
     def control_mode_callback(self, msg):
         if msg.control_mode == CONTROL_MODE_ATTITUDE:
