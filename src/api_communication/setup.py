@@ -20,6 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+                    'api_listener = api_communication.api_listener:main'
         ],
     },
 )
