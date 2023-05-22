@@ -3,13 +3,15 @@ from rclpy.node import Node
 
 import asyncio
 import websockets.server
+import threading
 
 class ApiListener(Node):
     def __init__(self):
         super().__init__('api_listener')
         self.get_logger().info('ApiListener node started')
-        self.api_coro = asyncio.to_thread(self.run_api)
-        self.server_task = asyncio.create_task(self.api_coro)
+        self.angle = 30
+        server_thread = threading.Thread(target=self.run_api)
+        server_thread.start()
     
     async def run_api(self):
         self.get_logger().info('Starting API')
