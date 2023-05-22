@@ -22,9 +22,16 @@ class ApiListener(Node):
         self.message_queue = []
         self.checking_for_message = False
 
-        self.server = None
-        self.server_thread = threading.Thread(target=self.start_api_thread,daemon=True)
-        self.server_thread.start()
+        # self.server = None
+        # self.server_thread = threading.Thread(target=self.start_api_thread,daemon=True)
+        # self.server_thread.start()
+
+        self.get_logger().info('Starting API')
+        self.websocket = websockets.connect('ws://100.100.100.106:9001')
+        self.get_logger().info('API started')
+        consumer_thread = threading.Thread(asyncio.run(self.consume_messages()))
+        consumer_thread.start()
+
     
     def drone_status_callback(self, msg):
         self.last_battery_percentage = msg.battery_percentage
@@ -32,14 +39,22 @@ class ApiListener(Node):
     
     def start_api_thread(self):
         asyncio.run(self.handle_api())
+    
+    def on_message(self,message):
+        self.get_logger().info(f"Callback received message: {message}")
+
+    async def consume_messages(self):
+        async for message in self.websocket:
+            self.get_logger().info(f"Consumer message: {message}")
+            self.on_message(message)
+            
 
     async def handle_api(self):
         self.get_logger().info('Starting API')
         self.websocket = websockets.connect('ws://100.100.100.106:9001')
         self.get_logger().info('API started')
-        async for message in self.websocket:
-            self.get_logger().info(f"Received message: {message}")
-            await self.websocket.send(message)
+        consumer_thread = threading.Thread(asyncio.run(self.consume_messages()))
+        consumer_thread.start()
     
     # async def handle_message_receive(self,websocket):
     #     self.last_message = await websocket.recv()
