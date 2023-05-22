@@ -32,10 +32,13 @@ class ApiListener(Node):
         self.last_battery_percentage = msg.battery_percentage
         self.last_cpu_usage = msg.cpu_usage
     
+    def publish_message(self,message):
+        asyncio.run(self.websocket.send(message))
+    
     def publish_status(self):
         if self.websocket is not None:
             self.get_logger().info(f"Publishing status: battery: {self.last_battery_percentage}, cpu: {self.last_cpu_usage}")
-            asyncio.run(self.websocket.send(f"battery: {self.last_battery_percentage}, cpu: {self.last_cpu_usage}"))
+            self.publish_message(json.loads(f"battery: {self.last_battery_percentage}, cpu: {self.last_cpu_usage}"))
     
     def start_api_thread(self):
         asyncio.run(self.handle_api())
@@ -54,24 +57,18 @@ class ApiListener(Node):
         self.get_logger().info(f"Received message callback: {self.last_message}")
         self.message_queue.append(self.last_message)
         self.checking_for_message = False
-
-    # def handle_message(self, message):
-    #     deserialized_msg = json.loads(message)
     
     async def api_handler(self, websocket):
+        self.get_logger().info('New connection')
+        if self.websocket is not None:
+            self.get_logger().error('Got a new websocket connection but I am already connected!')
+            return
+    
         self.websocket = websocket
         try:
             async for message in websocket:
                 self.get_logger().info(f"Received message: {message}")
                 await websocket.send(f"battery: {self.last_battery_percentage}, cpu: {self.last_cpu_usage}")
-            # while True:
-            #     if not self.checking_for_message:
-            #         self.get_logger().info('Waiting for message')
-            #         self.checking_for_message = True
-            #         task = asyncio.create_task(self.handle_message_receive(websocket))
-            #         task.add_done_callback(self.message_received_callback)
-            #     if len(self.message_queue) > 0:
-            #         websocket.send(self.message_queue.pop(0))
 
         except websockets.exceptions.ConnectionClosed:
             self.get_logger().info('Connection closed')
