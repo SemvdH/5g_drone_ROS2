@@ -21,6 +21,10 @@ class ApiListener(Node):
         self.get_logger().info('Received drone battery and cpu: {0} {1}'.format(msg.battery_percentage,msg.cpu_usage))
         self.last_battery_percentage = msg.battery_percentage
         self.last_cpu_usage = msg.cpu_usage
+    
+    def spin(self):
+        while rclpy.ok():
+            rclpy.spin_once(self,timeout_sec=0.1)
 
     async def handle_api(self):
         self.get_logger().info('Starting API')
@@ -46,7 +50,7 @@ async def main(args=None):
 
     # start the websockets api in its own task wrapper
     asyncio.ensure_future(api_listener.handle_api())
-    rclpy.spin(api_listener)
+    api_listener.spin()
 
     api_listener.destroy_node()
     rclpy.shutdown()
