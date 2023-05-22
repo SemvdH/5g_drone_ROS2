@@ -5,7 +5,7 @@ from drone_services.msg import DroneStatus
 
 import asyncio
 import websockets.server
-
+import threading
 
 
 class ApiListener(Node):
@@ -16,6 +16,7 @@ class ApiListener(Node):
         self.last_battery_percentage = 0
         self.last_cpu_usage = 0
         self.server = None
+        self.server_thread = threading.Thread(target=self.handle_api,daemon=True)
     
     def drone_status_callback(self, msg):
         self.get_logger().info('Received drone battery and cpu: {0} {1}'.format(msg.battery_percentage,msg.cpu_usage))
@@ -47,10 +48,8 @@ async def main(args=None):
     rclpy.init(args=args)
 
     api_listener = ApiListener()
-
-    # start the websockets api in its own task wrapper
-    asyncio.ensure_future(api_listener.handle_api())
-    api_listener.spin()
+    
+    rclpy.spin(api_listener)
 
     api_listener.destroy_node()
     rclpy.shutdown()
