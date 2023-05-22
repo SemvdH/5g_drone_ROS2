@@ -13,7 +13,7 @@ CONTROL_MODE_VELOCITY = 2
 CONTROL_MODE_POSITION = 3
 
 
-class DroneStatus(Node):
+class DroneStatusNode(Node):
     def __init__(self):
         super().__init__('drone_status')
         # publish to drone/status topic
@@ -73,7 +73,7 @@ class DroneStatus(Node):
 def main(args=None):
     rclpy.init(args=args)
 
-    drone_status = DroneStatus()
+    drone_status = DroneStatusNode()
 
     rclpy.spin(drone_status)
 
