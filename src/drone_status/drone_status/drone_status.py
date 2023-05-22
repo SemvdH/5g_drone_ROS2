@@ -1,6 +1,6 @@
 import rclpy
 from rclpy.node import Node
-from rclpy.qos import QoSPresetProfiles
+from rclpy.qos import QoSProfile, QoSReliabilityPolicy, QoSHistoryPolicy, QoSDurabilityPolicy
 
 from drone_services.msg import DroneStatus
 from drone_services.msg import DroneControlMode
@@ -17,6 +17,12 @@ CONTROL_MODE_POSITION = 3
 class DroneStatusNode(Node):
     def __init__(self):
         super().__init__('drone_status')
+        qos_profile = QoSProfile(
+            reliability=QoSReliabilityPolicy.RMW_QOS_POLICY_RELIABILITY_BEST_EFFORT,
+            durability=QoSDurabilityPolicy.RMW_QOS_POLICY_DURABILITY_TRANSIENT_LOCAL,
+            history=QoSHistoryPolicy.RMW_QOS_POLICY_HISTORY_KEEP_LAST,
+            depth=1
+        )
         # publish to drone/status topic
         self.publisher = self.create_publisher(
             DroneStatus, '/drone/status', 10)
@@ -27,9 +33,9 @@ class DroneStatusNode(Node):
         self.route_status_subscriber = self.create_subscription(
             DroneRouteStatus, '/drone/route_status', self.route_status_callback, 10)
         self.battery_status_subscriber = self.create_subscription(
-            BatteryStatus, '/fmu/out/battery_status', self.battery_status_callback,qos_profile=QoSPresetProfiles.SENSOR_DATA)
+            BatteryStatus, '/fmu/out/battery_status', self.battery_status_callback, qos_profile=qos_profile)
         self.cpu_load_subscriber = self.create_subscription(
-            Cpuload, '/fmu/out/cpuload', self.cpu_load_callback,qos_profile=QoSPresetProfiles.SENSOR_DATA)
+            Cpuload, '/fmu/out/cpuload', self.cpu_load_callback, qos_profile=qos_profile)
         # publish every 0.5 seconds
         self.timer = self.create_timer(0.5, self.publish_status)
         self.armed = False
