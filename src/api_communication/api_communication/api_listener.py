@@ -16,7 +16,7 @@ class ApiListener(Node):
         self.drone_status_subscriber = self.create_subscription(DroneStatus, '/drone/status', self.drone_status_callback, 10)
         self.timer = self.create_timer(1, self.publish_status)
 
-        self.status_data = []
+        self.status_data = {}
 
         self.last_message = ""
         self.message_queue = []
