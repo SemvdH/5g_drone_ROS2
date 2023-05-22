@@ -14,7 +14,7 @@ class ApiListener(Node):
     
     async def spin(self):
         self.get_logger().info('Starting API')
-        self.server = await websockets.serve(self.api_handler, 'localhost', 9001)
+        self.server = await websockets.serve(self.api_handler, '0.0.0.0', 9001)
         self.get_logger().info('API started')
         await self.server.wait_closed()
     
