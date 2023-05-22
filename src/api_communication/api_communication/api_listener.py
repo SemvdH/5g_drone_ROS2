@@ -16,8 +16,7 @@ class ApiListener(Node):
         self.drone_status_subscriber = self.create_subscription(DroneStatus, '/drone/status', self.drone_status_callback, 10)
         self.timer = self.create_timer(1, self.publish_status)
 
-        self.last_battery_percentage = 0
-        self.last_cpu_usage = 0
+        self.status_data = []
 
         self.last_message = ""
         self.message_queue = []
@@ -29,8 +28,8 @@ class ApiListener(Node):
         self.server_thread.start()
     
     def drone_status_callback(self, msg):
-        self.last_battery_percentage = msg.battery_percentage
-        self.last_cpu_usage = msg.cpu_usage
+        self.status_data['battery_percentage'] = msg.battery_percentage
+        self.status_data['cpu_usage'] = msg.cpu_usage
     
     def publish_message(self,message):
         asyncio.run(self.websocket.send(message))
@@ -38,7 +37,7 @@ class ApiListener(Node):
     def publish_status(self):
         if self.websocket is not None:
             self.get_logger().info(f"Publishing status: battery: {self.last_battery_percentage}, cpu: {self.last_cpu_usage}")
-            self.publish_message(json.loads(f"battery: {self.last_battery_percentage}, cpu: {self.last_cpu_usage}"))
+            self.publish_message(json.dumps(self.status_data))
     
     def start_api_thread(self):
         asyncio.run(self.handle_api())
