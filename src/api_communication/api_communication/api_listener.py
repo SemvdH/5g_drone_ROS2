@@ -10,8 +10,7 @@ class ApiListener(Node):
         super().__init__('api_listener')
         self.get_logger().info('ApiListener node started')
         self.angle = 30
-        server_thread = threading.Thread(target=self.run_api)
-        server_thread.start()
+        asyncio.async(self.run_api())
     
     async def run_api(self):
         self.get_logger().info('Starting API')
