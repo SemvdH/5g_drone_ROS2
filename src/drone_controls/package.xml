@@ -3,13 +3,15 @@
 <package format="3">
   <name>drone_controls</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
-  <maintainer email="ubuntu@todo.todo">ubuntu</maintainer>
-  <license>TODO: License declaration</license>
+  <description>Package to handle control commands from the api to the PX4Controller</description>
+  <maintainer email="semmer99@gmail.com">sem</maintainer>
+  <license>Apache Licence 2.0</license>
+  <depend>rclcpp</depend>
+  <depend>drone_services</depend>
+  <depend>object_detection</depend>
+  <depend>height</depend>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
-
-  <depend>rclcpp</depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
