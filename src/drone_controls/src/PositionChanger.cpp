@@ -21,6 +21,8 @@
 
 #define MIN_DISTANCE 1.0 // in meters
 
+using namespace std::chrono_literals;
+
 struct Quaternion
 {
     float w, x, y, z;
@@ -35,6 +37,16 @@ public:
         auto qos = rclcpp::QoS(rclcpp::QoSInitialization(qos_profile.history, 5), qos_profile);
 
         this->lidar_subscription = this->create_subscription<object_detection::msg::LidarReading>("/drone/object_detection", qos, std::bind(&PositionChanger::handle_lidar_message, this, std::placeholders::_1)) this->odometry_subscription = this->create_subscription<px4_msgs::msg::VehicleOdometry>("/fmu/out/vehicle_odometry", qos, std::bind(&PositionChanger::handle_odometry_message, this, std::placeholders::_1));
+        this->odometry_subscription = this->create_subscription<px4_msgs::msg::VehicleOdometry>("/fmu/out/vehicle_odometry", qos, std::bind(&PositionChanger::handle_odometry_message, this, std::placeholders::_1));
+
+        this->trajectory_client = this->create_client<drone_services::srv::SetTrajectory>("/drone/set_trajectory");
+        this->vehicle_control_client = this->create_client<drone_services::srv::SetVehicleControl>("/drone/set_vehicle_control");
+
+        RCLCPP_INFO(this->get_logger(), "waiting for trajectory service...");
+        wait_for_service<rclcpp::Client<drone_services::srv::SetTrajectory>::SharedPtr>(this->trajectory_client);
+        RCLCPP_INFO(this->get_logger(), "waiting for vehicle control service...");
+        wait_for_service<rclcpp::Client<drone_services::srv::SetVehicleControl>::SharedPtr>(this->vehicle_control_client);
+        }
     }
 
     /**
@@ -50,13 +62,13 @@ public:
 
         // calculate the amount we need to move away from the object to be at the minimum distance
         collision_prevention_weights[MOVE_DIRECTION_FRONT] = this->move_direction_allowed[MOVE_DIRECTION_FRONT] ? 0
-                : -(MIN_DISTANCE - std::min(this->lidar_sensor_values[LIDAR_SENSOR_FR], this->lidar_sensor_values[LIDAR_SENSOR_FL]));
+                                                                                                                : -(MIN_DISTANCE - std::min(this->lidar_sensor_values[LIDAR_SENSOR_FR], this->lidar_sensor_values[LIDAR_SENSOR_FL]));
         collision_prevention_weights[MOVE_DIRECTION_LEFT] = this->move_direction_allowed[MOVE_DIRECTION_LEFT] ? 0
-                : -(MIN_DISTANCE - std::min(this->lidar_sensor_values[LIDAR_SENSOR_FL], this->lidar_sensor_values[LIDAR_SENSOR_RL]));
+                                                                                                              : -(MIN_DISTANCE - std::min(this->lidar_sensor_values[LIDAR_SENSOR_FL], this->lidar_sensor_values[LIDAR_SENSOR_RL]));
         collision_prevention_weights[MOVE_DIRECTION_BACK] = this->move_direction_allowed[MOVE_DIRECTION_BACK] ? 0
-                : -(MIN_DISTANCE - std::min(this->lidar_sensor_values[LIDAR_SENSOR_RL], this->lidar_sensor_values[LIDAR_SENSOR_RR]));
+                                                                                                              : -(MIN_DISTANCE - std::min(this->lidar_sensor_values[LIDAR_SENSOR_RL], this->lidar_sensor_values[LIDAR_SENSOR_RR]));
         collision_prevention_weights[MOVE_DIRECTION_RIGHT] = this->move_direction_allowed[MOVE_DIRECTION_RIGHT] ? 0
-                : -(MIN_DISTANCE - std::min(this->lidar_sensor_values[LIDAR_SENSOR_RR], this->lidar_sensor_values[LIDAR_SENSOR_FR]));
+                                                                                                                : -(MIN_DISTANCE - std::min(this->lidar_sensor_values[LIDAR_SENSOR_RR], this->lidar_sensor_values[LIDAR_SENSOR_FR]));
     }
 
     void handle_lidar_message(const object_detection::msg::LidarReading::SharedPtr message)
@@ -90,7 +102,7 @@ public:
     void handle_odometry_message(const px4_msgs::msg::VehicleOdometry::SharedPtr message)
     {
         Quaternion q = {message->q[0], message->q[1], message->q[2], message->q[3]};
-        odometry_yaw = get_yaw_angle(q);
+        current_yaw = get_yaw_angle(q);
     }
 
     /**
@@ -125,6 +137,11 @@ public:
 private:
     rclcpp::Subscription<object_detection::msg::LidarReading> lidar_subscription;
     rclcpp::Subscription<px4_msgs::msg::VehicleOdometry> odometry_subscription;
+    rclcpp::Client<drone_services::srv::SetTrajectory>::SharedPtr trajectory_client;
+    rclcpp::Client<drone_services::srv::SetVehicleControl>::SharedPtr vehicle_control_client;
+    drone_services::srv::SetTrajectory::Request::SharedPtr trajectory_request;
+    drone_services::srv::SetVehicleControl::Request::SharedPtr vehicle_control_request;
+
     float lidar_sensor_values[4]; // last distance measured by the lidar sensors
     float lidar_imu_readings[4];  // last imu readings from the lidar sensors
     float currrent_yaw = 0;       // in radians
@@ -133,6 +150,21 @@ private:
     float current_z_speed = 0;
     bool move_direction_allowed[4] = {true};
     float collision_prevention_weights[4] = {0};
+
+    template <class T>
+    void wait_for_service(T client)
+    {
+        while (!client->wait_for_service(1s))
+        {
+            if (!rclcpp::ok())
+            {
+                RCLCPP_ERROR(this->get_logger(), "Interrupted while waiting for the service. Exiting.");
+                return 0;
+            }
+            RCLCPP_INFO(this->get_logger(), "service not available, waiting again...");
+        }
+
+    }
 };
 int main(int argc, char *argv[])
 {
