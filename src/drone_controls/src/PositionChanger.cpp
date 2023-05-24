@@ -34,12 +34,11 @@ public:
         rmw_qos_profile_t qos_profile = rmw_qos_profile_sensor_data;
         auto qos = rclcpp::QoS(rclcpp::QoSInitialization(qos_profile.history, 5), qos_profile);
 
-        this->lidar_subscription = this->create_subscription<object_detection::msg::LidarReading>("/drone/object_detection", qos, std::bind(&PositionChanger::handle_lidar_message, this, std::placeholders::_1))
-        this->odometry_subscription = this->create_subscription<px4_msgs::msg::VehicleOdometry>("/fmu/out/vehicle_odometry", qos, std::bind(&PositionChanger::handle_odometry_message, this, std::placeholders::_1));
-    }   
+        this->lidar_subscription = this->create_subscription<object_detection::msg::LidarReading>("/drone/object_detection", qos, std::bind(&PositionChanger::handle_lidar_message, this, std::placeholders::_1)) this->odometry_subscription = this->create_subscription<px4_msgs::msg::VehicleOdometry>("/fmu/out/vehicle_odometry", qos, std::bind(&PositionChanger::handle_odometry_message, this, std::placeholders::_1));
+    }
 
     /**
-     * @brief checks for every direction is an object is too close and if we can move in that direction. 
+     * @brief checks for every direction is an object is too close and if we can move in that direction.
      * If the object is too close to the drone, calculate the amount we need to move away from it
      */
     void check_move_direction_allowed()
@@ -49,22 +48,15 @@ public:
         this->move_direction_allowed[MOVE_DIRECTION_BACK] = this->lidar_sensor_values[LIDAR_SENSOR_RL] > MIN_DISTANCE && this->lidar_sensor_values[LIDAR_SENSOR_RR] > MIN_DISTANCE;
         this->move_direction_allowed[MOVE_DIRECTION_RIGHT] = this->lidar_sensor_values[LIDAR_SENSOR_RR] > MIN_DISTANCE && this->lidar_sensor_values[LIDAR_SENSOR_FR] > MIN_DISTANCE;
 
-        if (!this->move_direction_allowed[MOVE_DIRECTION_FRONT])
-        {
-            collision_prevention_weights[MOVE_DIRECTION_FRONT] = -(MIN_DISTANCE - std::min(this->lidar_sensor_values[LIDAR_SENSOR_FR], this->lidar_sensor_values[LIDAR_SENSOR_FL]));
-        }
-        if (!this->move_direction_allowed[MOVE_DIRECTION_LEFT])
-        {
-            collision_prevention_weights[MOVE_DIRECTION_LEFT] = -(MIN_DISTANCE - std::min(this->lidar_sensor_values[LIDAR_SENSOR_FL], this->lidar_sensor_values[LIDAR_SENSOR_RL]));
-        }
-        if (!this->move_direction_allowed[MOVE_DIRECTION_BACK])
-        {
-            collision_prevention_weights[MOVE_DIRECTION_BACK] = -(MIN_DISTANCE - std::min(this->lidar_sensor_values[LIDAR_SENSOR_RL], this->lidar_sensor_values[LIDAR_SENSOR_RR]));
-        }
-        if (!this->move_direction_allowed[MOVE_DIRECTION_RIGHT])
-        {
-            collision_prevention_weights[MOVE_DIRECTION_RIGHT] = -(MIN_DISTANCE - std::min(this->lidar_sensor_values[LIDAR_SENSOR_RR], this->lidar_sensor_values[LIDAR_SENSOR_FR]));
-        }
+        // calculate the amount we need to move away from the object to be at the minimum distance
+        collision_prevention_weights[MOVE_DIRECTION_FRONT] = this->move_direction_allowed[MOVE_DIRECTION_FRONT] ? 0
+                : -(MIN_DISTANCE - std::min(this->lidar_sensor_values[LIDAR_SENSOR_FR], this->lidar_sensor_values[LIDAR_SENSOR_FL]));
+        collision_prevention_weights[MOVE_DIRECTION_LEFT] = this->move_direction_allowed[MOVE_DIRECTION_LEFT] ? 0
+                : -(MIN_DISTANCE - std::min(this->lidar_sensor_values[LIDAR_SENSOR_FL], this->lidar_sensor_values[LIDAR_SENSOR_RL]));
+        collision_prevention_weights[MOVE_DIRECTION_BACK] = this->move_direction_allowed[MOVE_DIRECTION_BACK] ? 0
+                : -(MIN_DISTANCE - std::min(this->lidar_sensor_values[LIDAR_SENSOR_RL], this->lidar_sensor_values[LIDAR_SENSOR_RR]));
+        collision_prevention_weights[MOVE_DIRECTION_RIGHT] = this->move_direction_allowed[MOVE_DIRECTION_RIGHT] ? 0
+                : -(MIN_DISTANCE - std::min(this->lidar_sensor_values[LIDAR_SENSOR_RR], this->lidar_sensor_values[LIDAR_SENSOR_FR]));
     }
 
     void handle_lidar_message(const object_detection::msg::LidarReading::SharedPtr message)
@@ -98,13 +90,13 @@ public:
     void handle_odometry_message(const px4_msgs::msg::VehicleOdometry::SharedPtr message)
     {
         Quaternion q = {message->q[0], message->q[1], message->q[2], message->q[3]};
-        odometry_yaw = get_yaw_angle(q); 
+        odometry_yaw = get_yaw_angle(q);
     }
 
     /**
      * @brief Get the yaw angle from a specified normalized quaternion.
      * Uses the theory from https://en.wikipedia.org/wiki/Conversion_between_quaternions_and_Euler_angles
-     * 
+     *
      * @param q the quaternion that holds the rotation
      * @return the yaw angle in radians
      */
@@ -117,7 +109,7 @@ public:
 
     /**
      * @brief Get the new x and y coordinates after a rotation of yaw radians
-     * 
+     *
      * @param x the original x coordinate
      * @param y the original y coordinate
      * @param yaw the angle to rotate by in radians
@@ -133,11 +125,14 @@ public:
 private:
     rclcpp::Subscription<object_detection::msg::LidarReading> lidar_subscription;
     rclcpp::Subscription<px4_msgs::msg::VehicleOdometry> odometry_subscription;
-    float lidar_sensor_values[4];
-    float lidar_imu_readings[4];
-    float currrent_yaw = 0;
-    bool move_direction_allowed[4] = {true, true, true, true};
-    float collision_prevention_weights[4] = {0,0,0,0};
+    float lidar_sensor_values[4]; // last distance measured by the lidar sensors
+    float lidar_imu_readings[4];  // last imu readings from the lidar sensors
+    float currrent_yaw = 0;       // in radians
+    float current_x_speed = 0;
+    float current_y_speed = 0;
+    float current_z_speed = 0;
+    bool move_direction_allowed[4] = {true};
+    float collision_prevention_weights[4] = {0};
 };
 int main(int argc, char *argv[])
 {
