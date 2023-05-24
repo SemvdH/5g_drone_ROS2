@@ -1,0 +1,5 @@
+#to turn the relais on or off
+bool relais1_on false
+bool relais2_on false
+---
+int8 bits # relais 1 = bit 0, relais 2 is bit 1

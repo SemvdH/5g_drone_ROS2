@@ -22,9 +22,14 @@ find_package(rosidl_default_generators REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/SetAttitude.srv"
+  "srv/SetTrajectory.srv"
   "srv/SetVelocity.srv"  
   "srv/TakePicture.srv"
   "srv/SetVehicleControl.srv"
+  "srv/ArmDrone.srv"
+  "srv/DisarmDrone.srv"
+  "srv/ControlRelais.srv"
+  "msg/DroneControlMode.msg"
 )
 
 if(BUILD_TESTING)

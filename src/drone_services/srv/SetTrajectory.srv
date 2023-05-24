@@ -1,0 +1,7 @@
+# control mode velocity or position, refer to drone_services/msg/DroneControlMode.msg
+int8 control_mode
+# x, y, z values
+float32[3] values
+float32 yaw
+---
+bool success
