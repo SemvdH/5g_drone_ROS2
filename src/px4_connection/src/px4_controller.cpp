@@ -174,7 +174,7 @@ private:
 
     void handle_trajectory_setpoint(
         const std::shared_ptr<rmw_request_id_t> request_header,
-        const std::shared_ptr<drone_services::srv::SetTrajectory::Request> request,
+        const std::shared_ptr<drone_services::srv::SetTrajectory::Request> request,handle_trajehandle_traje
         const std::shared_ptr<drone_services::srv::SetTrajectory::Response> response)
     {
         if (!(request->control_mode == CONTROL_MODE_VELOCITY || request->control_mode == CONTROL_MODE_POSITION))

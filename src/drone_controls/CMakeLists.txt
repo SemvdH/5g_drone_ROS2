@@ -11,6 +11,7 @@ find_package(ament_cmake REQUIRED)
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 find_package(rclcpp REQUIRED)
+find_package(px4_msgs REQUIRED)
 find_package(drone_services REQUIRED)
 find_package(object_detection REQUIRED)
 find_package(height REQUIRED)

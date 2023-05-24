@@ -7,6 +7,7 @@
   <maintainer email="semmer99@gmail.com">sem</maintainer>
   <license>Apache Licence 2.0</license>
   <depend>rclcpp</depend>
+  <depend>px4_msgs</depend>
   <depend>drone_services</depend>
   <depend>object_detection</depend>
   <depend>height</depend>
