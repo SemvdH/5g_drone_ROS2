@@ -1,0 +1,6 @@
+float front_back
+float left_right
+float up_down
+float angle # in degrees
+---
+bool success
