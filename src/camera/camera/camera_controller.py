@@ -2,6 +2,7 @@ import rclpy
 from rclpy.node import Node
 
 from drone_services.srv import TakePicture
+from sensor_msgs.msg import Image
 import os
 from datetime import datetime
 
