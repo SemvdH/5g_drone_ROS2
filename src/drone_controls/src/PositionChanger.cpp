@@ -22,7 +22,7 @@
 
 #define MIN_DISTANCE 1.0 // in meters
 
-#define DEFAULT_CONTROL_MODE 4 // default velocity control bitmask
+#define DEFAULT_CONTROL_MODE 16 // default velocity control bitmask
 
 using namespace std::chrono_literals;
 
