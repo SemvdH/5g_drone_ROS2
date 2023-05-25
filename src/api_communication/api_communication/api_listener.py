@@ -111,7 +111,11 @@ class ApiListener(Node):
             {'type': ResponseMessage.ALL_REQUESTS_RESPONSES, 'data': result}))
 
     def consume_message(self, message):
-        message_json = json.loads(message)
+        try:
+            message_json = json.loads(message)
+        except TypeError:
+            self.get_logger().error('Received unknown command')
+            self.send_available_commands()
         if not message_json['command']:
             self.get_logger().error('Received message without command')
             self.send_available_commands()
