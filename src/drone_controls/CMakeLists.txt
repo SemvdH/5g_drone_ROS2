@@ -14,6 +14,10 @@ find_package(rclcpp REQUIRED)
 find_package(px4_msgs REQUIRED)
 find_package(drone_services REQUIRED)
 
+add_executable(position_changer src/PositionChanger.cpp)
+ament_target_dependencies(position_changer rclcpp px4_msgs drone_services)
+
+
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
