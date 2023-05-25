@@ -102,6 +102,7 @@ class ApiListener(Node):
                 {'type': ResponseMessage.IMAGE, 'image': image_data}))
 
     def send_available_commands(self):
+        self.get_logger().info('Sending available commands')
         result = {}
         for command in RequestCommand:
             result[command.name] = command.value
@@ -111,6 +112,7 @@ class ApiListener(Node):
             {'type': ResponseMessage.ALL_REQUESTS_RESPONSES.name, 'data': result}))
 
     def consume_message(self, message):
+        self.get_logger().info(f'Consuming message: {message}')
         try:
             message_json = json.loads(message)
         except TypeError:
@@ -149,6 +151,7 @@ class ApiListener(Node):
         try:
             async for message in websocket:
                 self.get_logger().info(f"Received message: {message}")
+                self.consume_message(message)
 
         except websockets.exceptions.ConnectionClosed:
             self.get_logger().info('Connection closed')
