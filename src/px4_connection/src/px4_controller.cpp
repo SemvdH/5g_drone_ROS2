@@ -99,26 +99,18 @@ private:
 
     char current_control_mode = CONTROL_MODE_ATTITUDE; // start with attitude control
 
-    bool start_trajectory = false; // start trajectory when drone is at start position
     const float omega = 0.3;       // angular speed of the POLAR trajectory
     const float K = 0;             // [m] gain that regulates the spiral pitch
 
     float rho_0 = 0;                                // initial rho of polar coordinate
     float theta_0 = 0;                              // initial theta of polar coordinate
-    const float p0_z = -0.0;                        // initial height
-    float p0_x = rho_0 * cos(theta_0);              // initial x position
-    float p0_y = rho_0 * sin(theta_0);              // initial y position
+    float p0_z = -0.0;                        // initial height
     float des_x = p0_x, des_y = p0_y, des_z = p0_z; // desired position
     float dot_des_x = 0.0, dot_des_y = 0.0;         // desired velocity
     float gamma = M_PI_4;                           // desired heading direction
 
-    float X;
-    float Y;
-
-    float local_x = 0;
-    float local_y = 0;
-
-    uint32_t discrete_time_index = 0;
+    float local_x = 0;  // local position x
+    float local_y = 0;  // local position y
 
     std::array<float, 4> q = {0, 0, 0, 0}; // result quaternion
 
@@ -375,7 +367,7 @@ private:
         // the spiral, in polar coordinates (theta, rho), is given by
         // theta = theta_0 + omega*t
         // rho = rho_0 + K*theta
-        float theta = theta_0 + omega * 0.1 * discrete_time_index;
+        float theta = theta_0 + omega * 0.1;
         float rho = rho_0 + K * theta;
 
         // from polar to cartesian coordinates
@@ -417,10 +409,6 @@ private:
                 }
                 new_setpoint = false;
             }
-        }
-        if (start_trajectory)
-        {
-            discrete_time_index++;
         }
     }
 
@@ -469,14 +457,6 @@ private:
 
             local_x = msg->x;
             local_y = msg->y;
-        }
-        X = msg->x;
-        Y = msg->y;
-        float Z = msg->z;
-        if (!start_trajectory && (p0_x + 1.0 > X && p0_x - 1.0 < X) && (p0_y + 1.0 > Y && p0_y - 1.0 < Y) && (p0_z + 1.0 > Z && p0_z - 1.0 < Z))
-        {
-            start_trajectory = true;
-            RCLCPP_INFO(this->get_logger(), "start trajectory");
         }
     }
 
