@@ -24,6 +24,9 @@
 
 #define DEFAULT_CONTROL_MODE 16 // default velocity control bitmask
 
+// converts bitmask control mode to control mode used by PX4Controller
+#define PX4_CONTROLLER_CONTROL_MODE(x) ((x) == 4 ? 1 : ((x) == 16 ? 2 : ((x) == 32 ? 3 : -1))) 
+
 using namespace std::chrono_literals;
 
 struct Quaternion
@@ -92,6 +95,7 @@ public:
         this->trajectory_request->values[1] = this->current_speed_y;
         this->trajectory_request->values[2] = this->current_speed_z;
         this->trajectory_request->yaw = this->current_yaw;
+        this->trajectory_request->control_mode = PX4_CONTROLLER_CONTROL_MODE(DEFAULT_CONTROL_MODE);
         auto trajectory_response = this->trajectory_client->async_send_request(this->trajectory_request, std::bind(&PositionChanger::trajectory_message_callback, this, std::placeholders::_1));
 
         // if (rclcpp::spin_until_future_complete(this, trajectory_response) ==
