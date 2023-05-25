@@ -1,6 +1,6 @@
 var express = require("express");
 var app = express();
-import WebSocket from "ws";
+import WebSocket from 'ws';
 
 var ws = new WebSocket("ws://10.100.0.40:9001/");
 
