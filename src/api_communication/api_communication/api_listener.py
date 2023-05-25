@@ -105,11 +105,15 @@ class ApiListener(Node):
 
     def send_available_commands(self):
         print('Sending available commands')
+        requestcommands = {}
+        messagetypes = {}
         result = {}
         for command in RequestCommand:
-            result[command.name] = command.value
+            requestcommands[command.name] = command.value
         for message_type in ResponseMessage:
-            result[message_type.name] = message_type.value
+            messagetypes[message_type.name] = message_type.value
+        result['request_commands'] = requestcommands
+        result['response_messages'] = messagetypes
         self.message_queue.append(json.dumps(
             {'type': ResponseMessage.ALL_REQUESTS_RESPONSES.name, 'data': result}))
 
