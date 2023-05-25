@@ -94,15 +94,15 @@ public:
         this->trajectory_request->yaw = this->current_yaw;
         auto trajectory_response = this->trajectory_client->async_send_request(this->trajectory_requeststd::bind(&PositionChanger::trajectory_message_callback, this, std::placeholders::_1));
 
-        if (rclcpp::spin_until_future_complete(this, trajectory_response) ==
-            rclcpp::FutureReturnCode::SUCCESS)
-        {
-            RCLCPP_INFO(this->get_logger(), "Trajectory set result: %d", trajectory_response.get()->success);
-        }
-        else
-        {
-            RCLCPP_ERROR(this->get_logger(), "Failed to call service to set trajectory");
-        }
+        // if (rclcpp::spin_until_future_complete(this, trajectory_response) ==
+        //     rclcpp::FutureReturnCode::SUCCESS)
+        // {
+        //     RCLCPP_INFO(this->get_logger(), "Trajectory set result: %d", trajectory_response.get()->success);
+        // }
+        // else
+        // {
+        //     RCLCPP_ERROR(this->get_logger(), "Failed to call service to set trajectory");
+        // }
     }
 
     /**
@@ -215,10 +215,10 @@ private:
 
     float lidar_sensor_values[4]; // last distance measured by the lidar sensors
     float lidar_imu_readings[4];  // last imu readings from the lidar sensors
-    float currrent_yaw = 0;       // in radians
-    float current_x_speed = 0;
-    float current_y_speed = 0;
-    float current_z_speed = 0;
+    float current_yaw = 0;       // in radians
+    float current_speed_x = 0;
+    float current_speed_y = 0;
+    float current_speed_z = 0;
     bool move_direction_allowed[4] = {true};
     float collision_prevention_weights[4] = {0};
 
@@ -230,13 +230,13 @@ private:
             if (!rclcpp::ok())
             {
                 RCLCPP_ERROR(this->get_logger(), "Interrupted while waiting for the service. Exiting.");
-                return 0;
+                return;
             }
             RCLCPP_INFO(this->get_logger(), "service not available, waiting again...");
         }
     }
 };
-;
+
 int main(int argc, char *argv[])
 {
     rclcpp::init(argc, argv);
