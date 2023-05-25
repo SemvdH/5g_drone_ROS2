@@ -122,6 +122,7 @@ class ApiListener(Node):
         try:
             message_json = json.loads(str(message))
             self.get_logger().info(f'JSON: {str(message_json)}, type:{type(message_json)}')
+            self.get_logger().info(f'JSON CMD: {str(message_json["command"])}, type:{type(message_json["command"])}')
             if not message_json["command"]:
                 self.get_logger().error('Received message without command')
                 self.send_available_commands()
