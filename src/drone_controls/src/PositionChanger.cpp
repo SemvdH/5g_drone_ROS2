@@ -170,6 +170,8 @@ public:
         // TODO add check_move_direction_allowed results to this calculation
         this->current_yaw += (request->angle % 360) * (M_PI / 180.0); // get the angle in radians
         get_x_y_with_rotation(request->front_back, request->left_right, this->current_yaw, &this->current_speed_x, &this->current_speed_y);
+        RCLCPP_INFO(this->get_logger(), "Calculated speed x: %f, y: %f", this->current_speed_x, this->current_speed_y);
+        send_trajectory_message();
         response->success = true;
     }
 
