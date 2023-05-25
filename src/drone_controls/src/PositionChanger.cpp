@@ -168,7 +168,7 @@ public:
     {
         RCLCPP_INFO(this->get_logger(), "Incoming request\nfront_back: %f\nleft_right: %f\nup_down: %f\nangle: %f", request->front_back, request->left_right, request->up_down, request->angle);
         // TODO add check_move_direction_allowed results to this calculation
-        this->current_yaw += (request->angle % (float)360.0) * (M_PI / 180.0); // get the angle in radians
+        this->current_yaw += (float)(((double)request->angle % 360.0) * (M_PI / 180.0)); // get the angle in radians
         get_x_y_with_rotation(request->front_back, request->left_right, this->current_yaw, &this->current_speed_x, &this->current_speed_y);
         RCLCPP_INFO(this->get_logger(), "Calculated speed x: %f, y: %f", this->current_speed_x, this->current_speed_y);
         send_trajectory_message();
