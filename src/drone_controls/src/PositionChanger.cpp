@@ -92,7 +92,7 @@ public:
         this->trajectory_request->values[1] = this->current_speed_y;
         this->trajectory_request->values[2] = this->current_speed_z;
         this->trajectory_request->yaw = this->current_yaw;
-        auto trajectory_response = this->trajectory_client->async_send_request(this->trajectory_request,std::bind(&PositionChanger::trajectory_message_callback, this, std::placeholders::_1));
+        auto trajectory_response = this->trajectory_client->async_send_request(this->trajectory_request, std::bind(&PositionChanger::trajectory_message_callback, this, std::placeholders::_1));
 
         // if (rclcpp::spin_until_future_complete(this, trajectory_response) ==
         //     rclcpp::FutureReturnCode::SUCCESS)
@@ -168,8 +168,9 @@ public:
     {
         RCLCPP_INFO(this->get_logger(), "Incoming request\nfront_back: %f\nleft_right: %f\nup_down: %f\nangle: %f", request->front_back, request->left_right, request->up_down, request->angle);
         // TODO add check_move_direction_allowed results to this calculation
-        this->current_yaw += request->angle * (M_PI / 180.0); // get the angle in radians
+        this->current_yaw += (request->angle % 360) * (M_PI / 180.0); // get the angle in radians
         get_x_y_with_rotation(request->front_back, request->left_right, this->current_yaw, &this->current_speed_x, &this->current_speed_y);
+        response->success = true;
     }
 
     /**
@@ -215,7 +216,7 @@ private:
 
     float lidar_sensor_values[4]; // last distance measured by the lidar sensors
     float lidar_imu_readings[4];  // last imu readings from the lidar sensors
-    float current_yaw = 0;       // in radians
+    float current_yaw = 0;        // in radians
     float current_speed_x = 0;
     float current_speed_y = 0;
     float current_speed_z = 0;
