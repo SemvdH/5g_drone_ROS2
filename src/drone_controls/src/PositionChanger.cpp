@@ -1,8 +1,8 @@
 #include "rclcpp/rclcpp.hpp"
 
 #include <px4_msgs/msg/vehicle_odometry.hpp>
-#include <object_detection/msg/lidar_reading.hpp>
-#include <height/msg/height_data.hpp>
+#include <drone_services/msg/lidar_reading.hpp>
+#include <drone_services/msg/height_data.hpp>
 #include <drone_services/srv/set_vehicle_control.hpp>
 #include <drone_services/srv/set_trajectory.hpp>
 #include <drone_services/srv/move_position.hpp>
@@ -39,7 +39,7 @@ public:
         rmw_qos_profile_t qos_profile = rmw_qos_profile_sensor_data;
         auto qos = rclcpp::QoS(rclcpp::QoSInitialization(qos_profile.history, 5), qos_profile);
 
-        this->lidar_subscription = this->create_subscription<object_detection::msg::LidarReading>("/drone/object_detection", qos, std::bind(&PositionChanger::handle_lidar_message, this, std::placeholders::_1)) this->odometry_subscription = this->create_subscription<px4_msgs::msg::VehicleOdometry>("/fmu/out/vehicle_odometry", qos, std::bind(&PositionChanger::handle_odometry_message, this, std::placeholders::_1));
+        this->lidar_subscription = this->create_subscription<drone_services::msg::LidarReading>("/drone/object_detection", qos, std::bind(&PositionChanger::handle_lidar_message, this, std::placeholders::_1)) this->odometry_subscription = this->create_subscription<px4_msgs::msg::VehicleOdometry>("/fmu/out/vehicle_odometry", qos, std::bind(&PositionChanger::handle_odometry_message, this, std::placeholders::_1));
         this->odometry_subscription = this->create_subscription<px4_msgs::msg::VehicleOdometry>("/fmu/out/vehicle_odometry", qos, std::bind(&PositionChanger::handle_odometry_message, this, std::placeholders::_1));
         this->move_position_service = this->create_service<drone_service::srv::MovePosition>("/drone/move_position", std::bind(&PositionChanger::handle_move_position_request, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
 
@@ -110,7 +110,7 @@ check_move_direction_allowed()
                                                                                                             : -(MIN_DISTANCE - std::min(this->lidar_sensor_values[LIDAR_SENSOR_RR], this->lidar_sensor_values[LIDAR_SENSOR_FR]));
 }
 
-void handle_lidar_message(const object_detection::msg::LidarReading::SharedPtr message)
+void handle_lidar_message(const drone_services::msg::LidarReading::SharedPtr message)
 {
 
     if (message->sensor_1 > 0)
@@ -185,7 +185,7 @@ static void get_x_y_with_rotation(float x, float y, float yaw, float *x_res, flo
 }
 
 private:
-rclcpp::Subscription<object_detection::msg::LidarReading> lidar_subscription;
+rclcpp::Subscription<drone_services::msg::LidarReading> lidar_subscription;
 rclcpp::Subscription<px4_msgs::msg::VehicleOdometry> odometry_subscription;
 
 rclcpp::Client<drone_services::srv::SetTrajectory>::SharedPtr trajectory_client;
