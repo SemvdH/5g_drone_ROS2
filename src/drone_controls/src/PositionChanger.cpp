@@ -59,16 +59,6 @@ public:
         this->vehicle_control_request->control = DEFAULT_CONTROL_MODE;
         auto control_mode_response = this->vehicle_control_client->async_send_request(this->vehicle_control_request,
                                                                                       std::bind(&PositionChanger::vehicle_control_service_callback, this, std::placeholders::_1));
-
-        if (rclcpp::spin_until_future_complete(this, control_mode_response) ==
-            rclcpp::FutureReturnCode::SUCCESS)
-        {
-            RCLCPP_INFO(this->get_logger(), "Vehicle control mode set result: %d", control_mode_response.get()->success);
-        }
-        else
-        {
-            RCLCPP_ERROR(this->get_logger(), "Failed to call service to set vehicle control");
-        }
     }
 
     void vehicle_control_service_callback(rclcpp::Client<drone_services::srv::SetVehicleControl>::SharedFuture future)
