@@ -1,6 +1,6 @@
-float front_back
-float left_right
-float up_down
-float angle # in degrees
+float32 front_back
+float32 left_right
+float32 up_down
+float32 angle # in degrees
 ---
 bool success
