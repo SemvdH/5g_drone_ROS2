@@ -39,10 +39,10 @@ public:
         rmw_qos_profile_t qos_profile = rmw_qos_profile_sensor_data;
         auto qos = rclcpp::QoS(rclcpp::QoSInitialization(qos_profile.history, 5), qos_profile);
 
-        this->lidar_subscription = this->create_subscription<drone_services::msg::LidarReading>("/drone/object_detection", qos, std::bind(&PositionChanger::handle_lidar_message, this,std::placeholders::_1));
-        
+        this->lidar_subscription = this->create_subscription<drone_services::msg::LidarReading>("/drone/object_detection", qos, std::bind(&PositionChanger::handle_lidar_message, this, std::placeholders::_1));
+
         // vehicle_local_position_subscription_ = this->create_subscription<px4_msgs::msg::VehicleLocalPosition>("/fmu/out/vehicle_local_position", qos, std::bind(&PX4Controller::on_local_position_receive, this, std::placeholders::_1));
-        this->odometry_subscription = this->create_subscription<px4_msgs::msg::VehicleOdometry>("/fmu/out/vehicle_odometry", qos, std::bind(&PositionChanger::handle_odometry_message, this, std::placeholders::_1));        
+        this->odometry_subscription = this->create_subscription<px4_msgs::msg::VehicleOdometry>("/fmu/out/vehicle_odometry", qos, std::bind(&PositionChanger::handle_odometry_message, this, std::placeholders::_1));
         this->move_position_service = this->create_service<drone_services::srv::MovePosition>("/drone/move_position", std::bind(&PositionChanger::handle_move_position_request, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
 
         this->trajectory_client = this->create_client<drone_services::srv::SetTrajectory>("/drone/set_trajectory");
@@ -57,7 +57,8 @@ public:
         this->vehicle_control_request = std::make_shared<drone_services::srv::SetVehicleControl::Request>();
 
         this->vehicle_control_request->control = DEFAULT_CONTROL_MODE;
-        auto control_mode_response = this->vehicle_control_client->async_send_request(this->vehicle_control_request);
+        auto control_mode_response = this->vehicle_control_client->async_send_request(this->vehicle_control_request,
+                                                                                      std::bind(&PositionChanger::vehicle_control_service_callback, this, std::placeholders::_1));
 
         if (rclcpp::spin_until_future_complete(this, control_mode_response) ==
             rclcpp::FutureReturnCode::SUCCESS)
@@ -67,6 +68,22 @@ public:
         else
         {
             RCLCPP_ERROR(this->get_logger(), "Failed to call service to set vehicle control");
+        }
+    }
+
+    void vehicle_control_service_callback(rclcpp::Client<drone_services::srv::SetVehicleControl>::SharedFuture future)
+    {
+        auto status = future.wait_for(1s);
+        if (status == std::future_status::ready)
+        {
+            // uncomment below line if using Empty() message
+            // RCLCPP_INFO(this->get_logger(), "Result: success");
+            // comment below line if using Empty() message
+            RCLCPP_INFO(this->get_logger(), "Vehicle control mode set result: %d", future.get()->success);
+        }
+        else
+        {
+            RCLCPP_INFO(this->get_logger(), "Service In-Progress...");
         }
     }
     void send_trajectory_message()
