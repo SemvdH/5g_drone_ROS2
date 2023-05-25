@@ -25,7 +25,7 @@
 #define DEFAULT_CONTROL_MODE 16 // default velocity control bitmask
 
 // converts bitmask control mode to control mode used by PX4Controller
-#define PX4_CONTROLLER_CONTROL_MODE(x) ((x) == 4 ? 1 : ((x) == 16 ? 2 : ((x) == 32 ? 3 : -1))) 
+#define PX4_CONTROLLER_CONTROL_MODE(x) ((x) == 4 ? 1 : ((x) == 16 ? 2 : ((x) == 32 ? 3 : -1)))
 
 using namespace std::chrono_literals;
 
@@ -91,6 +91,7 @@ public:
     }
     void send_trajectory_message()
     {
+        check_move_direction_allowed();
         this->trajectory_request->values[0] = this->current_speed_x;
         this->trajectory_request->values[1] = this->current_speed_y;
         this->trajectory_request->values[2] = this->current_speed_z;
@@ -98,16 +99,58 @@ public:
         this->trajectory_request->control_mode = PX4_CONTROLLER_CONTROL_MODE(DEFAULT_CONTROL_MODE);
         RCLCPP_INFO(this->get_logger(), "Sending trajectory message\nx: %f\ny: %f\nz: %f\nyaw: %f", this->current_speed_x, this->current_speed_y, this->current_speed_z, this->current_yaw);
         auto trajectory_response = this->trajectory_client->async_send_request(this->trajectory_request, std::bind(&PositionChanger::trajectory_message_callback, this, std::placeholders::_1));
+    }
 
-        // if (rclcpp::spin_until_future_complete(this, trajectory_response) ==
-        //     rclcpp::FutureReturnCode::SUCCESS)
-        // {
-        //     RCLCPP_INFO(this->get_logger(), "Trajectory set result: %d", trajectory_response.get()->success);
-        // }
-        // else
-        // {
-        //     RCLCPP_ERROR(this->get_logger(), "Failed to call service to set trajectory");
-        // }
+    /**
+     * @brief applies the collision prevention weights to the current x and y speed
+     *
+     */
+    void apply_collision_weights()
+    {
+        if (this->current_speed_x > 0) // if moving forward
+        {
+            if (this->move_direction_allowed[MOVE_DIRECTION_FRONT])
+            {
+                this->current_speed_x += collision_prevention_weights[MOVE_DIRECTION_FRONT];
+            }
+            else
+            {
+                this->current_speed_x = 0;
+            }
+        }
+        else // moving backward
+        {
+            if (this->move_direction_allowed[MOVE_DIRECTION_BACK])
+            {
+                this->current_speed_x += collision_prevention_weights[MOVE_DIRECTION_BACK];
+            }
+            else
+            {
+                this->current_speed_x = 0;
+            }
+        }
+        if (this->current_speed_y > 0) // moving right
+        {
+            if (this->move_direction_allowed[MOVE_DIRECTION_RIGHT])
+            {
+                this->current_speed_y += collision_prevention_weights[MOVE_DIRECTION_RIGHT];
+            }
+            else
+            {
+                this->current_speed_y = 0;
+            }
+        }
+        else // moving left
+        {
+            if (this->move_direction_allowed[MOVE_DIRECTION_LEFT])
+            {
+                this->current_speed_y += collision_prevention_weights[MOVE_DIRECTION_LEFT];
+            }
+            else
+            {
+                this->current_speed_y = 0;
+            }
+        }
     }
 
     /**
@@ -125,11 +168,13 @@ public:
         collision_prevention_weights[MOVE_DIRECTION_FRONT] = this->move_direction_allowed[MOVE_DIRECTION_FRONT] ? 0
                                                                                                                 : -(MIN_DISTANCE - std::min(this->lidar_sensor_values[LIDAR_SENSOR_FR], this->lidar_sensor_values[LIDAR_SENSOR_FL]));
         collision_prevention_weights[MOVE_DIRECTION_LEFT] = this->move_direction_allowed[MOVE_DIRECTION_LEFT] ? 0
-                                                                                                              : -(MIN_DISTANCE - std::min(this->lidar_sensor_values[LIDAR_SENSOR_FL], this->lidar_sensor_values[LIDAR_SENSOR_RL]));
+                                                                                                              : (MIN_DISTANCE - std::min(this->lidar_sensor_values[LIDAR_SENSOR_FL], this->lidar_sensor_values[LIDAR_SENSOR_RL]));
         collision_prevention_weights[MOVE_DIRECTION_BACK] = this->move_direction_allowed[MOVE_DIRECTION_BACK] ? 0
-                                                                                                              : -(MIN_DISTANCE - std::min(this->lidar_sensor_values[LIDAR_SENSOR_RL], this->lidar_sensor_values[LIDAR_SENSOR_RR]));
+                                                                                                              : (MIN_DISTANCE - std::min(this->lidar_sensor_values[LIDAR_SENSOR_RL], this->lidar_sensor_values[LIDAR_SENSOR_RR]));
         collision_prevention_weights[MOVE_DIRECTION_RIGHT] = this->move_direction_allowed[MOVE_DIRECTION_RIGHT] ? 0
                                                                                                                 : -(MIN_DISTANCE - std::min(this->lidar_sensor_values[LIDAR_SENSOR_RR], this->lidar_sensor_values[LIDAR_SENSOR_FR]));
+
+        apply_collision_weights();
     }
 
     void handle_lidar_message(const drone_services::msg::LidarReading::SharedPtr message)
@@ -228,9 +273,9 @@ private:
     drone_services::srv::SetTrajectory::Request::SharedPtr trajectory_request;
     drone_services::srv::SetVehicleControl::Request::SharedPtr vehicle_control_request;
 
-    float lidar_sensor_values[4]; // last distance measured by the lidar sensors
-    float lidar_imu_readings[4];  // last imu readings from the lidar sensors
-    float current_yaw = 0;        // in radians
+    float lidar_sensor_values[4]{MIN_DISTANCE}; // last distance measured by the lidar sensors
+    float lidar_imu_readings[4];                // last imu readings from the lidar sensors
+    float current_yaw = 0;                      // in radians
     float current_speed_x = 0;
     float current_speed_y = 0;
     float current_speed_z = 0;
