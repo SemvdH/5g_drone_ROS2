@@ -84,7 +84,7 @@ class ApiListener(Node):
     async def handle_api(self):
         self.get_logger().info('Starting API')
         self.server = await websockets.serve(self.api_handler, '0.0.0.0', 9001)
-        self.get_logger().info('API started')
+        self.get_logger().info('API started on port 9001')
         await self.server.wait_closed()
 
     def process_image_request(self, message_json):
