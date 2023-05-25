@@ -102,53 +102,39 @@ public:
     }
 
     /**
-     * @brief applies the collision prevention weights to the current x and y speed
+     * @brief applies the collision prevention weights to the current x and y speed if the drone is too close to an object. 
+     * It moves the drone away from the object until it is far enough away
      *
      */
     void apply_collision_weights()
     {
         if (this->current_speed_x > 0) // if moving forward
         {
-            if (this->move_direction_allowed[MOVE_DIRECTION_FRONT])
+            if (!this->move_direction_allowed[MOVE_DIRECTION_FRONT])
             {
                 this->current_speed_x += collision_prevention_weights[MOVE_DIRECTION_FRONT];
-            }
-            else
-            {
-                this->current_speed_x = 0;
             }
         }
         else // moving backward
         {
-            if (this->move_direction_allowed[MOVE_DIRECTION_BACK])
+            if (!this->move_direction_allowed[MOVE_DIRECTION_BACK])
             {
                 this->current_speed_x += collision_prevention_weights[MOVE_DIRECTION_BACK];
-            }
-            else
-            {
-                this->current_speed_x = 0;
             }
         }
         if (this->current_speed_y > 0) // moving right
         {
-            if (this->move_direction_allowed[MOVE_DIRECTION_RIGHT])
+            if (!this->move_direction_allowed[MOVE_DIRECTION_RIGHT])
             {
-                this->current_speed_y += collision_prevention_weights[MOVE_DIRECTION_RIGHT];
+                this->current_speed_y = collision_prevention_weights[MOVE_DIRECTION_RIGHT];
             }
-            else
-            {
-                this->current_speed_y = 0;
-            }
+
         }
         else // moving left
         {
-            if (this->move_direction_allowed[MOVE_DIRECTION_LEFT])
+            if (!this->move_direction_allowed[MOVE_DIRECTION_LEFT])
             {
-                this->current_speed_y += collision_prevention_weights[MOVE_DIRECTION_LEFT];
-            }
-            else
-            {
-                this->current_speed_y = 0;
+                this->current_speed_y = collision_prevention_weights[MOVE_DIRECTION_LEFT];
             }
         }
     }
