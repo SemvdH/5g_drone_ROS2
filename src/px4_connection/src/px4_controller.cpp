@@ -202,7 +202,7 @@ private:
                 RCLCPP_INFO(this->get_logger(), "Got new position setpoint: %f %f %f", position[0], position[1], position[2]);
             }
 
-            last_angle += request->yaw;
+            last_angle = request->yaw;
             new_setpoint = true;
             RCLCPP_INFO(this->get_logger(), "Yaw: %f", last_angle);
             response->success = true;
