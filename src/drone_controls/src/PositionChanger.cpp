@@ -66,10 +66,20 @@ public:
         auto status = future.wait_for(1s);
         if (status == std::future_status::ready)
         {
-            // uncomment below line if using Empty() message
-            // RCLCPP_INFO(this->get_logger(), "Result: success");
-            // comment below line if using Empty() message
             RCLCPP_INFO(this->get_logger(), "Vehicle control mode set result: %d", future.get()->success);
+        }
+        else
+        {
+            RCLCPP_INFO(this->get_logger(), "Service In-Progress...");
+        }
+    }
+
+    void trajectory_message_callback(rclcpp::Client<drone_services::srv::SetTrajectory>::SharedFuture future)
+    {
+        auto status = future.wait_for(1s);
+        if (status == std::future_status::ready)
+        {
+            RCLCPP_INFO(this->get_logger(), "Seet trajectory set result: %d", future.get()->success);
         }
         else
         {
@@ -78,11 +88,11 @@ public:
     }
     void send_trajectory_message()
     {
-        this->trajectory_request->x = this->current_speed_x;
-        this->trajectory_request->y = this->current_speed_y;
-        this->trajectory_request->z = this->current_z_speed;
+        this->trajectory_request->values[0] = this->current_speed_x;
+        this->trajectory_request->values[1] = this->current_speed_y;
+        this->trajectory_request->values[2] = this->current_z_speed;
         this->trajectory_request->yaw = this->current_yaw;
-        auto trajectory_response = this->trajectory_client->async_send_request(this->trajectory_request);
+        auto trajectory_response = this->trajectory_client->async_send_request(this->trajectory_requeststd::bind(&PositionChanger::trajectory_message_callback, this, std::placeholders::_1));
 
         if (rclcpp::spin_until_future_complete(this, trajectory_response) ==
             rclcpp::FutureReturnCode::SUCCESS)
