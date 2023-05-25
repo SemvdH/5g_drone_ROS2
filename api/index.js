@@ -1,6 +1,15 @@
 var express = require('express');
 var app = express();
 
+websocket = new WebSocket("ws://10.100.0.40:9001/");
+
+websocket.onopen = (evt) => { log("OPENED websocket"); };
+
+websocket.onmessage = (message) => {
+    var msg = JSON.parse(message.data);
+    log("RECEIVED: " + msg);
+}
+
 // set the view engine to ejs
 app.set('view engine', 'ejs');
 
