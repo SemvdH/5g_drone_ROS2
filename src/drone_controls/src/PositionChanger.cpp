@@ -179,6 +179,7 @@ public:
             return;
         }
         this->current_yaw += request->angle * (M_PI / 180.0); // get the angle in radians
+        this->current_speed_z = request->up_down;
         get_x_y_with_rotation(request->front_back, request->left_right, this->current_yaw, &this->current_speed_x, &this->current_speed_y);
         RCLCPP_INFO(this->get_logger(), "Calculated speed x: %f, y: %f", this->current_speed_x, this->current_speed_y);
         send_trajectory_message();
