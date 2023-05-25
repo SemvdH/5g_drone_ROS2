@@ -56,7 +56,7 @@ public:
         this->trajectory_request = std::make_shared<drone_services::srv::SetTrajectory::Request>();
         this->vehicle_control_request = std::make_shared<drone_services::srv::SetVehicleControl::Request>();
 
-        this->vehicle_control_request->control_mode = DEFAULT_CONTROL_MODE;
+        this->vehicle_control_request->control = DEFAULT_CONTROL_MODE;
         auto control_mode_response = this->vehicle_control_client->async_send_request(this->vehicle_control_request);
 
         if (rclcpp::spin_until_future_complete(this, control_mode_response) ==
