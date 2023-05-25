@@ -22,17 +22,11 @@ find_package(ament_cmake REQUIRED)
 # find_package(<dependency> REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(TerabeeApi REQUIRED)
-find_package(rosidl_default_generators REQUIRED)
-find_package(object_detection REQUIRED)
-
-rosidl_generate_interfaces(${PROJECT_NAME}
-  "msg/LidarReading.msg"
-  "msg/MultiflexReading.msg"
- )
+find_package(drone_services REQUIRED)
 
 add_executable(lidar_reader src/lidar_reader.cpp)
 ament_target_dependencies(lidar_reader rclcpp 
-	object_detection
+	drone_services
 )
 
 target_link_libraries(lidar_reader ${TerabeeApi_LIBRARIES})
@@ -40,7 +34,7 @@ target_include_directories(lidar_reader PUBLIC ${TerabeeApi_INCLUDE_DIRS})
 
 add_executable(multiflex_reader src/multiflex_reader.cpp)
 ament_target_dependencies(multiflex_reader rclcpp 
-	object_detection
+	drone_services
 )
 
 target_link_libraries(multiflex_reader ${TerabeeApi_LIBRARIES})

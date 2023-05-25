@@ -34,6 +34,9 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/DroneArmStatus.msg"
   "msg/DroneRouteStatus.msg"
   "msg/DroneStatus.msg"
+  "msg/HeightData.msg"
+  "msg/LidarReading.msg"
+  "msg/MultiflexReading.msg"
 )
 
 if(BUILD_TESTING)
