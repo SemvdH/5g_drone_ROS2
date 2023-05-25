@@ -121,7 +121,7 @@ class ApiListener(Node):
         self.get_logger().info(f'Consuming message: {message}')
         try:
             message_json = json.loads(str(message))
-            self.get_logger().info(f'JSON: {message_json}')
+            self.get_logger().info(f'JSON: {message_json}, type:{type(message_json)}')
             if not message_json['command']:
                 self.get_logger().error('Received message without command')
                 self.send_available_commands()
@@ -156,9 +156,9 @@ class ApiListener(Node):
 
     async def api_handler(self, websocket):
         self.get_logger().info('New connection')
-        if self.websocket is not None:
-            self.get_logger().error('Got a new websocket connection but I am already connected!')
-            return
+        # if self.websocket is not None:
+        #     self.get_logger().error('Got a new websocket connection but I am already connected!')
+        #     return
 
         self.websocket = websocket
         try:
