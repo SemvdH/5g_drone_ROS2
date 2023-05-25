@@ -102,7 +102,7 @@ class ApiListener(Node):
                 {'type': ResponseMessage.IMAGE, 'image': image_data}))
 
     def send_available_commands(self):
-        self.get_logger().info('Sending available commands')
+        print('Sending available commands')
         result = {}
         for command in RequestCommand:
             result[command.name] = command.value
@@ -112,34 +112,36 @@ class ApiListener(Node):
             {'type': ResponseMessage.ALL_REQUESTS_RESPONSES.name, 'data': result}))
 
     def consume_message(self, message):
-        self.get_logger().info(f'Consuming message: {message}')
+        print(f'Consuming message: {message}')
         try:
             message_json = json.loads(message)
+            if not message_json['command']:
+                self.get_logger().error('Received message without command')
+                self.send_available_commands()
+            else:
+                self.get_logger().info(
+                    f'Received command: {message_json["command"]}')
+                if message_json['command'] == RequestCommand.TAKEOFF:
+                    self.get_logger().info('Takeoff command received')
+                elif message_json['command'] == RequestCommand.LAND:
+                    self.get_logger().info('Land command received')
+                elif message_json['command'] == RequestCommand.MOVE_POSITION:
+                    self.get_logger().info('Move position command received')
+                elif message_json['command'] == RequestCommand.MOVE_DIRECTION:
+                    self.get_logger().info('Move direction command received')
+                elif message_json['command'] == RequestCommand.TAKE_PICTURE:
+                    self.process_image_request(message_json)
+                elif message_json['command'] == RequestCommand.GET:
+                    self.get_logger().info('Get command received')
+                    self.send_available_commands()
+                else:
+                    self.get_logger().error('Received unknown command')
+                    self.send_available_commands()
         except TypeError:
             self.get_logger().error('Received unknown command')
             self.send_available_commands()
-        if not message_json['command']:
-            self.get_logger().error('Received message without command')
-            self.send_available_commands()
-        else:
-            self.get_logger().info(
-                f'Received command: {message_json["command"]}')
-            if message_json['command'] == RequestCommand.TAKEOFF:
-                self.get_logger().info('Takeoff command received')
-            elif message_json['command'] == RequestCommand.LAND:
-                self.get_logger().info('Land command received')
-            elif message_json['command'] == RequestCommand.MOVE_POSITION:
-                self.get_logger().info('Move position command received')
-            elif message_json['command'] == RequestCommand.MOVE_DIRECTION:
-                self.get_logger().info('Move direction command received')
-            elif message_json['command'] == RequestCommand.TAKE_PICTURE:
-                self.process_image_request(message_json)
-            elif message_json['command'] == RequestCommand.GET:
-                self.get_logger().info('Get command received')
-                self.send_available_commands()
-            else:
-                self.get_logger().error('Received unknown command')
-                self.send_available_commands()
+        except Exception:
+            self.get_logger().error('Something went wrong!')
 
     async def api_handler(self, websocket):
         self.get_logger().info('New connection')
