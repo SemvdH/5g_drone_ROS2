@@ -43,7 +43,7 @@ class ApiListener(Node):
         self.take_picture_request = TakePicture.Request()
 
         self.status_data = {}
-
+        self.status_data_received = False
         self.last_message = ""
         self.message_queue = []
         self.checking_for_message = False
@@ -58,6 +58,7 @@ class ApiListener(Node):
         self.response_thread.start()
 
     def drone_status_callback(self, msg):
+        self.status_data_received = True
         self.status_data['battery_percentage'] = msg.battery_percentage
         self.status_data['cpu_usage'] = msg.cpu_usage
         self.status_data['armed'] = msg.armed
@@ -69,9 +70,10 @@ class ApiListener(Node):
         asyncio.run(self.websocket.send(message))
 
     def publish_status(self):
-        if self.websocket is not None:
-            self.message_queue.append(json.dumps(
-                {'type': ResponseMessage.STATUS, 'data': self.status_data}))
+        if self.status_data_received:
+            if self.websocket is not None:
+                self.message_queue.append(json.dumps(
+                    {'type': ResponseMessage.STATUS.name, 'data': self.status_data}))
 
     def handle_responses(self):
         while True:
@@ -99,7 +101,7 @@ class ApiListener(Node):
         with open(result_filename, 'rb') as f:
             image_data = f.read()
             self.message_queue.append(json.dumps(
-                {'type': ResponseMessage.IMAGE, 'image': image_data}))
+                {'type': ResponseMessage.IMAGE.name, 'image': image_data}))
 
     def send_available_commands(self):
         print('Sending available commands')
@@ -114,10 +116,10 @@ class ApiListener(Node):
     def consume_message(self, message):
         print(f'Consuming message: {message}')
         try:
-            message_json = json.loads(message)
+            message_json = json.loads(str(message))
             if not message_json['command']:
                 self.get_logger().error('Received message without command')
-                # self.send_available_commands()
+                self.send_available_commands()
             else:
                 self.get_logger().info(
                     f'Received command: {message_json["command"]}')
@@ -133,16 +135,19 @@ class ApiListener(Node):
                     self.process_image_request(message_json)
                 elif message_json['command'] == RequestCommand.GET:
                     self.get_logger().info('Get command received')
-                    # self.send_available_commands()
+                    self.send_available_commands()
                 else:
                     self.get_logger().error('Received unknown command')
-                    # self.send_available_commands()
+                    self.send_available_commands()
         except TypeError:
             self.get_logger().error('Received unknown command')
-            # self.send_available_commands()
+            self.send_available_commands()
+        except json.JSONDecodeError:
+            self.get_logger().error('Received invalid JSON')
+            self.send_available_commands()
         except Exception as e:
             self.get_logger().error('Something went wrong!')
-            self.get_logger().error(e)
+            self.get_logger().error(str(e))
 
     async def api_handler(self, websocket):
         self.get_logger().info('New connection')
