@@ -168,6 +168,11 @@ class ApiListener(Node):
 
         except websockets.exceptions.ConnectionClosed:
             self.get_logger().info('Connection closed')
+            self.websocket = None
+        except Exception as e:
+            self.get_logger().error('Something went wrong!')
+            self.get_logger().error(str(e))
+            self.websocket = None
 
 
 def main(args=None):
