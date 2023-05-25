@@ -96,6 +96,7 @@ public:
         this->trajectory_request->values[2] = this->current_speed_z;
         this->trajectory_request->yaw = this->current_yaw;
         this->trajectory_request->control_mode = PX4_CONTROLLER_CONTROL_MODE(DEFAULT_CONTROL_MODE);
+        RCLCPP_INFO(this->get_logger(), "Sending trajectory message\nx: %f\ny: %f\nz: %f\nyaw: %f", this->current_speed_x, this->current_speed_y, this->current_speed_z, this->current_yaw);
         auto trajectory_response = this->trajectory_client->async_send_request(this->trajectory_request, std::bind(&PositionChanger::trajectory_message_callback, this, std::placeholders::_1));
 
         // if (rclcpp::spin_until_future_complete(this, trajectory_response) ==
