@@ -37,7 +37,7 @@ class ApiListener(Node):
             DroneStatus, '/drone/status', self.drone_status_callback, 10)
         self.timer = self.create_timer(1, self.publish_status)
         self.take_picture_client = self.create_client(
-            TakePicture, 'drone/picture')
+            TakePicture, '/drone/picture')
         while not self.take_picture_client.wait_for_service(timeout_sec=1.0):
             self.get_logger().info('Take picture service not available, waiting again...')
         self.take_picture_request = TakePicture.Request()
