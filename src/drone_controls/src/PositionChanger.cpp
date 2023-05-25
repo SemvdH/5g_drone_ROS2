@@ -68,6 +68,24 @@ public:
         }
     }
 }
+void send_trajectory_message()
+{
+    this->trajectory_request->x = this->current_speed_x;
+    this->trajectory_request->y = this->current_speed_y;
+    this->trajectory_request->z = this->current_z_speed;
+    this->trajectory_request->yaw = this->current_yaw;
+    auto trajectory_response = this->trajectory_client->async_send_request(this->trajectory_request);
+
+    if (rclcpp::spin_until_future_complete(this, trajectory_response) ==
+        rclcpp::FutureReturnCode::SUCCESS)
+    {
+        RCLCPP_INFO(this->get_logger(), "Trajectory set result: %d", trajectory_response.get()->success);
+    }
+    else
+    {
+        RCLCPP_ERROR(this->get_logger(), "Failed to call service to set trajectory");
+    }
+}
 
 /**
  * @brief checks for every direction is an object is too close and if we can move in that direction.
@@ -123,7 +141,7 @@ void handle_lidar_message(const object_detection::msg::LidarReading::SharedPtr m
 void handle_odometry_message(const px4_msgs::msg::VehicleOdometry::SharedPtr message)
 {
     Quaternion q = {message->q[0], message->q[1], message->q[2], message->q[3]};
-    current_yaw = get_yaw_angle(q);
+    this->current_yaw = get_yaw_angle(q);
 }
 
 void handle_move_position_request(
@@ -131,8 +149,9 @@ void handle_move_position_request(
     const std::shared_ptr<drone_services::srv::MovePosition::Request> request,
     const std::shared_ptr<drone_services::srv::MovePosition::Response> response)
 {
+    RCLCPP_INFO(this->get_logger(), "Incoming request\nfront_back: %f\nleft_right: %f\nup_down: %f\nangle: %f", request->front_back, request->left_right, request->up_down, request->angle);
     //TODO add check_move_direction_allowed results to this calculation
-    this->current_yaw = request->angle * (M_PI / 180.0); // get the angle in radians
+    this->current_yaw += request->angle * (M_PI / 180.0); // get the angle in radians
     get_x_y_with_rotation(request->front_back, request->left_right, this->current_yaw, &this->current_speed_x, &this->current_speed_y);
 }
 
