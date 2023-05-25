@@ -140,8 +140,9 @@ class ApiListener(Node):
         except TypeError:
             self.get_logger().error('Received unknown command')
             # self.send_available_commands()
-        except Exception:
+        except Exception as e:
             self.get_logger().error('Something went wrong!')
+            self.get_logger().error(e)
 
     async def api_handler(self, websocket):
         self.get_logger().info('New connection')
