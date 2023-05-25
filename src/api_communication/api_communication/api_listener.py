@@ -114,26 +114,27 @@ class ApiListener(Node):
             {'type': ResponseMessage.ALL_REQUESTS_RESPONSES.name, 'data': result}))
 
     def consume_message(self, message):
-        print(f'Consuming message: {message}')
+        self.get_logger().info(f'Consuming message: {message}')
         try:
             message_json = json.loads(str(message))
+            self.get_logger().info(f'JSON: {message_json}')
             if not message_json['command']:
                 self.get_logger().error('Received message without command')
                 self.send_available_commands()
             else:
                 self.get_logger().info(
                     f'Received command: {message_json["command"]}')
-                if message_json['command'] == RequestCommand.TAKEOFF:
+                if message_json['command'] == RequestCommand.TAKEOFF.value:
                     self.get_logger().info('Takeoff command received')
-                elif message_json['command'] == RequestCommand.LAND:
+                elif message_json['command'] == RequestCommand.LAND.value:
                     self.get_logger().info('Land command received')
-                elif message_json['command'] == RequestCommand.MOVE_POSITION:
+                elif message_json['command'] == RequestCommand.MOVE_POSITION.value:
                     self.get_logger().info('Move position command received')
-                elif message_json['command'] == RequestCommand.MOVE_DIRECTION:
+                elif message_json['command'] == RequestCommand.MOVE_DIRECTION.value:
                     self.get_logger().info('Move direction command received')
-                elif message_json['command'] == RequestCommand.TAKE_PICTURE:
+                elif message_json['command'] == RequestCommand.TAKE_PICTURE.value:
                     self.process_image_request(message_json)
-                elif message_json['command'] == RequestCommand.GET:
+                elif message_json['command'] == RequestCommand.GET.value:
                     self.get_logger().info('Get command received')
                     self.send_available_commands()
                 else:
