@@ -108,7 +108,7 @@ class ApiListener(Node):
         for message_type in ResponseMessage:
             result[message_type.name] = message_type.value
         self.message_queue.append(json.dumps(
-            {'type': ResponseMessage.ALL_REQUESTS_RESPONSES, 'data': result}))
+            {'type': ResponseMessage.ALL_REQUESTS_RESPONSES.name, 'data': result}))
 
     def consume_message(self, message):
         try:
