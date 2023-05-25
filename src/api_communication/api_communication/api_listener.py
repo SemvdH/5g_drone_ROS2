@@ -117,7 +117,7 @@ class ApiListener(Node):
             message_json = json.loads(message)
             if not message_json['command']:
                 self.get_logger().error('Received message without command')
-                self.send_available_commands()
+                # self.send_available_commands()
             else:
                 self.get_logger().info(
                     f'Received command: {message_json["command"]}')
@@ -133,13 +133,13 @@ class ApiListener(Node):
                     self.process_image_request(message_json)
                 elif message_json['command'] == RequestCommand.GET:
                     self.get_logger().info('Get command received')
-                    self.send_available_commands()
+                    # self.send_available_commands()
                 else:
                     self.get_logger().error('Received unknown command')
-                    self.send_available_commands()
+                    # self.send_available_commands()
         except TypeError:
             self.get_logger().error('Received unknown command')
-            self.send_available_commands()
+            # self.send_available_commands()
         except Exception:
             self.get_logger().error('Something went wrong!')
 
