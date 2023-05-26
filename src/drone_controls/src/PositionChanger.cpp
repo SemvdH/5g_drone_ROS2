@@ -119,7 +119,7 @@ public:
         auto status = future.wait_for(1s);
         if (status == std::future_status::ready)
         {
-            RCLCPP_INFO(this->get_logger(), "Set failsafe enabled: %d, message: ", future.get()->enabled, future.get()->message);
+            RCLCPP_INFO(this->get_logger(), "Set failsafe enabled: %d, message: %s", future.get()->enabled, future.get()->message);
         }
         else
         {
@@ -143,6 +143,11 @@ public:
         auto trajectory_response = this->trajectory_client->async_send_request(this->trajectory_request, std::bind(&PositionChanger::trajectory_message_callback, this, std::placeholders::_1));
     }
 
+    /**
+     * @brief Enables the failsafe with the specified message
+     * 
+     * @param message the message indicating the cause of the failsafe
+     */
     void enable_failsafe(std::string message)
     {
         this->failsafe_enabled = true;

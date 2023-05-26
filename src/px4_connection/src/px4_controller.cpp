@@ -108,8 +108,7 @@ private:
     float rho_0 = 0;                                // initial rho of polar coordinate
     float theta_0 = 0;                              // initial theta of polar coordinate
     float p0_z = -0.0;                        // initial height
-    float des_x = p0_x, des_y = p0_y, des_z = p0_z; // desired position
-    float dot_des_x = 0.0, dot_des_y = 0.0;         // desired velocity
+    float des_x = 0.0, des_y = 0.0, des_z = p0_z; // desired position
     float gamma = M_PI_4;                           // desired heading direction
 
     float local_x = 0;  // local position x
@@ -258,7 +257,11 @@ private:
         const std::shared_ptr<drone_services::srv::ArmDrone::Response> response)
     {
         RCLCPP_INFO(this->get_logger(), "Got arm request...");
-
+        if (this->failsafe_enabled)
+        {
+            response->success = false;
+            return;
+        }
         if (!armed)
         {
             this->publish_vehicle_command(px4_msgs::msg::VehicleCommand::VEHICLE_CMD_DO_SET_MODE, 1, 6);
@@ -343,7 +346,6 @@ private:
         RCLCPP_INFO(this->get_logger(), "Sending position setpoint: %f %f %f", des_x, des_y, des_z);
         RCLCPP_INFO(this->get_logger(), "local position: %f %f", local_x, local_y);
         msg.position = {local_x, local_y, des_z};
-        msg.velocity = {dot_des_x, dot_des_y, 0.0};
         msg.yaw = gamma; //-3.14; // [-PI:PI]
 
         msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
@@ -390,13 +392,6 @@ private:
         des_x = rho * cos(theta);
         des_y = rho * sin(theta);
         des_z = position[2]; // the z position can be set to the received height
-
-        // velocity computation
-        float dot_rho = K * omega;
-        dot_des_x = dot_rho * cos(theta) - rho * sin(theta) * omega;
-        dot_des_y = dot_rho * sin(theta) + rho * cos(theta) * omega;
-        // desired heading direction
-        gamma = atan2(dot_des_y, dot_des_x);
 
         if (!user_in_control)
         {
@@ -491,6 +486,11 @@ private:
         RCLCPP_INFO(this->get_logger(), "Control mode set to %d", current_control_mode);
     }
 
+    /**
+     * @brief Callback function for receiving failsafe messages
+     * 
+     * @param msg the message indicating that the failsafe was enabled
+     */
     void on_failsafe_received(const drone_services::msg::FailsafeMsg::SharedPtr msg)
     {
         if (msg->enabled)

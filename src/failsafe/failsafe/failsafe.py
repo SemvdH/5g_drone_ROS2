@@ -9,7 +9,6 @@ class FailSafe(Node):
         self.failsafe_enabled = False
         self.failsafe_msg = ""
         self.get_logger().info("Failsafe node started")
-        # create service on /drone/failsafe topic
         self.service = self.create_service(
             EnableFailsafe, "/drone/enable_failsafe", self.failsafe_callback)
         self.failsafe_publisher = self.create_publisher(FailsafeMsg, "/drone/failsafe", 10)
@@ -37,7 +36,6 @@ def main(args=None):
     failsafe_node.spin()
     failsafe_node.destroy_node()
     rclpy.shutdown()
-
 
 if __name__ == '__main__':
     main()
