@@ -3,9 +3,11 @@
 <package format="3">
   <name>failsafe</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
+  <description>Package to control a failsafe for the drone</description>
   <maintainer email="semmer99@gmail.com">ubuntu</maintainer>
-  <license>TODO: License declaration</license>
+  <license>Apache License 2.0</license>
+  <depend>rclpy</depend>
+  <depend>drone_services</depend>
 
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>

@@ -1,0 +1,2 @@
+bool enabled
+wstring msg
