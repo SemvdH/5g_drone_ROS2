@@ -15,15 +15,14 @@
 #define LIDAR_SENSOR_RL 2 // rear left
 #define LIDAR_SENSOR_RR 3 // rear right
 
-#define MOVE_DIRECTION_FRONT 0 // front right
-#define MOVE_DIRECTION_LEFT 1  // front left
-#define MOVE_DIRECTION_BACK 2  // rear left
-#define MOVE_DIRECTION_RIGHT 3 // rear right
+#define MOVE_DIRECTION_FRONT 0 // position in array for moving forward
+#define MOVE_DIRECTION_LEFT 1  // position in array for moving left
+#define MOVE_DIRECTION_BACK 2  // position in array for moving backward
+#define MOVE_DIRECTION_RIGHT 3 // position in array for moving right
 
 #define MIN_DISTANCE 1.0 // in meters
 
 #define DEFAULT_CONTROL_MODE 16 // default velocity control bitmask
-
 // converts bitmask control mode to control mode used by PX4Controller
 #define PX4_CONTROLLER_CONTROL_MODE(x) ((x) == 4 ? 1 : ((x) == 16 ? 2 : ((x) == 32 ? 3 : -1)))
 
@@ -64,6 +63,11 @@ public:
                                                                                       std::bind(&PositionChanger::vehicle_control_service_callback, this, std::placeholders::_1));
     }
 
+    /**
+     * @brief callback function for the vehicle control service
+     * 
+     * @param future the future object that holds the result of the service call
+     */
     void vehicle_control_service_callback(rclcpp::Client<drone_services::srv::SetVehicleControl>::SharedFuture future)
     {
         auto status = future.wait_for(1s);
@@ -77,6 +81,11 @@ public:
         }
     }
 
+    /**
+     * @brief callback function for the trajectory service
+     * 
+     * @param future the future object that holds the result of the service call
+     */
     void trajectory_message_callback(rclcpp::Client<drone_services::srv::SetTrajectory>::SharedFuture future)
     {
         auto status = future.wait_for(1s);
@@ -89,6 +98,11 @@ public:
             RCLCPP_INFO(this->get_logger(), "Service In-Progress...");
         }
     }
+
+    /**
+     * @brief sends the current x, y and z speed and yaw to the trajectory service
+     * 
+     */
     void send_trajectory_message()
     {
         check_move_direction_allowed();
@@ -112,14 +126,14 @@ public:
         {
             if (!this->move_direction_allowed[MOVE_DIRECTION_FRONT])
             {
-                this->current_speed_x += collision_prevention_weights[MOVE_DIRECTION_FRONT];
+                this->current_speed_x = collision_prevention_weights[MOVE_DIRECTION_FRONT];
             }
         }
         else // moving backward
         {
             if (!this->move_direction_allowed[MOVE_DIRECTION_BACK])
             {
-                this->current_speed_x += collision_prevention_weights[MOVE_DIRECTION_BACK];
+                this->current_speed_x = collision_prevention_weights[MOVE_DIRECTION_BACK];
             }
         }
         if (this->current_speed_y > 0) // moving right
@@ -138,6 +152,7 @@ public:
             }
         }
     }
+
 
     /**
      * @brief checks for every direction is an object is too close and if we can move in that direction.
@@ -163,6 +178,12 @@ public:
         apply_collision_weights();
     }
 
+
+    /**
+     * @brief Callback function for receiving new LIDAR data
+     * 
+     * @param message the message containing the LIDAR data
+     */
     void handle_lidar_message(const drone_services::msg::LidarReading::SharedPtr message)
     {
 
@@ -191,19 +212,32 @@ public:
         check_move_direction_allowed();
     }
 
+    /**
+     * @brief Callback function for receiving the odometry data from the drone. 
+     * This is used to get the current yaw angle before the drone takes off, 
+     * to make sure it doesn't want to spin to a certain angle while taking off.
+     * 
+     * @param message the message containing the odometry data
+     */
     void handle_odometry_message(const px4_msgs::msg::VehicleOdometry::SharedPtr message)
     {
         Quaternion q = {message->q[0], message->q[1], message->q[2], message->q[3]};
         this->current_yaw = get_yaw_angle(q);
     }
 
+    /**
+     * @brief Callback function for when the /drone/move_position service is called
+     * 
+     * @param request_header the header of the request
+     * @param request the request containing the new parameters to move to
+     * @param response the response to send back. true if the request was successful, false otherwise
+     */
     void handle_move_position_request(
         const std::shared_ptr<rmw_request_id_t> request_header,
         const std::shared_ptr<drone_services::srv::MovePosition::Request> request,
         const std::shared_ptr<drone_services::srv::MovePosition::Response> response)
     {
         RCLCPP_INFO(this->get_logger(), "Incoming request\nfront_back: %f\nleft_right: %f\nup_down: %f\nangle: %f", request->front_back, request->left_right, request->up_down, request->angle);
-        // TODO add check_move_direction_allowed results to this calculation
         if (request->angle > 360 || request->angle < -360)
         {
             RCLCPP_ERROR(this->get_logger(), "Angle is not in range [-360, 360]");
@@ -233,7 +267,8 @@ public:
     }
 
     /**
-     * @brief Get the new x and y coordinates after a rotation of yaw radians
+     * @brief Get the new x and y coordinates after a rotation of yaw radians.
+     * Uses the standard rotation matrix: https://en.wikipedia.org/wiki/Rotation_matrix
      *
      * @param x the original x coordinate
      * @param y the original y coordinate
@@ -265,9 +300,15 @@ private:
     float current_speed_x = 0;
     float current_speed_y = 0;
     float current_speed_z = 0;
-    bool move_direction_allowed[4] = {true};
-    float collision_prevention_weights[4] = {0};
+    bool move_direction_allowed[4] = {true};    // whether the drone can move in a certain direction
+    float collision_prevention_weights[4] = {0}; // the amount to move away from an object in a certain direction if the drone is too close
 
+    /**
+     * @brief waits for a service to be available
+     *
+     * @tparam T an rclcpp::Client object
+     * @param client the client object to wait for the service
+     */
     template <class T>
     void wait_for_service(T client)
     {

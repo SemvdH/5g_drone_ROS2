@@ -257,14 +257,8 @@ class TestController(Node):
 
 def main(args=None):
     rclpy.init(args=args)
-
     test_controller = TestController()
-
     test_controller.spin()
-
-    # Destroy the node explicitly
-    # (optional - otherwise it will be done automatically
-    # when the garbage collector destroys the node object)
     test_controller.destroy_node()
     rclpy.shutdown()
 
