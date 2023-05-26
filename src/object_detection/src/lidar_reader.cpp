@@ -1,7 +1,7 @@
 #include <chrono>
 
 #include "rclcpp/rclcpp.hpp"
-#include "object_detection/msg/lidar_reading.hpp"
+#include "drone_services/msg/lidar_reading.hpp"
 
 #include <terabee/ITerarangerFactory.hpp>
 #include <terabee/ITerarangerTowerEvo.hpp>
@@ -26,7 +26,7 @@ public:
         this->declare_parameter("lidar_serial_port", "/dev/ttyACM0", descriptor);
 
         // create publisher and bind timer to publish function
-        publisher_ = this->create_publisher<object_detection::msg::LidarReading>("drone/object_detection", 10);
+        publisher_ = this->create_publisher<drone_services::msg::LidarReading>("drone/object_detection", 10);
         timer_ = this->create_wall_timer(500ms, std::bind(&LidarReader::read_lidar_data, this));
 
         factory = terabee::ITerarangerFactory::getFactory();
@@ -50,7 +50,7 @@ public:
 
 private:
     // publisher for lidar data
-    rclcpp::Publisher<object_detection::msg::LidarReading>::SharedPtr publisher_;
+    rclcpp::Publisher<drone_services::msg::LidarReading>::SharedPtr publisher_;
     // timer for publishing readings
     rclcpp::TimerBase::SharedPtr timer_;
 
@@ -64,7 +64,7 @@ private:
      */
     void read_lidar_data()
     {
-        auto msg = object_detection::msg::LidarReading();
+        auto msg = drone_services::msg::LidarReading();
 
         // read distance data from all sensors
         msg.sensor_1 = tower->getDistance().distance.at(0);

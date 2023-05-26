@@ -60,7 +60,21 @@
         "typeindex": "cpp",
         "typeinfo": "cpp",
         "utility": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "*.srv": "cpp",
+        "cstdarg": "cpp",
+        "cstddef": "cpp",
+        "strstream": "cpp",
+        "bitset": "cpp",
+        "complex": "cpp",
+        "forward_list": "cpp",
+        "algorithm": "cpp",
+        "iterator": "cpp",
+        "memory_resource": "cpp",
+        "random": "cpp",
+        "fstream": "cpp",
+        "cfenv": "cpp",
+        "cinttypes": "cpp"
     },
     "python.autoComplete.extraPaths": [
         "/home/ubuntu/ros2_ws/install/px4_msgs/lib/python3.8/site-packages",

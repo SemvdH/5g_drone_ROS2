@@ -1,0 +1,6 @@
+float32 front_back
+float32 left_right
+float32 up_down
+float32 angle # difference in degrees, this will be added to the current angle
+---
+bool success

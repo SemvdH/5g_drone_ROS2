@@ -38,27 +38,27 @@ class PX4Controller : public rclcpp::Node
 public:
     PX4Controller() : Node("px4_controller")
     {
-
         rmw_qos_profile_t qos_profile = rmw_qos_profile_sensor_data;
         auto qos = rclcpp::QoS(rclcpp::QoSInitialization(qos_profile.history, 5), qos_profile);
 
-        // create a publisher on the vehicle attitude setpoint topic
+        // publishers for controlling the drone
         vehicle_setpoint_publisher_ = this->create_publisher<px4_msgs::msg::VehicleAttitudeSetpoint>("/fmu/in/vehicle_attitude_setpoint", 10);
         vehicle_command_publisher_ = this->create_publisher<px4_msgs::msg::VehicleCommand>("/fmu/in/vehicle_command", 10);
         trajectory_setpoint_publisher = this->create_publisher<px4_msgs::msg::TrajectorySetpoint>("/fmu/in/trajectory_setpoint", 10);
+        // publisher for publishing if the drone is armed
         arm_status_publisher_ = this->create_publisher<drone_services::msg::DroneArmStatus>("/drone/arm_status", 10);
-        // offboard_control_mode_publisher_ = this->create_publisher<px4_msgs::msg::OffboardControlMode>("/fmu/in/offboard_control_mode", 10);
 
+        // subscriptions from the Pixhawk
         vehicle_attitude_subscription_ = this->create_subscription<px4_msgs::msg::VehicleAttitude>("/fmu/out/vehicle_attitude", qos, std::bind(&PX4Controller::on_attitude_receive, this, std::placeholders::_1));
         vehicle_local_position_subscription_ = this->create_subscription<px4_msgs::msg::VehicleLocalPosition>("/fmu/out/vehicle_local_position", qos, std::bind(&PX4Controller::on_local_position_receive, this, std::placeholders::_1));
+        // subscription on receiving a new control mode
         control_mode_subscription_ = this->create_subscription<drone_services::msg::DroneControlMode>("/drone/control_mode", qos, std::bind(&PX4Controller::on_control_mode_receive, this, std::placeholders::_1));
-
-
+        // services for controlling the drone
         set_attitude_service_ = this->create_service<drone_services::srv::SetAttitude>("/drone/set_attitude", std::bind(&PX4Controller::handle_attitude_setpoint, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
         set_trajectory_service_ = this->create_service<drone_services::srv::SetTrajectory>("/drone/set_trajectory", std::bind(&PX4Controller::handle_trajectory_setpoint, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
         disarm_service_ = this->create_service<drone_services::srv::DisarmDrone>("/drone/disarm", std::bind(&PX4Controller::handle_disarm_request, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
         arm_service_ = this->create_service<drone_services::srv::ArmDrone>("/drone/arm", std::bind(&PX4Controller::handle_arm_request, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
-        // create timer to send vehicle attitude setpoints every second
+        // create timer to send setpoints every 100 milliseconds
         timer_ = this->create_wall_timer(100ms, std::bind(&PX4Controller::send_setpoint, this));
 
         start_time_ = this->get_clock()->now().seconds();
@@ -80,56 +80,47 @@ private:
     rclcpp::Service<drone_services::srv::DisarmDrone>::SharedPtr disarm_service_;
     rclcpp::Service<drone_services::srv::ArmDrone>::SharedPtr arm_service_;
 
-    // rclcpp::Publisher<px4_msgs::msg::OffboardControlMode>::SharedPtr offboard_control_mode_publisher_;
-
     rclcpp::TimerBase::SharedPtr timer_;
-    double start_time_;
-    bool has_sent_status = false;
+    double start_time_;           // time when the node was started
     bool user_in_control = false; // if user has taken over control
-    bool armed = false;
-    bool has_swithed = false;
-    int setpoint_count = 0;
-    float thrust = 0.0;
-    bool ready_to_fly = false;
-    float cur_yaw = 0;
-    bool new_setpoint = false; // for printing new q_d when a new setpoint has been received
+    bool armed = false;           // if the drone is armed
+    bool ready_to_fly = false;    // if the drone is ready to fly
+    bool new_setpoint = false;    // for printing new q_d when a new setpoint has been received
 
-    float last_setpoint[3] = {0, 0, 0};
-    float last_angle = 0;  // angle in radians (-PI .. PI)
-    float last_thrust = 0; // default 10% thrust for when the drone gets armed
+    float last_setpoint[3] = {0, 0, 0}; // yaw, pitch, roll
+    float last_angle = 0;               // angle in radians (-PI .. PI)
+    float last_thrust = 0;              // default 10% thrust for when the drone gets armed
 
-    float velocity[3] = {0, 0, 0};
-    float position[3] = {0, 0, 0};
+    float velocity[3] = {0, 0, 0}; // velocity setpoint [x,y,z]
+    float position[3] = {0, 0, 0}; // position setpoint [x,y,z]
 
-    float base_q[4] = {0, 0, 0, 0};
-    int base_q_amount = 0;
+    float base_q[4] = {0, 0, 0, 0}; // base local position quaternion
+    int base_q_amount = 0;          // amount of base quaternions received
 
     char current_control_mode = CONTROL_MODE_ATTITUDE; // start with attitude control
 
-    bool start_trajectory = false;
-    const float omega = 0.3; // angular speed of the POLAR trajectory
-    const float K = 0;       // [m] gain that regulates the spiral pitch
+    const float omega = 0.3;       // angular speed of the POLAR trajectory
+    const float K = 0;             // [m] gain that regulates the spiral pitch
 
-    float rho_0 = 0;
-    float theta_0 = 0;
-    const float p0_z = -0.0;
-    float p0_x = rho_0 * cos(theta_0);
-    float p0_y = rho_0 * sin(theta_0);
-    float des_x = p0_x, des_y = p0_y, des_z = p0_z;
-    float dot_des_x = 0.0, dot_des_y = 0.0;
-    float gamma = M_PI_4;
+    float rho_0 = 0;                                // initial rho of polar coordinate
+    float theta_0 = 0;                              // initial theta of polar coordinate
+    float p0_z = -0.0;                        // initial height
+    float des_x = p0_x, des_y = p0_y, des_z = p0_z; // desired position
+    float dot_des_x = 0.0, dot_des_y = 0.0;         // desired velocity
+    float gamma = M_PI_4;                           // desired heading direction
 
-    float X;
-    float Y;
+    float local_x = 0;  // local position x
+    float local_y = 0;  // local position y
 
-    float local_x = 0;
-    float local_y = 0;
+    std::array<float, 4> q = {0, 0, 0, 0}; // result quaternion
 
-    uint32_t discrete_time_index = 0;
-
-    // result quaternion
-    std::array<float, 4> q = {0, 0, 0, 0};
-
+    /**
+     * @brief handles reception of attitude setpoints through service
+     *
+     * @param request_header the header of the request
+     * @param request the request containing the new attitude setpoint
+     * @param response the response indicating if the setpoint was changed successfully
+     */
     void handle_attitude_setpoint(
         const std::shared_ptr<rmw_request_id_t> request_header,
         const std::shared_ptr<drone_services::srv::SetAttitude::Request> request,
@@ -172,6 +163,13 @@ private:
         }
     }
 
+    /**
+     * @brief handles reception of trajectory setpoints through service
+     *
+     * @param request_header the header of the request
+     * @param request the request containing the new trajectory setpoint (velocity or position)
+     * @param response the response indicating if the setpoint was changed successfully
+     */
     void handle_trajectory_setpoint(
         const std::shared_ptr<rmw_request_id_t> request_header,
         const std::shared_ptr<drone_services::srv::SetTrajectory::Request> request,
@@ -189,7 +187,7 @@ private:
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    velocity[i] += request->values[i];
+                    velocity[i] = request->values[i];
                 }
                 RCLCPP_INFO(this->get_logger(), "Got new velocity setpoint. %f %f %f", velocity[0], velocity[1], velocity[2]);
             }
@@ -202,7 +200,7 @@ private:
                 RCLCPP_INFO(this->get_logger(), "Got new position setpoint: %f %f %f", position[0], position[1], position[2]);
             }
 
-            last_angle += request->yaw;
+            last_angle = request->yaw;
             new_setpoint = true;
             RCLCPP_INFO(this->get_logger(), "Yaw: %f", last_angle);
             response->success = true;
@@ -232,7 +230,7 @@ private:
             auto msg = drone_services::msg::DroneArmStatus();
             msg.armed = false;
             arm_status_publisher_->publish(msg);
-            
+
             response->success = true;
         }
         else
@@ -280,13 +278,17 @@ private:
         }
     }
 
+    /**
+     * @brief sends the latest received attitude setpoint to the drone
+     *
+     */
     void send_attitude_setpoint()
     {
 
         // set message to enable attitude
         auto msg = px4_msgs::msg::VehicleAttitudeSetpoint();
 
-        // move up?
+        // move up
         msg.thrust_body[0] = 0; // north
         msg.thrust_body[1] = 0; // east
         msg.thrust_body[2] = -last_thrust;
@@ -306,6 +308,10 @@ private:
         vehicle_setpoint_publisher_->publish(msg);
     }
 
+    /**
+     * @brief sends the latest received velocity setpoint to the drone
+     *
+     */
     void send_velocity_setpoint()
     {
         auto msg = px4_msgs::msg::TrajectorySetpoint();
@@ -313,20 +319,24 @@ private:
         msg.velocity[0] = velocity[0];
         msg.velocity[1] = velocity[1];
         msg.velocity[2] = -velocity[2];
+        // set no position control
         for (int i = 0; i < 3; i++)
         {
             msg.position[i] = NAN;
         }
-
         publish_trajectory_setpoint(msg);
     }
 
+    /**
+     * @brief sends the latest received position setpoint to the drone
+     *
+     */
     void send_position_setpoint()
     {
         auto msg = px4_msgs::msg::TrajectorySetpoint();
 
         RCLCPP_INFO(this->get_logger(), "Sending position setpoint: %f %f %f", des_x, des_y, des_z);
-        RCLCPP_INFO(this->get_logger(),"local position: %f %f", local_x, local_y);
+        RCLCPP_INFO(this->get_logger(), "local position: %f %f", local_x, local_y);
         msg.position = {local_x, local_y, des_z};
         msg.velocity = {dot_des_x, dot_des_y, 0.0};
         msg.yaw = gamma; //-3.14; // [-PI:PI]
@@ -335,6 +345,11 @@ private:
         trajectory_setpoint_publisher->publish(msg);
     }
 
+    /**
+     * @brief publishes a trajectory setpoint
+     *
+     * @param msg the message containing the trajectory setpoint
+     */
     void publish_trajectory_setpoint(px4_msgs::msg::TrajectorySetpoint msg)
     {
         msg.yaw = last_angle;
@@ -344,7 +359,7 @@ private:
     }
 
     /**
-     * @brief Send setpoints to PX4. First, 20 setpoints will be sent before offboard mode will be engaged and the drone will be armed.
+     * @brief Send setpoints to PX4.
      *
      */
     void send_setpoint()
@@ -352,7 +367,7 @@ private:
         // the spiral, in polar coordinates (theta, rho), is given by
         // theta = theta_0 + omega*t
         // rho = rho_0 + K*theta
-        float theta = theta_0 + omega * 0.1 * discrete_time_index;
+        float theta = theta_0 + omega * 0.1;
         float rho = rho_0 + K * theta;
 
         // from polar to cartesian coordinates
@@ -376,7 +391,6 @@ private:
         {
             if (current_control_mode == CONTROL_MODE_ATTITUDE)
             {
-                // RCLCPP_INFO(this->get_logger(), "Sending attitude setpoint");
                 send_attitude_setpoint();
             }
             else
@@ -387,32 +401,26 @@ private:
                 }
                 if (current_control_mode == CONTROL_MODE_VELOCITY)
                 {
-                    // RCLCPP_INFO(this->get_logger(), "Sending velocity setpoint");
                     send_velocity_setpoint();
                 }
                 else if (current_control_mode == CONTROL_MODE_POSITION)
                 {
-                    // RCLCPP_INFO(this->get_logger(), "Sending position setpoint");
                     send_position_setpoint();
                 }
                 new_setpoint = false;
             }
         }
-        if (start_trajectory)
-        {
-            discrete_time_index++;
-        }
     }
 
+    /**
+     * @brief Callback function for the attitude topic.
+     * This function is called every time a new message is received on the topic.
+     * It only stores the first two measurements while the drone is not armed.
+     *
+     * @param msg the message containing the attitude
+     */
     void on_attitude_receive(const px4_msgs::msg::VehicleAttitude::SharedPtr msg)
     {
-        /*
-        average q:
-        - 0.7313786745071411
-        - 0.005042835604399443
-        - 0.0002370707516092807
-        - 0.6819528937339783
-        */
         if (!armed)
         {
             if (base_q_amount > 2)
@@ -428,31 +436,27 @@ private:
                 base_q[3] = msg->q[3];
                 base_q_amount++;
             }
-
-            // RCLCPP_INFO(this->get_logger(), "base_q: %f %f %f %f", base_q[0], base_q[1], base_q[2], base_q[3]);
         }
     }
 
+    /**
+     * @brief Callback function for receiving the local position from the Pixhawk
+     * The local position is only received while the drone is not yet flying (user has not yet taken over control)
+     *
+     * @param msg the message conataining the local position
+     */
     void on_local_position_receive(const px4_msgs::msg::VehicleLocalPosition::SharedPtr msg)
     {
         // set start values to current position
         if (!user_in_control)
         {
             // https://www.math.usm.edu/lambers/mat169/fall09/lecture33.pdf
-            rho_0 = pow(msg->x,2) + pow(msg->y,2);
+            rho_0 = pow(msg->x, 2) + pow(msg->y, 2);
             theta_0 = atan2(msg->y, msg->x);
             last_angle = msg->heading;
 
             local_x = msg->x;
             local_y = msg->y;
-        }
-        X = msg->x;
-        Y = msg->y;
-        float Z = msg->z;
-        if (!start_trajectory && (p0_x + 1.0 > X && p0_x - 1.0 < X) && (p0_y + 1.0 > Y && p0_y - 1.0 < Y) && (p0_z + 1.0 > Z && p0_z - 1.0 < Z))
-        {
-            start_trajectory = true;
-            RCLCPP_INFO(this->get_logger(), "start trajectory");
         }
     }
 

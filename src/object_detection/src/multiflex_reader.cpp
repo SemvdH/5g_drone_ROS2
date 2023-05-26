@@ -1,7 +1,7 @@
 #include <chrono>
 
 #include "rclcpp/rclcpp.hpp"
-#include "object_detection/msg/multiflex_reading.hpp"
+#include "drone_services/msg/multiflex_reading.hpp"
 
 #include <terabee/ITerarangerFactory.hpp>
 #include <terabee/ITerarangerMultiflex.hpp>
@@ -48,7 +48,7 @@ public:
 
         RCLCPP_INFO(this->get_logger(), "Multiflex initialized");
 
-        publisher_ = this->create_publisher<object_detection::msg::MultiflexReading>("drone/object_detection", 10);
+        publisher_ = this->create_publisher<drone_services::msg::MultiflexReading>("drone/object_detection", 10);
         timer_ = this->create_wall_timer(500ms, std::bind(&MultiflexReader::read_multiflex_data, this));
     }
 
@@ -59,7 +59,7 @@ private:
 
     // timer and publisher for publishing message onto topic
     rclcpp::TimerBase::SharedPtr timer_;
-    rclcpp::Publisher<object_detection::msg::MultiflexReading>::SharedPtr publisher_;
+    rclcpp::Publisher<drone_services::msg::MultiflexReading>::SharedPtr publisher_;
 
     /**
      * @brief Reads distance data from the sensor and publishes it onto the drone/object_detection topic
@@ -71,7 +71,7 @@ private:
         terabee::DistanceData data = multiflex->getDistance();
 
         // populate message with readings
-        auto msg = object_detection::msg::MultiflexReading();
+        auto msg = drone_services::msg::MultiflexReading();
         for (size_t i = 0; i < data.size(); i++)
         {
             RCLCPP_INFO(this->get_logger(), "distance %f", data.distance[i]);
