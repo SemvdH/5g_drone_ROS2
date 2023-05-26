@@ -20,6 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+                    'drone_status = drone_status.drone_status:main'
         ],
     },
 )
