@@ -1,10 +1,12 @@
 import rclpy
 from rclpy.node import Node
+import sys
 
 try:
     import RPi.GPIO as GPIO
 except RuntimeError:
-    print("Error importing RPi.GPIO!  This is probably because you need superuser privileges.  You can achieve this by using 'sudo' to run your script")
+    print("Error importing RPi.GPIO!")
+    sys.exit(-1)
 
 from drone_services.srv import ControlRelais
 class RelaisController(Node):
@@ -50,17 +52,10 @@ class RelaisController(Node):
 
 def main(args=None):
     rclpy.init(args=args)
-
     relais_controller = RelaisController()
-
     rclpy.spin(relais_controller)
-
-    # Destroy the node explicitly
-    # (optional - otherwise it will be done automatically
-    # when the garbage collector destroys the node object)
     relais_controller.destroy_node()
     rclpy.shutdown()
-
 
 if __name__ == '__main__':
     main()

@@ -7,6 +7,9 @@
 #include <drone_services/srv/set_trajectory.hpp>
 #include <drone_services/srv/move_position.hpp>
 
+#include <drone_services/srv/enable_failsafe.hpp>
+#include <drone_services/msg/failsafe_msg.hpp>
+
 #define _USE_MATH_DEFINES
 #include <cmath>
 
@@ -15,15 +18,14 @@
 #define LIDAR_SENSOR_RL 2 // rear left
 #define LIDAR_SENSOR_RR 3 // rear right
 
-#define MOVE_DIRECTION_FRONT 0 // front right
-#define MOVE_DIRECTION_LEFT 1  // front left
-#define MOVE_DIRECTION_BACK 2  // rear left
-#define MOVE_DIRECTION_RIGHT 3 // rear right
+#define MOVE_DIRECTION_FRONT 0 // position in array for moving forward
+#define MOVE_DIRECTION_LEFT 1  // position in array for moving left
+#define MOVE_DIRECTION_BACK 2  // position in array for moving backward
+#define MOVE_DIRECTION_RIGHT 3 // position in array for moving right
 
 #define MIN_DISTANCE 1.0 // in meters
 
 #define DEFAULT_CONTROL_MODE 16 // default velocity control bitmask
-
 // converts bitmask control mode to control mode used by PX4Controller
 #define PX4_CONTROLLER_CONTROL_MODE(x) ((x) == 4 ? 1 : ((x) == 16 ? 2 : ((x) == 32 ? 3 : -1)))
 
@@ -43,27 +45,39 @@ public:
         auto qos = rclcpp::QoS(rclcpp::QoSInitialization(qos_profile.history, 5), qos_profile);
 
         this->lidar_subscription = this->create_subscription<drone_services::msg::LidarReading>("/drone/object_detection", qos, std::bind(&PositionChanger::handle_lidar_message, this, std::placeholders::_1));
-
         // vehicle_local_position_subscription_ = this->create_subscription<px4_msgs::msg::VehicleLocalPosition>("/fmu/out/vehicle_local_position", qos, std::bind(&PX4Controller::on_local_position_receive, this, std::placeholders::_1));
         this->odometry_subscription = this->create_subscription<px4_msgs::msg::VehicleOdometry>("/fmu/out/vehicle_odometry", qos, std::bind(&PositionChanger::handle_odometry_message, this, std::placeholders::_1));
         this->move_position_service = this->create_service<drone_services::srv::MovePosition>("/drone/move_position", std::bind(&PositionChanger::handle_move_position_request, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
 
+        this->failsafe_publisher = this->create_publisher<drone_services::msg::FailsafeMsg>("/drone/failsafe", 10);
+
         this->trajectory_client = this->create_client<drone_services::srv::SetTrajectory>("/drone/set_trajectory");
         this->vehicle_control_client = this->create_client<drone_services::srv::SetVehicleControl>("/drone/set_vehicle_control");
+        this->failsafe_client = this->create_client<drone_services::srv::EnableFailsafe>("/drone/enable_failsafe");
 
         RCLCPP_INFO(this->get_logger(), "waiting for trajectory service...");
         wait_for_service<rclcpp::Client<drone_services::srv::SetTrajectory>::SharedPtr>(this->trajectory_client);
         RCLCPP_INFO(this->get_logger(), "waiting for vehicle control service...");
         wait_for_service<rclcpp::Client<drone_services::srv::SetVehicleControl>::SharedPtr>(this->vehicle_control_client);
+        RCLCPP_INFO(this->get_logger(), "waiting for failsafe service...");
+        wait_for_service<rclcpp::Client<drone_services::srv::EnableFailsafe>::SharedPtr>(this->failsafe_client);
 
         this->trajectory_request = std::make_shared<drone_services::srv::SetTrajectory::Request>();
         this->vehicle_control_request = std::make_shared<drone_services::srv::SetVehicleControl::Request>();
+        this->failsafe_request = std::make_shared<drone_services::srv::EnableFailsafe::Request>();
+
+        lidar_health_timer = this->create_wall_timer(1s, std::bind(&PositionChanger::check_lidar_health, this));
 
         this->vehicle_control_request->control = DEFAULT_CONTROL_MODE;
         auto control_mode_response = this->vehicle_control_client->async_send_request(this->vehicle_control_request,
                                                                                       std::bind(&PositionChanger::vehicle_control_service_callback, this, std::placeholders::_1));
     }
 
+    /**
+     * @brief callback function for the vehicle control service
+     *
+     * @param future the future object that holds the result of the service call
+     */
     void vehicle_control_service_callback(rclcpp::Client<drone_services::srv::SetVehicleControl>::SharedFuture future)
     {
         auto status = future.wait_for(1s);
@@ -77,6 +91,11 @@ public:
         }
     }
 
+    /**
+     * @brief callback function for the trajectory service
+     *
+     * @param future the future object that holds the result of the service call
+     */
     void trajectory_message_callback(rclcpp::Client<drone_services::srv::SetTrajectory>::SharedFuture future)
     {
         auto status = future.wait_for(1s);
@@ -89,6 +108,29 @@ public:
             RCLCPP_INFO(this->get_logger(), "Service In-Progress...");
         }
     }
+
+    /**
+     * @brief callback function for the failsafe service
+     *
+     * @param future the future object that holds the result of the service call
+     */
+    void failsafe_message_callback(rclcpp::Client<drone_services::srv::EnableFailsafe>::SharedFuture future)
+    {
+        auto status = future.wait_for(1s);
+        if (status == std::future_status::ready)
+        {
+            RCLCPP_INFO(this->get_logger(), "Set failsafe enabled: %d, message: ", future.get()->enabled, future.get()->message);
+        }
+        else
+        {
+            RCLCPP_INFO(this->get_logger(), "Service In-Progress...");
+        }
+    }
+
+    /**
+     * @brief sends the current x, y and z speed and yaw to the trajectory service
+     *
+     */
     void send_trajectory_message()
     {
         check_move_direction_allowed();
@@ -101,8 +143,15 @@ public:
         auto trajectory_response = this->trajectory_client->async_send_request(this->trajectory_request, std::bind(&PositionChanger::trajectory_message_callback, this, std::placeholders::_1));
     }
 
+    void enable_failsafe(std::string message)
+    {
+        this->failsafe_enabled = true;
+        this->failsafe_request->message = message;
+        auto failsafe_response = this->failsafe_client->async_send_request(this->failsafe_request, std::bind(&PositionChanger::failsafe_message_callback, this, std::placeholders::_1));
+    }
+
     /**
-     * @brief applies the collision prevention weights to the current x and y speed if the drone is too close to an object. 
+     * @brief applies the collision prevention weights to the current x and y speed if the drone is too close to an object.
      * It moves the drone away from the object until it is far enough away
      *
      */
@@ -112,14 +161,14 @@ public:
         {
             if (!this->move_direction_allowed[MOVE_DIRECTION_FRONT])
             {
-                this->current_speed_x += collision_prevention_weights[MOVE_DIRECTION_FRONT];
+                this->current_speed_x = collision_prevention_weights[MOVE_DIRECTION_FRONT];
             }
         }
         else // moving backward
         {
             if (!this->move_direction_allowed[MOVE_DIRECTION_BACK])
             {
-                this->current_speed_x += collision_prevention_weights[MOVE_DIRECTION_BACK];
+                this->current_speed_x = collision_prevention_weights[MOVE_DIRECTION_BACK];
             }
         }
         if (this->current_speed_y > 0) // moving right
@@ -128,7 +177,6 @@ public:
             {
                 this->current_speed_y = collision_prevention_weights[MOVE_DIRECTION_RIGHT];
             }
-
         }
         else // moving left
         {
@@ -163,9 +211,15 @@ public:
         apply_collision_weights();
     }
 
+    /**
+     * @brief Callback function for receiving new LIDAR data
+     *
+     * @param message the message containing the LIDAR data
+     */
     void handle_lidar_message(const drone_services::msg::LidarReading::SharedPtr message)
     {
 
+        this->received_lidar_message = true;
         if (message->sensor_1 > 0)
         {
             this->lidar_sensor_values[LIDAR_SENSOR_FR] = message->sensor_1;
@@ -191,31 +245,63 @@ public:
         check_move_direction_allowed();
     }
 
+    /**
+     * @brief Checks if the LIDAR is still sending messages. If not, enable failsafe
+     * 
+     */
+    void check_lidar_health()
+    {
+        if (!this->received_lidar_message)
+        {
+            RCLCPP_WARN(this->get_logger(), "Lidar not sending messages, enabling failsafe");
+            enable_failsafe("No healthy connection to LIDAR!");
+        }
+        this->received_lidar_message = false;
+    }
+
+    /**
+     * @brief Callback function for receiving the odometry data from the drone.
+     * This is used to get the current yaw angle before the drone takes off,
+     * to make sure it doesn't want to spin to a certain angle while taking off.
+     *
+     * @param message the message containing the odometry data
+     */
     void handle_odometry_message(const px4_msgs::msg::VehicleOdometry::SharedPtr message)
     {
         Quaternion q = {message->q[0], message->q[1], message->q[2], message->q[3]};
         this->current_yaw = get_yaw_angle(q);
     }
 
+    /**
+     * @brief Callback function for when the /drone/move_position service is called
+     *
+     * @param request_header the header of the request
+     * @param request the request containing the new parameters to move to
+     * @param response the response to send back. true if the request was successful, false otherwise
+     */
     void handle_move_position_request(
         const std::shared_ptr<rmw_request_id_t> request_header,
         const std::shared_ptr<drone_services::srv::MovePosition::Request> request,
         const std::shared_ptr<drone_services::srv::MovePosition::Response> response)
     {
-        RCLCPP_INFO(this->get_logger(), "Incoming request\nfront_back: %f\nleft_right: %f\nup_down: %f\nangle: %f", request->front_back, request->left_right, request->up_down, request->angle);
-        // TODO add check_move_direction_allowed results to this calculation
-        if (request->angle > 360 || request->angle < -360)
+        if (!this->failsafe_enabled)
         {
-            RCLCPP_ERROR(this->get_logger(), "Angle is not in range [-360, 360]");
+            RCLCPP_INFO(this->get_logger(), "Incoming request\nfront_back: %f\nleft_right: %f\nup_down: %f\nangle: %f", request->front_back, request->left_right, request->up_down, request->angle);
+            if (request->angle > 360 || request->angle < -360)
+            {
+                RCLCPP_ERROR(this->get_logger(), "Angle is not in range [-360, 360]");
+                response->success = false;
+                return;
+            }
+            this->current_yaw += request->angle * (M_PI / 180.0); // get the angle in radians
+            this->current_speed_z = request->up_down;
+            get_x_y_with_rotation(request->front_back, request->left_right, this->current_yaw, &this->current_speed_x, &this->current_speed_y);
+            RCLCPP_INFO(this->get_logger(), "Calculated speed x: %f, y: %f", this->current_speed_x, this->current_speed_y);
+            send_trajectory_message();
+            response->success = true;
+        } else {
             response->success = false;
-            return;
         }
-        this->current_yaw += request->angle * (M_PI / 180.0); // get the angle in radians
-        this->current_speed_z = request->up_down;
-        get_x_y_with_rotation(request->front_back, request->left_right, this->current_yaw, &this->current_speed_x, &this->current_speed_y);
-        RCLCPP_INFO(this->get_logger(), "Calculated speed x: %f, y: %f", this->current_speed_x, this->current_speed_y);
-        send_trajectory_message();
-        response->success = true;
     }
 
     /**
@@ -233,7 +319,8 @@ public:
     }
 
     /**
-     * @brief Get the new x and y coordinates after a rotation of yaw radians
+     * @brief Get the new x and y coordinates after a rotation of yaw radians.
+     * Uses the standard rotation matrix: https://en.wikipedia.org/wiki/Rotation_matrix
      *
      * @param x the original x coordinate
      * @param y the original y coordinate
@@ -248,16 +335,21 @@ public:
     }
 
 private:
+    rclcpp::Publisher<drone_services::msg::FailsafeMsg>::SharedPtr failsafe_publisher;
     rclcpp::Subscription<drone_services::msg::LidarReading>::SharedPtr lidar_subscription;
     rclcpp::Subscription<px4_msgs::msg::VehicleOdometry>::SharedPtr odometry_subscription;
 
     rclcpp::Client<drone_services::srv::SetTrajectory>::SharedPtr trajectory_client;
     rclcpp::Client<drone_services::srv::SetVehicleControl>::SharedPtr vehicle_control_client;
+    rclcpp::Client<drone_services::srv::EnableFailsafe>::SharedPtr failsafe_client;
 
     rclcpp::Service<drone_services::srv::MovePosition>::SharedPtr move_position_service;
 
+    rclcpp::TimerBase::SharedPtr lidar_health_timer;
+
     drone_services::srv::SetTrajectory::Request::SharedPtr trajectory_request;
     drone_services::srv::SetVehicleControl::Request::SharedPtr vehicle_control_request;
+    drone_services::srv::EnableFailsafe::Request::SharedPtr failsafe_request;
 
     float lidar_sensor_values[4]{MIN_DISTANCE}; // last distance measured by the lidar sensors
     float lidar_imu_readings[4];                // last imu readings from the lidar sensors
@@ -265,9 +357,17 @@ private:
     float current_speed_x = 0;
     float current_speed_y = 0;
     float current_speed_z = 0;
-    bool move_direction_allowed[4] = {true};
-    float collision_prevention_weights[4] = {0};
+    bool move_direction_allowed[4] = {true};     // whether the drone can move in a certain direction
+    float collision_prevention_weights[4] = {0}; // the amount to move away from an object in a certain direction if the drone is too close
+    bool failsafe_enabled = false;
+    bool received_lidar_message = false;
 
+    /**
+     * @brief waits for a service to be available
+     *
+     * @tparam T an rclcpp::Client object
+     * @param client the client object to wait for the service
+     */
     template <class T>
     void wait_for_service(T client)
     {

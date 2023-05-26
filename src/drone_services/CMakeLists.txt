@@ -30,6 +30,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/DisarmDrone.srv"
   "srv/ControlRelais.srv"
   "srv/MovePosition.srv"
+  "srv/EnableFailsafe.srv"
   "msg/DroneControlMode.msg"
   "msg/DroneArmStatus.msg"
   "msg/DroneRouteStatus.msg"
