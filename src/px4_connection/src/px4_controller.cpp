@@ -288,7 +288,7 @@ private:
         // set message to enable attitude
         auto msg = px4_msgs::msg::VehicleAttitudeSetpoint();
 
-        // move up?
+        // move up
         msg.thrust_body[0] = 0; // north
         msg.thrust_body[1] = 0; // east
         msg.thrust_body[2] = -last_thrust;
