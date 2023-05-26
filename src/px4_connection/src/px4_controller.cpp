@@ -23,6 +23,7 @@
 #include <drone_services/srv/disarm_drone.hpp>
 #include <drone_services/msg/drone_control_mode.hpp>
 #include <drone_services/msg/drone_arm_status.hpp>
+#include <drone_services/msg/failsafe_msg.hpp>
 
 #include <std_srvs/srv/empty.hpp>
 
@@ -53,6 +54,7 @@ public:
         vehicle_local_position_subscription_ = this->create_subscription<px4_msgs::msg::VehicleLocalPosition>("/fmu/out/vehicle_local_position", qos, std::bind(&PX4Controller::on_local_position_receive, this, std::placeholders::_1));
         // subscription on receiving a new control mode
         control_mode_subscription_ = this->create_subscription<drone_services::msg::DroneControlMode>("/drone/control_mode", qos, std::bind(&PX4Controller::on_control_mode_receive, this, std::placeholders::_1));
+        failsafe_subscription = this->create_subscription<drone_services::msg::FailsafeMsg>("/drone/failsafe", qos, std::bind(&PX4Controller::on_failsafe_receive, this, std::placeholders::_1));
         // services for controlling the drone
         set_attitude_service_ = this->create_service<drone_services::srv::SetAttitude>("/drone/set_attitude", std::bind(&PX4Controller::handle_attitude_setpoint, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
         set_trajectory_service_ = this->create_service<drone_services::srv::SetTrajectory>("/drone/set_trajectory", std::bind(&PX4Controller::handle_trajectory_setpoint, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
@@ -74,6 +76,7 @@ private:
     rclcpp::Subscription<px4_msgs::msg::VehicleAttitude>::SharedPtr vehicle_attitude_subscription_;
     rclcpp::Subscription<px4_msgs::msg::VehicleLocalPosition>::SharedPtr vehicle_local_position_subscription_;
     rclcpp::Subscription<drone_services::msg::DroneControlMode>::SharedPtr control_mode_subscription_;
+    rclcpp::Subscription<drone_services::msg::FailsafeMsg>::SharedPtr failsafe_subscription_;
 
     rclcpp::Service<drone_services::srv::SetAttitude>::SharedPtr set_attitude_service_;
     rclcpp::Service<drone_services::srv::SetTrajectory>::SharedPtr set_trajectory_service_;
@@ -111,6 +114,8 @@ private:
 
     float local_x = 0;  // local position x
     float local_y = 0;  // local position y
+
+    bool failsafe_enabled = false;
 
     std::array<float, 4> q = {0, 0, 0, 0}; // result quaternion
 
@@ -364,6 +369,17 @@ private:
      */
     void send_setpoint()
     {
+        if (failsafe_enabled)
+        {
+            // immediately land if failsafe enabled
+            RCLCPP_INFO(this->get_logger(), "Failsafe enabled, landing...");
+            this->current_control_mode = CONTROL_MODE_VELOCITY;
+            this->velocity[0] = 0;
+            this->velocity[1] = 0;
+            this->velocity[2] = -0.1; // move down slowly
+            send_velocity_setpoint();
+            return;
+        }
         // the spiral, in polar coordinates (theta, rho), is given by
         // theta = theta_0 + omega*t
         // rho = rho_0 + K*theta
@@ -473,6 +489,14 @@ private:
             RCLCPP_ERROR(this->get_logger(), "Received invalid control mode %d", msg->control_mode);
         }
         RCLCPP_INFO(this->get_logger(), "Control mode set to %d", current_control_mode);
+    }
+
+    void on_failsafe_received(const drone_services::msg::FailsafeMsg::SharedPtr msg)
+    {
+        if (msg->enabled)
+        {
+            this->failsafe_enabled = true;
+        }
     }
 
     /**
