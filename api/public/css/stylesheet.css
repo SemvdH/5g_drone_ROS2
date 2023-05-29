@@ -49,3 +49,8 @@ body {
 #arm_disarm {
     float: right;
 }
+
+#button_stop {
+    background-color: red;
+    color: white;
+}

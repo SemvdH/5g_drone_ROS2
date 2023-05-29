@@ -15,13 +15,28 @@
         <div class="mainvideo">
             <p>Camera view:</p>
             <div id="connectedbuttons">
+                <div id="connectedstatus">
+                    <p>Connected: <%- api_connected %></p>
+                </div>
                 <div id="buttons">
                     <button id="take_picture">Take picture</button>
                     <br>
                     <button id="arm_disarm">Arm/Disarm</button>
                 </div>
-                <div id="connectedstatus">
-                    <p>Connected: <%- api_connected %></p>
+            </div>
+            <div id="controls">
+                <h2>Controls</h2>
+                <div id="buttons">
+                    <button id="button_turnleft">Turn left</button>
+                    <button id="button_turnright">Turn right</button>
+                    <button id="button_up">Up</button>
+                    <button id="button_down">Down</button>
+                    <button id="button_forward">Forward</button>
+                    <button id="button_backward">Backward</button>
+                    <button id="button_left">Left</button>
+                    <button id="button_right">Right</button>
+                    <button id="button_stop"><strong>Emergency Stop</strong></button>
+
                 </div>
             </div>
         </div>
