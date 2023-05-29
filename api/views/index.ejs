@@ -46,9 +46,10 @@
             <h2>Drone status</h2>
             <p id="batterypercentage">Battery percentage</p>
             <p id="cpuload">CPU load</p>
+            <p id="armed"></p>
+            <p id="control_mode"></p>
             <p id="speed">Current speed</p>
             <p id="position">Current position</p>
-            <br>
             <p id="failsafe">Failsafe status</p>
         </div>
     </div>
@@ -59,16 +60,16 @@
 
     function update_status()
     {
+        // {"battery_percentage": 100.0, "cpu_usage": 0.0, "armed": false, "control_mode": "attitude", "route_setpoint": 0}}
         var xhr = new XMLHttpRequest();
         xhr.open("GET", "/status", true);
         xhr.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 var status = JSON.parse(this.responseText);
                 document.getElementById("batterypercentage").innerHTML = "Battery percentage: " + status.battery_percentage;
-                document.getElementById("cpuload").innerHTML = "CPU load: " + status.cpu_load;
-                document.getElementById("speed").innerHTML = "Current speed: " + status.speed;
-                document.getElementById("position").innerHTML = "Current position: " + status.position;
-                document.getElementById("failsafe").innerHTML = "Failsafe status: " + status.failsafe;
+                document.getElementById("cpuload").innerHTML = "CPU load: " + status.cpu_usage;
+                document.getElementById("armed").innerHTML = "Armed: " + status.armed;
+                document.getElementById("control_mode").innerHTML = "Control mode: " + status.control_mode;
             }
         };
     }

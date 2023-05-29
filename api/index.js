@@ -37,7 +37,7 @@ app.get("/", function (req, res) {
 });
 
 app.get("/status", function (req, res) {
-  res.json(last_status);
+  res.status(200).json(last_status);
 });
 
 app.post("/move_up", function (req, res) {
