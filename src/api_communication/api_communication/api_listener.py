@@ -22,6 +22,7 @@ class RequestCommand(Enum):
     MOVE_POSITION = 2
     MOVE_DIRECTION = 3
     TAKE_PICTURE = 5
+    EMERGENCY_STOP = 6
 
 
 class ResponseMessage(Enum):
@@ -43,7 +44,8 @@ class ApiListener(Node):
         while not self.take_picture_client.wait_for_service(timeout_sec=1.0):
             self.get_logger().info('Take picture service not available, waiting again...')
         self.take_picture_request = TakePicture.Request()
-        self.move_position_client = self.create_client(MovePosition, '/drone/move_position')
+        self.move_position_client = self.create_client(
+            MovePosition, '/drone/move_position')
         while not self.move_position_client.wait_for_service(timeout_sec=1.0):
             self.get_logger().info('Move position service not available, waiting again...')
         self.move_position_request = MovePosition.Request()
@@ -128,21 +130,28 @@ class ApiListener(Node):
         result['response_messages'] = messagetypes
         self.message_queue.append(json.dumps(
             {'type': ResponseMessage.ALL_REQUESTS_RESPONSES.name, 'data': result}))
-        
-    def handle_direction_message(self,message):
+
+    def handle_direction_message(self, message):
         self.move_position_request.up_down = float(message['up_down'])
         self.move_position_request.left_right = float(message['left_right'])
-        self.move_position_request.front_back = float(message['forward_backward'])
+        self.move_position_request.front_back = float(
+            message['forward_backward'])
         self.move_position_request.angle = float(message['yaw'])
-        self.get_logger().info(f'Calling move position service with request: {str(self.move_position_request)}')
+        self.get_logger().info(
+            f'Calling move position service with request: {str(self.move_position_request)}')
 
+        self.send_move_position_request()
 
+    def send_move_position_request(self):
         try:
-            self.future = self.move_position_client.call_async(self.move_position_request)
+            self.future = self.move_position_client.call_async(
+                self.move_position_request)
             rclpy.spin_until_future_complete(self, self.future)
             result = self.future.result()
             message_result = {}
             message_result['type'] = ResponseMessage.MOVE_DIRECTION_RESULT.name
+            self.get_logger().info(
+                f'Move position service call result: {str(result)}')
             if result.success == True:
                 self.get_logger().info('Move position service call success')
                 message_result['success'] = True
@@ -151,9 +160,24 @@ class ApiListener(Node):
                 message_result['success'] = False
             self.message_queue.append(json.dumps(message_result))
         except Exception as e:
-            self.get_logger().error('Something went wrong while sending a move position request!\n' + str(e))
+            self.get_logger().error(
+                'Something went wrong while sending a move position request!\n' + str(e))
 
+    def takeoff(self):
+        self.get_logger().info('Takeoff command received')
+        self.move_position_request.up_down = 0.1
+        self.move_position_request.left_right = 0.0
+        self.move_position_request.front_back = 0.0
+        self.move_position_request.angle = 0.0
+        self.send_move_position_request()
 
+    def land(self):
+        self.get_logger().info('Land command received')
+        self.move_position_request.up_down = -0.1
+        self.move_position_request.left_right = 0.0
+        self.move_position_request.front_back = 0.0
+        self.move_position_request.angle = 0.0
+        self.send_move_position_request()
 
     def consume_message(self, message):
         self.get_logger().info(f'Consuming message: {message}')
@@ -169,8 +193,10 @@ class ApiListener(Node):
                     f'Received command: {message_json["command"]}')
                 if message_json['command'] == RequestCommand.TAKEOFF.value:
                     self.get_logger().info('Takeoff command received')
+                    self.takeoff()
                 elif message_json['command'] == RequestCommand.LAND.value:
                     self.get_logger().info('Land command received')
+                    self.land()
                 elif message_json['command'] == RequestCommand.MOVE_POSITION.value:
                     self.get_logger().info('Move position command received')
                 elif message_json['command'] == RequestCommand.MOVE_DIRECTION.value:
@@ -182,6 +208,9 @@ class ApiListener(Node):
                 elif message_json['command'] == RequestCommand.GET.value:
                     self.get_logger().info('Get command received')
                     self.send_available_commands()
+                elif message_json['command'] == RequestCommand.EMERGENCY_STOP.value:
+                    self.get_logger().info('Emergency stop command received')
+                    # emergency stop: set to attitude mode and stop, also disarm
                 else:
                     self.get_logger().error('Received unknown command')
                     self.send_available_commands()
