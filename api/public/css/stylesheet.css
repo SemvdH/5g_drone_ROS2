@@ -10,6 +10,7 @@ body {
 
 .video {
     width: 100%;
+    overflow: hidden;
 }
 
 .mainvideo {
@@ -21,7 +22,7 @@ body {
 
 .lastpicture {
     width: 40%;
-    float: right;
+    float: left;
     height: 400px;
     border: 1px solid red;
 }
