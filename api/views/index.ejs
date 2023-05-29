@@ -65,7 +65,7 @@
         var xhr = new XMLHttpRequest();
         xhr.open("GET", "/status", true);
         xhr.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
+            if (this.status == 200) {
                 var status = JSON.parse(this.responseText);
                 document.getElementById("batterypercentage").innerHTML = "Battery percentage: " + status.battery_percentage;
                 document.getElementById("cpuload").innerHTML = "CPU load: " + status.cpu_usage;
