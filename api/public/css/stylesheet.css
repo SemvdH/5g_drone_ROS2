@@ -10,11 +10,11 @@ body {
 
 .video {
     width: 100%;
-    overflow: hidden;
+    overflow: auto;
 }
 
 .mainvideo {
-    width: 60%;
+    width: 50%;
     float: left;
     height: 500px;
     border: 1px sold blue;
