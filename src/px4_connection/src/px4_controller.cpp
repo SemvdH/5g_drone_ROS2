@@ -54,7 +54,7 @@ public:
         vehicle_local_position_subscription_ = this->create_subscription<px4_msgs::msg::VehicleLocalPosition>("/fmu/out/vehicle_local_position", qos, std::bind(&PX4Controller::on_local_position_receive, this, std::placeholders::_1));
         // subscription on receiving a new control mode
         control_mode_subscription_ = this->create_subscription<drone_services::msg::DroneControlMode>("/drone/control_mode", qos, std::bind(&PX4Controller::on_control_mode_receive, this, std::placeholders::_1));
-        failsafe_subscription = this->create_subscription<drone_services::msg::FailsafeMsg>("/drone/failsafe", qos, std::bind(&PX4Controller::on_failsafe_receive, this, std::placeholders::_1));
+        failsafe_subscription_ = this->create_subscription<drone_services::msg::FailsafeMsg>("/drone/failsafe", qos, std::bind(&PX4Controller::on_failsafe_receive, this, std::placeholders::_1));
         // services for controlling the drone
         set_attitude_service_ = this->create_service<drone_services::srv::SetAttitude>("/drone/set_attitude", std::bind(&PX4Controller::handle_attitude_setpoint, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
         set_trajectory_service_ = this->create_service<drone_services::srv::SetTrajectory>("/drone/set_trajectory", std::bind(&PX4Controller::handle_trajectory_setpoint, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
