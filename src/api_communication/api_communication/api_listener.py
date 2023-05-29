@@ -72,7 +72,7 @@ class ApiListener(Node):
         self.status_data['route_setpoint'] = msg.route_setpoint
 
     def publish_message(self, message):
-        self.get_logger().info(f'Publishing message: {message}')
+        # self.get_logger().info(f'Publishing message: {message}')
         if self.websocket is not None:
             asyncio.run(self.websocket.send(message))
         else:
