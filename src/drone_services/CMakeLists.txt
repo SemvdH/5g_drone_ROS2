@@ -38,6 +38,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/HeightData.msg"
   "msg/LidarReading.msg"
   "msg/MultiflexReading.msg"
+  "msg/FailsafeMsg.msg"
 )
 
 if(BUILD_TESTING)
