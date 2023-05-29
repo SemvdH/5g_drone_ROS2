@@ -44,10 +44,10 @@ app.post("/move", function (req, res) {
   console.log("got move request");
   var request = JSON.stringify({
     command: 3,
-    up_down: req.data.up_down,
-    left_right: req.data.left_right,
-    forward_backward: req.data.forward_backward,
-    yaw: req.data.turn_left_right
+    up_down: req.query.up_down,
+    left_right: req.query.left_right,
+    forward_backward: req.query.forward_backward,
+    yaw: req.query.turn_left_right
   });
   ws.send(request);
 });
