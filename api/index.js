@@ -3,9 +3,11 @@ var app = express();
 const WebSocket = require("ws");
 
 var ws = new WebSocket("ws://10.100.0.40:9001/");
+var api_connected = false;
 
 ws.on('open', function open() {
-    console.log("connected");
+    console.log("connected with websockets to API!");
+    api_connected = true;
   });
 
 ws.on("message", function message(message) {
@@ -22,7 +24,7 @@ app.set("view engine", "ejs");
 
 // index page
 app.get("/", function (req, res) {
-  res.render("index");
+  res.render("index", { api_connected: api_connected });
 });
 
 app.listen(8080);
