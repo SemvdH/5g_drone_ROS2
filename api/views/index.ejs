@@ -56,23 +56,24 @@
 </body>
 
 <script>
-    var update_status = setInterval(update_status,1000);
+    var update_status = setInterval(update_status, 1000);
 
-    function update_status()
-    {
+    function update_status() {
         // {"battery_percentage": 100.0, "cpu_usage": 0.0, "armed": false, "control_mode": "attitude", "route_setpoint": 0}}
         console.log("updating status")
         var xhr = new XMLHttpRequest();
         xhr.open("GET", "/status", true);
-        xhr.onreadystatechange = function() {
+        xhr.onreadystatechange = function () {
             if (this.status == 200) {
                 console.log(this.responseText);
-                var status = JSON.parse(this.responseText);
-                console.log(status)
-                document.getElementById("batterypercentage").innerHTML = "Battery percentage: " + status.battery_percentage;
-                document.getElementById("cpuload").innerHTML = "CPU load: " + status.cpu_usage;
-                document.getElementById("armed").innerHTML = "Armed: " + status.armed;
-                document.getElementById("control_mode").innerHTML = "Control mode: " + status.control_mode;
+                if (this.responseText.length > 0) {
+                    var status = JSON.parse(this.responseText);
+                    console.log(status)
+                    document.getElementById("batterypercentage").innerHTML = "Battery percentage: " + status.battery_percentage;
+                    document.getElementById("cpuload").innerHTML = "CPU load: " + status.cpu_usage;
+                    document.getElementById("armed").innerHTML = "Armed: " + status.armed;
+                    document.getElementById("control_mode").innerHTML = "Control mode: " + status.control_mode;
+                }
             }
         };
         xhr.send();
@@ -89,7 +90,7 @@
         var xhr = new XMLHttpRequest();
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.open("POST", "/move_up", true);
-        var data = JSON.stringify({"speed": 1});
+        var data = JSON.stringify({ "speed": 1 });
         xhr.send(data);
 
     }
