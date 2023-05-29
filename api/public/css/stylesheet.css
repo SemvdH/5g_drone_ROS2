@@ -19,6 +19,7 @@ body {
     height: 500px;
     border: 1px solid blue;
     margin-right: 10px;
+    padding: 10px;
 }
 
 .lastpicture {
@@ -26,4 +27,5 @@ body {
     float: left;
     height: 400px;
     border: 1px solid red;
+    padding: 10px;
 }
