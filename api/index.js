@@ -2,6 +2,8 @@ var express = require("express");
 var app = express();
 const WebSocket = require("ws");
 
+var last_status = {};
+
 app.use(express.static("public"));
 
 var ws = new WebSocket("ws://10.100.0.40:9001/");
@@ -14,7 +16,11 @@ ws.on("open", function open() {
 
 ws.on("message", function message(message) {
   var msg = JSON.parse(message);
-  console.log("got type: " + msg.type)
+  if (msg.type == "STATUS") {
+    last_status = msg.data;
+  }
+
+  console.log("got type: " + msg.type);
   console.log("RECEIVED: " + msg.data);
 });
 
@@ -28,6 +34,10 @@ app.set("view engine", "ejs");
 // index page
 app.get("/", function (req, res) {
   res.render("index", { api_connected: api_connected });
+});
+
+app.get("/status", function (req, res) {
+  res.json(last_status);
 });
 
 app.post("/move_up", function (req, res) {

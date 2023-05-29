@@ -55,8 +55,22 @@
 </body>
 
 <script>
-    window.onload = function () {
+    var update_status = setInterval(update_status,1000);
 
+    function update_status()
+    {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "/status", true);
+        xhr.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var status = JSON.parse(this.responseText);
+                document.getElementById("batterypercentage").innerHTML = "Battery percentage: " + status.battery_percentage;
+                document.getElementById("cpuload").innerHTML = "CPU load: " + status.cpu_load;
+                document.getElementById("speed").innerHTML = "Current speed: " + status.speed;
+                document.getElementById("position").innerHTML = "Current position: " + status.position;
+                document.getElementById("failsafe").innerHTML = "Failsafe status: " + status.failsafe;
+            }
+        };
     }
 
     function turn_left() {
