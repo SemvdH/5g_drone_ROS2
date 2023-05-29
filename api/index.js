@@ -29,5 +29,13 @@ app.get("/", function (req, res) {
   res.render("index", { api_connected: api_connected });
 });
 
+app.post("/move_up", function (req, res) {
+    console.log("got move up request")
+    var speed = req.data.speed;
+    var request = JSON.stringify({ command: 3, "up_down": speed, "left_right": 0 , "forward_backward": 0, "yaw": 0});
+    ws.send(request);
+}
+);
+
 app.listen(8080);
 console.log("Server is listening on port 8080");

@@ -67,6 +67,12 @@
     }
     function up() {
         console.log("up");
+        var xhr = new XMLHttpRequest();
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.open("POST", "/move_up", true);
+        var data = JSON.stringify({"speed": 1});
+        xhr.send(data);
+
     }
     function down() {
         console.log("down");
