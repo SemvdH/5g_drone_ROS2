@@ -491,7 +491,7 @@ private:
      * 
      * @param msg the message indicating that the failsafe was enabled
      */
-    void on_failsafe_received(const drone_services::msg::FailsafeMsg::SharedPtr msg)
+    void on_failsafe_receive(const drone_services::msg::FailsafeMsg::SharedPtr msg)
     {
         if (msg->enabled)
         {
