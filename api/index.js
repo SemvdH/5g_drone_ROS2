@@ -53,6 +53,7 @@ app.get("/image", function (req, res) {
   var request = JSON.stringify({
     command: 5
   });
+  console.log("sending picture request")
   ws.send(request);
   while (received_picture == false) { }
   res.status(200).send(last_image);

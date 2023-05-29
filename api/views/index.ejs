@@ -135,6 +135,7 @@
             const img = req.response;
             document.getElementById("picture").src = "data:image/png;base64," + img;
         }
+        console.log("sending picture request")
         xhr.send();
     }
 

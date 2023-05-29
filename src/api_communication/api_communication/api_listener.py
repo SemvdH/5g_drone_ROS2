@@ -137,18 +137,22 @@ class ApiListener(Node):
         self.get_logger().info(f'Calling move position service with request: {str(self.move_position_request)}')
 
 
-        self.future = self.move_position_client.call_async(self.move_position_request)
-        rclpy.spin_until_future_complete(self, self.future)
-        result = self.future.result()
-        message_result = {}
-        message_result['type'] = ResponseMessage.MOVE_DIRECTION_RESULT.name
-        if result.success == True:
-            self.get_logger().info('Move position service call success')
-            message_result['success'] = True
-        else:
-            self.get_logger().error('Move position service call failed')
-            message_result['success'] = False
-        self.message_queue.append(json.dumps(message_result))
+        try:
+            self.future = self.move_position_client.call_async(self.move_position_request)
+            rclpy.spin_until_future_complete(self, self.future)
+            result = self.future.result()
+            message_result = {}
+            message_result['type'] = ResponseMessage.MOVE_DIRECTION_RESULT.name
+            if result.success == True:
+                self.get_logger().info('Move position service call success')
+                message_result['success'] = True
+            else:
+                self.get_logger().error('Move position service call failed')
+                message_result['success'] = False
+            self.message_queue.append(json.dumps(message_result))
+        except Exception as e:
+            self.get_logger().error('Something went wrong while sending a move position request!\n' + str(e))
+
 
 
     def consume_message(self, message):
