@@ -15,11 +15,13 @@ body {
 .mainvideo {
     width: 60%;
     float: left;
+    height: 500px;
     border-color: 1px sold blue;
 }
 
 .lastpicture {
     width: 40%;
     float: right;
+    height: 400px;
     border-color: 1px solid red;
 }
