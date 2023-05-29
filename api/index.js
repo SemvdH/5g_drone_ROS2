@@ -2,6 +2,8 @@ var express = require("express");
 var app = express();
 const WebSocket = require("ws");
 
+app.use(express.static('public'))
+
 var ws = new WebSocket("ws://10.100.0.40:9001/");
 var api_connected = false;
 
