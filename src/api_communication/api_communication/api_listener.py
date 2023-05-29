@@ -77,6 +77,7 @@ class ApiListener(Node):
 
     def publish_status(self):
         if self.status_data_received:
+            self.status_data_received = False
             if self.websocket is not None:
                 self.message_queue.append(json.dumps(
                     {'type': ResponseMessage.STATUS.name, 'data': self.status_data}))
@@ -84,6 +85,7 @@ class ApiListener(Node):
     def handle_responses(self):
         while True:
             if len(self.message_queue) > 0:
+                self.get_logger().info("sending message")
                 self.publish_message(self.message_queue.pop(0))
 
     def start_api_thread(self):
@@ -130,7 +132,7 @@ class ApiListener(Node):
         self.move_position_request.angle = message['yaw']
         self.get_logger().info(f'Calling move position service with request: {str(self.move_position_request)}')
 
-        
+
         self.future = self.move_position_client.call_async(self.move_position_request)
         rclpy.spin_until_future_complete(self, self.future)
         result = self.future.result()
