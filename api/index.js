@@ -5,6 +5,7 @@ const WebSocket = require("ws");
 var last_status = {};
 
 app.use(express.static("public"));
+app.use(express.json());
 
 var ws = new WebSocket("ws://10.100.0.40:9001/");
 var api_connected = false;
@@ -42,14 +43,12 @@ app.get("/status", function (req, res) {
 
 app.post("/move", function (req, res) {
   console.log("got move request");
-  console.log(req);
-  console.log(req.query);
   var request = JSON.stringify({
     command: 3,
-    up_down: req.query.up_down,
-    left_right: req.query.left_right,
-    forward_backward: req.query.forward_backward,
-    yaw: req.query.turn_left_right
+    up_down: req.body.up_down,
+    left_right: req.body.left_right,
+    forward_backward: req.body.forward_backward,
+    yaw: req.body.turn_left_right
   });
   ws.send(request);
 });
