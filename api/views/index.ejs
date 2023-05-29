@@ -19,23 +19,23 @@
                     <p>Connected: <%- api_connected %></p>
                 </div>
                 <div id="buttons">
-                    <button id="take_picture">Take picture</button>
+                    <button id="take_picture" onclick="take_picture()">Take picture</button>
                     <br>
-                    <button id="arm_disarm">Arm/Disarm</button>
+                    <button id="arm_disarm" onclick="arm_disarm()">Arm/Disarm</button>
                 </div>
             </div>
             <div id="controls">
                 <h2>Controls</h2>
                 <div id="buttons">
-                    <button id="button_turnleft">Turn left</button>
-                    <button id="button_turnright">Turn right</button>
-                    <button id="button_up">Up</button>
-                    <button id="button_down">Down</button>
-                    <button id="button_forward">Forward</button>
-                    <button id="button_backward">Backward</button>
-                    <button id="button_left">Left</button>
-                    <button id="button_right">Right</button>
-                    <button id="button_stop"><strong>Emergency Stop</strong></button>
+                    <button id="button_turnleft" onclick="turn_left()">Turn left</button>
+                    <button id="button_turnright" onclick="turn_right()">Turn right</button>
+                    <button id="button_up" onclick="up()">Up</button>
+                    <button id="button_down" onclick="down()">Down</button>
+                    <button id="button_forward" onclick="forward()">Forward</button>
+                    <button id="button_backward" onclick="backward()">Backward</button>
+                    <button id="button_left" onclick="left()">Left</button>
+                    <button id="button_right" onclick="right()">Right</button>
+                    <button id="button_stop" onclick="stop()"><strong>Emergency Stop</strong></button>
 
                 </div>
             </div>
@@ -53,5 +53,50 @@
         </div>
     </div>
 </body>
+
+<script>
+    window.onload = function () {
+
+    }
+
+    function turn_left() {
+        console.log("turnleft");
+    }
+    function turn_right() {
+        console.log("turnright");
+    }
+    function up() {
+        console.log("up");
+    }
+    function down() {
+        console.log("down");
+    }
+    function forward() {
+        console.log("forward");
+    }
+    function backward() {
+        console.log("backward");
+    }
+    function left() {
+        console.log("left");
+    }
+    function right() {
+        console.log("right");
+    }
+    function stop() {
+        console.log("stop");
+    }
+
+    function take_picture() {
+        console.log("take picture");
+    }
+
+    function arm_disarm() {
+        console.log("arm/disarm");
+    }
+    // window onload function die elke seconde een request doet om te kijken of er al nieuwe foto is
+    // function die elke 100 ms een request doet om de status te updaten
+    // button callbacks
+</script>
 
 </html>
