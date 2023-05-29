@@ -220,8 +220,9 @@ def main(args=None):
     rclpy.init(args=args)
 
     api_listener = ApiListener()
-
-    rclpy.spin(api_listener)
+    multithreaded_executor = rclpy.executors.MultiThreadedExecutor()
+    multithreaded_executor.add_node(api_listener)
+    multithreaded_executor.spin()
 
     api_listener.destroy_node()
     rclpy.shutdown()
