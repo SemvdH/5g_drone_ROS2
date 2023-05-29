@@ -148,7 +148,7 @@ public:
      * 
      * @param message the message indicating the cause of the failsafe
      */
-    void enable_failsafe(std::string message)
+    void enable_failsafe(std::u16string message)
     {
         this->failsafe_enabled = true;
         this->failsafe_request->message = message;

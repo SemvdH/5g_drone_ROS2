@@ -3,6 +3,7 @@ from rclpy.node import Node
 
 from drone_services.msg import DroneStatus
 from drone_services.srv import TakePicture
+from drone_services.srv import MovePosition
 
 import asyncio
 import websockets.server
@@ -27,6 +28,7 @@ class ResponseMessage(Enum):
     ALL_REQUESTS_RESPONSES = -1
     STATUS = 0
     IMAGE = 1
+    MOVE_DIRECTION_RESULT = 2
 
 
 class ApiListener(Node):
@@ -41,6 +43,10 @@ class ApiListener(Node):
         while not self.take_picture_client.wait_for_service(timeout_sec=1.0):
             self.get_logger().info('Take picture service not available, waiting again...')
         self.take_picture_request = TakePicture.Request()
+        self.move_position_client = self.create_client(MovePosition, '/drone/move_position')
+        while not self.move_position_client.wait_for_service(timeout_sec=1.0):
+            self.get_logger().info('Move position service not available, waiting again...')
+        self.move_position_request = MovePosition.Request()
 
         self.status_data = {}
         self.status_data_received = False
@@ -116,6 +122,28 @@ class ApiListener(Node):
         result['response_messages'] = messagetypes
         self.message_queue.append(json.dumps(
             {'type': ResponseMessage.ALL_REQUESTS_RESPONSES.name, 'data': result}))
+        
+    def handle_direction_message(self,message):
+        self.move_position_request.up_down = message['up_down']
+        self.move_position_request.left_right = message['left_right']
+        self.move_position_request.front_back = message['forward_backward']
+        self.move_position_request.angle = message['yaw']
+        self.get_logger().info(f'Calling move position service with request: {str(self.move_position_request)}')
+
+        
+        self.future = self.move_position_client.call_async(self.move_position_request)
+        rclpy.spin_until_future_complete(self, self.future)
+        result = self.future.result()
+        message_result = {}
+        message_result['type'] = ResponseMessage.MOVE_DIRECTION_RESULT.name
+        if result.success == True:
+            self.get_logger().info('Move position service call success')
+            message_result['success'] = True
+        else:
+            self.get_logger().error('Move position service call failed')
+            message_result['success'] = False
+        self.message_queue.append(json.dumps(message_result))
+
 
     def consume_message(self, message):
         self.get_logger().info(f'Consuming message: {message}')
@@ -137,6 +165,7 @@ class ApiListener(Node):
                     self.get_logger().info('Move position command received')
                 elif message_json['command'] == RequestCommand.MOVE_DIRECTION.value:
                     self.get_logger().info('Move direction command received')
+                    self.handle_direction_message(message_json)
                 elif message_json['command'] == RequestCommand.TAKE_PICTURE.value:
                     self.process_image_request(message_json)
                 elif message_json['command'] == RequestCommand.GET.value:

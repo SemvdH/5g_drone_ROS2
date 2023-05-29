@@ -1,2 +1,2 @@
 bool enabled
-string msg
+wstring msg
