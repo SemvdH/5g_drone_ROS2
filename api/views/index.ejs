@@ -89,37 +89,37 @@
 
     function turn_left() {
         console.log("turnleft");
-        send_move_request(JSON.stringify({ "up_down": 0 ,"forward_backward": 0, "left_right": 0, "turn_left_right": -10}));
+        send_move_request(JSON.stringify({ "up_down": 0.0,"forward_backward": 0.0, "left_right": 0.0, "turn_left_right": -10.0}));
     }
     function turn_right() {
         console.log("turnright");
-        send_move_request(JSON.stringify({ "up_down": 0 ,"forward_backward": 0, "left_right": 0, "turn_left_right": 10}));
+        send_move_request(JSON.stringify({ "up_down": 0.0 ,"forward_backward": 0.0, "left_right": 0.0, "turn_left_right": 10.0}));
     }
     function up() {
         console.log("up");
-        send_move_request(JSON.stringify({ "up_down": 1 ,"forward_backward": 0, "left_right": 0, "turn_left_right": 0}));
+        send_move_request(JSON.stringify({ "up_down": 1.0 ,"forward_backward": 0.0, "left_right": 0.0, "turn_left_right": 0.0}));
 
     }
     function down() {
         console.log("down");
-        send_move_request(JSON.stringify({ "up_down": -1 ,"forward_backward": 0, "left_right": 0, "turn_left_right": 0}));
+        send_move_request(JSON.stringify({ "up_down": -1.0 ,"forward_backward": 0.0, "left_right": 0.0, "turn_left_right": 0.0}));
         
     }
     function forward() {
-        console.log("forward");send_move_request(JSON.stringify({ "up_down": 0,"forward_backward": 1, "left_right": 0, "turn_left_right": 0}));
+        console.log("forward");send_move_request(JSON.stringify({ "up_down": 0.0,"forward_backward": 1.0, "left_right": 0.0, "turn_left_right": 0.0}));
 
     }
     function backward() {
         console.log("backward");
-        send_move_request(JSON.stringify({ "up_down": 0 ,"forward_backward": -1, "left_right": 0, "turn_left_right": 0}));
+        send_move_request(JSON.stringify({ "up_down": 0.0 ,"forward_backward": -1.0, "left_right": 0.0, "turn_left_right": 0.0}));
     }
     function left() {
         console.log("left");
-        send_move_request(JSON.stringify({ "up_down": 0 ,"forward_backward": 0, "left_right": -1, "turn_left_right": 0}));
+        send_move_request(JSON.stringify({ "up_down": 0.0 ,"forward_backward": 0.0, "left_right": -1.0, "turn_left_right": 0.0}));
     }
     function right() {
         console.log("right");
-        send_move_request(JSON.stringify({ "up_down": 0 ,"forward_backward": 0, "left_right": 1, "turn_left_right": 0}));
+        send_move_request(JSON.stringify({ "up_down": 0.0 ,"forward_backward": 0.0, "left_right": 1.0, "turn_left_right": 0.0}));
     }
     function stop() {
         console.log("stop");
