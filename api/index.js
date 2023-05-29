@@ -42,6 +42,7 @@ app.get("/status", function (req, res) {
 
 app.post("/move", function (req, res) {
   console.log("got move request");
+  console.log(req.query);
   var request = JSON.stringify({
     command: 3,
     up_down: req.query.up_down,
