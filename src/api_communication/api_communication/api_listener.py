@@ -101,7 +101,7 @@ class ApiListener(Node):
         await self.server.wait_closed()
 
     def process_image_request(self, message_json):
-        self.get_logger().info('Take picture command received')
+        self.get_logger().info('Processing image request')
         if message_json['filename']:
             self.get_logger().info(
                 f'Filename: {message_json["filename"]}')
@@ -110,6 +110,7 @@ class ApiListener(Node):
         rclpy.spin_until_future_complete(self, self.future)
         result_filename = self.future.result()
         with open(result_filename, 'rb') as f:
+            self.get_logger().info('Reading image')
             image_data = f.read()
             self.message_queue.append(json.dumps(
                 {'type': ResponseMessage.IMAGE.name, 'image': image_data}))
@@ -172,6 +173,7 @@ class ApiListener(Node):
                     self.get_logger().info('Move direction command received')
                     self.handle_direction_message(message_json)
                 elif message_json['command'] == RequestCommand.TAKE_PICTURE.value:
+                    self.get_logger().info('Take picture command received')
                     self.process_image_request(message_json)
                 elif message_json['command'] == RequestCommand.GET.value:
                     self.get_logger().info('Get command received')
