@@ -20,8 +20,8 @@ ws.on("message", function message(message) {
     last_status = msg.data;
   }
 
-  console.log("got type: " + msg.type);
-  console.log("RECEIVED: " + msg.data);
+  // console.log("got type: " + msg.type);
+  // console.log("RECEIVED: " + msg.data);
 });
 
 ws.on("error", console.error);
