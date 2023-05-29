@@ -2,19 +2,20 @@ var express = require("express");
 var app = express();
 const WebSocket = require("ws");
 
-app.use(express.static('public'))
+app.use(express.static("public"));
 
 var ws = new WebSocket("ws://10.100.0.40:9001/");
 var api_connected = false;
 
-ws.on('open', function open() {
-    console.log("connected with websockets to API!");
-    api_connected = true;
-  });
+ws.on("open", function open() {
+  console.log("connected with websockets to API!");
+  api_connected = true;
+});
 
 ws.on("message", function message(message) {
   var msg = JSON.parse(message);
-  console.log("RECEIVED: " + msg);
+  console.log("got type: " + msg.type)
+  console.log("RECEIVED: " + msg.data);
 });
 
 ws.on("error", console.error);
@@ -30,12 +31,17 @@ app.get("/", function (req, res) {
 });
 
 app.post("/move_up", function (req, res) {
-    console.log("got move up request")
-    var speed = req.data.speed;
-    var request = JSON.stringify({ command: 3, "up_down": speed, "left_right": 0 , "forward_backward": 0, "yaw": 0});
-    ws.send(request);
-}
-);
+  console.log("got move up request");
+  var speed = req.data.speed;
+  var request = JSON.stringify({
+    command: 3,
+    up_down: speed,
+    left_right: 0,
+    forward_backward: 0,
+    yaw: 0,
+  });
+  ws.send(request);
+});
 
 app.listen(8080);
 console.log("Server is listening on port 8080");
