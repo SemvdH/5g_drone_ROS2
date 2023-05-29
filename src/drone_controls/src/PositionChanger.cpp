@@ -259,7 +259,7 @@ public:
         if (!this->received_lidar_message)
         {
             RCLCPP_WARN(this->get_logger(), "Lidar not sending messages, enabling failsafe");
-            enable_failsafe("No healthy connection to LIDAR!");
+            enable_failsafe(u"No healthy connection to LIDAR!");
         }
         this->received_lidar_message = false;
     }
