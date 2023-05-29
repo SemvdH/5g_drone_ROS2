@@ -15,10 +15,26 @@
         <div class="mainvideo">
             <p>Camera view:</p>
             <p><%- api_connected %></p>
+            <div id="connectedbuttons">
+                <div id="buttons">
+                    <button id="take_picture">Take picture</button>
+                    <button id="arm_disarm">Arm/Disarm</button>
+                </div>
+                <div id="connectedstatus">
+                    <p>Connected: <%- api_connected %></p>
+                </div>
+            </div>
         </div>
         <div class="lastpicture">
             <p>Last picture:</p>
             <img id="picture">
+            <h2>Drone status</h2>
+            <p id="batterypercentage">Battery percentage</p>
+            <p id="cpuload">CPU load</p>
+            <p id="speed">Current speed</p>
+            <p id="position">Current position</p>
+            <br>
+            <p id="failsafe">Failsafe status</p>
         </div>
     </div>
 </body>

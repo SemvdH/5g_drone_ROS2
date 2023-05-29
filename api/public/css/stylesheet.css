@@ -29,3 +29,22 @@ body {
     border: 1px solid red;
     padding: 10px;
 }
+
+#connectedbuttons {
+    overflow: auto;
+}
+
+#buttons {
+    float: left;
+}
+
+#connectedstatus {
+    float:left;
+}
+
+#take_picture {
+    float:right;
+}
+#arm_disarm {
+    float: right;
+}
