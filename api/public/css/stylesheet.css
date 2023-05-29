@@ -1,8 +1,25 @@
 body {
     background-color: azure;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .header {
     color: black;
     text-align: center;
+}
+
+.video {
+    width: 100%;
+}
+
+.mainvideo {
+    width: 60%;
+    float: left;
+    border-color: 1px sold blue;
+}
+
+.lastpicture {
+    width: 40%;
+    float: right;
+    border-color: 1px solid red;
 }
