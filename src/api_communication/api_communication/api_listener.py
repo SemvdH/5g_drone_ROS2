@@ -73,7 +73,10 @@ class ApiListener(Node):
 
     def publish_message(self, message):
         self.get_logger().info(f'Publishing message: {message}')
-        asyncio.run(self.websocket.send(message))
+        if self.websocket is not None:
+            asyncio.run(self.websocket.send(message))
+        else:
+            self.get_logger().error('Trying to publish message but no websocket connection')
 
     def publish_status(self):
         if self.status_data_received:
@@ -84,7 +87,7 @@ class ApiListener(Node):
 
     def handle_responses(self):
         while True:
-            if len(self.message_queue) > 0:
+            if len(self.message_queue) > 0 and self.websocket is not None:
                 self.get_logger().info("sending message")
                 self.publish_message(self.message_queue.pop(0))
 
