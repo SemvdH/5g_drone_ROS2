@@ -129,10 +129,10 @@ class ApiListener(Node):
             {'type': ResponseMessage.ALL_REQUESTS_RESPONSES.name, 'data': result}))
         
     def handle_direction_message(self,message):
-        self.move_position_request.up_down = message['up_down']
-        self.move_position_request.left_right = message['left_right']
-        self.move_position_request.front_back = message['forward_backward']
-        self.move_position_request.angle = message['yaw']
+        self.move_position_request.up_down = float(message['up_down'])
+        self.move_position_request.left_right = float(message['left_right'])
+        self.move_position_request.front_back = float(message['forward_backward'])
+        self.move_position_request.angle = float(message['yaw'])
         self.get_logger().info(f'Calling move position service with request: {str(self.move_position_request)}')
 
 

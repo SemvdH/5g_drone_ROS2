@@ -127,6 +127,15 @@
 
     function take_picture() {
         console.log("take picture");
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "/image", true);
+        xhr.overrideMimeType("text/plain; charset=utf-8");
+        xhr.onload = (e) => {
+            console.log("response image received");
+            const img = req.response;
+            document.getElementById("picture").src = "data:image/png;base64," + img;
+        }
+        xhr.send();
     }
 
     function arm_disarm() {

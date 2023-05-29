@@ -3,6 +3,8 @@ var app = express();
 const WebSocket = require("ws");
 
 var last_status = {};
+var last_image;
+var received_picture = false;
 
 app.use(express.static("public"));
 app.use(express.json());
@@ -19,6 +21,11 @@ ws.on("message", function message(message) {
   var msg = JSON.parse(message);
   if (msg.type == "STATUS") {
     last_status = msg.data;
+  } else if (msg.type == "IMAGE") {
+    console.log("got picture");
+    console.log(msg.image);
+    last_image = msg.image;
+    received_picture = true;
   }
 
   // console.log("got type: " + msg.type);
@@ -39,6 +46,16 @@ app.get("/", function (req, res) {
 
 app.get("/status", function (req, res) {
   res.status(200).json(last_status);
+});
+
+app.get("/image", function (req, res) { 
+  console.log("got picture request");
+  var request = JSON.stringify({
+    command: 5
+  });
+  ws.send(request);
+  while (received_picture == false) { }
+  res.status(200).send(last_image);
 });
 
 app.post("/move", function (req, res) {
