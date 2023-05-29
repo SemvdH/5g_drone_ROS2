@@ -40,15 +40,14 @@ app.get("/status", function (req, res) {
   res.status(200).json(last_status);
 });
 
-app.post("/move_up", function (req, res) {
-  console.log("got move up request");
-  var speed = req.data.speed;
+app.post("/move", function (req, res) {
+  console.log("got move request");
   var request = JSON.stringify({
     command: 3,
-    up_down: speed,
-    left_right: 0,
-    forward_backward: 0,
-    yaw: 0,
+    up_down: req.data.up_down,
+    left_right: req.data.left_right,
+    forward_backward: req.data.forward_backward,
+    yaw: req.data.turn_left_right
   });
   ws.send(request);
 });

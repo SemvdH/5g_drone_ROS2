@@ -79,35 +79,47 @@
         xhr.send();
     }
 
+    function send_move_request(data)
+    {
+        var xhr = new XMLHttpRequest();
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.open("POST", "/move", true);
+        xhr.send(data);
+    }
+
     function turn_left() {
         console.log("turnleft");
+        send_move_request(JSON.stringify({ "up_down": 0 ,"forward_backward": 0, "left_right": 0, "turn_left_right": -10}));
     }
     function turn_right() {
         console.log("turnright");
+        send_move_request(JSON.stringify({ "up_down": 0 ,"forward_backward": 0, "left_right": 0, "turn_left_right": 10}));
     }
     function up() {
         console.log("up");
-        var xhr = new XMLHttpRequest();
-        xhr.setRequestHeader("Content-Type", "application/json");
-        xhr.open("POST", "/move_up", true);
-        var data = JSON.stringify({ "speed": 1 });
-        xhr.send(data);
+        send_move_request(JSON.stringify({ "up_down": 1 ,"forward_backward": 0, "left_right": 0, "turn_left_right": 0}));
 
     }
     function down() {
         console.log("down");
+        send_move_request(JSON.stringify({ "up_down": -1 ,"forward_backward": 0, "left_right": 0, "turn_left_right": 0}));
+        
     }
     function forward() {
-        console.log("forward");
+        console.log("forward");send_move_request(JSON.stringify({ "up_down": 0,"forward_backward": 1, "left_right": 0, "turn_left_right": 0}));
+
     }
     function backward() {
         console.log("backward");
+        send_move_request(JSON.stringify({ "up_down": 0 ,"forward_backward": -1, "left_right": 0, "turn_left_right": 0}));
     }
     function left() {
         console.log("left");
+        send_move_request(JSON.stringify({ "up_down": 0 ,"forward_backward": 0, "left_right": -1, "turn_left_right": 0}));
     }
     function right() {
         console.log("right");
+        send_move_request(JSON.stringify({ "up_down": 0 ,"forward_backward": 0, "left_right": 1, "turn_left_right": 0}));
     }
     function stop() {
         console.log("stop");
