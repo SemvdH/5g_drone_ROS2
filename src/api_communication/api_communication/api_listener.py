@@ -133,9 +133,13 @@ class ApiListener(Node):
             self.get_logger().info("Received result filename: " + result_filename)
             with open(result_filename, 'rb') as f:
                 self.get_logger().info('Reading image')
-                base64_img = base64.b64encode(f.read())
-                self.message_queue.append(json.dumps(
-                    {'type': ResponseMessage.IMAGE.name, 'image': base64_img.decode('utf-8')}))
+                read_file = f.read()
+                # base64_img = base64.b64encode(read_file)
+                # self.message_queue.append(json.dumps(
+                #     {'type': ResponseMessage.IMAGE.name, 'image': base64_img.decode('utf-8')}))
+                
+                # send image as binary file
+                self.message_queue.append(read_file)
         except Exception as e:
             self.get_logger().error('Something went wrong while sending a take picture request and waiting for the response: %r' % (e))
             
