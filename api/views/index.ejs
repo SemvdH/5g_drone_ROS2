@@ -16,7 +16,7 @@
             <p>Camera view:</p>
             <div id="connectedbuttons">
                 <div id="connectedstatus">
-                    <p>Connected: <%- api_connected %></p>
+                    <p id="connectedlabel">Connected: <%- api_connected %></p>
                     <button id="connectbutton" onclick="connect()">Connect</button>
                 </div>
                 <div id="buttons">
@@ -154,11 +154,12 @@
                 if (this.responseText.length > 0) {
                     var status = JSON.parse(this.responseText);
                     // console.log(status)
-                    document.getElementById("connectedstatus").innerHTML = "Connected: true";
+                    document.getElementById("connectedlabel").innerHTML = "Connected: true";
+                    document.getElementById("connectbutton").disabled = true;
                 }
             } else {
                 console.log("error");
-                document.getElementById("connectedstatus").innerHTML = "Connected: false";
+                document.getElementById("connectedlabel").innerHTML = "Connected: false";
                 if (!received)
                 {
                     alert("Could not connect to API!");
