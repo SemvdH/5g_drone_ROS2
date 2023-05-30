@@ -60,12 +60,14 @@
 <script>
     var update_status = setInterval(update_status, 1000);
     assign_button_callbacks();
-    const events = new EventSource("/events");
-    events.onmessage = (event) => {
-        const parsedData = JSON.parse(event.data);
-        console.log("RECEIVED EVENT");
-        console.log(parsedData);
-    }
+    window.onload = function () {
+        const events = new EventSource("/events");
+        events.onmessage = (event) => {
+            const parsedData = JSON.parse(event.data);
+            console.log("RECEIVED EVENT");
+            console.log(parsedData);
+        }
+    };
 
     function assign_button_callbacks() {
         var buttons = document.getElementsByClassName("movebutton");

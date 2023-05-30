@@ -18,29 +18,33 @@ var ws;
 var api_connected = false;
 
 function send_events_to_clients(data) {
-    sse_clients.forEach(client => client.response.write(`data: ${JSON.stringify(data)}\n\n`));
+  sse_clients.forEach((client) =>
+    client.response.write(`data: ${JSON.stringify(data)}\n\n`)
+  );
 }
 
 function handle_sse_client(request, response, next) {
+  console.log("handling sse client");
   const headers = {
     "Content-Type": "text/event-stream",
-    'Connection': "keep-alive",
+    Connection: "keep-alive",
     "Cache-Control": "no-cache",
   };
-    // response.writeHead(200, headers);
-    // response.write("yeet\n\n");
-    const clientID = Date.now();
-    const newClient = {
-        id: clientID,
-        response
-    };
 
-    sse_clients.push(newClient);
+  response.writeHead(200, headers);
+  response.write(JSON.stringify("yeet") + "\n\n");
+  const clientID = Date.now();
+  const newClient = {
+    id: clientID,
+    response,
+  };
 
-    request.on("close", () => {
-        console.log(`${clientID} Connection closed`);
-        sse_clients = sse_clients.filter(client => client.id !== clientID);
-    });
+  sse_clients.push(newClient);
+
+  request.on("close", () => {
+    console.log(`${clientID} Connection closed`);
+    sse_clients = sse_clients.filter((client) => client.id !== clientID);
+  });
 }
 
 var connect_to_api = function () {
@@ -56,8 +60,8 @@ var connect_to_api = function () {
     try {
       var msg = JSON.parse(message);
       if (msg.type == "STATUS") {
-          last_status = msg.data;
-          send_events_to_clients(message);
+        last_status = msg.data;
+        send_events_to_clients(message);
       } else if (msg.type == "IMAGE") {
         console.log("got picture");
         // console.log(msg.image);
