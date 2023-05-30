@@ -157,7 +157,7 @@
         xhr.overrideMimeType("text/plain; charset=utf-8");
         xhr.onload = (e) => {
             console.log("response image received");
-            const img = req.response;
+            const img = e.response;
             document.getElementById("picture").src = "data:image/png;base64," + img;
         }
         console.log("sending picture request")
