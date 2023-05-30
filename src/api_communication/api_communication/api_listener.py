@@ -11,6 +11,7 @@ import threading
 import json
 from enum import Enum
 from functools import partial
+import base64
 
 # communication: client always sends commands that have a command id.
 # server always sends messages back that have a message type
@@ -132,9 +133,9 @@ class ApiListener(Node):
             self.get_logger().info("Received result filename: " + result_filename)
             with open(result_filename, 'rb') as f:
                 self.get_logger().info('Reading image')
-                image_data = f.read()
+                base64_img = base64.b64encode(f.read())
                 self.message_queue.append(json.dumps(
-                    {'type': ResponseMessage.IMAGE.name, 'image': image_data}))
+                    {'type': ResponseMessage.IMAGE.name, 'image': base64_img}))
         except Exception as e:
             self.get_logger().error('Something went wrong while sending a take picture request and waiting for the response: %r' % (e))
             
