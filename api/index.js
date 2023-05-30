@@ -63,7 +63,6 @@ app.get("/image", function (req, res) {
   });
   console.log("sending picture request")
   ws.send(request);
-  while (received_picture == false) { }
   res.status(200).send(last_image);
 });
 
