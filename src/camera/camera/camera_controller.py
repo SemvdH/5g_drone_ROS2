@@ -21,7 +21,7 @@ class CameraController(Node):
         if (request.input_name == "default"):
             self.get_logger().info("Taking picture with default filename")
             now = datetime.now().strftime("droneimage_%Y-%m-%d_%H-%M-%S")
-            imagename = "/home/ubuntu/ros2_ws/api/public/img/" + now + ".jpg"
+            imagename = "/home/ubuntu/drone_img/" + now + ".jpg"
             response.filename = imagename
         else:
             response.filename = request.input_name
