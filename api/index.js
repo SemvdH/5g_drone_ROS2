@@ -19,7 +19,7 @@ var api_connected = false;
 
 function send_events_to_clients(data) {
   sse_clients.forEach((client) =>
-    client.response.write(`data: ${JSON.stringify(data)}\n\n`)
+    client.response.write(`${JSON.stringify(data)}\n\n`)
   );
 }
 
@@ -58,16 +58,8 @@ var connect_to_api = function () {
 
   ws.on("message", function message(message) {
     try {
-      var msg = JSON.parse(message);
-      if (msg.type == "STATUS") {
-        last_status = msg.data;
-        send_events_to_clients(message);
-      } else if (msg.type == "IMAGE") {
-        console.log("got picture");
-        // console.log(msg.image);
-        last_image = msg.image;
-        received_picture = true;
-      }
+        var msg = JSON.parse(message);
+        send_events_to_clients(msg);
     } catch (error) {
       console.log("could not parse as json");
     }
