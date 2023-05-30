@@ -16,6 +16,8 @@ import base64
 # communication: client always sends commands that have a command id.
 # server always sends messages back that have a message type
 
+# TODO send video https://github.com/Jatin1o1/Python-Javascript-Websocket-Video-Streaming-/tree/main
+
 
 class RequestCommand(Enum):
     GET_COMMANDS_TYPES = -1  # to get the available commands and types
