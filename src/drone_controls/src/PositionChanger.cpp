@@ -56,11 +56,11 @@ public:
         this->failsafe_client = this->create_client<drone_services::srv::EnableFailsafe>("/drone/enable_failsafe");
 
         RCLCPP_INFO(this->get_logger(), "waiting for trajectory service...");
-        wait_for_service<rclcpp::Client<drone_services::srv::SetTrajectory>::SharedPtr>(this->trajectory_client);
+        wait_for_service<rclcpp::Client<drone_services::srv::SetTrajectory>::SharedPtr>(this->trajectory_client, "/drone/set_trajectory");
         RCLCPP_INFO(this->get_logger(), "waiting for vehicle control service...");
-        wait_for_service<rclcpp::Client<drone_services::srv::SetVehicleControl>::SharedPtr>(this->vehicle_control_client);
+        wait_for_service<rclcpp::Client<drone_services::srv::SetVehicleControl>::SharedPtr>(this->vehicle_control_client, "/drone/set_vehicle_control");
         RCLCPP_INFO(this->get_logger(), "waiting for failsafe service...");
-        wait_for_service<rclcpp::Client<drone_services::srv::EnableFailsafe>::SharedPtr>(this->failsafe_client);
+        wait_for_service<rclcpp::Client<drone_services::srv::EnableFailsafe>::SharedPtr>(this->failsafe_client, "/drone/enable_failsafe");
 
         this->trajectory_request = std::make_shared<drone_services::srv::SetTrajectory::Request>();
         this->vehicle_control_request = std::make_shared<drone_services::srv::SetVehicleControl::Request>();
@@ -374,7 +374,7 @@ private:
      * @param client the client object to wait for the service
      */
     template <class T>
-    void wait_for_service(T client)
+    void wait_for_service(T client, std::string service_name)
     {
         while (!client->wait_for_service(1s))
         {
@@ -383,7 +383,7 @@ private:
                 RCLCPP_ERROR(this->get_logger(), "Interrupted while waiting for the service. Exiting.");
                 return;
             }
-            RCLCPP_INFO(this->get_logger(), "service not available, waiting again...");
+            RCLCPP_INFO(this->get_logger(), "service not available, waiting again on service %s", service_name.c_str());
         }
     }
 };
