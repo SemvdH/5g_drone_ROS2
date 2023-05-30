@@ -25,7 +25,7 @@ class FailSafe(Node):
     def publish_failsafe(self):
         msg = FailsafeMsg()
         msg.enabled = self.failsafe_enabled
-        msg.message = self.failsafe_msg
+        msg.msg = self.failsafe_msg
         self.failsafe_publisher.publish(msg)
         self.get_logger().info("Publishing failsafe message")
 
