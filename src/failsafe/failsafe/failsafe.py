@@ -33,7 +33,7 @@ class FailSafe(Node):
 def main(args=None):
     rclpy.init(args=args)
     failsafe_node = FailSafe()
-    failsafe_node.spin()
+    rclpy.spin(failsafe_node)
     failsafe_node.destroy_node()
     rclpy.shutdown()
 
