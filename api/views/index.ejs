@@ -17,6 +17,7 @@
             <div id="connectedbuttons">
                 <div id="connectedstatus">
                     <p>Connected: <%- api_connected %></p>
+                    <button id="connectbutton" onclick="connect()">Connect</button>
                 </div>
                 <div id="buttons">
                     <button id="take_picture" onclick="take_picture()">Take picture</button>
@@ -141,6 +142,22 @@
 
     function arm_disarm() {
         console.log("arm/disarm");
+    }
+
+    function connect() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "/connect", true);
+        xhr.onreadystatechange = function () {
+            if (this.status == 200) {
+                console.log(this.responseText);
+                if (this.responseText.length > 0) {
+                    var status = JSON.parse(this.responseText);
+                    // console.log(status)
+                    document.getElementById("connectedstatus").innerHTML = "Connected: " + status.connected;
+                }
+            }
+        };
+        xhr.send();
     }
     // window onload function die elke seconde een request doet om te kijken of er al nieuwe foto is
     // function die elke 100 ms een request doet om de status te updaten

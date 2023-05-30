@@ -9,10 +9,8 @@ var received_picture = false;
 app.use(express.static("public"));
 app.use(express.json());
 
-var ws = new WebSocket("ws://10.100.0.40:9001/");
+var ws;
 var api_connected = false;
-console.log("connecting to API...");
-while (ws.readyState != 1) { }
 
 ws.on("open", function open() {
   console.log("connected with websockets to API!");
@@ -71,6 +69,14 @@ app.post("/move", function (req, res) {
     yaw: req.body.turn_left_right
   });
   ws.send(request);
+});
+
+app.get("/connect", function (req, res) {
+    console.log("got connect request");
+    ws = new WebSocket("ws://10.100.0.40:9001/");
+    while (api_connected == false) { }
+    res.status(200).json({ connected: true });
+    
 });
 
 app.listen(8080);
