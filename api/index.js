@@ -13,30 +13,32 @@ app.use(express.json());
 var ws;
 var api_connected = false;
 
-ws.on("open", function open() {
-  console.log("connected with websockets to API!");
-  api_connected = true;
-});
+var connect_to_api = function () {
+    ws = new WebSocket("ws://10.100.0.40:9001/");
 
-ws.on("message", function message(message) {
-  var msg = JSON.parse(message);
-  if (msg.type == "STATUS") {
-    last_status = msg.data;
-  } else if (msg.type == "IMAGE") {
-    console.log("got picture");
-    console.log(msg.image);
-    last_image = msg.image;
-    received_picture = true;
-  }
+    ws.on("open", function open() {
+      console.log("connected with websockets to API!");
+      api_connected = true;
+    });
+    
+    ws.on("message", function message(message) {
+      var msg = JSON.parse(message);
+      if (msg.type == "STATUS") {
+        last_status = msg.data;
+      } else if (msg.type == "IMAGE") {
+        console.log("got picture");
+        console.log(msg.image);
+        last_image = msg.image;
+        received_picture = true;
+      }
+    });
+    
+    ws.on("error", function error(err) {
+        console.error("error: " + err);
+        received_error = true;
+    });
+}
 
-  // console.log("got type: " + msg.type);
-  // console.log("RECEIVED: " + msg.data);
-});
-
-ws.on("error", function error(err) {
-    console.error("error: " + err);
-    received_error = true;
-});
 
 // set the view engine to ejs
 app.set("view engine", "ejs");
@@ -77,11 +79,12 @@ app.post("/move", function (req, res) {
 
 app.get("/connect", function (req, res) {
     console.log("got connect request");
-    ws = new WebSocket("ws://10.100.0.40:9001/");
+    connect_to_api();
     while (api_connected == false && received_error == false) { }
     if (api_connected) {
         res.status(200).json({ connected: true });
     } else {
+        received_error = false;
         res.status(400).json({ connected: false });
     }
     
