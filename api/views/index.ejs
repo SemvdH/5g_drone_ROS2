@@ -28,15 +28,16 @@
             <div id="controls">
                 <h2>Controls</h2>
                 <div id="buttons">
-                    <button id="button_turnleft" onclick="turn_left()">Turn left</button>
-                    <button id="button_turnright" onclick="turn_right()">Turn right</button>
-                    <button id="button_up" onclick="up()">Up</button>
-                    <button id="button_down" onclick="down()">Down</button>
-                    <button id="button_forward" onclick="forward()">Forward</button>
-                    <button id="button_backward" onclick="backward()">Backward</button>
-                    <button id="button_left" onclick="left()">Left</button>
-                    <button id="button_right" onclick="right()">Right</button>
-                    <button id="button_stop" onclick="stop()"><strong>Emergency Stop</strong></button>
+                    <button class="movebutton" id="button_turnleft" onclick="turn_left()">Turn left</button>
+                    <button class="movebutton" id="button_turnright" onclick="turn_right()">Turn right</button>
+                    <button class="movebutton" id="button_up" onclick="up()">Up</button>
+                    <button class="movebutton" id="button_down" onclick="down()">Down</button>
+                    <button class="movebutton" id="button_forward" onclick="forward()">Forward</button>
+                    <button class="movebutton" id="button_backward" onclick="backward()">Backward</button>
+                    <button class="movebutton" id="button_left" onclick="left()">Left</button>
+                    <button class="movebutton" id="button_right" onclick="right()">Right</button>
+                    <button id="button_stop" onclick="stop()">Stop</button>
+                    <button id="button_estop" onclick="estop()"><strong>Emergency Stop</strong></button>
 
                 </div>
             </div>
@@ -58,6 +59,12 @@
 
 <script>
     var update_status = setInterval(update_status, 1000);
+    var buttons = document.getElementsByClassName("movebutton");
+    for (var i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener("mouseup", function () {
+            console.log("mouseup");
+        });
+    }
 
     function update_status() {
         // {"battery_percentage": 100.0, "cpu_usage": 0.0, "armed": false, "control_mode": "attitude", "route_setpoint": 0}}
@@ -124,6 +131,11 @@
     }
     function stop() {
         console.log("stop");
+        send_move_request(JSON.stringify({ "up_down": 0.0 ,"forward_backward": 0.0, "left_right": 0.0, "turn_left_right": 0.0}));
+    }
+
+    function estop() {
+        console.log("estop");
     }
 
     function take_picture() {
