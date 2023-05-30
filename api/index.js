@@ -18,7 +18,7 @@ var ws;
 var api_connected = false;
 
 function send_events_to_clients(data) {
-  console.log("sending events to clients");
+//   console.log("sending events to clients");
     sse_clients.forEach((client) => {
         client.response.write("event: message\n");
         client.response.write("data:" + JSON.stringify(data) + "\n\n")
@@ -61,8 +61,13 @@ var connect_to_api = function () {
 
   ws.on("message", function message(message) {
     try {
-      var msg = JSON.parse(message);
-      send_events_to_clients(msg);
+        var msg = JSON.parse(message);
+        if (msg.type != "IMAGE") {
+            send_events_to_clients(msg);
+        } else {
+            console.log("got image");
+            //TODO handle image
+        }
     } catch (error) {
       console.log("could not parse as json");
     }
@@ -83,10 +88,6 @@ app.set("view engine", "ejs");
 // index page
 app.get("/", function (req, res) {
   res.render("index", { api_connected: api_connected });
-});
-
-app.get("/status", function (req, res) {
-  res.status(200).json(last_status);
 });
 
 app.get("/events", handle_sse_client);

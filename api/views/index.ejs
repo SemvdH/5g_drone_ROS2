@@ -68,6 +68,7 @@
         }
 
         events.onmessage = (event) => {
+            //TODO handling status, failsafe etc
             const parsedData = JSON.parse(event.data);
             console.log("RECEIVED EVENT");
             console.log(parsedData);
