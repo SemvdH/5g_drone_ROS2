@@ -39,15 +39,27 @@ class ApiListener(Node):
         self.drone_status_subscriber = self.create_subscription(
             DroneStatus, '/drone/status', self.drone_status_callback, 10)
         self.timer = self.create_timer(1, self.publish_status)
+        waiting = 0
         self.take_picture_client = self.create_client(
             TakePicture, '/drone/picture')
         while not self.take_picture_client.wait_for_service(timeout_sec=1.0):
+            if (waiting > 10):
+                self.get_logger().error(
+                    'Take picture service not available, exiting...')
+                exit(-1)
             self.get_logger().info('Take picture service not available, waiting again...')
+            waiting = waiting + 1
         self.take_picture_request = TakePicture.Request()
         self.move_position_client = self.create_client(
             MovePosition, '/drone/move_position')
+        waiting = 0
         while not self.move_position_client.wait_for_service(timeout_sec=1.0):
+            if (waiting > 10):
+                self.get_logger().error(
+                    'Move position service not available, exiting...')
+                exit(-1)
             self.get_logger().info('Move position service not available, waiting again...')
+            waiting = waiting + 1
         self.move_position_request = MovePosition.Request()
 
         self.status_data = {}
