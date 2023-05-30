@@ -90,7 +90,11 @@ class ApiListener(Node):
     def publish_message(self, message):
         # self.get_logger().info(f'Publishing message: {message}')
         if self.websocket is not None:
-            asyncio.run(self.websocket.send(message))
+            try:
+                asyncio.run(self.websocket.send(message))
+            except Exception as e:
+                self.get_logger().error(
+                    'Something went wrong while sending a message to the websocket: ' + str(e))
         else:
             self.get_logger().error('Trying to publish message but no websocket connection')
 
@@ -134,12 +138,12 @@ class ApiListener(Node):
             with open(result_filename, 'rb') as f:
                 self.get_logger().info('Reading image')
                 read_file = f.read()
-                # base64_img = base64.b64encode(read_file)
-                # self.message_queue.append(json.dumps(
-                #     {'type': ResponseMessage.IMAGE.name, 'image': base64_img.decode('utf-8')}))
+                base64_img = base64.b64encode(read_file)
+                self.message_queue.append(json.dumps(
+                    {'type': ResponseMessage.IMAGE.name, 'image': base64_img.decode('utf-8')}))
                 
                 # send image as binary file
-                self.message_queue.append(read_file)
+                # self.message_queue.append(read_file)
         except Exception as e:
             self.get_logger().error('Something went wrong while sending a take picture request and waiting for the response: %r' % (e))
             

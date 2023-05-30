@@ -23,15 +23,20 @@ var connect_to_api = function () {
     });
     
     ws.on("message", function message(message) {
-      var msg = JSON.parse(message);
-      if (msg.type == "STATUS") {
-        last_status = msg.data;
-      } else if (msg.type == "IMAGE") {
-        console.log("got picture");
-        // console.log(msg.image);
-        last_image = msg.image;
-        received_picture = true;
-      }
+        try {
+            var msg = JSON.parse(message);
+            if (msg.type == "STATUS") {
+              last_status = msg.data;
+            } else if (msg.type == "IMAGE") {
+              console.log("got picture");
+              // console.log(msg.image);
+              last_image = msg.image;
+              received_picture = true;
+            }
+        } catch (error) {
+            console.log("could not parse as json")
+
+        }
     });
     
     ws.on("error", function error(err) {
