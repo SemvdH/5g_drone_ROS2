@@ -5,7 +5,7 @@ from drone_services.srv import EnableFailsafe
 from drone_services.msg import FailsafeMsg
 class FailSafe(Node):
     def __init__(self):
-        super().init("failsafe")
+        super().__init__("failsafe")
         self.failsafe_enabled = False
         self.failsafe_msg = ""
         self.get_logger().info("Failsafe node started")
