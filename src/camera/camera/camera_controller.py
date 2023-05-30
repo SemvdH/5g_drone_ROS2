@@ -25,7 +25,7 @@ class CameraController(Node):
             response.filename = imagename
         else:
             response.filename = request.input_name
-        os.system('fswebcam -r ' + RES_4K_W + 'x' + RES_4K_H + ' ' + response.filename)
+        os.system('fswebcam -r ' + str(RES_4K_W) + 'x' + str(RES_4K_H) + ' ' + response.filename)
         self.get_logger().info("Picture saved as " + response.filename)
 
         return response
