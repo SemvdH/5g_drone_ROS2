@@ -158,7 +158,7 @@
         xhr.onload = (e) => {
             console.log("response image received");
             const img = e.response;
-            document.getElementById("picture").src = "data:image/png;base64," + img;
+            document.getElementById("picture").src = img;
         }
         console.log("sending picture request")
         xhr.send();

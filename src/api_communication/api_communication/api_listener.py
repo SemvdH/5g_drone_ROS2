@@ -124,20 +124,17 @@ class ApiListener(Node):
         self.get_logger().info('Calling take picture service')
         future = self.take_picture_client.call_async(self.take_picture_request)
         future.add_done_callback(partial(self.image_request_callback))
-        
-    
+
     def image_request_callback(self, future):
         try:
             result_filename = future.result()
+            result_filename = result_filename.replace("/home/ubuntu/ros2_ws/api/public", "")
             self.get_logger().info("Received result filename: " + result_filename)
-            with open(result_filename, 'rb') as f:
-                self.get_logger().info('Reading image')
-                image_data = f.read()
-                self.message_queue.append(json.dumps(
-                    {'type': ResponseMessage.IMAGE.name, 'image': image_data}))
+            self.message_queue.append(json.dumps(
+                {'type': ResponseMessage.IMAGE.name, 'image': result_filename}))
         except Exception as e:
-            self.get_logger().error('Something went wrong while sending a take picture request and waiting for the response: %r' % (e))
-            
+            self.get_logger().error(
+                'Something went wrong while sending a take picture request and waiting for the response: %r' % (e))
 
     def send_available_commands(self):
         print('Sending available commands')
@@ -234,10 +231,12 @@ class ApiListener(Node):
                     self.get_logger().info('Emergency stop command received')
                     # emergency stop: set to attitude mode and stop, also disarm
                 else:
-                    self.get_logger().error('Received unknown command ' + str(message_json['command']) )
+                    self.get_logger().error('Received unknown command ' +
+                                            str(message_json['command']))
                     self.send_available_commands()
         except TypeError:
-            self.get_logger().error('Received unknown type: ' +str(type(message)) + " " + str(message))
+            self.get_logger().error('Received unknown type: ' +
+                                    str(type(message)) + " " + str(message))
             self.send_available_commands()
         except json.JSONDecodeError:
             self.get_logger().error('Received invalid JSON')
