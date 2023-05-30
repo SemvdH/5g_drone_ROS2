@@ -59,11 +59,23 @@
 
 <script>
     var update_status = setInterval(update_status, 1000);
-    var buttons = document.getElementsByClassName("movebutton");
-    for (var i = 0; i < buttons.length; i++) {
-        buttons[i].addEventListener("mouseup", function () {
-            console.log("mouseup");
-        });
+    assign_button_callbacks();
+
+    function assign_button_callbacks() {
+        var buttons = document.getElementsByClassName("movebutton");
+        for (var i = 0; i < buttons.length; i++) {
+            buttons[i].addEventListener("mouseup", function () {
+                stop();
+            });
+        }
+        document.getElementById("button_forward").addEventListener("mousedown", function () {forward();});
+        document.getElementById("button_backward").addEventListener("mousedown", function () {backward();});
+        document.getElementById("button_left").addEventListener("mousedown", function () {left();});
+        document.getElementById("button_right").addEventListener("mousedown", function () {right();});
+        document.getElementById("button_turnleft").addEventListener("mousedown", function () {turn_left();});
+        document.getElementById("button_turnright").addEventListener("mousedown", function () {turn_right();});
+        document.getElementById("button_up").addEventListener("mousedown", function () {up();});
+        document.getElementById("button_down").addEventListener("mousedown", function () {down();});
     }
 
     function update_status() {
