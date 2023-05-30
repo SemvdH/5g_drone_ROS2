@@ -14,6 +14,7 @@ var ws;
 var api_connected = false;
 
 var connect_to_api = function () {
+    console.log("Connecting to API")
     ws = new WebSocket("ws://10.100.0.40:9001/");
 
     ws.on("open", function open() {
@@ -34,6 +35,7 @@ var connect_to_api = function () {
     });
     
     ws.on("error", function error(err) {
+        console.log("there was an error")
         console.error("error: " + err);
         received_error = true;
     });
@@ -80,13 +82,14 @@ app.post("/move", function (req, res) {
 app.get("/connect", function (req, res) {
     console.log("got connect request");
     connect_to_api();
-    while (api_connected == false && received_error == false) { }
-    if (api_connected) {
-        res.status(200).json({ connected: true });
-    } else {
-        received_error = false;
-        res.status(400).json({ connected: false });
-    }
+    setTimeout(function () {
+        if (api_connected) {
+            res.status(200).json({ connected: true });
+        } else {
+            received_error = false;
+            res.status(400).json({ connected: false });
+        }
+    }, 1000);
     
 });
 
