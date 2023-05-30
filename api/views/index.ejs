@@ -145,6 +145,7 @@
     }
 
     function connect() {
+        var received = false;
         var xhr = new XMLHttpRequest();
         xhr.open("GET", "/connect", true);
         xhr.onreadystatechange = function () {
@@ -162,7 +163,12 @@
                     // console.log(status)
                     document.getElementById("connectedstatus").innerHTML = "Connected: " + status.connected;
                 }
-                alert("Could not connect to API!");
+                if (!received)
+                {
+                    alert("Could not connect to API!");
+                    received = true;
+
+                }
             }
         };
         xhr.send();
