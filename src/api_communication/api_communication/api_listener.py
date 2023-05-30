@@ -132,9 +132,9 @@ class ApiListener(Node):
             self.get_logger().info("Received result filename: " + result_filename)
             with open(result_filename, 'rb') as f:
                 self.get_logger().info('Reading image')
+                image_data = f.read()
                 self.message_queue.append(json.dumps(
                     {'type': ResponseMessage.IMAGE.name, 'image': image_data}))
-                image_data = f.read()
         except Exception as e:
             self.get_logger().error('Something went wrong while sending a take picture request and waiting for the response: %r' % (e))
             
