@@ -5,6 +5,7 @@ const WebSocket = require("ws");
 var last_status = {};
 var last_image;
 var received_picture = false;
+var received_error = false;
 
 app.use(express.static("public"));
 app.use(express.json());
@@ -32,7 +33,10 @@ ws.on("message", function message(message) {
   // console.log("RECEIVED: " + msg.data);
 });
 
-ws.on("error", console.error);
+ws.on("error", function error(err) {
+    console.error("error: " + err);
+    received_error = true;
+});
 
 // set the view engine to ejs
 app.set("view engine", "ejs");
@@ -74,8 +78,12 @@ app.post("/move", function (req, res) {
 app.get("/connect", function (req, res) {
     console.log("got connect request");
     ws = new WebSocket("ws://10.100.0.40:9001/");
-    while (api_connected == false) { }
-    res.status(200).json({ connected: true });
+    while (api_connected == false && received_error == false) { }
+    if (api_connected) {
+        res.status(200).json({ connected: true });
+    } else {
+        res.status(400).json({ connected: false });
+    }
     
 });
 
