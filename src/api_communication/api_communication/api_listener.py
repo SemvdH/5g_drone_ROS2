@@ -120,7 +120,7 @@ class ApiListener(Node):
             self.get_logger().info(
                 f'Filename: {message_json["filename"]}')
             self.take_picture_request.input_name = message_json['filename']
-        self.future = self.cli.call_async(self.take_picture_request)
+        self.future = self.take_picture_client.call_async(self.take_picture_request)
         rclpy.spin_until_future_complete(self, self.future)
         result_filename = self.future.result()
         with open(result_filename, 'rb') as f:
