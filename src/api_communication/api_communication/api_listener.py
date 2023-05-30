@@ -127,7 +127,7 @@ class ApiListener(Node):
 
     def image_request_callback(self, future):
         try:
-            result_filename = future.result()
+            result_filename = future.result().filename
             result_filename = result_filename.replace("/home/ubuntu/ros2_ws/api/public", "")
             self.get_logger().info("Received result filename: " + result_filename)
             self.message_queue.append(json.dumps(
