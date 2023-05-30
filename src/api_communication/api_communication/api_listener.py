@@ -116,7 +116,7 @@ class ApiListener(Node):
 
     def process_image_request(self, message_json):
         self.get_logger().info('Processing image request')
-        if message_json['filename']:
+        if 'filename' in message_json:
             self.get_logger().info(
                 f'Filename: {message_json["filename"]}')
             self.take_picture_request.input_name = message_json['filename']
