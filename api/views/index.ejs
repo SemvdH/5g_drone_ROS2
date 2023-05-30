@@ -154,15 +154,11 @@
                 if (this.responseText.length > 0) {
                     var status = JSON.parse(this.responseText);
                     // console.log(status)
-                    document.getElementById("connectedstatus").innerHTML = "Connected: " + status.connected;
+                    document.getElementById("connectedstatus").innerHTML = "Connected: true";
                 }
             } else {
                 console.log("error");
-                if (this.responseText.length > 0) {
-                    var status = JSON.parse(this.responseText);
-                    // console.log(status)
-                    document.getElementById("connectedstatus").innerHTML = "Connected: " + status.connected;
-                }
+                document.getElementById("connectedstatus").innerHTML = "Connected: false";
                 if (!received)
                 {
                     alert("Could not connect to API!");
