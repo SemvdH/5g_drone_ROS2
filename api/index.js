@@ -11,6 +11,8 @@ app.use(express.json());
 
 var ws = new WebSocket("ws://10.100.0.40:9001/");
 var api_connected = false;
+console.log("connecting to API...");
+while (ws.readyState != 1) { }
 
 ws.on("open", function open() {
   console.log("connected with websockets to API!");
