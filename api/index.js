@@ -28,7 +28,7 @@ var connect_to_api = function () {
         last_status = msg.data;
       } else if (msg.type == "IMAGE") {
         console.log("got picture");
-        console.log(msg.image);
+        // console.log(msg.image);
         last_image = msg.image;
         received_picture = true;
       }
