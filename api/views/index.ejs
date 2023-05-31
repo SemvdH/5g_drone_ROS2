@@ -183,8 +183,7 @@
     }
 
     function connect() {
-
-
+        console.log("connect");
         socket = new WebSocket("ws://10.0.100.40:9001/");
         let msg = document.getElementById("msg");
         socket.addEventListener('open', (e) => {
