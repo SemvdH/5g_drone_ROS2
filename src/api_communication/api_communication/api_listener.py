@@ -109,11 +109,11 @@ class ApiListener(Node):
             except Exception as e:
                 self.get_logger().error('Something went wrong while reading video: ' + str(e))
 
-    def publish_message(self, message):
+    async def publish_message(self, message):
         # self.get_logger().info(f'Publishing message: {message}')
         if self.websocket is not None:
             try:
-                asyncio.run(self.websocket.send(message))
+                await self.websocket.send(message)
             except Exception as e:
                 self.get_logger().error(
                     'Something went wrong while sending a message to the websocket: ' + str(e))
@@ -131,7 +131,8 @@ class ApiListener(Node):
         while True:
             if len(self.message_queue) > 0 and self.websocket is not None:
                 # self.get_logger().info("sending message")
-                self.publish_message(self.message_queue.pop(0))
+                loop = asyncio.get_event_loop()
+                asyncio.ensure_future(self.publish_message(self.message_queue.pop(0)), loop=loop)
 
     def start_api_thread(self):
         asyncio.run(self.handle_api())

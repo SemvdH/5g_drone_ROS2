@@ -69,7 +69,7 @@
         img.onload = function () {
             // Once the image has loaded, set it as the source of the <img> element
             imgElement.src = this.src;
-            console.log("set image data src")
+            // console.log("set image data src")
         };
 
         // Set the base64-encoded image data as the source of the image
@@ -84,7 +84,7 @@
         }
 
         events.onmessage = (event) => {
-            console.log("MESSAGE RECEIVED");
+            // console.log("MESSAGE RECEIVED");
             const eventData = JSON.parse(event.data);
 
             // Check if the event contains image data
