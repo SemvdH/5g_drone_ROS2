@@ -19,6 +19,8 @@ import cv2
 
 # TODO send video https://github.com/Jatin1o1/Python-Javascript-Websocket-Video-Streaming-/tree/main
 
+RES_4K_H = 3496
+RES_4K_W = 4656
 
 class RequestCommand(Enum):
     GET_COMMANDS_TYPES = -1  # to get the available commands and types
@@ -97,8 +99,11 @@ class ApiListener(Node):
 
     def send_video(self):
         self.get_logger().info('Starting video thread')
+        vid = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+
+        vid.set(cv2.CAP_PROP_FRAME_WIDTH, RES_4K_W)
+        vid.set(cv2.CAP_PROP_FRAME_HEIGHT, RES_4K_H)
         while True:
-            vid = cv2.VideoCapture(0)
             try:
                 while vid.isOpened():
                     img,frame = vid.read()
