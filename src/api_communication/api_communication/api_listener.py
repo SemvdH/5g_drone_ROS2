@@ -12,6 +12,7 @@ import json
 from enum import Enum
 from functools import partial
 import base64
+import cv2
 
 # communication: client always sends commands that have a command id.
 # server always sends messages back that have a message type
@@ -81,6 +82,9 @@ class ApiListener(Node):
             target=self.handle_responses, daemon=True)
         self.response_thread.start()
 
+        self.video_trhead = threading.Thread(target=self.send_video)
+        self.video_trhead.start()
+
     def drone_status_callback(self, msg):
         self.status_data_received = True
         self.status_data['battery_percentage'] = msg.battery_percentage
@@ -88,6 +92,21 @@ class ApiListener(Node):
         self.status_data['armed'] = msg.armed
         self.status_data['control_mode'] = msg.control_mode
         self.status_data['route_setpoint'] = msg.route_setpoint
+
+    def send_video(self):
+        self.get_logger().info('Starting video thread')
+        while True:
+            vid = cv2.VideoCapture(0)
+            try:
+                while vid.isOpened():
+                    img,frame = vid.read()
+                    frame = cv2.resize(frame,(640,480))
+                    encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), 65]
+                    man = cv2.imencode('.jpg', frame, encode_param)[1]
+                    self.message_queue.append(man.tobytes())
+
+            except Exception as e:
+                self.get_logger().error('Something went wrong while reading video: ' + str(e))
 
     def publish_message(self, message):
         # self.get_logger().info(f'Publishing message: {message}')

@@ -66,10 +66,16 @@ var connect_to_api = function () {
             send_events_to_clients(msg);
         } else {
             console.log("got image");
-            //TODO handle image
         }
     } catch (error) {
-      console.log("could not parse as json");
+        console.log("could not parse as json, must be bytes");
+        let image = new Image();
+        image.src = URL.createObjectURL(message.data);
+        image.addEventListener("load", function () {
+            console.log("image loaded with width: " + image.width + " and height: " + image.height);
+
+        });
+        
     }
   });
 
