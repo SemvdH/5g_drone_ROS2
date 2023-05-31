@@ -99,10 +99,10 @@ class ApiListener(Node):
 
     def send_video(self):
         self.get_logger().info('Starting video thread')
-        vid = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+        vid = cv2.VideoCapture(0)
 
-        vid.set(cv2.CAP_PROP_FRAME_WIDTH, RES_4K_W)
-        vid.set(cv2.CAP_PROP_FRAME_HEIGHT, RES_4K_H)
+        # vid.set(cv2.CAP_PROP_FRAME_WIDTH, RES_4K_W)
+        # vid.set(cv2.CAP_PROP_FRAME_HEIGHT, RES_4K_H)
         while True:
             try:
                 while vid.isOpened():
