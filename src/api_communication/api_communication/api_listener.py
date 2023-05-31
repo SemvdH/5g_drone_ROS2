@@ -85,6 +85,8 @@ class ApiListener(Node):
         self.video_trhead = threading.Thread(target=self.send_video)
         self.video_trhead.start()
 
+        self.event_loop = None
+
     def drone_status_callback(self, msg):
         self.status_data_received = True
         self.status_data['battery_percentage'] = msg.battery_percentage
@@ -129,16 +131,16 @@ class ApiListener(Node):
 
     def handle_responses(self):
         while True:
-            if len(self.message_queue) > 0 and self.websocket is not None:
+            if len(self.message_queue) > 0 and self.websocket is not None and self.event_loop is not None:
                 # self.get_logger().info("sending message")
-                loop = asyncio.get_event_loop()
-                asyncio.ensure_future(self.publish_message(self.message_queue.pop(0)), loop=loop)
+                asyncio.ensure_future(self.publish_message(self.message_queue.pop(0)), loop=self.event_loop)
 
     def start_api_thread(self):
         asyncio.run(self.handle_api())
 
     async def handle_api(self):
         self.get_logger().info('Starting API')
+        self.event_loop = asyncio.get_event_loop()
         self.server = await websockets.serve(self.api_handler, '0.0.0.0', 9001)
         self.get_logger().info('API started on port 9001')
         await self.server.wait_closed()
