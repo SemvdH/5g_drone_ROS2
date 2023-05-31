@@ -50,6 +50,25 @@ function handle_sse_client(request, response, next) {
   });
 }
 
+const getSizeInBytes = obj => {
+    let str = null;
+    if (typeof obj === 'string') {
+      // If obj is a string, then use it
+      str = obj;
+    } else {
+      // Else, make obj into a string
+      str = JSON.stringify(obj);
+    }
+    // Get the length of the Uint8Array
+    const bytes = new TextEncoder().encode(str).length;
+    return bytes;
+};
+  
+const logSizeInBytes = (description, obj) => {
+    const bytes = getSizeInBytes(obj);
+    console.log(`${description} is approximately ${bytes} B`);
+};
+
 var connect_to_api = function () {
   console.log("Connecting to API");
   ws = new WebSocket("ws://10.100.0.40:9001/");
@@ -69,12 +88,7 @@ var connect_to_api = function () {
         }
     } catch (error) {
         console.log("could not parse as json, must be bytes");
-        let image = new Image();
-        image.src = URL.createObjectURL(message.data);
-        image.addEventListener("load", function () {
-            console.log("image loaded with width: " + image.width + " and height: " + image.height);
-
-        });
+        logSizeInBytes("image", message.data);
         
     }
   });
