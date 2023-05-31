@@ -103,6 +103,7 @@ class ApiListener(Node):
                     frame = cv2.resize(frame,(640,480))
                     encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), 65]
                     man = cv2.imencode('.jpg', frame, encode_param)[1]
+                    self.get_logger().info('Sending video')
                     self.message_queue.append(man.tobytes())
 
             except Exception as e:

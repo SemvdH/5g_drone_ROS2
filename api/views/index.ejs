@@ -14,7 +14,7 @@
     <div class="video">
         <div class="mainvideo">
             <p>Camera view:</p>
-            <canvas id="msg" width="960" height="720" style="display: inline-block; border: 1px solid blue;"></canvas>
+            <img id="msg" style="border: 1px solid blue; width: 960px;"></img>
             <div id="connectedbuttons">
                 <div id="connectedstatus">
                     <p id="connectedlabel">Connected: <%- api_connected %></p>
@@ -59,7 +59,7 @@
 </body>
 
 <script>
-    // var update_status = setInterval(update_status, 1000);
+    var update_status = setInterval(update_status, 1000);
     assign_button_callbacks();
     window.onload = function () {
         const events = new EventSource("/events");
@@ -69,10 +69,19 @@
         }
 
         events.onmessage = (event) => {
-            //TODO handling status, failsafe etc
-            const parsedData = JSON.parse(event.data);
-            console.log("RECEIVED EVENT");
-            console.log(parsedData);
+            console.log("MESSAGE RECEIVED");
+            const eventData = JSON.parse(event.data);
+
+            // Check if the event contains image data
+            if (eventData.image) {
+                const imageURL = eventData.image;
+
+                // Process the received image URL
+                // For example, you can set it as the source of an <img> element
+                const imgElement = document.getElementById('image-element');
+                imgElement.src = imageURL;
+            }
+            // console.log(parsedData);
         }
     };
 
@@ -183,51 +192,29 @@
     }
 
     function connect() {
-        console.log("connect");
-        socket = new WebSocket("ws://10.0.100.40:9001/");
-        let msg = document.getElementById("msg");
-        socket.addEventListener('open', (e) => {
-            console.log("open");
-        });
-        socket.addEventListener('message', (e) => {
-            let ctx = msg.getContext("2d");
-            let image = new Image();
-            image.src = URL.createObjectURL(e.data);
-            image.addEventListener("load", (e) => {
-                ctx.drawImage(image, 0, 0, msg.width, msg.height);
-            });
-        });
+        var received = false;
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "/connect", true);
+        xhr.onreadystatechange = function () {
+            if (this.status == 200) {
+                console.log(this.responseText);
+                if (this.responseText.length > 0) {
+                    var status = JSON.parse(this.responseText);
+                    // console.log(status)
+                    document.getElementById("connectedlabel").innerHTML = "Connected: true";
+                    document.getElementById("connectbutton").disabled = true;
+                }
+            } else {
+                console.log("error");
+                document.getElementById("connectedlabel").innerHTML = "Connected: false";
+                if (!received) {
+                    alert("Could not connect to API!");
+                    received = true;
 
-        // ws.on("error", function error(err) {
-        //     console.log("there was an error");
-        //     console.error("error: " + err);
-        //     received_error = true;
-        // });
-
-        // var received = false;
-        // var xhr = new XMLHttpRequest();
-        // xhr.open("GET", "/connect", true);
-        // xhr.onreadystatechange = function () {
-        //     if (this.status == 200) {
-        //         console.log(this.responseText);
-        //         if (this.responseText.length > 0) {
-        //             var status = JSON.parse(this.responseText);
-        //             // console.log(status)
-        //             document.getElementById("connectedlabel").innerHTML = "Connected: true";
-        //             document.getElementById("connectbutton").disabled = true;
-        //         }
-        //     } else {
-        //         console.log("error");
-        //         document.getElementById("connectedlabel").innerHTML = "Connected: false";
-        //         if (!received)
-        //         {
-        //             alert("Could not connect to API!");
-        //             received = true;
-
-        //         }
-        //     }
-        // };
-        // xhr.send();
+                }
+            }
+        };
+        xhr.send();
     }
     // window onload function die elke seconde een request doet om te kijken of er al nieuwe foto is
     // function die elke 100 ms een request doet om de status te updaten

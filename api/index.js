@@ -18,12 +18,29 @@ var ws;
 var api_connected = false;
 
 function send_events_to_clients(data) {
-//   console.log("sending events to clients");
-    sse_clients.forEach((client) => {
-        client.response.write("event: message\n");
-        client.response.write("data:" + JSON.stringify(data) + "\n\n")
-    }
-  );
+  //   console.log("sending events to clients");
+  sse_clients.forEach((client) => {
+    client.response.write("event: message\n");
+    client.response.write("data:" + JSON.stringify(data) + "\n\n");
+  });
+}
+
+function send_image_data_to_clients(frameData) {
+  sse_clients.forEach((client) => {
+    // Create a Blob from the frame data
+    const blob = new Blob([frameData], { type: "image/jpeg" });
+
+    // Set the SSE event name as 'message'
+    client.response.write("event: message\n");
+
+    // Create an object URL from the Blob
+    const objectURL = URL.createObjectURL(blob);
+
+    // Set the SSE event data as the object URL
+    client.response.write(
+      "data: " + JSON.stringify({ image: objectURL }) + "\n\n"
+    );
+  });
 }
 
 function handle_sse_client(request, response, next) {
@@ -50,25 +67,6 @@ function handle_sse_client(request, response, next) {
   });
 }
 
-const getSizeInBytes = obj => {
-    let str = null;
-    if (typeof obj === 'string') {
-      // If obj is a string, then use it
-      str = obj;
-    } else {
-      // Else, make obj into a string
-      str = JSON.stringify(obj);
-    }
-    // Get the length of the Uint8Array
-    const bytes = new TextEncoder().encode(str).length;
-    return bytes;
-};
-  
-const logSizeInBytes = (description, obj) => {
-    const bytes = getSizeInBytes(obj);
-    console.log(`${description} is approximately ${bytes} B`);
-};
-
 var connect_to_api = function () {
   console.log("Connecting to API");
   ws = new WebSocket("ws://10.100.0.40:9001/");
@@ -80,15 +78,15 @@ var connect_to_api = function () {
 
   ws.on("message", function message(message) {
     try {
-        var msg = JSON.parse(message);
-        if (msg.type != "IMAGE") {
-            send_events_to_clients(msg);
-        } else {
-            console.log("got image");
-        }
+      var msg = JSON.parse(message);
+      if (msg.type != "IMAGE") {
+        send_events_to_clients(msg);
+      } else {
+        console.log("got image");
+      }
     } catch (error) {
-        console.log("could not parse as json, must be bytes");
-        
+      console.log("could not parse as json, must be bytes");
+      send_image_data_to_clients(message);
     }
   });
 
