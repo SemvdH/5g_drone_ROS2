@@ -27,18 +27,18 @@ function send_events_to_clients(data) {
 
 function send_image_data_to_clients(frameData) {
   sse_clients.forEach((client) => {
-    // Create a Blob from the frame data
-    const blob = new Blob([frameData], { type: "image/jpeg" });
+    // Create a Buffer from the frame data
+    const buffer = Buffer.from(frameData);
 
     // Set the SSE event name as 'message'
     client.response.write("event: message\n");
 
-    // Create an object URL from the Blob
-    const objectURL = URL.createObjectURL(blob);
+    // Convert the Buffer to a base64-encoded string
+    const base64Data = buffer.toString("base64");
 
-    // Set the SSE event data as the object URL
+    // Set the SSE event data as the base64-encoded string
     client.response.write(
-      "data: " + JSON.stringify({ image: objectURL }) + "\n\n"
+      "data: " + JSON.stringify({ image: base64Data }) + "\n\n"
     );
   });
 }

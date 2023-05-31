@@ -14,7 +14,7 @@
     <div class="video">
         <div class="mainvideo">
             <p>Camera view:</p>
-            <img id="msg" style="border: 1px solid blue; width: 960px;"></img>
+            <img id="result-video" style="border: 1px solid blue; width: 960px;"></img>
             <div id="connectedbuttons">
                 <div id="connectedstatus">
                     <p id="connectedlabel">Connected: <%- api_connected %></p>
@@ -61,6 +61,21 @@
 <script>
     var update_status = setInterval(update_status, 1000);
     assign_button_callbacks();
+
+    // Helper function to decode base64 image and set it as source of <img> element
+    function decodeBase64Image(base64Data, imgElement) {
+        const img = new Image();
+
+        img.onload = function () {
+            // Once the image has loaded, set it as the source of the <img> element
+            imgElement.src = this.src;
+            console.log("set image data src")
+        };
+
+        // Set the base64-encoded image data as the source of the image
+        img.src = 'data:image/jpeg;base64,' + base64Data;
+    }
+
     window.onload = function () {
         const events = new EventSource("/events");
 
@@ -74,14 +89,14 @@
 
             // Check if the event contains image data
             if (eventData.image) {
-                const imageURL = eventData.image;
+                const base64Data = eventData.image;
 
-                // Process the received image URL
-                // For example, you can set it as the source of an <img> element
-                const imgElement = document.getElementById('image-element');
-                imgElement.src = imageURL;
+                // Get the <img> element
+                const imgElement = document.getElementById('result-video');
+
+                // Decode the base64 image and set it as the source of the <img> element
+                decodeBase64Image(base64Data, imgElement);
             }
-            // console.log(parsedData);
         }
     };
 
