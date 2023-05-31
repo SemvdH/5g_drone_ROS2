@@ -29,10 +29,10 @@
             <div id="controls">
                 <h2>Controls</h2>
                 <div id="buttons">
-                    <button class="movebutton" id="button_turnleft" >Turn left</button>
+                    <button class="movebutton" id="button_turnleft">Turn left</button>
                     <button class="movebutton" id="button_turnright">Turn right</button>
-                    <button class="movebutton" id="button_up" >Up</button>
-                    <button class="movebutton" id="button_down" >Down</button>
+                    <button class="movebutton" id="button_up">Up</button>
+                    <button class="movebutton" id="button_down">Down</button>
                     <button class="movebutton" id="button_forward">Forward</button>
                     <button class="movebutton" id="button_backward">Backward</button>
                     <button class="movebutton" id="button_left">Left</button>
@@ -83,14 +83,14 @@
                 stop();
             });
         }
-        document.getElementById("button_forward").addEventListener("mousedown", function () {forward();});
-        document.getElementById("button_backward").addEventListener("mousedown", function () {backward();});
-        document.getElementById("button_left").addEventListener("mousedown", function () {left();});
-        document.getElementById("button_right").addEventListener("mousedown", function () {right();});
-        document.getElementById("button_turnleft").addEventListener("mousedown", function () {turn_left();});
-        document.getElementById("button_turnright").addEventListener("mousedown", function () {turn_right();});
-        document.getElementById("button_up").addEventListener("mousedown", function () {up();});
-        document.getElementById("button_down").addEventListener("mousedown", function () {down();});
+        document.getElementById("button_forward").addEventListener("mousedown", function () { forward(); });
+        document.getElementById("button_backward").addEventListener("mousedown", function () { backward(); });
+        document.getElementById("button_left").addEventListener("mousedown", function () { left(); });
+        document.getElementById("button_right").addEventListener("mousedown", function () { right(); });
+        document.getElementById("button_turnleft").addEventListener("mousedown", function () { turn_left(); });
+        document.getElementById("button_turnright").addEventListener("mousedown", function () { turn_right(); });
+        document.getElementById("button_up").addEventListener("mousedown", function () { up(); });
+        document.getElementById("button_down").addEventListener("mousedown", function () { down(); });
     }
 
     function update_status() {
@@ -114,8 +114,7 @@
         xhr.send();
     }
 
-    function send_move_request(data)
-    {
+    function send_move_request(data) {
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "/move", true);
         xhr.setRequestHeader("Content-Type", "application/json");
@@ -124,41 +123,41 @@
 
     function turn_left() {
         console.log("turnleft");
-        send_move_request(JSON.stringify({ "up_down": 0.0,"forward_backward": 0.0, "left_right": 0.0, "turn_left_right": -10.0}));
+        send_move_request(JSON.stringify({ "up_down": 0.0, "forward_backward": 0.0, "left_right": 0.0, "turn_left_right": -10.0 }));
     }
     function turn_right() {
         console.log("turnright");
-        send_move_request(JSON.stringify({ "up_down": 0.0 ,"forward_backward": 0.0, "left_right": 0.0, "turn_left_right": 10.0}));
+        send_move_request(JSON.stringify({ "up_down": 0.0, "forward_backward": 0.0, "left_right": 0.0, "turn_left_right": 10.0 }));
     }
     function up() {
         console.log("up");
-        send_move_request(JSON.stringify({ "up_down": 1.0 ,"forward_backward": 0.0, "left_right": 0.0, "turn_left_right": 0.0}));
+        send_move_request(JSON.stringify({ "up_down": 1.0, "forward_backward": 0.0, "left_right": 0.0, "turn_left_right": 0.0 }));
 
     }
     function down() {
         console.log("down");
-        send_move_request(JSON.stringify({ "up_down": -1.0 ,"forward_backward": 0.0, "left_right": 0.0, "turn_left_right": 0.0}));
-        
+        send_move_request(JSON.stringify({ "up_down": -1.0, "forward_backward": 0.0, "left_right": 0.0, "turn_left_right": 0.0 }));
+
     }
     function forward() {
-        console.log("forward");send_move_request(JSON.stringify({ "up_down": 0.0,"forward_backward": 1.0, "left_right": 0.0, "turn_left_right": 0.0}));
+        console.log("forward"); send_move_request(JSON.stringify({ "up_down": 0.0, "forward_backward": 1.0, "left_right": 0.0, "turn_left_right": 0.0 }));
 
     }
     function backward() {
         console.log("backward");
-        send_move_request(JSON.stringify({ "up_down": 0.0 ,"forward_backward": -1.0, "left_right": 0.0, "turn_left_right": 0.0}));
+        send_move_request(JSON.stringify({ "up_down": 0.0, "forward_backward": -1.0, "left_right": 0.0, "turn_left_right": 0.0 }));
     }
     function left() {
         console.log("left");
-        send_move_request(JSON.stringify({ "up_down": 0.0 ,"forward_backward": 0.0, "left_right": -1.0, "turn_left_right": 0.0}));
+        send_move_request(JSON.stringify({ "up_down": 0.0, "forward_backward": 0.0, "left_right": -1.0, "turn_left_right": 0.0 }));
     }
     function right() {
         console.log("right");
-        send_move_request(JSON.stringify({ "up_down": 0.0 ,"forward_backward": 0.0, "left_right": 1.0, "turn_left_right": 0.0}));
+        send_move_request(JSON.stringify({ "up_down": 0.0, "forward_backward": 0.0, "left_right": 1.0, "turn_left_right": 0.0 }));
     }
     function stop() {
         console.log("stop");
-        send_move_request(JSON.stringify({ "up_down": 0.0 ,"forward_backward": 0.0, "left_right": 0.0, "turn_left_right": 0.0}));
+        send_move_request(JSON.stringify({ "up_down": 0.0, "forward_backward": 0.0, "left_right": 0.0, "turn_left_right": 0.0 }));
     }
 
     function estop() {
@@ -184,30 +183,60 @@
     }
 
     function connect() {
-        var received = false;
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "/connect", true);
-        xhr.onreadystatechange = function () {
-            if (this.status == 200) {
-                console.log(this.responseText);
-                if (this.responseText.length > 0) {
-                    var status = JSON.parse(this.responseText);
-                    // console.log(status)
-                    document.getElementById("connectedlabel").innerHTML = "Connected: true";
-                    document.getElementById("connectbutton").disabled = true;
-                }
-            } else {
-                console.log("error");
-                document.getElementById("connectedlabel").innerHTML = "Connected: false";
-                if (!received)
-                {
-                    alert("Could not connect to API!");
-                    received = true;
 
+
+
+        console.log("Connecting to API");
+        var ws = new WebSocket("ws://10.100.0.40:9001/");
+
+        ws.on("open", function open() {
+            console.log("connected with websockets to API!");
+        });
+
+        ws.on("message", function message(message) {
+            try {
+                var msg = JSON.parse(message);
+                if (msg.type != "IMAGE") {
+                    send_events_to_clients(msg);
+                } else {
+                    console.log("got image");
                 }
+            } catch (error) {
+                console.log("could not parse as json, must be bytes");
+
             }
-        };
-        xhr.send();
+        });
+
+        ws.on("error", function error(err) {
+            console.log("there was an error");
+            console.error("error: " + err);
+            received_error = true;
+        });
+
+        // var received = false;
+        // var xhr = new XMLHttpRequest();
+        // xhr.open("GET", "/connect", true);
+        // xhr.onreadystatechange = function () {
+        //     if (this.status == 200) {
+        //         console.log(this.responseText);
+        //         if (this.responseText.length > 0) {
+        //             var status = JSON.parse(this.responseText);
+        //             // console.log(status)
+        //             document.getElementById("connectedlabel").innerHTML = "Connected: true";
+        //             document.getElementById("connectbutton").disabled = true;
+        //         }
+        //     } else {
+        //         console.log("error");
+        //         document.getElementById("connectedlabel").innerHTML = "Connected: false";
+        //         if (!received)
+        //         {
+        //             alert("Could not connect to API!");
+        //             received = true;
+
+        //         }
+        //     }
+        // };
+        // xhr.send();
     }
     // window onload function die elke seconde een request doet om te kijken of er al nieuwe foto is
     // function die elke 100 ms een request doet om de status te updaten

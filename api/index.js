@@ -88,7 +88,6 @@ var connect_to_api = function () {
         }
     } catch (error) {
         console.log("could not parse as json, must be bytes");
-        logSizeInBytes("image", message.data);
         
     }
   });
