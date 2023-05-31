@@ -185,33 +185,25 @@
     function connect() {
 
 
-
-        console.log("Connecting to API");
-        var ws = new WebSocket("ws://10.100.0.40:9001/");
-
-        ws.on("open", function open() {
-            console.log("connected with websockets to API!");
+        socket = new WebSocket("ws://10.0.100.40:9001/");
+        let msg = document.getElementById("msg");
+        socket.addEventListener('open', (e) => {
+            console.log("open");
+        });
+        socket.addEventListener('message', (e) => {
+            let ctx = msg.getContext("2d");
+            let image = new Image();
+            image.src = URL.createObjectURL(e.data);
+            image.addEventListener("load", (e) => {
+                ctx.drawImage(image, 0, 0, msg.width, msg.height);
+            });
         });
 
-        ws.on("message", function message(message) {
-            try {
-                var msg = JSON.parse(message);
-                if (msg.type != "IMAGE") {
-                    send_events_to_clients(msg);
-                } else {
-                    console.log("got image");
-                }
-            } catch (error) {
-                console.log("could not parse as json, must be bytes");
-
-            }
-        });
-
-        ws.on("error", function error(err) {
-            console.log("there was an error");
-            console.error("error: " + err);
-            received_error = true;
-        });
+        // ws.on("error", function error(err) {
+        //     console.log("there was an error");
+        //     console.error("error: " + err);
+        //     received_error = true;
+        // });
 
         // var received = false;
         // var xhr = new XMLHttpRequest();
