@@ -11,51 +11,51 @@
 
 <body style="height: 100%;">
     <h1 class="header">5G Drone API</h1>
-    <div class="video">
-        <div class="mainvideo">
-            <p>Camera view:</p>
-            <img id="result-video" style="border: 1px solid blue; width: 800px;"></img>
-            <div id="connectedbuttons">
-                <div id="connectedstatus">
-                    <p id="connectedlabel">Connected: <%- api_connected %></p>
-                    <button id="connectbutton" onclick="connect()">Connect</button>
-                </div>
-                <div id="buttons">
-                    <button id="take_picture" onclick="take_picture()">Take picture</button>
-                    <br>
-                    <button id="arm_disarm" onclick="arm_disarm()">Arm/Disarm</button>
-                </div>
+    <!-- <div class="video"> -->
+    <div class="mainvideo">
+        <p>Camera view:</p>
+        <img id="result-video" style="border: 1px solid blue; width: 800px;"></img>
+        <div id="connectedbuttons">
+            <div id="connectedstatus">
+                <p id="connectedlabel">Connected: <%- api_connected %></p>
+                <button id="connectbutton" onclick="connect()">Connect</button>
             </div>
-            <div id="controls">
-                <h2>Controls</h2>
-                <div id="buttons">
-                    <button class="movebutton" id="button_turnleft">Turn left</button>
-                    <button class="movebutton" id="button_turnright">Turn right</button>
-                    <button class="movebutton" id="button_up">Up</button>
-                    <button class="movebutton" id="button_down">Down</button>
-                    <button class="movebutton" id="button_forward">Forward</button>
-                    <button class="movebutton" id="button_backward">Backward</button>
-                    <button class="movebutton" id="button_left">Left</button>
-                    <button class="movebutton" id="button_right">Right</button>
-                    <button id="button_stop" onclick="stop()">Stop</button>
-                    <button id="button_estop" onclick="estop()"><strong>Emergency Stop</strong></button>
-
-                </div>
+            <div id="buttons">
+                <button id="take_picture" onclick="take_picture()">Take picture</button>
+                <br>
+                <button id="arm_disarm" onclick="arm_disarm()">Arm/Disarm</button>
             </div>
         </div>
-        <div class="lastpicture">
-            <p>Last picture:</p>
-            <img id="picture" style="width: 400px;">
-            <h2>Drone status</h2>
-            <p id="batterypercentage">Battery percentage</p>
-            <p id="cpuload">CPU load</p>
-            <p id="armed"></p>
-            <p id="control_mode"></p>
-            <p id="speed">Current speed</p>
-            <p id="position">Current position</p>
-            <p id="failsafe">Failsafe status</p>
+        <div id="controls">
+            <h2>Controls</h2>
+            <div id="buttons">
+                <button class="movebutton" id="button_turnleft">Turn left</button>
+                <button class="movebutton" id="button_turnright">Turn right</button>
+                <button class="movebutton" id="button_up">Up</button>
+                <button class="movebutton" id="button_down">Down</button>
+                <button class="movebutton" id="button_forward">Forward</button>
+                <button class="movebutton" id="button_backward">Backward</button>
+                <button class="movebutton" id="button_left">Left</button>
+                <button class="movebutton" id="button_right">Right</button>
+                <button id="button_stop" onclick="stop()">Stop</button>
+                <button id="button_estop" onclick="estop()"><strong>Emergency Stop</strong></button>
+
+            </div>
         </div>
     </div>
+    <div class="lastpicture">
+        <p>Last picture:</p>
+        <img id="picture" style="width: 400px;">
+        <h2>Drone status</h2>
+        <p id="batterypercentage">Battery percentage</p>
+        <p id="cpuload">CPU load</p>
+        <p id="armed"></p>
+        <p id="control_mode"></p>
+        <p id="speed">Current speed</p>
+        <p id="position">Current position</p>
+        <p id="failsafe">Failsafe status</p>
+    </div>
+    <!-- </div> -->
 </body>
 
 <script>
@@ -89,7 +89,7 @@
                 const data = JSON.parse(event.data);
                 if (data.type == "STATUS") {
                     document.getElementById("batterypercentage").innerHTML = "Battery percentage: " + data.data.battery_percentage;
-                    document.getElementById("cpuload").innerHTML = "CPU load: " + data.data.cpu_usage.toString().substring(0, 6).substring(2,4) + "%";
+                    document.getElementById("cpuload").innerHTML = "CPU load: " + data.data.cpu_usage.toString().substring(0, 6).substring(2, 4) + "%";
                     document.getElementById("armed").innerHTML = "Armed: " + data.data.armed;
                     document.getElementById("control_mode").innerHTML = "Control mode: " + data.data.control_mode;
                 } else {
