@@ -45,7 +45,7 @@
         </div>
         <div class="lastpicture">
             <p>Last picture:</p>
-            <img id="picture">
+            <img id="picture" style="width: 400px;">
             <h2>Drone status</h2>
             <p id="batterypercentage">Battery percentage</p>
             <p id="cpuload">CPU load</p>
@@ -192,16 +192,7 @@
 
     function take_picture() {
         console.log("take picture");
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "/image", true);
-        xhr.overrideMimeType("text/plain; charset=utf-8");
-        xhr.onload = (e) => {
-            console.log("response image received");
-            const img = e.response;
-            document.getElementById("picture").src = img;
-        }
-        console.log("sending picture request")
-        xhr.send();
+        document.getElementById("picture").src = document.getElementById("result-video").src;
     }
 
     function arm_disarm() {
