@@ -60,6 +60,7 @@
 
 <script>
     assign_button_callbacks();
+    connect_to_video_stream();
 
     // Helper function to decode base64 image and set it as source of <img> element
     function decodeBase64Image(base64Data, imgElement) {
@@ -203,7 +204,7 @@
     function connect_to_video_stream() {
         console.log("Connecting to websocket")
         const video_holder = document.getElementById("result-video");
-        const socket = new WebSocket('ws://10.0.100.40:9002');
+        const socket = new WebSocket('ws://10.100.0.40:9002/');
 
         socket.addEventListener('open', (event) => {
             console.log('Connected to WebSocket server');
