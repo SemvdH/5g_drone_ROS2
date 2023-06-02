@@ -14,7 +14,7 @@ html, body {
 
 .video {
     width: 100%;
-    /* overflow: auto; */
+    overflow: auto;
 }
 
 .mainvideo {
@@ -24,6 +24,7 @@ html, body {
     border: 1px solid blue;
     margin-right: 10px;
     padding: 10px;
+    overflow: auto;
 }
 
 .lastpicture {
