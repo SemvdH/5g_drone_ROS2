@@ -73,6 +73,9 @@ class CameraController(Node):
                         man = cv2.imencode('.jpg', frame, encode_param)[1]
                         self.get_logger().info('Sending video')
                         await self.websocket.send(man.tobytes())
+                    else:
+                        self.get_logger().info('No websocket connection')
+                        await asyncio.sleep(1)
 
             except Exception as e:
                 self.get_logger().error('Something went wrong while reading and sending video: ' + str(e))
