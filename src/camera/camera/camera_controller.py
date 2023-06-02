@@ -5,9 +5,16 @@ from sensor_msgs.msg import Image
 import os
 from datetime import datetime
 
+import asyncio
+import websockets.server
+import threading
+import cv2
+
 #resolution of the camera
 RES_4K_H = 3496
 RES_4K_W = 4656
+
+#TODO change to serve video stream through websockets connection
 
 class CameraController(Node):
     def __init__(self):
@@ -16,6 +23,18 @@ class CameraController(Node):
         self.get_logger().info("Camera controller started. Waiting for service call...")
         self.srv = self.create_service(
             TakePicture, 'drone/picture', self.take_picture_callback)
+        
+        self.websocket = None
+        self.server = None
+        self.event_loop = None
+
+        self.video_thread = threading.Thread(target=self.handle_video_connection)
+        self.video_thread.start()
+
+        self.websocket_thread = threading.Thread(target=self.start_websocket_server)
+        self.websocket_thread.start()
+
+
 
     def take_picture_callback(self, request, response):
         if (request.input_name == "default"):
@@ -30,6 +49,51 @@ class CameraController(Node):
 
         return response
 
+    async def handle_video_connection(self):
+        asyncio.ensure_future(self.send_video(),loop=self.event_loop)
+    
+    async def send_video(self):
+        self.get_logger().info('Starting video thread')
+        vid = cv2.VideoCapture(0)
+
+        # vid.set(cv2.CAP_PROP_FRAME_WIDTH, RES_4K_W)
+        # vid.set(cv2.CAP_PROP_FRAME_HEIGHT, RES_4K_H)
+        while True:
+            try:
+                while vid.isOpened():
+                    if self.websocket is not None:
+                        img,frame = vid.read()
+                        frame = cv2.resize(frame,(640,480))
+                        encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), 65]
+                        man = cv2.imencode('.jpg', frame, encode_param)[1]
+                        self.get_logger().info('Sending video')
+                        await self.websocket.send(man.tobytes())
+
+            except Exception as e:
+                self.get_logger().error('Something went wrong while reading and sending video: ' + str(e))
+    async def start_websocket_server(self):
+        self.get_logger().info('Starting websocket server for video')
+        self.event_loop = asyncio.get_event_loop()
+        self.server = await websockets.server.serve(self.websocket_handler, '0.0.0.0', 9002)
+        await self.server.wait_closed()
+    
+    async def websocket_handler(self,websocket):
+        self.get_logger().info('New connection')
+
+        self.websocket = websocket
+        try:
+            async for message in websocket:
+                self.get_logger().info(f"Received message: {message}")
+
+        except websockets.exceptions.ConnectionClosed:
+            self.get_logger().info('Connection closed')
+            self.websocket = None
+        except Exception as e:
+            self.get_logger().error('Something went wrong!')
+            self.get_logger().error(str(e))
+            self.websocket = None
+
+       
 def main(args=None):
     rclpy.init(args=args)
 

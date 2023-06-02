@@ -22,6 +22,8 @@ import cv2
 RES_4K_H = 3496
 RES_4K_W = 4656
 
+# TODO change video to be handled by camera controller through websocket with different port
+
 class RequestCommand(Enum):
     GET_COMMANDS_TYPES = -1  # to get the available commands and types
     TAKEOFF = 0
@@ -84,9 +86,6 @@ class ApiListener(Node):
             target=self.handle_responses, daemon=True)
         self.response_thread.start()
 
-        self.video_trhead = threading.Thread(target=self.send_video)
-        self.video_trhead.start()
-
         self.event_loop = None
 
     def drone_status_callback(self, msg):
@@ -97,24 +96,24 @@ class ApiListener(Node):
         self.status_data['control_mode'] = msg.control_mode
         self.status_data['route_setpoint'] = msg.route_setpoint
 
-    def send_video(self):
-        self.get_logger().info('Starting video thread')
-        vid = cv2.VideoCapture(0)
+    # def send_video(self):
+    #     self.get_logger().info('Starting video thread')
+    #     vid = cv2.VideoCapture(0)
 
-        # vid.set(cv2.CAP_PROP_FRAME_WIDTH, RES_4K_W)
-        # vid.set(cv2.CAP_PROP_FRAME_HEIGHT, RES_4K_H)
-        while True:
-            try:
-                while vid.isOpened():
-                    img,frame = vid.read()
-                    frame = cv2.resize(frame,(640,480))
-                    encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), 65]
-                    man = cv2.imencode('.jpg', frame, encode_param)[1]
-                    self.get_logger().info('Sending video')
-                    self.message_queue.append(man.tobytes())
+    #     # vid.set(cv2.CAP_PROP_FRAME_WIDTH, RES_4K_W)
+    #     # vid.set(cv2.CAP_PROP_FRAME_HEIGHT, RES_4K_H)
+    #     while True:
+    #         try:
+    #             while vid.isOpened():
+    #                 img,frame = vid.read()
+    #                 frame = cv2.resize(frame,(640,480))
+    #                 encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), 65]
+    #                 man = cv2.imencode('.jpg', frame, encode_param)[1]
+    #                 self.get_logger().info('Sending video')
+    #                 self.message_queue.append(man.tobytes())
 
-            except Exception as e:
-                self.get_logger().error('Something went wrong while reading video: ' + str(e))
+    #         except Exception as e:
+    #             self.get_logger().error('Something went wrong while reading video: ' + str(e))
 
     async def publish_message(self, message):
         # self.get_logger().info(f'Publishing message: {message}')
