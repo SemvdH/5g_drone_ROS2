@@ -28,7 +28,7 @@ class CameraController(Node):
         self.server = None
         self.event_loop = None
 
-        self.websocket_thread = threading.Thread(target=self.start_websocket_server)
+        self.websocket_thread = threading.Thread(target=self.start_listening)
         self.websocket_thread.start()
 
         self.video_thread = threading.Thread(target=self.handle_video_connection)
@@ -50,11 +50,12 @@ class CameraController(Node):
 
         return response
 
-    async def handle_video_connection(self):
-        asyncio.run(self.send_video())
+    def handle_video_connection(self):
+        self.get_logger().info('Starting video thread')
+        asyncio.ensure_future(self.send_video(), loop=self.event_loop)
     
     async def send_video(self):
-        self.get_logger().info('Starting video thread')
+        self.get_logger().info('Starting sending video')
         vid = cv2.VideoCapture(0)
 
         # vid.set(cv2.CAP_PROP_FRAME_WIDTH, RES_4K_W)
@@ -72,6 +73,10 @@ class CameraController(Node):
 
             except Exception as e:
                 self.get_logger().error('Something went wrong while reading and sending video: ' + str(e))
+
+    def start_listening(self):
+        self.get_logger().info('Starting listening for websocket connections')
+        asyncio.run(self.start_websocket_server())
 
     async def start_websocket_server(self):
         self.get_logger().info('Starting websocket server for video')
