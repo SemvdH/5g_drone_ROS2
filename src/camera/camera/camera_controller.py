@@ -51,11 +51,8 @@ class CameraController(Node):
         return response
 
     def handle_video_connection(self):
-        self.get_logger().info('Waiting for event loop')
-        while self.event_loop is None:
-            pass
         self.get_logger().info('Starting video thread')
-        asyncio.ensure_future(self.send_video(), loop=self.event_loop)
+        asyncio.run(self.send_video())
     
     async def send_video(self):
         self.get_logger().info('Starting sending video')
