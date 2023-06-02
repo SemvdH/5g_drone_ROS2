@@ -30,7 +30,7 @@ html, body {
 .lastpicture {
     width: 40%;
     float: right;
-    height: 400px;
+    /* height: 400px; */
     border: 1px solid red;
     padding: 10px;
 }
