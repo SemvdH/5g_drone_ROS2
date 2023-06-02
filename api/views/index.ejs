@@ -83,6 +83,7 @@
         }
 
         events.onmessage = (event) => {
+            console.log("got sse message")
             console.log("Got data:" + event.data);
         }
     };

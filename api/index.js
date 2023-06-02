@@ -79,7 +79,8 @@ var connect_to_api = function () {
   ws.on("message", function message(message) {
     try {
       var msg = JSON.parse(message);
-      if (msg.type != "IMAGE") {
+        if (msg.type != "IMAGE") {
+          console.log("got message");
         send_events_to_clients(msg);
       } else {
         console.log("got image");
