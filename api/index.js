@@ -80,7 +80,7 @@ var connect_to_api = function () {
     try {
       var msg = JSON.parse(message);
         if (msg.type != "IMAGE") {
-          console.log("got message");
+        //   console.log("got message");
         send_events_to_clients(msg);
       } else {
         console.log("got image");

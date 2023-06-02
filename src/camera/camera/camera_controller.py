@@ -69,7 +69,7 @@ class CameraController(Node):
                         encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), 65]
                         man = cv2.imencode('.jpg', frame, encode_param)[1]
                         self.get_logger().info('Sending video')
-                        await self.websocket.send(man.tobytes())
+                        asyncio.ensure_future(self.websocket.send(man.tobytes()),loop=self.event_loop)
                     else:
                         self.get_logger().info('No websocket connection')
                         await asyncio.sleep(1)
