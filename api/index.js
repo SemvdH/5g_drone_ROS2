@@ -25,24 +25,6 @@ function send_events_to_clients(data) {
   });
 }
 
-function send_image_data_to_clients(frameData) {
-  sse_clients.forEach((client) => {
-    // Create a Buffer from the frame data
-    const buffer = Buffer.from(frameData);
-
-    // Set the SSE event name as 'message'
-    client.response.write("event: message\n");
-
-    // Convert the Buffer to a base64-encoded string
-    const base64Data = buffer.toString("base64");
-
-    // Set the SSE event data as the base64-encoded string
-    client.response.write(
-      "data: " + JSON.stringify({ image: base64Data }) + "\n\n"
-    );
-  });
-}
-
 function handle_sse_client(request, response, next) {
   console.log("handling sse client");
   const headers = {
@@ -79,7 +61,7 @@ var connect_to_api = function () {
   ws.on("message", function message(message) {
     try {
       var msg = JSON.parse(message);
-        if (msg.type != "IMAGE") {
+      if (msg.type != "IMAGE") {
         //   console.log("got message");
         send_events_to_clients(msg);
       } else {
@@ -87,7 +69,7 @@ var connect_to_api = function () {
       }
     } catch (error) {
       console.log("could not parse as json");
-    //   send_image_data_to_clients(message);
+      //   send_image_data_to_clients(message);
     }
   });
 
@@ -97,6 +79,42 @@ var connect_to_api = function () {
     received_error = true;
   });
 };
+
+function send_image_data_to_clients(videoData) {
+  sse_clients.forEach((client) => {
+
+    // Set the SSE event name as 'message'
+    client.response.write("event: message\n");
+
+    // Convert the Buffer to a base64-encoded string
+    const base64Data = videoData.toString("base64");
+
+    // Set the SSE event data as the base64-encoded string
+    client.response.write(
+      "data: " + JSON.stringify({ image: base64Data }) + "\n\n"
+    );
+  });
+}
+
+// Define the endpoint to receive video data
+app.post("/video", (req, res) => {
+    console.log("got video endpoint")
+  let videoData = Buffer.from("");
+
+  req.on("data", (chunk) => {
+    // Accumulate the received video data
+    videoData = Buffer.concat([videoData, chunk]);
+  });
+
+  req.on("end", () => {
+    // Process the received video data
+      console.log("Received video data:" + videoData.length);
+      send_image_data_to_clients(videoData); 
+
+    // Send a response indicating successful receipt
+    res.sendStatus(200);
+  });
+});
 
 // set the view engine to ejs
 app.set("view engine", "ejs");

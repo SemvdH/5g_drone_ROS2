@@ -10,9 +10,15 @@ import websockets.server
 import threading
 import cv2
 
+import requests
+
 #resolution of the camera
 RES_4K_H = 3496
 RES_4K_W = 4656
+
+video_url = "http://10.1.1.41:8080/video"
+# Set the headers for the POST request
+headers = {'Content-Type': 'application/octet-stream'}
 
 #TODO change to serve video stream through websockets connection
 
@@ -63,16 +69,35 @@ class CameraController(Node):
         while True:
             try:
                 while vid.isOpened():
-                    if self.websocket is not None:
-                        img,frame = vid.read()
-                        frame = cv2.resize(frame,(640,480))
-                        encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), 65]
-                        man = cv2.imencode('.jpg', frame, encode_param)[1]
-                        self.get_logger().info('Sending video')
-                        asyncio.ensure_future(self.websocket.send(man.tobytes()),loop=self.event_loop)
-                        await asyncio.sleep(1)
+                    pass
+                    ret, frame = vid.read()
+
+                    if not ret:
+                        # If reading the frame failed, break the loop
+                        break
+
+                    # Convert the frame to bytes
+                    _, img_encoded = cv2.imencode('.jpg', frame)
+                    frame_data = img_encoded.tobytes()
+
+                    # Send the frame data as the request body
+                    response = requests.post(video_url, data=frame_data, headers=headers)
+
+                    # Check the response status
+                    if response.status_code == 200:
+                        print('Frame sent successfully.')
                     else:
-                        self.get_logger().info('No websocket connection')
+                        print('Failed to send frame.')
+                    # if self.websocket is not None:
+                    #     img,frame = vid.read()
+                    #     frame = cv2.resize(frame,(640,480))
+                    #     encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), 65]
+                    #     man = cv2.imencode('.jpg', frame, encode_param)[1]
+                    #     self.get_logger().info('Sending video')
+                    #     asyncio.ensure_future(self.websocket.send(man.tobytes()),loop=self.event_loop)
+                    #     await asyncio.sleep(1)
+                    # else:
+                    #     self.get_logger().info('No websocket connection')
 
             except Exception as e:
                 self.get_logger().error('Something went wrong while reading and sending video: ' + str(e))
