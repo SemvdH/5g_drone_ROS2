@@ -57,10 +57,6 @@ class CameraController(Node):
         return response
 
     def handle_video_connection(self):
-        self.get_logger().info('Starting video thread')
-        asyncio.run(self.send_video())
-    
-    async def send_video(self):
         self.get_logger().info('Starting sending video')
         vid = cv2.VideoCapture(0)
 
