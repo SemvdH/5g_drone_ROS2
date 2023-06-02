@@ -82,21 +82,9 @@
             console.log("OPENED EVENT");
         }
 
-        // events.onmessage = (event) => {
-        //     // console.log("MESSAGE RECEIVED");
-        //     const eventData = JSON.parse(event.data);
-
-        //     // Check if the event contains image data
-        //     if (eventData.image) {
-        //         const base64Data = eventData.image;
-
-        //         // Get the <img> element
-        //         const imgElement = document.getElementById('result-video');
-
-        //         // Decode the base64 image and set it as the source of the <img> element
-        //         decodeBase64Image(base64Data, imgElement);
-        //     }
-        // }
+        events.onmessage = (event) => {
+            console.log("Got data:" + event.data);
+        }
     };
 
     function assign_button_callbacks() {
