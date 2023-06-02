@@ -93,7 +93,7 @@
                     document.getElementById("armed").innerHTML = "Armed: " + data.data.armed;
                     document.getElementById("control_mode").innerHTML = "Control mode: " + data.data.control_mode;
                 } else {
-                    console.log(data.image)
+                    decodeBase64Image(data.image, document.getElementById("result-video"));
                 }
             } catch (error) {
                 console.error(error);
