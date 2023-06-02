@@ -85,8 +85,8 @@ var connect_to_api = function () {
         console.log("got image");
       }
     } catch (error) {
-    //   console.log("could not parse as json, must be bytes");
-      send_image_data_to_clients(message);
+      console.log("could not parse as json");
+    //   send_image_data_to_clients(message);
     }
   });
 

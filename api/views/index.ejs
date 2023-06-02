@@ -82,21 +82,21 @@
             console.log("OPENED EVENT");
         }
 
-        events.onmessage = (event) => {
-            // console.log("MESSAGE RECEIVED");
-            const eventData = JSON.parse(event.data);
+        // events.onmessage = (event) => {
+        //     // console.log("MESSAGE RECEIVED");
+        //     const eventData = JSON.parse(event.data);
 
-            // Check if the event contains image data
-            if (eventData.image) {
-                const base64Data = eventData.image;
+        //     // Check if the event contains image data
+        //     if (eventData.image) {
+        //         const base64Data = eventData.image;
 
-                // Get the <img> element
-                const imgElement = document.getElementById('result-video');
+        //         // Get the <img> element
+        //         const imgElement = document.getElementById('result-video');
 
-                // Decode the base64 image and set it as the source of the <img> element
-                decodeBase64Image(base64Data, imgElement);
-            }
-        }
+        //         // Decode the base64 image and set it as the source of the <img> element
+        //         decodeBase64Image(base64Data, imgElement);
+        //     }
+        // }
     };
 
     function assign_button_callbacks() {
@@ -206,6 +206,41 @@
         console.log("arm/disarm");
     }
 
+    function connect_to_video_stream() {
+        console.log("Connecting to websocket")
+        const video_holder = document.getElementById("result-video");
+        const socket = new WebSocket('ws://10.0.100.40:9002');
+
+        socket.addEventListener('open', (event) => {
+            console.log('Connected to WebSocket server');
+        });
+
+        socket.addEventListener('message', (event) => {
+            // Assuming the received data is an ArrayBuffer or Uint8Array
+            const imageData = event.data;
+
+            // Convert the image data to a Blob
+            const blob = new Blob([imageData], { type: 'image/jpeg' });
+
+            // Generate a temporary URL for the Blob
+            const imageURL = URL.createObjectURL(blob);
+
+            // Set the src attribute of the <img> element
+            video_holder.src = imageURL;
+        });
+
+        // Connection closed
+        socket.addEventListener('close', (event) => {
+            console.log('Disconnected from WebSocket server');
+        });
+
+        // Error occurred
+        socket.addEventListener('error', (event) => {
+            console.error('WebSocket error:', event.error);
+        });
+
+    }
+
     function connect() {
         var received = false;
         var xhr = new XMLHttpRequest();
@@ -218,6 +253,7 @@
                     // console.log(status)
                     document.getElementById("connectedlabel").innerHTML = "Connected: true";
                     document.getElementById("connectbutton").disabled = true;
+                    connect_to_video_stream();
                 }
             } else {
                 console.log("error");
