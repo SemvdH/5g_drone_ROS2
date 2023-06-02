@@ -83,8 +83,13 @@
         }
 
         events.onmessage = (event) => {
-            console.log("got sse message")
-            console.log("Got data:" + event.data);
+            const data = JSON.parse(event.data);
+            if (data.type == "STATUS") {
+                document.getElementById("batterypercentage").innerHTML = "Battery percentage: " + data.data.battery_percentage;
+                document.getElementById("cpuload").innerHTML = "CPU load: " + data.data.cpu_usage;
+                document.getElementById("armed").innerHTML = "Armed: " + data.data.armed;
+                document.getElementById("control_mode").innerHTML = "Control mode: " + data.data.control_mode;
+            }
         }
     };
 
