@@ -98,7 +98,7 @@ function send_image_data_to_clients(videoData) {
 
 // Define the endpoint to receive video data
 app.post("/video", (req, res) => {
-    console.log("got video endpoint")
+    // console.log("got video endpoint")
   let videoData = Buffer.from("");
 
   req.on("data", (chunk) => {
@@ -108,7 +108,7 @@ app.post("/video", (req, res) => {
 
   req.on("end", () => {
     // Process the received video data
-      console.log("Received video data:" + videoData.length);
+    //   console.log("Received video data:" + videoData.length);
       send_image_data_to_clients(videoData); 
 
     // Send a response indicating successful receipt
