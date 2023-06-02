@@ -3,6 +3,10 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+html, body {
+    overflow: auto;
+}
+
 .header {
     color: black;
     text-align: center;
