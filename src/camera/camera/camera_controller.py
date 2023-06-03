@@ -57,8 +57,8 @@ class CameraController(Node):
         return response
 
     def setup_websocket(self):
-        start_server = websockets.serve(self.websocket_video, "0.0.0.0", 9002)
         loop = asyncio.new_event_loop()
+        start_server = websockets.serve(self.websocket_video, "0.0.0.0", 9002,loop=loop)
         loop.run_until_complete(start_server)
         loop.run_forever()
     
