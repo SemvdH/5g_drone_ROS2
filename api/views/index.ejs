@@ -72,7 +72,7 @@
             let image = new Image();
             image.src = URL.createObjectURL(e.data);
             image.addEventListener("load", (e) => {
-                ctx.drawImage(image, 0, 0, msg.width, msg.height);
+                ctx.drawImage(image, 0, 0, 800, 600);
             });
         });
     }
