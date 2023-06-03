@@ -37,7 +37,7 @@ class CameraController(Node):
         self.websocket_thread = threading.Thread(target=self.start_listening)
         self.websocket_thread.start()
 
-        self.video_thread = threading.Thread(target=self.handle_video_connection)
+        self.video_thread = threading.Thread(target=self.setup_websocket)
         self.video_thread.start()
 
 
@@ -55,6 +55,32 @@ class CameraController(Node):
         self.get_logger().info("Picture saved as " + response.filename)
 
         return response
+
+    def setup_websocket(self):
+        start_server = websockets.serve(self.websocket_video, "0.0.0.0", 9002)
+        asyncio.get_event_loop().run_until_complete(start_server)
+        asyncio.get_event_loop().run_forever()
+    
+    async def websocket_video(self,websocket,path):
+        vid = cv2.VideoCapture(0,cv2.CAP_V4L)
+
+        vid.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)
+        vid.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
+        while True:
+            try:
+                while(vid.isOpened()):
+                    img, frame = vid.read()
+                    self.get_logger().info("frame before: " + str(frame.shape))
+                    #frame = cv2.resize(frame,(RES_4K_W,RES_4K_H))
+                    #print("frame after: " + str(frame.shape))
+                    encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), 100]
+                    man = cv2.imencode('.jpg', frame)[1]
+                    #sender(man)
+                    await websocket.send(man.tobytes())
+                self.get_logger.error("Not opened")
+            except Exception as e:
+                self.get_logger.error("error " + str(e))
+
 
     def handle_video_connection(self):
         self.get_logger().info('Starting sending video')
