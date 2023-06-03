@@ -71,6 +71,7 @@
             let ctx = msg.getContext("2d");
             let image = new Image();
             image.src = URL.createObjectURL(e.data);
+            console.log(image.width);
             image.addEventListener("load", (e) => {
                 ctx.drawImage(image, 0, 0, 800, 600);
             });
