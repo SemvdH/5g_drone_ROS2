@@ -2,6 +2,7 @@ import rclpy
 from rclpy.node import Node
 
 from drone_services.msg import DroneStatus
+from drone_services.msg import FailsafeMsg
 from drone_services.srv import TakePicture
 from drone_services.srv import MovePosition
 
@@ -39,6 +40,7 @@ class ResponseMessage(Enum):
     STATUS = 0
     IMAGE = 1
     MOVE_DIRECTION_RESULT = 2
+    FAILSAFE = 3
 
 
 class ApiListener(Node):
@@ -47,6 +49,8 @@ class ApiListener(Node):
         self.get_logger().info('ApiListener node started')
         self.drone_status_subscriber = self.create_subscription(
             DroneStatus, '/drone/status', self.drone_status_callback, 10)
+        self.failsafe_subscriber = self.create_subscription(FailsafeMsg, "/drone/failsafe", self.failsafe_callback, 10)
+
         self.timer = self.create_timer(1, self.publish_status)
         waiting = 0
         self.take_picture_client = self.create_client(
@@ -95,7 +99,14 @@ class ApiListener(Node):
         self.status_data['armed'] = msg.armed
         self.status_data['control_mode'] = msg.control_mode
         self.status_data['route_setpoint'] = msg.route_setpoint
+        self.status_data['velocity'] = msg.velocity
+        self.status_data['position'] = msg.position
+        self.status_data['failsafe'] = msg.failsafe
 
+    def failsafe_callback(self, msg):
+        self.status_data['failsafe'] = msg.enabled
+        self.message_queue.append(json.dumps(
+                    {'type': ResponseMessage.FAILSAFE.name, 'message': msg.msg}))
     # def send_video(self):
     #     self.get_logger().info('Starting video thread')
     #     vid = cv2.VideoCapture(0)

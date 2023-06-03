@@ -163,5 +163,9 @@ app.get("/connect", function (req, res) {
   }, 1000);
 });
 
+app.get("/test", function (req, res) {
+    res.render("test");
+});
+
 app.listen(8080);
 console.log("Server is listening on port 8080");
