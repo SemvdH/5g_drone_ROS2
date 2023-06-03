@@ -9,39 +9,39 @@
     <title>5G drone API</title>
 </head>
 
-<body style="height: 100%;">
+<body style="height: 100%;" onload="opensocket()">
     <h1 class="header">5G Drone API</h1>
     <!-- <div class="video"> -->
     <div class="mainvideo">
         <p>Camera view:</p>
-        <img id="result-video" style="border: 1px solid blue; width: 800px;"></img>
-        <div id="connectedbuttons">
-            <div id="connectedstatus">
-                <p id="connectedlabel">Connected: <%- api_connected %></p>
-                <button id="connectbutton" onclick="connect()">Connect</button>
+        <canvas id="result-video" style="border: 1px solid blue; width: 800px;"></img>
+            <div id="connectedbuttons">
+                <div id="connectedstatus">
+                    <p id="connectedlabel">Connected: <%- api_connected %></p>
+                    <button id="connectbutton" onclick="connect()">Connect</button>
+                </div>
+                <div id="buttons">
+                    <button id="take_picture" onclick="take_picture()">Take picture</button>
+                    <br>
+                    <button id="arm_disarm" onclick="arm_disarm()">Arm/Disarm</button>
+                </div>
             </div>
-            <div id="buttons">
-                <button id="take_picture" onclick="take_picture()">Take picture</button>
-                <br>
-                <button id="arm_disarm" onclick="arm_disarm()">Arm/Disarm</button>
-            </div>
-        </div>
-        <div id="controls">
-            <h2>Controls</h2>
-            <div id="buttons">
-                <button class="movebutton" id="button_turnleft">Turn left</button>
-                <button class="movebutton" id="button_turnright">Turn right</button>
-                <button class="movebutton" id="button_up">Up</button>
-                <button class="movebutton" id="button_down">Down</button>
-                <button class="movebutton" id="button_forward">Forward</button>
-                <button class="movebutton" id="button_backward">Backward</button>
-                <button class="movebutton" id="button_left">Left</button>
-                <button class="movebutton" id="button_right">Right</button>
-                <button id="button_stop" onclick="stop()">Stop</button>
-                <button id="button_estop" onclick="estop()"><strong>Emergency Stop</strong></button>
+            <div id="controls">
+                <h2>Controls</h2>
+                <div id="buttons">
+                    <button class="movebutton" id="button_turnleft">Turn left</button>
+                    <button class="movebutton" id="button_turnright">Turn right</button>
+                    <button class="movebutton" id="button_up">Up</button>
+                    <button class="movebutton" id="button_down">Down</button>
+                    <button class="movebutton" id="button_forward">Forward</button>
+                    <button class="movebutton" id="button_backward">Backward</button>
+                    <button class="movebutton" id="button_left">Left</button>
+                    <button class="movebutton" id="button_right">Right</button>
+                    <button id="button_stop" onclick="stop()">Stop</button>
+                    <button id="button_estop" onclick="estop()"><strong>Emergency Stop</strong></button>
 
+                </div>
             </div>
-        </div>
     </div>
     <div class="lastpicture">
         <p>Last picture:</p>
@@ -60,7 +60,22 @@
 
 <script>
     assign_button_callbacks();
-    // connect_to_video_stream();
+    openSocket = () => {
+
+        socket = new WebSocket("ws://10.100.0.40:9002/");
+        let msg = document.getElementById("result-video");
+        socket.addEventListener('open', (e) => {
+            console.log("Connected to video")
+        });
+        socket.addEventListener('message', (e) => {
+            let ctx = msg.getContext("2d");
+            let image = new Image();
+            image.src = URL.createObjectURL(e.data);
+            image.addEventListener("load", (e) => {
+                ctx.drawImage(image, 0, 0, msg.width, msg.height);
+            });
+        });
+    }
 
     // Helper function to decode base64 image and set it as source of <img> element
     function decodeBase64Image(base64Data, imgElement) {
@@ -93,7 +108,7 @@
                     document.getElementById("armed").innerHTML = "Armed: " + data.data.armed;
                     document.getElementById("control_mode").innerHTML = "Control mode: " + data.data.control_mode;
                 } else {
-                    decodeBase64Image(data.image, document.getElementById("result-video"));
+                    // decodeBase64Image(data.image, document.getElementById("result-video"));
                 }
             } catch (error) {
                 console.error(error);
