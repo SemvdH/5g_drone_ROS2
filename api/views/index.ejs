@@ -45,7 +45,9 @@
     </div>
     <div class="lastpicture">
         <p>Last picture:</p>
-        <img id="picture" style="width: 400px;">
+        <div id="lastimg">
+            <img id="picture" style="width: 400px;">
+        </div>
         <h2>Drone status</h2>
         <p id="batterypercentage">Battery percentage</p>
         <p id="cpuload">CPU load</p>
@@ -213,8 +215,8 @@
         console.log("take picture");
         var image = new Image();
         image.src = document.getElementById("result-video").toDataURL;
-        document.getElementById("picture").innerHTML = "";
-        document.getElementById("picture").appendChild(image);
+        document.getElementById("lastimg").innerHTML = "";
+        document.getElementById("lastimg").appendChild(image);
     }
 
     function arm_disarm() {
