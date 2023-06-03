@@ -34,8 +34,8 @@ class CameraController(Node):
         self.server = None
         self.event_loop = None
 
-        self.websocket_thread = threading.Thread(target=self.start_listening)
-        self.websocket_thread.start()
+        # self.websocket_thread = threading.Thread(target=self.start_listening)
+        # self.websocket_thread.start()
 
         self.video_thread = threading.Thread(target=self.setup_websocket)
         self.video_thread.start()
