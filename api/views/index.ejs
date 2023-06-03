@@ -211,7 +211,10 @@
 
     function take_picture() {
         console.log("take picture");
-        document.getElementById("picture").src = document.getElementById("result-video").src;
+        var image = new Image();
+        image.src = d0cument.getElementById("result-video").toDataURL;
+        document.getElementById("picture").innerHTML = "";
+        document.getElementById("picture").appendChild(image);
     }
 
     function arm_disarm() {
