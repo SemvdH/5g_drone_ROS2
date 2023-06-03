@@ -215,6 +215,7 @@
         console.log("take picture");
         var image = new Image();
         image.src = document.getElementById("result-video").toDataURL();
+        image.width = 400;
         document.getElementById("lastimg").innerHTML = "";
         document.getElementById("lastimg").appendChild(image);
     }
