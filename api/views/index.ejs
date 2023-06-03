@@ -106,7 +106,7 @@
             try {
                 const data = JSON.parse(event.data);
                 if (data.type == "STATUS") {
-                    document.getElementById("batterypercentage").innerHTML = "Battery percentage: " + data.data.battery_percentage;
+                    document.getElementById("batterypercentage").innerHTML = "Battery percentage: " + data.data.battery_percentage.toString().substring(0,4);
                     document.getElementById("cpuload").innerHTML = "CPU load: " + data.data.cpu_usage.toString().substring(0, 6).substring(2, 4) + "%";
                     document.getElementById("armed").innerHTML = "Armed: " + data.data.armed;
                     document.getElementById("control_mode").innerHTML = "Control mode: " + data.data.control_mode;
