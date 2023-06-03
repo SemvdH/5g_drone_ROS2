@@ -9,12 +9,12 @@
     <title>5G drone API</title>
 </head>
 
-<body style="height: 100%;" onload="opensocket()">
+<body style="height: 100%;">
     <h1 class="header">5G Drone API</h1>
     <!-- <div class="video"> -->
     <div class="mainvideo">
         <p>Camera view:</p>
-        <canvas id="result-video" style="border: 1px solid blue; width: 800px;"></img>
+        <canvas id="result-video" style="border: 1px solid blue; width: 800px;">
             <div id="connectedbuttons">
                 <div id="connectedstatus">
                     <p id="connectedlabel">Connected: <%- api_connected %></p>
@@ -114,6 +114,8 @@
                 console.error(error);
             }
         }
+
+        openSocket();
     };
 
     function assign_button_callbacks() {
@@ -262,6 +264,7 @@
                     document.getElementById("connectedlabel").innerHTML = "Connected: true";
                     document.getElementById("connectbutton").disabled = true;
                     // connect_to_video_stream();
+                    
                 }
             } else {
                 console.log("error");
