@@ -71,7 +71,7 @@ class CameraController(Node):
             try:
                 while(vid.isOpened()):
                     img, frame = vid.read()
-                    self.get_logger().info("frame before: " + str(frame.shape))
+                    # self.get_logger().info("frame before: " + str(frame.shape))
                     #frame = cv2.resize(frame,(RES_4K_W,RES_4K_H))
                     #print("frame after: " + str(frame.shape))
                     encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), 100]
