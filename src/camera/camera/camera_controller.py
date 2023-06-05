@@ -85,9 +85,9 @@ class CameraController(Node):
                     man = cv2.imencode('.jpg', frame)[1]
                     #sender(man)
                     await websocket.send(man.tobytes())
-                self.get_logger.error("Not opened")
+                self.get_logger().error("Not opened")
             except Exception as e:
-                self.get_logger.error("error " + str(e))
+                self.get_logger().error("error " + str(e))
 
 
     def handle_video_connection(self):
