@@ -8,6 +8,7 @@ from drone_services.msg import DroneArmStatus
 from drone_services.msg import DroneRouteStatus
 from px4_msgs.msg import BatteryStatus
 from px4_msgs.msg import Cpuload
+from px4_msgs.msg import VehicleOdometry
 
 CONTROL_MODE_ATTITUDE = 1
 CONTROL_MODE_VELOCITY = 2
@@ -27,15 +28,17 @@ class DroneStatusNode(Node):
         self.publisher = self.create_publisher(
             DroneStatus, '/drone/status', 10)
         self.control_mode_subscriber = self.create_subscription(
-            DroneControlMode, '/drone/control_mode', self.control_mode_callback, 10)
+            DroneControlMode, '/drone/control_mode', self.control_mode_callback, qos_profile=qos_profile)
         self.arm_status_subscriber = self.create_subscription(
-            DroneArmStatus, '/drone/arm_status', self.arm_status_callback, 10)
+            DroneArmStatus, '/drone/arm_status', self.arm_status_callback, qos_profile=qos_profile)
         self.route_status_subscriber = self.create_subscription(
-            DroneRouteStatus, '/drone/route_status', self.route_status_callback, 10)
+            DroneRouteStatus, '/drone/route_status', self.route_status_callback, qos_profile=qos_profile)
         self.battery_status_subscriber = self.create_subscription(
             BatteryStatus, '/fmu/out/battery_status', self.battery_status_callback, qos_profile=qos_profile)
         self.cpu_load_subscriber = self.create_subscription(
             Cpuload, '/fmu/out/cpuload', self.cpu_load_callback, qos_profile=qos_profile)
+        self.vehicle_odometry_subscriber = self.create_subscription(
+            VehicleOdometry, "/fmu/out/vehicle_odometry", self.vehicle_odometry_callback, qos_profile=qos_profile)
         # publish every 0.5 seconds
         self.timer = self.create_timer(0.5, self.publish_status)
         self.armed = False
@@ -43,6 +46,8 @@ class DroneStatusNode(Node):
         self.battery_percentage = 100.0
         self.cpu_usage = 0.0
         self.route_setpoint = 0
+        self.position = []
+        self.velocity = []
 
     def publish_status(self):
         msg = DroneStatus()
@@ -51,6 +56,8 @@ class DroneStatusNode(Node):
         msg.battery_percentage = self.battery_percentage
         msg.cpu_usage = self.cpu_usage
         msg.route_setpoint = self.route_setpoint
+        msg.position = self.position
+        msg.velocity = self.velocity
         self.publisher.publish(msg)
         self.get_logger().info('Publishing status message')
 
@@ -75,6 +82,11 @@ class DroneStatusNode(Node):
 
     def cpu_load_callback(self, msg):
         self.cpu_usage = msg.load
+
+    def vehicle_odometry_callback(self, msg):
+        self.position = msg.position
+        self.velocity = msg.velocity
+        
 
 
 def main(args=None):
