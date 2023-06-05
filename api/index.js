@@ -164,9 +164,9 @@ app.post("/land", function (req, res) {
 });
 
 app.post("/arm_disarm", function (req, res) {
-    console.log("got arm/disarm request");
-    var request = JSON.stringify({ command: 1 });
-    ws.send(request);
+  console.log("got arm/disarm request");
+  var request = JSON.stringify({ command: 1 });
+  ws.send(request);
 });
 
 app.get("/connect", function (req, res) {
@@ -174,6 +174,7 @@ app.get("/connect", function (req, res) {
   connect_to_api();
   setTimeout(function () {
     if (api_connected) {
+      console.log("Connected to API");
       res.status(200).json({ connected: true });
     } else {
       received_error = false;
