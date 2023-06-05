@@ -104,6 +104,7 @@ class ApiListener(Node):
 
         self.event_loop = None
         self.armed = False
+        self.failsafe_enabled = False
     
     def wait_for_service(self,client,service_name):
         """Waits for a client service to be available
@@ -147,6 +148,9 @@ class ApiListener(Node):
         Args:
             msg (FailSAfe): The message that was received
         """
+        if self.failsafe_enabled:
+            return
+        
         self.status_data['failsafe'] = msg.enabled
         self.message_queue.append(json.dumps(
                     {'type': ResponseMessage.FAILSAFE.name, 'message': msg.msg}))

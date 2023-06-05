@@ -256,17 +256,16 @@ public:
      */
     void check_lidar_health()
     {
-        if (!this->received_lidar_message && !this->failsafe_enabled && this->lidar_health_checks > 20)
+        if (this->has_received_first_lidar_message)
         {
-            RCLCPP_WARN(this->get_logger(), "Lidar not sending messages, enabling failsafe");
-            enable_failsafe(u"No healthy connection to LIDAR! Check the LIDAR USB cable and restart the drone.");
+            if (!this->received_lidar_message)
+            {
+                RCLCPP_WARN(this->get_logger(), "Lidar not sending messages, enabling failsafe");
+                enable_failsafe(u"No healthy connection to LIDAR! Check the LIDAR USB cable and restart the drone.");
+            }
         }
         this->received_lidar_message = false;
         this->has_received_first_lidar_message = true;
-        if (this->lidar_health_checks <= 20)
-        {
-            this->lidar_health_checks++;
-        }
     }
 
     /**
