@@ -13,7 +13,7 @@
     <h1 class="header">5G Drone API</h1>
     <!-- <div class="video"> -->
     <div class="mainvideo">
-        <p>Camera view:</p>
+        <p id="cameraview">Camera view:</p>
         <canvas id="result-video" style="border: 1px solid blue;" width="800" height="600"></canvas>
             <div id="connectedbuttons">
                 <div id="connectedstatus">
@@ -64,10 +64,12 @@
     assign_button_callbacks();
     openSocket = () => {
 
+        document.getElementById("cameraview").innerHTML = "Camera view: Connecting...";
         socket = new WebSocket("ws://10.100.0.40:9002/");
         let msg = document.getElementById("result-video");
         socket.addEventListener('open', (e) => {
             console.log("Connected to video")
+            document.getElementById("cameraview").innerHTML = "Camera view: Connected";
         });
         socket.addEventListener('message', (e) => {
             let ctx = msg.getContext("2d");
@@ -77,6 +79,10 @@
             image.addEventListener("load", (e) => {
                 ctx.drawImage(image, 0, 0, 800, 600);
             });
+        });
+        socket.addEventListener('close', (e) => {
+            console.log("Disconnected from video")
+            document.getElementById("cameraview").innerHTML = "Camera view: Disconnected. Reload the page to reconnect";
         });
     }
 

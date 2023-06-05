@@ -256,14 +256,14 @@ public:
      */
     void check_lidar_health()
     {
-        if (!this->received_lidar_message && !this->failsafe_enabled && this->lidar_health_checks > 10)
+        if (!this->received_lidar_message && !this->failsafe_enabled && this->lidar_health_checks > 20)
         {
             RCLCPP_WARN(this->get_logger(), "Lidar not sending messages, enabling failsafe");
-            enable_failsafe(u"No healthy connection to LIDAR!");
+            enable_failsafe(u"No healthy connection to LIDAR! Check the LIDAR USB cable and restart the drone.");
         }
         this->received_lidar_message = false;
         this->has_received_first_lidar_message = true;
-        if (this->lidar_health_checks <= 10)
+        if (this->lidar_health_checks <= 20)
         {
             this->lidar_health_checks++;
         }
@@ -297,7 +297,7 @@ public:
         if (!this->failsafe_enabled)
         {
             if (!this->has_received_first_lidar_message) {
-                this->enable_failsafe(u"Waiting for LIDAR timed out! Consider restarting the drone.");
+                this->enable_failsafe(u"Waiting for LIDAR timed out! Check the LIDAR USB connection and consider restarting the drone.");
                 return;
             }
             RCLCPP_INFO(this->get_logger(), "Incoming request\nfront_back: %f\nleft_right: %f\nup_down: %f\nangle: %f", request->front_back, request->left_right, request->up_down, request->angle);
