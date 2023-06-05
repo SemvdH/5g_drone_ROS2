@@ -235,6 +235,8 @@ class ApiListener(Node):
             
 
     def send_available_commands(self):
+        """Sends the available commands to the client
+        """
         print('Sending available commands')
         requestcommands = {}
         messagetypes = {}
@@ -249,6 +251,11 @@ class ApiListener(Node):
             {'type': ResponseMessage.ALL_REQUESTS_RESPONSES.name, 'data': result}))
 
     def handle_direction_message(self, message):
+        """Calls the move position service with the given values
+
+        Args:
+            message (JSON object): the message containing the direction values
+        """
         self.move_position_request.up_down = float(message['up_down'])
         self.move_position_request.left_right = float(message['left_right'])
         self.move_position_request.front_back = float(
@@ -260,6 +267,7 @@ class ApiListener(Node):
         self.send_move_position_request()
 
     def send_move_position_request(self):
+        """Sends the move position request to the move position service"""
         try:
             self.future = self.move_position_client.call_async(
                 self.move_position_request)
@@ -281,6 +289,7 @@ class ApiListener(Node):
                 'Something went wrong while sending a move position request!\n' + str(e))
             
     def emergency_stop(self):
+        """Sends an emergency stop request to the failsafe service"""
         try:
             self.enable_failsafe_request.message = "Emergency stop activated"
             future = self.enable_failsafe_client.call_async(self.enable_failsafe_request)
@@ -292,6 +301,7 @@ class ApiListener(Node):
             self.get_logger().error("Something went wrong while trying to enable failsafe!\n" + str(e))
 
     def takeoff(self):
+        """Sends a takeoff request to the move position service"""
         self.get_logger().info('Takeoff command received')
         self.move_position_request.up_down = 0.1
         self.move_position_request.left_right = 0.0
@@ -300,6 +310,7 @@ class ApiListener(Node):
         self.send_move_position_request()
 
     def land(self):
+        """Sends a land request to the move position service"""
         self.get_logger().info('Land command received')
         self.move_position_request.up_down = -0.1
         self.move_position_request.left_right = 0.0
@@ -308,6 +319,7 @@ class ApiListener(Node):
         self.send_move_position_request()
 
     def arm_disarm(self):
+        """Sends an arm or disarm request to the PX4Controller"""
         if self.armed:
             self.get_logger().info('Disarm command received')
             future = self.disarm_drone_client.call_async(self.disarm_drone_request)
@@ -324,6 +336,7 @@ class ApiListener(Node):
                 self.get_logger().info('Arm service call success')
 
     def consume_message(self, message):
+        """Consumes a message from the client"""
         self.get_logger().info(f'Consuming message: {message}')
         try:
             message_json = json.loads(str(message))
@@ -369,6 +382,11 @@ class ApiListener(Node):
             self.get_logger().error(str(e))
 
     async def api_handler(self, websocket):
+        """Handles the websocket connection
+
+        Args:
+            websocket (websockets object): the websocket connection
+        """
         self.get_logger().info('New connection')
         # if self.websocket is not None:
         #     self.get_logger().error('Got a new websocket connection but I am already connected!')
@@ -390,6 +408,7 @@ class ApiListener(Node):
 
 
 def main(args=None):
+    """Main function"""
     rclpy.init(args=args)
 
     api_listener = ApiListener()
