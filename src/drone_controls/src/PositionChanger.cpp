@@ -256,12 +256,13 @@ public:
      */
     void check_lidar_health()
     {
-        if (!this->received_lidar_message)
+        if (!this->received_lidar_message && !this->failsafe_enabled && this->lidar_health_checks > 10)
         {
             RCLCPP_WARN(this->get_logger(), "Lidar not sending messages, enabling failsafe");
             enable_failsafe(u"No healthy connection to LIDAR!");
         }
         this->received_lidar_message = false;
+        this->lidar_health_checks++;
     }
 
     /**
@@ -366,6 +367,7 @@ private:
     float collision_prevention_weights[4] = {0}; // the amount to move away from an object in a certain direction if the drone is too close
     bool failsafe_enabled = false;
     bool received_lidar_message = false;
+    char lidar_health_checks = 0;
 
     /**
      * @brief waits for a service to be available
