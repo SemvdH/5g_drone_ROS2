@@ -192,9 +192,6 @@ class ApiListener(Node):
             if len(self.message_queue) > 0 and self.websocket is not None:
                 self.get_logger().info("sending message")
                 asyncio.run(self.publish_message(self.message_queue.pop(0)))
-            else:
-                if self.websocket is None:
-                    self.get_logger().error("No websocket connection")
 
     def start_api_thread(self):
         """Starts the API thread"""
