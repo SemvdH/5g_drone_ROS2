@@ -133,6 +133,8 @@ class ApiListener(Node):
         try:
             self.status_data_received = True
             self.status_data['battery_percentage'] = msg.battery_percentage
+            if msg.battery_percentage < 0.15:
+                self.enable_failsafe("Battery level too low! Failsafe enabled to prevent damage to battery")
             self.status_data['cpu_usage'] = msg.cpu_usage
             self.status_data['armed'] = msg.armed
             self.armed = msg.armed
@@ -300,17 +302,20 @@ class ApiListener(Node):
             self.get_logger().error(
                 'Something went wrong while sending a move position request!\n' + str(e))
             
-    def emergency_stop(self):
-        """Sends an emergency stop request to the failsafe service"""
+    def enable_failsafe(self, message):
         try:
-            self.enable_failsafe_request.message = "Emergency stop activated"
+            self.enable_failsafe_request.message = message
             future = self.enable_failsafe_client.call_async(self.enable_failsafe_request)
             rclpy.spin_until_future_complete(self, future)
             result = future.result()
             if (result.enabled == True):
-                self.get_logger().info("Emergency stop activated")
+                self.get_logger().info("Failsafe activated")
         except Exception as e:
             self.get_logger().error("Something went wrong while trying to enable failsafe!\n" + str(e))
+
+    def emergency_stop(self):
+        """Sends an emergency stop request to the failsafe service"""
+        self.enable_failsafe("Emergency stop activated")
 
     def takeoff(self):
         """Sends a takeoff request to the move position service"""
