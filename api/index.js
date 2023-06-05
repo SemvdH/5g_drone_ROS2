@@ -18,7 +18,7 @@ var ws;
 var api_connected = false;
 
 function send_events_to_clients(data) {
-  //   console.log("sending events to clients");
+    console.log("sending events to clients");
   sse_clients.forEach((client) => {
     client.response.write("event: message\n");
     client.response.write("data:" + JSON.stringify(data) + "\n\n");

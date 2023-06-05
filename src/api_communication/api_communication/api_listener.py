@@ -187,8 +187,8 @@ class ApiListener(Node):
         """Thread to handle responses to send to the client
         """
         while True:
-            if len(self.message_queue) > 0 and self.websocket is not None and self.event_loop is not None:
-                # self.get_logger().info("sending message")
+            if len(self.message_queue) > 0 and self.websocket is not None:
+                self.get_logger().info("sending message")
                 asyncio.run(self.publish_message(self.message_queue.pop(0)))
 
     def start_api_thread(self):
