@@ -130,18 +130,20 @@ class ApiListener(Node):
         Args:
             msg (DroneStatus): The received message 
         """
-        self.status_data_received = True
-        self.status_data['battery_percentage'] = msg.battery_percentage
-        self.status_data['cpu_usage'] = msg.cpu_usage
-        self.status_data['armed'] = msg.armed
-        self.armed = msg.armed
-        self.status_data['control_mode'] = msg.control_mode
-        self.status_data['route_setpoint'] = msg.route_setpoint
-        self.status_data['velocity'] = msg.velocity
-        self.status_data['position'] = msg.position
-        self.status_data['failsafe'] = msg.failsafe
-        self.status_data['velocity'] = msg.velocity
-        self.status_data['position'] = msg.position
+        try:
+            self.status_data_received = True
+            self.status_data['battery_percentage'] = msg.battery_percentage
+            self.status_data['cpu_usage'] = msg.cpu_usage
+            self.status_data['armed'] = msg.armed
+            self.armed = msg.armed
+            self.status_data['control_mode'] = msg.control_mode
+            self.status_data['route_setpoint'] = msg.route_setpoint
+            self.status_data['velocity'] = [msg.velocity[0], msg.velocity[1], msg.velocity[2]]
+            self.status_data['position'] = [msg.position[0], msg.position[1], msg.position[2]]
+            self.status_data['failsafe'] = msg.failsafe
+        except Exception as e:
+            self.get_logger().error(
+                f'Error while parsing drone status message: {e}')
 
     def failsafe_callback(self, msg):
         """Callback for when the failsafe gets enabled. Queues a FAILSAFE message to the client
@@ -190,6 +192,9 @@ class ApiListener(Node):
             if len(self.message_queue) > 0 and self.websocket is not None:
                 self.get_logger().info("sending message")
                 asyncio.run(self.publish_message(self.message_queue.pop(0)))
+            else:
+                if self.websocket is None:
+                    self.get_logger().error("No websocket connection")
 
     def start_api_thread(self):
         """Starts the API thread"""
