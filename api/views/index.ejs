@@ -110,7 +110,7 @@
                     document.getElementById("cpuload").innerHTML = "CPU load: " + data.data.cpu_usage.toString().substring(0, 6).substring(2, 4) + "%";
                     document.getElementById("armed").innerHTML = "Armed: " + data.data.armed;
                     document.getElementById("control_mode").innerHTML = "Control mode: " + data.data.control_mode;
-                    document.getElementById("speed").innerHTML = "Current speed (m/s): x: " + data.data.speed[0] + " y: " + data.data.speed[1] + " z: " + data.data.speed[2];
+                    document.getElementById("speed").innerHTML = "Current speed (m/s): x: " + data.data.velocity[0] + " y: " + data.data.velocity[1] + " z: " + data.data.velocity[2];
                     document.getElementById("position").innerHTML = "Current position (m): x: " + data.data.position[0] + " y: " + data.data.position[1] + " z: " + data.data.position[2];
                 } else if (data.type == "FAILSAFE") {
                     document.getElementById("failsafe").innerHTML = "Failsafe: ENABLED";

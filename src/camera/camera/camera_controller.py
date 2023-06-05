@@ -58,7 +58,14 @@ class CameraController(Node):
 
     def setup_websocket(self):
         loop = asyncio.new_event_loop()
-        start_server = websockets.serve(self.websocket_video, "0.0.0.0", 9002,loop=loop)
+        connected = False
+        while not connected:
+            try:
+                start_server = websockets.serve(self.websocket_video, "0.0.0.0", 9002,loop=loop)
+                connected = True
+            except Exception as e:
+                self.get_logger().error("error " + str(e))
+                connected = False 
         loop.run_until_complete(start_server)
         loop.run_forever()
     
