@@ -17,7 +17,7 @@
         <canvas id="result-video" style="border: 1px solid blue;" width="800" height="600"></canvas>
             <div id="connectedbuttons">
                 <div id="connectedstatus">
-                    <p id="connectedlabel">Connected: <%- api_connected %></p>
+                    <p id="connectedlabel">Not connected to drone</p>
                     <button id="connectbutton" onclick="connect()">Connect</button>
                 </div>
                 <div id="buttons">
@@ -292,14 +292,14 @@
                 if (this.responseText.length > 0) {
                     var status = JSON.parse(this.responseText);
                     // console.log(status)
-                    document.getElementById("connectedlabel").innerHTML = "Connected: true";
+                    document.getElementById("connectedlabel").innerHTML = "Connected to drone";
                     document.getElementById("connectbutton").disabled = true;
                     // connect_to_video_stream();
                     
                 }
             } else {
                 console.log("error");
-                document.getElementById("connectedlabel").innerHTML = "Connected: false";
+                document.getElementById("connectedlabel").innerHTML = "Not connected to drone";
                 if (!received) {
                     alert("Could not connect to API!");
                     received = true;
