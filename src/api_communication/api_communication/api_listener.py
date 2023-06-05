@@ -304,6 +304,7 @@ class ApiListener(Node):
             
     def enable_failsafe(self, message):
         try:
+            self.get_logger().info("Enabling failsafe")
             self.enable_failsafe_request.message = message
             future = self.enable_failsafe_client.call_async(self.enable_failsafe_request)
             rclpy.spin_until_future_complete(self, future)
