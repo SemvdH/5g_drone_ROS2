@@ -138,8 +138,8 @@ class ApiListener(Node):
             self.armed = msg.armed
             self.status_data['control_mode'] = msg.control_mode
             self.status_data['route_setpoint'] = msg.route_setpoint
-            self.status_data['velocity'] = [float(msg.velocity[0]), float(msg.velocity[1]), float(msg.velocity[2])]
-            self.status_data['position'] = [float(msg.position[0]), float(msg.position[1]), float(msg.position[2])]
+            self.status_data['velocity'] = [int(msg.velocity[0]), int(msg.velocity[1]), int(msg.velocity[2])]
+            self.status_data['position'] = [int(msg.position[0]), int(msg.position[1]), int(msg.position[2])]
             self.status_data['failsafe'] = msg.failsafe
         except Exception as e:
             self.get_logger().error(
@@ -166,7 +166,7 @@ class ApiListener(Node):
         Args:
             message (JSON object): the message to send
         """
-        self.get_logger().info(f'Publishing message: {message}')
+        # self.get_logger().info(f'Publishing message: {message}')
         if self.websocket is not None:
             try:
                 await self.websocket.send(message)
@@ -193,7 +193,7 @@ class ApiListener(Node):
         """
         while True:
             if len(self.message_queue) > 0 and self.websocket is not None:
-                self.get_logger().info("sending message")
+                # self.get_logger().info("sending message")
                 asyncio.run(self.publish_message(self.message_queue.pop(0)))
 
     def start_api_thread(self):
