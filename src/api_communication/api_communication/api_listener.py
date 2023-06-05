@@ -138,8 +138,8 @@ class ApiListener(Node):
             self.armed = msg.armed
             self.status_data['control_mode'] = msg.control_mode
             self.status_data['route_setpoint'] = msg.route_setpoint
-            self.status_data['velocity'] = [msg.velocity[0], msg.velocity[1], msg.velocity[2]]
-            self.status_data['position'] = [msg.position[0], msg.position[1], msg.position[2]]
+            self.status_data['velocity'] = [float(msg.velocity[0]), float(msg.velocity[1]), float(msg.velocity[2])]
+            self.status_data['position'] = [float(msg.position[0]), float(msg.position[1]), float(msg.position[2])]
             self.status_data['failsafe'] = msg.failsafe
         except Exception as e:
             self.get_logger().error(
@@ -182,8 +182,11 @@ class ApiListener(Node):
         if self.status_data_received:
             self.status_data_received = False
             if self.websocket is not None:
-                self.message_queue.append(json.dumps(
-                    {'type': ResponseMessage.STATUS.name, 'data': self.status_data}))
+                try:
+                    self.message_queue.append(json.dumps({'type': ResponseMessage.STATUS.name, 'data': self.status_data}))
+                except Exception as e:
+                    self.get_logger().error(
+                        'Something went wrong while publishing the status: ' + str(e))
 
     def handle_responses(self):
         """Thread to handle responses to send to the client
