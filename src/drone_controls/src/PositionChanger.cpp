@@ -223,7 +223,8 @@ public:
      */
     void handle_lidar_message(const drone_services::msg::LidarReading::SharedPtr message)
     {
-
+        this->has_received_first_lidar_message = true;
+        
         this->received_lidar_message = true;
         if (message->sensor_1 > 0)
         {
@@ -265,7 +266,6 @@ public:
             }
         }
         this->received_lidar_message = false;
-        this->has_received_first_lidar_message = true;
     }
 
     /**
