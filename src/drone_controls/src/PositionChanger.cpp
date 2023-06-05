@@ -262,7 +262,11 @@ public:
             enable_failsafe(u"No healthy connection to LIDAR!");
         }
         this->received_lidar_message = false;
-        this->lidar_health_checks++;
+        this->has_received_first_lidar_message = true;
+        if (this->lidar_health_checks <= 10)
+        {
+            this->lidar_health_checks++;
+        }
     }
 
     /**
@@ -292,6 +296,10 @@ public:
     {
         if (!this->failsafe_enabled)
         {
+            if (!this->has_received_first_lidar_message) {
+                this->enable_failsafe(u"Waiting for LIDAR timed out! Consider restarting the drone.");
+                return;
+            }
             RCLCPP_INFO(this->get_logger(), "Incoming request\nfront_back: %f\nleft_right: %f\nup_down: %f\nangle: %f", request->front_back, request->left_right, request->up_down, request->angle);
             if (request->angle > 360 || request->angle < -360)
             {
@@ -367,7 +375,8 @@ private:
     float collision_prevention_weights[4] = {0}; // the amount to move away from an object in a certain direction if the drone is too close
     bool failsafe_enabled = false;
     bool received_lidar_message = false;
-    char lidar_health_checks = 0;
+    int lidar_health_checks = 0;
+    bool has_received_first_lidar_message = false;
 
     /**
      * @brief waits for a service to be available
