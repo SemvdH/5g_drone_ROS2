@@ -82,7 +82,6 @@ var connect_to_api = function () {
 
 function send_image_data_to_clients(videoData) {
   sse_clients.forEach((client) => {
-
     // Set the SSE event name as 'message'
     client.response.write("event: message\n");
 
@@ -98,7 +97,7 @@ function send_image_data_to_clients(videoData) {
 
 // Define the endpoint to receive video data
 app.post("/video", (req, res) => {
-    // console.log("got video endpoint")
+  // console.log("got video endpoint")
   let videoData = Buffer.from("");
 
   req.on("data", (chunk) => {
@@ -109,7 +108,7 @@ app.post("/video", (req, res) => {
   req.on("end", () => {
     // Process the received video data
     //   console.log("Received video data:" + videoData.length);
-      send_image_data_to_clients(videoData); 
+    send_image_data_to_clients(videoData);
 
     // Send a response indicating successful receipt
     res.sendStatus(200);
@@ -150,6 +149,26 @@ app.post("/move", function (req, res) {
   ws.send(request);
 });
 
+app.post("/estop", function (req, res) {
+  console.log("got estop request");
+  var request = JSON.stringify({
+    command: 6,
+  });
+  ws.send(request);
+});
+
+app.post("/land", function (req, res) {
+  console.log("got land request");
+  var request = JSON.stringify({ command: 0 });
+  ws.send(request);
+});
+
+app.post("/arm_disarm", function (req, res) {
+    console.log("got arm/disarm request");
+    var request = JSON.stringify({ command: 1 });
+    ws.send(request);
+});
+
 app.get("/connect", function (req, res) {
   console.log("got connect request");
   connect_to_api();
@@ -164,7 +183,7 @@ app.get("/connect", function (req, res) {
 });
 
 app.get("/test", function (req, res) {
-    res.render("test");
+  res.render("test");
 });
 
 app.listen(8080);

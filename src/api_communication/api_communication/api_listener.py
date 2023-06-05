@@ -5,6 +5,9 @@ from drone_services.msg import DroneStatus
 from drone_services.msg import FailsafeMsg
 from drone_services.srv import TakePicture
 from drone_services.srv import MovePosition
+from drone_services.srv import EnableFailsafe
+from drone_services.srv import ArmDrone
+from drone_services.srv import DisarmDrone
 
 import asyncio
 import websockets.server
@@ -26,9 +29,12 @@ RES_4K_W = 4656
 # TODO change video to be handled by camera controller through websocket with different port
 
 class RequestCommand(Enum):
+    """
+    Enum for the commands that can be sent to the API
+    """
     GET_COMMANDS_TYPES = -1  # to get the available commands and types
-    TAKEOFF = 0
-    LAND = 1
+    LAND = 0
+    ARM_DISARM = 1
     MOVE_POSITION = 2
     MOVE_DIRECTION = 3
     TAKE_PICTURE = 5
@@ -36,6 +42,9 @@ class RequestCommand(Enum):
 
 
 class ResponseMessage(Enum):
+    """
+    Enum for the messages that can be sent to the client
+    """
     ALL_REQUESTS_RESPONSES = -1
     STATUS = 0
     IMAGE = 1
@@ -44,6 +53,9 @@ class ResponseMessage(Enum):
 
 
 class ApiListener(Node):
+    """
+    Node that listens to the client and sends the commands to the drone
+    """
     def __init__(self):
         super().__init__('api_listener')
         self.get_logger().info('ApiListener node started')
@@ -52,28 +64,28 @@ class ApiListener(Node):
         self.failsafe_subscriber = self.create_subscription(FailsafeMsg, "/drone/failsafe", self.failsafe_callback, 10)
 
         self.timer = self.create_timer(1, self.publish_status)
-        waiting = 0
+
         self.take_picture_client = self.create_client(
             TakePicture, '/drone/picture')
-        while not self.take_picture_client.wait_for_service(timeout_sec=1.0):
-            if (waiting > 10):
-                self.get_logger().error(
-                    'Take picture service not available, exiting...')
-                exit(-1)
-            self.get_logger().info('Take picture service not available, waiting again...')
-            waiting = waiting + 1
+        self.wait_for_service(self.take_picture_client, "Take picture")
         self.take_picture_request = TakePicture.Request()
+
         self.move_position_client = self.create_client(
             MovePosition, '/drone/move_position')
-        waiting = 0
-        while not self.move_position_client.wait_for_service(timeout_sec=1.0):
-            if (waiting > 10):
-                self.get_logger().error(
-                    'Move position service not available, exiting...')
-                exit(-1)
-            self.get_logger().info('Move position service not available, waiting again...')
-            waiting = waiting + 1
+        self.wait_for_service(self.move_position_client, "Move position")
         self.move_position_request = MovePosition.Request()
+
+        self.enable_failsafe_client = self.create_client(EnableFailsafe, "/drone/enable_failsafe")
+        self.wait_for_service(self.enable_failsafe_client, "Enable failsafe")
+        self.enable_failsafe_request = EnableFailsafe.Request()
+
+        self.arm_drone_client = self.create_client(ArmDrone, "/drone/arm")
+        self.wait_for_service(self.arm_drone_client, "Arm drone")
+        self.arm_drone_request = ArmDrone.Request()
+
+        self.disarm_drone_client = self.create_client(DisarmDrone, "/drone/disarm")
+        self.wait_for_service(self.disarm_drone_client, "Disarm drone")
+        self.disarm_drone_request = DisarmDrone.Request()
 
         self.status_data = {}
         self.status_data_received = False
@@ -91,12 +103,36 @@ class ApiListener(Node):
         self.response_thread.start()
 
         self.event_loop = None
+        self.armed = False
+    
+    def wait_for_service(self,client,service_name):
+        """Waits for a client service to be available
+
+        Args:
+            client (ROS2 service client): The client to use to wait fo the service
+            service_name (str): The client name for logging
+        """
+        waiting = 0
+        while not client.wait_for_service(timeout_sec=1.0):
+            if (waiting > 10):
+                self.get_logger().error(
+                    service_name + ' service not available, exiting...')
+                exit(-1)
+            self.get_logger().info(service_name + 'service not available, waiting again...')
+            waiting = waiting + 1
+
 
     def drone_status_callback(self, msg):
+        """Callback for when a drone_status message is received
+
+        Args:
+            msg (DroneStatus): The received message 
+        """
         self.status_data_received = True
         self.status_data['battery_percentage'] = msg.battery_percentage
         self.status_data['cpu_usage'] = msg.cpu_usage
         self.status_data['armed'] = msg.armed
+        self.armed = msg.armed
         self.status_data['control_mode'] = msg.control_mode
         self.status_data['route_setpoint'] = msg.route_setpoint
         self.status_data['velocity'] = msg.velocity
@@ -106,11 +142,21 @@ class ApiListener(Node):
         self.status_data['position'] = msg.position
 
     def failsafe_callback(self, msg):
+        """Callback for when the failsafe gets enabled. Queues a FAILSAFE message to the client
+
+        Args:
+            msg (FailSAfe): The message that was received
+        """
         self.status_data['failsafe'] = msg.enabled
         self.message_queue.append(json.dumps(
                     {'type': ResponseMessage.FAILSAFE.name, 'message': msg.msg}))
 
     async def publish_message(self, message):
+        """publishes a message to the NodeJS client
+
+        Args:
+            message (JSON object): the message to send
+        """
         # self.get_logger().info(f'Publishing message: {message}')
         if self.websocket is not None:
             try:
@@ -122,6 +168,8 @@ class ApiListener(Node):
             self.get_logger().error('Trying to publish message but no websocket connection')
 
     def publish_status(self):
+        """publishes the current status to the client by queueing a STATUS message
+        """
         if self.status_data_received:
             self.status_data_received = False
             if self.websocket is not None:
@@ -129,15 +177,19 @@ class ApiListener(Node):
                     {'type': ResponseMessage.STATUS.name, 'data': self.status_data}))
 
     def handle_responses(self):
+        """Thread to handle responses to send to the client
+        """
         while True:
             if len(self.message_queue) > 0 and self.websocket is not None and self.event_loop is not None:
                 # self.get_logger().info("sending message")
                 asyncio.run(self.publish_message(self.message_queue.pop(0)))
 
     def start_api_thread(self):
+        """Starts the API thread"""
         asyncio.run(self.handle_api())
 
     async def handle_api(self):
+        """Handles the API requests and starts the websockets server"""
         self.get_logger().info('Starting API')
         self.event_loop = asyncio.get_event_loop()
         self.server = await websockets.serve(self.api_handler, '0.0.0.0', 9001)
@@ -145,6 +197,11 @@ class ApiListener(Node):
         await self.server.wait_closed()
 
     def process_image_request(self, message_json):
+        """Processes an image request from the client
+
+        Args:
+            message_json (str): The JSON message received, containing an optional filename for the result image
+        """
         self.get_logger().info('Processing image request')
         if 'filename' in message_json:
             self.get_logger().info(
@@ -156,6 +213,11 @@ class ApiListener(Node):
         
     
     def image_request_callback(self, future):
+        """Callback for when an image request is made from the client"
+
+        Args:
+            future (Future): Future object that holds the result
+        """
         try:
             result_filename = future.result().filename
             self.get_logger().info("Received result filename: " + result_filename)
@@ -217,6 +279,17 @@ class ApiListener(Node):
         except Exception as e:
             self.get_logger().error(
                 'Something went wrong while sending a move position request!\n' + str(e))
+            
+    def emergency_stop(self):
+        try:
+            self.enable_failsafe_request.message = "Emergency stop activated"
+            future = self.enable_failsafe_client.call_async(self.enable_failsafe_request)
+            rclpy.spin_until_future_complete(self, future)
+            result = future.result()
+            if (result.enabled == True):
+                self.get_logger().info("Emergency stop activated")
+        except Exception as e:
+            self.get_logger().error("Something went wrong while trying to enable failsafe!\n" + str(e))
 
     def takeoff(self):
         self.get_logger().info('Takeoff command received')
@@ -234,6 +307,22 @@ class ApiListener(Node):
         self.move_position_request.angle = 0.0
         self.send_move_position_request()
 
+    def arm_disarm(self):
+        if self.armed:
+            self.get_logger().info('Disarm command received')
+            future = self.disarm_drone_client.call_async(self.disarm_drone_request)
+            rclpy.spin_until_future_complete(self, future)
+            self.get_logger().info('publishing message arm msg on service')
+            if future.result().success:
+                self.get_logger().info('Disarm service call success')
+        else:
+            self.get_logger().info('Arm command received')
+            future = self.arm_drone_client.call_async(self.arm_drone_request)
+            rclpy.spin_until_future_complete(self, future)
+            self.get_logger().info('publishing message arm msg on service')
+            if future.result().success:
+                self.get_logger().info('Arm service call success')
+
     def consume_message(self, message):
         self.get_logger().info(f'Consuming message: {message}')
         try:
@@ -246,12 +335,12 @@ class ApiListener(Node):
             else:
                 self.get_logger().info(
                     f'Received command: {message_json["command"]}')
-                if message_json['command'] == RequestCommand.TAKEOFF.value:
-                    self.get_logger().info('Takeoff command received')
-                    self.takeoff()
-                elif message_json['command'] == RequestCommand.LAND.value:
+                if message_json['command'] == RequestCommand.LAND.value:
                     self.get_logger().info('Land command received')
                     self.land()
+                elif message_json['command'] == RequestCommand.ARM_DISARM.value:
+                    self.get_logger().info('Arm/disarm command received')
+                    self.arm_disarm()
                 elif message_json['command'] == RequestCommand.MOVE_POSITION.value:
                     self.get_logger().info('Move position command received')
                 elif message_json['command'] == RequestCommand.MOVE_DIRECTION.value:
@@ -265,7 +354,7 @@ class ApiListener(Node):
                     self.send_available_commands()
                 elif message_json['command'] == RequestCommand.EMERGENCY_STOP.value:
                     self.get_logger().info('Emergency stop command received')
-                    # emergency stop: set to attitude mode and stop, also disarm
+                    self.emergency_stop()
                 else:
                     self.get_logger().error('Received unknown command ' + str(message_json['command']) )
                     self.send_available_commands()

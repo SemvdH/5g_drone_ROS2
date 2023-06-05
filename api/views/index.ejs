@@ -37,7 +37,7 @@
                     <button class="movebutton" id="button_backward">Backward</button>
                     <button class="movebutton" id="button_left">Left</button>
                     <button class="movebutton" id="button_right">Right</button>
-                    <button id="button_stop" onclick="stop()">Stop</button>
+                    <button id="button_land" onclick="land()">Land</button>
                     <button id="button_estop" onclick="estop()"><strong>Emergency Stop</strong></button>
 
                 </div>
@@ -112,6 +112,9 @@
                     document.getElementById("control_mode").innerHTML = "Control mode: " + data.data.control_mode;
                     document.getElementById("speed").innerHTML = "Current speed (m/s): x: " + data.data.speed[0] + " y: " + data.data.speed[1] + " z: " + data.data.speed[2];
                     document.getElementById("position").innerHTML = "Current position (m): x: " + data.data.position[0] + " y: " + data.data.position[1] + " z: " + data.data.position[2];
+                } else if (data.type == "FAILSAFE") {
+                    document.getElementById("failsafe").innerHTML = "Failsafe: ENABLED";
+                    alert("Failsafe enabled! Drone is landing. The failsafe message is: " + data.message);
                 } else {
                     // decodeBase64Image(data.image, document.getElementById("result-video"));
                 }
@@ -208,9 +211,19 @@
         console.log("stop");
         send_move_request(JSON.stringify({ "up_down": 0.0, "forward_backward": 0.0, "left_right": 0.0, "turn_left_right": 0.0 }));
     }
+    function land_takeoff() {
+        console.log("land");
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/land", true);
+        xhr.send();
+
+    }
 
     function estop() {
         console.log("estop");
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/estop", true);
+        xhr.send();
     }
 
     function take_picture() {
@@ -224,6 +237,9 @@
 
     function arm_disarm() {
         console.log("arm/disarm");
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/arm_disarm", true);
+        xhr.send();
     }
 
     function connect_to_video_stream() {
