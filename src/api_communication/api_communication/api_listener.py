@@ -164,7 +164,7 @@ class ApiListener(Node):
         Args:
             message (JSON object): the message to send
         """
-        # self.get_logger().info(f'Publishing message: {message}')
+        self.get_logger().info(f'Publishing message: {message}')
         if self.websocket is not None:
             try:
                 await self.websocket.send(message)
