@@ -32,7 +32,7 @@ class CameraController(Node):
         
         self.websocket = None
         self.server = None
-        self.event_loop = None
+        self.event_loop = None        
 
         # self.websocket_thread = threading.Thread(target=self.start_listening)
         # self.websocket_thread.start()
@@ -93,7 +93,7 @@ class CameraController(Node):
                 error_amount += 1
             if error_amount > 20:
                 self.get_logger().error("Too many errors, closing node")
-                sys.exit(-1)
+                self.destroy_node()
 
 
     def handle_video_connection(self):
