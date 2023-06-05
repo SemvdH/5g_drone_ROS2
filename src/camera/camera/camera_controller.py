@@ -9,7 +9,7 @@ import asyncio
 import websockets.server
 import threading
 import cv2
-
+import sys
 import requests
 
 #resolution of the camera
@@ -74,6 +74,7 @@ class CameraController(Node):
 
         vid.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)
         vid.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
+        error_amount = 0
         while True:
             try:
                 while(vid.isOpened()):
@@ -86,8 +87,13 @@ class CameraController(Node):
                     #sender(man)
                     await websocket.send(man.tobytes())
                 self.get_logger().error("Not opened")
+                error_amount += 1
             except Exception as e:
                 self.get_logger().error("error " + str(e))
+                error_amount += 1
+            if error_amount > 20:
+                self.get_logger().error("Too many errors, closing node")
+                sys.exit(-1)
 
 
     def handle_video_connection(self):
