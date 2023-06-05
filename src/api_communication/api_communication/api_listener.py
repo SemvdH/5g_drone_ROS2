@@ -105,6 +105,7 @@ class ApiListener(Node):
         self.event_loop = None
         self.armed = False
         self.failsafe_enabled = False
+        self.has_sent_failsafe_msg = False
     
     def wait_for_service(self,client,service_name):
         """Waits for a client service to be available
@@ -151,9 +152,11 @@ class ApiListener(Node):
         if self.failsafe_enabled:
             return
         
-        self.status_data['failsafe'] = msg.enabled
-        self.message_queue.append(json.dumps(
-                    {'type': ResponseMessage.FAILSAFE.name, 'message': msg.msg}))
+        if not self.has_sent_failsafe_msg:
+            self.has_sent_failsafe_msg = True
+            self.status_data['failsafe'] = msg.enabled
+            self.message_queue.append(json.dumps(
+                        {'type': ResponseMessage.FAILSAFE.name, 'message': msg.msg}))
 
     async def publish_message(self, message):
         """publishes a message to the NodeJS client
