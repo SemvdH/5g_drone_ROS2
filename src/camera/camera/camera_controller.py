@@ -68,6 +68,11 @@ class CameraController(Node):
                 connected = False 
         loop.run_until_complete(start_server)
         loop.run_forever()
+        try:
+            self.destroy_node()
+        except Exception as e:
+            self.get_logger().error("error " + str(e))
+            sys.exit(-1)
     
     async def websocket_video(self,websocket,path):
         vid = cv2.VideoCapture(0,cv2.CAP_V4L)
@@ -93,7 +98,7 @@ class CameraController(Node):
                 error_amount += 1
             if error_amount > 20:
                 self.get_logger().error("Too many errors, closing node")
-                self.destroy_node()
+                sys.exit(-1)
 
 
     def handle_video_connection(self):
