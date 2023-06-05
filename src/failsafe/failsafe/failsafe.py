@@ -18,7 +18,7 @@ class FailSafe(Node):
         self.failsafe_msg = request.message
         response.enabled = self.failsafe_enabled
         response.message = self.failsafe_msg
-        self.get_logger().info("Failsafe triggered")
+        self.get_logger().info("Failsafe triggered! Message: " + self.failsafe_msg)
         self.publish_failsafe()
         return response
     
