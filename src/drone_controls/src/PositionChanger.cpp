@@ -52,7 +52,7 @@ public:
         // vehicle_local_position_subscription_ = this->create_subscription<px4_msgs::msg::VehicleLocalPosition>("/fmu/out/vehicle_local_position", qos, std::bind(&PX4Controller::on_local_position_receive, this, std::placeholders::_1));
         this->odometry_subscription = this->create_subscription<px4_msgs::msg::VehicleOdometry>("/fmu/out/vehicle_odometry", qos, std::bind(&PositionChanger::handle_odometry_message, this, std::placeholders::_1));
         this->move_position_service = this->create_service<drone_services::srv::MovePosition>("/drone/move_position", std::bind(&PositionChanger::handle_move_position_request, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
-        this->ready_drone_service = this->create_service<drone_services::srv::ReadyDrone>("/drone/ready_drone", std::bind(&PositionChanger::handle_ready_drone_request, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
+        this->ready_drone_service = this->create_service<drone_services::srv::ReadyDrone>("/drone/ready", std::bind(&PositionChanger::handle_ready_drone_request, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
 
         this->failsafe_publisher = this->create_publisher<drone_services::msg::FailsafeMsg>("/drone/failsafe", 10);
 

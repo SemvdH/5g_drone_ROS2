@@ -8,7 +8,7 @@ from drone_services.srv import MovePosition
 from drone_services.srv import EnableFailsafe
 from drone_services.srv import ArmDrone
 from drone_services.srv import DisarmDrone
-from drone_services.srv import SetAttitude
+from drone_services.srv import ReadyDrone
 
 import asyncio
 import websockets.server
@@ -93,6 +93,10 @@ class ApiListener(Node):
             DisarmDrone, "/drone/disarm")
         self.wait_for_service(self.disarm_drone_client, "Disarm drone")
         self.disarm_drone_request = DisarmDrone.Request()
+
+        self.ready_drone_client = self.create_client(ReadyDrone, "/drone/ready")
+        self.wait_for_service(self.ready_drone_client, "Ready drone")
+        self.ready_drone_request = ReadyDrone.Request()
 
         self.status_data = {}
         self.status_data_received = False
@@ -365,8 +369,20 @@ class ApiListener(Node):
             future.add_done_callback(partial(self.disarm_service_callback))
         else:
             self.get_logger().info('Arm command received')
-            future = self.arm_drone_client.call_async(self.arm_drone_request)
-            future.add_done_callback(partial(self.arm_service_callback))
+            future = self.ready_drone_client.call_async(
+                self.ready_drone_request)
+            future.add_done_callback(partial(self.ready_drone_callback))
+    
+    def ready_drone_callback(self, future):
+        try:
+            result = future.result()
+            if result.success:
+                self.get_logger().info('Ready service call success')
+            else:
+                self.get_logger().error('Ready service call failed')
+        except Exception as e:
+            self.get_logger().error(
+                'Something went wrong while calling the ready service!\n' + str(e))
 
     def arm_service_callback(self, future):
         try:
