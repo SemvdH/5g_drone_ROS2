@@ -231,6 +231,7 @@ private:
             user_in_control = false;
             publish_vehicle_command(px4_msgs::msg::VehicleCommand::VEHICLE_CMD_COMPONENT_ARM_DISARM, 0.0, 0);
 
+            RCLCPP_INFO(this->get_logger(), "Publishing disarm status message");
             auto msg = drone_services::msg::DroneArmStatus();
             msg.armed = false;
             arm_status_publisher_->publish(msg);
@@ -273,6 +274,7 @@ private:
             this->last_thrust = -0.1; // spin motors at 10% thrust
             armed = true;
 
+            RCLCPP_INFO(this->get_logger(), "Publishing arm status message");
             auto msg = drone_services::msg::DroneArmStatus();
             msg.armed = true;
             arm_status_publisher_->publish(msg);
