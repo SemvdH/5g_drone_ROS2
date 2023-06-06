@@ -378,6 +378,7 @@ class ApiListener(Node):
             result = future.result()
             if result.success:
                 self.get_logger().info('Ready service call success')
+                # self.armed = True
             else:
                 self.get_logger().error('Ready service call failed')
         except Exception as e:
@@ -389,6 +390,7 @@ class ApiListener(Node):
             result = future.result()
             if result.success:
                 self.get_logger().info('Arm service call success')
+                # self.armed = True
             else:
                 self.get_logger().error('Arm service call failed')
         except Exception as e:
@@ -400,6 +402,7 @@ class ApiListener(Node):
             result = future.result()
             if result.success:
                 self.get_logger().info('Disarm service call success')
+                self.armed = False
             else:
                 self.get_logger().error('Disarm service call failed')
         except Exception as e:

@@ -72,6 +72,9 @@ class DroneStatusNode(Node):
             self.control_mode = "unknown"
 
     def arm_status_callback(self, msg):
+        print("Got arm status callback!")
+        if msg.armed:
+            print("DRONE IS ARMED")
         self.armed = msg.armed
 
     def route_status_callback(self, msg):
