@@ -28,11 +28,11 @@ class DroneStatusNode(Node):
         self.publisher = self.create_publisher(
             DroneStatus, '/drone/status', 10)
         self.control_mode_subscriber = self.create_subscription(
-            DroneControlMode, '/drone/control_mode', self.control_mode_callback, qos_profile=qos_profile)
+            DroneControlMode, '/drone/control_mode', self.control_mode_callback, 10)
         self.arm_status_subscriber = self.create_subscription(
-            DroneArmStatus, '/drone/arm_status', self.arm_status_callback, qos_profile=qos_profile)
+            DroneArmStatus, '/drone/arm_status', self.arm_status_callback, 10)
         self.route_status_subscriber = self.create_subscription(
-            DroneRouteStatus, '/drone/route_status', self.route_status_callback, qos_profile=qos_profile)
+            DroneRouteStatus, '/drone/route_status', self.route_status_callback, 10)
         self.battery_status_subscriber = self.create_subscription(
             BatteryStatus, '/fmu/out/battery_status', self.battery_status_callback, qos_profile=qos_profile)
         self.cpu_load_subscriber = self.create_subscription(
@@ -59,9 +59,10 @@ class DroneStatusNode(Node):
         msg.position = self.position
         msg.velocity = self.velocity
         self.publisher.publish(msg)
-        self.get_logger().info('Publishing status message')
+        # self.get_logger().info('Publishing status message')
 
     def control_mode_callback(self, msg):
+        self.get_logger().info('Got control mode callback!')
         if msg.control_mode == CONTROL_MODE_ATTITUDE:
             self.control_mode = "attitude"
         elif msg.control_mode == CONTROL_MODE_VELOCITY:
@@ -72,9 +73,9 @@ class DroneStatusNode(Node):
             self.control_mode = "unknown"
 
     def arm_status_callback(self, msg):
-        print("Got arm status callback!")
+        self.get_logger().info("Got arm status callback!")
         if msg.armed:
-            print("DRONE IS ARMED")
+            self.get_logger().info("DRONE IS ARMED")
         self.armed = msg.armed
 
     def route_status_callback(self, msg):
