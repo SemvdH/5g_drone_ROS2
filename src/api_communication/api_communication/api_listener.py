@@ -8,6 +8,7 @@ from drone_services.srv import MovePosition
 from drone_services.srv import EnableFailsafe
 from drone_services.srv import ArmDrone
 from drone_services.srv import DisarmDrone
+from drone_services.srv import SetAttitude
 
 import asyncio
 import websockets.server
