@@ -446,7 +446,7 @@ private:
     rclcpp::Client<drone_services::srv::ArmDrone>::SharedPtr arm_drone_client;
 
     rclcpp::Service<drone_services::srv::MovePosition>::SharedPtr move_position_service;
-    rclcpp::Service<drone_services::srv::ReadyDone>::SharedPtr ready_drone_service;
+    rclcpp::Service<drone_services::srv::ReadyDrone>::SharedPtr ready_drone_service;
 
     rclcpp::TimerBase::SharedPtr lidar_health_timer;
 
