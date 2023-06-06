@@ -143,7 +143,7 @@ class ApiListener(Node):
         try:
             self.status_data_received = True
             self.status_data['battery_percentage'] = msg.battery_percentage
-            if msg.battery_percentage < 0.15:
+            if msg.battery_percentage < 15:
                 self.enable_failsafe(
                     "Battery level too low! Failsafe enabled to prevent damage to battery (" + str(msg.battery_percentage * 10) + "%)")
             self.status_data['cpu_usage'] = msg.cpu_usage
