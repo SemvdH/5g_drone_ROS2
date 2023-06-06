@@ -5,6 +5,7 @@
 #include <drone_services/msg/height_data.hpp>
 #include <drone_services/srv/set_vehicle_control.hpp>
 #include <drone_services/srv/set_trajectory.hpp>
+#include <drone_services/srv/set_attitude.hpp>
 #include <drone_services/srv/move_position.hpp>
 #include <drone_services/srv/ready_drone.hpp>
 #include <drone_services/srv/arm_drone.hpp>
@@ -56,12 +57,15 @@ public:
         this->failsafe_publisher = this->create_publisher<drone_services::msg::FailsafeMsg>("/drone/failsafe", 10);
 
         this->trajectory_client = this->create_client<drone_services::srv::SetTrajectory>("/drone/set_trajectory");
+        this->attitude_client = this->create_client<drone_services::srv::SetAttitude>("/drone/set_attitude");
         this->vehicle_control_client = this->create_client<drone_services::srv::SetVehicleControl>("/drone/set_vehicle_control");
         this->failsafe_client = this->create_client<drone_services::srv::EnableFailsafe>("/drone/enable_failsafe");
         this->arm_drone_client = this->create_client<drone_services::srv::ArmDrone>("/drone/arm");
 
         RCLCPP_INFO(this->get_logger(), "waiting for trajectory service...");
         wait_for_service<rclcpp::Client<drone_services::srv::SetTrajectory>::SharedPtr>(this->trajectory_client, "/drone/set_trajectory");
+        RCLCPP_INFO(this->get_logger(), "waiting for attitude service...");
+        wait_for_service<rclcpp::Client<drone_services::srv::SetAttitude>::SharedPtr>(this->attitude_client, "/drone/set_attitude");
         RCLCPP_INFO(this->get_logger(), "waiting for vehicle control service...");
         wait_for_service<rclcpp::Client<drone_services::srv::SetVehicleControl>::SharedPtr>(this->vehicle_control_client, "/drone/set_vehicle_control");
         RCLCPP_INFO(this->get_logger(), "waiting for failsafe service...");
@@ -70,6 +74,7 @@ public:
         wait_for_service<rclcpp::Client<drone_services::srv::ArmDrone>::SharedPtr>(this->arm_drone_client, "/drone/arm");
 
         this->trajectory_request = std::make_shared<drone_services::srv::SetTrajectory::Request>();
+        this->attitude_request = std::make_shared<drone_services::srv::SetAttitude::Request>();
         this->vehicle_control_request = std::make_shared<drone_services::srv::SetVehicleControl::Request>();
         this->failsafe_request = std::make_shared<drone_services::srv::EnableFailsafe::Request>();
         this->arm_drone_request = std::make_shared<drone_services::srv::ArmDrone::Request>();
@@ -94,7 +99,6 @@ public:
             RCLCPP_INFO(this->get_logger(), "Vehicle control mode set result: %d", future.get()->success);
             if (this->got_ready_drone_request && future.get()->success)
             {
-                this->got_ready_drone_request = false;
                 auto arm_response = this->arm_drone_client->async_send_request(this->arm_drone_request, std::bind(&PositionChanger::arm_drone_service_callback, this, std::placeholders::_1));
             }
         }
@@ -109,7 +113,31 @@ public:
         auto status = future.wait_for(1s);
         if (status == std::future_status::ready)
         {
+
             RCLCPP_INFO(this->get_logger(), "Arm result: %d", future.get()->success);
+            if (this->got_ready_drone_request)
+            {
+                this->got_ready_drone_request = false;
+
+                this->attitude_request->pitch = 0.0;
+                this->attitude_request->yaw = 0.0;
+                this->attitude_request->roll = 0.0;
+                this->attitude_request->thrust = 0.15;
+                auto attitude_response = this->attitude_client->async_send_request(this->attitude_request, std::bind(&PositionChanger::attitude_message_callback, this, std::placeholders::_1));
+            }
+        }
+        else
+        {
+            RCLCPP_INFO(this->get_logger(), "Service In-Progress...");
+        }
+    }
+
+    void attitude_message_callback(rclcpp::Client<drone_services::srv::SetAttitude>::SharedFuture future)
+    {
+        auto status = future.wait_for(1s);
+        if (status == std::future_status::ready)
+        {
+            RCLCPP_INFO(this->get_logger(), "Attitude set result: %d", future.get()->success);
         }
         else
         {
@@ -333,6 +361,12 @@ public:
                 response->success = false;
                 return;
             }
+            if (this->vehicle_control_request->control != DEFAULT_CONTROL_MODE)
+            {
+                this->vehicle_control_request->control = DEFAULT_CONTROL_MODE;
+                auto control_mode_response = this->vehicle_control_client->async_send_request(this->vehicle_control_request,
+                                                                                              std::bind(&PositionChanger::vehicle_control_service_callback, this, std::placeholders::_1));
+            }
             this->current_yaw += request->angle * (M_PI / 180.0); // get the angle in radians
             this->current_speed_z = request->up_down;
             get_x_y_with_rotation(request->front_back, request->left_right, this->current_yaw, &this->current_speed_x, &this->current_speed_y);
@@ -406,16 +440,18 @@ private:
     rclcpp::Subscription<px4_msgs::msg::VehicleOdometry>::SharedPtr odometry_subscription;
 
     rclcpp::Client<drone_services::srv::SetTrajectory>::SharedPtr trajectory_client;
+    rclcpp::Client<drone_services::srv::SetAttitude>::SharedPtr attitude_client;
     rclcpp::Client<drone_services::srv::SetVehicleControl>::SharedPtr vehicle_control_client;
     rclcpp::Client<drone_services::srv::EnableFailsafe>::SharedPtr failsafe_client;
     rclcpp::Client<drone_services::srv::ArmDrone>::SharedPtr arm_drone_client;
 
     rclcpp::Service<drone_services::srv::MovePosition>::SharedPtr move_position_service;
-    rclcpp::Service<drone_services::srv::ReadyDone>::SharedPtr ready_done_service;
+    rclcpp::Service<drone_services::srv::ReadyDone>::SharedPtr ready_drone_service;
 
     rclcpp::TimerBase::SharedPtr lidar_health_timer;
 
     drone_services::srv::SetTrajectory::Request::SharedPtr trajectory_request;
+    drone_services::srv::SetAttitude::Request::SharedPtr attitude_request;
     drone_services::srv::SetVehicleControl::Request::SharedPtr vehicle_control_request;
     drone_services::srv::EnableFailsafe::Request::SharedPtr failsafe_request;
     drone_services::srv::ArmDrone::Request::SharedPtr arm_drone_request;
