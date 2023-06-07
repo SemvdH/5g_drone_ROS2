@@ -28,7 +28,7 @@ class CameraController(Node):
 
         self.get_logger().info("Camera controller started. Waiting for service call...")
         self.srv = self.create_service(
-            TakePicture, 'drone/picture', self.take_picture_callback)
+            TakePicture, '/drone/picture', self.take_picture_callback)
         
         self.websocket = None
         self.server = None
