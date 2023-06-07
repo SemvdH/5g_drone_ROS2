@@ -56,7 +56,7 @@ class CameraUnitTest(unittest.TestCase):
 
     def test_camera_save_image(self,camera_node,proc_output):
         # call camera service
-        camera_client = self.node.create_client(TakePicture, '/drone/take_picture')
+        camera_client = self.node.create_client(TakePicture, '/drone/picture')
         while not camera_client.wait_for_service(timeout_sec=1.0):
             self.node.get_logger().info('camera service not available, waiting again...')
         request = TakePicture.Request()
