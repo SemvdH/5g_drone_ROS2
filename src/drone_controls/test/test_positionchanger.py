@@ -33,6 +33,7 @@ def generate_test_description():
             positionchanger_node,
             failsafe_node,
             px4_controller_node,
+            heartbeat_node,
             launch_testing.actions.ReadyToTest(),
         ]),
         {
