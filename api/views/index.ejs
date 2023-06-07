@@ -13,35 +13,35 @@
     <h1 class="header">5G Drone API</h1>
     <!-- <div class="video"> -->
     <div class="mainvideo">
-        <p id="cameraview">Camera view:</p>
+        <p id="cameraview">Camera view: Not connected</p>
         <canvas id="result-video" style="border: 1px solid blue;" width="800" height="600"></canvas>
-            <div id="connectedbuttons">
-                <div id="connectedstatus">
-                    <h2 id="connectedlabel">Not connected to drone</h2>
-                    <button id="connectbutton" onclick="connect()">Connect</button>
-                </div>
-                <div id="buttons">
-                    <button id="take_picture" onclick="take_picture()">Take picture</button>
-                    <br>
-                    <button id="arm_disarm" onclick="arm_disarm()">Arm/Disarm</button>
-                </div>
+        <div id="connectedbuttons">
+            <div id="connectedstatus">
+                <h2 id="connectedlabel">Not connected to drone</h2>
+                <button id="connectbutton" onclick="local_connect()">Connect</button>
             </div>
-            <div id="controls">
-                <h2>Controls</h2>
-                <div id="buttons">
-                    <button class="movebutton" id="button_turnleft">Turn left</button>
-                    <button class="movebutton" id="button_turnright">Turn right</button>
-                    <button class="movebutton" id="button_up">Up</button>
-                    <button class="movebutton" id="button_down">Down</button>
-                    <button class="movebutton" id="button_forward">Forward</button>
-                    <button class="movebutton" id="button_backward">Backward</button>
-                    <button class="movebutton" id="button_left">Left</button>
-                    <button class="movebutton" id="button_right">Right</button>
-                    <button id="button_land" onclick="land()">Land</button>
-                    <button id="button_estop" onclick="estop()"><strong>Emergency Stop</strong></button>
+            <div id="buttons">
+                <button id="take_picture" onclick="take_picture()">Take picture</button>
+                <br>
+                <button id="arm_disarm" onclick="arm_disarm()">Arm/Disarm</button>
+            </div>
+        </div>
+        <div id="controls">
+            <h2>Controls</h2>
+            <div id="buttons">
+                <button class="movebutton" id="button_turnleft">Turn left</button>
+                <button class="movebutton" id="button_turnright">Turn right</button>
+                <button class="movebutton" id="button_up">Up</button>
+                <button class="movebutton" id="button_down">Down</button>
+                <button class="movebutton" id="button_forward">Forward</button>
+                <button class="movebutton" id="button_backward">Backward</button>
+                <button class="movebutton" id="button_left">Left</button>
+                <button class="movebutton" id="button_right">Right</button>
+                <button id="button_land" onclick="land()">Land</button>
+                <button id="button_estop" onclick="estop()"><strong>Emergency Stop</strong></button>
 
-                </div>
             </div>
+        </div>
     </div>
     <div class="lastpicture">
         <p>Last picture:</p>
@@ -61,6 +61,7 @@
 </body>
 
 <script>
+    var ws;
     assign_button_callbacks();
     openSocket = () => {
 
@@ -111,7 +112,7 @@
             try {
                 const data = JSON.parse(event.data);
                 if (data.type == "STATUS") {
-                    document.getElementById("batterypercentage").innerHTML = "Battery percentage: " + data.data.battery_percentage.toString().substring(0,4) + "%";
+                    document.getElementById("batterypercentage").innerHTML = "Battery percentage: " + data.data.battery_percentage.toString().substring(0, 4) + "%";
                     document.getElementById("cpuload").innerHTML = "CPU load: " + data.data.cpu_usage.toString().substring(0, 6).substring(2, 4) + "%";
                     document.getElementById("armed").innerHTML = "Armed: " + data.data.armed;
                     document.getElementById("control_mode").innerHTML = "Control mode: " + data.data.control_mode;
@@ -131,8 +132,6 @@
                 console.error(error);
             }
         }
-
-        openSocket();
     };
 
     function assign_button_callbacks() {
@@ -174,64 +173,62 @@
     }
 
     function send_move_request(data) {
-        // console.log("sending move request " + data);
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "/move", true);
-        xhr.setRequestHeader("Content-Type", "application/json");
-        xhr.send(data);
+        console.log("sending move request");
+        if (ws != null)
+            ws.send(data);
     }
 
     function turn_left() {
         console.log("turnleft");
-        send_move_request(JSON.stringify({ "up_down": 0.0, "forward_backward": 0.0, "left_right": 0.0, "turn_left_right": -10.0 }));
+        send_move_request(JSON.stringify({ "command": 3, "up_down": 0.0, "forward_backward": 0.0, "left_right": 0.0, "turn_left_right": -10.0 }));
     }
     function turn_right() {
         console.log("turnright");
-        send_move_request(JSON.stringify({ "up_down": 0.0, "forward_backward": 0.0, "left_right": 0.0, "turn_left_right": 10.0 }));
+        send_move_request(JSON.stringify({ "command": 3, "up_down": 0.0, "forward_backward": 0.0, "left_right": 0.0, "turn_left_right": 10.0 }));
     }
     function up() {
         console.log("up");
-        send_move_request(JSON.stringify({ "up_down": 1.0, "forward_backward": 0.0, "left_right": 0.0, "turn_left_right": 0.0 }));
+        send_move_request(JSON.stringify({ "command": 3, "up_down": 1.0, "forward_backward": 0.0, "left_right": 0.0, "turn_left_right": 0.0 }));
 
     }
     function down() {
         console.log("down");
-        send_move_request(JSON.stringify({ "up_down": -1.0, "forward_backward": 0.0, "left_right": 0.0, "turn_left_right": 0.0 }));
+        send_move_request(JSON.stringify({ "command": 3, "up_down": -1.0, "forward_backward": 0.0, "left_right": 0.0, "turn_left_right": 0.0 }));
 
     }
     function forward() {
-        console.log("forward"); send_move_request(JSON.stringify({ "up_down": 0.0, "forward_backward": 1.0, "left_right": 0.0, "turn_left_right": 0.0 }));
+        console.log("forward"); send_move_request(JSON.stringify({ "command": 3, "up_down": 0.0, "forward_backward": 1.0, "left_right": 0.0, "turn_left_right": 0.0 }));
 
     }
     function backward() {
         console.log("backward");
-        send_move_request(JSON.stringify({ "up_down": 0.0, "forward_backward": -1.0, "left_right": 0.0, "turn_left_right": 0.0 }));
+        send_move_request(JSON.stringify({ "command": 3, "up_down": 0.0, "forward_backward": -1.0, "left_right": 0.0, "turn_left_right": 0.0 }));
     }
     function left() {
         console.log("left");
-        send_move_request(JSON.stringify({ "up_down": 0.0, "forward_backward": 0.0, "left_right": -1.0, "turn_left_right": 0.0 }));
+        send_move_request(JSON.stringify({ "command": 3, "up_down": 0.0, "forward_backward": 0.0, "left_right": -1.0, "turn_left_right": 0.0 }));
     }
     function right() {
         console.log("right");
-        send_move_request(JSON.stringify({ "up_down": 0.0, "forward_backward": 0.0, "left_right": 1.0, "turn_left_right": 0.0 }));
+        send_move_request(JSON.stringify({ "command": 3, "up_down": 0.0, "forward_backward": 0.0, "left_right": 1.0, "turn_left_right": 0.0 }));
     }
     function stop() {
         console.log("stop");
-        send_move_request(JSON.stringify({ "up_down": 0.0, "forward_backward": 0.0, "left_right": 0.0, "turn_left_right": 0.0 }));
+        send_move_request(JSON.stringify({ "command": 3, "up_down": 0.0, "forward_backward": 0.0, "left_right": 0.0, "turn_left_right": 0.0 }));
     }
-    function land_takeoff() {
+    function land() {
         console.log("land");
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "/land", true);
-        xhr.send();
+        var request = JSON.stringify({ command: 0 });
+        ws.send(request);
 
     }
 
     function estop() {
         console.log("estop");
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "/estop", true);
-        xhr.send();
+        var request = JSON.stringify({
+            command: 6,
+        });
+        ws.send(request);
     }
 
     function take_picture() {
@@ -245,9 +242,8 @@
 
     function arm_disarm() {
         console.log("arm/disarm");
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "/arm_disarm", true);
-        xhr.send();
+        var request = JSON.stringify({ command: 1 });
+        ws.send(request);
     }
 
     function connect_to_video_stream() {
@@ -285,6 +281,58 @@
 
     }
 
+    function handle_ws_message(message) {
+        console.log("Handling message " + message);
+        var data = JSON.parse(message);
+        if (data.type == "STATUS") {
+            document.getElementById("batterypercentage").innerHTML = "Battery percentage: " + data.data.battery_percentage.toString().substring(0, 4) + "%";
+            document.getElementById("cpuload").innerHTML = "CPU load: " + data.data.cpu_usage.toString().substring(0, 6).substring(2, 4) + "%";
+            document.getElementById("armed").innerHTML = "Armed: " + data.data.armed;
+            document.getElementById("control_mode").innerHTML = "Control mode: " + data.data.control_mode;
+            document.getElementById("speed").innerHTML = "Current speed (m/s): x: " + data.data.velocity[0] + " y: " + data.data.velocity[1] + " z: " + data.data.velocity[2];
+            document.getElementById("position").innerHTML = "Current position (m): x: " + data.data.position[0] + " y: " + data.data.position[1] + " z: " + data.data.position[2];
+        } else if (data.type == "FAILSAFE") {
+            document.getElementById("failsafe").innerHTML = "Failsafe: ACTIVATED";
+            document.getElementById("failsafe").style.backgroundColor = "red";
+            document.getElementById("failsafe").style.color = "white";
+            document.getElementById("failsafe").style.textDecoration = "bold";
+            alert("Failsafe enabled! Drone is landing. The failsafe message is:\n" + data.message);
+        } else {
+            // decodeBase64Image(data.image, document.getElementById("result-video"));
+        }
+    }
+
+    function local_connect() {
+        console.log("Connecting to API");
+        ws = new WebSocket("ws://10.100.0.40:9001/");
+
+        ws.on("open", function open() {
+            console.log("connected with websockets to API!");
+            document.getElementById("connectedlabel").innerHTML = "Connected to drone";
+            document.getElementById("connectbutton").disabled = true;
+            openSocket();
+        });
+
+        ws.on("message", function message(message) {
+            try {
+                var msg = JSON.parse(message);
+                handle_ws_message(msg);
+
+            } catch (error) {
+                console.log("could not parse as json");
+                //   send_image_data_to_clients(message);
+            }
+        });
+
+        ws.on("error", function error(err) {
+            console.log("there was an error");
+            console.error("error: " + err);
+            alert("There was an error connecting to the API!");
+            document.getElementById("connectedlabel").innerHTML = "Not connected to drone";
+            document.getElementById("connectbutton").disabled = false;
+        });
+    }
+
     function connect() {
         var received = false;
         var xhr = new XMLHttpRequest();
@@ -298,7 +346,7 @@
                     document.getElementById("connectedlabel").innerHTML = "Connected to drone";
                     document.getElementById("connectbutton").disabled = true;
                     // connect_to_video_stream();
-                    
+
                 }
             } else {
                 console.log("error");
