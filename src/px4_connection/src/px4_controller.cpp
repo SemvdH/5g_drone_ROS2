@@ -102,17 +102,17 @@ private:
 
     char current_control_mode = CONTROL_MODE_ATTITUDE; // start with attitude control
 
-    const float omega = 0.3;       // angular speed of the POLAR trajectory
-    const float K = 0;             // [m] gain that regulates the spiral pitch
+    const float omega = 0.3; // angular speed of the POLAR trajectory
+    const float K = 0;       // [m] gain that regulates the spiral pitch
 
-    float rho_0 = 0;                                // initial rho of polar coordinate
-    float theta_0 = 0;                              // initial theta of polar coordinate
-    float p0_z = -0.0;                        // initial height
+    float rho_0 = 0;                              // initial rho of polar coordinate
+    float theta_0 = 0;                            // initial theta of polar coordinate
+    float p0_z = -0.0;                            // initial height
     float des_x = 0.0, des_y = 0.0, des_z = p0_z; // desired position
-    float gamma = M_PI_4;                           // desired heading direction
+    float gamma = M_PI_4;                         // desired heading direction
 
-    float local_x = 0;  // local position x
-    float local_y = 0;  // local position y
+    float local_x = 0; // local position x
+    float local_y = 0; // local position y
 
     bool failsafe_enabled = false;
 
@@ -130,6 +130,12 @@ private:
         const std::shared_ptr<drone_services::srv::SetAttitude::Request> request,
         const std::shared_ptr<drone_services::srv::SetAttitude::Response> response)
     {
+        if (this->failsafe_enabled)
+        {
+            RCLCPP_INFO(this->get_logger(), "Failsafe enabled, ignoring attitude setpoint");
+            response->success = false;
+            return;
+        }
         if (armed)
         {
             if (request->yaw == 0 && request->pitch == 0 && request->roll == 0 && request->thrust == 0)
@@ -179,6 +185,12 @@ private:
         const std::shared_ptr<drone_services::srv::SetTrajectory::Request> request,
         const std::shared_ptr<drone_services::srv::SetTrajectory::Response> response)
     {
+        if (this->failsafe_enabled)
+        {
+            RCLCPP_INFO(this->get_logger(), "Failsafe enabled, ignoring trajectory setpoint");
+            response->success = false;
+            return;
+        }
         if (!(request->control_mode == CONTROL_MODE_VELOCITY || request->control_mode == CONTROL_MODE_POSITION))
         {
             RCLCPP_INFO(this->get_logger(), "Got invalid trajectory control mode: %d", request->control_mode);
@@ -490,7 +502,7 @@ private:
 
     /**
      * @brief Callback function for receiving failsafe messages
-     * 
+     *
      * @param msg the message indicating that the failsafe was enabled
      */
     void on_failsafe_receive(const drone_services::msg::FailsafeMsg::SharedPtr msg)
