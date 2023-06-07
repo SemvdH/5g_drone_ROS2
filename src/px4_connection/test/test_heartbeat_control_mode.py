@@ -28,7 +28,7 @@ def generate_test_description():
         }
     )
 
-class TestHeartbeatControlMode(unittest.TestCase)
+class TestHeartbeatControlMode(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
