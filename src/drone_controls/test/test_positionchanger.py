@@ -71,7 +71,7 @@ class TestPositionChanger(unittest.TestCase):
         self.assertFalse(future.result().success, "MovePosition service call was successful, but should have failed!")
         self.called_positionchanger_service = True
 
-    def test_positionchanger_no_lidar_data(self,positionchanger_node,heartbeat_node):
+    def test_positionchanger_no_lidar_data(self,positionchanger_node,proc_output):
         self.received_failsafe_callback = False
         self.called_positionchanger_service = False
         failsafe_subscriber = self.node.create_subscription(FailsafeMsg,'/drone/failsafe',self.failsafe_callback_nodata,10)
@@ -104,7 +104,7 @@ class TestPositionChanger(unittest.TestCase):
 
 
 
-    def test_positionchanger_lidar_stops(self,positionchanger_node,heartbeat_node):
+    def test_positionchanger_lidar_stops(self,positionchanger_node,proc_output):
         self.received_failsafe_callback = False
         self.called_positionchanger_service = False
         failsafe_subscriber = self.node.create_subscription(FailsafeMsg,'/drone/failsafe',self.failsafe_callback_timeout,10)
