@@ -83,7 +83,7 @@ class TestPositionChanger(unittest.TestCase):
         request.front_back = 1.0
         request.left_right = 1.0
         request.up_down = 1.0
-        request.yaw = 1.0
+        request.angle = 1.0
 
         end_time = time.time() + 10.0
         try:
@@ -118,7 +118,7 @@ class TestPositionChanger(unittest.TestCase):
         request.front_back = 1.0
         request.left_right = 1.0
         request.up_down = 1.0
-        request.yaw = 1.0
+        request.angle = 1.0
 
         lidar_msg = LidarReading()
         lidar_msg.sensor_1 = 2.0
