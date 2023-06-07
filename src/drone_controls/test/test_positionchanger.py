@@ -112,8 +112,7 @@ class TestPositionChanger(unittest.TestCase):
 
 
 
-    def test_positionchanger_lidar_stops(self,positionchanger_node,proc_output):
-        self.node.get_logger().info("STARTING TEST test_positionchanger_lidar_stops")
+    def test_positionchanger_lidar_stops(self,positionchanger_node,proc_output):        
         self.received_failsafe_callback = False
         self.called_positionchanger_service = False
         failsafe_subscriber = self.node.create_subscription(FailsafeMsg,'/drone/failsafe',self.failsafe_callback_timeout,10)
@@ -139,14 +138,11 @@ class TestPositionChanger(unittest.TestCase):
 
         # wait for nodes to become active
         time.sleep(3)
-    
-        self.node.get_logger().info('STARTING WHILE LOOP')
         # wait 5 seconds for the failsafe to trigger
         wait_time = time.time() + 5.0
         end_time = time.time() + 10.0
         try:
             while time.time() < end_time:
-                print("yeet")
                 rclpy.spin_once(self.node)
                 # send 5 lidar messages and after that stop
                 if (lidar_messages_published < 5):
@@ -160,13 +156,12 @@ class TestPositionChanger(unittest.TestCase):
                     future.add_done_callback(self.move_position_callback)
                 elif not self.received_failsafe_callback:
                     continue
-                break
-
+                else:
+                    break
             self.assertTrue(self.called_positionchanger_service, "MovePosition service was not called!")
             self.assertTrue(self.received_failsafe_callback, "Failsafe was not activated!")
 
         finally:
-            self.node.get_logger().info('Cleaning up')
             self.node.destroy_client(move_position_client)
             self.node.destroy_subscription(failsafe_subscriber)
             self.node.destroy_publisher(lidar_publisher)
