@@ -76,7 +76,6 @@ class FailsafeUnitTest(unittest.TestCase):
                     break
             self.assertTrue(failsafe_msgs[0].enabled)
             self.assertEqual(failsafe_msgs[0].msg, "test")
-            self.assertTrue(False)
             self.assertTrue(self.service_called)
         finally:
             self.node.destroy_subscription(failsafe_subscription)
