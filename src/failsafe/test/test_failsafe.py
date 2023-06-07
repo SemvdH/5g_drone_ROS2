@@ -72,7 +72,7 @@ class FailsafeUnitTest(unittest.TestCase):
                 if (not self.service_called):
                     future = failsafe_client.call_async(request)
                     future.add_done_callback(self.service_call_callback)
-                if (len(failsafe_msgs) > 0):
+                else:
                     break
             self.assertTrue(failsafe_msgs[0].enabled)
             self.assertEqual(failsafe_msgs[0].msg, "test")
