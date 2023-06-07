@@ -67,7 +67,7 @@ class TestHeartbeatControlMode(unittest.TestCase):
             self.node.get_logger().info('heartbeat service not available, waiting again...')
         heartbeat_sub = self.node.create_subscription(DroneControlMode,"/drone/control_mode",self.control_mode_callback,10)
         request = SetVehicleControl.Request()
-        request.control_mode = 4 # attitude control
+        request.control= 4 # attitude control
 
         try:
             while True:
@@ -89,7 +89,7 @@ class TestHeartbeatControlMode(unittest.TestCase):
         while not heartbeat_client.wait_for_service(timeout_sec=1.0):
             self.node.get_logger().info('heartbeat service not available, waiting again...')
         request = SetVehicleControl.Request()
-        request.control_mode = 33 # wrong control mode
+        request.control = 33 # wrong control mode
 
         try:
             while True:
