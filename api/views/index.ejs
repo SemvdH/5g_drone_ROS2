@@ -306,14 +306,14 @@
         console.log("Connecting to API");
         ws = new WebSocket("ws://10.100.0.40:9001/");
 
-        ws.on("open", function open() {
+        ws.addEventListener("open", function open() {
             console.log("connected with websockets to API!");
             document.getElementById("connectedlabel").innerHTML = "Connected to drone";
             document.getElementById("connectbutton").disabled = true;
             openSocket();
         });
 
-        ws.on("message", function message(message) {
+        ws.addEventListener("message", function message(message) {
             try {
                 var msg = JSON.parse(message);
                 handle_ws_message(msg);
@@ -324,7 +324,7 @@
             }
         });
 
-        ws.on("error", function error(err) {
+        ws.addEventListener("error", function error(err) {
             console.log("there was an error");
             console.error("error: " + err);
             alert("There was an error connecting to the API!");
