@@ -51,6 +51,7 @@ class TestPx4Failsafe(unittest.TestCase):
         self.called_failsafe_service = False
         self.called_trajectory_service = False
         self.called_arm_service = False
+        self.called_attitude_service = False
 
     def tearDown(self):
         self.node.destroy_node()
