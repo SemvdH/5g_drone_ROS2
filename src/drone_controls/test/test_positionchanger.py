@@ -147,8 +147,10 @@ class TestPositionChanger(unittest.TestCase):
                 if (lidar_messages_published < 5):
                     lidar_publisher.publish(lidar_msg)
                     lidar_messages_published += 1
+                    self.node.get_logger().info('Publishing lidar message')
                 # wait 5 seconds before sending the move_position request
                 if not self.called_positionchanger_service and time.time() > wait_time:
+                    self.node.get_logger().info('Sending move_position request')
                     future = move_position_client.call_async(request)
                     future.add_done_callback(self.move_position_callback)
                 elif not self.received_failsafe_callback:
