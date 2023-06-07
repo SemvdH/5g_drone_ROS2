@@ -20,7 +20,7 @@ def generate_test_description():
     file_path = os.path.dirname(__file__)
     #device under test
     positionchanger_node = launch_ros.actions.Node(
-        package='drone_controls', executable='positionchanger')
+        package='drone_controls', executable='position_changer')
     failsafe_node = launch_ros.actions.Node(
         package='failsafe',executable='failsafe')
 
