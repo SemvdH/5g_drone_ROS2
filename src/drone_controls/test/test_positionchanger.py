@@ -58,8 +58,8 @@ class TestPositionChanger(unittest.TestCase):
         self.node = rclpy.create_node('test_positionchanger')
         self.called_positionchanger_service = False
         self.received_failsafe_callback = False
-        self.failsafe_reason_timeout = "Waiting for LIDAR timed out! Check the LIDAR USB connection and consider restarting the drone."
-        self.failsafe_reason_nodata = "No healthy connection to LIDAR! Check the LIDAR USB cable and restart the drone."
+        self.failsafe_reason_timeout = "No healthy connection to LIDAR! Check the LIDAR USB cable and restart the drone."
+        self.failsafe_reason_nodata = "Waiting for LIDAR timed out! Check the LIDAR USB connection and consider restarting the drone." 
 
 
     def tearDown(self):
