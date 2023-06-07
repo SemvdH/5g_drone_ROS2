@@ -26,6 +26,7 @@ def generate_test_description():
     return (
         launch.LaunchDescription([
             px4_controller_node,
+            failsafe_node,
             launch_testing.actions.ReadyToTest(),
         ]),
         {
