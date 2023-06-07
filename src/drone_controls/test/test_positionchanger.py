@@ -23,16 +23,20 @@ def generate_test_description():
         package='drone_controls', executable='position_changer')
     failsafe_node = launch_ros.actions.Node(
         package='failsafe',executable='failsafe')
+    px4_controller_node = launch_ros.actions.Node(
+        package='px4_connection',executable='px4_controller')
 
     return (
         launch.LaunchDescription([
             positionchanger_node,
             failsafe_node,
+            px4_controller_node,
             launch_testing.actions.ReadyToTest(),
         ]),
         {
             'positionchanger_node': positionchanger_node,
             'failsafe_node': failsafe_node,
+            'px4_controller_node': px4_controller_node,
         }
     )
 
