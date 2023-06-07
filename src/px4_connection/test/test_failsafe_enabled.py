@@ -82,8 +82,8 @@ class TestPx4Failsafe(unittest.TestCase):
         failsafe_request.message = "test"
         set_trajectory_request = SetTrajectory.Request()
         set_trajectory_request.control_mode = 2
-        set_trajectory_request.values = [1,1,1]
-        set_trajectory_request.yaw = 0
+        set_trajectory_request.values = [1.0,1.0,1.0]
+        set_trajectory_request.yaw = 0.0
 
         try:
             while True:
@@ -113,10 +113,9 @@ class TestPx4Failsafe(unittest.TestCase):
         failsafe_request = EnableFailsafe.Request()
         failsafe_request.message = "test"
         set_attitude_request = SetAttitude.Request()
-        set_attitude_request.control_mode = 1
-        set_attitude_request.pitch = 1
-        set_attitude_request.yaw = 1
-        set_attitude_request.roll = 1
+        set_attitude_request.pitch = 1.0
+        set_attitude_request.yaw = 1.0
+        set_attitude_request.roll = 1.0
         set_attitude_request.thrust = 0.5
 
         try:
