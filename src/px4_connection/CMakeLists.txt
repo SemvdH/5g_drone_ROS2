@@ -60,6 +60,10 @@ install(
     DESTINATION share/${PROJECT_NAME}
 )
 
+install(FILES
+    test/test_failsafe_enabled.py
+    DESTINATION lib/${PROJECT_NAME})
+
 if(BUILD_TESTING)
     find_package(ament_lint_auto REQUIRED)
 
@@ -70,6 +74,8 @@ if(BUILD_TESTING)
     # uncomment the line when this package is not in a git repo
     # set(ament_cmake_cpplint_FOUND TRUE)
     ament_lint_auto_find_test_dependencies()
+    find_package(launch_testing_ament_cmake REQUIRED)
+    add_launch_test(test/test_failsafe_enabled.py)
 endif()
 
 ament_package()

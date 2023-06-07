@@ -66,8 +66,7 @@ class FailsafeUnitTest(unittest.TestCase):
         request.message = "test"
 
         try:
-            end_time = time.time() + 10.0
-            while time.time() < end_time:
+            while True:
                 rclpy.spin_once(self.node, timeout_sec=0.1)
                 if (not self.service_called):
                     future = failsafe_client.call_async(request)
