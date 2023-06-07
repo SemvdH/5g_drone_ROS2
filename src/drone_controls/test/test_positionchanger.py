@@ -25,6 +25,8 @@ def generate_test_description():
         package='failsafe',executable='failsafe')
     px4_controller_node = launch_ros.actions.Node(
         package='px4_connection',executable='px4_controller')
+    heartbeat_node = launch_ros.actions.Node(
+        package='px4_connection',executable='heartbeat')
 
     return (
         launch.LaunchDescription([
@@ -37,6 +39,7 @@ def generate_test_description():
             'positionchanger_node': positionchanger_node,
             'failsafe_node': failsafe_node,
             'px4_controller_node': px4_controller_node,
+            'heartbeat_node': heartbeat_node
         }
     )
 
