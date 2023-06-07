@@ -8,7 +8,6 @@ import launch_ros.actions
 import launch_testing.actions
 import pytest
 import rclpy
-from rclpy.node import Node
 
 from drone_services.srv import EnableFailsafe
 from drone_services.srv import SetTrajectory
@@ -19,7 +18,7 @@ from drone_services.srv import ArmDrone
 @pytest.mark.rostest
 def generate_test_description():
     file_path = os.path.dirname(__file__)
-    px4_controller_node = Node(
+    px4_controller_node = launch_ros.actions.Node(
         package='px4_connection', executable='px4_controller')
 
     return (
