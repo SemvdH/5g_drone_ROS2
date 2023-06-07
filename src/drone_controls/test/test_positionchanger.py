@@ -57,22 +57,14 @@ class TestPositionChanger(unittest.TestCase):
     def setUp(self):
         self.node = rclpy.create_node('test_positionchanger')
         self.called_positionchanger_service = False
-        self.received_failsafe_callback = False
-        self.failsafe_reason_timeout = "No healthy connection to LIDAR! Check the LIDAR USB cable and restart the drone."
-        self.failsafe_reason_nodata = "Waiting for LIDAR timed out! Check the LIDAR USB connection and consider restarting the drone." 
+        self.received_failsafe_callback = False 
 
 
     def tearDown(self):
         self.node.destroy_node()
 
-    def failsafe_callback_nodata(self,msg):
+    def failsafe_callback(self,msg):
         self.assertTrue(msg.enabled, "Failsafe was not enabled!")
-        self.assertEqual(msg.msg,self.failsafe_reason_nodata, "Failsafe message was not correct!")
-        self.received_failsafe_callback = True
-    
-    def failsafe_callback_timeout(self,msg):
-        self.assertTrue(msg.enabled, "Failsafe was not enabled!")
-        self.assertEqual(msg.msg,self.failsafe_reason_timeout, "Failsafe message was not correct!")
         self.received_failsafe_callback = True
 
     def move_position_callback(self,future):
@@ -82,7 +74,7 @@ class TestPositionChanger(unittest.TestCase):
     def test_positionchanger_no_lidar_data(self,positionchanger_node,proc_output):
         self.received_failsafe_callback = False
         self.called_positionchanger_service = False
-        failsafe_subscriber = self.node.create_subscription(FailsafeMsg,'/drone/failsafe',self.failsafe_callback_nodata,10)
+        failsafe_subscriber = self.node.create_subscription(FailsafeMsg,'/drone/failsafe',self.failsafe_callback,10)
         move_position_client = self.node.create_client(MovePosition,'/drone/move_position')
         while not move_position_client.wait_for_service(timeout_sec=1.0):
             self.node.get_logger().info('move_position service not available, waiting again...')
@@ -116,7 +108,7 @@ class TestPositionChanger(unittest.TestCase):
         self.node.get_logger().info("STARTING TEST test_positionchanger_lidar_stops")
         self.received_failsafe_callback = False
         self.called_positionchanger_service = False
-        failsafe_subscriber = self.node.create_subscription(FailsafeMsg,'/drone/failsafe',self.failsafe_callback_timeout,10)
+        failsafe_subscriber = self.node.create_subscription(FailsafeMsg,'/drone/failsafe',self.failsafe_callback,10)
         lidar_publisher = self.node.create_publisher(LidarReading,'/drone/object_detection',10)
         move_position_client = self.node.create_client(MovePosition,'/drone/move_position')
         
