@@ -20,6 +20,8 @@ def generate_test_description():
     file_path = os.path.dirname(__file__)
     px4_controller_node = launch_ros.actions.Node(
         package='px4_connection', executable='px4_controller')
+    failsafe_node = launch_ros.actions.Node(
+        package='failsafe', executable='failsafe')
 
     return (
         launch.LaunchDescription([
@@ -28,6 +30,7 @@ def generate_test_description():
         ]),
         {
             'px4_controller_node': px4_controller_node,
+            'failsafe_node': failsafe_node,
         }
     )
 
