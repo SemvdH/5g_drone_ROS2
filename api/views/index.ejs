@@ -331,6 +331,13 @@
             document.getElementById("connectedlabel").innerHTML = "Not connected to drone";
             document.getElementById("connectbutton").disabled = false;
         });
+
+        ws.addEventListener("close", function close(event) {
+            console.log("connection closed");
+            alert("Connection to API closed!")
+            document.getElementById("connectedlabel").innerHTML = "Not connected to drone";
+            document.getElementById("connectbutton").disabled = false;
+        });
     }
 
     function connect() {
