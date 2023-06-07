@@ -113,6 +113,7 @@ class TestPositionChanger(unittest.TestCase):
 
 
     def test_positionchanger_lidar_stops(self,positionchanger_node,proc_output):
+        self.node.get_logger().info("STARTING TEST test_positionchanger_lidar_stops")
         self.received_failsafe_callback = False
         self.called_positionchanger_service = False
         failsafe_subscriber = self.node.create_subscription(FailsafeMsg,'/drone/failsafe',self.failsafe_callback_timeout,10)
@@ -161,6 +162,7 @@ class TestPositionChanger(unittest.TestCase):
             self.assertTrue(self.received_failsafe_callback, "Failsafe was not activated!")
 
         finally:
+            self.node.get_logger().info('Cleaning up')
             self.node.destroy_client(move_position_client)
             self.node.destroy_subscription(failsafe_subscriber)
             self.node.destroy_publisher(lidar_publisher)
