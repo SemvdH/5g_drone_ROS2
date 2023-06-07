@@ -8,6 +8,7 @@ import launch_ros.actions
 import launch_testing.actions
 import pytest
 import rclpy
+import time
 
 from drone_services.srv import EnableFailsafe
 from drone_services.srv import SetTrajectory
@@ -86,8 +87,9 @@ class TestPx4Failsafe(unittest.TestCase):
         set_trajectory_request.values = [1.0,1.0,1.0]
         set_trajectory_request.yaw = 0.0
 
+        end_time = time.time() + 10.0
         try:
-            while True:
+            while time.time() < end_time:
                 rclpy.spin_once(self.node, timeout_sec=0.1)
                 if not self.called_failsafe_service:
                     failsafe_future = failsafe_client.call_async(failsafe_request)
@@ -97,6 +99,8 @@ class TestPx4Failsafe(unittest.TestCase):
                     trajectory_future.add_done_callback(self.trajectory_service_callback)
                 else:
                     break
+            self.assertTrue(self.called_failsafe_service, "Failsafe service was not called")
+            self.assertTrue(self.called_trajectory_service, "Trajectory service was not called")
 
         finally:
             self.node.destroy_client(failsafe_client)
@@ -119,8 +123,9 @@ class TestPx4Failsafe(unittest.TestCase):
         set_attitude_request.roll = 1.0
         set_attitude_request.thrust = 0.5
 
+        end_time = time.time() + 10.0
         try:
-            while True:
+            while time.time() < end_time:
                 rclpy.spin_once(self.node, timeout_sec=0.1)
                 if not self.called_failsafe_service:
                     failsafe_future = failsafe_client.call_async(failsafe_request)
@@ -130,6 +135,8 @@ class TestPx4Failsafe(unittest.TestCase):
                     attitude_future.add_done_callback(self.attitude_service_callback)
                 else:
                     break
+            self.assertTrue(self.called_failsafe_service, "Failsafe service was not called")
+            self.assertTrue(self.called_attitude_service, "Attitude service was not called")
 
         finally:
             self.node.destroy_client(failsafe_client)
@@ -147,8 +154,9 @@ class TestPx4Failsafe(unittest.TestCase):
         failsafe_request.message = "test"
         arm_request = ArmDrone.Request()
 
+        end_time = time.time() + 10.0
         try:
-            while True:
+            while time.time() < end_time:
                 rclpy.spin_once(self.node, timeout_sec=0.1)
                 if not self.called_failsafe_service:
                     failsafe_future = failsafe_client.call_async(failsafe_request)
@@ -158,6 +166,8 @@ class TestPx4Failsafe(unittest.TestCase):
                     arm_future.add_done_callback(self.arm_service_callback)
                 else:
                     break
+            self.assertTrue(self.called_failsafe_service, "Failsafe service was not called")
+            self.assertTrue(self.called_arm_service, "Arm service was not called")
         finally:
             self.node.destroy_client(failsafe_client)
             self.node.destroy_client(arm_client)
