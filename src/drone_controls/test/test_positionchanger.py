@@ -146,8 +146,7 @@ class TestPositionChanger(unittest.TestCase):
         try:
             self.node.get_logger().info('STARTING WHILE LOOP')
             while time.time() < end_time:
-                print("yeet")
-                rclpy.spin_once(self.node)
+                rclpy.spin_once(self.node,timeout_sec=0.1)
                 if not sent_lidar_msg:
                     lidar_publisher.publish(lidar_msg)
                     sent_lidar_msg = True
