@@ -139,6 +139,8 @@ class TestPositionChanger(unittest.TestCase):
 
         # wait for nodes to become active
         time.sleep(3)
+    
+        self.node.get_logger().info('STARTING WHILE LOOP')
         # wait 5 seconds for the failsafe to trigger
         wait_time = time.time() + 5.0
         end_time = time.time() + 10.0
