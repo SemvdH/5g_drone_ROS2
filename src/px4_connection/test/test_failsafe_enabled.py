@@ -74,9 +74,9 @@ class TestPx4Failsafe(unittest.TestCase):
         failsafe_client = self.node.create_client(EnableFailsafe, '/drone/enable_failsafe')
         set_trajectory_client = self.node.create_client(SetTrajectory, '/drone/set_trajectory')
         while not failsafe_client.wait_for_service(timeout_sec=1.0):
-            self.node.get_logger().info('service not available, waiting again...')
+            self.node.get_logger().info('failsafe service not available, waiting again...')
         while not set_trajectory_client.wait_for_service(timeout_sec=1.0):
-            self.node.get_logger().info('service not available, waiting again...')
+            self.node.get_logger().info('set_trajectory service not available, waiting again...')
         failsafe_request = EnableFailsafe.Request()
         failsafe_request.message = "test"
         set_trajectory_request = SetTrajectory.Request()
@@ -106,9 +106,9 @@ class TestPx4Failsafe(unittest.TestCase):
         failsafe_client = self.node.create_client(EnableFailsafe, '/drone/enable_failsafe')
         set_attitude_client = self.node.create_client(SetAttitude, '/drone/set_attitude')
         while not failsafe_client.wait_for_service(timeout_sec=1.0):
-            self.node.get_logger().info('service not available, waiting again...')
+            self.node.get_logger().info('failsafe not available, waiting again...')
         while not set_attitude_client.wait_for_service(timeout_sec=1.0):
-            self.node.get_logger().info('service not available, waiting again...')
+            self.node.get_logger().info('attitude not available, waiting again...')
         failsafe_request = EnableFailsafe.Request()
         failsafe_request.message = "test"
         set_attitude_request = SetAttitude.Request()
@@ -139,9 +139,9 @@ class TestPx4Failsafe(unittest.TestCase):
         failsafe_client = self.node.create_client(EnableFailsafe, '/drone/enable_failsafe')
         arm_client = self.node.create_client(ArmDrone, '/drone/arm')
         while not failsafe_client.wait_for_service(timeout_sec=1.0):
-            self.node.get_logger().info('service not available, waiting again...')
+            self.node.get_logger().info('failsafe not available, waiting again...')
         while not arm_client.wait_for_service(timeout_sec=1.0):
-            self.node.get_logger().info('service not available, waiting again...')
+            self.node.get_logger().info('arm not available, waiting again...')
         failsafe_request = EnableFailsafe.Request()
         failsafe_request.message = "test"
         arm_request = ArmDrone.Request()
