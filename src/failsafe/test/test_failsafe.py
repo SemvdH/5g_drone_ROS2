@@ -7,13 +7,14 @@ import launch
 import launch_ros
 import launch_ros.actions
 import launch_testing.actions
-
+import pytest
 import rclpy
 
 from drone_services.srv import EnableFailsafe
 from drone_services.msg import FailsafeMsg
 
 # launch node
+@pytest.mark.rostest
 def generate_test_description():
     file_path = os.path.dirname(__file__)
     failsafe_node = launch_ros.actions.Node(
@@ -75,6 +76,8 @@ class FailsafeUnitTest(unittest.TestCase):
                     break
             self.assertTrue(failsafe_msgs[0].enabled)
             self.assertEqual(failsafe_msgs[0].msg, "test")
+            self.assertTrue(False)
+            self.assertTrue(self.service_called)
         finally:
             self.node.destroy_subscription(failsafe_subscription)
             self.node.destroy_client(failsafe_client)
