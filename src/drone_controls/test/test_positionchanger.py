@@ -135,24 +135,22 @@ class TestPositionChanger(unittest.TestCase):
         lidar_msg.sensor_3 = 2.0
         lidar_msg.sensor_4 = 2.0
         lidar_msg.imu_data = [1.0,1.0,1.0,1.0]
-        lidar_messages_published = 0
+        sent_lidar_msg = False
 
         # wait for nodes to become active
         time.sleep(3)
     
-        self.node.get_logger().info('STARTING WHILE LOOP')
         # wait 5 seconds for the failsafe to trigger
         wait_time = time.time() + 5.0
         end_time = time.time() + 10.0
         try:
+            self.node.get_logger().info('STARTING WHILE LOOP')
             while time.time() < end_time:
                 print("yeet")
                 rclpy.spin_once(self.node)
-                # send 5 lidar messages and after that stop
-                if (lidar_messages_published < 5):
+                if not sent_lidar_msg:
                     lidar_publisher.publish(lidar_msg)
-                    lidar_messages_published += 1
-                    self.node.get_logger().info('Publishing lidar message')
+                    sent_lidar_msg = True
                 # wait 5 seconds before sending the move_position request
                 if not self.called_positionchanger_service and time.time() > wait_time:
                     self.node.get_logger().info('Sending move_position request')
