@@ -144,6 +144,7 @@ class TestPositionChanger(unittest.TestCase):
         end_time = time.time() + 10.0
         try:
             while time.time() < end_time:
+                print("yeet")
                 rclpy.spin_once(self.node)
                 # send 5 lidar messages and after that stop
                 if (lidar_messages_published < 5):
