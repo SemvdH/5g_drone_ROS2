@@ -17,7 +17,7 @@ def generate_test_description():
     file_path = os.path.dirname(__file__)
     camera_node = launch_ros.actions.Node(
         executable=sys.executable,
-        arguments=[os.path.join(file_path, '..', 'camera', 'camera.py')],
+        arguments=[os.path.join(file_path, '..', 'camera', 'camera_controller.py')],
         additional_env={'PYTHONUNBUFFERED': '1'}
     )
 
