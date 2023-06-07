@@ -155,6 +155,6 @@ class TestPx4Failsafe(unittest.TestCase):
                     arm_future.add_done_callback(self.arm_service_callback)
                 else:
                     break
-        finally
+        finally:
             self.node.destroy_client(failsafe_client)
             self.node.destroy_client(arm_client)
