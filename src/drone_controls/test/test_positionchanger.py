@@ -137,7 +137,8 @@ class TestPositionChanger(unittest.TestCase):
         lidar_msg.imu_data = [1.0,1.0,1.0,1.0]
         lidar_messages_published = 0
 
-
+        # wait for nodes to become active
+        time.sleep(3)
         # wait 5 seconds for the failsafe to trigger
         wait_time = time.time() + 5.0
         end_time = time.time() + 10.0
