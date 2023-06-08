@@ -101,6 +101,10 @@
             console.log("Disconnected from video")
             document.getElementById("cameraview").innerHTML = "Camera view: Disconnected. Reload the page to reconnect";
         });
+        socket.addEventListener('error', (e) => {
+            console.log("Error in video connection")
+            document.getElementById("cameraview").innerHTML = "Camera view: Error. Reload the page to reconnect";
+        });
     }
 
     // Helper function to decode base64 image and set it as source of <img> element
