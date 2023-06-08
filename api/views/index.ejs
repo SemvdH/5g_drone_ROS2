@@ -322,6 +322,7 @@
         if (checked_for_connection == false && connected_to_api)
         {
             console.log("Checking connection to API")
+            console.log(ws.readyState)
             if (ws.readyState != WebSocket.OPEN) {
                 alert("Lost connection to API!")
                 document.getElementById("connectedlabel").innerHTML = "Not connected to drone";
