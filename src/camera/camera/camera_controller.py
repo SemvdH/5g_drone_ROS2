@@ -33,6 +33,9 @@ class CameraController(Node):
         self.websocket = None
         self.server = None
         self.event_loop = None        
+        self.should_exit = False
+
+        self.timer = self.create_timer(1, self.timer_callback)
 
         # self.websocket_thread = threading.Thread(target=self.start_listening)
         # self.websocket_thread.start()
@@ -42,6 +45,11 @@ class CameraController(Node):
 
 
 
+    def timer_callback(self):
+        if self.should_exit:
+            self.get_logger().info("Shutting down...")
+            self.destroy_node()
+            sys.exit(-1)
 
     def take_picture_callback(self, request, response):
         if (request.input_name == "default"):
@@ -98,6 +106,7 @@ class CameraController(Node):
                 error_amount += 1
             if error_amount > 20:
                 self.get_logger().error("Too many errors, closing node")
+                self.should_exit = True
                 sys.exit(-1)
 
 
