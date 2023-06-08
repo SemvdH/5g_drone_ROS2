@@ -318,6 +318,7 @@
             document.getElementById("failsafe").style.textDecoration = "bold";
             alert("Failsafe enabled! Drone is landing. The failsafe message is:\n" + data.message);
         } else if (data.type == "API_HEARTBEAT") {
+            concole.log("Got heartbeat from API")
             clearTimeout(api_timout);
         } else {
             // decodeBase64Image(data.image, document.getElementById("result-video"));
