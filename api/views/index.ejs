@@ -77,6 +77,8 @@
 <script>
     var ws;
     var checked_for_connection = false;
+    var connected_to_api = false;
+    setInterval(check_ws_connection, 1000, ws);
     assign_button_callbacks();
     openSocket = () => {
 
@@ -317,7 +319,7 @@
     }
 
     function check_ws_connection(ws) {
-        if (checked_for_connection == false)
+        if (checked_for_connection == false && connected_to_api)
         {
             console.log("Checking connection to API")
             if (ws.readyState != WebSocket.OPEN) {
@@ -337,7 +339,7 @@
             console.log("connected with websockets to API!");
             document.getElementById("connectedlabel").innerHTML = "Connected to drone";
             document.getElementById("connectbutton").disabled = true;
-            setInterval(check_ws_connection, 1000, ws);
+            connected_to_api = true;
             openSocket();
         });
 
