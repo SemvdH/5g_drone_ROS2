@@ -42,6 +42,7 @@ class RequestCommand(Enum):
     MOVE_DIRECTION = 3
     TAKE_PICTURE = 5
     EMERGENCY_STOP = 6
+    API_HEARTBEAT = 7
 
 
 class ResponseMessage(Enum):
@@ -53,6 +54,7 @@ class ResponseMessage(Enum):
     IMAGE = 1
     MOVE_DIRECTION_RESULT = 2
     FAILSAFE = 3
+    API_HEARTBEAT = 4
 
 
 class ApiListener(Node):
@@ -442,6 +444,9 @@ class ApiListener(Node):
                 elif message_json['command'] == RequestCommand.EMERGENCY_STOP.value:
                     self.get_logger().info('Emergency stop command received')
                     self.emergency_stop()
+                elif message_json['command'] == RequestCommand.API_HEARTBEAT.value:
+                    self.get_logger().info('API heartbeat received')
+                    self.message_queue.append(json.dumps({"type": ResponseMessage.API_HEARTBEAT.name}))
                 else:
                     self.get_logger().error('Received unknown command ' +
                                             str(message_json['command']))

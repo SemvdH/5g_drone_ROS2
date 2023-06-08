@@ -76,9 +76,9 @@
 
 <script>
     var ws;
+    var api_timout;
     var checked_for_connection = false;
     var connected_to_api = false;
-    // setInterval(check_ws_connection, 1000, ws);
     assign_button_callbacks();
     openSocket = () => {
 
@@ -317,22 +317,23 @@
             document.getElementById("failsafe").style.color = "white";
             document.getElementById("failsafe").style.textDecoration = "bold";
             alert("Failsafe enabled! Drone is landing. The failsafe message is:\n" + data.message);
+        } else if (data.type == "API_HEARTBEAT") {
+            clearTimeout(api_timout);
         } else {
             // decodeBase64Image(data.image, document.getElementById("result-video"));
         }
     }
 
     function check_ws_connection() {
-        if (checked_for_connection == false && connected_to_api)
-        {
+        if (checked_for_connection == false && connected_to_api) {
             console.log("Checking connection to API")
-            console.log(ws.readyState)
-            if (ws.readyState != WebSocket.OPEN) {
-                alert("Lost connection to API!")
+            ws.send(JSON.stringify({ "command": 7 }));
+            api_timout = setTimeout(function () {
+                alert("API did not respond on time!")
                 document.getElementById("connectedlabel").innerHTML = "Not connected to drone";
-                document.getElementById("connectbutton").disabled = false;                
-                checked_for_connection = true;
-            }
+                document.getElementById("connectbutton").disabled = false;
+            }, 1000);
+
         }
     }
 
@@ -345,7 +346,7 @@
             document.getElementById("connectedlabel").innerHTML = "Connected to drone";
             document.getElementById("connectbutton").disabled = true;
             connected_to_api = true;
-            setInterval(check_ws_connection, 1000);
+            setInterval(check_ws_connection, 2000);
             openSocket();
         });
 
