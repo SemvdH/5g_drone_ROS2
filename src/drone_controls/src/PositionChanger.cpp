@@ -9,6 +9,7 @@
 #include <drone_services/srv/move_position.hpp>
 #include <drone_services/srv/ready_drone.hpp>
 #include <drone_services/srv/arm_drone.hpp>
+#include <drone_services/srv/land.hpp>
 
 #include <drone_services/srv/enable_failsafe.hpp>
 #include <drone_services/msg/failsafe_msg.hpp>
@@ -33,6 +34,8 @@
 // converts bitmask control mode to control mode used by PX4Controller
 #define PX4_CONTROLLER_CONTROL_MODE(x) ((x) == 4 ? 1 : ((x) == 16 ? 2 : ((x) == 32 ? 3 : -1)))
 
+#define HEIGHT_DELTA 0.1
+
 using namespace std::chrono_literals;
 
 struct Quaternion
@@ -54,7 +57,8 @@ public:
         this->odometry_subscription = this->create_subscription<px4_msgs::msg::VehicleOdometry>("/fmu/out/vehicle_odometry", qos, std::bind(&PositionChanger::handle_odometry_message, this, std::placeholders::_1));
         this->move_position_service = this->create_service<drone_services::srv::MovePosition>("/drone/move_position", std::bind(&PositionChanger::handle_move_position_request, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
         this->ready_drone_service = this->create_service<drone_services::srv::ReadyDrone>("/drone/ready", std::bind(&PositionChanger::handle_ready_drone_request, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
-
+        this->land_service = this->create_service<drone_services::srv::Land>("/drone/land", std::bind(&PositionChanger::handle_land_request, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
+        
         this->failsafe_publisher = this->create_publisher<drone_services::msg::FailsafeMsg>("/drone/failsafe", 10);
 
         this->trajectory_client = this->create_client<drone_services::srv::SetTrajectory>("/drone/set_trajectory");
@@ -271,9 +275,60 @@ public:
         apply_collision_weights();
     }
 
+    void attitude_land_callback(rclcpp::Client<drone_services::srv::SetAttitude>::SharedFuture future)
+    {
+        auto status = future.wait_for(1s);
+        if (status == std::future_status::ready)
+        {
+            if (future.get()->success)
+            {
+                this->get_logger()->info("Attitude set to 0 for landing, landing done");
+                this->has_landed = true;
+            }
+        }
+        else
+        {
+            RCLCPP_INFO(this->get_logger(), "Service In-Progress...");
+        }
+    }
+
+    void vehicle_control_land_request_callback(rclcpp::Client<drone_services::srv::SetVehicleControl>::SharedFuture future)
+    {
+        auto status = future.wait_for(1s);
+        if (status == std::future_status::ready)
+        {
+            if (future.get()->success)
+            {
+                this->get_logger()->info("Vehicle Control mode set to attitude for landing");
+                this->attitude_request->pitch = 0;
+                this->attitude_request->roll = 0;
+                this->attitude_request->yaw = 0;
+                this->attitude_request->thrust = 0;
+                auto attitude_response = this->attitude_client->async_send_request(this->attitude_request, std::bind(&PositionChanger::attitude_land_callback, this, std::placeholders::_1));
+            }
+        }
+        else
+        {
+            RCLCPP_INFO(this->get_logger(), "Service In-Progress...");
+        }
+    }
+
     void handle_height_message(const drone_services::msg::HeightData::SharedPtr message)
     {
         this->current_height = message->height;
+        if (!this->got_ready_drone_request)
+        {
+            this->start_height = message->height;
+        }
+        if (this->is_landing)
+        {
+            if (this->current_height <= this->start_height + HEIGHT_DELTA)
+            {
+                this->vehicle_control_request->control = 4;
+                auto control_mode_response = this->vehicle_control_client->async_send_request(this->vehicle_control_request,
+                                                                                              std::bind(&PositionChanger::vehicle_control_land_request_callback, this, std::placeholders::_1));
+            }
+        }
     }
 
     /**
@@ -386,6 +441,15 @@ public:
         }
     }
 
+    void handle_land_request(
+        const std::shared_ptr<rmw_request_id_t> request_header,
+        const std::shared_ptr<drone_services::srv::Land::Request> request,
+        const std::shared_ptr<drone_services::srv::Land::Response> response)
+    {
+        this->is_landing = true;
+        response->is_landing = this->is_landing;
+    }
+
     void handle_ready_drone_request(
         const std::shared_ptr<rmw_request_id_t> request_header,
         const std::shared_ptr<drone_services::srv::ReadyDrone::Request> request,
@@ -453,7 +517,7 @@ private:
 
     rclcpp::Service<drone_services::srv::MovePosition>::SharedPtr move_position_service;
     rclcpp::Service<drone_services::srv::ReadyDrone>::SharedPtr ready_drone_service;
-
+    rclcpp::Service<drone_services::srv::Land>::SharedPtr land_service;
     rclcpp::TimerBase::SharedPtr lidar_health_timer;
 
     drone_services::srv::SetTrajectory::Request::SharedPtr trajectory_request;
@@ -469,6 +533,7 @@ private:
     float current_speed_y = 0;
     float current_speed_z = 0;
     float current_height = 0;
+    float start_height = -1;
     bool is_landing = false;
     bool move_direction_allowed[4] = {true};     // whether the drone can move in a certain direction
     float collision_prevention_weights[4] = {0}; // the amount to move away from an object in a certain direction if the drone is too close

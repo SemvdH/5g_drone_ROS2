@@ -9,6 +9,7 @@ from drone_services.srv import EnableFailsafe
 from drone_services.srv import ArmDrone
 from drone_services.srv import DisarmDrone
 from drone_services.srv import ReadyDrone
+from drone_services.srv import Land
 
 import asyncio
 import websockets.server
@@ -99,6 +100,10 @@ class ApiListener(Node):
         self.ready_drone_client = self.create_client(ReadyDrone, "/drone/ready")
         self.wait_for_service(self.ready_drone_client, "Ready drone")
         self.ready_drone_request = ReadyDrone.Request()
+
+        self.land_client = self.create_client(Land, "/drone/land")
+        self.wait_for_service(self.land_client, "Land drone")
+        self.land_request = Land.Request()
 
         self.status_data = {}
         self.status_data_received = False
@@ -362,6 +367,8 @@ class ApiListener(Node):
         self.move_position_request.front_back = 0.0
         self.move_position_request.angle = 0.0
         self.send_move_position_request()
+        future = self.land_drone_client.call_async(self.land_drone_request)
+        future.add_done_callback(partial(self.land_service_callback))
 
     def arm_disarm(self):
         """Sends an arm or disarm request to the PX4Controller"""
@@ -411,6 +418,16 @@ class ApiListener(Node):
         except Exception as e:
             self.get_logger().error(
                 'Something went wrong while calling the disarm service!\n' + str(e))
+    def land_service_callback(self, future):
+        try:
+            result = future.result()
+            if result.is_landing:
+                self.get_logger().info('Land service call success')
+            else:
+                self.get_logger().error('Land service call failed')
+        except Exception as e:
+            self.get_logger().error(
+                'Something went wrong while calling the land service!\n' + str(e))
 
     def consume_message(self, message):
         """Consumes a message from the client"""
