@@ -304,6 +304,7 @@
 
     function handle_ws_message(data) {
         // console.log("Handling message " + data);
+        clearTimeout(api_timout);
         if (data.type == "STATUS") {
             document.getElementById("batterypercentage").innerHTML = "Battery percentage: " + data.data.battery_percentage.toString().substring(0, 4) + "%";
             document.getElementById("cpuload").innerHTML = "CPU load: " + data.data.cpu_usage.toString().substring(0, 6).substring(2, 4) + "%";
@@ -311,6 +312,12 @@
             document.getElementById("control_mode").innerHTML = "Control mode: " + data.data.control_mode;
             document.getElementById("speed").innerHTML = "Current speed (m/s): x: " + data.data.velocity[0] + " y: " + data.data.velocity[1] + " z: " + data.data.velocity[2];
             document.getElementById("position").innerHTML = "Current position (m): x: " + data.data.position[0] + " y: " + data.data.position[1] + " z: " + data.data.position[2];
+            api_timeout = setTimeout(function () {
+                console.log("API timed out")
+                alert("Connection to API timed out!");
+                document.getElementById("connectedlabel").innerHTML = "Not connected to drone";
+                document.getElementById("connectbutton").disabled = false;
+            }, 3000);
         } else if (data.type == "FAILSAFE") {
             document.getElementById("failsafe").innerHTML = "Failsafe: ACTIVATED";
             document.getElementById("failsafe").style.backgroundColor = "red";
@@ -325,19 +332,6 @@
         }
     }
 
-    function check_ws_connection() {
-        if (checked_for_connection == false && connected_to_api) {
-            console.log("Checking connection to API")
-            ws.send(JSON.stringify({ "command": 7 }));
-            api_timout = setTimeout(function () {
-                alert("API did not respond on time!")
-                document.getElementById("connectedlabel").innerHTML = "Not connected to drone";
-                document.getElementById("connectbutton").disabled = false;
-            }, 1000);
-
-        }
-    }
-
     function local_connect() {
         console.log("Connecting to API");
         ws = new WebSocket("ws://10.100.0.40:9001/");
@@ -347,7 +341,6 @@
             document.getElementById("connectedlabel").innerHTML = "Connected to drone";
             document.getElementById("connectbutton").disabled = true;
             connected_to_api = true;
-            setInterval(check_ws_connection, 2000);
             openSocket();
         });
 
