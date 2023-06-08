@@ -302,11 +302,11 @@
 
     }
 
-    var set_timout = false;
+    // var set_timout = false;
 
     function handle_ws_message(data) {
         // console.log("Handling message " + data);
-        clearTimeout(api_timout);
+        // clearTimeout(api_timout);
         set_timout = false;
         if (data.type == "STATUS") {
             document.getElementById("batterypercentage").innerHTML = "Battery percentage: " + data.data.battery_percentage.toString().substring(0, 4) + "%";
@@ -315,15 +315,16 @@
             document.getElementById("control_mode").innerHTML = "Control mode: " + data.data.control_mode;
             document.getElementById("speed").innerHTML = "Current speed (m/s): x: " + data.data.velocity[0] + " y: " + data.data.velocity[1] + " z: " + data.data.velocity[2];
             document.getElementById("position").innerHTML = "Current position (m): x: " + data.data.position[0] + " y: " + data.data.position[1] + " z: " + data.data.position[2];
-            if (set_timout == false) {
-                api_timeout = setTimeout(function () {
-                    set_timout = true;
-                    console.log("API timed out")
-                    alert("Connection to API timed out!");
-                    document.getElementById("connectedlabel").innerHTML = "Not connected to drone";
-                    document.getElementById("connectbutton").disabled = false;
-                }, 5000);
-            }
+            // TODO fix
+            // if (set_timout == false) {
+            //     api_timeout = setTimeout(function () {
+            //         set_timout = true;
+            //         console.log("API timed out")
+            //         alert("Connection to API timed out!");
+            //         document.getElementById("connectedlabel").innerHTML = "Not connected to drone";
+            //         document.getElementById("connectbutton").disabled = false;
+            //     }, 5000);
+            // }
         } else if (data.type == "FAILSAFE") {
             document.getElementById("failsafe").innerHTML = "Failsafe: ACTIVATED";
             document.getElementById("failsafe").style.backgroundColor = "red";
