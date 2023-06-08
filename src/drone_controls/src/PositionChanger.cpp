@@ -49,6 +49,7 @@ public:
         auto qos = rclcpp::QoS(rclcpp::QoSInitialization(qos_profile.history, 5), qos_profile);
 
         this->lidar_subscription = this->create_subscription<drone_services::msg::LidarReading>("/drone/object_detection", qos, std::bind(&PositionChanger::handle_lidar_message, this, std::placeholders::_1));
+        this->height_subscription = this->create_subscription<drone_services::msg::HeightData>("/drone/height", qos, std::bind(&PositionChanger::handle_height_message, this, std::placeholders::_1));
         // vehicle_local_position_subscription_ = this->create_subscription<px4_msgs::msg::VehicleLocalPosition>("/fmu/out/vehicle_local_position", qos, std::bind(&PX4Controller::on_local_position_receive, this, std::placeholders::_1));
         this->odometry_subscription = this->create_subscription<px4_msgs::msg::VehicleOdometry>("/fmu/out/vehicle_odometry", qos, std::bind(&PositionChanger::handle_odometry_message, this, std::placeholders::_1));
         this->move_position_service = this->create_service<drone_services::srv::MovePosition>("/drone/move_position", std::bind(&PositionChanger::handle_move_position_request, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
@@ -270,6 +271,11 @@ public:
         apply_collision_weights();
     }
 
+    void handle_height_message(const drone_services::msg::HeightData::SharedPtr message)
+    {
+        this->current_height = message->height;
+    }
+
     /**
      * @brief Callback function for receiving new LIDAR data
      *
@@ -462,6 +468,8 @@ private:
     float current_speed_x = 0;
     float current_speed_y = 0;
     float current_speed_z = 0;
+    float current_height = 0;
+    bool is_landing = false;
     bool move_direction_allowed[4] = {true};     // whether the drone can move in a certain direction
     float collision_prevention_weights[4] = {0}; // the amount to move away from an object in a certain direction if the drone is too close
     bool failsafe_enabled = false;

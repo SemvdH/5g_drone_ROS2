@@ -153,11 +153,12 @@ class ApiListener(Node):
             self.armed = msg.armed
             self.status_data['control_mode'] = msg.control_mode
             self.status_data['route_setpoint'] = msg.route_setpoint
-            self.status_data['velocity'] = [int(msg.velocity[0]), int(
-                msg.velocity[1]), int(msg.velocity[2])]
-            self.status_data['position'] = [int(msg.position[0]), int(
-                msg.position[1]), int(msg.position[2])]
+            self.status_data['velocity'] = [float(msg.velocity[0]), float(
+                msg.velocity[1]), float(msg.velocity[2])]
+            self.status_data['position'] = [float(msg.position[0]), float(
+            msg.position[1]), float(msg.position[2])]
             self.status_data['failsafe'] = msg.failsafe
+            self.status_data['height'] = msg.height
         except Exception as e:
             self.get_logger().error(
                 f'Error while parsing drone status message: {e}')
