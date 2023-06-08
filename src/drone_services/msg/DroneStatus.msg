@@ -5,4 +5,5 @@ wstring control_mode
 bool armed
 float32[3] velocity
 float32[3] position
+float32 height
 bool failsafe
