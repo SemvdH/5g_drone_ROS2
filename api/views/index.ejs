@@ -285,9 +285,8 @@
 
     }
 
-    function handle_ws_message(message) {
-        console.log("Handling message " + message);
-        var data = JSON.parse(message);
+    function handle_ws_message(data) {
+        console.log("Handling message " + data);
         if (data.type == "STATUS") {
             document.getElementById("batterypercentage").innerHTML = "Battery percentage: " + data.data.battery_percentage.toString().substring(0, 4) + "%";
             document.getElementById("cpuload").innerHTML = "CPU load: " + data.data.cpu_usage.toString().substring(0, 6).substring(2, 4) + "%";
