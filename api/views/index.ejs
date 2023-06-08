@@ -66,7 +66,9 @@
         <p id="speed">Current speed</p>
         <p id="position">Current position</p>
         <p id="failsafe">Failsafe not activated</p>
-        <img class="headerimg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Ericsson_logo.svg/2341px-Ericsson_logo.svg.png" alt="ericsson logo">
+        <img class="headerimg"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Ericsson_logo.svg/2341px-Ericsson_logo.svg.png"
+            alt="ericsson logo">
         <img class="headerimg" src="https://hightechcampus.com/storage/1069/5ghub-logo.png" alt="5g hub logo">
     </div>
     <!-- </div> -->
@@ -74,6 +76,7 @@
 
 <script>
     var ws;
+    var checked_for_connection = false;
     assign_button_callbacks();
     openSocket = () => {
 
@@ -313,6 +316,18 @@
         }
     }
 
+    function check_ws_connection(ws) {
+        if (checked_for_connection == false)
+        {
+            if (ws.readyState != WebSocket.OPEN) {
+                alert("Lost connection to API!")
+                document.getElementById("connectedlabel").innerHTML = "Not connected to drone";
+                document.getElementById("connectbutton").disabled = false;
+                checked_for_connection = true;
+            }
+        }
+    }
+
     function local_connect() {
         console.log("Connecting to API");
         ws = new WebSocket("ws://10.100.0.40:9001/");
@@ -321,6 +336,7 @@
             console.log("connected with websockets to API!");
             document.getElementById("connectedlabel").innerHTML = "Connected to drone";
             document.getElementById("connectbutton").disabled = true;
+            setInterval(check_ws_connection, 1000, ws);
             openSocket();
         });
 
