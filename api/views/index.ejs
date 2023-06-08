@@ -319,7 +319,7 @@
 
         ws.addEventListener("message", function message(message) {
             try {
-                // console.log(message)
+                console.log(message.data)
                 var msg = JSON.parse(message.data);
                 handle_ws_message(msg);
 
