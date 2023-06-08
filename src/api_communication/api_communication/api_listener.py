@@ -460,7 +460,8 @@ class ApiListener(Node):
             self.send_available_commands()
         except Exception as e:
             self.get_logger().error('Something went wrong!')
-            self.get_logger().error(str(e))
+            self.get_logger().error(str(type(e)))
+            self.get_logger().error(str(e.with_traceback()))
 
     async def api_handler(self, websocket):
         """Handles the websocket connection
