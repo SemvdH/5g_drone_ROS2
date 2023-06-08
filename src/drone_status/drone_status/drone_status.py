@@ -56,7 +56,7 @@ class DroneStatusNode(Node):
         msg.battery_percentage = self.battery_percentage
         msg.cpu_usage = self.cpu_usage
         msg.route_setpoint = self.route_setpoint
-        msg.position = [0.0,0.0,0.0]
+        msg.position = self.position
         msg.velocity = self.velocity
         self.publisher.publish(msg)
         # self.get_logger().info('Publishing status message')
