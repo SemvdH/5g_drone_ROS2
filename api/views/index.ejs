@@ -338,8 +338,9 @@
         });
 
         ws.addEventListener("error", function error(err) {
-            console.log("there was an error");
-            console.error("error: " + err);
+            console.log("there was an error! " + err);
+            // console.error("error: " + err);
+            console.log("Showing alert!");
             alert("There was an error connecting to the API!");
             document.getElementById("connectedlabel").innerHTML = "Not connected to drone";
             document.getElementById("connectbutton").disabled = false;
