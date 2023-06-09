@@ -12,6 +12,7 @@ import rclpy
 
 from px4_msgs.msg import BatteryStatus
 from drone_services.msg import FailsafeMsg
+from drone_services.msg import DroneStatus
 
 @pytest.mark.rostest
 def generate_test_description():
@@ -81,9 +82,13 @@ class ApiListenerTest(unittest.TestCase):
         self.assertTrue("Battery level too low! Failsafe enabled to prevent damage to battery" in msg.msg, "Failsafe message was not correct!")
         self.received_failsafe_callback = True
 
+    def status_callback(self,msg):
+        self.node.get_logger().info("Received status callback " + str(msg))
+
     def test_api_listener_battery(self, api_listener_node, proc_output):
         battery_publisher = self.node.create_publisher(BatteryStatus, '/fmu/out/battery_status',10)
         failsafe_subscriber = self.node.create_subscription(FailsafeMsg, '/drone/failsafe', self.failsafe_callback, 10)
+        drone_status_subscriber = self.node.create_subscription(DroneStatus, '/drone/status', self.status_callback, 10)
         msg = BatteryStatus()
         msg.remaining = 0.10
 
