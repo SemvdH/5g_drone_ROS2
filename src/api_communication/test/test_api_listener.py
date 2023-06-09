@@ -78,7 +78,7 @@ class ApiListenerTest(unittest.TestCase):
         self.received_failsafe_callback = True
 
     def test_api_listener_battery(self, api_listener_node, proc_output):
-        battery_publisher = self.node.create_publisher(BatteryStatus, '/fmu/out/battery_status')
+        battery_publisher = self.node.create_publisher(BatteryStatus, '/fmu/out/battery_status',10)
         failsafe_subscriber = self.node.create_subscription(FailsafeMsg, '/drone/failsafe', self.failsafe_callback, 10)
 
         end_time = time.time() + 10.0
