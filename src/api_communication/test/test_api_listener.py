@@ -9,7 +9,7 @@ import launch_ros.actions
 import launch_testing.actions
 import pytest
 import rclpy
-
+from rclpy import qos
 from px4_msgs.msg import BatteryStatus
 from drone_services.msg import FailsafeMsg
 from drone_services.msg import DroneStatus
@@ -86,7 +86,15 @@ class ApiListenerTest(unittest.TestCase):
         self.node.get_logger().info("Received status callback " + str(msg))
 
     def test_api_listener_battery(self, api_listener_node, proc_output):
-        battery_publisher = self.node.create_publisher(BatteryStatus, '/fmu/out/battery_status',10)
+
+        qos_profile = qos.QoSProfile(
+            reliability=qos.QoSReliabilityPolicy.RMW_QOS_POLICY_RELIABILITY_BEST_EFFORT,
+            durability=qos.QoSDurabilityPolicy.RMW_QOS_POLICY_DURABILITY_TRANSIENT_LOCAL,
+            history=qos.QoSHistoryPolicy.RMW_QOS_POLICY_HISTORY_KEEP_LAST,
+            depth=1
+        )
+                
+        battery_publisher = self.node.create_publisher(BatteryStatus, '/fmu/out/battery_status',qos_profile=qos_profile)
         failsafe_subscriber = self.node.create_subscription(FailsafeMsg, '/drone/failsafe', self.failsafe_callback, 10)
         drone_status_subscriber = self.node.create_subscription(DroneStatus, '/drone/status', self.status_callback, 10)
         msg = BatteryStatus()
@@ -99,7 +107,7 @@ class ApiListenerTest(unittest.TestCase):
         try:
             while time.time() < end_time:
                 rclpy.spin_once(self.node, timeout_sec=0.1)
-                self.node.get_logger().info("publishing message")
+                # self.node.get_logger().info("publishing message")
                 battery_publisher.publish(msg)
                 if self.received_failsafe_callback:
                     break
