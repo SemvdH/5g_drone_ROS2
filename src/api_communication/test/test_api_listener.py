@@ -32,6 +32,8 @@ def generate_test_description():
         package='px4_connection', executable='px4_controller')
     drone_status_node = launch_ros.actions.Node(
         package='drone_status', executable='drone_status')
+    heartbeat_node = launch_ros.actions.Node(
+        package='px4_connection', executable='heartbeat')
 
     return (
         launch.LaunchDescription([
@@ -41,6 +43,7 @@ def generate_test_description():
             position_changer_node,
             px4_controller_node,
             drone_status_node,
+            heartbeat_node,
             launch_testing.actions.ReadyToTest(),
         ]),
         {
@@ -49,7 +52,8 @@ def generate_test_description():
             'camera_node': camera_node,
             'position_changer_node': position_changer_node,
             'px4_controller_node': px4_controller_node,
-            'drone_status_node': drone_status_node
+            'drone_status_node': drone_status_node,
+            'heartbeat_node': heartbeat_node
         }
     )
 
