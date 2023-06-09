@@ -315,10 +315,10 @@ public:
 
     void handle_height_message(const drone_services::msg::HeightData::SharedPtr message)
     {
-        this->current_height = message->height;
+        this->current_height = message->min_height;
         if (!this->got_ready_drone_request)
         {
-            this->start_height = message->height;
+            this->start_height = message->min_height;
         }
         if (this->is_landing)
         {
@@ -508,6 +508,7 @@ private:
     rclcpp::Publisher<drone_services::msg::FailsafeMsg>::SharedPtr failsafe_publisher;
     rclcpp::Subscription<drone_services::msg::LidarReading>::SharedPtr lidar_subscription;
     rclcpp::Subscription<px4_msgs::msg::VehicleOdometry>::SharedPtr odometry_subscription;
+    rclcpp::Subscription<drone_services::msg::HeightData>::SharedPtr height_subscription;
 
     rclcpp::Client<drone_services::srv::SetTrajectory>::SharedPtr trajectory_client;
     rclcpp::Client<drone_services::srv::SetAttitude>::SharedPtr attitude_client;
@@ -535,6 +536,7 @@ private:
     float current_height = 0;
     float start_height = -1;
     bool is_landing = false;
+    bool has_landed = false;
     bool move_direction_allowed[4] = {true};     // whether the drone can move in a certain direction
     float collision_prevention_weights[4] = {0}; // the amount to move away from an object in a certain direction if the drone is too close
     bool failsafe_enabled = false;
