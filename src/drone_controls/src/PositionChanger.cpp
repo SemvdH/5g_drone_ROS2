@@ -282,7 +282,7 @@ public:
         {
             if (future.get()->success)
             {
-                this->get_logger()->info("Attitude set to 0 for landing, landing done");
+                RCLCPP_INFO(this->get_logger(),"Attitude set to 0 for landing, landing done");
                 this->has_landed = true;
             }
         }
@@ -299,7 +299,7 @@ public:
         {
             if (future.get()->success)
             {
-                this->get_logger()->info("Vehicle Control mode set to attitude for landing");
+                RCLCPP_INFO(this->get_logger()"Vehicle Control mode set to attitude for landing");
                 this->attitude_request->pitch = 0;
                 this->attitude_request->roll = 0;
                 this->attitude_request->yaw = 0;
