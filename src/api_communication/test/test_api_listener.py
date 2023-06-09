@@ -84,18 +84,18 @@ class ApiListenerTest(unittest.TestCase):
     def test_api_listener_battery(self, api_listener_node, proc_output):
         battery_publisher = self.node.create_publisher(BatteryStatus, '/fmu/out/battery_status',10)
         failsafe_subscriber = self.node.create_subscription(FailsafeMsg, '/drone/failsafe', self.failsafe_callback, 10)
+        msg = BatteryStatus()
+        msg.remaining = 0.10
 
         time.sleep(5) # wait for nodes to start
+        self.node.get_logger().info("Starting publishing")
         end_time = time.time() + 10.0
 
         try:
             while time.time() < end_time:
                 rclpy.spin_once(self.node, timeout_sec=0.1)
-                if not self.published_battery_status:
-                    self.published_battery_status = True
-                    msg = BatteryStatus()
-                    msg.remaining = 0.10
-                    battery_publisher.publish(msg)
+                self.node.get_logger().info("publishing message")
+                battery_publisher.publish(msg)
                 if self.received_failsafe_callback:
                     break
             self.assertTrue(self.received_failsafe_callback, "Failsafe was not enabled!")
