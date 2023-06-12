@@ -65,10 +65,10 @@ class TestPositionChanger(unittest.TestCase):
         while not self.move_position_client.wait_for_service(timeout_sec=1.0):
             self.node.get_logger().info('move_position service not available, waiting again...')
         self.request = MovePosition.Request()
-        self.node.destroy_client(self.move_position_client)
-        self.node.destroy_publisher(self.lidar_publisher)
 
     def tearDown(self):
+        self.node.destroy_client(self.move_position_client)
+        self.node.destroy_publisher(self.lidar_publisher)
         self.node.destroy_node()
 
     def toRadians(self, degrees) -> float:
