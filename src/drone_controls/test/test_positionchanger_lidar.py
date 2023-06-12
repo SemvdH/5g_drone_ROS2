@@ -89,9 +89,11 @@ class TestPositionChanger(unittest.TestCase):
         self.request.up_down = 0.0
         self.request.angle = 0.0
 
+        lidar_msgs_sent = 0
+
         lidar_msg = LidarReading()
         lidar_msg.sensor_1 = 0.5
-        lidar_msg.sensor_2 = 0.3
+        lidar_msg.sensor_2 = 2.0
         lidar_msg.sensor_3 = 2.0
         lidar_msg.sensor_4 = 2.0
         lidar_msg.imu_data = [1.0, 1.0, 1.0, 1.0]
@@ -102,6 +104,9 @@ class TestPositionChanger(unittest.TestCase):
         while time.time() < end_time:
             rclpy.spin_once(self.node, timeout_sec=0.1)
             self.lidar_publisher.publish(lidar_msg)
+            lidar_msgs_sent += 1
+            if (lidar_msgs_sent == 10):
+                lidar_msg.sensor_2 = 0.3
             if not self.called_positionchanger_service:
                 future = self.move_position_client.call_async(self.request)
                 future.add_done_callback(self.move_position_callback)
