@@ -87,6 +87,9 @@ class TestPositionChanger(unittest.TestCase):
         lidar_msg.imu_data = [1.0, 1.0, 1.0, 1.0]
         end_time = time.time() + 10.0
 
+        proc_output.assertWaitFor(expected_output='0.5',process=px4_controller_node)
+
+        self.node.get_logger().info("STARTING while loop test")
         try:
             while time.time() < end_time:
                 rclpy.spin_once(self.node, timeout_sec=0.1)
@@ -94,7 +97,6 @@ class TestPositionChanger(unittest.TestCase):
                 if not self.called_positionchanger_service:
                     future = move_position_client.call_async(request)
                     future.add_done_callback(self.move_position_callback)
-            proc_output.assertWaitFor(expected_output='0.5',process=px4_controller_node)
         finally:
             self.node.destroy_client(move_position_client)
             self.node.destroy_publisher(lidar_publisher)
