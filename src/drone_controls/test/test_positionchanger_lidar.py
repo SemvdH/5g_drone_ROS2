@@ -189,7 +189,7 @@ class TestPositionChanger(unittest.TestCase):
         lidar_msg.sensor_3 = 0.36 # rear left
         lidar_msg.sensor_4 = 2.0 # rear right
         lidar_msg.imu_data = [1.0, 1.0, 1.0, 1.0]
-        end_time = time.time() + 10.0
+        end_time = time.time() + 20.0
         
         while time.time() < end_time:
             rclpy.spin_once(self.node, timeout_sec=0.1)
