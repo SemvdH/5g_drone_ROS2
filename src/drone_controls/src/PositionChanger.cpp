@@ -192,7 +192,6 @@ public:
      */
     void send_trajectory_message()
     {
-        check_move_direction_allowed();
         this->trajectory_request->values[0] = this->current_speed_x;
         this->trajectory_request->values[1] = this->current_speed_y;
         this->trajectory_request->values[2] = this->current_speed_z;
@@ -221,12 +220,13 @@ public:
      */
     void apply_collision_weights()
     {
+
         if (this->current_speed_x > 0) // if moving forward
         {
             if (!this->move_direction_allowed[MOVE_DIRECTION_FRONT])
             {
                 RCLCPP_INFO(this->get_logger(), "Collision prevention front: %d", collision_prevention_weights[MOVE_DIRECTION_FRONT])
-                this->current_speed_x = collision_prevention_weights[MOVE_DIRECTION_FRONT];
+                get_x_y_with_rotation(collision_prevention_weights[MOVE_DIRECTION_FRONT], 0, this->current_yaw, &this->current_speed_x, &this->current_speed_y);
             }
         }
         else // moving backward
@@ -234,7 +234,7 @@ public:
             if (!this->move_direction_allowed[MOVE_DIRECTION_BACK])
             {
                 RCLCPP_INFO(this->get_logger(), "Collision prevention back: %d", collision_prevention_weights[MOVE_DIRECTION_BACK])
-                this->current_speed_x = collision_prevention_weights[MOVE_DIRECTION_BACK];
+                get_x_y_with_rotation(collision_prevention_weights[MOVE_DIRECTION_BACK], 0, this->current_yaw, &this->current_speed_x, &this->current_speed_y);
             }
         }
         if (this->current_speed_y > 0) // moving right
@@ -242,7 +242,7 @@ public:
             if (!this->move_direction_allowed[MOVE_DIRECTION_RIGHT])
             {
                 RCLCPP_INFO(this->get_logger(), "Collision prevention right: %d", collision_prevention_weights[MOVE_DIRECTION_RIGHT])
-                this->current_speed_y = collision_prevention_weights[MOVE_DIRECTION_RIGHT];
+                get_x_y_with_rotation(0,collision_prevention_weights[MOVE_DIRECTION_RIGHT], this->current_yaw, &this->current_speed_x, &this->current_speed_y)
             }
         }
         else // moving left
@@ -250,7 +250,7 @@ public:
             if (!this->move_direction_allowed[MOVE_DIRECTION_LEFT])
             {
                 RCLCPP_INFO(this->get_logger(), "Collision prevention left: %d", collision_prevention_weights[MOVE_DIRECTION_LEFT])
-                this->current_speed_y = collision_prevention_weights[MOVE_DIRECTION_LEFT];
+                get_x_y_with_rotation(0,collision_prevention_weights[MOVE_DIRECTION_LEFT], this->current_yaw, &this->current_speed_x, &this->current_speed_y)
             }
         }
     }
@@ -435,6 +435,7 @@ public:
             this->current_yaw += request->angle * (M_PI / 180.0); // get the angle in radians
             this->current_speed_z = request->up_down;
             get_x_y_with_rotation(request->front_back, request->left_right, this->current_yaw, &this->current_speed_x, &this->current_speed_y);
+            check_move_direction_allowed();
             RCLCPP_INFO(this->get_logger(), "Calculated speed x: %f, y: %f", this->current_speed_x, this->current_speed_y);
             send_trajectory_message();
             response->success = true;
