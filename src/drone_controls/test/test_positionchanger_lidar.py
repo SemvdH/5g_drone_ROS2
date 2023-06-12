@@ -106,7 +106,7 @@ class TestPositionChanger(unittest.TestCase):
                 future = self.move_position_client.call_async(self.request)
                 future.add_done_callback(self.move_position_callback)
         launch_testing.asserts.assertInStderr(proc_output, "Collision prevention front: -0.5", 'position_changer-1')
-        launch_testing.asserts.assertInStderr(proc_output, "Collision prevention front: -0.7", 'position_changer-1')
+        launch_testing.asserts.assertInStderr(proc_output, "Collision prevention left: -0.7", 'position_changer-1')
     
     def test_positionchanger_lidar_moves_away_back(self, px4_controller_node, proc_output):
         self.node.get_logger().info("STARTING TEST test_positionchanger_lidar_moves_away")
@@ -131,4 +131,4 @@ class TestPositionChanger(unittest.TestCase):
             if not self.called_positionchanger_service:
                 future = self.move_position_client.call_async(self.request)
                 future.add_done_callback(self.move_position_callback)
-        launch_testing.asserts.assertInStderr(proc_output, "Collision prevention front: -0.5", 'position_changer-1')
+        launch_testing.asserts.assertInStderr(proc_output, "Collision prevention back: 0.5", 'position_changer-1')
