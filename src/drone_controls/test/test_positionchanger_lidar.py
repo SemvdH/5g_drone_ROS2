@@ -7,7 +7,6 @@ import launch_ros
 import launch_ros.actions
 import launch_testing.actions
 import pytest
-import launch_pytest
 import rclpy
 import time
 
@@ -91,7 +90,7 @@ class TestPositionChanger(unittest.TestCase):
         lidar_msg.imu_data = [1.0, 1.0, 1.0, 1.0]
         end_time = time.time() + 10.0
 
-
+        print("TYPE OF PROC OUTPUT:")
         print(type(proc_output))
         self.node.get_logger().info("STARTING while loop test")
         try:
