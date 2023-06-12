@@ -90,8 +90,6 @@ class TestPositionChanger(unittest.TestCase):
         lidar_msg.imu_data = [1.0, 1.0, 1.0, 1.0]
         end_time = time.time() + 10.0
 
-        print("TYPE OF PROC OUTPUT:")
-        print(type(proc_output))
         self.node.get_logger().info("STARTING while loop test")
         try:
             while time.time() < end_time:
@@ -100,6 +98,7 @@ class TestPositionChanger(unittest.TestCase):
                 if not self.called_positionchanger_service:
                     future = move_position_client.call_async(request)
                     future.add_done_callback(self.move_position_callback)
+            launch_testing.asserts.assertInStdout(proc_output, "0.5", '')
         finally:
             self.node.destroy_client(move_position_client)
             self.node.destroy_publisher(lidar_publisher)
