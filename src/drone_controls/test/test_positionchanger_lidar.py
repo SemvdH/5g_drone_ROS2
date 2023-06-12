@@ -99,7 +99,7 @@ class TestPositionChanger(unittest.TestCase):
                 if not self.called_positionchanger_service:
                     future = move_position_client.call_async(request)
                     future.add_done_callback(self.move_position_callback)
-            launch_testing.asserts.assertInStdout(proc_output, "Collision prevention front", 'px4_controller-3')
+            launch_testing.asserts.assertInStderr(proc_output, "Collision prevention front", 'px4_controller-3')
         finally:
             self.node.destroy_client(move_position_client)
             self.node.destroy_publisher(lidar_publisher)

@@ -275,7 +275,7 @@ public:
                                                                                                               : (MIN_DISTANCE - std::min(this->lidar_sensor_values[LIDAR_SENSOR_RL], this->lidar_sensor_values[LIDAR_SENSOR_RR]));
         collision_prevention_weights[MOVE_DIRECTION_RIGHT] = this->move_direction_allowed[MOVE_DIRECTION_RIGHT] ? 0
                                                                                                                 : -(MIN_DISTANCE - std::min(this->lidar_sensor_values[LIDAR_SENSOR_RR], this->lidar_sensor_values[LIDAR_SENSOR_FR]));
-
+        RCLCPP_INFO(this->get_logger(), "Collision prevention weights: %f, %f, %f, %f", collision_prevention_weights[MOVE_DIRECTION_FRONT], collision_prevention_weights[MOVE_DIRECTION_LEFT], collision_prevention_weights[MOVE_DIRECTION_BACK], collision_prevention_weights[MOVE_DIRECTION_RIGHT]);
         apply_collision_weights();
     }
 
