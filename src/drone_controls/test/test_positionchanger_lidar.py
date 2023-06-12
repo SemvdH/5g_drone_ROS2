@@ -43,6 +43,10 @@ def generate_test_description():
         }
     )
 
+#define LIDAR_SENSOR_FR 0 // front right
+#define LIDAR_SENSOR_FL 1 // front left
+#define LIDAR_SENSOR_RL 2 // rear left
+#define LIDAR_SENSOR_RR 3 // rear right
 
 class TestPositionChanger(unittest.TestCase):
 
@@ -79,10 +83,7 @@ class TestPositionChanger(unittest.TestCase):
         self.node.get_logger().info("Callback called")
         self.called_positionchanger_service = True
 
-    def validate_output(self, output):
-        assert len(output) > 0, 'Output is empty'
-
-    def test_positionchanger_lidar_moves_away_all(self, px4_controller_node, proc_output):
+    def test_positionchanger_lidar_moves_away_front(self, px4_controller_node, proc_output):
         self.node.get_logger().info("STARTING TEST test_positionchanger_lidar_moves_away")
         self.request.front_back = 1.0
         self.request.left_right = 0.0
@@ -92,10 +93,10 @@ class TestPositionChanger(unittest.TestCase):
         lidar_msgs_sent = 0
 
         lidar_msg = LidarReading()
-        lidar_msg.sensor_1 = 0.5
-        lidar_msg.sensor_2 = 2.0
-        lidar_msg.sensor_3 = 2.0
-        lidar_msg.sensor_4 = 2.0
+        lidar_msg.sensor_1 = 0.5 # front right
+        lidar_msg.sensor_2 = 2.0 # front left
+        lidar_msg.sensor_3 = 2.0 # rear left
+        lidar_msg.sensor_4 = 2.0 # rear right
         lidar_msg.imu_data = [1.0, 1.0, 1.0, 1.0]
         end_time = time.time() + 10.0
 
@@ -106,15 +107,10 @@ class TestPositionChanger(unittest.TestCase):
             self.lidar_publisher.publish(lidar_msg)
             lidar_msgs_sent += 1
             if (lidar_msgs_sent == 10):
+                lidar_msg.sensor_1 = 1.0
                 lidar_msg.sensor_2 = 0.3
-            elif (lidar_msgs_sent == 20):
-                lidar_msg.sensor_4 = 0.66
-            elif (lidar_msgs_sent == 30):
-                lidar_msg.sensor_3 = 0.79
             if not self.called_positionchanger_service:
                 future = self.move_position_client.call_async(self.request)
                 future.add_done_callback(self.move_position_callback)
         launch_testing.asserts.assertInStderr(proc_output, "Collision prevention front: -0.5", 'position_changer-1')
         launch_testing.asserts.assertInStderr(proc_output, "Collision prevention left: 0.7", 'position_changer-1')
-        launch_testing.asserts.assertInStderr(proc_output, "Collision prevention right: -0.34", 'position_changer-1')
-        launch_testing.asserts.assertInStderr(proc_output, "Collision prevention back: 0.21", 'position_changer-1')

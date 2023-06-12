@@ -58,7 +58,7 @@ public:
         this->move_position_service = this->create_service<drone_services::srv::MovePosition>("/drone/move_position", std::bind(&PositionChanger::handle_move_position_request, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
         this->ready_drone_service = this->create_service<drone_services::srv::ReadyDrone>("/drone/ready", std::bind(&PositionChanger::handle_ready_drone_request, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
         this->land_service = this->create_service<drone_services::srv::Land>("/drone/land", std::bind(&PositionChanger::handle_land_request, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
-        
+
         this->failsafe_publisher = this->create_publisher<drone_services::msg::FailsafeMsg>("/drone/failsafe", 10);
 
         this->trajectory_client = this->create_client<drone_services::srv::SetTrajectory>("/drone/set_trajectory");
@@ -221,38 +221,38 @@ public:
     void apply_collision_weights()
     {
 
-        if (this->current_speed_x > 0) // if moving forward
+        // if (this->current_speed_x > 0) // if moving forward
+        // {
+        if (!this->move_direction_allowed[MOVE_DIRECTION_FRONT])
         {
-            if (!this->move_direction_allowed[MOVE_DIRECTION_FRONT])
-            {
-                RCLCPP_INFO(this->get_logger(), "Collision prevention front: %f", collision_prevention_weights[MOVE_DIRECTION_FRONT]);
-                get_x_y_with_rotation(collision_prevention_weights[MOVE_DIRECTION_FRONT], 0, this->current_yaw, &this->current_speed_x, &this->current_speed_y);
-            }
+            RCLCPP_INFO(this->get_logger(), "Collision prevention front: %f", collision_prevention_weights[MOVE_DIRECTION_FRONT]);
+            get_x_y_with_rotation(collision_prevention_weights[MOVE_DIRECTION_FRONT], 0, this->current_yaw, &this->current_speed_x, &this->current_speed_y);
         }
-        else // moving backward
+        // }
+        // else // moving backward
+        // {
+        if (!this->move_direction_allowed[MOVE_DIRECTION_BACK])
         {
-            if (!this->move_direction_allowed[MOVE_DIRECTION_BACK])
-            {
-                RCLCPP_INFO(this->get_logger(), "Collision prevention back: %f", collision_prevention_weights[MOVE_DIRECTION_BACK]);
-                get_x_y_with_rotation(collision_prevention_weights[MOVE_DIRECTION_BACK], 0, this->current_yaw, &this->current_speed_x, &this->current_speed_y);
-            }
+            RCLCPP_INFO(this->get_logger(), "Collision prevention back: %f", collision_prevention_weights[MOVE_DIRECTION_BACK]);
+            get_x_y_with_rotation(collision_prevention_weights[MOVE_DIRECTION_BACK], 0, this->current_yaw, &this->current_speed_x, &this->current_speed_y);
         }
-        if (this->current_speed_y > 0) // moving right
+        // }
+        // if (this->current_speed_y > 0) // moving right
+        // {
+        if (!this->move_direction_allowed[MOVE_DIRECTION_RIGHT])
         {
-            if (!this->move_direction_allowed[MOVE_DIRECTION_RIGHT])
-            {
-                RCLCPP_INFO(this->get_logger(), "Collision prevention right: %f", collision_prevention_weights[MOVE_DIRECTION_RIGHT]);
-                get_x_y_with_rotation(0, collision_prevention_weights[MOVE_DIRECTION_RIGHT], this->current_yaw, &this->current_speed_x, &this->current_speed_y);
-            }
+            RCLCPP_INFO(this->get_logger(), "Collision prevention right: %f", collision_prevention_weights[MOVE_DIRECTION_RIGHT]);
+            get_x_y_with_rotation(0, collision_prevention_weights[MOVE_DIRECTION_RIGHT], this->current_yaw, &this->current_speed_x, &this->current_speed_y);
         }
-        else // moving left
+        // }
+        // else // moving left
+        // {
+        if (!this->move_direction_allowed[MOVE_DIRECTION_LEFT])
         {
-            if (!this->move_direction_allowed[MOVE_DIRECTION_LEFT])
-            {
-                RCLCPP_INFO(this->get_logger(), "Collision prevention left: %f", collision_prevention_weights[MOVE_DIRECTION_LEFT]);
-                get_x_y_with_rotation(0, collision_prevention_weights[MOVE_DIRECTION_LEFT], this->current_yaw, &this->current_speed_x, &this->current_speed_y);
-            }
+            RCLCPP_INFO(this->get_logger(), "Collision prevention left: %f", collision_prevention_weights[MOVE_DIRECTION_LEFT]);
+            get_x_y_with_rotation(0, collision_prevention_weights[MOVE_DIRECTION_LEFT], this->current_yaw, &this->current_speed_x, &this->current_speed_y);
         }
+        // }
     }
 
     /**
@@ -285,7 +285,7 @@ public:
         {
             if (future.get()->success)
             {
-                RCLCPP_INFO(this->get_logger(),"Attitude set to 0 for landing, landing done");
+                RCLCPP_INFO(this->get_logger(), "Attitude set to 0 for landing, landing done");
                 this->has_landed = true;
             }
         }
@@ -302,7 +302,7 @@ public:
         {
             if (future.get()->success)
             {
-                RCLCPP_INFO(this->get_logger(),"Vehicle Control mode set to attitude for landing");
+                RCLCPP_INFO(this->get_logger(), "Vehicle Control mode set to attitude for landing");
                 this->attitude_request->pitch = 0;
                 this->attitude_request->roll = 0;
                 this->attitude_request->yaw = 0;
