@@ -189,6 +189,8 @@ class TestPositionChanger(unittest.TestCase):
         lidar_msg.sensor_3 = 0.36 # rear left
         lidar_msg.sensor_4 = 2.0 # rear right
         lidar_msg.imu_data = [1.0, 1.0, 1.0, 1.0]
+        #this test is carried out first, so wait for nodes to start
+        time.sleep(5)
         end_time = time.time() + 20.0
         
         while time.time() < end_time:
