@@ -225,6 +225,7 @@ public:
         {
             if (!this->move_direction_allowed[MOVE_DIRECTION_FRONT])
             {
+                RCLCPP_INFO(this->get_logger(), "Collision prevention front: %d", collision_prevention_weights[MOVE_DIRECTION_FRONT])
                 this->current_speed_x = collision_prevention_weights[MOVE_DIRECTION_FRONT];
             }
         }
@@ -232,6 +233,7 @@ public:
         {
             if (!this->move_direction_allowed[MOVE_DIRECTION_BACK])
             {
+                RCLCPP_INFO(this->get_logger(), "Collision prevention back: %d", collision_prevention_weights[MOVE_DIRECTION_BACK])
                 this->current_speed_x = collision_prevention_weights[MOVE_DIRECTION_BACK];
             }
         }
@@ -239,6 +241,7 @@ public:
         {
             if (!this->move_direction_allowed[MOVE_DIRECTION_RIGHT])
             {
+                RCLCPP_INFO(this->get_logger(), "Collision prevention right: %d", collision_prevention_weights[MOVE_DIRECTION_RIGHT])
                 this->current_speed_y = collision_prevention_weights[MOVE_DIRECTION_RIGHT];
             }
         }
@@ -246,6 +249,7 @@ public:
         {
             if (!this->move_direction_allowed[MOVE_DIRECTION_LEFT])
             {
+                RCLCPP_INFO(this->get_logger(), "Collision prevention left: %d", collision_prevention_weights[MOVE_DIRECTION_LEFT])
                 this->current_speed_y = collision_prevention_weights[MOVE_DIRECTION_LEFT];
             }
         }
