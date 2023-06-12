@@ -218,8 +218,8 @@ class TestPositionChanger(unittest.TestCase):
         lidar_msg = LidarReading()
         lidar_msg.sensor_1 = 2.0 # front right
         lidar_msg.sensor_2 = 2.0 # front left
-        lidar_msg.sensor_3 = 0.36 # rear left
-        lidar_msg.sensor_4 = 2.0 # rear right
+        lidar_msg.sensor_3 = 2.0 # rear left
+        lidar_msg.sensor_4 = 0.12 # rear right
         lidar_msg.imu_data = [1.0, 1.0, 1.0, 1.0]
         end_time = time.time() + 10.0
         
@@ -228,8 +228,8 @@ class TestPositionChanger(unittest.TestCase):
             self.lidar_publisher.publish(lidar_msg)
             lidar_msgs_sent += 1
             if (lidar_msgs_sent == 10):
-                lidar_msg.sensor_3 = 2.0
-                lidar_msg.sensor_4 = 0.12
+                lidar_msg.sensor_4 = 2.0
+                lidar_msg.sensor_3 = 0.36
             elif (lidar_msgs_sent == 20):
                 break
             if not self.called_positionchanger_service:
