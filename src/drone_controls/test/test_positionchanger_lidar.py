@@ -207,5 +207,34 @@ class TestPositionChanger(unittest.TestCase):
         launch_testing.asserts.assertInStderr(proc_output, "Collision prevention back: 0.88", 'position_changer-1')
 
     def test_positionchanger_lidar_moves_away_still(self, proc_output):
-        self.assertTrue(False, "Not implemented yet")
+        self.node.get_logger().info("starting back test")
+        self.request.front_back = 0.0
+        self.request.left_right = 0.0
+        self.request.up_down = 0.0
+        self.request.angle = 0.0
+
+        lidar_msgs_sent = 0
+
+        lidar_msg = LidarReading()
+        lidar_msg.sensor_1 = 2.0 # front right
+        lidar_msg.sensor_2 = 2.0 # front left
+        lidar_msg.sensor_3 = 0.36 # rear left
+        lidar_msg.sensor_4 = 2.0 # rear right
+        lidar_msg.imu_data = [1.0, 1.0, 1.0, 1.0]
+        end_time = time.time() + 10.0
+        
+        while time.time() < end_time:
+            rclpy.spin_once(self.node, timeout_sec=0.1)
+            self.lidar_publisher.publish(lidar_msg)
+            lidar_msgs_sent += 1
+            if (lidar_msgs_sent == 10):
+                lidar_msg.sensor_3 = 2.0
+                lidar_msg.sensor_4 = 0.12
+            elif (lidar_msgs_sent == 20):
+                break
+            if not self.called_positionchanger_service:
+                future = self.move_position_client.call_async(self.request)
+                future.add_done_callback(self.move_position_callback)
+        launch_testing.asserts.assertInStderr(proc_output, "Collision prevention back: 0.64", 'position_changer-1')
+        launch_testing.asserts.assertInStderr(proc_output, "Collision prevention back: 0.88", 'position_changer-1')
     
