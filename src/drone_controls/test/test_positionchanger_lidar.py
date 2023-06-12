@@ -62,6 +62,9 @@ class TestPositionChanger(unittest.TestCase):
     def tearDown(self):
         self.node.destroy_node()
 
+    def move_position_callback(self, future):
+        self.called_positionchanger_service = True
+
     def test_positionchanger_lidar_moves_away(self, positionchanger_node, px4_controller_node, proc_output):
         self.node.get_logger().info("STARTING TEST test_positionchanger_lidar_moves_away")
         lidar_publisher = self.node.create_publisher(
