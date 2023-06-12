@@ -43,11 +43,6 @@ def generate_test_description():
         }
     )
 
-#define LIDAR_SENSOR_FR 0 // front right
-#define LIDAR_SENSOR_FL 1 // front left
-#define LIDAR_SENSOR_RL 2 // rear left
-#define LIDAR_SENSOR_RR 3 // rear right
-
 class TestPositionChanger(unittest.TestCase):
 
     @classmethod
@@ -83,7 +78,7 @@ class TestPositionChanger(unittest.TestCase):
         self.node.get_logger().info("Callback called")
         self.called_positionchanger_service = True
 
-    def test_positionchanger_lidar_moves_away_front(self, px4_controller_node, proc_output):
+    def test_positionchanger_lidar_moves_away_front(self, proc_output):
         self.node.get_logger().info("STARTING TEST test_positionchanger_lidar_moves_away")
         self.request.front_back = 1.0
         self.request.left_right = 0.0
@@ -113,4 +108,17 @@ class TestPositionChanger(unittest.TestCase):
                 future = self.move_position_client.call_async(self.request)
                 future.add_done_callback(self.move_position_callback)
         launch_testing.asserts.assertInStderr(proc_output, "Collision prevention front: -0.5", 'position_changer-1')
-        launch_testing.asserts.assertInStderr(proc_output, "Collision prevention left: 0.7", 'position_changer-1')
+        launch_testing.asserts.assertInStderr(proc_output, "Collision prevention front: -0.7", 'position_changer-1')
+
+    def test_positionchanger_lidar_moves_away_right(self, proc_output):
+        self.assertTrue(False, "Not implemented yet")
+
+    def test_positionchanger_lidar_moves_away_left(self, proc_output):
+        self.assertTrue(False, "Not implemented yet")
+
+    def test_positionchanger_lidar_moves_away_back(self, proc_output):
+        self.assertTrue(False, "Not implemented yet")
+
+    def test_positionchanger_lidar_moves_away_still(self, proc_output):
+        self.assertTrue(False, "Not implemented yet")
+    
