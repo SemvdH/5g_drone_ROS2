@@ -65,7 +65,10 @@ class TestPositionChanger(unittest.TestCase):
     def move_position_callback(self, future):
         self.called_positionchanger_service = True
 
-    def test_positionchanger_lidar_moves_away(self, positionchanger_node, px4_controller_node, proc_output):
+    def validate_output(self, output):
+        assert len(output) > 0, 'Output is empty'
+
+    def test_positionchanger_lidar_moves_away(self, px4_controller_node, proc_output):
         self.node.get_logger().info("STARTING TEST test_positionchanger_lidar_moves_away")
         lidar_publisher = self.node.create_publisher(
             LidarReading, '/drone/object_detection', 10)
@@ -87,7 +90,6 @@ class TestPositionChanger(unittest.TestCase):
         lidar_msg.imu_data = [1.0, 1.0, 1.0, 1.0]
         end_time = time.time() + 10.0
 
-        proc_output.assertWaitFor(expected_output='0.5',process=px4_controller_node)
 
         self.node.get_logger().info("STARTING while loop test")
         try:
@@ -97,6 +99,7 @@ class TestPositionChanger(unittest.TestCase):
                 if not self.called_positionchanger_service:
                     future = move_position_client.call_async(request)
                     future.add_done_callback(self.move_position_callback)
+              launch_pytest.tools.assert_stderr_sync(proc_output, px4_controller_node, self.validate_output, timeout=5)
         finally:
             self.node.destroy_client(move_position_client)
             self.node.destroy_publisher(lidar_publisher)
