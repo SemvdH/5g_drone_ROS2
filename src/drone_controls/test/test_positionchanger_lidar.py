@@ -63,6 +63,7 @@ class TestPositionChanger(unittest.TestCase):
         self.node.destroy_node()
 
     def move_position_callback(self, future):
+        self.node.get_logger().info("Callback called")
         self.called_positionchanger_service = True
 
     def validate_output(self, output):
