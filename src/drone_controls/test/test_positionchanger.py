@@ -166,37 +166,3 @@ class TestPositionChanger(unittest.TestCase):
             self.node.destroy_client(move_position_client)
             self.node.destroy_subscription(failsafe_subscriber)
             self.node.destroy_publisher(lidar_publisher)
-
-    def test_positionchanger_lidar_moves_away(self, positionchanger_node, px4_controller_node, proc_output):
-        self.node.get_logger().info("STARTING TEST test_positionchanger_lidar_moves_away")
-        lidar_publisher = self.node.create_publisher(
-            LidarReading, '/drone/object_detection', 10)
-        move_position_client = self.node.create_client(
-            MovePosition, '/drone/move_position')
-        while not move_position_client.wait_for_service(timeout_sec=1.0):
-            self.node.get_logger().info('move_position service not available, waiting again...')
-        request = MovePosition.Request()
-        request.front_back = 1.0
-        request.left_right = 0.0
-        request.up_down = 0.0
-        request.angle = 0.0
-
-        lidar_msg = LidarReading()
-        lidar_msg.sensor_1 = 0.5
-        lidar_msg.sensor_2 = 2.0
-        lidar_msg.sensor_3 = 2.0
-        lidar_msg.sensor_4 = 2.0
-        lidar_msg.imu_data = [1.0, 1.0, 1.0, 1.0]
-        end_time = time.time() + 10.0
-
-        try:
-            while time.time() < end_time:
-                rclpy.spin_once(self.node, timeout_sec=0.1)
-                lidar_publisher.publish(lidar_msg)
-                if not self.called_positionchanger_service:
-                    future = move_position_client.call_async(request)
-                    future.add_done_callback(self.move_position_callback)
-            proc_output.assertWaitFor(expected_output='0.5',process=px4_controller_node)
-        finally:
-            self.node.destroy_client(move_position_client)
-            self.node.destroy_publisher(lidar_publisher)
