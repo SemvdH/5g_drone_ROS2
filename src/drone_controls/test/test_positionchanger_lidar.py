@@ -7,6 +7,7 @@ import launch_ros
 import launch_ros.actions
 import launch_testing.actions
 import pytest
+import launch_pytest
 import rclpy
 import time
 
@@ -99,7 +100,7 @@ class TestPositionChanger(unittest.TestCase):
                 if not self.called_positionchanger_service:
                     future = move_position_client.call_async(request)
                     future.add_done_callback(self.move_position_callback)
-              launch_pytest.tools.assert_stderr_sync(proc_output, px4_controller_node, self.validate_output, timeout=5)
+                launch_pytest.tools.assert_stderr_sync(proc_output, px4_controller_node, self.validate_output, timeout=5)
         finally:
             self.node.destroy_client(move_position_client)
             self.node.destroy_publisher(lidar_publisher)
