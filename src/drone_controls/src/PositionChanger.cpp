@@ -225,7 +225,7 @@ public:
         {
             if (!this->move_direction_allowed[MOVE_DIRECTION_FRONT])
             {
-                RCLCPP_INFO(this->get_logger(), "Collision prevention front: %d", collision_prevention_weights[MOVE_DIRECTION_FRONT])
+                RCLCPP_INFO(this->get_logger(), "Collision prevention front: %d", collision_prevention_weights[MOVE_DIRECTION_FRONT]);
                 get_x_y_with_rotation(collision_prevention_weights[MOVE_DIRECTION_FRONT], 0, this->current_yaw, &this->current_speed_x, &this->current_speed_y);
             }
         }
@@ -233,7 +233,7 @@ public:
         {
             if (!this->move_direction_allowed[MOVE_DIRECTION_BACK])
             {
-                RCLCPP_INFO(this->get_logger(), "Collision prevention back: %d", collision_prevention_weights[MOVE_DIRECTION_BACK])
+                RCLCPP_INFO(this->get_logger(), "Collision prevention back: %d", collision_prevention_weights[MOVE_DIRECTION_BACK]);
                 get_x_y_with_rotation(collision_prevention_weights[MOVE_DIRECTION_BACK], 0, this->current_yaw, &this->current_speed_x, &this->current_speed_y);
             }
         }
@@ -241,16 +241,16 @@ public:
         {
             if (!this->move_direction_allowed[MOVE_DIRECTION_RIGHT])
             {
-                RCLCPP_INFO(this->get_logger(), "Collision prevention right: %d", collision_prevention_weights[MOVE_DIRECTION_RIGHT])
-                get_x_y_with_rotation(0,collision_prevention_weights[MOVE_DIRECTION_RIGHT], this->current_yaw, &this->current_speed_x, &this->current_speed_y)
+                RCLCPP_INFO(this->get_logger(), "Collision prevention right: %d", collision_prevention_weights[MOVE_DIRECTION_RIGHT]);
+                get_x_y_with_rotation(0, collision_prevention_weights[MOVE_DIRECTION_RIGHT], this->current_yaw, &this->current_speed_x, &this->current_speed_y);
             }
         }
         else // moving left
         {
             if (!this->move_direction_allowed[MOVE_DIRECTION_LEFT])
             {
-                RCLCPP_INFO(this->get_logger(), "Collision prevention left: %d", collision_prevention_weights[MOVE_DIRECTION_LEFT])
-                get_x_y_with_rotation(0,collision_prevention_weights[MOVE_DIRECTION_LEFT], this->current_yaw, &this->current_speed_x, &this->current_speed_y)
+                RCLCPP_INFO(this->get_logger(), "Collision prevention left: %d", collision_prevention_weights[MOVE_DIRECTION_LEFT]);
+                get_x_y_with_rotation(0, collision_prevention_weights[MOVE_DIRECTION_LEFT], this->current_yaw, &this->current_speed_x, &this->current_speed_y);
             }
         }
     }
