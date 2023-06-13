@@ -36,15 +36,11 @@ class RequestCommand(Enum):
     """
     Enum for the commands that can be sent to the API
     """
-    GET_COMMANDS_TYPES = -1  # to get the available commands and types
+    GET_COMMANDS_TYPES = -1 
     LAND = 0
     ARM_DISARM = 1
-    MOVE_POSITION = 2
     MOVE_DIRECTION = 3
-    TAKE_PICTURE = 5
     EMERGENCY_STOP = 6
-    API_HEARTBEAT = 7
-
 
 class ResponseMessage(Enum):
     """
@@ -52,10 +48,8 @@ class ResponseMessage(Enum):
     """
     ALL_REQUESTS_RESPONSES = -1
     STATUS = 0
-    IMAGE = 1
     MOVE_DIRECTION_RESULT = 2
     FAILSAFE = 3
-    API_HEARTBEAT = 4
 
 
 class ApiListener(Node):
@@ -232,43 +226,6 @@ class ApiListener(Node):
         self.get_logger().info('API started on port 9001')
         await self.server.wait_closed()
 
-    def process_image_request(self, message_json):
-        """Processes an image request from the client
-
-        Args:
-            message_json (str): The JSON message received, containing an optional filename for the result image
-        """
-        self.get_logger().info('Processing image request')
-        if 'filename' in message_json:
-            self.get_logger().info(
-                f'Filename: {message_json["filename"]}')
-            self.take_picture_request.input_name = message_json['filename']
-        self.get_logger().info('Calling take picture service')
-        future = self.take_picture_client.call_async(self.take_picture_request)
-        future.add_done_callback(partial(self.image_request_callback))
-
-    def image_request_callback(self, future):
-        """Callback for when an image request is made from the client"
-
-        Args:
-            future (Future): Future object that holds the result
-        """
-        try:
-            result_filename = future.result().filename
-            self.get_logger().info("Received result filename: " + result_filename)
-            with open(result_filename, 'rb') as f:
-                self.get_logger().info('Reading image')
-                read_file = f.read()
-                base64_img = base64.b64encode(read_file)
-                self.message_queue.append(json.dumps(
-                    {'type': ResponseMessage.IMAGE.name, 'image': base64_img.decode('utf-8')}))
-
-                # send image as binary file
-                # self.message_queue.append(read_file)
-        except Exception as e:
-            self.get_logger().error(
-                'Something went wrong while sending a take picture request and waiting for the response: %r' % (e))
-
     def send_available_commands(self):
         """Sends the available commands to the client
         """
@@ -388,7 +345,6 @@ class ApiListener(Node):
             result = future.result()
             if result.success:
                 self.get_logger().info('Ready service call success')
-                # self.armed = True
             else:
                 self.get_logger().error('Ready service call failed')
         except Exception as e:
@@ -400,7 +356,6 @@ class ApiListener(Node):
             result = future.result()
             if result.success:
                 self.get_logger().info('Arm service call success')
-                # self.armed = True
             else:
                 self.get_logger().error('Arm service call failed')
         except Exception as e:
@@ -418,6 +373,7 @@ class ApiListener(Node):
         except Exception as e:
             self.get_logger().error(
                 'Something went wrong while calling the disarm service!\n' + str(e))
+            
     def land_service_callback(self, future):
         try:
             result = future.result()
@@ -448,23 +404,15 @@ class ApiListener(Node):
                 elif message_json['command'] == RequestCommand.ARM_DISARM.value:
                     self.get_logger().info('Arm/disarm command received')
                     self.arm_disarm()
-                elif message_json['command'] == RequestCommand.MOVE_POSITION.value:
-                    self.get_logger().info('Move position command received')
                 elif message_json['command'] == RequestCommand.MOVE_DIRECTION.value:
                     self.get_logger().info('Move direction command received')
                     self.handle_direction_message(message_json)
-                elif message_json['command'] == RequestCommand.TAKE_PICTURE.value:
-                    self.get_logger().info('Take picture command received')
-                    self.process_image_request(message_json)
-                elif message_json['command'] == RequestCommand.GET.value:
+                elif message_json['command'] == RequestCommand.GET_COMMANDS_TYPES.value:
                     self.get_logger().info('Get command received')
                     self.send_available_commands()
                 elif message_json['command'] == RequestCommand.EMERGENCY_STOP.value:
                     self.get_logger().info('Emergency stop command received')
                     self.emergency_stop()
-                elif message_json['command'] == RequestCommand.API_HEARTBEAT.value:
-                    self.get_logger().info('API heartbeat received')
-                    self.message_queue.append(json.dumps({"type": ResponseMessage.API_HEARTBEAT.name}))
                 else:
                     self.get_logger().error('Received unknown command ' +
                                             str(message_json['command']))
@@ -488,9 +436,6 @@ class ApiListener(Node):
             websocket (websockets object): the websocket connection
         """
         self.get_logger().info('New connection')
-        # if self.websocket is not None:
-        #     self.get_logger().error('Got a new websocket connection but I am already connected!')
-        #     return
 
         self.websocket = websocket
         try:
