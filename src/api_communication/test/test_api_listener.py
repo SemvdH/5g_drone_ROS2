@@ -86,7 +86,7 @@ class ApiListenerTest(unittest.TestCase):
         msg = DroneStatus()
         msg.battery_percentage = 10.0
         msg.armed = True
-        msg. height = 10.0
+        msg.height = 10.0
         msg.control_mode = "attitude"
         msg.cpu_usage = 10.0
         msg.route_setpoint = 0
