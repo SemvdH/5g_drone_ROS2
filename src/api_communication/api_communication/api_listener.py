@@ -17,20 +17,7 @@ import threading
 import json
 from enum import Enum
 from functools import partial
-import base64
-import cv2
 from functools import partial
-
-# communication: client always sends commands that have a command id.
-# server always sends messages back that have a message type
-
-# TODO send video https://github.com/Jatin1o1/Python-Javascript-Websocket-Video-Streaming-/tree/main
-
-RES_4K_H = 3496
-RES_4K_W = 4656
-
-# TODO change video to be handled by camera controller through websocket with different port
-
 
 class RequestCommand(Enum):
     """
@@ -50,7 +37,6 @@ class ResponseMessage(Enum):
     STATUS = 0
     MOVE_DIRECTION_RESULT = 2
     FAILSAFE = 3
-
 
 class ApiListener(Node):
     """
@@ -451,7 +437,6 @@ class ApiListener(Node):
             self.get_logger().error(str(e))
             self.websocket = None
 
-
 def main(args=None):
     """Main function"""
     rclpy.init(args=args)
@@ -463,7 +448,6 @@ def main(args=None):
 
     api_listener.destroy_node()
     rclpy.shutdown()
-
 
 if __name__ == '__main__':
     main()
