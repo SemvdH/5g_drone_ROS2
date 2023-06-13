@@ -1,0 +1,66 @@
+body {
+    background-color: azure;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html, body {
+    overflow: auto;
+}
+
+.header {
+    color: black;
+    text-align: center;
+}
+
+.video {
+    width: 100%;
+    overflow: auto;
+}
+
+.mainvideo {
+    width: 50%;
+    float: left;
+    height: 100%;
+    border: 1px solid blue;
+    margin-right: 10px;
+    padding: 10px;
+    overflow: visible;
+}
+
+.lastpicture {
+    width: 40%;
+    float: right;
+    /* height: 400px; */
+    border: 1px solid red;
+    padding: 10px;
+}
+
+#connectedbuttons {
+    overflow: auto;
+}
+
+#buttons {
+    float: left;
+}
+
+#connectedstatus {
+    float:left;
+    width: 80%;
+}
+
+#take_picture {
+    float:right;
+}
+#arm_disarm {
+    float: right;
+}
+
+#button_estop {
+    background-color: red;
+    color: white;
+}
+
+.headerimg {
+    height: 200px;
+    /* float: right; */
+}

@@ -5,11 +5,10 @@ from drone_services.srv import EnableFailsafe
 from drone_services.msg import FailsafeMsg
 class FailSafe(Node):
     def __init__(self):
-        super().init("failsafe")
+        super().__init__("failsafe")
         self.failsafe_enabled = False
         self.failsafe_msg = ""
         self.get_logger().info("Failsafe node started")
-        # create service on /drone/failsafe topic
         self.service = self.create_service(
             EnableFailsafe, "/drone/enable_failsafe", self.failsafe_callback)
         self.failsafe_publisher = self.create_publisher(FailsafeMsg, "/drone/failsafe", 10)
@@ -19,14 +18,14 @@ class FailSafe(Node):
         self.failsafe_msg = request.message
         response.enabled = self.failsafe_enabled
         response.message = self.failsafe_msg
-        self.get_logger().info("Failsafe triggered")
+        self.get_logger().info("Failsafe triggered! Message: " + self.failsafe_msg)
         self.publish_failsafe()
         return response
     
     def publish_failsafe(self):
         msg = FailsafeMsg()
         msg.enabled = self.failsafe_enabled
-        msg.message = self.failsafe_msg
+        msg.msg = self.failsafe_msg
         self.failsafe_publisher.publish(msg)
         self.get_logger().info("Publishing failsafe message")
 
@@ -34,10 +33,9 @@ class FailSafe(Node):
 def main(args=None):
     rclpy.init(args=args)
     failsafe_node = FailSafe()
-    failsafe_node.spin()
+    rclpy.spin(failsafe_node)
     failsafe_node.destroy_node()
     rclpy.shutdown()
-
 
 if __name__ == '__main__':
     main()

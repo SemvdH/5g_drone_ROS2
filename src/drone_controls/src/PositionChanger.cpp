@@ -5,7 +5,11 @@
 #include <drone_services/msg/height_data.hpp>
 #include <drone_services/srv/set_vehicle_control.hpp>
 #include <drone_services/srv/set_trajectory.hpp>
+#include <drone_services/srv/set_attitude.hpp>
 #include <drone_services/srv/move_position.hpp>
+#include <drone_services/srv/ready_drone.hpp>
+#include <drone_services/srv/arm_drone.hpp>
+#include <drone_services/srv/land.hpp>
 
 #include <drone_services/srv/enable_failsafe.hpp>
 #include <drone_services/msg/failsafe_msg.hpp>
@@ -25,9 +29,12 @@
 
 #define MIN_DISTANCE 1.0 // in meters
 
+#define CONTROL_MODE_ATTITUDE 4 // attitude control mode bitmask
 #define DEFAULT_CONTROL_MODE 16 // default velocity control bitmask
 // converts bitmask control mode to control mode used by PX4Controller
 #define PX4_CONTROLLER_CONTROL_MODE(x) ((x) == 4 ? 1 : ((x) == 16 ? 2 : ((x) == 32 ? 3 : -1)))
+
+#define HEIGHT_DELTA 0.1
 
 using namespace std::chrono_literals;
 
@@ -45,26 +52,37 @@ public:
         auto qos = rclcpp::QoS(rclcpp::QoSInitialization(qos_profile.history, 5), qos_profile);
 
         this->lidar_subscription = this->create_subscription<drone_services::msg::LidarReading>("/drone/object_detection", qos, std::bind(&PositionChanger::handle_lidar_message, this, std::placeholders::_1));
+        this->height_subscription = this->create_subscription<drone_services::msg::HeightData>("/drone/height", qos, std::bind(&PositionChanger::handle_height_message, this, std::placeholders::_1));
         // vehicle_local_position_subscription_ = this->create_subscription<px4_msgs::msg::VehicleLocalPosition>("/fmu/out/vehicle_local_position", qos, std::bind(&PX4Controller::on_local_position_receive, this, std::placeholders::_1));
         this->odometry_subscription = this->create_subscription<px4_msgs::msg::VehicleOdometry>("/fmu/out/vehicle_odometry", qos, std::bind(&PositionChanger::handle_odometry_message, this, std::placeholders::_1));
         this->move_position_service = this->create_service<drone_services::srv::MovePosition>("/drone/move_position", std::bind(&PositionChanger::handle_move_position_request, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
+        this->ready_drone_service = this->create_service<drone_services::srv::ReadyDrone>("/drone/ready", std::bind(&PositionChanger::handle_ready_drone_request, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
+        this->land_service = this->create_service<drone_services::srv::Land>("/drone/land", std::bind(&PositionChanger::handle_land_request, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
 
         this->failsafe_publisher = this->create_publisher<drone_services::msg::FailsafeMsg>("/drone/failsafe", 10);
 
         this->trajectory_client = this->create_client<drone_services::srv::SetTrajectory>("/drone/set_trajectory");
+        this->attitude_client = this->create_client<drone_services::srv::SetAttitude>("/drone/set_attitude");
         this->vehicle_control_client = this->create_client<drone_services::srv::SetVehicleControl>("/drone/set_vehicle_control");
         this->failsafe_client = this->create_client<drone_services::srv::EnableFailsafe>("/drone/enable_failsafe");
+        this->arm_drone_client = this->create_client<drone_services::srv::ArmDrone>("/drone/arm");
 
         RCLCPP_INFO(this->get_logger(), "waiting for trajectory service...");
-        wait_for_service<rclcpp::Client<drone_services::srv::SetTrajectory>::SharedPtr>(this->trajectory_client);
+        wait_for_service<rclcpp::Client<drone_services::srv::SetTrajectory>::SharedPtr>(this->trajectory_client, "/drone/set_trajectory");
+        RCLCPP_INFO(this->get_logger(), "waiting for attitude service...");
+        wait_for_service<rclcpp::Client<drone_services::srv::SetAttitude>::SharedPtr>(this->attitude_client, "/drone/set_attitude");
         RCLCPP_INFO(this->get_logger(), "waiting for vehicle control service...");
-        wait_for_service<rclcpp::Client<drone_services::srv::SetVehicleControl>::SharedPtr>(this->vehicle_control_client);
+        wait_for_service<rclcpp::Client<drone_services::srv::SetVehicleControl>::SharedPtr>(this->vehicle_control_client, "/drone/set_vehicle_control");
         RCLCPP_INFO(this->get_logger(), "waiting for failsafe service...");
-        wait_for_service<rclcpp::Client<drone_services::srv::EnableFailsafe>::SharedPtr>(this->failsafe_client);
+        wait_for_service<rclcpp::Client<drone_services::srv::EnableFailsafe>::SharedPtr>(this->failsafe_client, "/drone/enable_failsafe");
+        RCLCPP_INFO(this->get_logger(), "waiting for arm service...");
+        wait_for_service<rclcpp::Client<drone_services::srv::ArmDrone>::SharedPtr>(this->arm_drone_client, "/drone/arm");
 
         this->trajectory_request = std::make_shared<drone_services::srv::SetTrajectory::Request>();
+        this->attitude_request = std::make_shared<drone_services::srv::SetAttitude::Request>();
         this->vehicle_control_request = std::make_shared<drone_services::srv::SetVehicleControl::Request>();
         this->failsafe_request = std::make_shared<drone_services::srv::EnableFailsafe::Request>();
+        this->arm_drone_request = std::make_shared<drone_services::srv::ArmDrone::Request>();
 
         lidar_health_timer = this->create_wall_timer(1s, std::bind(&PositionChanger::check_lidar_health, this));
 
@@ -84,6 +102,47 @@ public:
         if (status == std::future_status::ready)
         {
             RCLCPP_INFO(this->get_logger(), "Vehicle control mode set result: %d", future.get()->success);
+            if (this->got_ready_drone_request && future.get()->success)
+            {
+                auto arm_response = this->arm_drone_client->async_send_request(this->arm_drone_request, std::bind(&PositionChanger::arm_drone_service_callback, this, std::placeholders::_1));
+            }
+        }
+        else
+        {
+            RCLCPP_INFO(this->get_logger(), "Service In-Progress...");
+        }
+    }
+
+    void arm_drone_service_callback(rclcpp::Client<drone_services::srv::ArmDrone>::SharedFuture future)
+    {
+        auto status = future.wait_for(1s);
+        if (status == std::future_status::ready)
+        {
+
+            RCLCPP_INFO(this->get_logger(), "Arm result: %d", future.get()->success);
+            if (this->got_ready_drone_request)
+            {
+                this->got_ready_drone_request = false;
+
+                this->attitude_request->pitch = 0.0;
+                this->attitude_request->yaw = 0.0;
+                this->attitude_request->roll = 0.0;
+                this->attitude_request->thrust = 0.15;
+                auto attitude_response = this->attitude_client->async_send_request(this->attitude_request, std::bind(&PositionChanger::attitude_message_callback, this, std::placeholders::_1));
+            }
+        }
+        else
+        {
+            RCLCPP_INFO(this->get_logger(), "Service In-Progress...");
+        }
+    }
+
+    void attitude_message_callback(rclcpp::Client<drone_services::srv::SetAttitude>::SharedFuture future)
+    {
+        auto status = future.wait_for(1s);
+        if (status == std::future_status::ready)
+        {
+            RCLCPP_INFO(this->get_logger(), "Attitude set result: %d", future.get()->success);
         }
         else
         {
@@ -119,7 +178,7 @@ public:
         auto status = future.wait_for(1s);
         if (status == std::future_status::ready)
         {
-            RCLCPP_INFO(this->get_logger(), "Set failsafe enabled: %d, message: ", future.get()->enabled, future.get()->message);
+            RCLCPP_INFO(this->get_logger(), "Set failsafe enabled: %d, message: %s", future.get()->enabled, future.get()->message);
         }
         else
         {
@@ -133,7 +192,6 @@ public:
      */
     void send_trajectory_message()
     {
-        check_move_direction_allowed();
         this->trajectory_request->values[0] = this->current_speed_x;
         this->trajectory_request->values[1] = this->current_speed_y;
         this->trajectory_request->values[2] = this->current_speed_z;
@@ -143,7 +201,12 @@ public:
         auto trajectory_response = this->trajectory_client->async_send_request(this->trajectory_request, std::bind(&PositionChanger::trajectory_message_callback, this, std::placeholders::_1));
     }
 
-    void enable_failsafe(std::string message)
+    /**
+     * @brief Enables the failsafe with the specified message
+     *
+     * @param message the message indicating the cause of the failsafe
+     */
+    void enable_failsafe(std::u16string message)
     {
         this->failsafe_enabled = true;
         this->failsafe_request->message = message;
@@ -157,34 +220,39 @@ public:
      */
     void apply_collision_weights()
     {
-        if (this->current_speed_x > 0) // if moving forward
+
+        // if (this->current_speed_x > 0) // if moving forward
+        // {
+        if (!this->move_direction_allowed[MOVE_DIRECTION_FRONT])
         {
-            if (!this->move_direction_allowed[MOVE_DIRECTION_FRONT])
-            {
-                this->current_speed_x = collision_prevention_weights[MOVE_DIRECTION_FRONT];
-            }
+            RCLCPP_INFO(this->get_logger(), "Collision prevention front: %f", collision_prevention_weights[MOVE_DIRECTION_FRONT]);
+            get_x_y_with_rotation(collision_prevention_weights[MOVE_DIRECTION_FRONT], 0, this->current_yaw, &this->current_speed_x, &this->current_speed_y);
         }
-        else // moving backward
+        // }
+        // else // moving backward
+        // {
+        if (!this->move_direction_allowed[MOVE_DIRECTION_BACK])
         {
-            if (!this->move_direction_allowed[MOVE_DIRECTION_BACK])
-            {
-                this->current_speed_x = collision_prevention_weights[MOVE_DIRECTION_BACK];
-            }
+            RCLCPP_INFO(this->get_logger(), "Collision prevention back: %f", collision_prevention_weights[MOVE_DIRECTION_BACK]);
+            get_x_y_with_rotation(collision_prevention_weights[MOVE_DIRECTION_BACK], 0, this->current_yaw, &this->current_speed_x, &this->current_speed_y);
         }
-        if (this->current_speed_y > 0) // moving right
+        // }
+        // if (this->current_speed_y > 0) // moving right
+        // {
+        if (!this->move_direction_allowed[MOVE_DIRECTION_RIGHT])
         {
-            if (!this->move_direction_allowed[MOVE_DIRECTION_RIGHT])
-            {
-                this->current_speed_y = collision_prevention_weights[MOVE_DIRECTION_RIGHT];
-            }
+            RCLCPP_INFO(this->get_logger(), "Collision prevention right: %f", collision_prevention_weights[MOVE_DIRECTION_RIGHT]);
+            get_x_y_with_rotation(0, collision_prevention_weights[MOVE_DIRECTION_RIGHT], this->current_yaw, &this->current_speed_x, &this->current_speed_y);
         }
-        else // moving left
+        // }
+        // else // moving left
+        // {
+        if (!this->move_direction_allowed[MOVE_DIRECTION_LEFT])
         {
-            if (!this->move_direction_allowed[MOVE_DIRECTION_LEFT])
-            {
-                this->current_speed_y = collision_prevention_weights[MOVE_DIRECTION_LEFT];
-            }
+            RCLCPP_INFO(this->get_logger(), "Collision prevention left: %f", collision_prevention_weights[MOVE_DIRECTION_LEFT]);
+            get_x_y_with_rotation(0, collision_prevention_weights[MOVE_DIRECTION_LEFT], this->current_yaw, &this->current_speed_x, &this->current_speed_y);
         }
+        // }
     }
 
     /**
@@ -207,8 +275,63 @@ public:
                                                                                                               : (MIN_DISTANCE - std::min(this->lidar_sensor_values[LIDAR_SENSOR_RL], this->lidar_sensor_values[LIDAR_SENSOR_RR]));
         collision_prevention_weights[MOVE_DIRECTION_RIGHT] = this->move_direction_allowed[MOVE_DIRECTION_RIGHT] ? 0
                                                                                                                 : -(MIN_DISTANCE - std::min(this->lidar_sensor_values[LIDAR_SENSOR_RR], this->lidar_sensor_values[LIDAR_SENSOR_FR]));
-
         apply_collision_weights();
+    }
+
+    void attitude_land_callback(rclcpp::Client<drone_services::srv::SetAttitude>::SharedFuture future)
+    {
+        auto status = future.wait_for(1s);
+        if (status == std::future_status::ready)
+        {
+            if (future.get()->success)
+            {
+                RCLCPP_INFO(this->get_logger(), "Attitude set to 0 for landing, landing done");
+                this->has_landed = true;
+            }
+        }
+        else
+        {
+            RCLCPP_INFO(this->get_logger(), "Service In-Progress...");
+        }
+    }
+
+    void vehicle_control_land_request_callback(rclcpp::Client<drone_services::srv::SetVehicleControl>::SharedFuture future)
+    {
+        auto status = future.wait_for(1s);
+        if (status == std::future_status::ready)
+        {
+            if (future.get()->success)
+            {
+                RCLCPP_INFO(this->get_logger(), "Vehicle Control mode set to attitude for landing");
+                this->attitude_request->pitch = 0;
+                this->attitude_request->roll = 0;
+                this->attitude_request->yaw = 0;
+                this->attitude_request->thrust = 0;
+                auto attitude_response = this->attitude_client->async_send_request(this->attitude_request, std::bind(&PositionChanger::attitude_land_callback, this, std::placeholders::_1));
+            }
+        }
+        else
+        {
+            RCLCPP_INFO(this->get_logger(), "Service In-Progress...");
+        }
+    }
+
+    void handle_height_message(const drone_services::msg::HeightData::SharedPtr message)
+    {
+        this->current_height = message->min_height;
+        if (!this->got_ready_drone_request)
+        {
+            this->start_height = message->min_height;
+        }
+        if (this->is_landing)
+        {
+            if (this->current_height <= this->start_height + HEIGHT_DELTA)
+            {
+                this->vehicle_control_request->control = 4;
+                auto control_mode_response = this->vehicle_control_client->async_send_request(this->vehicle_control_request,
+                                                                                              std::bind(&PositionChanger::vehicle_control_land_request_callback, this, std::placeholders::_1));
+            }
+        }
     }
 
     /**
@@ -218,6 +341,7 @@ public:
      */
     void handle_lidar_message(const drone_services::msg::LidarReading::SharedPtr message)
     {
+        this->has_received_first_lidar_message = true;
 
         this->received_lidar_message = true;
         if (message->sensor_1 > 0)
@@ -247,14 +371,17 @@ public:
 
     /**
      * @brief Checks if the LIDAR is still sending messages. If not, enable failsafe
-     * 
+     *
      */
     void check_lidar_health()
     {
-        if (!this->received_lidar_message)
+        if (this->has_received_first_lidar_message)
         {
-            RCLCPP_WARN(this->get_logger(), "Lidar not sending messages, enabling failsafe");
-            enable_failsafe("No healthy connection to LIDAR!");
+            if (!this->received_lidar_message)
+            {
+                RCLCPP_WARN(this->get_logger(), "Lidar not sending messages, enabling failsafe");
+                enable_failsafe(u"No healthy connection to LIDAR! Check the LIDAR USB cable and restart the drone.");
+            }
         }
         this->received_lidar_message = false;
     }
@@ -286,6 +413,11 @@ public:
     {
         if (!this->failsafe_enabled)
         {
+            if (!this->has_received_first_lidar_message)
+            {
+                this->enable_failsafe(u"Waiting for LIDAR timed out! Check the LIDAR USB connection and consider restarting the drone.");
+                return;
+            }
             RCLCPP_INFO(this->get_logger(), "Incoming request\nfront_back: %f\nleft_right: %f\nup_down: %f\nangle: %f", request->front_back, request->left_right, request->up_down, request->angle);
             if (request->angle > 360 || request->angle < -360)
             {
@@ -293,15 +425,57 @@ public:
                 response->success = false;
                 return;
             }
+            if (this->vehicle_control_request->control != DEFAULT_CONTROL_MODE)
+            {
+                this->vehicle_control_request->control = DEFAULT_CONTROL_MODE;
+                auto control_mode_response = this->vehicle_control_client->async_send_request(this->vehicle_control_request,
+                                                                                              std::bind(&PositionChanger::vehicle_control_service_callback, this, std::placeholders::_1));
+            }
             this->current_yaw += request->angle * (M_PI / 180.0); // get the angle in radians
             this->current_speed_z = request->up_down;
             get_x_y_with_rotation(request->front_back, request->left_right, this->current_yaw, &this->current_speed_x, &this->current_speed_y);
+            check_move_direction_allowed();
             RCLCPP_INFO(this->get_logger(), "Calculated speed x: %f, y: %f", this->current_speed_x, this->current_speed_y);
             send_trajectory_message();
             response->success = true;
-        } else {
+        }
+        else
+        {
             response->success = false;
         }
+    }
+
+    void handle_land_request(
+        const std::shared_ptr<rmw_request_id_t> request_header,
+        const std::shared_ptr<drone_services::srv::Land::Request> request,
+        const std::shared_ptr<drone_services::srv::Land::Response> response)
+    {
+        this->is_landing = true;
+        response->is_landing = this->is_landing;
+    }
+
+    void handle_ready_drone_request(
+        const std::shared_ptr<rmw_request_id_t> request_header,
+        const std::shared_ptr<drone_services::srv::ReadyDrone::Request> request,
+        const std::shared_ptr<drone_services::srv::ReadyDrone::Response> response)
+    {
+        if (this->failsafe_enabled)
+        {
+            response->success = false;
+            return;
+        }
+        if (!this->has_received_first_lidar_message)
+        {
+            this->enable_failsafe(u"Waiting for LIDAR timed out! Check the LIDAR USB connection and consider restarting the drone.");
+            response->success = false;
+            return;
+        }
+        this->got_ready_drone_request = true;
+        this->vehicle_control_request->control = CONTROL_MODE_ATTITUDE;
+        auto control_mode_response = this->vehicle_control_client->async_send_request(this->vehicle_control_request,
+                                                                                      std::bind(&PositionChanger::vehicle_control_service_callback, this, std::placeholders::_1));
+        // TODO set motors to spin at 30%
+        response->success = true;
     }
 
     /**
@@ -338,18 +512,24 @@ private:
     rclcpp::Publisher<drone_services::msg::FailsafeMsg>::SharedPtr failsafe_publisher;
     rclcpp::Subscription<drone_services::msg::LidarReading>::SharedPtr lidar_subscription;
     rclcpp::Subscription<px4_msgs::msg::VehicleOdometry>::SharedPtr odometry_subscription;
+    rclcpp::Subscription<drone_services::msg::HeightData>::SharedPtr height_subscription;
 
     rclcpp::Client<drone_services::srv::SetTrajectory>::SharedPtr trajectory_client;
+    rclcpp::Client<drone_services::srv::SetAttitude>::SharedPtr attitude_client;
     rclcpp::Client<drone_services::srv::SetVehicleControl>::SharedPtr vehicle_control_client;
     rclcpp::Client<drone_services::srv::EnableFailsafe>::SharedPtr failsafe_client;
+    rclcpp::Client<drone_services::srv::ArmDrone>::SharedPtr arm_drone_client;
 
     rclcpp::Service<drone_services::srv::MovePosition>::SharedPtr move_position_service;
-
+    rclcpp::Service<drone_services::srv::ReadyDrone>::SharedPtr ready_drone_service;
+    rclcpp::Service<drone_services::srv::Land>::SharedPtr land_service;
     rclcpp::TimerBase::SharedPtr lidar_health_timer;
 
     drone_services::srv::SetTrajectory::Request::SharedPtr trajectory_request;
+    drone_services::srv::SetAttitude::Request::SharedPtr attitude_request;
     drone_services::srv::SetVehicleControl::Request::SharedPtr vehicle_control_request;
     drone_services::srv::EnableFailsafe::Request::SharedPtr failsafe_request;
+    drone_services::srv::ArmDrone::Request::SharedPtr arm_drone_request;
 
     float lidar_sensor_values[4]{MIN_DISTANCE}; // last distance measured by the lidar sensors
     float lidar_imu_readings[4];                // last imu readings from the lidar sensors
@@ -357,10 +537,17 @@ private:
     float current_speed_x = 0;
     float current_speed_y = 0;
     float current_speed_z = 0;
+    float current_height = 0;
+    float start_height = -1;
+    bool is_landing = false;
+    bool has_landed = false;
     bool move_direction_allowed[4] = {true};     // whether the drone can move in a certain direction
     float collision_prevention_weights[4] = {0}; // the amount to move away from an object in a certain direction if the drone is too close
     bool failsafe_enabled = false;
     bool received_lidar_message = false;
+    int lidar_health_checks = 0;
+    bool has_received_first_lidar_message = false;
+    bool got_ready_drone_request = false;
 
     /**
      * @brief waits for a service to be available
@@ -369,7 +556,7 @@ private:
      * @param client the client object to wait for the service
      */
     template <class T>
-    void wait_for_service(T client)
+    void wait_for_service(T client, std::string service_name)
     {
         while (!client->wait_for_service(1s))
         {
@@ -378,7 +565,7 @@ private:
                 RCLCPP_ERROR(this->get_logger(), "Interrupted while waiting for the service. Exiting.");
                 return;
             }
-            RCLCPP_INFO(this->get_logger(), "service not available, waiting again...");
+            RCLCPP_INFO(this->get_logger(), "service not available, waiting again on service %s", service_name.c_str());
         }
     }
 };

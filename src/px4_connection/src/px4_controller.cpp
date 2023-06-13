@@ -54,7 +54,7 @@ public:
         vehicle_local_position_subscription_ = this->create_subscription<px4_msgs::msg::VehicleLocalPosition>("/fmu/out/vehicle_local_position", qos, std::bind(&PX4Controller::on_local_position_receive, this, std::placeholders::_1));
         // subscription on receiving a new control mode
         control_mode_subscription_ = this->create_subscription<drone_services::msg::DroneControlMode>("/drone/control_mode", qos, std::bind(&PX4Controller::on_control_mode_receive, this, std::placeholders::_1));
-        failsafe_subscription = this->create_subscription<drone_services::msg::FailsafeMsg>("/drone/failsafe", qos, std::bind(&PX4Controller::on_failsafe_receive, this, std::placeholders::_1));
+        failsafe_subscription_ = this->create_subscription<drone_services::msg::FailsafeMsg>("/drone/failsafe", qos, std::bind(&PX4Controller::on_failsafe_receive, this, std::placeholders::_1));
         // services for controlling the drone
         set_attitude_service_ = this->create_service<drone_services::srv::SetAttitude>("/drone/set_attitude", std::bind(&PX4Controller::handle_attitude_setpoint, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
         set_trajectory_service_ = this->create_service<drone_services::srv::SetTrajectory>("/drone/set_trajectory", std::bind(&PX4Controller::handle_trajectory_setpoint, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
@@ -102,18 +102,17 @@ private:
 
     char current_control_mode = CONTROL_MODE_ATTITUDE; // start with attitude control
 
-    const float omega = 0.3;       // angular speed of the POLAR trajectory
-    const float K = 0;             // [m] gain that regulates the spiral pitch
+    const float omega = 0.3; // angular speed of the POLAR trajectory
+    const float K = 0;       // [m] gain that regulates the spiral pitch
 
-    float rho_0 = 0;                                // initial rho of polar coordinate
-    float theta_0 = 0;                              // initial theta of polar coordinate
-    float p0_z = -0.0;                        // initial height
-    float des_x = p0_x, des_y = p0_y, des_z = p0_z; // desired position
-    float dot_des_x = 0.0, dot_des_y = 0.0;         // desired velocity
-    float gamma = M_PI_4;                           // desired heading direction
+    float rho_0 = 0;                              // initial rho of polar coordinate
+    float theta_0 = 0;                            // initial theta of polar coordinate
+    float p0_z = -0.0;                            // initial height
+    float des_x = 0.0, des_y = 0.0, des_z = p0_z; // desired position
+    float gamma = M_PI_4;                         // desired heading direction
 
-    float local_x = 0;  // local position x
-    float local_y = 0;  // local position y
+    float local_x = 0; // local position x
+    float local_y = 0; // local position y
 
     bool failsafe_enabled = false;
 
@@ -131,6 +130,12 @@ private:
         const std::shared_ptr<drone_services::srv::SetAttitude::Request> request,
         const std::shared_ptr<drone_services::srv::SetAttitude::Response> response)
     {
+        if (this->failsafe_enabled)
+        {
+            RCLCPP_INFO(this->get_logger(), "Failsafe enabled, ignoring attitude setpoint");
+            response->success = false;
+            return;
+        }
         if (armed)
         {
             if (request->yaw == 0 && request->pitch == 0 && request->roll == 0 && request->thrust == 0)
@@ -180,6 +185,12 @@ private:
         const std::shared_ptr<drone_services::srv::SetTrajectory::Request> request,
         const std::shared_ptr<drone_services::srv::SetTrajectory::Response> response)
     {
+        if (this->failsafe_enabled)
+        {
+            RCLCPP_INFO(this->get_logger(), "Failsafe enabled, ignoring trajectory setpoint");
+            response->success = false;
+            return;
+        }
         if (!(request->control_mode == CONTROL_MODE_VELOCITY || request->control_mode == CONTROL_MODE_POSITION))
         {
             RCLCPP_INFO(this->get_logger(), "Got invalid trajectory control mode: %d", request->control_mode);
@@ -232,6 +243,7 @@ private:
             user_in_control = false;
             publish_vehicle_command(px4_msgs::msg::VehicleCommand::VEHICLE_CMD_COMPONENT_ARM_DISARM, 0.0, 0);
 
+            RCLCPP_INFO(this->get_logger(), "Publishing disarm status message");
             auto msg = drone_services::msg::DroneArmStatus();
             msg.armed = false;
             arm_status_publisher_->publish(msg);
@@ -258,7 +270,11 @@ private:
         const std::shared_ptr<drone_services::srv::ArmDrone::Response> response)
     {
         RCLCPP_INFO(this->get_logger(), "Got arm request...");
-
+        if (this->failsafe_enabled)
+        {
+            response->success = false;
+            return;
+        }
         if (!armed)
         {
             this->publish_vehicle_command(px4_msgs::msg::VehicleCommand::VEHICLE_CMD_DO_SET_MODE, 1, 6);
@@ -270,6 +286,7 @@ private:
             this->last_thrust = -0.1; // spin motors at 10% thrust
             armed = true;
 
+            RCLCPP_INFO(this->get_logger(), "Publishing arm status message");
             auto msg = drone_services::msg::DroneArmStatus();
             msg.armed = true;
             arm_status_publisher_->publish(msg);
@@ -343,7 +360,6 @@ private:
         RCLCPP_INFO(this->get_logger(), "Sending position setpoint: %f %f %f", des_x, des_y, des_z);
         RCLCPP_INFO(this->get_logger(), "local position: %f %f", local_x, local_y);
         msg.position = {local_x, local_y, des_z};
-        msg.velocity = {dot_des_x, dot_des_y, 0.0};
         msg.yaw = gamma; //-3.14; // [-PI:PI]
 
         msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
@@ -390,13 +406,6 @@ private:
         des_x = rho * cos(theta);
         des_y = rho * sin(theta);
         des_z = position[2]; // the z position can be set to the received height
-
-        // velocity computation
-        float dot_rho = K * omega;
-        dot_des_x = dot_rho * cos(theta) - rho * sin(theta) * omega;
-        dot_des_y = dot_rho * sin(theta) + rho * cos(theta) * omega;
-        // desired heading direction
-        gamma = atan2(dot_des_y, dot_des_x);
 
         if (!user_in_control)
         {
@@ -491,7 +500,12 @@ private:
         RCLCPP_INFO(this->get_logger(), "Control mode set to %d", current_control_mode);
     }
 
-    void on_failsafe_received(const drone_services::msg::FailsafeMsg::SharedPtr msg)
+    /**
+     * @brief Callback function for receiving failsafe messages
+     *
+     * @param msg the message indicating that the failsafe was enabled
+     */
+    void on_failsafe_receive(const drone_services::msg::FailsafeMsg::SharedPtr msg)
     {
         if (msg->enabled)
         {

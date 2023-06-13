@@ -31,6 +31,8 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/ControlRelais.srv"
   "srv/MovePosition.srv"
   "srv/EnableFailsafe.srv"
+  "srv/ReadyDrone.srv"
+  "srv/Land.srv"
   "msg/DroneControlMode.msg"
   "msg/DroneArmStatus.msg"
   "msg/DroneRouteStatus.msg"
@@ -38,6 +40,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/HeightData.msg"
   "msg/LidarReading.msg"
   "msg/MultiflexReading.msg"
+  "msg/FailsafeMsg.msg"
 )
 
 if(BUILD_TESTING)

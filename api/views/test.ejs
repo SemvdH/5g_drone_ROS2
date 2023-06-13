@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Python_Websocket_Live_Streaming</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body onload="openSocket()">
+    <div id="status">
+        Connection failed. Somebody may be using the socket.
+    </div>
+    <div style="text-align: center">
+        <canvas id="msg" width="960" height="720" style="display:inline-block" />
+    </div>
+
+</body>
+<script>
+    openSocket = () => {
+
+        socket = new WebSocket("ws://10.100.0.40:9001/");
+        let msg = document.getElementById("msg");
+        socket.addEventListener('open', (e) => {
+            document.getElementById("status").innerHTML = "Opened";
+        });
+        socket.addEventListener('message', (e) => {
+            let ctx = msg.getContext("2d");
+            let image = new Image();
+            image.src = URL.createObjectURL(e.data);
+            image.addEventListener("load", (e) => {
+                ctx.drawImage(image, 0, 0, msg.width, msg.height);
+            });
+        });
+    }
+</script>
+
+</html>

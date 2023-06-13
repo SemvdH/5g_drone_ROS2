@@ -6,8 +6,10 @@ from drone_services.msg import DroneStatus
 from drone_services.msg import DroneControlMode
 from drone_services.msg import DroneArmStatus
 from drone_services.msg import DroneRouteStatus
+from drone_services.msg import HeightData
 from px4_msgs.msg import BatteryStatus
 from px4_msgs.msg import Cpuload
+from px4_msgs.msg import VehicleOdometry
 
 CONTROL_MODE_ATTITUDE = 1
 CONTROL_MODE_VELOCITY = 2
@@ -32,17 +34,23 @@ class DroneStatusNode(Node):
             DroneArmStatus, '/drone/arm_status', self.arm_status_callback, 10)
         self.route_status_subscriber = self.create_subscription(
             DroneRouteStatus, '/drone/route_status', self.route_status_callback, 10)
+        self.height_data_subscriber = self.create_subscription(HeightData, '/drone/height', self.height_data_callback, 10)
         self.battery_status_subscriber = self.create_subscription(
             BatteryStatus, '/fmu/out/battery_status', self.battery_status_callback, qos_profile=qos_profile)
         self.cpu_load_subscriber = self.create_subscription(
             Cpuload, '/fmu/out/cpuload', self.cpu_load_callback, qos_profile=qos_profile)
+        self.vehicle_odometry_subscriber = self.create_subscription(
+            VehicleOdometry, "/fmu/out/vehicle_odometry", self.vehicle_odometry_callback, qos_profile=qos_profile)
         # publish every 0.5 seconds
         self.timer = self.create_timer(0.5, self.publish_status)
         self.armed = False
+        self.height = 0.0
         self.control_mode = "attitude"
         self.battery_percentage = 100.0
         self.cpu_usage = 0.0
         self.route_setpoint = 0
+        self.position = []
+        self.velocity = []
 
     def publish_status(self):
         msg = DroneStatus()
@@ -51,10 +59,14 @@ class DroneStatusNode(Node):
         msg.battery_percentage = self.battery_percentage
         msg.cpu_usage = self.cpu_usage
         msg.route_setpoint = self.route_setpoint
+        msg.position = self.position
+        msg.velocity = self.velocity
+        msg.height = self.height
         self.publisher.publish(msg)
-        self.get_logger().info('Publishing status message')
+        # self.get_logger().info('Publishing status message')
 
     def control_mode_callback(self, msg):
+        self.get_logger().info('Got control mode callback!')
         if msg.control_mode == CONTROL_MODE_ATTITUDE:
             self.control_mode = "attitude"
         elif msg.control_mode == CONTROL_MODE_VELOCITY:
@@ -64,7 +76,13 @@ class DroneStatusNode(Node):
         else:
             self.control_mode = "unknown"
 
+    def height_data_callback(self, msg):
+        self.height = msg.min_height
+
     def arm_status_callback(self, msg):
+        self.get_logger().info("Got arm status callback!")
+        if msg.armed:
+            self.get_logger().info("DRONE IS ARMED")
         self.armed = msg.armed
 
     def route_status_callback(self, msg):
@@ -75,6 +93,11 @@ class DroneStatusNode(Node):
 
     def cpu_load_callback(self, msg):
         self.cpu_usage = msg.load
+
+    def vehicle_odometry_callback(self, msg):
+        self.position = msg.position
+        self.velocity = msg.velocity
+        
 
 
 def main(args=None):

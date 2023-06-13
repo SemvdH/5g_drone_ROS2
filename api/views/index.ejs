@@ -1,12 +1,418 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        <title>5G drone API</title>
-    </head>
-    <body>
-        <div>Hello World!</div>
-    </body>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/css/stylesheet.css' />
+
+    <title>5G drone API</title>
+</head>
+
+<body style="height: 100%;">
+    <div>
+        <h1 class="header">5G Drone API</h1>
+    </div>
+    <!-- <div class="video"> -->
+    <div class="mainvideo">
+        <p id="cameraview">Camera view: Not connected</p>
+        <canvas id="result-video" style="border: 1px solid blue;" width="800" height="600"></canvas>
+        <div id="connectedbuttons">
+            <div id="connectedstatus">
+                <h2 id="connectedlabel">Not connected to drone</h2>
+                <button id="connectbutton" onclick="local_connect()">Connect</button>
+            </div>
+            <div id="buttons">
+                <button id="take_picture" onclick="take_picture()">Take picture</button>
+                <br>
+                <button id="arm_disarm" onclick="arm_disarm()">Arm/Disarm</button>
+                <!-- <br>
+                <label for="control_mode">Control mode:</label>
+                <br>
+                <select name="control_mode" id="control_mode">
+                    <option value="attitude">Attitude</option>
+                    <option value="velocity">Velocity</option>
+                    <option value="position">Position</option>
+                </select> -->
+            </div>
+        </div>
+        <div id="controls">
+            <h2>Controls</h2>
+            <div id="buttons">
+                <button class="movebutton" id="button_turnleft">Turn left</button>
+                <button class="movebutton" id="button_turnright">Turn right</button>
+                <button class="movebutton" id="button_up">Up</button>
+                <button class="movebutton" id="button_down">Down</button>
+                <button class="movebutton" id="button_forward">Forward</button>
+                <button class="movebutton" id="button_backward">Backward</button>
+                <button class="movebutton" id="button_left">Left</button>
+                <button class="movebutton" id="button_right">Right</button>
+                <button id="button_land" onclick="land()">Land</button>
+                <button id="button_estop" onclick="estop()"><strong>Emergency Stop</strong></button>
+
+            </div>
+        </div>
+    </div>
+    <div class="lastpicture">
+        <p>Last picture:</p>
+        <div id="lastimg">
+            <img id="picture" style="width: 400px;">
+        </div>
+        <h2>Drone status</h2>
+        <p id="batterypercentage">Battery percentage</p>
+        <p id="cpuload">CPU load</p>
+        <p id="armed"></p>
+        <p id="control_mode"></p>
+        <p id="speed">Current speed</p>
+        <p id="position">Current position</p>
+        <p id="height">Height</p>
+        <p id="failsafe">Failsafe not activated</p>
+        <img class="headerimg"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Ericsson_logo.svg/2341px-Ericsson_logo.svg.png"
+            alt="ericsson logo">
+        <img class="headerimg" src="https://hightechcampus.com/storage/1069/5ghub-logo.png" alt="5g hub logo">
+    </div>
+    <!-- </div> -->
+</body>
+
+<script>
+    var ws;
+    var api_timout;
+    var checked_for_connection = false;
+    var connected_to_api = false;
+    assign_button_callbacks();
+    openSocket = () => {
+
+        document.getElementById("cameraview").innerHTML = "Camera view: Connecting...";
+        socket = new WebSocket("ws://10.100.0.40:9002/");
+        let msg = document.getElementById("result-video");
+        socket.addEventListener('open', (e) => {
+            console.log("Connected to video")
+            document.getElementById("cameraview").innerHTML = "Camera view: Connected";
+        });
+        socket.addEventListener('message', (e) => {
+            let ctx = msg.getContext("2d");
+            let image = new Image();
+            image.src = URL.createObjectURL(e.data);
+            image.addEventListener("load", (e) => {
+                ctx.drawImage(image, 0, 0, 800, 600);
+            });
+        });
+        socket.addEventListener('close', (e) => {
+            console.log("Disconnected from video")
+            document.getElementById("cameraview").innerHTML = "Camera view: Disconnected. Reload the page to reconnect";
+        });
+        socket.addEventListener('error', (e) => {
+            console.log("Error in video connection")
+            document.getElementById("cameraview").innerHTML = "Camera view: Error. Reload the page to reconnect";
+        });
+    }
+
+    // Helper function to decode base64 image and set it as source of <img> element
+    function decodeBase64Image(base64Data, imgElement) {
+        const img = new Image();
+
+        img.onload = function () {
+            // Once the image has loaded, set it as the source of the <img> element
+            imgElement.src = this.src;
+            // console.log("set image data src")
+        };
+
+        // Set the base64-encoded image data as the source of the image
+        img.src = 'data:image/jpeg;base64,' + base64Data;
+    }
+
+    window.onload = function () {
+        const events = new EventSource("/events");
+
+        events.onopen = () => {
+            console.log("OPENED EVENT");
+        }
+
+        events.onmessage = (event) => {
+            console.log("MESSAGE RECEIVED")
+            try {
+                const data = JSON.parse(event.data);
+                if (data.type == "STATUS") {
+                    document.getElementById("batterypercentage").innerHTML = "Battery percentage: " + data.data.battery_percentage.toString().substring(0, 4) + "%";
+                    document.getElementById("cpuload").innerHTML = "CPU load: " + data.data.cpu_usage.toString().substring(0, 6).substring(2, 4) + "%";
+                    document.getElementById("armed").innerHTML = "Armed: " + data.data.armed;
+                    document.getElementById("control_mode").innerHTML = "Control mode: " + data.data.control_mode;
+                    document.getElementById("speed").innerHTML = "Current speed (m/s): x: " + data.data.velocity[0].toString().substring(0, 4) + " y: " + data.data.velocity[1].toString().substring(0, 4) + " z: " + data.data.velocity[2].toString().substring(0, 4);
+                    document.getElementById("position").innerHTML = "Current position (m): x: " + data.data.position[0].toString().substring(0, 4) + " y: " + data.data.position[1].toString().substring(0, 4) + " z: " + data.data.position[2].toString().substring(0, 4);
+                    document.getElementById("height").innerHTML = "Height (m): " + data.data.height;
+                } else if (data.type == "FAILSAFE") {
+                    document.getElementById("failsafe").innerHTML = "Failsafe: ACTIVATED";
+                    document.getElementById("failsafe").style.backgroundColor = "red";
+                    document.getElementById("failsafe").style.color = "white";
+                    document.getElementById("failsafe").style.textDecoration = "bold";
+                    alert("Failsafe enabled! Drone is landing. The failsafe message is:\n" + data.message);
+                } else {
+                    // decodeBase64Image(data.image, document.getElementById("result-video"));
+                }
+            } catch (error) {
+                console.error("Received an error")
+                console.error(error);
+            }
+        }
+    };
+
+    function assign_button_callbacks() {
+        var buttons = document.getElementsByClassName("movebutton");
+        for (var i = 0; i < buttons.length; i++) {
+            buttons[i].addEventListener("mouseup", function () {
+                stop();
+            });
+        }
+        document.getElementById("button_forward").addEventListener("mousedown", function () { forward(); });
+        document.getElementById("button_backward").addEventListener("mousedown", function () { backward(); });
+        document.getElementById("button_left").addEventListener("mousedown", function () { left(); });
+        document.getElementById("button_right").addEventListener("mousedown", function () { right(); });
+        document.getElementById("button_turnleft").addEventListener("mousedown", function () { turn_left(); });
+        document.getElementById("button_turnright").addEventListener("mousedown", function () { turn_right(); });
+        document.getElementById("button_up").addEventListener("mousedown", function () { up(); });
+        document.getElementById("button_down").addEventListener("mousedown", function () { down(); });
+    }
+
+    function update_status() {
+        // {"battery_percentage": 100.0, "cpu_usage": 0.0, "armed": false, "control_mode": "attitude", "route_setpoint": 0}}
+        // console.log("updating status")
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "/status", true);
+        xhr.onreadystatechange = function () {
+            if (this.status == 200) {
+                // console.log(this.responseText);
+                if (this.responseText.length > 0) {
+                    var status = JSON.parse(this.responseText);
+                    // console.log(status)
+                    document.getElementById("batterypercentage").innerHTML = "Battery percentage: " + status.battery_percentage;
+                    document.getElementById("cpuload").innerHTML = "CPU load: " + status.cpu_usage;
+                    document.getElementById("armed").innerHTML = "Armed: " + status.armed;
+                    document.getElementById("control_mode").innerHTML = "Control mode: " + status.control_mode;
+                }
+            }
+        };
+        xhr.send();
+    }
+
+    function send_move_request(data) {
+        console.log("sending move request");
+        if (ws != null)
+            ws.send(data);
+    }
+
+    function turn_left() {
+        console.log("turnleft");
+        send_move_request(JSON.stringify({ "command": 3, "up_down": 0.0, "forward_backward": 0.0, "left_right": 0.0, "yaw": -10.0 }));
+    }
+    function turn_right() {
+        console.log("turnright");
+        send_move_request(JSON.stringify({ "command": 3, "up_down": 0.0, "forward_backward": 0.0, "left_right": 0.0, "yaw": 10.0 }));
+    }
+    function up() {
+        console.log("up");
+        send_move_request(JSON.stringify({ "command": 3, "up_down": 1.0, "forward_backward": 0.0, "left_right": 0.0, "yaw": 0.0 }));
+
+    }
+    function down() {
+        console.log("down");
+        send_move_request(JSON.stringify({ "command": 3, "up_down": -1.0, "forward_backward": 0.0, "left_right": 0.0, "yaw": 0.0 }));
+
+    }
+    function forward() {
+        console.log("forward"); send_move_request(JSON.stringify({ "command": 3, "up_down": 0.0, "forward_backward": 1.0, "left_right": 0.0, "yaw": 0.0 }));
+
+    }
+    function backward() {
+        console.log("backward");
+        send_move_request(JSON.stringify({ "command": 3, "up_down": 0.0, "forward_backward": -1.0, "left_right": 0.0, "yaw": 0.0 }));
+    }
+    function left() {
+        console.log("left");
+        send_move_request(JSON.stringify({ "command": 3, "up_down": 0.0, "forward_backward": 0.0, "left_right": -1.0, "yaw": 0.0 }));
+    }
+    function right() {
+        console.log("right");
+        send_move_request(JSON.stringify({ "command": 3, "up_down": 0.0, "forward_backward": 0.0, "left_right": 1.0, "yaw": 0.0 }));
+    }
+    function stop() {
+        console.log("stop");
+        send_move_request(JSON.stringify({ "command": 3, "up_down": 0.0, "forward_backward": 0.0, "left_right": 0.0, "yaw": 0.0 }));
+    }
+    function land() {
+        console.log("land");
+        var request = JSON.stringify({ command: 0 });
+        ws.send(request);
+
+    }
+
+    function estop() {
+        console.log("estop");
+        var request = JSON.stringify({
+            command: 6,
+        });
+        ws.send(request);
+    }
+
+    function take_picture() {
+        console.log("take picture");
+        var image = new Image();
+        image.src = document.getElementById("result-video").toDataURL();
+        image.width = 400;
+        document.getElementById("lastimg").innerHTML = "";
+        document.getElementById("lastimg").appendChild(image);
+    }
+
+    function arm_disarm() {
+        console.log("arm/disarm");
+        var request = JSON.stringify({ command: 1 });
+        ws.send(request);
+    }
+
+    function connect_to_video_stream() {
+        console.log("Connecting to websocket")
+        const video_holder = document.getElementById("result-video");
+        const socket = new WebSocket('ws://10.100.0.40:9002/');
+
+        socket.addEventListener('open', (event) => {
+            console.log('Connected to WebSocket server');
+        });
+
+        socket.addEventListener('message', (event) => {
+            // Assuming the received data is an ArrayBuffer or Uint8Array
+            const imageData = event.data;
+
+            // Convert the image data to a Blob
+            const blob = new Blob([imageData], { type: 'image/jpeg' });
+
+            // Generate a temporary URL for the Blob
+            const imageURL = URL.createObjectURL(blob);
+
+            // Set the src attribute of the <img> element
+            video_holder.src = imageURL;
+        });
+
+        // Connection closed
+        socket.addEventListener('close', (event) => {
+            console.log('Disconnected from WebSocket server');
+        });
+
+        // Error occurred
+        socket.addEventListener('error', (event) => {
+            console.error('WebSocket error:', event.error);
+        });
+
+    }
+
+    // var set_timout = false;
+
+    function handle_ws_message(data) {
+        // console.log("Handling message " + data);
+        // clearTimeout(api_timout);
+        set_timout = false;
+        if (data.type == "STATUS") {
+            document.getElementById("batterypercentage").innerHTML = "Battery percentage: " + data.data.battery_percentage.toString().substring(0, 4) + "%";
+            document.getElementById("cpuload").innerHTML = "CPU load: " + data.data.cpu_usage.toString().substring(0, 6).substring(2, 4) + "%";
+            document.getElementById("armed").innerHTML = "Armed: " + data.data.armed;
+            document.getElementById("control_mode").innerHTML = "Control mode: " + data.data.control_mode;
+            document.getElementById("speed").innerHTML = "Current speed (m/s): x: " + data.data.velocity[0].toString().substring(0,4) + " y: " + data.data.velocity[1].toString().substring(0,4) + " z: " + data.data.velocity[2].toString().substring(0,4);
+            document.getElementById("position").innerHTML = "Current position (m): x: " + data.data.position[0].toString().substring(0,4) + " y: " + data.data.position[1].toString().substring(0,4) + " z: " + data.data.position[2].toString().substring(0,4);
+            // TODO fix
+            // if (set_timout == false) {
+            //     api_timeout = setTimeout(function () {
+            //         set_timout = true;
+            //         console.log("API timed out")
+            //         alert("Connection to API timed out!");
+            //         document.getElementById("connectedlabel").innerHTML = "Not connected to drone";
+            //         document.getElementById("connectbutton").disabled = false;
+            //     }, 5000);
+            // }
+        } else if (data.type == "FAILSAFE") {
+            document.getElementById("failsafe").innerHTML = "Failsafe: ACTIVATED";
+            document.getElementById("failsafe").style.backgroundColor = "red";
+            document.getElementById("failsafe").style.color = "white";
+            document.getElementById("failsafe").style.textDecoration = "bold";
+            alert("Failsafe enabled! Drone is landing. The failsafe message is:\n" + data.message);
+        } else if (data.type == "API_HEARTBEAT") {
+            concole.log("Got heartbeat from API")
+            clearTimeout(api_timout);
+        } else {
+            // decodeBase64Image(data.image, document.getElementById("result-video"));
+        }
+    }
+
+    function local_connect() {
+        console.log("Connecting to API");
+        ws = new WebSocket("ws://10.100.0.40:9001/");
+
+        ws.addEventListener("open", function open() {
+            console.log("connected with websockets to API!");
+            document.getElementById("connectedlabel").innerHTML = "Connected to drone";
+            document.getElementById("connectbutton").disabled = true;
+            connected_to_api = true;
+            openSocket();
+        });
+
+        ws.addEventListener("message", function message(message) {
+            try {
+                // console.log(message.data)
+                var msg = JSON.parse(message.data);
+                handle_ws_message(msg);
+
+            } catch (error) {
+                console.log("could not parse as json");
+                console.error(error)
+                //   send_image_data_to_clients(message);
+            }
+        });
+
+        ws.addEventListener("error", function error(err) {
+            console.log("there was an error! " + err);
+            // console.error("error: " + err);
+            console.log("Showing alert!");
+            alert("There was an error connecting to the API!");
+            document.getElementById("connectedlabel").innerHTML = "Not connected to drone";
+            document.getElementById("connectbutton").disabled = false;
+        });
+
+        ws.addEventListener("close", function close(event) {
+            console.log("connection closed");
+            alert("Connection to API closed!")
+            document.getElementById("connectedlabel").innerHTML = "Not connected to drone";
+            document.getElementById("connectbutton").disabled = false;
+        });
+    }
+
+    function connect() {
+        var received = false;
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "/connect", true);
+        xhr.onreadystatechange = function () {
+            if (this.status == 200) {
+                console.log(this.responseText);
+                if (this.responseText.length > 0) {
+                    var status = JSON.parse(this.responseText);
+                    // console.log(status)
+                    document.getElementById("connectedlabel").innerHTML = "Connected to drone";
+                    document.getElementById("connectbutton").disabled = true;
+                    // connect_to_video_stream();
+
+                }
+            } else {
+                console.log("error");
+                document.getElementById("connectedlabel").innerHTML = "Not connected to drone";
+                if (!received) {
+                    alert("Could not connect to API!");
+                    received = true;
+
+                }
+            }
+        };
+        xhr.send();
+    }
+    // window onload function die elke seconde een request doet om te kijken of er al nieuwe foto is
+    // function die elke 100 ms een request doet om de status te updaten
+    // button callbacks
+</script>
+
 </html>
