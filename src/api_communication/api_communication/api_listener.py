@@ -26,6 +26,7 @@ class RequestCommand(Enum):
     GET_COMMANDS_TYPES = -1 
     LAND = 0
     ARM_DISARM = 1
+    MOVE_POSITION = 2
     MOVE_DIRECTION = 3
     EMERGENCY_STOP = 6
 
@@ -46,25 +47,20 @@ class ApiListener(Node):
     def __init__(self):
         super().__init__('api_listener')
         self.get_logger().info('ApiListener node started')
-        self.drone_status_subscriber = self.create_subscription(
-            DroneStatus, '/drone/status', self.drone_status_callback, 10)
-        self.failsafe_subscriber = self.create_subscription(
-            FailsafeMsg, "/drone/failsafe", self.failsafe_callback, 10)
+        self.drone_status_subscriber = self.create_subscription(DroneStatus, '/drone/status', self.drone_status_callback, 10)
+        self.failsafe_subscriber = self.create_subscription(FailsafeMsg, "/drone/failsafe", self.failsafe_callback, 10)
 
         self.timer = self.create_timer(1, self.publish_status)
 
-        self.take_picture_client = self.create_client(
-            TakePicture, '/drone/picture')
+        self.take_picture_client = self.create_client(TakePicture, '/drone/picture')
         self.wait_for_service(self.take_picture_client, "Take picture")
         self.take_picture_request = TakePicture.Request()
 
-        self.move_position_client = self.create_client(
-            MovePosition, '/drone/move_position')
+        self.move_position_client = self.create_client(MovePosition, '/drone/move_position')
         self.wait_for_service(self.move_position_client, "Move position")
         self.move_position_request = MovePosition.Request()
 
-        self.enable_failsafe_client = self.create_client(
-            EnableFailsafe, "/drone/enable_failsafe")
+        self.enable_failsafe_client = self.create_client(EnableFailsafe, "/drone/enable_failsafe")
         self.wait_for_service(self.enable_failsafe_client, "Enable failsafe")
         self.enable_failsafe_request = EnableFailsafe.Request()
 
@@ -72,8 +68,7 @@ class ApiListener(Node):
         self.wait_for_service(self.arm_drone_client, "Arm drone")
         self.arm_drone_request = ArmDrone.Request()
 
-        self.disarm_drone_client = self.create_client(
-            DisarmDrone, "/drone/disarm")
+        self.disarm_drone_client = self.create_client(DisarmDrone, "/drone/disarm")
         self.wait_for_service(self.disarm_drone_client, "Disarm drone")
         self.disarm_drone_request = DisarmDrone.Request()
 
@@ -115,8 +110,7 @@ class ApiListener(Node):
         waiting = 0
         while not client.wait_for_service(timeout_sec=1.0):
             if (waiting > 10):
-                self.get_logger().error(
-                    service_name + ' service not available, exiting...')
+                self.get_logger().error(service_name + ' service not available, exiting...')
                 exit(-1)
             self.get_logger().info(service_name + 'service not available, waiting again...')
             waiting = waiting + 1
@@ -131,8 +125,7 @@ class ApiListener(Node):
             self.status_data_received = True
             self.status_data['battery_percentage'] = msg.battery_percentage
             if msg.battery_percentage < 15:
-                self.enable_failsafe(
-                    "Battery level too low! Failsafe enabled to prevent damage to battery (" + str(msg.battery_percentage ) + "%)")
+                self.enable_failsafe("Battery level too low! Failsafe enabled to prevent damage to battery (" + str(msg.battery_percentage ) + "%)")
             self.status_data['cpu_usage'] = msg.cpu_usage
             self.status_data['armed'] = msg.armed
             self.armed = msg.armed
@@ -145,8 +138,7 @@ class ApiListener(Node):
             self.status_data['failsafe'] = msg.failsafe
             self.status_data['height'] = msg.height
         except Exception as e:
-            self.get_logger().error(
-                f'Error while parsing drone status message: {e}')
+            self.get_logger().error(f'Error while parsing drone status message: {e}')
 
     def failsafe_callback(self, msg):
         """Callback for when the failsafe gets enabled. Queues a FAILSAFE message to the client
@@ -160,8 +152,7 @@ class ApiListener(Node):
         if not self.has_sent_failsafe_msg:
             self.has_sent_failsafe_msg = True
             self.status_data['failsafe'] = msg.enabled
-            self.message_queue.append(json.dumps(
-                {'type': ResponseMessage.FAILSAFE.name, 'message': msg.msg}))
+            self.message_queue.append(json.dumps({'type': ResponseMessage.FAILSAFE.name, 'message': msg.msg}))
 
     async def publish_message(self, message):
         """publishes a message to the NodeJS client
@@ -174,8 +165,7 @@ class ApiListener(Node):
             try:
                 await self.websocket.send(message)
             except Exception as e:
-                self.get_logger().error(
-                    'Something went wrong while sending a message to the websocket: ' + str(e))
+                self.get_logger().error('Something went wrong while sending a message to the websocket: ' + str(e))
         else:
             self.get_logger().error('Trying to publish message but no websocket connection')
 
@@ -186,11 +176,9 @@ class ApiListener(Node):
             self.status_data_received = False
             if self.websocket is not None:
                 try:
-                    self.message_queue.append(json.dumps(
-                        {'type': ResponseMessage.STATUS.name, 'data': self.status_data}))
+                    self.message_queue.append(json.dumps({'type': ResponseMessage.STATUS.name, 'data': self.status_data}))
                 except Exception as e:
-                    self.get_logger().error(
-                        'Something went wrong while publishing the status: ' + str(e))
+                    self.get_logger().error('Something went wrong while publishing the status: ' + str(e))
 
     def handle_responses(self):
         """Thread to handle responses to send to the client
@@ -225,8 +213,7 @@ class ApiListener(Node):
             messagetypes[message_type.name] = message_type.value
         result['request_commands'] = requestcommands
         result['response_messages'] = messagetypes
-        self.message_queue.append(json.dumps(
-            {'type': ResponseMessage.ALL_REQUESTS_RESPONSES.name, 'data': result}))
+        self.message_queue.append(json.dumps({'type': ResponseMessage.ALL_REQUESTS_RESPONSES.name, 'data': result}))
 
     def handle_direction_message(self, message):
         """Calls the move position service with the given values
@@ -239,8 +226,7 @@ class ApiListener(Node):
         self.move_position_request.front_back = float(
             message['forward_backward'])
         self.move_position_request.angle = float(message['yaw'])
-        self.get_logger().info(
-            f'Calling move position service with request: {str(self.move_position_request)}')
+        self.get_logger().info(f'Calling move position service with request: {str(self.move_position_request)}')
 
         self.send_move_position_request()
 
@@ -260,8 +246,7 @@ class ApiListener(Node):
             result = future.result()
             message_result = {}
             message_result['type'] = ResponseMessage.MOVE_DIRECTION_RESULT.name
-            self.get_logger().info(
-                f'Move position service call result: {str(result)}')
+            self.get_logger().info(f'Move position service call result: {str(result)}')
             if result.success == True:
                 self.get_logger().info('Move position service call success')
                 message_result['success'] = True
@@ -270,8 +255,7 @@ class ApiListener(Node):
                 message_result['success'] = False
             self.message_queue.append(json.dumps(message_result))
         except Exception as e:
-            self.get_logger().error(
-                'Something went wrong while sending a move position request and waiting for the response: %r' % (e))
+            self.get_logger().error('Something went wrong while sending a move position request and waiting for the response: %r' % (e))
 
     def enable_failsafe(self, message):
         self.get_logger().info("Enabling failsafe")
@@ -286,8 +270,7 @@ class ApiListener(Node):
             if (result.enabled == True):
                 self.get_logger().info("Failsafe activated")
         except Exception as e:
-            self.get_logger().error(
-                "Something went wrong while trying to enable failsafe!\n" + str(e))
+            self.get_logger().error("Something went wrong while trying to enable failsafe!\n" + str(e))
 
     def emergency_stop(self):
         """Sends an emergency stop request to the failsafe service"""
@@ -334,8 +317,7 @@ class ApiListener(Node):
             else:
                 self.get_logger().error('Ready service call failed')
         except Exception as e:
-            self.get_logger().error(
-                'Something went wrong while calling the ready service!\n' + str(e))
+            self.get_logger().error('Something went wrong while calling the ready service!\n' + str(e))
 
     def arm_service_callback(self, future):
         try:
@@ -345,8 +327,7 @@ class ApiListener(Node):
             else:
                 self.get_logger().error('Arm service call failed')
         except Exception as e:
-            self.get_logger().error(
-                'Something went wrong while calling the arm service!\n' + str(e))
+            self.get_logger().error('Something went wrong while calling the arm service!\n' + str(e))
 
     def disarm_service_callback(self, future):
         try:
@@ -357,8 +338,7 @@ class ApiListener(Node):
             else:
                 self.get_logger().error('Disarm service call failed')
         except Exception as e:
-            self.get_logger().error(
-                'Something went wrong while calling the disarm service!\n' + str(e))
+            self.get_logger().error('Something went wrong while calling the disarm service!\n' + str(e))
             
     def land_service_callback(self, future):
         try:
@@ -368,8 +348,7 @@ class ApiListener(Node):
             else:
                 self.get_logger().error('Land service call failed')
         except Exception as e:
-            self.get_logger().error(
-                'Something went wrong while calling the land service!\n' + str(e))
+            self.get_logger().error('Something went wrong while calling the land service!\n' + str(e))
 
     def consume_message(self, message):
         """Consumes a message from the client"""
@@ -400,12 +379,10 @@ class ApiListener(Node):
                     self.get_logger().info('Emergency stop command received')
                     self.emergency_stop()
                 else:
-                    self.get_logger().error('Received unknown command ' +
-                                            str(message_json['command']))
+                    self.get_logger().error('Received unknown command ' + str(message_json['command']))
                     self.send_available_commands()
         except TypeError:
-            self.get_logger().error('Received unknown type: ' +
-                                    str(type(message)) + " " + str(message))
+            self.get_logger().error('Received unknown type: ' + str(type(message)) + " " + str(message))
             self.send_available_commands()
         except json.JSONDecodeError:
             self.get_logger().error('Received invalid JSON')
@@ -417,7 +394,6 @@ class ApiListener(Node):
 
     async def api_handler(self, websocket):
         """Handles the websocket connection
-
         Args:
             websocket (websockets object): the websocket connection
         """
