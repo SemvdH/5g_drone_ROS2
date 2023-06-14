@@ -274,6 +274,7 @@ class ApiListener(Node):
 
     def emergency_stop(self):
         """Sends an emergency stop request to the failsafe service"""
+        self.get_logger().info('Activating emergency stop')
         self.enable_failsafe("Emergency stop activated")
 
     def takeoff(self):
