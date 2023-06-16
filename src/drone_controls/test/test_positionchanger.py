@@ -1,5 +1,3 @@
-import os
-import sys
 import unittest
 
 import launch
@@ -17,8 +15,6 @@ from drone_services.msg import LidarReading
 
 @pytest.mark.rostest
 def generate_test_description():
-    file_path = os.path.dirname(__file__)
-    # device under test
     positionchanger_node = launch_ros.actions.Node(
         package='drone_controls', executable='position_changer')
     failsafe_node = launch_ros.actions.Node(

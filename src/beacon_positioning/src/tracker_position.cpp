@@ -4,10 +4,7 @@
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
 #include "beacon_positioning/msg/tracker_position.hpp"
-
 #include "rtls_driver/rtls_driver.hpp"
-
-// from the example: https://github.com/Terabee/positioning_systems_api/blob/master/examples/rtls_tracker_example.cpp
 #include "serial_communication/serial.hpp"
 
 #define TRACKER_0_PORT "/dev/ttyUSB0"

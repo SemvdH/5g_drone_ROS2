@@ -1,5 +1,4 @@
 import os
-import sys
 import unittest
 
 import launch
@@ -11,7 +10,6 @@ import rclpy
 import time
 
 from drone_services.srv import MovePosition
-from drone_services.msg import FailsafeMsg
 from drone_services.msg import LidarReading
 
 @pytest.mark.rostest

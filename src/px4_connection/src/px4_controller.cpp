@@ -396,9 +396,6 @@ private:
             send_velocity_setpoint();
             return;
         }
-        // the spiral, in polar coordinates (theta, rho), is given by
-        // theta = theta_0 + omega*t
-        // rho = rho_0 + K*theta
         float theta = theta_0 + omega * 0.1;
         float rho = rho_0 + K * theta;
 
@@ -409,7 +406,6 @@ private:
 
         if (!user_in_control)
         {
-            // RCLCPP_INFO(this->get_logger(), "Sending idle attitude setpoint");
             send_attitude_setpoint();
         }
         else

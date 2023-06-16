@@ -53,7 +53,6 @@ public:
 
         this->lidar_subscription = this->create_subscription<drone_services::msg::LidarReading>("/drone/object_detection", qos, std::bind(&PositionChanger::handle_lidar_message, this, std::placeholders::_1));
         this->height_subscription = this->create_subscription<drone_services::msg::HeightData>("/drone/height", qos, std::bind(&PositionChanger::handle_height_message, this, std::placeholders::_1));
-        // vehicle_local_position_subscription_ = this->create_subscription<px4_msgs::msg::VehicleLocalPosition>("/fmu/out/vehicle_local_position", qos, std::bind(&PX4Controller::on_local_position_receive, this, std::placeholders::_1));
         this->odometry_subscription = this->create_subscription<px4_msgs::msg::VehicleOdometry>("/fmu/out/vehicle_odometry", qos, std::bind(&PositionChanger::handle_odometry_message, this, std::placeholders::_1));
         this->move_position_service = this->create_service<drone_services::srv::MovePosition>("/drone/move_position", std::bind(&PositionChanger::handle_move_position_request, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
         this->ready_drone_service = this->create_service<drone_services::srv::ReadyDrone>("/drone/ready", std::bind(&PositionChanger::handle_ready_drone_request, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
@@ -113,6 +112,11 @@ public:
         }
     }
 
+/**
+ * @brief callback function for the /drone/arm service
+ * 
+ * @param future the future object that holds the result of the service call
+ */
     void arm_drone_service_callback(rclcpp::Client<drone_services::srv::ArmDrone>::SharedFuture future)
     {
         auto status = future.wait_for(1s);
@@ -137,6 +141,11 @@ public:
         }
     }
 
+/**
+ * @brief callback function for the /drone/set_attitude service
+ * 
+ * @param future the future object that holds the result of the service call
+ */
     void attitude_message_callback(rclcpp::Client<drone_services::srv::SetAttitude>::SharedFuture future)
     {
         auto status = future.wait_for(1s);
@@ -220,39 +229,26 @@ public:
      */
     void apply_collision_weights()
     {
-
-        // if (this->current_speed_x > 0) // if moving forward
-        // {
         if (!this->move_direction_allowed[MOVE_DIRECTION_FRONT])
         {
             RCLCPP_INFO(this->get_logger(), "Collision prevention front: %f", collision_prevention_weights[MOVE_DIRECTION_FRONT]);
             get_x_y_with_rotation(collision_prevention_weights[MOVE_DIRECTION_FRONT], 0, this->current_yaw, &this->current_speed_x, &this->current_speed_y);
         }
-        // }
-        // else // moving backward
-        // {
         if (!this->move_direction_allowed[MOVE_DIRECTION_BACK])
         {
             RCLCPP_INFO(this->get_logger(), "Collision prevention back: %f", collision_prevention_weights[MOVE_DIRECTION_BACK]);
             get_x_y_with_rotation(collision_prevention_weights[MOVE_DIRECTION_BACK], 0, this->current_yaw, &this->current_speed_x, &this->current_speed_y);
         }
-        // }
-        // if (this->current_speed_y > 0) // moving right
-        // {
         if (!this->move_direction_allowed[MOVE_DIRECTION_RIGHT])
         {
             RCLCPP_INFO(this->get_logger(), "Collision prevention right: %f", collision_prevention_weights[MOVE_DIRECTION_RIGHT]);
             get_x_y_with_rotation(0, collision_prevention_weights[MOVE_DIRECTION_RIGHT], this->current_yaw, &this->current_speed_x, &this->current_speed_y);
         }
-        // }
-        // else // moving left
-        // {
         if (!this->move_direction_allowed[MOVE_DIRECTION_LEFT])
         {
             RCLCPP_INFO(this->get_logger(), "Collision prevention left: %f", collision_prevention_weights[MOVE_DIRECTION_LEFT]);
             get_x_y_with_rotation(0, collision_prevention_weights[MOVE_DIRECTION_LEFT], this->current_yaw, &this->current_speed_x, &this->current_speed_y);
         }
-        // }
     }
 
     /**
@@ -278,6 +274,11 @@ public:
         apply_collision_weights();
     }
 
+    /**
+     * @brief Callback for when a set_attitude request is made while landing
+     *
+     * @param future the future object containing the result of the request.
+     */
     void attitude_land_callback(rclcpp::Client<drone_services::srv::SetAttitude>::SharedFuture future)
     {
         auto status = future.wait_for(1s);
@@ -295,6 +296,11 @@ public:
         }
     }
 
+    /**
+     * @brief Callback for when a set_vehicle_control request is made while landing
+     *
+     * @param future the future object containing the result of the request.
+     */
     void vehicle_control_land_request_callback(rclcpp::Client<drone_services::srv::SetVehicleControl>::SharedFuture future)
     {
         auto status = future.wait_for(1s);
@@ -316,6 +322,11 @@ public:
         }
     }
 
+    /**
+     * @brief Callback method for receiving new height data
+     *
+     * @param message the message containing the height data
+     */
     void handle_height_message(const drone_services::msg::HeightData::SharedPtr message)
     {
         this->current_height = message->min_height;
@@ -445,6 +456,13 @@ public:
         }
     }
 
+    /**
+     * @brief Callback function for when the /drone/land service is called
+     *
+     * @param request_header the header of the request
+     * @param request the request to land
+     * @param response the response to send back.
+     */
     void handle_land_request(
         const std::shared_ptr<rmw_request_id_t> request_header,
         const std::shared_ptr<drone_services::srv::Land::Request> request,
@@ -454,6 +472,13 @@ public:
         response->is_landing = this->is_landing;
     }
 
+    /**
+     * @brief Callback function for when the /drone/ready_drone service is called
+     *
+     * @param request_header the header of the request
+     * @param request the request to ready the drone
+     * @param response the response to send back. Contains true if the request was successful, false otherwise
+     */
     void handle_ready_drone_request(
         const std::shared_ptr<rmw_request_id_t> request_header,
         const std::shared_ptr<drone_services::srv::ReadyDrone::Request> request,
@@ -474,7 +499,6 @@ public:
         this->vehicle_control_request->control = CONTROL_MODE_ATTITUDE;
         auto control_mode_response = this->vehicle_control_client->async_send_request(this->vehicle_control_request,
                                                                                       std::bind(&PositionChanger::vehicle_control_service_callback, this, std::placeholders::_1));
-        // TODO set motors to spin at 30%
         response->success = true;
     }
 
