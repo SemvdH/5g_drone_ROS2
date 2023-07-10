@@ -10,17 +10,18 @@ By Sem van der Hoeven
 - [ROS2 nodes overview](#ros2-nodes-overview)
 
 ## Introduction
-This is the code for the 5G RCID of the 5G Hub. All ROS2 nodes and the code API can be found here. The flight computer currently already contains the latest version of the software. 
-- The code for the ROS2 nodes can be found from the [src folder (src/)](/src/)
-- The code API can be found from the [api folder (api/)](/api/)
+This is the code for the 5G RCID of the 5G Hub. All ROS2 nodes and the API code can be found here. The flight computer currently already contains the latest version of the software. 
+- The code for the ROS2 nodes can be found in the [src folder (src/)](/src/)
+- The code for the API can be found in the [api folder (api/)](/api/)
 - Further information about how the drone is built and how it works can be found in my report in the [docs folder (doc/)](/doc/)
 
-To add new ROS2 functionality, you can edit the code, push to the repository, pull on the flight computer and build the ROS2 workspace again. An example of how to do this is shown below:
+To add new ROS2 functionality, you can edit the code, push to the repository, pull on the flight computer (10.100.0.40, password is `raspberrypi`) and build the ROS2 workspace again. An example of how to do this is shown below:
 ```bash
 # (On your computer) commit changes
 git commit -a -m "Added new functionality"
 git push
 # (On the flight computer) pull changes
+ssh ubuntu@10.100.0.40
 cd /home/ubuntu/ros2_ws
 git fetch
 git pull
@@ -36,10 +37,23 @@ To add new API functionality, you can do the same, but for the code in the api f
 # (On the edge computer) restart API
 sudo systemctl restart webserver
 ```
+## Pin layout
+A pinout of the raspberry pi can be found [here](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html). The connections are visible in the table below:
+|Raspberry Pi pin|Function|Connected to|
+|---|---|---|
+|2|5V|Power input from PDB|
+|4|5V|Power to relais|
+|6|GND|Ground from PDB|
+|8|UART TX|To RX of Pixhawk TELEM 1|
+|9|GND|Ground to relais|
+|10|UART RX|To TX of Pixhawk TELEM 1|
+|11|GPIO 17|Relais|
+|13|GPIO 27|Relais|
+
 ## Connecting to API
 To connect to the API, make sure you are connected to the 5G Hub network. Then, the API is located at http://10.1.1.41:8080/. When the drone is finished booting (the relais is switched on), you can connect to the drone using the `Connect` button.
 ## Installation on new flight computer
-The drone currently has a Raspberry Pi that contains a ROS2 installation. The Raspberry Pi runs Ubuntu 20.04 and ROS 2 Foxy. If you want to install this on a new Pi, you should [get Ubuntu Server 20.04](https://ubuntu.com/download/server#downloads), and [install ROS2 Foxy](https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html) on it. Then, you should clone this repository into a 'ros2_ws' folder. You can do that using the following commands:
+The drone currently has a Raspberry Pi that contains a ROS2 installation. The Raspberry Pi runs Ubuntu 20.04 and ROS 2 Foxy. If you want to install this on a new Pi, you should [get Ubuntu Server 20.04](https://ubuntu.com/download/server#downloads), and [install ROS2 Foxy](https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html) on it. Then, you should clone this repository into a `ros2_ws` folder. You can do that using the following commands:
 ```bash
 git clone git@github.com:etmeddi/5g_drone_ROS2.git
 mv 5g_drone_ROS2 ros2_ws
@@ -69,9 +83,20 @@ cd ~/PX4-Autopilot
 # build firmware
 make px4_fmu-v5_default
 ```
-The built firmware file will be located at `PX4-Autopilot/build/px4_fmu-v4_default/px4_fmu-v4_default.px4`. You can then flash this to the flight controller using QGroundControl. Make sure to select the [custom firmware](https://docs.px4.io/main/en/config/firmware.html#installing-px4-master-beta-or-custom-firmware) option when flashing, and select the built firmware file.
+The built firmware file will be located at `PX4-Autopilot/build/px4_fmu-v4_default/px4_fmu-v4_default.px4`. You can then flash this to the flight controller using [QGroundControl](http://qgroundcontrol.com/). Make sure to select the [custom firmware](https://docs.px4.io/main/en/config/firmware.html#installing-px4-master-beta-or-custom-firmware) option when flashing, and select the built firmware file.
 ## ROS2 nodes overview
 An overview of all the ROS2 nodes, services and topics can be found below (also visible in my report)
 
 ![ROS2 nodes overview](/doc/ROSNodes.jpg)
+
+## PX4 parameters
+To enable communication with the flight computer, the following parameters should be set in QGroundControl:
+|Parameter|Value|Function|
+|---|---|---|
+|UXRCE_DDS_CFG|101|run microxrce-dds on TELEM 1|
+|MAV_0_CONFIG|TELEM 4|run mavlink on TELEM 4 because XRCE-DDS runs on TELEM 1|
+|SER_TEL1_BAUD|921600|high baud rate because serial|
+|COM_RC_IN_MODE|4|allow arming without GPS|
+|COM_RCL_EXCEPT|5|don't check for GPS|
+
 
