@@ -4,6 +4,7 @@ By Sem van der Hoeven
 
 ## Table of contents
 - [Introduction](#introduction)
+- [EMERGENCY FORCE STOP](#emergency-force-stop)
 - [Pin layout](#pin-layout)
 - [Connecting to API](#connecting-to-api)
 - [Installing API](#installing-api)
@@ -39,6 +40,16 @@ To add new API functionality, you can do the same, but for the code in the api f
 ```bash
 # (On the edge computer) restart API
 sudo systemctl restart webserver
+```
+## EMERGENCY FORCE STOP
+If, for whatever reason, the drone does not respond to the API, you can force stop all nodes on the drone and force it to land through the pixhawk using the following commands:
+```bash
+# on your computer, ssh into the drone
+ssh ubuntu@10.100.0.40
+# cd into the ROS2 workspace
+cd ros2_ws
+# stop all ROS2 nodes
+drone_scripts/stop_services.sh
 ```
 ## Pin layout
 A pinout of the raspberry pi can be found [here](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html). The connections are visible in the table below:
@@ -124,6 +135,7 @@ To enable communication with the flight computer, the following parameters shoul
 The optical flow sensor is a [Hex HereFlow PMW3901](https://docs.px4.io/main/en/sensor/pmw3901.html#hex-hereflow-pmw3901-optical-flow-sensor) and it's connected to the CAN port of the pixhawk. The parameters to enable the optical flow sensor are:
 |Parameter|Value|Function|
 |---|---|---|
+|EKF2_OF_CTRL |1 (Enabled)|Enable optical flow sensor fusion|
 |UAVCAN_ENABLE|2 (Sensors automatic config)|Enable UAVCAN for sensors|
 |UAVCAN_SUB_FLOW|Enabled|subscribe to optical flow messages|
 |UAVCAN_SUB_GPS|Disabled|subscribe to GPS messages|
@@ -132,8 +144,9 @@ To reverse this, and be able to use GPS, the parameters should be:
 
 |Parameter|Value|Function|
 |---|---|---|
-|UAVCAN_ENABLE|0 (Disabled)|Enable UAVCAN for sensors|
-|UAVCAN_SUB_FLOW|Disabled|subscribe to optical flow messages|
+|EKF2_OF_CTRL |0 (Disabled)|Disable optical flow sensor fusion|
+|UAVCAN_ENABLE|0 (Disabled)|Disable UAVCAN for sensors|
+|UAVCAN_SUB_FLOW|Disabled|don't subscribe to optical flow messages|
 |UAVCAN_SUB_GPS|Enabled|subscribe to GPS messages|
 
 
