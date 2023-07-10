@@ -499,7 +499,7 @@ public:
         this->vehicle_control_request->control = CONTROL_MODE_ATTITUDE;
         auto control_mode_response = this->vehicle_control_client->async_send_request(this->vehicle_control_request,
                                                                                       std::bind(&PositionChanger::vehicle_control_service_callback, this, std::placeholders::_1));
-        response->success = true;
+        response->success = true;        
     }
 
     /**
