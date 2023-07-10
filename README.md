@@ -4,10 +4,14 @@ By Sem van der Hoeven
 
 ## Table of contents
 - [Introduction](#introduction)
-- [Installation on new flight computer](#installation-on-new-flight-computer)
+- [Pin layout](#pin-layout)
 - [Connecting to API](#connecting-to-api)
+- [Installing API](#installing-api)
+- [Installation on new flight computer](#installation-on-new-flight-computer)
 - [Building PX4 firmware](#building-px4-firmware)
 - [ROS2 nodes overview](#ros2-nodes-overview)
+- [PX4 parameters](#px4-parameters)
+- [Optical flow](#optical-flow)
 
 ## Introduction
 This is the code for the 5G RCID of the 5G Hub. All ROS2 nodes and the API code can be found here. The flight computer currently already contains the latest version of the software. 
@@ -113,7 +117,23 @@ To enable communication with the flight computer, the following parameters shoul
 |UXRCE_DDS_CFG|101|run microxrce-dds on TELEM 1|
 |MAV_0_CONFIG|TELEM 4|run mavlink on TELEM 4 because XRCE-DDS runs on TELEM 1|
 |SER_TEL1_BAUD|921600|high baud rate because serial|
-|COM_RC_IN_MODE|4|allow arming without GPS|
-|COM_RCL_EXCEPT|5|don't check for GPS|
+|COM_RC_IN_MODE|4 (Stick input disabled)|allow arming without GPS|
+|COM_RCL_EXCEPT|5|Ignore loss of RC remote signal|
+
+## Optical flow
+The optical flow sensor is a [Hex HereFlow PMW3901](https://docs.px4.io/main/en/sensor/pmw3901.html#hex-hereflow-pmw3901-optical-flow-sensor) and it's connected to the CAN port of the pixhawk. The parameters to enable the optical flow sensor are:
+|Parameter|Value|Function|
+|---|---|---|
+|UAVCAN_ENABLE|2 (Sensors automatic config)|Enable UAVCAN for sensors|
+|UAVCAN_SUB_FLOW|Enabled|subscribe to optical flow messages|
+|UAVCAN_SUB_GPS|Disabled|subscribe to GPS messages|
+
+To reverse this, and be able to use GPS, the parameters should be:
+
+|Parameter|Value|Function|
+|---|---|---|
+|UAVCAN_ENABLE|0 (Disabled)|Enable UAVCAN for sensors|
+|UAVCAN_SUB_FLOW|Disabled|subscribe to optical flow messages|
+|UAVCAN_SUB_GPS|Enabled|subscribe to GPS messages|
 
 
