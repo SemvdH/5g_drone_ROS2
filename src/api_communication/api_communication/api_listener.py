@@ -294,7 +294,7 @@ class ApiListener(Node):
         self.move_position_request.front_back = 0.0
         self.move_position_request.angle = 0.0
         self.send_move_position_request()
-        future = self.land_drone_client.call_async(self.land_drone_request)
+        future = self.land_client.call_async(self.land_request)
         future.add_done_callback(partial(self.land_service_callback))
 
     def arm_disarm(self):
