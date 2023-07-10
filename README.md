@@ -15,13 +15,12 @@ This is the code for the 5G RCID of the 5G Hub. All ROS2 nodes and the API code 
 - The code for the API can be found in the [api folder (api/)](/api/)
 - Further information about how the drone is built and how it works can be found in my report in the [docs folder (doc/)](/doc/)
 
-To add new ROS2 functionality, you can edit the code, push to the repository, pull on the flight computer (10.100.0.40, password is `raspberrypi`) and build the ROS2 workspace again. An example of how to do this is shown below:
+To add new ROS2 functionality, you can edit the code, push to the repository, pull on the flight computer (ubuntu@10.100.0.40, password is `raspberrypi`) and build the ROS2 workspace again. An example of how to do this is shown below:
 ```bash
 # (On your computer) commit changes
 git commit -a -m "Added new functionality"
 git push
 # (On the flight computer) pull changes
-ssh ubuntu@10.100.0.40
 cd /home/ubuntu/ros2_ws
 git fetch
 git pull
@@ -52,6 +51,24 @@ A pinout of the raspberry pi can be found [here](https://www.raspberrypi.com/doc
 
 ## Connecting to API
 To connect to the API, make sure you are connected to the 5G Hub network. Then, the API is located at http://10.1.1.41:8080/. When the drone is finished booting (the relais is switched on), you can connect to the drone using the `Connect` button.
+
+## Installing API
+To be able to run the API, npm and nodejs must be installed:
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+nvm install node
+# to be able to run npm and nodejs as sudo, run the following commands:
+n=$(which node)
+n=${n%/bin/node}
+chmod -R 755 $n/bin/* 
+sudo cp -r $n/{bin,lib,share} /usr/local 
+```
+To install the API on a new edge computer, you must first clone this repository. Then you can run the NodeJS webserver using npm. You can do that using the following commands:
+```bash
+git clone https://github.com/etmeddi/5g_drone_ROS2.git
+cd 5g_drone_ROS2/api
+npm start
+```
 ## Installation on new flight computer
 The drone currently has a Raspberry Pi that contains a ROS2 installation. The Raspberry Pi runs Ubuntu 20.04 and ROS 2 Foxy. If you want to install this on a new Pi, you should [get Ubuntu Server 20.04](https://ubuntu.com/download/server#downloads), and [install ROS2 Foxy](https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html) on it. Then, you should clone this repository into a `ros2_ws` folder. You can do that using the following commands:
 ```bash
@@ -72,9 +89,9 @@ git clone https://github.com/PX4/PX4-Autopilot.git --recursive
 In the PX4 directory, edit the file `src/modules/uxrce_dds_client/dds_topics.yaml`. Above the line that says `subscriptions:`, add the following:
 ```yaml
   - topic: /fmu/out/battery_status
-    type: px4_msgs::msg::battery_status
+    type: px4_msgs::msg::BatteryStatus
   - topic: /fmu/out/cpuload
-    type: px4_msgs::msg::cpuload
+    type: px4_msgs::msg::Cpuload
 ```
 The file can also be found in this repository at [dds_topics.yaml](dds_topics.yaml). After changing the file, you can build the firmware using the following command:
 ```bash
